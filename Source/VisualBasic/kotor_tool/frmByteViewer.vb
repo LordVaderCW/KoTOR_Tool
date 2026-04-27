@@ -1,4 +1,4 @@
-﻿Imports System
+Imports System
 Imports System.ComponentModel
 Imports System.ComponentModel.Design
 Imports System.Diagnostics
@@ -39,82 +39,6 @@ Namespace kotor_tool
             Me.bv = New ByteViewer()
             Me.InitializeComponent()
         End Sub
-
-        ' Token: 0x170000B8 RID: 184
-        ' (get) Token: 0x060002CF RID: 719 RVA: 0x0022F73C File Offset: 0x0022E73C
-        ' (set) Token: 0x060002CE RID: 718 RVA: 0x0022F750 File Offset: 0x0022E750
-        Friend Overridable Property rbHex() As RadioButton
-            Get
-                Return Me._rbHex
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-               Set(ByVal value As RadioButton)
-                If Me._rbHex IsNot Nothing Then
-                    RemoveHandler Me._rbHex.Click, AddressOf Me.rbHex_Click
-                End If
-                Me._rbHex = value
-                If Me._rbHex IsNot Nothing Then
-                    AddHandler Me._rbHex.Click, AddressOf Me.rbHex_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x170000B9 RID: 185
-        ' (get) Token: 0x060002D0 RID: 720 RVA: 0x0022F7A4 File Offset: 0x0022E7A4
-        ' (set) Token: 0x060002D1 RID: 721 RVA: 0x0022F7B8 File Offset: 0x0022E7B8
-        Friend Overridable Property rbANSI() As RadioButton
-            Get
-                Return Me._rbANSI
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-               Set(ByVal value As RadioButton)
-                If Me._rbANSI IsNot Nothing Then
-                    RemoveHandler Me._rbANSI.Click, AddressOf Me.rbANSI_Click
-                End If
-                Me._rbANSI = value
-                If Me._rbANSI IsNot Nothing Then
-                    AddHandler Me._rbANSI.Click, AddressOf Me.rbANSI_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x170000BA RID: 186
-        ' (get) Token: 0x060002D3 RID: 723 RVA: 0x0022F860 File Offset: 0x0022E860
-        ' (set) Token: 0x060002D2 RID: 722 RVA: 0x0022F80C File Offset: 0x0022E80C
-        Friend Overridable Property rbUnicode() As RadioButton
-            Get
-                Return Me._rbUnicode
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-               Set(ByVal value As RadioButton)
-                If Me._rbUnicode IsNot Nothing Then
-                    RemoveHandler Me._rbUnicode.Click, AddressOf Me.rbUnicode_Click
-                End If
-                Me._rbUnicode = value
-                If Me._rbUnicode IsNot Nothing Then
-                    AddHandler Me._rbUnicode.Click, AddressOf Me.rbUnicode_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x170000BB RID: 187
-        ' (get) Token: 0x060002D5 RID: 725 RVA: 0x0022F8C8 File Offset: 0x0022E8C8
-        ' (set) Token: 0x060002D4 RID: 724 RVA: 0x0022F874 File Offset: 0x0022E874
-        Friend Overridable Property Button1() As Button
-            Get
-                Return Me._Button1
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-               Set(ByVal value As Button)
-                If Me._Button1 IsNot Nothing Then
-                    RemoveHandler Me._Button1.Click, AddressOf Me.Button1_Click
-                End If
-                Me._Button1 = value
-                If Me._Button1 IsNot Nothing Then
-                    AddHandler Me._Button1.Click, AddressOf Me.Button1_Click
-                End If
-            End Set
-        End Property
 
         ' Token: 0x060002D7 RID: 727 RVA: 0x0022FBBC File Offset: 0x0022EBBC
         Public Sub New(ByVal path As String)
@@ -227,22 +151,6 @@ Namespace kotor_tool
         ' Token: 0x040001C3 RID: 451
         <AccessedThroughProperty("bv")> _
         Private _bv As ByteViewer
-
-        ' Token: 0x040001C4 RID: 452
-        <AccessedThroughProperty("rbHex")> _
-        Private _rbHex As RadioButton
-
-        ' Token: 0x040001C5 RID: 453
-        <AccessedThroughProperty("rbUnicode")> _
-        Private _rbUnicode As RadioButton
-
-        ' Token: 0x040001C6 RID: 454
-        <AccessedThroughProperty("rbANSI")> _
-        Private _rbANSI As RadioButton
-
-        ' Token: 0x040001C7 RID: 455
-        <AccessedThroughProperty("Button1")> _
-        Private _Button1 As Button
 
         ' Token: 0x040001C8 RID: 456
         Public filepath As String

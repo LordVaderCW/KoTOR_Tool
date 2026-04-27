@@ -1,4 +1,4 @@
-Imports System
+﻿Imports System
 Imports System.Collections
 Imports System.ComponentModel
 Imports System.Data
@@ -35,6 +35,315 @@ Namespace kotor_tool
 			Me.InitializeComponent()
 		End Sub
 
+		' Token: 0x17000030 RID: 48
+		' (get) Token: 0x06000162 RID: 354 RVA: 0x00225BF4 File Offset: 0x00224BF4
+		' (set) Token: 0x06000163 RID: 355 RVA: 0x00225BA0 File Offset: 0x00224BA0
+		Friend Overridable Property dg2DA As frm2DAEditor.TwoDADataGrid
+			Get
+				Return Me._dg2DA
+			End Get
+            <MethodImpl(MethodImplOptions.Synchronized)> _
+               Set(ByVal value As frm2DAEditor.TwoDADataGrid)
+                If Me._dg2DA IsNot Nothing Then
+                    RemoveHandler Me._dg2DA.MouseUp, AddressOf Me.dg_MouseUp
+                End If
+                Me._dg2DA = value
+                If Me._dg2DA IsNot Nothing Then
+                    AddHandler Me._dg2DA.MouseUp, AddressOf Me.dg_MouseUp
+                End If
+            End Set
+        End Property
+
+        ' Token: 0x17000031 RID: 49
+        ' (get) Token: 0x06000165 RID: 357 RVA: 0x00225C08 File Offset: 0x00224C08
+        ' (set) Token: 0x06000164 RID: 356 RVA: 0x00225C1C File Offset: 0x00224C1C
+        Friend Overridable Property MainMenu1() As MainMenu
+            Get
+                Return Me._MainMenu1
+            End Get
+            <MethodImpl(MethodImplOptions.Synchronized)> _
+               Set(ByVal value As MainMenu)
+                If Me._MainMenu1 IsNot Nothing Then
+                End If
+                Me._MainMenu1 = value
+                If Me._MainMenu1 IsNot Nothing Then
+                End If
+            End Set
+        End Property
+
+        ' Token: 0x17000032 RID: 50
+        ' (get) Token: 0x06000166 RID: 358 RVA: 0x00225C38 File Offset: 0x00224C38
+        ' (set) Token: 0x06000167 RID: 359 RVA: 0x00225C4C File Offset: 0x00224C4C
+        Friend Overridable Property MenuItem1() As MenuItem
+            Get
+                Return Me._MenuItem1
+            End Get
+            <MethodImpl(MethodImplOptions.Synchronized)> _
+               Set(ByVal value As MenuItem)
+                If Me._MenuItem1 IsNot Nothing Then
+                End If
+                Me._MenuItem1 = value
+                If Me._MenuItem1 IsNot Nothing Then
+                End If
+            End Set
+        End Property
+
+        ' Token: 0x17000033 RID: 51
+        ' (get) Token: 0x06000168 RID: 360 RVA: 0x00225CBC File Offset: 0x00224CBC
+        ' (set) Token: 0x06000169 RID: 361 RVA: 0x00225C68 File Offset: 0x00224C68
+        Friend Overridable Property miLoad2da() As MenuItem
+            Get
+                Return Me._miLoad2da
+            End Get
+            <MethodImpl(MethodImplOptions.Synchronized)> _
+               Set(ByVal value As MenuItem)
+                If Me._miLoad2da IsNot Nothing Then
+                    RemoveHandler Me._miLoad2da.Click, AddressOf Me.miLoad2da_Click
+                End If
+                Me._miLoad2da = value
+                If Me._miLoad2da IsNot Nothing Then
+                    AddHandler Me._miLoad2da.Click, AddressOf Me.miLoad2da_Click
+                End If
+            End Set
+        End Property
+
+        ' Token: 0x17000034 RID: 52
+        ' (get) Token: 0x0600016B RID: 363 RVA: 0x00225CD0 File Offset: 0x00224CD0
+        ' (set) Token: 0x0600016A RID: 362 RVA: 0x00225CE4 File Offset: 0x00224CE4
+        Friend Overridable Property miSave2daV2b() As MenuItem
+            Get
+                Return Me._miSave2daV2b
+            End Get
+            <MethodImpl(MethodImplOptions.Synchronized)> _
+               Set(ByVal value As MenuItem)
+                If Me._miSave2daV2b IsNot Nothing Then
+                    RemoveHandler Me._miSave2daV2b.Click, AddressOf Me.miSave2daV2b_Click
+                End If
+                Me._miSave2daV2b = value
+                If Me._miSave2daV2b IsNot Nothing Then
+                    AddHandler Me._miSave2daV2b.Click, AddressOf Me.miSave2daV2b_Click
+                End If
+            End Set
+        End Property
+
+        ' Token: 0x17000035 RID: 53
+        ' (get) Token: 0x0600016C RID: 364 RVA: 0x00225D8C File Offset: 0x00224D8C
+        ' (set) Token: 0x0600016D RID: 365 RVA: 0x00225D38 File Offset: 0x00224D38
+        Friend Overridable Property miSave2daV2bXML() As MenuItem
+            Get
+                Return Me._miSave2daV2bXML
+            End Get
+            <MethodImpl(MethodImplOptions.Synchronized)> _
+               Set(ByVal value As MenuItem)
+                If Me._miSave2daV2bXML IsNot Nothing Then
+                    RemoveHandler Me._miSave2daV2bXML.Click, AddressOf Me.miSave2daV2bXML_Click
+                End If
+                Me._miSave2daV2bXML = value
+                If Me._miSave2daV2bXML IsNot Nothing Then
+                    AddHandler Me._miSave2daV2bXML.Click, AddressOf Me.miSave2daV2bXML_Click
+                End If
+            End Set
+        End Property
+
+        ' Token: 0x17000036 RID: 54
+        ' (get) Token: 0x0600016E RID: 366 RVA: 0x00225DA0 File Offset: 0x00224DA0
+        ' (set) Token: 0x0600016F RID: 367 RVA: 0x00225DB4 File Offset: 0x00224DB4
+        Friend Overridable Property MenuItem5() As MenuItem
+            Get
+                Return Me._MenuItem5
+            End Get
+            <MethodImpl(MethodImplOptions.Synchronized)> _
+               Set(ByVal value As MenuItem)
+                If Me._MenuItem5 IsNot Nothing Then
+                End If
+                Me._MenuItem5 = value
+                If Me._MenuItem5 IsNot Nothing Then
+                End If
+            End Set
+        End Property
+
+        ' Token: 0x17000037 RID: 55
+        ' (get) Token: 0x06000170 RID: 368 RVA: 0x00225DD0 File Offset: 0x00224DD0
+        ' (set) Token: 0x06000171 RID: 369 RVA: 0x00225DE4 File Offset: 0x00224DE4
+        Friend Overridable Property miQuit() As MenuItem
+            Get
+                Return Me._miQuit
+            End Get
+            <MethodImpl(MethodImplOptions.Synchronized)> _
+               Set(ByVal value As MenuItem)
+                If Me._miQuit IsNot Nothing Then
+                    RemoveHandler Me._miQuit.Click, AddressOf Me.miQuit_Click
+                End If
+                Me._miQuit = value
+                If Me._miQuit IsNot Nothing Then
+                    AddHandler Me._miQuit.Click, AddressOf Me.miQuit_Click
+                End If
+            End Set
+        End Property
+
+        ' Token: 0x17000038 RID: 56
+        ' (get) Token: 0x06000172 RID: 370 RVA: 0x00225E54 File Offset: 0x00224E54
+        ' (set) Token: 0x06000173 RID: 371 RVA: 0x00225E38 File Offset: 0x00224E38
+        Friend Overridable Property MenuItem2() As MenuItem
+            Get
+                Return Me._MenuItem2
+            End Get
+            <MethodImpl(MethodImplOptions.Synchronized)> _
+               Set(ByVal value As MenuItem)
+                If Me._MenuItem2 IsNot Nothing Then
+                End If
+                Me._MenuItem2 = value
+                If Me._MenuItem2 IsNot Nothing Then
+                End If
+            End Set
+        End Property
+
+        ' Token: 0x17000039 RID: 57
+        ' (get) Token: 0x06000174 RID: 372 RVA: 0x00225E68 File Offset: 0x00224E68
+        ' (set) Token: 0x06000175 RID: 373 RVA: 0x00225E7C File Offset: 0x00224E7C
+        Friend Overridable Property miResetSort() As MenuItem
+            Get
+                Return Me._miResetSort
+            End Get
+            <MethodImpl(MethodImplOptions.Synchronized)> _
+               Set(ByVal value As MenuItem)
+                If Me._miResetSort IsNot Nothing Then
+                    RemoveHandler Me._miResetSort.Click, AddressOf Me.miResetSort_Click
+                End If
+                Me._miResetSort = value
+                If Me._miResetSort IsNot Nothing Then
+                    AddHandler Me._miResetSort.Click, AddressOf Me.miResetSort_Click
+                End If
+            End Set
+        End Property
+
+        ' Token: 0x1700003A RID: 58
+        ' (get) Token: 0x06000176 RID: 374 RVA: 0x00225EEC File Offset: 0x00224EEC
+        ' (set) Token: 0x06000177 RID: 375 RVA: 0x00225ED0 File Offset: 0x00224ED0
+        Friend Overridable Property MenuItem4() As MenuItem
+            Get
+                Return Me._MenuItem4
+            End Get
+            <MethodImpl(MethodImplOptions.Synchronized)> _
+               Set(ByVal value As MenuItem)
+                If Me._MenuItem4 IsNot Nothing Then
+                End If
+                Me._MenuItem4 = value
+                If Me._MenuItem4 IsNot Nothing Then
+                End If
+            End Set
+        End Property
+
+        ' Token: 0x1700003B RID: 59
+        ' (get) Token: 0x06000178 RID: 376 RVA: 0x00225F00 File Offset: 0x00224F00
+        ' (set) Token: 0x06000179 RID: 377 RVA: 0x00225F14 File Offset: 0x00224F14
+        Friend Overridable Property miUndoAll() As MenuItem
+            Get
+                Return Me._miUndoAll
+            End Get
+            <MethodImpl(MethodImplOptions.Synchronized)> _
+               Set(ByVal value As MenuItem)
+                If Me._miUndoAll IsNot Nothing Then
+                    RemoveHandler Me._miUndoAll.Click, AddressOf Me.miUndoAll_Click
+                End If
+                Me._miUndoAll = value
+                If Me._miUndoAll IsNot Nothing Then
+                    AddHandler Me._miUndoAll.Click, AddressOf Me.miUndoAll_Click
+                End If
+            End Set
+        End Property
+
+        ' Token: 0x1700003C RID: 60
+        ' (get) Token: 0x0600017B RID: 379 RVA: 0x00225F84 File Offset: 0x00224F84
+        ' (set) Token: 0x0600017A RID: 378 RVA: 0x00225F68 File Offset: 0x00224F68
+        Friend Overridable Property MenuItem6() As MenuItem
+            Get
+                Return Me._MenuItem6
+            End Get
+            <MethodImpl(MethodImplOptions.Synchronized)> _
+               Set(ByVal value As MenuItem)
+                If Me._MenuItem6 IsNot Nothing Then
+                End If
+                Me._MenuItem6 = value
+                If Me._MenuItem6 IsNot Nothing Then
+                End If
+            End Set
+        End Property
+
+        ' Token: 0x1700003D RID: 61
+        ' (get) Token: 0x0600017D RID: 381 RVA: 0x00225FEC File Offset: 0x00224FEC
+        ' (set) Token: 0x0600017C RID: 380 RVA: 0x00225F98 File Offset: 0x00224F98
+        Friend Overridable Property miLoad2daXml() As MenuItem
+            Get
+                Return Me._miLoad2daXml
+            End Get
+            <MethodImpl(MethodImplOptions.Synchronized)> _
+               Set(ByVal value As MenuItem)
+                If Me._miLoad2daXml IsNot Nothing Then
+                    RemoveHandler Me._miLoad2daXml.Click, AddressOf Me.miLoad2daXml_Click
+                End If
+                Me._miLoad2daXml = value
+                If Me._miLoad2daXml IsNot Nothing Then
+                    AddHandler Me._miLoad2daXml.Click, AddressOf Me.miLoad2daXml_Click
+                End If
+            End Set
+        End Property
+
+        ' Token: 0x1700003E RID: 62
+        ' (get) Token: 0x0600017E RID: 382 RVA: 0x0022601C File Offset: 0x0022501C
+        ' (set) Token: 0x0600017F RID: 383 RVA: 0x00226000 File Offset: 0x00225000
+        Friend Overridable Property MenuItem3() As MenuItem
+            Get
+                Return Me._MenuItem3
+            End Get
+            <MethodImpl(MethodImplOptions.Synchronized)> _
+               Set(ByVal value As MenuItem)
+                If Me._MenuItem3 IsNot Nothing Then
+                End If
+                Me._MenuItem3 = value
+                If Me._MenuItem3 IsNot Nothing Then
+                End If
+            End Set
+        End Property
+
+        ' Token: 0x1700003F RID: 63
+        ' (get) Token: 0x06000180 RID: 384 RVA: 0x00226084 File Offset: 0x00225084
+        ' (set) Token: 0x06000181 RID: 385 RVA: 0x00226030 File Offset: 0x00225030
+        Friend Overridable Property miSetKotORversion() As MenuItem
+            Get
+                Return Me._miSetKotORversion
+            End Get
+            <MethodImpl(MethodImplOptions.Synchronized)> _
+               Set(ByVal value As MenuItem)
+                If Me._miSetKotORversion IsNot Nothing Then
+                    RemoveHandler Me._miSetKotORversion.Click, AddressOf Me.miSetKotORversion_Click
+                End If
+                Me._miSetKotORversion = value
+                If Me._miSetKotORversion IsNot Nothing Then
+                    AddHandler Me._miSetKotORversion.Click, AddressOf Me.miSetKotORversion_Click
+                End If
+            End Set
+        End Property
+
+        ' Token: 0x17000040 RID: 64
+        ' (get) Token: 0x06000182 RID: 386 RVA: 0x00226098 File Offset: 0x00225098
+        ' (set) Token: 0x06000183 RID: 387 RVA: 0x002260AC File Offset: 0x002250AC
+        Friend Overridable Property miTestFunction() As MenuItem
+            Get
+                Return Me._miTestFunction
+            End Get
+            <MethodImpl(MethodImplOptions.Synchronized)> _
+               Set(ByVal value As MenuItem)
+                If Me._miTestFunction IsNot Nothing Then
+                    RemoveHandler Me._miTestFunction.Click, AddressOf Me.miTestFunction_Click
+                End If
+                Me._miTestFunction = value
+                If Me._miTestFunction IsNot Nothing Then
+                    AddHandler Me._miTestFunction.Click, AddressOf Me.miTestFunction_Click
+                End If
+            End Set
+        End Property
+
         ' Token: 0x17000041 RID: 65
         ' (get) Token: 0x06000185 RID: 389 RVA: 0x002265EC File Offset: 0x002255EC
         ' (set) Token: 0x06000186 RID: 390 RVA: 0x00226600 File Offset: 0x00225600
@@ -43,7 +352,7 @@ Namespace kotor_tool
                 Return Me._dt
             End Get
             <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As DataTable)
+               Set(ByVal value As DataTable)
                 If Me._dt IsNot Nothing Then
                 End If
                 Me._dt = value
@@ -60,7 +369,7 @@ Namespace kotor_tool
                 Return Me._cm
             End Get
             <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As ContextMenu)
+               Set(ByVal value As ContextMenu)
                 If Me._cm IsNot Nothing Then
                 End If
                 Me._cm = value
@@ -77,7 +386,7 @@ Namespace kotor_tool
                 Return Me._cmiInsertRow
             End Get
             <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
+               Set(ByVal value As MenuItem)
                 If Me._cmiInsertRow IsNot Nothing Then
                     RemoveHandler Me._cmiInsertRow.Click, AddressOf Me.cmiInsertRow_Click
                 End If
@@ -96,7 +405,7 @@ Namespace kotor_tool
                 Return Me._cmiCopyRow
             End Get
             <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
+               Set(ByVal value As MenuItem)
                 If Me._cmiCopyRow IsNot Nothing Then
                     RemoveHandler Me._cmiCopyRow.Click, AddressOf Me.cmiCopyRow_Click
                 End If
@@ -115,7 +424,7 @@ Namespace kotor_tool
                 Return Me._cmiPasteRow
             End Get
             <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
+               Set(ByVal value As MenuItem)
                 If Me._cmiPasteRow IsNot Nothing Then
                     RemoveHandler Me._cmiPasteRow.Click, AddressOf Me.cmiPasteRow_Click
                 End If
@@ -134,7 +443,7 @@ Namespace kotor_tool
                 Return Me._cmiInsertCopiedRow
             End Get
             <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
+               Set(ByVal value As MenuItem)
                 If Me._cmiInsertCopiedRow IsNot Nothing Then
                     RemoveHandler Me._cmiInsertCopiedRow.Click, AddressOf Me.cmiInsertCopiedRow_Click
                 End If
@@ -153,7 +462,7 @@ Namespace kotor_tool
                 Return Me._cmiRenumberRowLabelColumn
             End Get
             <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
+               Set(ByVal value As MenuItem)
                 If Me._cmiRenumberRowLabelColumn IsNot Nothing Then
                     RemoveHandler Me._cmiRenumberRowLabelColumn.Click, AddressOf Me.cmiRenumberRowLabelColumn_Click
                 End If
@@ -172,7 +481,7 @@ Namespace kotor_tool
                 Return Me._cmiShowStrings
             End Get
             <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
+               Set(ByVal value As MenuItem)
                 If Me._cmiShowStrings IsNot Nothing Then
                     RemoveHandler Me._cmiShowStrings.Click, AddressOf Me.cmiShowStrings_Click
                 End If
@@ -1173,6 +1482,14 @@ Namespace kotor_tool
             End If
         End Sub
 
+        ' Token: 0x04000122 RID: 290
+        <AccessedThroughProperty("MenuItem3")> _
+        Private _MenuItem3 As MenuItem
+
+        ' Token: 0x04000123 RID: 291
+        <AccessedThroughProperty("miTestFunction")> _
+        Private _miTestFunction As MenuItem
+
         ' Token: 0x04000124 RID: 292
         <AccessedThroughProperty("dt")> _
         Private _dt As DataTable
@@ -1181,6 +1498,10 @@ Namespace kotor_tool
         <AccessedThroughProperty("cmiInsertRow")> _
         Private _cmiInsertRow As MenuItem
 
+        ' Token: 0x04000126 RID: 294
+        <AccessedThroughProperty("miSave2daV2b")> _
+        Private _miSave2daV2b As MenuItem
+
         ' Token: 0x04000127 RID: 295
         <AccessedThroughProperty("cmiPasteRow")> _
         Private _cmiPasteRow As MenuItem
@@ -1188,6 +1509,14 @@ Namespace kotor_tool
         ' Token: 0x04000128 RID: 296
         <AccessedThroughProperty("cmiInsertCopiedRow")> _
         Private _cmiInsertCopiedRow As MenuItem
+
+        ' Token: 0x04000129 RID: 297
+        <AccessedThroughProperty("miResetSort")> _
+        Private _miResetSort As MenuItem
+
+        ' Token: 0x0400012A RID: 298
+        <AccessedThroughProperty("miLoad2da")> _
+        Private _miLoad2da As MenuItem
 
         ' Token: 0x0400012B RID: 299
         <AccessedThroughProperty("cmiRenumberRowLabelColumn")> _
@@ -1201,9 +1530,57 @@ Namespace kotor_tool
         <AccessedThroughProperty("cm")> _
         Private _cm As ContextMenu
 
+        ' Token: 0x0400012E RID: 302
+        <AccessedThroughProperty("dg2DA")> _
+        Private _dg2DA As frm2DAEditor.TwoDADataGrid
+
         ' Token: 0x0400012F RID: 303
         <AccessedThroughProperty("cmiCopyRow")> _
         Private _cmiCopyRow As MenuItem
+
+        ' Token: 0x04000130 RID: 304
+        <AccessedThroughProperty("miSetKotORversion")> _
+        Private _miSetKotORversion As MenuItem
+
+        ' Token: 0x04000131 RID: 305
+        <AccessedThroughProperty("miSave2daV2bXML")> _
+        Private _miSave2daV2bXML As MenuItem
+
+        ' Token: 0x04000132 RID: 306
+        <AccessedThroughProperty("MenuItem2")> _
+        Private _MenuItem2 As MenuItem
+
+        ' Token: 0x04000133 RID: 307
+        <AccessedThroughProperty("miQuit")> _
+        Private _miQuit As MenuItem
+
+        ' Token: 0x04000134 RID: 308
+        <AccessedThroughProperty("miLoad2daXml")> _
+        Private _miLoad2daXml As MenuItem
+
+        ' Token: 0x04000135 RID: 309
+        <AccessedThroughProperty("MenuItem1")> _
+        Private _MenuItem1 As MenuItem
+
+        ' Token: 0x04000136 RID: 310
+        <AccessedThroughProperty("MenuItem6")> _
+        Private _MenuItem6 As MenuItem
+
+        ' Token: 0x04000137 RID: 311
+        <AccessedThroughProperty("miUndoAll")> _
+        Private _miUndoAll As MenuItem
+
+        ' Token: 0x04000138 RID: 312
+        <AccessedThroughProperty("MenuItem4")> _
+        Private _MenuItem4 As MenuItem
+
+        ' Token: 0x04000139 RID: 313
+        <AccessedThroughProperty("MainMenu1")> _
+        Private _MainMenu1 As MainMenu
+
+        ' Token: 0x0400013A RID: 314
+        <AccessedThroughProperty("MenuItem5")> _
+        Private _MenuItem5 As MenuItem
 
         ' Token: 0x0400013C RID: 316
         Private DView As DataView

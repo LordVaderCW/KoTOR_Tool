@@ -39,7 +39,7 @@ Namespace kotor_tool
 			Dim num As Integer = binaryReader.ReadInt32()
 			binaryReader.ReadInt32()
 			Dim num2 As Integer = binaryReader.ReadInt32()
-			Dim array As BIFFVarRsrcEntryInfo() = CType(Array.CreateInstance(GetType(BIFFVarRsrcEntryInfo), num), BIFFVarRsrcEntryInfo())
+            Dim array As BIFFVarRsrcEntryInfo() = CType(System.Array.CreateInstance(GetType(BIFFVarRsrcEntryInfo), num), BIFFVarRsrcEntryInfo())
 			Dim num3 As Integer = 0
 			Dim num4 As Integer = num - 1
 			For i As Integer = num3 To num4
