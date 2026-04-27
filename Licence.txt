@@ -1,0 +1,177 @@
+Modified MIT / Source-Available Preservation Licence
+KoTOR Tool Restoration Project
+
+Copyright (c) 2026 LordVaderCW
+
+Original KoTOR Tool created by Fred Tetra.
+This restoration project exists to preserve, repair, maintain, and modernise the
+original KoTOR Tool source code for educational, archival, and modding purposes.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to view,
+study, build, compile, test, and use the Software for personal, educational,
+archival, preservation, and lawful modding purposes, subject to the conditions
+below.
+
+1. Respect for the Original Author
+
+The original KoTOR Tool was created by Fred Tetra.
+
+Any copy, fork, mirror, modification, distribution, documentation, or public
+reference to this restoration project must preserve clear credit to Fred Tetra
+as the original creator of KoTOR Tool.
+
+No person may falsely claim original authorship of KoTOR Tool, nor remove
+reasonable attribution to Fred Tetra or to the restoration work performed by
+LordVaderCW.
+
+2. Source Availability and Approved Modifications
+
+The source code is made publicly available for transparency, education,
+preservation, and community review.
+
+You may make private modifications for personal study, testing, research, or
+local use.
+
+Public distribution of modified versions, altered binaries, patched releases,
+fork-branded builds, or derivative versions of the Software is not permitted
+unless the modification has been submitted to and approved through the Official
+GitHub Repository:
+
+    https://github.com/LordVaderCW/KoTOR_Tool
+
+Approved modifications should be submitted by pull request, issue discussion,
+or another method accepted by the repository maintainer.
+
+This condition is intended to protect users from unsafe, misleading, broken,
+malicious, or unauthorised builds being circulated as official or semi-official
+versions of KoTOR Tool.
+
+3. Official Repository
+
+The Official GitHub Repository for this restoration project is:
+
+    https://github.com/LordVaderCW/KoTOR_Tool
+
+Only releases, source archives, binaries, and documentation distributed from
+the Official GitHub Repository, or from release channels expressly authorised
+by the maintainer, should be considered official.
+
+You may link to the Official GitHub Repository.
+
+You may not present an unauthorised fork, mirror, binary, or modified version
+as an official release.
+
+4. Non-Commercial Use
+
+The Software may not be sold, rented, leased, sublicensed, monetised, bundled
+for commercial gain, included in paid software packages, or otherwise used for
+commercial purposes without prior written permission from the maintainer.
+
+This restriction does not prevent voluntary donations.
+
+Donations are welcome but not required. Donations do not purchase ownership,
+control, exclusive rights, commercial rights, or authority over the Software.
+
+5. Third-Party Intellectual Property
+
+This project is an unofficial preservation and restoration project.
+
+Users are solely responsible for ensuring their use of the Software is lawful
+in their jurisdiction.
+
+6. Permitted Uses
+
+Subject to the restrictions in this licence, you may:
+
+    - Download and view the source code.
+    - Build the Software for personal use.
+    - Study the restored source for educational purposes.
+    - Use the Software for lawful Knights of the Old Republic modding.
+    - Submit improvements to the Official GitHub Repository.
+    - Share links to the Official GitHub Repository.
+    - Preserve copies for archival or research purposes, provided this licence
+      and all attribution notices remain intact.
+
+7. Prohibited Uses
+
+You may not:
+
+    - Sell the Software or modified versions of it.
+    - Commercially exploit the Software.
+    - Distribute unauthorised modified builds.
+    - Remove attribution to Fred Tetra or LordVaderCW.
+    - Use the Software to distribute or infringe third-party copyrighted assets.
+    - Misrepresent unofficial builds as official releases.
+    - Use the Software in malware, spyware, harmful tooling, or deceptive
+      software packages.
+    - Re-license the Software under terms that remove these restrictions.
+    - Use the name KoTOR Tool, Fred Tetra, LordVaderCW, or the Official GitHub
+      Repository in a misleading endorsement claim.
+
+8. Contributions
+
+By submitting code, documentation, patches, fixes, issues, pull requests, or
+other contributions to the Official GitHub Repository, you agree that your
+contribution may be incorporated into the project under this licence.
+
+You confirm that you have the right to submit your contribution and that it does
+not knowingly infringe the rights of any third party.
+
+The maintainer may accept, reject, modify, or remove contributions at their
+discretion in order to preserve the stability, legality, and integrity of the
+project.
+
+All contributors will be credited in the applications about section. 
+
+9. No Warranty
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, COMPATIBILITY,
+SECURITY, OR ERROR-FREE OPERATION.
+
+USE OF THE SOFTWARE IS ENTIRELY AT YOUR OWN RISK.
+
+10. Limitation of Liability
+
+IN NO EVENT SHALL THE AUTHORS, COPYRIGHT HOLDERS, RESTORATION MAINTAINERS, OR
+CONTRIBUTORS BE LIABLE FOR ANY CLAIM, DAMAGES, LOSS, LIABILITY, DATA LOSS,
+SYSTEM DAMAGE, LEGAL ISSUE, INTELLECTUAL PROPERTY DISPUTE, OR OTHER
+CONSEQUENCE ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+OR OTHER DEALINGS IN THE SOFTWARE.
+
+11. Preservation of Notices
+
+All copies or substantial portions of the Software must include:
+
+    - This licence.
+    - The attribution to Fred Tetra as original creator.
+    - The attribution to LordVaderCW for restoration and source repair.
+    - A reference to the Official GitHub Repository.
+
+12. Termination
+
+Any rights granted under this licence terminate automatically if you violate
+its terms.
+
+Upon termination, you must stop distributing, using, or presenting any
+unauthorised modified version of the Software and remove any misleading or
+infringing copies under your control.
+
+13. Maintainer Contact and Permissions
+
+Requests for commercial use, authorised distribution, special permission, or
+release approval should be made through the Official GitHub Repository:
+
+    https://github.com/LordVaderCW/KoTOR_Tool
+
+or via the Official DeadlySteam Forum page
+
+    https://deadlystream.com/topic/12194-kotor-tool-reborn/
+
+or via the Official Reddit Thread
+
+    https://www.reddit.com/r/kotor/comments/1sw3jeq/fred_tetras_kotor_tool_successfully_reconstructed/
+
+End of Licence.
