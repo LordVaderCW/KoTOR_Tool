@@ -1,7 +1,90 @@
-﻿Namespace kotor_tool
+Namespace kotor_tool
 	' Token: 0x0200006A RID: 106
 	Public Partial Class frmProjectManager
 		Inherits Global.kotor_tool.frmParent
+
+        ' -----------------------------------------------------------------
+        ' Designer fields restored from decompiled
+        ' AccessedThroughProperty wrappers.
+        ' Kept before InitializeComponent for VS2010 CodeDom safety.
+        ' -----------------------------------------------------------------
+        Private components As Global.System.ComponentModel.IContainer
+        Friend WithEvents TreeView As Global.System.Windows.Forms.TreeView
+        Friend WithEvents MainMenu1 As Global.System.Windows.Forms.MainMenu
+        Friend WithEvents MenuItem1 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem4 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem7 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmOverrideRoot As Global.System.Windows.Forms.ContextMenu
+        Friend WithEvents tvcmOverrideChild As Global.System.Windows.Forms.ContextMenu
+        Friend WithEvents tvcmModulesRoot As Global.System.Windows.Forms.ContextMenu
+        Friend WithEvents tvcmModulesParent As Global.System.Windows.Forms.ContextMenu
+        Friend WithEvents tvcmModulesChild As Global.System.Windows.Forms.ContextMenu
+        Friend WithEvents tvcmLipsModulesRoot As Global.System.Windows.Forms.ContextMenu
+        Friend WithEvents tvcmLipsModulesParent As Global.System.Windows.Forms.ContextMenu
+        Friend WithEvents tvcmLipsModulesChild As Global.System.Windows.Forms.ContextMenu
+        Friend WithEvents tvcmiOverrideRoot_Add As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiOverrideChild_Exclude As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiModulesRoot_Add As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiModulesParent_Add As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiModulesChild_Exclude As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiLipsModulesRoot_Add As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiLipsModulesParent_Add As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiLipsModulesChild_Exclude As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miProjectProperties As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miNewPoject As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem6 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miDebug As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miRelease As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miOpenProject As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miSaveProject As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miQuit As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miBuildProject As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem3 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiOverrideRoot_RemoveAll As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiModulesParent_RemoveAll As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiLipsModulesParent_RemoveAll As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem2 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem5 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiModulesRoot_RemoveAllModules As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiLipsModulesRoot_RemoveAllModules As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiModulesParent_RemoveSelf As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiLipsModulesParent_RemoveSelf As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmProjectRoot As Global.System.Windows.Forms.ContextMenu
+        Friend WithEvents tvcmiProperties As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miExploreReleaseFolder As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miExploreDebugFolder As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem10 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiModulesParent_RenameSelf As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiLipsModulesParent_RenameSelf As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem9 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem8 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miCleanDebugPrjFilesOnly As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miCleanReleasePrjFilesOnly As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem11 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem12 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmStreamWavesRoot As Global.System.Windows.Forms.ContextMenu
+        Friend WithEvents tvcmStreamWavesModulesParent As Global.System.Windows.Forms.ContextMenu
+        Friend WithEvents tvcmStreamWavesModulesChild As Global.System.Windows.Forms.ContextMenu
+        Friend WithEvents tvcmStreamWavesFileChild As Global.System.Windows.Forms.ContextMenu
+        Friend WithEvents tvcmiStreamWavesRoot_AddFile As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiStreamWavesRoot_AddModule As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem13 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiStreamWavesRoot_RemoveAllFiles As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiStreamWavesRoot_RemoveAllModules As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiStreamWavesRoot_RemoveEverything As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiStreamWavesModuleParent_AddFiles As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiStreamWavesModuleParent_ExcludeAllFiles As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem14 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiStreamWavesModuleParent_RenameSelf As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem15 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiStreamWavesModulesParent_RemoveSelf As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiStreamWavesModulesChild_ExcludeSelf As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvcmiStreamWavesFileChild_ExcludeSelf As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents ilistTree As Global.System.Windows.Forms.ImageList
+        Friend WithEvents lblStatus As Global.System.Windows.Forms.Label
+        Friend WithEvents tvcmiModulesParent_Properties As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem16 As Global.System.Windows.Forms.MenuItem
+
 
 		' Token: 0x06000D2A RID: 3370 RVA: 0x00285BF4 File Offset: 0x00284BF4
 		Protected Overrides Sub Dispose(disposing As Boolean)
@@ -15,9 +98,9 @@
         <Global.System.Diagnostics.DebuggerStepThrough()> _
   Private Sub InitializeComponent()
             Me.components = New Global.System.ComponentModel.Container()
-            Dim resourceManager As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager(GetType(Global.kotor_tool.frmProjectManager))
+            Dim resources As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager(GetType(Global.kotor_tool.frmProjectManager))
             Me.TreeView = New Global.System.Windows.Forms.TreeView()
-            Me.ilistTree = New Global.System.Windows.Forms.ImageList(Me.components)
+            Me.ilistTree = New Global.System.Windows.Forms.ImageList()
             Me.MainMenu1 = New Global.System.Windows.Forms.MainMenu()
             Me.MenuItem1 = New Global.System.Windows.Forms.MenuItem()
             Me.miNewPoject = New Global.System.Windows.Forms.MenuItem()
@@ -97,19 +180,13 @@
             Me.TreeView.HideSelection = False
             Me.TreeView.ImageList = Me.ilistTree
             Me.TreeView.Indent = 19
-            Dim treeView As Global.System.Windows.Forms.Control = Me.TreeView
-            Dim point As Global.System.Drawing.Point = New Global.System.Drawing.Point(12, 11)
-            treeView.Location = point
+            Me.TreeView.Location = New Global.System.Drawing.Point(12, 11)
             Me.TreeView.Name = "TreeView"
             Me.TreeView.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Dim treeView2 As Global.System.Windows.Forms.Control = Me.TreeView
-            Dim size As Global.System.Drawing.Size = New Global.System.Drawing.Size(264, 341)
-            treeView2.Size = size
+            Me.TreeView.Size = New Global.System.Drawing.Size(264, 341)
             Me.TreeView.TabIndex = 0
-            Dim ilistTree As Global.System.Windows.Forms.ImageList = Me.ilistTree
-            size = New Global.System.Drawing.Size(16, 16)
-            ilistTree.ImageSize = size
-            Me.ilistTree.ImageStream = CType(resourceManager.GetObject("ilistTree.ImageStream"), Global.System.Windows.Forms.ImageListStreamer)
+            Me.ilistTree.ImageSize = New Global.System.Drawing.Size(16, 16)
+            Me.ilistTree.ImageStream = CType(resources.GetObject("Me.ilistTree.ImageStream"), Global.System.Windows.Forms.ImageListStreamer)
             Me.ilistTree.TransparentColor = Global.System.Drawing.Color.Transparent
             Me.MainMenu1.MenuItems.AddRange(New Global.System.Windows.Forms.MenuItem() {Me.MenuItem1, Me.MenuItem6})
             Me.MenuItem1.Index = 0
@@ -266,30 +343,74 @@
             Me.lblStatus.BackColor = Global.System.Drawing.SystemColors.ActiveCaptionText
             Me.lblStatus.BorderStyle = Global.System.Windows.Forms.BorderStyle.Fixed3D
             Me.lblStatus.FlatStyle = Global.System.Windows.Forms.FlatStyle.System
-            Dim lblStatus As Global.System.Windows.Forms.Control = Me.lblStatus
-            point = New Global.System.Drawing.Point(12, 360)
-            lblStatus.Location = point
+            Me.lblStatus.Location = New Global.System.Drawing.Point(12, 360)
             Me.lblStatus.Name = "lblStatus"
-            Dim lblStatus2 As Global.System.Windows.Forms.Control = Me.lblStatus
-            size = New Global.System.Drawing.Size(264, 32)
-            lblStatus2.Size = size
+            Me.lblStatus.Size = New Global.System.Drawing.Size(264, 32)
             Me.lblStatus.TabIndex = 1
-            size = New Global.System.Drawing.Size(5, 13)
-            Me.AutoScaleBaseSize = size
-            size = New Global.System.Drawing.Size(288, 401)
-            Me.ClientSize = size
+            Me.AutoScaleBaseSize = New Global.System.Drawing.Size(5, 13)
+            Me.ClientSize = New Global.System.Drawing.Size(288, 401)
             Me.Controls.Add(Me.lblStatus)
             Me.Controls.Add(Me.TreeView)
             Me.Menu = Me.MainMenu1
-            size = New Global.System.Drawing.Size(184, 232)
-            Me.MinimumSize = size
+            Me.MinimumSize = New Global.System.Drawing.Size(184, 232)
             Me.Name = "frmProjectManager"
             Me.StartPosition = Global.System.Windows.Forms.FormStartPosition.Manual
             Me.Text = "Project Manager"
+
+            ' -------------------------------------------------------------
+            ' Event bindings restored from decompiled synchronized
+            ' AccessedThroughProperty wrappers.
+            ' -------------------------------------------------------------
+            AddHandler Me.TreeView.DoubleClick, AddressOf Me.TreeView_DoubleClick
+            AddHandler Me.TreeView.MouseLeave, AddressOf Me.TreeView_MouseLeave
+            AddHandler Me.TreeView.MouseMove, AddressOf Me.TreeView_MouseMove
+            AddHandler Me.TreeView.DragOver, AddressOf Me.TreeView_DragOver
+            AddHandler Me.TreeView.DragDrop, AddressOf Me.TreeView_DragDrop
+            AddHandler Me.TreeView.MouseDown, AddressOf Me.TreeView_MouseDown
+            AddHandler Me.tvcmiOverrideRoot_Add.Click, AddressOf Me.tvcmiOverrideRoot_Add_Click
+            AddHandler Me.tvcmiOverrideChild_Exclude.Click, AddressOf Me.tvcmiOverrideChild_Exclude_Click
+            AddHandler Me.tvcmiModulesRoot_Add.Click, AddressOf Me.tvcmiModulesRoot_Add_Click
+            AddHandler Me.tvcmiModulesParent_Add.Click, AddressOf Me.tvcmiModulesParent_Add_Click
+            AddHandler Me.tvcmiModulesChild_Exclude.Click, AddressOf Me.tvcmiModulesChild_Exclude_Click
+            AddHandler Me.tvcmiLipsModulesRoot_Add.Click, AddressOf Me.tvcmiLipsModulesRoot_Add_Click
+            AddHandler Me.tvcmiLipsModulesParent_Add.Click, AddressOf Me.tvcmiLipsModulesParent_Add_Click
+            AddHandler Me.tvcmiLipsModulesChild_Exclude.Click, AddressOf Me.tvcmiLipsModulesChild_Exclude_Click
+            AddHandler Me.miProjectProperties.Click, AddressOf Me.miProjectProperties_Click
+            AddHandler Me.miNewPoject.Click, AddressOf Me.miNewPoject_Click
+            AddHandler Me.miDebug.Click, AddressOf Me.miDebug_Click
+            AddHandler Me.miRelease.Click, AddressOf Me.miRelease_Click
+            AddHandler Me.miOpenProject.Click, AddressOf Me.miOpenProject_Click
+            AddHandler Me.miSaveProject.Click, AddressOf Me.miSaveProject_Click
+            AddHandler Me.miQuit.Click, AddressOf Me.miQuit_Click
+            AddHandler Me.miBuildProject.Click, AddressOf Me.miBuildProject_Click
+            AddHandler Me.tvcmiOverrideRoot_RemoveAll.Click, AddressOf Me.tvcmiOverrideRoot_RemoveAll_Click
+            AddHandler Me.tvcmiModulesParent_RemoveAll.Click, AddressOf Me.tvcmiModulesParent_RemoveAll_Click
+            AddHandler Me.tvcmiLipsModulesParent_RemoveAll.Click, AddressOf Me.tvcmiLipsModulesParent_RemoveAll_Click
+            AddHandler Me.tvcmiModulesRoot_RemoveAllModules.Click, AddressOf Me.tvcmModulesRoot_RemoveAllModules_Click
+            AddHandler Me.tvcmiLipsModulesRoot_RemoveAllModules.Click, AddressOf Me.tvcmLipsModulesRoot_RemoveAllModules_Click
+            AddHandler Me.tvcmiModulesParent_RemoveSelf.Click, AddressOf Me.tvcmiModulesParent_RemoveSelf_Click
+            AddHandler Me.tvcmiLipsModulesParent_RemoveSelf.Click, AddressOf Me.tvcmiLipsModulesParent_RemoveSelf_Click
+            AddHandler Me.tvcmiProperties.Click, AddressOf Me.tvcmiProperties_Click
+            AddHandler Me.miExploreReleaseFolder.Click, AddressOf Me.miExploreReleaseFolder_Click
+            AddHandler Me.miExploreDebugFolder.Click, AddressOf Me.miExploreDebugFolder_Click
+            AddHandler Me.tvcmiModulesParent_RenameSelf.Click, AddressOf Me.tvcmiModulesParent_RenameSelf_Click
+            AddHandler Me.tvcmiLipsModulesParent_RenameSelf.Click, AddressOf Me.tvcmiLipsModulesParent_RenameSelf_Click
+            AddHandler Me.miCleanDebugPrjFilesOnly.Click, AddressOf Me.miCleanDebugPrjFilesOnly_Click
+            AddHandler Me.miCleanReleasePrjFilesOnly.Click, AddressOf Me.miCleanReleasePrjFilesOnly_Click
+            AddHandler Me.tvcmiStreamWavesRoot_AddFile.Click, AddressOf Me.tvcmiStreamWavesRoot_AddFile_Click
+            AddHandler Me.tvcmiStreamWavesRoot_AddModule.Click, AddressOf Me.tvcmiStreamWavesRoot_AddModule_Click
+            AddHandler Me.tvcmiStreamWavesRoot_RemoveAllFiles.Click, AddressOf Me.tvcmiStreamWavesRoot_RemoveAllFiles_Click
+            AddHandler Me.tvcmiStreamWavesRoot_RemoveAllModules.Click, AddressOf Me.tvcmiStreamWavesRoot_RemoveAllModules_Click
+            AddHandler Me.tvcmiStreamWavesRoot_RemoveEverything.Click, AddressOf Me.tvcmiStreamWavesRoot_RemoveEverything_Click
+            AddHandler Me.tvcmiStreamWavesModuleParent_AddFiles.Click, AddressOf Me.tvcmiStreamWavesModuleParent_AddFiles_Click
+            AddHandler Me.tvcmiStreamWavesModuleParent_ExcludeAllFiles.Click, AddressOf Me.tvcmiStreamWavesModuleParent_ExcludeAllFiles_Click
+            AddHandler Me.tvcmiStreamWavesModuleParent_RenameSelf.Click, AddressOf Me.tvcmiStreamWavesModuleParent_RenameSelf_Click
+            AddHandler Me.tvcmiStreamWavesModulesParent_RemoveSelf.Click, AddressOf Me.tvcmiStreamWavesModulesParent_RemoveSelf_Click
+            AddHandler Me.tvcmiStreamWavesModulesChild_ExcludeSelf.Click, AddressOf Me.tvcmiStreamWavesModulesChild_ExcludeSelf_Click
+            AddHandler Me.tvcmiStreamWavesFileChild_ExcludeSelf.Click, AddressOf Me.tvcmiStreamWavesFileChild_ExcludeSelf_Click
+            AddHandler Me.tvcmiModulesParent_Properties.Click, AddressOf Me.tvcmiModulesParent_Properties_Click
             Me.ResumeLayout(False)
         End Sub
 
-		' Token: 0x040006D7 RID: 1751
-		Private components As Global.System.ComponentModel.IContainer
 	End Class
 End Namespace

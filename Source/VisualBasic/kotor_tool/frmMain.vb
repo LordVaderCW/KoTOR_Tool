@@ -1,4 +1,4 @@
-﻿Imports System
+Imports System
 Imports System.Collections
 Imports System.ComponentModel
 Imports System.Diagnostics
@@ -17,1036 +17,42 @@ Imports Microsoft.VisualBasic.CompilerServices
 Imports Microsoft.Win32
 
 Namespace kotor_tool
-	' Token: 0x02000054 RID: 84
-	Public Partial Class frmMain
-		Inherits Form
+    ' Token: 0x02000054 RID: 84
+    Partial Public Class frmMain
+        Inherits Form
 
-		' Token: 0x06000678 RID: 1656 RVA: 0x0024C8E0 File Offset: 0x0024B8E0
-		Public Sub New(CmdArgs As String())
-			AddHandler MyBase.Load, AddressOf Me.Form1_Load
-			AddHandler MyBase.Closing, AddressOf Me.frmMain_Closing
-			AddHandler MyBase.Move, AddressOf Me.frmMain_Move
-			AddHandler MyBase.Activated, AddressOf Me.frmMain_Activated
-			Me.BiffEntryListArray = New ArrayList(1, 30) {}
-			Me.biffEntries = New ArrayList(2) {}
+        ' Token: 0x06000678 RID: 1656 RVA: 0x0024C8E0 File Offset: 0x0024B8E0
+        Public Sub New(ByVal CmdArgs As String())
+            AddHandler MyBase.Load, AddressOf Me.Form1_Load
+            AddHandler MyBase.Closing, AddressOf Me.frmMain_Closing
+            AddHandler MyBase.Move, AddressOf Me.frmMain_Move
+            AddHandler MyBase.Activated, AddressOf Me.frmMain_Activated
+            Me.BiffEntryListArray = New ArrayList(1, 30) {}
+            Me.biffEntries = New ArrayList(2) {}
             Me.g_downloadURL = ""
             Me.g_CheckForUpdatesSilently = False
-			Me.hasK1 = False
-			Me.hasK2 = False
-			Me.g_abbbIndex = 0
-			Me.InitializeComponent()
-			Me.CmdArgs = CmdArgs
-		End Sub
+            Me.hasK1 = False
+            Me.hasK2 = False
+            Me.g_abbbIndex = 0
+            Me.InitializeComponent()
+            Me.CmdArgs = CmdArgs
+        End Sub
 
-		' Token: 0x06000679 RID: 1657 RVA: 0x0024C990 File Offset: 0x0024B990
-		Public Sub New()
-			AddHandler MyBase.Load, AddressOf Me.Form1_Load
-			AddHandler MyBase.Closing, AddressOf Me.frmMain_Closing
-			AddHandler MyBase.Move, AddressOf Me.frmMain_Move
-			AddHandler MyBase.Activated, AddressOf Me.frmMain_Activated
-			Me.BiffEntryListArray = New ArrayList(1, 30) {}
-			Me.biffEntries = New ArrayList(2) {}
+        ' Token: 0x06000679 RID: 1657 RVA: 0x0024C990 File Offset: 0x0024B990
+        Public Sub New()
+            AddHandler MyBase.Load, AddressOf Me.Form1_Load
+            AddHandler MyBase.Closing, AddressOf Me.frmMain_Closing
+            AddHandler MyBase.Move, AddressOf Me.frmMain_Move
+            AddHandler MyBase.Activated, AddressOf Me.frmMain_Activated
+            Me.BiffEntryListArray = New ArrayList(1, 30) {}
+            Me.biffEntries = New ArrayList(2) {}
             Me.g_downloadURL = ""
             Me.g_CheckForUpdatesSilently = False
-			Me.hasK1 = False
-			Me.hasK2 = False
-			Me.g_abbbIndex = 0
-			Me.InitializeComponent()
-		End Sub
-
-		' Token: 0x170001F8 RID: 504
-		' (get) Token: 0x0600067B RID: 1659 RVA: 0x0024CA58 File Offset: 0x0024BA58
-		' (set) Token: 0x0600067C RID: 1660 RVA: 0x0024CA6C File Offset: 0x0024BA6C
-		Friend Overridable Property TreeView As TreeView
-			Get
-				Return Me._TreeView
-			End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As TreeView)
-                If Me._TreeView IsNot Nothing Then
-                    RemoveHandler Me._TreeView.KeyPress, AddressOf Me.TreeView_KeyPress
-                    RemoveHandler Me._TreeView.MouseDown, AddressOf Me.TreeView_MouseDown
-                    RemoveHandler Me._TreeView.KeyUp, AddressOf Me.TreeView_KeyUp
-                    RemoveHandler Me._TreeView.BeforeCollapse, AddressOf Me.TreeView_BeforeCollapse
-                    RemoveHandler Me._TreeView.BeforeExpand, AddressOf Me.TreeView_BeforeExpand
-                    RemoveHandler Me._TreeView.AfterSelect, AddressOf Me.TreeView_AfterSelect
-                    RemoveHandler Me._TreeView.DoubleClick, AddressOf Me.TreeView_DoubleClick
-                End If
-                Me._TreeView = value
-                If Me._TreeView IsNot Nothing Then
-                    AddHandler Me._TreeView.KeyPress, AddressOf Me.TreeView_KeyPress
-                    AddHandler Me._TreeView.MouseDown, AddressOf Me.TreeView_MouseDown
-                    AddHandler Me._TreeView.KeyUp, AddressOf Me.TreeView_KeyUp
-                    AddHandler Me._TreeView.BeforeCollapse, AddressOf Me.TreeView_BeforeCollapse
-                    AddHandler Me._TreeView.BeforeExpand, AddressOf Me.TreeView_BeforeExpand
-                    AddHandler Me._TreeView.AfterSelect, AddressOf Me.TreeView_AfterSelect
-                    AddHandler Me._TreeView.DoubleClick, AddressOf Me.TreeView_DoubleClick
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x170001F9 RID: 505
-        ' (get) Token: 0x0600067D RID: 1661 RVA: 0x0024CC3C File Offset: 0x0024BC3C
-        ' (set) Token: 0x0600067E RID: 1662 RVA: 0x0024CBE8 File Offset: 0x0024BBE8
-        Friend Overridable Property btnExtract() As Button
-            Get
-                Return Me._btnExtract
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As Button)
-                If Me._btnExtract IsNot Nothing Then
-                    RemoveHandler Me._btnExtract.Click, AddressOf Me.btnExtract_Click
-                End If
-                Me._btnExtract = value
-                If Me._btnExtract IsNot Nothing Then
-                    AddHandler Me._btnExtract.Click, AddressOf Me.btnExtract_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x170001FA RID: 506
-        ' (get) Token: 0x0600067F RID: 1663 RVA: 0x0024CC50 File Offset: 0x0024BC50
-        ' (set) Token: 0x06000680 RID: 1664 RVA: 0x0024CC64 File Offset: 0x0024BC64
-        Friend Overridable Property MainMenu1() As MainMenu
-            Get
-                Return Me._MainMenu1
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MainMenu)
-                If Me._MainMenu1 IsNot Nothing Then
-                End If
-                Me._MainMenu1 = value
-                If Me._MainMenu1 IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x170001FB RID: 507
-        ' (get) Token: 0x06000681 RID: 1665 RVA: 0x0024CC80 File Offset: 0x0024BC80
-        ' (set) Token: 0x06000682 RID: 1666 RVA: 0x0024CC94 File Offset: 0x0024BC94
-        Friend Overridable Property MenuItem2() As MenuItem
-            Get
-                Return Me._MenuItem2
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._MenuItem2 IsNot Nothing Then
-                End If
-                Me._MenuItem2 = value
-                If Me._MenuItem2 IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x170001FC RID: 508
-        ' (get) Token: 0x06000684 RID: 1668 RVA: 0x0024CCB0 File Offset: 0x0024BCB0
-        ' (set) Token: 0x06000683 RID: 1667 RVA: 0x0024CCC4 File Offset: 0x0024BCC4
-        Friend Overridable Property MenuItem3() As MenuItem
-            Get
-                Return Me._MenuItem3
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._MenuItem3 IsNot Nothing Then
-                End If
-                Me._MenuItem3 = value
-                If Me._MenuItem3 IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x170001FD RID: 509
-        ' (get) Token: 0x06000685 RID: 1669 RVA: 0x0024CD34 File Offset: 0x0024BD34
-        ' (set) Token: 0x06000686 RID: 1670 RVA: 0x0024CCE0 File Offset: 0x0024BCE0
-        Friend Overridable Property miAbout() As MenuItem
-            Get
-                Return Me._miAbout
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miAbout IsNot Nothing Then
-                    RemoveHandler Me._miAbout.Click, AddressOf Me.miAbout_Click
-                End If
-                Me._miAbout = value
-                If Me._miAbout IsNot Nothing Then
-                    AddHandler Me._miAbout.Click, AddressOf Me.miAbout_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x170001FE RID: 510
-        ' (get) Token: 0x06000687 RID: 1671 RVA: 0x0024CD64 File Offset: 0x0024BD64
-        ' (set) Token: 0x06000688 RID: 1672 RVA: 0x0024CD48 File Offset: 0x0024BD48
-        Friend Overridable Property MenuItem5() As MenuItem
-            Get
-                Return Me._MenuItem5
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._MenuItem5 IsNot Nothing Then
-                End If
-                Me._MenuItem5 = value
-                If Me._MenuItem5 IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x170001FF RID: 511
-        ' (get) Token: 0x0600068A RID: 1674 RVA: 0x0024CD78 File Offset: 0x0024BD78
-        ' (set) Token: 0x06000689 RID: 1673 RVA: 0x0024CD8C File Offset: 0x0024BD8C
-        Friend Overridable Property miOpenKey() As MenuItem
-            Get
-                Return Me._miOpenKey
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miOpenKey IsNot Nothing Then
-                End If
-                Me._miOpenKey = value
-                If Me._miOpenKey IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000200 RID: 512
-        ' (get) Token: 0x0600068C RID: 1676 RVA: 0x0024CDA8 File Offset: 0x0024BDA8
-        ' (set) Token: 0x0600068B RID: 1675 RVA: 0x0024CDBC File Offset: 0x0024BDBC
-        Friend Overridable Property miQuit() As MenuItem
-            Get
-                Return Me._miQuit
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miQuit IsNot Nothing Then
-                    RemoveHandler Me._miQuit.Click, AddressOf Me.miQuit_Click
-                End If
-                Me._miQuit = value
-                If Me._miQuit IsNot Nothing Then
-                    AddHandler Me._miQuit.Click, AddressOf Me.miQuit_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000201 RID: 513
-        ' (get) Token: 0x0600068E RID: 1678 RVA: 0x0024CE10 File Offset: 0x0024BE10
-        ' (set) Token: 0x0600068D RID: 1677 RVA: 0x0024CE24 File Offset: 0x0024BE24
-        Friend Overridable Property miExtract() As MenuItem
-            Get
-                Return Me._miExtract
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miExtract IsNot Nothing Then
-                End If
-                Me._miExtract = value
-                If Me._miExtract IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000202 RID: 514
-        ' (get) Token: 0x0600068F RID: 1679 RVA: 0x0024CE40 File Offset: 0x0024BE40
-        ' (set) Token: 0x06000690 RID: 1680 RVA: 0x0024CE54 File Offset: 0x0024BE54
-        Friend Overridable Property miBasicHelp() As MenuItem
-            Get
-                Return Me._miBasicHelp
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miBasicHelp IsNot Nothing Then
-                    RemoveHandler Me._miBasicHelp.Click, AddressOf Me.miBasicHelp_Click
-                End If
-                Me._miBasicHelp = value
-                If Me._miBasicHelp IsNot Nothing Then
-                    AddHandler Me._miBasicHelp.Click, AddressOf Me.miBasicHelp_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000203 RID: 515
-        ' (get) Token: 0x06000692 RID: 1682 RVA: 0x0024CEC4 File Offset: 0x0024BEC4
-        ' (set) Token: 0x06000691 RID: 1681 RVA: 0x0024CEA8 File Offset: 0x0024BEA8
-        Friend Overridable Property miOpenRIM() As MenuItem
-            Get
-                Return Me._miOpenRIM
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miOpenRIM IsNot Nothing Then
-                End If
-                Me._miOpenRIM = value
-                If Me._miOpenRIM IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000204 RID: 516
-        ' (get) Token: 0x06000693 RID: 1683 RVA: 0x0024CED8 File Offset: 0x0024BED8
-        ' (set) Token: 0x06000694 RID: 1684 RVA: 0x0024CEEC File Offset: 0x0024BEEC
-        Friend Overridable Property miManagePaths() As MenuItem
-            Get
-                Return Me._miManagePaths
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miManagePaths IsNot Nothing Then
-                    RemoveHandler Me._miManagePaths.Click, AddressOf Me.miManagePaths_Click
-                End If
-                Me._miManagePaths = value
-                If Me._miManagePaths IsNot Nothing Then
-                    AddHandler Me._miManagePaths.Click, AddressOf Me.miManagePaths_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000205 RID: 517
-        ' (get) Token: 0x06000695 RID: 1685 RVA: 0x0024CF40 File Offset: 0x0024BF40
-        ' (set) Token: 0x06000696 RID: 1686 RVA: 0x0024CF54 File Offset: 0x0024BF54
-        Friend Overridable Property btnHexViewer() As Button
-            Get
-                Return Me._btnHexViewer
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As Button)
-                If Me._btnHexViewer IsNot Nothing Then
-                    RemoveHandler Me._btnHexViewer.Click, AddressOf Me.btnHexViewer_Click
-                End If
-                Me._btnHexViewer = value
-                If Me._btnHexViewer IsNot Nothing Then
-                    AddHandler Me._btnHexViewer.Click, AddressOf Me.btnHexViewer_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000206 RID: 518
-        ' (get) Token: 0x06000697 RID: 1687 RVA: 0x0024CFA8 File Offset: 0x0024BFA8
-        ' (set) Token: 0x06000698 RID: 1688 RVA: 0x0024CFBC File Offset: 0x0024BFBC
-        Friend Overridable Property miOptions() As MenuItem
-            Get
-                Return Me._miOptions
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miOptions IsNot Nothing Then
-                    RemoveHandler Me._miOptions.Click, AddressOf Me.miOptions_Click
-                End If
-                Me._miOptions = value
-                If Me._miOptions IsNot Nothing Then
-                    AddHandler Me._miOptions.Click, AddressOf Me.miOptions_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000207 RID: 519
-        ' (get) Token: 0x06000699 RID: 1689 RVA: 0x0024D064 File Offset: 0x0024C064
-        ' (set) Token: 0x0600069A RID: 1690 RVA: 0x0024D010 File Offset: 0x0024C010
-        Friend Overridable Property miOpen2DAEditor() As MenuItem
-            Get
-                Return Me._miOpen2DAEditor
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miOpen2DAEditor IsNot Nothing Then
-                    RemoveHandler Me._miOpen2DAEditor.Click, AddressOf Me.miOpen2DAFile_Click
-                End If
-                Me._miOpen2DAEditor = value
-                If Me._miOpen2DAEditor IsNot Nothing Then
-                    AddHandler Me._miOpen2DAEditor.Click, AddressOf Me.miOpen2DAFile_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000208 RID: 520
-        ' (get) Token: 0x0600069B RID: 1691 RVA: 0x0024D0CC File Offset: 0x0024C0CC
-        ' (set) Token: 0x0600069C RID: 1692 RVA: 0x0024D078 File Offset: 0x0024C078
-        Friend Overridable Property miOpenTextEditor() As MenuItem
-            Get
-                Return Me._miOpenTextEditor
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miOpenTextEditor IsNot Nothing Then
-                    RemoveHandler Me._miOpenTextEditor.Click, AddressOf Me.miOpenTextEditor_Click
-                End If
-                Me._miOpenTextEditor = value
-                If Me._miOpenTextEditor IsNot Nothing Then
-                    AddHandler Me._miOpenTextEditor.Click, AddressOf Me.miOpenTextEditor_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000209 RID: 521
-        ' (get) Token: 0x0600069D RID: 1693 RVA: 0x0024D134 File Offset: 0x0024C134
-        ' (set) Token: 0x0600069E RID: 1694 RVA: 0x0024D0E0 File Offset: 0x0024C0E0
-        Friend Overridable Property miOpenGFFFile() As MenuItem
-            Get
-                Return Me._miOpenGFFFile
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miOpenGFFFile IsNot Nothing Then
-                    RemoveHandler Me._miOpenGFFFile.Click, AddressOf Me.miOpenGFFFile_Click
-                End If
-                Me._miOpenGFFFile = value
-                If Me._miOpenGFFFile IsNot Nothing Then
-                    AddHandler Me._miOpenGFFFile.Click, AddressOf Me.miOpenGFFFile_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x1700020A RID: 522
-        ' (get) Token: 0x0600069F RID: 1695 RVA: 0x0024D148 File Offset: 0x0024C148
-        ' (set) Token: 0x060006A0 RID: 1696 RVA: 0x0024D15C File Offset: 0x0024C15C
-        Friend Overridable Property miOpenERFBuilder() As MenuItem
-            Get
-                Return Me._miOpenERFBuilder
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miOpenERFBuilder IsNot Nothing Then
-                    RemoveHandler Me._miOpenERFBuilder.Click, AddressOf Me.miOpenERFBuilder_Click
-                End If
-                Me._miOpenERFBuilder = value
-                If Me._miOpenERFBuilder IsNot Nothing Then
-                    AddHandler Me._miOpenERFBuilder.Click, AddressOf Me.miOpenERFBuilder_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x1700020B RID: 523
-        ' (get) Token: 0x060006A1 RID: 1697 RVA: 0x0024D1B0 File Offset: 0x0024C1B0
-        ' (set) Token: 0x060006A2 RID: 1698 RVA: 0x0024D1C4 File Offset: 0x0024C1C4
-        Friend Overridable Property miViewGFFFiles() As MenuItem
-            Get
-                Return Me._miViewGFFFiles
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miViewGFFFiles IsNot Nothing Then
-                    RemoveHandler Me._miViewGFFFiles.Click, AddressOf Me.miViewGFFFile_Click
-                End If
-                Me._miViewGFFFiles = value
-                If Me._miViewGFFFiles IsNot Nothing Then
-                    AddHandler Me._miViewGFFFiles.Click, AddressOf Me.miViewGFFFile_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x1700020C RID: 524
-        ' (get) Token: 0x060006A3 RID: 1699 RVA: 0x0024D234 File Offset: 0x0024C234
-        ' (set) Token: 0x060006A4 RID: 1700 RVA: 0x0024D218 File Offset: 0x0024C218
-        Friend Overridable Property miRegisterSoftware() As MenuItem
-            Get
-                Return Me._miRegisterSoftware
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miRegisterSoftware IsNot Nothing Then
-                End If
-                Me._miRegisterSoftware = value
-                If Me._miRegisterSoftware IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x1700020D RID: 525
-        ' (get) Token: 0x060006A5 RID: 1701 RVA: 0x0024D248 File Offset: 0x0024C248
-        ' (set) Token: 0x060006A6 RID: 1702 RVA: 0x0024D25C File Offset: 0x0024C25C
-        Friend Overridable Property tvCMenu() As ContextMenu
-            Get
-                Return Me._tvCMenu
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As ContextMenu)
-                If Me._tvCMenu IsNot Nothing Then
-                End If
-                Me._tvCMenu = value
-                If Me._tvCMenu IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x1700020E RID: 526
-        ' (get) Token: 0x060006A7 RID: 1703 RVA: 0x0024D2CC File Offset: 0x0024C2CC
-        ' (set) Token: 0x060006A8 RID: 1704 RVA: 0x0024D278 File Offset: 0x0024C278
-        Friend Overridable Property cmiExtractForModuleEditing() As MenuItem
-            Get
-                Return Me._cmiExtractForModuleEditing
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._cmiExtractForModuleEditing IsNot Nothing Then
-                    RemoveHandler Me._cmiExtractForModuleEditing.Click, AddressOf Me.cmiExtractForModuleEditing_Click
-                End If
-                Me._cmiExtractForModuleEditing = value
-                If Me._cmiExtractForModuleEditing IsNot Nothing Then
-                    AddHandler Me._cmiExtractForModuleEditing.Click, AddressOf Me.cmiExtractForModuleEditing_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x1700020F RID: 527
-        ' (get) Token: 0x060006A9 RID: 1705 RVA: 0x0024D2E0 File Offset: 0x0024C2E0
-        ' (set) Token: 0x060006AA RID: 1706 RVA: 0x0024D2F4 File Offset: 0x0024C2F4
-        Friend Overridable Property miConversationEditor() As MenuItem
-            Get
-                Return Me._miConversationEditor
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miConversationEditor IsNot Nothing Then
-                    RemoveHandler Me._miConversationEditor.Click, AddressOf Me.miConversationEditor_Click
-                End If
-                Me._miConversationEditor = value
-                If Me._miConversationEditor IsNot Nothing Then
-                    AddHandler Me._miConversationEditor.Click, AddressOf Me.miConversationEditor_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000210 RID: 528
-        ' (get) Token: 0x060006AB RID: 1707 RVA: 0x0024D348 File Offset: 0x0024C348
-        ' (set) Token: 0x060006AC RID: 1708 RVA: 0x0024D35C File Offset: 0x0024C35C
-        Friend Overridable Property ToolBar1() As ToolBar
-            Get
-                Return Me._ToolBar1
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As ToolBar)
-                If Me._ToolBar1 IsNot Nothing Then
-                    RemoveHandler Me._ToolBar1.ButtonClick, AddressOf Me.ToolBar1_ButtonClick
-                End If
-                Me._ToolBar1 = value
-                If Me._ToolBar1 IsNot Nothing Then
-                    AddHandler Me._ToolBar1.ButtonClick, AddressOf Me.ToolBar1_ButtonClick
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000211 RID: 529
-        ' (get) Token: 0x060006AE RID: 1710 RVA: 0x0024D3B0 File Offset: 0x0024C3B0
-        ' (set) Token: 0x060006AD RID: 1709 RVA: 0x0024D3C4 File Offset: 0x0024C3C4
-        Friend Overridable Property tbbtn2DAEditor() As ToolBarButton
-            Get
-                Return Me._tbbtn2DAEditor
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As ToolBarButton)
-                If Me._tbbtn2DAEditor IsNot Nothing Then
-                End If
-                Me._tbbtn2DAEditor = value
-                If Me._tbbtn2DAEditor IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000212 RID: 530
-        ' (get) Token: 0x060006AF RID: 1711 RVA: 0x0024D3FC File Offset: 0x0024C3FC
-        ' (set) Token: 0x060006B0 RID: 1712 RVA: 0x0024D3E0 File Offset: 0x0024C3E0
-        Friend Overridable Property tbbtnConversationEditor() As ToolBarButton
-            Get
-                Return Me._tbbtnConversationEditor
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As ToolBarButton)
-                If Me._tbbtnConversationEditor IsNot Nothing Then
-                End If
-                Me._tbbtnConversationEditor = value
-                If Me._tbbtnConversationEditor IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000213 RID: 531
-        ' (get) Token: 0x060006B2 RID: 1714 RVA: 0x0024D42C File Offset: 0x0024C42C
-        ' (set) Token: 0x060006B1 RID: 1713 RVA: 0x0024D410 File Offset: 0x0024C410
-        Friend Overridable Property tbbtnTextEditor() As ToolBarButton
-            Get
-                Return Me._tbbtnTextEditor
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As ToolBarButton)
-                If Me._tbbtnTextEditor IsNot Nothing Then
-                End If
-                Me._tbbtnTextEditor = value
-                If Me._tbbtnTextEditor IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000214 RID: 532
-        ' (get) Token: 0x060006B3 RID: 1715 RVA: 0x0024D440 File Offset: 0x0024C440
-        ' (set) Token: 0x060006B4 RID: 1716 RVA: 0x0024D454 File Offset: 0x0024C454
-        Friend Overridable Property tbbtnERFBuilder() As ToolBarButton
-            Get
-                Return Me._tbbtnERFBuilder
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As ToolBarButton)
-                If Me._tbbtnERFBuilder IsNot Nothing Then
-                End If
-                Me._tbbtnERFBuilder = value
-                If Me._tbbtnERFBuilder IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000215 RID: 533
-        ' (get) Token: 0x060006B5 RID: 1717 RVA: 0x0024D48C File Offset: 0x0024C48C
-        ' (set) Token: 0x060006B6 RID: 1718 RVA: 0x0024D470 File Offset: 0x0024C470
-        Friend Overridable Property MenuItem4() As MenuItem
-            Get
-                Return Me._MenuItem4
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._MenuItem4 IsNot Nothing Then
-                End If
-                Me._MenuItem4 = value
-                If Me._MenuItem4 IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000216 RID: 534
-        ' (get) Token: 0x060006B7 RID: 1719 RVA: 0x0024D4F4 File Offset: 0x0024C4F4
-        ' (set) Token: 0x060006B8 RID: 1720 RVA: 0x0024D4A0 File Offset: 0x0024C4A0
-        Friend Overridable Property miCleanWorkingDir() As MenuItem
-            Get
-                Return Me._miCleanWorkingDir
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miCleanWorkingDir IsNot Nothing Then
-                    RemoveHandler Me._miCleanWorkingDir.Click, AddressOf Me.miCleanWorkingDir_Click
-                End If
-                Me._miCleanWorkingDir = value
-                If Me._miCleanWorkingDir IsNot Nothing Then
-                    AddHandler Me._miCleanWorkingDir.Click, AddressOf Me.miCleanWorkingDir_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000217 RID: 535
-        ' (get) Token: 0x060006B9 RID: 1721 RVA: 0x0024D508 File Offset: 0x0024C508
-        ' (set) Token: 0x060006BA RID: 1722 RVA: 0x0024D51C File Offset: 0x0024C51C
-        Friend Overridable Property imglstToolBar() As ImageList
-            Get
-                Return Me._imglstToolBar
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As ImageList)
-                If Me._imglstToolBar IsNot Nothing Then
-                End If
-                Me._imglstToolBar = value
-                If Me._imglstToolBar IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000218 RID: 536
-        ' (get) Token: 0x060006BC RID: 1724 RVA: 0x0024D538 File Offset: 0x0024C538
-        ' (set) Token: 0x060006BB RID: 1723 RVA: 0x0024D54C File Offset: 0x0024C54C
-        Friend Overridable Property miRefSearch() As MenuItem
-            Get
-                Return Me._miRefSearch
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miRefSearch IsNot Nothing Then
-                    RemoveHandler Me._miRefSearch.Click, AddressOf Me.miRefSearch_Click
-                End If
-                Me._miRefSearch = value
-                If Me._miRefSearch IsNot Nothing Then
-                    AddHandler Me._miRefSearch.Click, AddressOf Me.miRefSearch_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000219 RID: 537
-        ' (get) Token: 0x060006BE RID: 1726 RVA: 0x0024D5A0 File Offset: 0x0024C5A0
-        ' (set) Token: 0x060006BD RID: 1725 RVA: 0x0024D5B4 File Offset: 0x0024C5B4
-        Friend Overridable Property miFile() As MenuItem
-            Get
-                Return Me._miFile
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miFile IsNot Nothing Then
-                End If
-                Me._miFile = value
-                If Me._miFile IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x1700021A RID: 538
-        ' (get) Token: 0x060006C0 RID: 1728 RVA: 0x0024D5EC File Offset: 0x0024C5EC
-        ' (set) Token: 0x060006BF RID: 1727 RVA: 0x0024D5D0 File Offset: 0x0024C5D0
-        Friend Overridable Property miRecentFiles() As MenuItem
-            Get
-                Return Me._miRecentFiles
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miRecentFiles IsNot Nothing Then
-                End If
-                Me._miRecentFiles = value
-                If Me._miRecentFiles IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x1700021B RID: 539
-        ' (get) Token: 0x060006C1 RID: 1729 RVA: 0x0024D600 File Offset: 0x0024C600
-        ' (set) Token: 0x060006C2 RID: 1730 RVA: 0x0024D614 File Offset: 0x0024C614
-        Friend Overridable Property MenuItem6() As MenuItem
-            Get
-                Return Me._MenuItem6
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._MenuItem6 IsNot Nothing Then
-                End If
-                Me._MenuItem6 = value
-                If Me._MenuItem6 IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x1700021C RID: 540
-        ' (get) Token: 0x060006C4 RID: 1732 RVA: 0x0024D630 File Offset: 0x0024C630
-        ' (set) Token: 0x060006C3 RID: 1731 RVA: 0x0024D644 File Offset: 0x0024C644
-        Friend Overridable Property MenuItem1() As MenuItem
-            Get
-                Return Me._MenuItem1
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._MenuItem1 IsNot Nothing Then
-                End If
-                Me._MenuItem1 = value
-                If Me._MenuItem1 IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x1700021D RID: 541
-        ' (get) Token: 0x060006C6 RID: 1734 RVA: 0x0024D6B4 File Offset: 0x0024C6B4
-        ' (set) Token: 0x060006C5 RID: 1733 RVA: 0x0024D660 File Offset: 0x0024C660
-        Friend Overridable Property miOpenProjectManager() As MenuItem
-            Get
-                Return Me._miOpenProjectManager
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miOpenProjectManager IsNot Nothing Then
-                    RemoveHandler Me._miOpenProjectManager.Click, AddressOf Me.miOpenProjectManager_Click
-                End If
-                Me._miOpenProjectManager = value
-                If Me._miOpenProjectManager IsNot Nothing Then
-                    AddHandler Me._miOpenProjectManager.Click, AddressOf Me.miOpenProjectManager_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x1700021E RID: 542
-        ' (get) Token: 0x060006C7 RID: 1735 RVA: 0x0024D6C8 File Offset: 0x0024C6C8
-        ' (set) Token: 0x060006C8 RID: 1736 RVA: 0x0024D6DC File Offset: 0x0024C6DC
-        Friend Overridable Property miCheckForUpdates() As MenuItem
-            Get
-                Return Me._miCheckForUpdates
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miCheckForUpdates IsNot Nothing Then
-                    RemoveHandler Me._miCheckForUpdates.Click, AddressOf Me.miCheckForUpdates_Click
-                End If
-                Me._miCheckForUpdates = value
-                If Me._miCheckForUpdates IsNot Nothing Then
-                    AddHandler Me._miCheckForUpdates.Click, AddressOf Me.miCheckForUpdates_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x1700021F RID: 543
-        ' (get) Token: 0x060006C9 RID: 1737 RVA: 0x0024D730 File Offset: 0x0024C730
-        ' (set) Token: 0x060006CA RID: 1738 RVA: 0x0024D744 File Offset: 0x0024C744
-        Friend Overridable Property miGlobalVariableEditor() As MenuItem
-            Get
-                Return Me._miGlobalVariableEditor
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miGlobalVariableEditor IsNot Nothing Then
-                    RemoveHandler Me._miGlobalVariableEditor.Click, AddressOf Me.miGlobalVariableEditor_Click
-                End If
-                Me._miGlobalVariableEditor = value
-                If Me._miGlobalVariableEditor IsNot Nothing Then
-                    AddHandler Me._miGlobalVariableEditor.Click, AddressOf Me.miGlobalVariableEditor_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000220 RID: 544
-        ' (get) Token: 0x060006CC RID: 1740 RVA: 0x0024D798 File Offset: 0x0024C798
-        ' (set) Token: 0x060006CB RID: 1739 RVA: 0x0024D7AC File Offset: 0x0024C7AC
-        Friend Overridable Property miOpenWorkingDir() As MenuItem
-            Get
-                Return Me._miOpenWorkingDir
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miOpenWorkingDir IsNot Nothing Then
-                    RemoveHandler Me._miOpenWorkingDir.Click, AddressOf Me.miOpenWorkingDir_Click
-                End If
-                Me._miOpenWorkingDir = value
-                If Me._miOpenWorkingDir IsNot Nothing Then
-                    AddHandler Me._miOpenWorkingDir.Click, AddressOf Me.miOpenWorkingDir_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000221 RID: 545
-        ' (get) Token: 0x060006CD RID: 1741 RVA: 0x0024D800 File Offset: 0x0024C800
-        ' (set) Token: 0x060006CE RID: 1742 RVA: 0x0024D814 File Offset: 0x0024C814
-        Friend Overridable Property MenuItem8() As MenuItem
-            Get
-                Return Me._MenuItem8
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._MenuItem8 IsNot Nothing Then
-                End If
-                Me._MenuItem8 = value
-                If Me._MenuItem8 IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000222 RID: 546
-        ' (get) Token: 0x060006CF RID: 1743 RVA: 0x0024D830 File Offset: 0x0024C830
-        ' (set) Token: 0x060006D0 RID: 1744 RVA: 0x0024D844 File Offset: 0x0024C844
-        Friend Overridable Property Button4() As Button
-            Get
-                Return Me._Button4
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As Button)
-                If Me._Button4 IsNot Nothing Then
-                    RemoveHandler Me._Button4.Click, AddressOf Me.Read_NWScript_Click
-                End If
-                Me._Button4 = value
-                If Me._Button4 IsNot Nothing Then
-                    AddHandler Me._Button4.Click, AddressOf Me.Read_NWScript_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000223 RID: 547
-        ' (get) Token: 0x060006D2 RID: 1746 RVA: 0x0024D8EC File Offset: 0x0024C8EC
-        ' (set) Token: 0x060006D1 RID: 1745 RVA: 0x0024D898 File Offset: 0x0024C898
-        Friend Overridable Property miOpenDialogTlkViewer() As MenuItem
-            Get
-                Return Me._miOpenDialogTlkViewer
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miOpenDialogTlkViewer IsNot Nothing Then
-                    RemoveHandler Me._miOpenDialogTlkViewer.Click, AddressOf Me.miOpenDialogTlkViewer_Click
-                End If
-                Me._miOpenDialogTlkViewer = value
-                If Me._miOpenDialogTlkViewer IsNot Nothing Then
-                    AddHandler Me._miOpenDialogTlkViewer.Click, AddressOf Me.miOpenDialogTlkViewer_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000224 RID: 548
-        ' (get) Token: 0x060006D3 RID: 1747 RVA: 0x0024D900 File Offset: 0x0024C900
-        ' (set) Token: 0x060006D4 RID: 1748 RVA: 0x0024D914 File Offset: 0x0024C914
-        Friend Overridable Property miOpenPWKEditor() As MenuItem
-            Get
-                Return Me._miOpenPWKEditor
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miOpenPWKEditor IsNot Nothing Then
-                    RemoveHandler Me._miOpenPWKEditor.Click, AddressOf Me.miOpenPWKEditor_Click
-                End If
-                Me._miOpenPWKEditor = value
-                If Me._miOpenPWKEditor IsNot Nothing Then
-                    AddHandler Me._miOpenPWKEditor.Click, AddressOf Me.miOpenPWKEditor_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000225 RID: 549
-        ' (get) Token: 0x060006D5 RID: 1749 RVA: 0x0024D968 File Offset: 0x0024C968
-        ' (set) Token: 0x060006D6 RID: 1750 RVA: 0x0024D97C File Offset: 0x0024C97C
-        Friend Overridable Property miShowSupportedModEditorMaps() As MenuItem
-            Get
-                Return Me._miShowSupportedModEditorMaps
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miShowSupportedModEditorMaps IsNot Nothing Then
-                    RemoveHandler Me._miShowSupportedModEditorMaps.Click, AddressOf Me.miShowSupportedModEditorMaps_Click
-                End If
-                Me._miShowSupportedModEditorMaps = value
-                If Me._miShowSupportedModEditorMaps IsNot Nothing Then
-                    AddHandler Me._miShowSupportedModEditorMaps.Click, AddressOf Me.miShowSupportedModEditorMaps_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000226 RID: 550
-        ' (get) Token: 0x060006D8 RID: 1752 RVA: 0x0024D9EC File Offset: 0x0024C9EC
-        ' (set) Token: 0x060006D7 RID: 1751 RVA: 0x0024D9D0 File Offset: 0x0024C9D0
-        Friend Overridable Property MenuItem7() As MenuItem
-            Get
-                Return Me._MenuItem7
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._MenuItem7 IsNot Nothing Then
-                End If
-                Me._MenuItem7 = value
-                If Me._MenuItem7 IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000227 RID: 551
-        ' (get) Token: 0x060006DA RID: 1754 RVA: 0x0024DA00 File Offset: 0x0024CA00
-        ' (set) Token: 0x060006D9 RID: 1753 RVA: 0x0024DA14 File Offset: 0x0024CA14
-        Friend Overridable Property miOpenMapsFolder() As MenuItem
-            Get
-                Return Me._miOpenMapsFolder
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miOpenMapsFolder IsNot Nothing Then
-                    RemoveHandler Me._miOpenMapsFolder.Click, AddressOf Me.miOpenMapsFolder_Click
-                End If
-                Me._miOpenMapsFolder = value
-                If Me._miOpenMapsFolder IsNot Nothing Then
-                    AddHandler Me._miOpenMapsFolder.Click, AddressOf Me.miOpenMapsFolder_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000228 RID: 552
-        ' (get) Token: 0x060006DB RID: 1755 RVA: 0x0024DABC File Offset: 0x0024CABC
-        ' (set) Token: 0x060006DC RID: 1756 RVA: 0x0024DA68 File Offset: 0x0024CA68
-        Friend Overridable Property miOpenModuleEditor() As MenuItem
-            Get
-                Return Me._miOpenModuleEditor
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miOpenModuleEditor IsNot Nothing Then
-                    RemoveHandler Me._miOpenModuleEditor.Click, AddressOf Me.miOpenModuleEditor_Click
-                End If
-                Me._miOpenModuleEditor = value
-                If Me._miOpenModuleEditor IsNot Nothing Then
-                    AddHandler Me._miOpenModuleEditor.Click, AddressOf Me.miOpenModuleEditor_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x17000229 RID: 553
-        ' (get) Token: 0x060006DE RID: 1758 RVA: 0x0024DAEC File Offset: 0x0024CAEC
-        ' (set) Token: 0x060006DD RID: 1757 RVA: 0x0024DAD0 File Offset: 0x0024CAD0
-        Friend Overridable Property MenuItem10() As MenuItem
-            Get
-                Return Me._MenuItem10
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._MenuItem10 IsNot Nothing Then
-                End If
-                Me._MenuItem10 = value
-                If Me._MenuItem10 IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x1700022A RID: 554
-        ' (get) Token: 0x060006DF RID: 1759 RVA: 0x0024DB00 File Offset: 0x0024CB00
-        ' (set) Token: 0x060006E0 RID: 1760 RVA: 0x0024DB14 File Offset: 0x0024CB14
-        Friend Overridable Property miOpenSSFEditor() As MenuItem
-            Get
-                Return Me._miOpenSSFEditor
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As MenuItem)
-                If Me._miOpenSSFEditor IsNot Nothing Then
-                    RemoveHandler Me._miOpenSSFEditor.Click, AddressOf Me.miOpenSSFEditor_Click
-                End If
-                Me._miOpenSSFEditor = value
-                If Me._miOpenSSFEditor IsNot Nothing Then
-                    AddHandler Me._miOpenSSFEditor.Click, AddressOf Me.miOpenSSFEditor_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x1700022B RID: 555
-        ' (get) Token: 0x060006E2 RID: 1762 RVA: 0x0024DBBC File Offset: 0x0024CBBC
-        ' (set) Token: 0x060006E1 RID: 1761 RVA: 0x0024DB68 File Offset: 0x0024CB68
-        Friend Overridable Property btnCreateMapInfoBFD() As Button
-            Get
-                Return Me._btnCreateMapInfoBFD
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As Button)
-                If Me._btnCreateMapInfoBFD IsNot Nothing Then
-                    RemoveHandler Me._btnCreateMapInfoBFD.Click, AddressOf Me.CreateMapInfoBFD_Click
-                End If
-                Me._btnCreateMapInfoBFD = value
-                If Me._btnCreateMapInfoBFD IsNot Nothing Then
-                    AddHandler Me._btnCreateMapInfoBFD.Click, AddressOf Me.CreateMapInfoBFD_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x1700022C RID: 556
-        ' (get) Token: 0x060006E4 RID: 1764 RVA: 0x0024DC24 File Offset: 0x0024CC24
-        ' (set) Token: 0x060006E3 RID: 1763 RVA: 0x0024DBD0 File Offset: 0x0024CBD0
-        Friend Overridable Property Button1() As Button
-            Get
-                Return Me._Button1
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As Button)
-                If Me._Button1 IsNot Nothing Then
-                    RemoveHandler Me._Button1.Click, AddressOf Me.ReadTreeBFD_Click
-                End If
-                Me._Button1 = value
-                If Me._Button1 IsNot Nothing Then
-                    AddHandler Me._Button1.Click, AddressOf Me.ReadTreeBFD_Click
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x1700022D RID: 557
-        ' (get) Token: 0x060006E6 RID: 1766 RVA: 0x0024DC8C File Offset: 0x0024CC8C
-        ' (set) Token: 0x060006E5 RID: 1765 RVA: 0x0024DC38 File Offset: 0x0024CC38
-        Friend Overridable Property btnExtractForModuleEditing() As Button
-            Get
-                Return Me._btnExtractForModuleEditing
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-            Set(ByVal value As Button)
-                If Me._btnExtractForModuleEditing IsNot Nothing Then
-                    RemoveHandler Me._btnExtractForModuleEditing.Click, AddressOf Me.btnExtractForModuleEditing_Click
-                End If
-                Me._btnExtractForModuleEditing = value
-                If Me._btnExtractForModuleEditing IsNot Nothing Then
-                    AddHandler Me._btnExtractForModuleEditing.Click, AddressOf Me.btnExtractForModuleEditing_Click
-                End If
-            End Set
-        End Property
+            Me.hasK1 = False
+            Me.hasK2 = False
+            Me.g_abbbIndex = 0
+            Me.InitializeComponent()
+        End Sub
 
         ' Token: 0x060006E8 RID: 1768 RVA: 0x0024EC68 File Offset: 0x0024DC68
         Public Shared Function K1ChitinKey() As clsChitinKey
@@ -4065,13 +3071,13 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x0600072B RID: 1835 RVA: 0x00254A44 File Offset: 0x00253A44
-        Private Sub CreateMapInfoBFD_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub CreateMapInfoBFD_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnCreateMapInfoBFD.Click
             Dim clsMapInfoCreator As clsMapInfoCreator = New clsMapInfoCreator()
             clsMapInfoCreator.write(frmMain.gRootPath)
         End Sub
 
         ' Token: 0x0600072C RID: 1836 RVA: 0x00254A64 File Offset: 0x00253A64
-        Private Sub btnExtract_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnExtract_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnExtract.Click
             Me.ExtractSelectedKotorFile(CType(Me.TreeView.SelectedNode, KotorTreeNode), "", "", Nothing)
         End Sub
 
@@ -4266,7 +3272,7 @@ Namespace kotor_tool
         End Function
 
         ' Token: 0x0600072E RID: 1838 RVA: 0x00255474 File Offset: 0x00254474
-        Private Sub btnHexViewer_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnHexViewer_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnHexViewer.Click
             Dim kotorTreeNode As KotorTreeNode = CType(Me.TreeView.SelectedNode, KotorTreeNode)
             If kotorTreeNode IsNot Nothing Then
                 If ObjectType.ObjTst(kotorTreeNode.Tag, "BIFF_Root", False) = 0 Then
@@ -4294,7 +3300,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x0600072F RID: 1839 RVA: 0x00255580 File Offset: 0x00254580
-        Private Sub TreeView_DoubleClick(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub TreeView_DoubleClick(ByVal sender As Object, ByVal e As EventArgs) Handles TreeView.DoubleClick
             Dim kotorTreeNode As KotorTreeNode = CType(Me.TreeView.SelectedNode, KotorTreeNode)
             Me.HandleDataByNodeType(kotorTreeNode, RuntimeHelpers.GetObjectValue(sender))
         End Sub
@@ -4767,7 +3773,7 @@ IL_12BE:
         '    End If
         'End Sub
 
-        Private Sub TreeView_AfterSelect(ByVal sender As Object, ByVal e As TreeViewEventArgs)
+        Private Sub TreeView_AfterSelect(ByVal sender As Object, ByVal e As TreeViewEventArgs) Handles TreeView.AfterSelect
             If e Is Nothing OrElse e.Node Is Nothing Then
                 Return
             End If
@@ -4870,7 +3876,7 @@ IL_12BE:
         End Sub
 
         ' Token: 0x06000735 RID: 1845 RVA: 0x00256CC0 File Offset: 0x00255CC0
-        Private Sub TreeView_BeforeExpand(ByVal sender As Object, ByVal e As TreeViewCancelEventArgs)
+        Private Sub TreeView_BeforeExpand(ByVal sender As Object, ByVal e As TreeViewCancelEventArgs) Handles TreeView.BeforeExpand
             Dim kotorTreeNode As KotorTreeNode = CType(e.Node, KotorTreeNode)
             frmMain.CurrentSettings = UserSettings.GetSettings()
             If Not frmMain.CurrentSettings.TreeOpenPaths.Contains(kotorTreeNode.FullPath) Then
@@ -4932,7 +3938,7 @@ IL_12BE:
         End Sub
 
         ' Token: 0x06000736 RID: 1846 RVA: 0x00257014 File Offset: 0x00256014
-        Private Sub TreeView_BeforeCollapse(ByVal sender As Object, ByVal e As TreeViewCancelEventArgs)
+        Private Sub TreeView_BeforeCollapse(ByVal sender As Object, ByVal e As TreeViewCancelEventArgs) Handles TreeView.BeforeCollapse
             Dim kotorTreeNode As KotorTreeNode = CType(e.Node, KotorTreeNode)
             frmMain.CurrentSettings = UserSettings.GetSettings()
             For i As Integer = frmMain.CurrentSettings.TreeOpenPaths.Count - 1 To 0 Step -1
@@ -4944,7 +3950,7 @@ IL_12BE:
         End Sub
 
         ' Token: 0x06000737 RID: 1847 RVA: 0x002570F4 File Offset: 0x002560F4
-        Private Sub TreeView_KeyUp(ByVal sender As Object, ByVal e As KeyEventArgs)
+        Private Sub TreeView_KeyUp(ByVal sender As Object, ByVal e As KeyEventArgs) Handles TreeView.KeyUp
             Dim resTypeStr As String = CType(Me.TreeView.SelectedNode, KotorTreeNode).ResTypeStr
             If (StringType.StrCmp(resTypeStr, "tpc", False) = 0) Or (StringType.StrCmp(resTypeStr, "txb", False) = 0) Then
                 If frmMain.gImageViewer IsNot Nothing AndAlso frmMain.gImageViewer.Created AndAlso frmMain.gImageViewer.Visible Then
@@ -4958,7 +3964,7 @@ IL_12BE:
         End Sub
 
         ' Token: 0x06000738 RID: 1848 RVA: 0x002571A8 File Offset: 0x002561A8
-        Private Sub TreeView_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs)
+        Private Sub TreeView_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles TreeView.MouseDown
             Dim point As Point = New Point(e.X, e.Y)
             Dim point2 As Point = point
             Me.SecondToLastClickedTVNode = Me.LastClickedTVNode
@@ -4975,7 +3981,7 @@ IL_12BE:
         End Sub
 
         ' Token: 0x06000739 RID: 1849 RVA: 0x002572C4 File Offset: 0x002562C4
-        Private Sub TreeView_KeyPress(ByVal sender As Object, ByVal e As KeyPressEventArgs)
+        Private Sub TreeView_KeyPress(ByVal sender As Object, ByVal e As KeyPressEventArgs) Handles TreeView.KeyPress
             If e.KeyChar = vbCr AndAlso Me.TreeView.SelectedNode IsNot Nothing Then
                 e.Handled = True
                 Dim kotorTreeNode As KotorTreeNode = CType(Me.TreeView.SelectedNode, KotorTreeNode)
@@ -5043,7 +4049,7 @@ IL_12BE:
         End Function
 
         ' Token: 0x0600073E RID: 1854 RVA: 0x002574A4 File Offset: 0x002564A4
-        Private Sub miManagePaths_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miManagePaths_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miManagePaths.Click
             Dim frmPathManager As frmPathManager = New frmPathManager()
             frmPathManager.ShowDialog(Me)
         End Sub
@@ -5062,7 +4068,7 @@ IL_12BE:
         '    Next
         'End Sub
 
-        Private Sub miOpenGFFFile_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOpenGFFFile_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpenGFFFile.Click
             Dim objectValue As Object = RuntimeHelpers.GetObjectValue(frmMain.GetFilePath("load", frmMain.CurrentSettings.defaultImportLocation, "", "Open GFF files...", "gffsupported", True, True))
 
             If TypeOf objectValue Is String Then
@@ -5106,7 +4112,7 @@ IL_12BE:
         '    Next
         'End Sub
 
-        Private Sub miViewGFFFile_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miViewGFFFile_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miViewGFFFiles.Click
             Dim objectValue As Object = RuntimeHelpers.GetObjectValue(frmMain.GetFilePath("load", frmMain.CurrentSettings.defaultImportLocation, "", "Open GFF files...", "", True, True))
 
             If TypeOf objectValue Is String Then
@@ -5148,7 +4154,7 @@ IL_12BE:
         End Sub
 
         ' Token: 0x06000742 RID: 1858 RVA: 0x002576AC File Offset: 0x002566AC
-        Private Sub miQuit_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miQuit_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miQuit.Click
             frmMain.SaveSettings()
             Application.[Exit]()
         End Sub
@@ -5158,7 +4164,7 @@ IL_12BE:
         'New Process() With { .StartInfo = { .FileName = "explorer.exe ", .Arguments = frmMain.gRootPath + "maps" } }.Start()
         '     End Sub
 
-        Private Sub miOpenMapsFolder_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOpenMapsFolder_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpenMapsFolder.Click
             Dim process As Process = New Process()
             process.StartInfo.FileName = "explorer.exe"
             process.StartInfo.Arguments = """" & frmMain.gRootPath & "maps" & """"
@@ -5166,41 +4172,41 @@ IL_12BE:
         End Sub
 
         ' Token: 0x06000744 RID: 1860 RVA: 0x002576FC File Offset: 0x002566FC
-        Private Sub miOpenModuleEditor_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOpenModuleEditor_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpenModuleEditor.Click
             Dim frmModule_Editor As frmModule_Editor = New frmModule_Editor()
             frmModule_Editor.Show()
         End Sub
 
         ' Token: 0x06000745 RID: 1861 RVA: 0x00257718 File Offset: 0x00256718
-        Private Sub miShowSupportedModEditorMaps_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miShowSupportedModEditorMaps_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miShowSupportedModEditorMaps.Click
             Dim frmMapInfoStatus As frmMapInfoStatus = New frmMapInfoStatus()
             frmMapInfoStatus.ShowDialog()
         End Sub
 
         ' Token: 0x06000746 RID: 1862 RVA: 0x00257734 File Offset: 0x00256734
-        Private Sub miOpenSSFEditor_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOpenSSFEditor_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpenSSFEditor.Click
             Dim frmSSFEditor As frmSSFEditor = New frmSSFEditor()
             frmSSFEditor.Show()
         End Sub
 
         ' Token: 0x06000747 RID: 1863 RVA: 0x00257750 File Offset: 0x00256750
-        Private Sub miOpenProjectManager_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOpenProjectManager_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpenProjectManager.Click
             Dim frmProjectManager As frmProjectManager = New frmProjectManager(Me)
             frmProjectManager.Show()
         End Sub
 
         ' Token: 0x06000748 RID: 1864 RVA: 0x0025776C File Offset: 0x0025676C
-        Private Sub miOpen2DAFile_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOpen2DAFile_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpen2DAEditor.Click
             Me.Open2DAFileEditor()
         End Sub
 
         ' Token: 0x06000749 RID: 1865 RVA: 0x00257774 File Offset: 0x00256774
-        Private Sub miConversationEditor_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miConversationEditor_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miConversationEditor.Click
             Me.OpenConversationEditor()
         End Sub
 
         ' Token: 0x0600074A RID: 1866 RVA: 0x0025777C File Offset: 0x0025677C
-        Private Sub miGlobalVariableEditor_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miGlobalVariableEditor_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miGlobalVariableEditor.Click
             Dim frmGlobalVar_Editor As frmGlobalVar_Editor = New frmGlobalVar_Editor()
             Dim utilWindowRelativePositioner As utilWindowRelativePositioner = New utilWindowRelativePositioner(frmMain.mainform, frmGlobalVar_Editor)
             utilWindowRelativePositioner.SetLocationConcentric()
@@ -5208,34 +4214,34 @@ IL_12BE:
         End Sub
 
         ' Token: 0x0600074B RID: 1867 RVA: 0x002577A8 File Offset: 0x002567A8
-        Private Sub miOpenTextEditor_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOpenTextEditor_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpenTextEditor.Click
             Me.OpenTextEditor()
         End Sub
 
         ' Token: 0x0600074C RID: 1868 RVA: 0x002577B0 File Offset: 0x002567B0
-        Private Sub miOpenERFBuilder_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOpenERFBuilder_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpenERFBuilder.Click
             Me.OpenERFBuilder()
         End Sub
 
         ' Token: 0x0600074D RID: 1869 RVA: 0x002577B8 File Offset: 0x002567B8
-        Private Sub miOpenPWKEditor_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOpenPWKEditor_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpenPWKEditor.Click
             Dim frmBWMEditor As frmBWMEditor = New frmBWMEditor()
             frmBWMEditor.Show()
         End Sub
 
         ' Token: 0x0600074E RID: 1870 RVA: 0x002577D4 File Offset: 0x002567D4
-        Private Sub miOpenDialogTlkViewer_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOpenDialogTlkViewer_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpenDialogTlkViewer.Click
             Dim frmDialogTlk As frmDialogTlk = New frmDialogTlk()
             frmDialogTlk.Show()
         End Sub
 
         ' Token: 0x0600074F RID: 1871 RVA: 0x002577F0 File Offset: 0x002567F0
-        Private Sub miRefSearch_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miRefSearch_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miRefSearch.Click
             Me.PerformStringSearch()
         End Sub
 
         ' Token: 0x06000750 RID: 1872 RVA: 0x002577F8 File Offset: 0x002567F8
-        Private Sub miCleanWorkingDir_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miCleanWorkingDir_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miCleanWorkingDir.Click
             If Interaction.MsgBox("Are you sure you want to delete all of the files in your working directory?", MsgBoxStyle.OkCancel Or MsgBoxStyle.Question Or MsgBoxStyle.DefaultButton2, "Clean working directory") = MsgBoxResult.Ok Then
                 frmMain.CleanDirectory(frmMain.gRootPath + "working")
             End If
@@ -5246,7 +4252,7 @@ IL_12BE:
         'New Process() With { .StartInfo = { .FileName = "explorer.exe ", .Arguments = frmMain.gRootPath + "working" } }.Start()
         '     End Sub
 
-        Private Sub miOpenWorkingDir_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOpenWorkingDir_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpenWorkingDir.Click
             Dim process As Process = New Process()
             process.StartInfo.FileName = "explorer.exe"
             process.StartInfo.Arguments = """" & frmMain.gRootPath & "working" & """"
@@ -5254,7 +4260,7 @@ IL_12BE:
         End Sub
 
         ' Token: 0x06000752 RID: 1874 RVA: 0x0025786C File Offset: 0x0025686C
-        Private Sub miOptions_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOptions_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOptions.Click
             Dim frmOptions As frmOptions = New frmOptions()
             frmMain.CurrentSettings = UserSettings.GetSettings()
             Dim bBuildModelsBifNode As Boolean = frmMain.CurrentSettings.bBuildModelsBifNode
@@ -5285,7 +4291,7 @@ IL_12BE:
         End Sub
 
         ' Token: 0x06000753 RID: 1875 RVA: 0x00257AA8 File Offset: 0x00256AA8
-        Private Sub miBasicHelp_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miBasicHelp_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miBasicHelp.Click
             Try
                 Process.Start(frmMain.gRootPath + "KT_Help.chm")
             Catch ex As System.Exception
@@ -5296,7 +4302,7 @@ IL_12BE:
         End Sub
 
         ' Token: 0x06000754 RID: 1876 RVA: 0x00257B0C File Offset: 0x00256B0C
-        Private Sub miCheckForUpdates_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miCheckForUpdates_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miCheckForUpdates.Click
             Me.g_CheckForUpdatesSilently = False
             Dim checkForUpdate As frmMain.CheckForUpdate = AddressOf Me.CheckForUpdateA
             Console.WriteLine("Starting CheckForUpdate thread")
@@ -5308,14 +4314,14 @@ IL_12BE:
         'New frmAbout() With { .lblVersion = { .Text = "Version " + Application.ProductVersion } }.ShowDialog(Me)
         '     End Sub
 
-        Private Sub miAbout_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miAbout_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miAbout.Click
             Dim frmAbout As frmAbout = New frmAbout()
             frmAbout.lblVersion.Text = "Version " & Application.ProductVersion
             frmAbout.ShowDialog(Me)
         End Sub
 
         ' Token: 0x06000756 RID: 1878 RVA: 0x00257B7C File Offset: 0x00256B7C
-        Private Sub cmiExtractForModuleEditing_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmiExtractForModuleEditing_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiExtractForModuleEditing.Click
             Dim mapInfo As MapInfo = frmMapInfoStatus.ReadMapInfoFile()
             Dim text As String = Path.GetFileNameWithoutExtension(CType(Me.TreeView.SelectedNode, KotorTreeNode).Filename).ToLower()
             Dim text2 As String = "Unsupported"
@@ -5425,7 +4431,7 @@ IL_12BE:
         End Sub
 
         ' Token: 0x06000757 RID: 1879 RVA: 0x00258040 File Offset: 0x00257040
-        Private Sub ToolBar1_ButtonClick(ByVal sender As Object, ByVal e As ToolBarButtonClickEventArgs)
+        Private Sub ToolBar1_ButtonClick(ByVal sender As Object, ByVal e As ToolBarButtonClickEventArgs) Handles ToolBar1.ButtonClick
             If e.Button Is Me.tbbtn2DAEditor Then
                 Me.Open2DAFileEditor()
             ElseIf e.Button Is Me.tbbtnConversationEditor Then
@@ -5520,7 +4526,7 @@ IL_12BE:
         End Function
 
         ' Token: 0x0600075C RID: 1884 RVA: 0x00258308 File Offset: 0x00257308
-        Private Sub btnExtractForModuleEditing_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnExtractForModuleEditing_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnExtractForModuleEditing.Click
             Me.cmiExtractForModuleEditing_Click(Nothing, Nothing)
         End Sub
 
@@ -5614,7 +4620,7 @@ IL_12BE:
         End Sub
 
         ' Token: 0x0600075F RID: 1887 RVA: 0x00258808 File Offset: 0x00257808
-        Private Sub ReadTreeBFD_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub ReadTreeBFD_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button1.Click
             Dim assembly As Assembly = assembly.LoadFrom("G:\My Documents\Visual Studio Projects\kotor_tool\MapInfo Generator\bin\MapInfo Generator.exe")
             Dim version As Version = assembly.GetName().Version
             Console.WriteLine(String.Concat(New String() {StringType.FromInteger(version.Major), ".", StringType.FromInteger(version.Minor), ".", StringType.FromInteger(version.Build), ".", StringType.FromInteger(version.Revision)}))
@@ -5677,7 +4683,7 @@ IL_12BE:
         End Function
 
         ' Token: 0x06000761 RID: 1889 RVA: 0x00258A9C File Offset: 0x00257A9C
-        Private Sub Read_NWScript_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub Read_NWScript_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button4.Click
             Dim fileStream As FileStream = New FileStream("C:\SharpDevelop_1.1.0.2081\src\Libraries\ICSharpCode.TextEditor\src\ICSharpCode.TextEditor.prjx", FileMode.Open)
             Dim streamWriter As StreamWriter = File.CreateText("c:\TextEditor.csproj")
             Dim streamReader As StreamReader = New StreamReader(fileStream)
@@ -5693,222 +4699,6 @@ IL_12BE:
             streamReader.Close()
             streamWriter.Close()
         End Sub
-
-        ' Token: 0x0400037E RID: 894
-        <AccessedThroughProperty("miAbout")> _
-        Private _miAbout As MenuItem
-
-        ' Token: 0x0400037F RID: 895
-        <AccessedThroughProperty("MainMenu1")> _
-        Private _MainMenu1 As MainMenu
-
-        ' Token: 0x04000380 RID: 896
-        <AccessedThroughProperty("btnExtractForModuleEditing")> _
-        Private _btnExtractForModuleEditing As Button
-
-        ' Token: 0x04000381 RID: 897
-        <AccessedThroughProperty("MenuItem1")> _
-        Private _MenuItem1 As MenuItem
-
-        ' Token: 0x04000382 RID: 898
-        <AccessedThroughProperty("btnCreateMapInfoBFD")> _
-        Private _btnCreateMapInfoBFD As Button
-
-        ' Token: 0x04000383 RID: 899
-        <AccessedThroughProperty("miOpenSSFEditor")> _
-        Private _miOpenSSFEditor As MenuItem
-
-        ' Token: 0x04000384 RID: 900
-        <AccessedThroughProperty("MenuItem10")> _
-        Private _MenuItem10 As MenuItem
-
-        ' Token: 0x04000385 RID: 901
-        <AccessedThroughProperty("miOpenKey")> _
-        Private _miOpenKey As MenuItem
-
-        ' Token: 0x04000386 RID: 902
-        <AccessedThroughProperty("btnExtract")> _
-        Private _btnExtract As Button
-
-        ' Token: 0x04000387 RID: 903
-        <AccessedThroughProperty("miOpenModuleEditor")> _
-        Private _miOpenModuleEditor As MenuItem
-
-        ' Token: 0x04000388 RID: 904
-        <AccessedThroughProperty("MenuItem3")> _
-        Private _MenuItem3 As MenuItem
-
-        ' Token: 0x04000389 RID: 905
-        <AccessedThroughProperty("MenuItem6")> _
-        Private _MenuItem6 As MenuItem
-
-        ' Token: 0x0400038A RID: 906
-        <AccessedThroughProperty("MenuItem4")> _
-        Private _MenuItem4 As MenuItem
-
-        ' Token: 0x0400038B RID: 907
-        <AccessedThroughProperty("miOpenMapsFolder")> _
-        Private _miOpenMapsFolder As MenuItem
-
-        ' Token: 0x0400038C RID: 908
-        <AccessedThroughProperty("miExtract")> _
-        Private _miExtract As MenuItem
-
-        ' Token: 0x0400038D RID: 909
-        <AccessedThroughProperty("miBasicHelp")> _
-        Private _miBasicHelp As MenuItem
-
-        ' Token: 0x0400038E RID: 910
-        <AccessedThroughProperty("MenuItem7")> _
-        Private _MenuItem7 As MenuItem
-
-        ' Token: 0x0400038F RID: 911
-        <AccessedThroughProperty("miOpenRIM")> _
-        Private _miOpenRIM As MenuItem
-
-        ' Token: 0x04000390 RID: 912
-        <AccessedThroughProperty("miShowSupportedModEditorMaps")> _
-        Private _miShowSupportedModEditorMaps As MenuItem
-
-        ' Token: 0x04000391 RID: 913
-        <AccessedThroughProperty("miOpenPWKEditor")> _
-        Private _miOpenPWKEditor As MenuItem
-
-        ' Token: 0x04000392 RID: 914
-        <AccessedThroughProperty("MenuItem2")> _
-        Private _MenuItem2 As MenuItem
-
-        ' Token: 0x04000393 RID: 915
-        <AccessedThroughProperty("miOpenDialogTlkViewer")> _
-        Private _miOpenDialogTlkViewer As MenuItem
-
-        ' Token: 0x04000394 RID: 916
-        <AccessedThroughProperty("Button4")> _
-        Private _Button4 As Button
-
-        ' Token: 0x04000395 RID: 917
-        <AccessedThroughProperty("miManagePaths")> _
-        Private _miManagePaths As MenuItem
-
-        ' Token: 0x04000396 RID: 918
-        <AccessedThroughProperty("Button1")> _
-        Private _Button1 As Button
-
-        ' Token: 0x04000397 RID: 919
-        <AccessedThroughProperty("btnHexViewer")> _
-        Private _btnHexViewer As Button
-
-        ' Token: 0x04000398 RID: 920
-        <AccessedThroughProperty("MenuItem8")> _
-        Private _MenuItem8 As MenuItem
-
-        ' Token: 0x04000399 RID: 921
-        <AccessedThroughProperty("miOpenWorkingDir")> _
-        Private _miOpenWorkingDir As MenuItem
-
-        ' Token: 0x0400039A RID: 922
-        <AccessedThroughProperty("miOptions")> _
-        Private _miOptions As MenuItem
-
-        ' Token: 0x0400039B RID: 923
-        <AccessedThroughProperty("miGlobalVariableEditor")> _
-        Private _miGlobalVariableEditor As MenuItem
-
-        ' Token: 0x0400039C RID: 924
-        <AccessedThroughProperty("miOpen2DAEditor")> _
-        Private _miOpen2DAEditor As MenuItem
-
-        ' Token: 0x0400039D RID: 925
-        <AccessedThroughProperty("miCheckForUpdates")> _
-        Private _miCheckForUpdates As MenuItem
-
-        ' Token: 0x0400039E RID: 926
-        <AccessedThroughProperty("miOpenProjectManager")> _
-        Private _miOpenProjectManager As MenuItem
-
-        ' Token: 0x0400039F RID: 927
-        <AccessedThroughProperty("miRecentFiles")> _
-        Private _miRecentFiles As MenuItem
-
-        ' Token: 0x040003A0 RID: 928
-        <AccessedThroughProperty("miFile")> _
-        Private _miFile As MenuItem
-
-        ' Token: 0x040003A1 RID: 929
-        <AccessedThroughProperty("cmiExtractForModuleEditing")> _
-        Private _cmiExtractForModuleEditing As MenuItem
-
-        ' Token: 0x040003A2 RID: 930
-        <AccessedThroughProperty("MenuItem5")> _
-        Private _MenuItem5 As MenuItem
-
-        ' Token: 0x040003A3 RID: 931
-        <AccessedThroughProperty("miRefSearch")> _
-        Private _miRefSearch As MenuItem
-
-        ' Token: 0x040003A4 RID: 932
-        <AccessedThroughProperty("miOpenTextEditor")> _
-        Private _miOpenTextEditor As MenuItem
-
-        ' Token: 0x040003A5 RID: 933
-        <AccessedThroughProperty("imglstToolBar")> _
-        Private _imglstToolBar As ImageList
-
-        ' Token: 0x040003A6 RID: 934
-        <AccessedThroughProperty("miCleanWorkingDir")> _
-        Private _miCleanWorkingDir As MenuItem
-
-        ' Token: 0x040003A7 RID: 935
-        <AccessedThroughProperty("miOpenGFFFile")> _
-        Private _miOpenGFFFile As MenuItem
-
-        ' Token: 0x040003A8 RID: 936
-        <AccessedThroughProperty("tbbtnERFBuilder")> _
-        Private _tbbtnERFBuilder As ToolBarButton
-
-        ' Token: 0x040003A9 RID: 937
-        <AccessedThroughProperty("TreeView")> _
-        Private _TreeView As TreeView
-
-        ' Token: 0x040003AA RID: 938
-        <AccessedThroughProperty("tbbtnTextEditor")> _
-        Private _tbbtnTextEditor As ToolBarButton
-
-        ' Token: 0x040003AB RID: 939
-        <AccessedThroughProperty("miOpenERFBuilder")> _
-        Private _miOpenERFBuilder As MenuItem
-
-        ' Token: 0x040003AC RID: 940
-        <AccessedThroughProperty("miViewGFFFiles")> _
-        Private _miViewGFFFiles As MenuItem
-
-        ' Token: 0x040003AD RID: 941
-        <AccessedThroughProperty("tbbtnConversationEditor")> _
-        Private _tbbtnConversationEditor As ToolBarButton
-
-        ' Token: 0x040003AE RID: 942
-        <AccessedThroughProperty("miQuit")> _
-        Private _miQuit As MenuItem
-
-        ' Token: 0x040003AF RID: 943
-        <AccessedThroughProperty("tbbtn2DAEditor")> _
-        Private _tbbtn2DAEditor As ToolBarButton
-
-        ' Token: 0x040003B0 RID: 944
-        <AccessedThroughProperty("miRegisterSoftware")> _
-        Private _miRegisterSoftware As MenuItem
-
-        ' Token: 0x040003B1 RID: 945
-        <AccessedThroughProperty("ToolBar1")> _
-        Private _ToolBar1 As ToolBar
-
-        ' Token: 0x040003B2 RID: 946
-        <AccessedThroughProperty("miConversationEditor")> _
-        Private _miConversationEditor As MenuItem
-
-        ' Token: 0x040003B3 RID: 947
-        <AccessedThroughProperty("tvCMenu")> _
-        Private _tvCMenu As ContextMenu
 
         ' Token: 0x040003B5 RID: 949
         Public Shared gRootPath As String

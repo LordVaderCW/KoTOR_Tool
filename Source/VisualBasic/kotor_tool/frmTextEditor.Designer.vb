@@ -1,20 +1,78 @@
-﻿Namespace kotor_tool
-	' Token: 0x02000077 RID: 119
-	Public Partial Class frmTextEditor
-		Inherits Global.System.Windows.Forms.Form
+Imports mystuff.Controls
 
-		' Token: 0x06001032 RID: 4146 RVA: 0x0029A4D4 File Offset: 0x002994D4
-		Protected Overrides Sub Dispose(disposing As Boolean)
-			If disposing AndAlso Me.components IsNot Nothing Then
-				Me.components.Dispose()
-			End If
-			MyBase.Dispose(disposing)
-		End Sub
+Namespace kotor_tool
+    ' Token: 0x02000077 RID: 119
+    Partial Public Class frmTextEditor
+        Inherits Global.System.Windows.Forms.Form
 
-		' Token: 0x06001093 RID: 4243 RVA: 0x0029B5E4 File Offset: 0x0029A5E4
+        ' -----------------------------------------------------------------
+        ' Designer fields restored from decompiled
+        ' AccessedThroughProperty wrappers.
+        ' Kept before InitializeComponent for VS2010 CodeDom safety.
+        ' -----------------------------------------------------------------
+        Private components As Global.System.ComponentModel.IContainer
+        Friend WithEvents tbGeneric As LinenumberTextBox
+        Friend WithEvents MainMenu1 As Global.System.Windows.Forms.MainMenu
+        Friend WithEvents MenuItem1 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem2 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miFind As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miFindAgain As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miUndo As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miRedo As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem3 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miCut As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem7 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem9 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miCopy As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miPaste As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miSelectAll As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miSaveAs As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem4 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miQuit As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miOpen As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miPrint As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miPageSetup As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem5 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miFont As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miWordWrap As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem6 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miPlaceablesList As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miEncountersList As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miWaypointsList As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miSoundsList As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miTriggersList As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miDoorsList As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miCameras As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miCreatureList As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miMerchantList As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miSave As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem8 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miScriptIsK1 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miScriptIsK2 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem12 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miCompile As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents lbFunctions As Global.System.Windows.Forms.ListBox
+        Friend WithEvents tbFuncNameFilter As Global.System.Windows.Forms.TextBox
+        Friend WithEvents tbFuncDecl As Global.System.Windows.Forms.TextBox
+        Friend WithEvents Label1 As Global.System.Windows.Forms.Label
+        Friend WithEvents pnlFunctions As Global.System.Windows.Forms.Panel
+        Friend WithEvents lblMatches As Global.System.Windows.Forms.Label
+        Friend WithEvents cmText As Global.System.Windows.Forms.ContextMenu
+        Friend WithEvents cmiShowDefinition As Global.System.Windows.Forms.MenuItem
+
+
+        ' Token: 0x06001032 RID: 4146 RVA: 0x0029A4D4 File Offset: 0x002994D4
+        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+            If disposing AndAlso Me.components IsNot Nothing Then
+                Me.components.Dispose()
+            End If
+            MyBase.Dispose(disposing)
+        End Sub
+
+        ' Token: 0x06001093 RID: 4243 RVA: 0x0029B5E4 File Offset: 0x0029A5E4
         <Global.System.Diagnostics.DebuggerStepThrough()> _
-  Private Sub InitializeComponent()
-            Dim resourceManager As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager(GetType(Global.kotor_tool.frmTextEditor))
+        Private Sub InitializeComponent()
+            Dim resources As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager(GetType(Global.kotor_tool.frmTextEditor))
             Me.tbGeneric = New Global.mystuff.Controls.LinenumberTextBox()
             Me.MainMenu1 = New Global.System.Windows.Forms.MainMenu()
             Me.MenuItem1 = New Global.System.Windows.Forms.MenuItem()
@@ -67,14 +125,10 @@
             Me.SuspendLayout()
             Me.tbGeneric.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left Or Global.System.Windows.Forms.AnchorStyles.Right
             Me.tbGeneric.Font = New Global.System.Drawing.Font("Lucida Console", 8.25F, Global.System.Drawing.FontStyle.Regular, Global.System.Drawing.GraphicsUnit.Point, 0)
-            Dim tbGeneric As Global.System.Windows.Forms.Control = Me.tbGeneric
-            Dim point As Global.System.Drawing.Point = New Global.System.Drawing.Point(16, 8)
-            tbGeneric.Location = point
+            Me.tbGeneric.Location = New Global.System.Drawing.Point(16, 8)
             Me.tbGeneric.Name = "tbGeneric"
             Me.tbGeneric.ShowSelectionMargin = True
-            Dim tbGeneric2 As Global.System.Windows.Forms.Control = Me.tbGeneric
-            Dim size As Global.System.Drawing.Size = New Global.System.Drawing.Size(904, 584)
-            tbGeneric2.Size = size
+            Me.tbGeneric.Size = New Global.System.Drawing.Size(904, 584)
             Me.tbGeneric.TabIndex = 5
             Me.tbGeneric.Text = ""
             Me.MainMenu1.MenuItems.AddRange(New Global.System.Windows.Forms.MenuItem() {Me.MenuItem1, Me.MenuItem2, Me.MenuItem5, Me.MenuItem6, Me.MenuItem8})
@@ -176,34 +230,22 @@
             Me.miCompile.Shortcut = Global.System.Windows.Forms.Shortcut.F5
             Me.miCompile.Text = "&Compile"
             Me.lbFunctions.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Right
-            Dim lbFunctions As Global.System.Windows.Forms.Control = Me.lbFunctions
-            point = New Global.System.Drawing.Point(700, 40)
-            lbFunctions.Location = point
+            Me.lbFunctions.Location = New Global.System.Drawing.Point(700, 40)
             Me.lbFunctions.Name = "lbFunctions"
-            Dim lbFunctions2 As Global.System.Windows.Forms.Control = Me.lbFunctions
-            size = New Global.System.Drawing.Size(208, 82)
-            lbFunctions2.Size = size
+            Me.lbFunctions.Size = New Global.System.Drawing.Size(208, 82)
             Me.lbFunctions.TabIndex = 6
             Me.tbFuncNameFilter.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Right
-            Dim tbFuncNameFilter As Global.System.Windows.Forms.Control = Me.tbFuncNameFilter
-            point = New Global.System.Drawing.Point(700, 16)
-            tbFuncNameFilter.Location = point
+            Me.tbFuncNameFilter.Location = New Global.System.Drawing.Point(700, 16)
             Me.tbFuncNameFilter.Name = "tbFuncNameFilter"
-            Dim tbFuncNameFilter2 As Global.System.Windows.Forms.Control = Me.tbFuncNameFilter
-            size = New Global.System.Drawing.Size(208, 20)
-            tbFuncNameFilter2.Size = size
+            Me.tbFuncNameFilter.Size = New Global.System.Drawing.Size(208, 20)
             Me.tbFuncNameFilter.TabIndex = 7
             Me.tbFuncNameFilter.Text = ""
             Me.tbFuncDecl.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left Or Global.System.Windows.Forms.AnchorStyles.Right
-            Dim tbFuncDecl As Global.System.Windows.Forms.Control = Me.tbFuncDecl
-            point = New Global.System.Drawing.Point(8, 1)
-            tbFuncDecl.Location = point
+            Me.tbFuncDecl.Location = New Global.System.Drawing.Point(8, 1)
             Me.tbFuncDecl.Multiline = True
             Me.tbFuncDecl.Name = "tbFuncDecl"
             Me.tbFuncDecl.ScrollBars = Global.System.Windows.Forms.ScrollBars.Vertical
-            Dim tbFuncDecl2 As Global.System.Windows.Forms.Control = Me.tbFuncDecl
-            size = New Global.System.Drawing.Size(680, 120)
-            tbFuncDecl2.Size = size
+            Me.tbFuncDecl.Size = New Global.System.Drawing.Size(680, 120)
             Me.tbFuncDecl.TabIndex = 8
             Me.tbFuncDecl.Text = ""
             Me.pnlFunctions.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left Or Global.System.Windows.Forms.AnchorStyles.Right
@@ -212,56 +254,82 @@
             Me.pnlFunctions.Controls.Add(Me.lbFunctions)
             Me.pnlFunctions.Controls.Add(Me.Label1)
             Me.pnlFunctions.Controls.Add(Me.lblMatches)
-            Dim pnlFunctions As Global.System.Windows.Forms.Control = Me.pnlFunctions
-            point = New Global.System.Drawing.Point(8, 472)
-            pnlFunctions.Location = point
+            Me.pnlFunctions.Location = New Global.System.Drawing.Point(8, 472)
             Me.pnlFunctions.Name = "pnlFunctions"
-            Dim pnlFunctions2 As Global.System.Windows.Forms.Control = Me.pnlFunctions
-            size = New Global.System.Drawing.Size(912, 136)
-            pnlFunctions2.Size = size
+            Me.pnlFunctions.Size = New Global.System.Drawing.Size(912, 136)
             Me.pnlFunctions.TabIndex = 10
             Me.pnlFunctions.Visible = False
             Me.Label1.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Right
-            Dim label As Global.System.Windows.Forms.Control = Me.Label1
-            point = New Global.System.Drawing.Point(700, 0)
-            label.Location = point
+            Me.Label1.Location = New Global.System.Drawing.Point(700, 0)
             Me.Label1.Name = "Label1"
-            Dim label2 As Global.System.Windows.Forms.Control = Me.Label1
-            size = New Global.System.Drawing.Size(76, 16)
-            label2.Size = size
+            Me.Label1.Size = New Global.System.Drawing.Size(76, 16)
             Me.Label1.TabIndex = 9
             Me.Label1.Text = "Function filter"
             Me.lblMatches.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Right
             Me.lblMatches.ForeColor = Global.System.Drawing.SystemColors.Highlight
-            Dim lblMatches As Global.System.Windows.Forms.Control = Me.lblMatches
-            point = New Global.System.Drawing.Point(824, 0)
-            lblMatches.Location = point
+            Me.lblMatches.Location = New Global.System.Drawing.Point(824, 0)
             Me.lblMatches.Name = "lblMatches"
-            Dim lblMatches2 As Global.System.Windows.Forms.Control = Me.lblMatches
-            size = New Global.System.Drawing.Size(76, 16)
-            lblMatches2.Size = size
+            Me.lblMatches.Size = New Global.System.Drawing.Size(76, 16)
             Me.lblMatches.TabIndex = 9
             Me.lblMatches.Text = "Matches: "
             Me.cmText.MenuItems.AddRange(New Global.System.Windows.Forms.MenuItem() {Me.cmiShowDefinition})
             Me.cmiShowDefinition.Index = 0
             Me.cmiShowDefinition.Text = "Show Definition..."
-            size = New Global.System.Drawing.Size(5, 13)
-            Me.AutoScaleBaseSize = size
-            size = New Global.System.Drawing.Size(936, 601)
-            Me.ClientSize = size
+            Me.AutoScaleBaseSize = New Global.System.Drawing.Size(5, 13)
+            Me.ClientSize = New Global.System.Drawing.Size(936, 601)
             Me.Controls.Add(Me.tbGeneric)
             Me.Controls.Add(Me.pnlFunctions)
-            Me.Icon = CType(resourceManager.GetObject("$this.Icon"), Global.System.Drawing.Icon)
+            Me.Icon = CType(resources.GetObject("$this.Icon"), Global.System.Drawing.Icon)
             Me.Menu = Me.MainMenu1
             Me.Name = "frmTextEditor"
             Me.SizeGripStyle = Global.System.Windows.Forms.SizeGripStyle.Show
             Me.StartPosition = Global.System.Windows.Forms.FormStartPosition.CenterParent
             Me.Text = "Text Editor"
             Me.pnlFunctions.ResumeLayout(False)
+
+            ' -------------------------------------------------------------
+            ' Event bindings restored from decompiled synchronized
+            ' AccessedThroughProperty wrappers.
+            ' -------------------------------------------------------------
+            AddHandler Me.tbGeneric.MouseDown, AddressOf Me.tbGeneric_MouseDown
+            AddHandler Me.tbGeneric.LostFocus, AddressOf Me.tbGeneric_LostFocus
+            AddHandler Me.tbGeneric.GotFocus, AddressOf Me.tbGeneric_GotFocus
+            AddHandler Me.tbGeneric.MouseMove, AddressOf Me.tbGeneric_MouseMove
+            AddHandler Me.miFind.Click, AddressOf Me.miFind_Click
+            AddHandler Me.miFindAgain.Click, AddressOf Me.miFindAgain_Click
+            AddHandler Me.miUndo.Click, AddressOf Me.miUndo_Click
+            AddHandler Me.miRedo.Click, AddressOf Me.miRedo_Click
+            AddHandler Me.miCut.Click, AddressOf Me.miCut_Click
+            AddHandler Me.miCopy.Click, AddressOf Me.miCopy_Click
+            AddHandler Me.miPaste.Click, AddressOf Me.miPaste_Click
+            AddHandler Me.miSelectAll.Click, AddressOf Me.miSelectAll_Click
+            AddHandler Me.miSaveAs.Click, AddressOf Me.miSaveAs_Click
+            AddHandler Me.miQuit.Click, AddressOf Me.miQuit_Click
+            AddHandler Me.miOpen.Click, AddressOf Me.miOpen_Click
+            AddHandler Me.miPrint.Click, AddressOf Me.miPrint_Click
+            AddHandler Me.miPageSetup.Click, AddressOf Me.miPageSetup_Click
+            AddHandler Me.miFont.Click, AddressOf Me.miFont_Click
+            AddHandler Me.miWordWrap.Click, AddressOf Me.miWordWrap_Click
+            AddHandler Me.miPlaceablesList.Click, AddressOf Me.miPlaceablesList_Click
+            AddHandler Me.miEncountersList.Click, AddressOf Me.miEncountersList_Click
+            AddHandler Me.miWaypointsList.Click, AddressOf Me.miWaypointsList_Click
+            AddHandler Me.miSoundsList.Click, AddressOf Me.miSoundsList_Click
+            AddHandler Me.miTriggersList.Click, AddressOf Me.miTriggersList_Click
+            AddHandler Me.miDoorsList.Click, AddressOf Me.miDoorsList_Click
+            AddHandler Me.miCameras.Click, AddressOf Me.miCameras_Click
+            AddHandler Me.miCreatureList.Click, AddressOf Me.miCreatureList_Click
+            AddHandler Me.miMerchantList.Click, AddressOf Me.miMerchantList_Click
+            AddHandler Me.miSave.Click, AddressOf Me.miSave_Click
+            AddHandler Me.miScriptIsK1.Click, AddressOf Me.miScriptIsK1_Click
+            AddHandler Me.miScriptIsK2.Click, AddressOf Me.miScriptIsK2_Click
+            AddHandler Me.miCompile.Click, AddressOf Me.miCompile_Click
+            AddHandler Me.lbFunctions.SelectedIndexChanged, AddressOf Me.lbFunctions_SelectedIndexChanged
+            AddHandler Me.lbFunctions.DoubleClick, AddressOf Me.lbFunctions_DoubleClick
+            AddHandler Me.lbFunctions.Click, AddressOf Me.lbFunctions_Click
+            AddHandler Me.tbFuncNameFilter.TextChanged, AddressOf Me.tbFuncNameFilter_TextChanged
+            AddHandler Me.cmiShowDefinition.Click, AddressOf Me.cmiShowDefinition_Click
             Me.ResumeLayout(False)
         End Sub
 
-		' Token: 0x04000805 RID: 2053
-		Private components As Global.System.ComponentModel.IContainer
-	End Class
+    End Class
 End Namespace

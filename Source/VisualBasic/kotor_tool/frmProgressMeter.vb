@@ -1,4 +1,4 @@
-﻿Imports System
+Imports System
 Imports System.ComponentModel
 Imports System.Diagnostics
 Imports System.Drawing
@@ -14,57 +14,6 @@ Namespace kotor_tool
 		Public Sub New()
 			Me.InitializeComponent()
 		End Sub
-
-		' Token: 0x1700048B RID: 1163
-		' (get) Token: 0x06000D1B RID: 3355 RVA: 0x002858F4 File Offset: 0x002848F4
-		' (set) Token: 0x06000D1C RID: 3356 RVA: 0x002858D8 File Offset: 0x002848D8
-		Friend Overridable Property pbar As ProgressBar
-			Get
-				Return Me._pbar
-			End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-               Set(ByVal value As ProgressBar)
-                If Me._pbar IsNot Nothing Then
-                End If
-                Me._pbar = value
-                If Me._pbar IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x1700048C RID: 1164
-        ' (get) Token: 0x06000D1E RID: 3358 RVA: 0x00285924 File Offset: 0x00284924
-        ' (set) Token: 0x06000D1D RID: 3357 RVA: 0x00285908 File Offset: 0x00284908
-        Friend Overridable Property lblStatus() As Label
-            Get
-                Return Me._lblStatus
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-               Set(ByVal value As Label)
-                If Me._lblStatus IsNot Nothing Then
-                End If
-                Me._lblStatus = value
-                If Me._lblStatus IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
-        ' Token: 0x1700048D RID: 1165
-        ' (get) Token: 0x06000D20 RID: 3360 RVA: 0x00285954 File Offset: 0x00284954
-        ' (set) Token: 0x06000D1F RID: 3359 RVA: 0x00285938 File Offset: 0x00284938
-        Friend Overridable Property lblMsg() As Label
-            Get
-                Return Me._lblMsg
-            End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-               Set(ByVal value As Label)
-                If Me._lblMsg IsNot Nothing Then
-                End If
-                Me._lblMsg = value
-                If Me._lblMsg IsNot Nothing Then
-                End If
-            End Set
-        End Property
 
         ' Token: 0x1700048E RID: 1166
         ' (set) Token: 0x06000D22 RID: 3362 RVA: 0x00285B20 File Offset: 0x00284B20
@@ -113,17 +62,5 @@ Namespace kotor_tool
             Me.pbar.PerformStep()
             Application.DoEvents()
         End Sub
-
-        ' Token: 0x0400067E RID: 1662
-        <AccessedThroughProperty("pbar")> _
-        Private _pbar As ProgressBar
-
-        ' Token: 0x0400067F RID: 1663
-        <AccessedThroughProperty("lblStatus")> _
-        Private _lblStatus As Label
-
-        ' Token: 0x04000680 RID: 1664
-        <AccessedThroughProperty("lblMsg")> _
-        Private _lblMsg As Label
     End Class
 End Namespace

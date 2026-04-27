@@ -1,7 +1,19 @@
-﻿Namespace kotor_tool
+Namespace kotor_tool
 	' Token: 0x02000071 RID: 113
 	Public Partial Class frmRefSearchResults
 		Inherits Global.kotor_tool.frmParent
+
+        ' -----------------------------------------------------------------
+        ' Designer fields restored from decompiled
+        ' AccessedThroughProperty wrappers.
+        ' Kept before InitializeComponent for VS2010 CodeDom safety.
+        ' -----------------------------------------------------------------
+        Private components As Global.System.ComponentModel.IContainer
+        Friend WithEvents lbMatches As Global.System.Windows.Forms.ListBox
+        Friend WithEvents Button1 As Global.System.Windows.Forms.Button
+        Friend WithEvents lblNoMatchesFound As Global.System.Windows.Forms.Label
+        Friend WithEvents lblDesc As Global.System.Windows.Forms.Label
+
 
 		' Token: 0x06000EA2 RID: 3746 RVA: 0x0028FC6C File Offset: 0x0028EC6C
 		Protected Overrides Sub Dispose(disposing As Boolean)
@@ -20,64 +32,51 @@
             Me.lblNoMatchesFound = New Global.System.Windows.Forms.Label()
             Me.SuspendLayout()
             Me.lbMatches.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left Or Global.System.Windows.Forms.AnchorStyles.Right
-            Dim lbMatches As Global.System.Windows.Forms.Control = Me.lbMatches
-            Dim point As Global.System.Drawing.Point = New Global.System.Drawing.Point(24, 56)
-            lbMatches.Location = point
+            Me.lbMatches.Location = New Global.System.Drawing.Point(24, 56)
             Me.lbMatches.Name = "lbMatches"
             Me.lbMatches.ScrollAlwaysVisible = True
-            Dim lbMatches2 As Global.System.Windows.Forms.Control = Me.lbMatches
-            Dim size As Global.System.Drawing.Size = New Global.System.Drawing.Size(208, 186)
-            lbMatches2.Size = size
+            Me.lbMatches.Size = New Global.System.Drawing.Size(208, 186)
             Me.lbMatches.TabIndex = 0
             Me.Button1.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom
-            Dim button As Global.System.Windows.Forms.Control = Me.Button1
-            point = New Global.System.Drawing.Point(95, 288)
-            button.Location = point
+            Me.Button1.Location = New Global.System.Drawing.Point(95, 288)
             Me.Button1.Name = "Button1"
-            Dim button2 As Global.System.Windows.Forms.Control = Me.Button1
-            size = New Global.System.Drawing.Size(67, 23)
-            button2.Size = size
+            Me.Button1.Size = New Global.System.Drawing.Size(67, 23)
             Me.Button1.TabIndex = 1
             Me.Button1.Text = "OK"
-            Dim lblDesc As Global.System.Windows.Forms.Control = Me.lblDesc
-            point = New Global.System.Drawing.Point(24, 8)
-            lblDesc.Location = point
+            Me.lblDesc.Location = New Global.System.Drawing.Point(24, 8)
             Me.lblDesc.Name = "lblDesc"
-            Dim lblDesc2 As Global.System.Windows.Forms.Control = Me.lblDesc
-            size = New Global.System.Drawing.Size(240, 32)
-            lblDesc2.Size = size
+            Me.lblDesc.Size = New Global.System.Drawing.Size(240, 32)
             Me.lblDesc.TabIndex = 2
             Me.lblDesc.Text = "Double click an item in the list to launch the viewer or editor for it"
             Me.lblNoMatchesFound.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom
             Me.lblNoMatchesFound.Font = New Global.System.Drawing.Font("Microsoft Sans Serif", 14.25F, Global.System.Drawing.FontStyle.Regular, Global.System.Drawing.GraphicsUnit.Point, 0)
-            Dim lblNoMatchesFound As Global.System.Windows.Forms.Control = Me.lblNoMatchesFound
-            point = New Global.System.Drawing.Point(32, 208)
-            lblNoMatchesFound.Location = point
+            Me.lblNoMatchesFound.Location = New Global.System.Drawing.Point(32, 208)
             Me.lblNoMatchesFound.Name = "lblNoMatchesFound"
-            Dim lblNoMatchesFound2 As Global.System.Windows.Forms.Control = Me.lblNoMatchesFound
-            size = New Global.System.Drawing.Size(192, 32)
-            lblNoMatchesFound2.Size = size
+            Me.lblNoMatchesFound.Size = New Global.System.Drawing.Size(192, 32)
             Me.lblNoMatchesFound.TabIndex = 3
             Me.lblNoMatchesFound.Text = "No Matches Found"
             Me.lblNoMatchesFound.TextAlign = Global.System.Drawing.ContentAlignment.MiddleCenter
             Me.lblNoMatchesFound.Visible = False
-            size = New Global.System.Drawing.Size(5, 13)
-            Me.AutoScaleBaseSize = size
-            size = New Global.System.Drawing.Size(256, 333)
-            Me.ClientSize = size
+            Me.AutoScaleBaseSize = New Global.System.Drawing.Size(5, 13)
+            Me.ClientSize = New Global.System.Drawing.Size(256, 333)
             Me.Controls.Add(Me.lblDesc)
             Me.Controls.Add(Me.Button1)
             Me.Controls.Add(Me.lbMatches)
             Me.Controls.Add(Me.lblNoMatchesFound)
-            size = New Global.System.Drawing.Size(264, 216)
-            Me.MinimumSize = size
+            Me.MinimumSize = New Global.System.Drawing.Size(264, 216)
             Me.Name = "frmRefSearchResults"
             Me.StartPosition = Global.System.Windows.Forms.FormStartPosition.CenterParent
             Me.Text = "Search Results"
+
+            ' -------------------------------------------------------------
+            ' Event bindings restored from decompiled synchronized
+            ' AccessedThroughProperty wrappers.
+            ' -------------------------------------------------------------
+            AddHandler Me.lbMatches.DoubleClick, AddressOf Me.lbMatches_DoubleClick
+            AddHandler Me.lbMatches.SelectedIndexChanged, AddressOf Me.lbMatches_SelectedIndexChanged
+            AddHandler Me.Button1.Click, AddressOf Me.Button1_Click
             Me.ResumeLayout(False)
         End Sub
 
-		' Token: 0x04000722 RID: 1826
-		Private components As Global.System.ComponentModel.IContainer
 	End Class
 End Namespace

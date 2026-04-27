@@ -1,7 +1,134 @@
-﻿Namespace kotor_tool
+Namespace kotor_tool
 	' Token: 0x0200005C RID: 92
 	Public Partial Class frmModule_Editor
 		Inherits Global.kotor_tool.frmParent
+
+        ' -----------------------------------------------------------------
+        ' Designer fields restored from decompiled
+        ' AccessedThroughProperty wrappers.
+        ' Kept before InitializeComponent for VS2010 CodeDom safety.
+        ' -----------------------------------------------------------------
+        Private components As Global.System.ComponentModel.IContainer
+        Friend WithEvents Panel1 As Global.System.Windows.Forms.Panel
+        Friend WithEvents pbox As Global.System.Windows.Forms.PictureBox
+        Friend WithEvents nudXmul As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents nudYmul As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents nudXoff As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents nudYoff As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents btnTest As Global.System.Windows.Forms.Button
+        Friend WithEvents btnClean As Global.System.Windows.Forms.Button
+        Friend WithEvents tvModule As Global.System.Windows.Forms.TreeView
+        Friend WithEvents tvPalette As Global.System.Windows.Forms.TreeView
+        Friend WithEvents tvModuleContextMenuItem As Global.System.Windows.Forms.ContextMenu
+        Friend WithEvents cmiTvModuleItemProperties As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents btnPalDoor As Global.System.Windows.Forms.Button
+        Friend WithEvents btnPalCreature As Global.System.Windows.Forms.Button
+        Friend WithEvents btnPalEncounter As Global.System.Windows.Forms.Button
+        Friend WithEvents btnPalItem As Global.System.Windows.Forms.Button
+        Friend WithEvents btnPalMerchant As Global.System.Windows.Forms.Button
+        Friend WithEvents btnPalPlaceable As Global.System.Windows.Forms.Button
+        Friend WithEvents btnPalWaypoint As Global.System.Windows.Forms.Button
+        Friend WithEvents btnPalSound As Global.System.Windows.Forms.Button
+        Friend WithEvents btnPalTrigger As Global.System.Windows.Forms.Button
+        Friend WithEvents chkbShowResRefs As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents ToolTip1 As Global.System.Windows.Forms.ToolTip
+        Friend WithEvents btnLogFactors As Global.System.Windows.Forms.Button
+        Friend WithEvents ImageList1 As Global.System.Windows.Forms.ImageList
+        Friend WithEvents pnlPalette As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlModElements As Global.System.Windows.Forms.Panel
+        Friend WithEvents MainMenu1 As Global.System.Windows.Forms.MainMenu
+        Friend WithEvents MenuItem1 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miSave As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem3 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miClose As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miShowHideModuleElements As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miShowHidePalette As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem6 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miShowModulePaths As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents btnDebug As Global.System.Windows.Forms.Button
+        Friend WithEvents MenuItem4 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miOptions As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tvUserPalette As Global.System.Windows.Forms.TreeView
+        Friend WithEvents TabPage1 As Global.System.Windows.Forms.TabPage
+        Friend WithEvents chkbShowNames As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents miRemoveFromOverride As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miCopyToOverride As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miCleanOverride As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem9 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents cmiTvModuleItemEdit As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents cmiTvModuleItemDelete As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents Label5 As Global.System.Windows.Forms.Label
+        Friend WithEvents tbHelp As Global.System.Windows.Forms.TextBox
+        Friend WithEvents tabpagUserPalette As Global.System.Windows.Forms.TabPage
+        Friend WithEvents tabctrlPalette As Global.System.Windows.Forms.TabControl
+        Friend WithEvents MenuItem7 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miOpenProject As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents tabpagModuleElements As Global.System.Windows.Forms.TabPage
+        Friend WithEvents tabpagScripts As Global.System.Windows.Forms.TabPage
+        Friend WithEvents tabctrlModule As Global.System.Windows.Forms.TabControl
+        Friend WithEvents mnuView As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miExploreModuleFolder As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miBuildModFile As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents chkbUseFactors As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents MenuItem5 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem2 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miModuleProperties As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miShowGitDump As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miShowAreDump As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miShowIfoDump As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents sbar As Global.System.Windows.Forms.StatusBar
+        Friend WithEvents sbarpnlLocX As Global.System.Windows.Forms.StatusBarPanel
+        Friend WithEvents sbarpnlLocY As Global.System.Windows.Forms.StatusBarPanel
+        Friend WithEvents sbarpnlDesc As Global.System.Windows.Forms.StatusBarPanel
+        Friend WithEvents sbarpnlAddlInfo As Global.System.Windows.Forms.StatusBarPanel
+        Friend WithEvents sbarpnlStatus As Global.System.Windows.Forms.StatusBarPanel
+        Friend WithEvents ToolBarModElementsFilter As Global.System.Windows.Forms.ToolBar
+        Friend WithEvents tbarbtnCreature As Global.System.Windows.Forms.ToolBarButton
+        Friend WithEvents tbarbtnDoor As Global.System.Windows.Forms.ToolBarButton
+        Friend WithEvents tbarbtnEncounter As Global.System.Windows.Forms.ToolBarButton
+        Friend WithEvents tbarbtnMerchant As Global.System.Windows.Forms.ToolBarButton
+        Friend WithEvents tbarbtnPlaceable As Global.System.Windows.Forms.ToolBarButton
+        Friend WithEvents tbarbtnSound As Global.System.Windows.Forms.ToolBarButton
+        Friend WithEvents tbarbtnTrigger As Global.System.Windows.Forms.ToolBarButton
+        Friend WithEvents tbarbtnWaypoint As Global.System.Windows.Forms.ToolBarButton
+        Friend WithEvents ilModElementsFilter As Global.System.Windows.Forms.ImageList
+        Friend WithEvents miUseLargeMap As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miUseSmallMap As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem11 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miShowItemLabels As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents cmPbox As Global.System.Windows.Forms.ContextMenu
+        Friend WithEvents cmiModuleProperties As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents cmiCreateCameraHere As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents cmiSetModuleStartPoint As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents MenuItem13 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents chkbShowTags As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents btnTweakUp As RepeatButton
+        Friend WithEvents btnTweakLeft As RepeatButton
+        Friend WithEvents btnTweakRight As RepeatButton
+        Friend WithEvents btnTweakDown As RepeatButton
+        Friend WithEvents cmMapSurfaceItems As Global.System.Windows.Forms.ContextMenu
+        Friend WithEvents cmiProperties As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents cmiDelete As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents cmiEditGFFFile As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents cmiAddNewSpawnPoint As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miShowModuleEntryPoint As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents lbScripts As Global.System.Windows.Forms.ListBox
+        Friend WithEvents tabpagDialogs As Global.System.Windows.Forms.TabPage
+        Friend WithEvents lbDialogs As Global.System.Windows.Forms.ListBox
+        Friend WithEvents tbMouseX As Global.System.Windows.Forms.TextBox
+        Friend WithEvents tbMouseY As Global.System.Windows.Forms.TextBox
+        Friend WithEvents chkbFine As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents btnAssignPt1 As Global.System.Windows.Forms.Button
+        Friend WithEvents tb3dsMaxPt1X As Global.System.Windows.Forms.TextBox
+        Friend WithEvents tb3dsMaxPt1Y As Global.System.Windows.Forms.TextBox
+        Friend WithEvents tb3dsMaxPt2Y As Global.System.Windows.Forms.TextBox
+        Friend WithEvents tb3dsMaxPt2X As Global.System.Windows.Forms.TextBox
+        Friend WithEvents btnAssignPt2 As Global.System.Windows.Forms.Button
+        Friend WithEvents btnCalcCalibrationVals As Global.System.Windows.Forms.Button
+        Friend WithEvents btnCalToolsToggle As Global.System.Windows.Forms.Button
+        Friend WithEvents miFont As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miUseAltSmallMap As Global.System.Windows.Forms.MenuItem
+
 
 		' Token: 0x060007A3 RID: 1955 RVA: 0x0025A3F0 File Offset: 0x002593F0
 		Protected Overrides Sub Dispose(disposing As Boolean)
@@ -15,7 +142,7 @@
         <Global.System.Diagnostics.DebuggerStepThrough()> _
   Private Sub InitializeComponent()
             Me.components = New Global.System.ComponentModel.Container()
-            Dim resourceManager As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager(GetType(Global.kotor_tool.frmModule_Editor))
+            Dim resources As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager(GetType(Global.kotor_tool.frmModule_Editor))
             Me.Panel1 = New Global.System.Windows.Forms.Panel()
             Me.pbox = New Global.System.Windows.Forms.PictureBox()
             Me.nudXmul = New Global.System.Windows.Forms.NumericUpDown()
@@ -25,7 +152,7 @@
             Me.btnTest = New Global.System.Windows.Forms.Button()
             Me.btnClean = New Global.System.Windows.Forms.Button()
             Me.tvModule = New Global.System.Windows.Forms.TreeView()
-            Me.ImageList1 = New Global.System.Windows.Forms.ImageList(Me.components)
+            Me.ImageList1 = New Global.System.Windows.Forms.ImageList()
             Me.tvPalette = New Global.System.Windows.Forms.TreeView()
             Me.tvModuleContextMenuItem = New Global.System.Windows.Forms.ContextMenu()
             Me.cmiTvModuleItemDelete = New Global.System.Windows.Forms.MenuItem()
@@ -41,7 +168,7 @@
             Me.btnPalSound = New Global.System.Windows.Forms.Button()
             Me.btnPalTrigger = New Global.System.Windows.Forms.Button()
             Me.chkbShowResRefs = New Global.System.Windows.Forms.CheckBox()
-            Me.ToolTip1 = New Global.System.Windows.Forms.ToolTip(Me.components)
+            Me.ToolTip1 = New Global.System.Windows.Forms.ToolTip()
             Me.btnLogFactors = New Global.System.Windows.Forms.Button()
             Me.pnlPalette = New Global.System.Windows.Forms.Panel()
             Me.Label5 = New Global.System.Windows.Forms.Label()
@@ -62,7 +189,7 @@
             Me.tbarbtnSound = New Global.System.Windows.Forms.ToolBarButton()
             Me.tbarbtnTrigger = New Global.System.Windows.Forms.ToolBarButton()
             Me.tbarbtnWaypoint = New Global.System.Windows.Forms.ToolBarButton()
-            Me.ilModElementsFilter = New Global.System.Windows.Forms.ImageList(Me.components)
+            Me.ilModElementsFilter = New Global.System.Windows.Forms.ImageList()
             Me.tabctrlModule = New Global.System.Windows.Forms.TabControl()
             Me.tabpagModuleElements = New Global.System.Windows.Forms.TabPage()
             Me.tabpagScripts = New Global.System.Windows.Forms.TabPage()
@@ -161,120 +288,68 @@
             Me.Panel1.BorderStyle = Global.System.Windows.Forms.BorderStyle.FixedSingle
             Me.Panel1.Controls.Add(Me.pbox)
             Me.Panel1.Enabled = False
-            Dim panel As Global.System.Windows.Forms.Control = Me.Panel1
-            Dim point As Global.System.Drawing.Point = New Global.System.Drawing.Point(200, 8)
-            panel.Location = point
+            Me.Panel1.Location = New Global.System.Drawing.Point(200, 8)
             Me.Panel1.Name = "Panel1"
-            Dim panel2 As Global.System.Windows.Forms.Control = Me.Panel1
-            Dim size As Global.System.Drawing.Size = New Global.System.Drawing.Size(424, 424)
-            panel2.Size = size
+            Me.Panel1.Size = New Global.System.Drawing.Size(424, 424)
             Me.Panel1.TabIndex = 5
             Me.pbox.BorderStyle = Global.System.Windows.Forms.BorderStyle.FixedSingle
-            Dim pbox As Global.System.Windows.Forms.Control = Me.pbox
-            point = New Global.System.Drawing.Point(0, 0)
-            pbox.Location = point
+            Me.pbox.Location = New Global.System.Drawing.Point(0, 0)
             Me.pbox.Name = "pbox"
-            Dim pbox2 As Global.System.Windows.Forms.Control = Me.pbox
-            size = New Global.System.Drawing.Size(96, 80)
-            pbox2.Size = size
+            Me.pbox.Size = New Global.System.Drawing.Size(96, 80)
             Me.pbox.SizeMode = Global.System.Windows.Forms.PictureBoxSizeMode.CenterImage
             Me.pbox.TabIndex = 0
             Me.pbox.TabStop = False
             Me.pbox.Visible = False
             Me.nudXmul.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Right
             Me.nudXmul.DecimalPlaces = 2
-            Dim nudXmul As Global.System.Windows.Forms.NumericUpDown = Me.nudXmul
-            Dim num As Decimal = New Decimal(New Integer() {1, 0, 0, 131072})
-            nudXmul.Increment = num
-            Dim nudXmul2 As Global.System.Windows.Forms.Control = Me.nudXmul
-            point = New Global.System.Drawing.Point(8, 354)
-            nudXmul2.Location = point
-            Dim nudXmul3 As Global.System.Windows.Forms.NumericUpDown = Me.nudXmul
-            num = New Decimal(New Integer() {1, 0, 0, 262144})
-            nudXmul3.Minimum = num
+            Me.nudXmul.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+            Me.nudXmul.Location = New Global.System.Drawing.Point(8, 354)
+            Me.nudXmul.Minimum = New Decimal(New Integer() {1, 0, 0, 262144})
             Me.nudXmul.Name = "nudXmul"
-            Dim nudXmul4 As Global.System.Windows.Forms.Control = Me.nudXmul
-            size = New Global.System.Drawing.Size(64, 20)
-            nudXmul4.Size = size
+            Me.nudXmul.Size = New Global.System.Drawing.Size(64, 20)
             Me.nudXmul.TabIndex = 0
             Me.nudXmul.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Dim nudXmul5 As Global.System.Windows.Forms.NumericUpDown = Me.nudXmul
-            num = New Decimal(New Integer() {125, 0, 0, 65536})
-            nudXmul5.Value = num
+            Me.nudXmul.Value = New Decimal(New Integer() {125, 0, 0, 65536})
             Me.nudXmul.Visible = False
             Me.nudYmul.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Right
             Me.nudYmul.DecimalPlaces = 2
-            Dim nudYmul As Global.System.Windows.Forms.NumericUpDown = Me.nudYmul
-            num = New Decimal(New Integer() {1, 0, 0, 131072})
-            nudYmul.Increment = num
-            Dim nudYmul2 As Global.System.Windows.Forms.Control = Me.nudYmul
-            point = New Global.System.Drawing.Point(85, 354)
-            nudYmul2.Location = point
-            Dim nudYmul3 As Global.System.Windows.Forms.NumericUpDown = Me.nudYmul
-            num = New Decimal(New Integer() {1, 0, 0, 262144})
-            nudYmul3.Minimum = num
+            Me.nudYmul.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+            Me.nudYmul.Location = New Global.System.Drawing.Point(85, 354)
+            Me.nudYmul.Minimum = New Decimal(New Integer() {1, 0, 0, 262144})
             Me.nudYmul.Name = "nudYmul"
-            Dim nudYmul4 As Global.System.Windows.Forms.Control = Me.nudYmul
-            size = New Global.System.Drawing.Size(64, 20)
-            nudYmul4.Size = size
+            Me.nudYmul.Size = New Global.System.Drawing.Size(64, 20)
             Me.nudYmul.TabIndex = 1
             Me.nudYmul.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Dim nudYmul5 As Global.System.Windows.Forms.NumericUpDown = Me.nudYmul
-            num = New Decimal(New Integer() {125, 0, 0, 65536})
-            nudYmul5.Value = num
+            Me.nudYmul.Value = New Decimal(New Integer() {125, 0, 0, 65536})
             Me.nudYmul.Visible = False
             Me.nudXoff.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Right
-            Dim nudXoff As Global.System.Windows.Forms.Control = Me.nudXoff
-            point = New Global.System.Drawing.Point(8, 376)
-            nudXoff.Location = point
-            Dim nudXoff2 As Global.System.Windows.Forms.NumericUpDown = Me.nudXoff
-            num = New Decimal(New Integer() {20000, 0, 0, 0})
-            nudXoff2.Maximum = num
-            Dim nudXoff3 As Global.System.Windows.Forms.NumericUpDown = Me.nudXoff
-            num = New Decimal(New Integer() {20000, 0, 0, Integer.MinValue})
-            nudXoff3.Minimum = num
+            Me.nudXoff.Location = New Global.System.Drawing.Point(8, 376)
+            Me.nudXoff.Maximum = New Decimal(New Integer() {20000, 0, 0, 0})
+            Me.nudXoff.Minimum = New Decimal(New Integer() {20000, 0, 0, Integer.MinValue})
             Me.nudXoff.Name = "nudXoff"
-            Dim nudXoff4 As Global.System.Windows.Forms.Control = Me.nudXoff
-            size = New Global.System.Drawing.Size(64, 20)
-            nudXoff4.Size = size
+            Me.nudXoff.Size = New Global.System.Drawing.Size(64, 20)
             Me.nudXoff.TabIndex = 2
             Me.nudXoff.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Dim nudXoff5 As Global.System.Windows.Forms.NumericUpDown = Me.nudXoff
-            num = New Decimal(New Integer() {838, 0, 0, 0})
-            nudXoff5.Value = num
+            Me.nudXoff.Value = New Decimal(New Integer() {838, 0, 0, 0})
             Me.nudXoff.Visible = False
             Me.nudYoff.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Right
-            Dim nudYoff As Global.System.Windows.Forms.Control = Me.nudYoff
-            point = New Global.System.Drawing.Point(85, 376)
-            nudYoff.Location = point
-            Dim nudYoff2 As Global.System.Windows.Forms.NumericUpDown = Me.nudYoff
-            num = New Decimal(New Integer() {20000, 0, 0, 0})
-            nudYoff2.Maximum = num
-            Dim nudYoff3 As Global.System.Windows.Forms.NumericUpDown = Me.nudYoff
-            num = New Decimal(New Integer() {20000, 0, 0, Integer.MinValue})
-            nudYoff3.Minimum = num
+            Me.nudYoff.Location = New Global.System.Drawing.Point(85, 376)
+            Me.nudYoff.Maximum = New Decimal(New Integer() {20000, 0, 0, 0})
+            Me.nudYoff.Minimum = New Decimal(New Integer() {20000, 0, 0, Integer.MinValue})
             Me.nudYoff.Name = "nudYoff"
-            Dim nudYoff4 As Global.System.Windows.Forms.Control = Me.nudYoff
-            size = New Global.System.Drawing.Size(64, 20)
-            nudYoff4.Size = size
+            Me.nudYoff.Size = New Global.System.Drawing.Size(64, 20)
             Me.nudYoff.TabIndex = 3
             Me.nudYoff.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Dim nudYoff5 As Global.System.Windows.Forms.NumericUpDown = Me.nudYoff
-            num = New Decimal(New Integer() {846, 0, 0, 0})
-            nudYoff5.Value = num
+            Me.nudYoff.Value = New Decimal(New Integer() {846, 0, 0, 0})
             Me.nudYoff.Visible = False
             Me.btnTest.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Dim btnTest As Global.System.Windows.Forms.Control = Me.btnTest
-            point = New Global.System.Drawing.Point(664, 440)
-            btnTest.Location = point
+            Me.btnTest.Location = New Global.System.Drawing.Point(664, 440)
             Me.btnTest.Name = "btnTest"
             Me.btnTest.TabIndex = 4
             Me.btnTest.Text = "Test"
             Me.btnTest.Visible = False
             Me.btnClean.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Dim btnClean As Global.System.Windows.Forms.Control = Me.btnClean
-            point = New Global.System.Drawing.Point(760, 440)
-            btnClean.Location = point
+            Me.btnClean.Location = New Global.System.Drawing.Point(760, 440)
             Me.btnClean.Name = "btnClean"
             Me.btnClean.TabIndex = 4
             Me.btnClean.Text = "Clean"
@@ -283,29 +358,19 @@
             Me.tvModule.Font = New Global.System.Drawing.Font("Arial", 8.25F, Global.System.Drawing.FontStyle.Regular, Global.System.Drawing.GraphicsUnit.Point, 0)
             Me.tvModule.ImageList = Me.ImageList1
             Me.tvModule.Indent = 19
-            Dim tvModule As Global.System.Windows.Forms.Control = Me.tvModule
-            point = New Global.System.Drawing.Point(0, 0)
-            tvModule.Location = point
+            Me.tvModule.Location = New Global.System.Drawing.Point(0, 0)
             Me.tvModule.Name = "tvModule"
-            Dim tvModule2 As Global.System.Windows.Forms.Control = Me.tvModule
-            size = New Global.System.Drawing.Size(184, 216)
-            tvModule2.Size = size
+            Me.tvModule.Size = New Global.System.Drawing.Size(184, 216)
             Me.tvModule.TabIndex = 8
-            Dim imageList As Global.System.Windows.Forms.ImageList = Me.ImageList1
-            size = New Global.System.Drawing.Size(16, 16)
-            imageList.ImageSize = size
-            Me.ImageList1.ImageStream = CType(resourceManager.GetObject("ImageList1.ImageStream"), Global.System.Windows.Forms.ImageListStreamer)
+            Me.ImageList1.ImageSize = New Global.System.Drawing.Size(16, 16)
+            Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), Global.System.Windows.Forms.ImageListStreamer)
             Me.ImageList1.TransparentColor = Global.System.Drawing.Color.Transparent
             Me.tvPalette.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
             Me.tvPalette.ImageIndex = -1
-            Dim tvPalette As Global.System.Windows.Forms.Control = Me.tvPalette
-            point = New Global.System.Drawing.Point(8, 40)
-            tvPalette.Location = point
+            Me.tvPalette.Location = New Global.System.Drawing.Point(8, 40)
             Me.tvPalette.Name = "tvPalette"
             Me.tvPalette.SelectedImageIndex = -1
-            Dim tvPalette2 As Global.System.Windows.Forms.Control = Me.tvPalette
-            size = New Global.System.Drawing.Size(208, 192)
-            tvPalette2.Size = size
+            Me.tvPalette.Size = New Global.System.Drawing.Size(208, 192)
             Me.tvPalette.TabIndex = 9
             Me.tvModuleContextMenuItem.MenuItems.AddRange(New Global.System.Windows.Forms.MenuItem() {Me.cmiTvModuleItemDelete, Me.cmiTvModuleItemEdit, Me.cmiTvModuleItemProperties})
             Me.cmiTvModuleItemDelete.Index = 0
@@ -314,126 +379,82 @@
             Me.cmiTvModuleItemEdit.Text = "Edit GFF File..."
             Me.cmiTvModuleItemProperties.Index = 2
             Me.cmiTvModuleItemProperties.Text = "Properties in Module..."
-            Me.btnPalDoor.Image = CType(resourceManager.GetObject("btnPalDoor.Image"), Global.System.Drawing.Image)
+            Me.btnPalDoor.Image = CType(resources.GetObject("Me.btnPalDoor.Image"), Global.System.Drawing.Image)
             Me.btnPalDoor.ImageAlign = Global.System.Drawing.ContentAlignment.BottomRight
-            Dim btnPalDoor As Global.System.Windows.Forms.Control = Me.btnPalDoor
-            point = New Global.System.Drawing.Point(34, 8)
-            btnPalDoor.Location = point
+            Me.btnPalDoor.Location = New Global.System.Drawing.Point(34, 8)
             Me.btnPalDoor.Name = "btnPalDoor"
-            Dim btnPalDoor2 As Global.System.Windows.Forms.Control = Me.btnPalDoor
-            size = New Global.System.Drawing.Size(22, 22)
-            btnPalDoor2.Size = size
+            Me.btnPalDoor.Size = New Global.System.Drawing.Size(22, 22)
             Me.btnPalDoor.TabIndex = 10
             Me.ToolTip1.SetToolTip(Me.btnPalDoor, "Doors")
-            Me.btnPalEncounter.Image = CType(resourceManager.GetObject("btnPalEncounter.Image"), Global.System.Drawing.Image)
+            Me.btnPalEncounter.Image = CType(resources.GetObject("Me.btnPalEncounter.Image"), Global.System.Drawing.Image)
             Me.btnPalEncounter.ImageAlign = Global.System.Drawing.ContentAlignment.BottomRight
-            Dim btnPalEncounter As Global.System.Windows.Forms.Control = Me.btnPalEncounter
-            point = New Global.System.Drawing.Point(61, 8)
-            btnPalEncounter.Location = point
+            Me.btnPalEncounter.Location = New Global.System.Drawing.Point(61, 8)
             Me.btnPalEncounter.Name = "btnPalEncounter"
-            Dim btnPalEncounter2 As Global.System.Windows.Forms.Control = Me.btnPalEncounter
-            size = New Global.System.Drawing.Size(22, 22)
-            btnPalEncounter2.Size = size
+            Me.btnPalEncounter.Size = New Global.System.Drawing.Size(22, 22)
             Me.btnPalEncounter.TabIndex = 10
             Me.ToolTip1.SetToolTip(Me.btnPalEncounter, "Encounters")
             Me.btnPalItem.Enabled = False
-            Me.btnPalItem.Image = CType(resourceManager.GetObject("btnPalItem.Image"), Global.System.Drawing.Image)
+            Me.btnPalItem.Image = CType(resources.GetObject("Me.btnPalItem.Image"), Global.System.Drawing.Image)
             Me.btnPalItem.ImageAlign = Global.System.Drawing.ContentAlignment.BottomRight
-            Dim btnPalItem As Global.System.Windows.Forms.Control = Me.btnPalItem
-            point = New Global.System.Drawing.Point(128, 16)
-            btnPalItem.Location = point
+            Me.btnPalItem.Location = New Global.System.Drawing.Point(128, 16)
             Me.btnPalItem.Name = "btnPalItem"
-            Dim btnPalItem2 As Global.System.Windows.Forms.Control = Me.btnPalItem
-            size = New Global.System.Drawing.Size(22, 22)
-            btnPalItem2.Size = size
+            Me.btnPalItem.Size = New Global.System.Drawing.Size(22, 22)
             Me.btnPalItem.TabIndex = 10
             Me.ToolTip1.SetToolTip(Me.btnPalItem, "Items")
             Me.btnPalItem.Visible = False
             Me.btnPalCreature.BackColor = Global.System.Drawing.SystemColors.Control
-            Me.btnPalCreature.Image = CType(resourceManager.GetObject("btnPalCreature.Image"), Global.System.Drawing.Image)
+            Me.btnPalCreature.Image = CType(resources.GetObject("Me.btnPalCreature.Image"), Global.System.Drawing.Image)
             Me.btnPalCreature.ImageAlign = Global.System.Drawing.ContentAlignment.BottomRight
-            Dim btnPalCreature As Global.System.Windows.Forms.Control = Me.btnPalCreature
-            point = New Global.System.Drawing.Point(7, 8)
-            btnPalCreature.Location = point
+            Me.btnPalCreature.Location = New Global.System.Drawing.Point(7, 8)
             Me.btnPalCreature.Name = "btnPalCreature"
-            Dim btnPalCreature2 As Global.System.Windows.Forms.Control = Me.btnPalCreature
-            size = New Global.System.Drawing.Size(22, 22)
-            btnPalCreature2.Size = size
+            Me.btnPalCreature.Size = New Global.System.Drawing.Size(22, 22)
             Me.btnPalCreature.TabIndex = 10
             Me.ToolTip1.SetToolTip(Me.btnPalCreature, "Creatures")
-            Me.btnPalPlaceable.Image = CType(resourceManager.GetObject("btnPalPlaceable.Image"), Global.System.Drawing.Image)
+            Me.btnPalPlaceable.Image = CType(resources.GetObject("Me.btnPalPlaceable.Image"), Global.System.Drawing.Image)
             Me.btnPalPlaceable.ImageAlign = Global.System.Drawing.ContentAlignment.BottomRight
-            Dim btnPalPlaceable As Global.System.Windows.Forms.Control = Me.btnPalPlaceable
-            point = New Global.System.Drawing.Point(115, 8)
-            btnPalPlaceable.Location = point
+            Me.btnPalPlaceable.Location = New Global.System.Drawing.Point(115, 8)
             Me.btnPalPlaceable.Name = "btnPalPlaceable"
-            Dim btnPalPlaceable2 As Global.System.Windows.Forms.Control = Me.btnPalPlaceable
-            size = New Global.System.Drawing.Size(22, 22)
-            btnPalPlaceable2.Size = size
+            Me.btnPalPlaceable.Size = New Global.System.Drawing.Size(22, 22)
             Me.btnPalPlaceable.TabIndex = 10
             Me.ToolTip1.SetToolTip(Me.btnPalPlaceable, "Placeables")
-            Me.btnPalMerchant.Image = CType(resourceManager.GetObject("btnPalMerchant.Image"), Global.System.Drawing.Image)
+            Me.btnPalMerchant.Image = CType(resources.GetObject("Me.btnPalMerchant.Image"), Global.System.Drawing.Image)
             Me.btnPalMerchant.ImageAlign = Global.System.Drawing.ContentAlignment.BottomRight
-            Dim btnPalMerchant As Global.System.Windows.Forms.Control = Me.btnPalMerchant
-            point = New Global.System.Drawing.Point(88, 8)
-            btnPalMerchant.Location = point
+            Me.btnPalMerchant.Location = New Global.System.Drawing.Point(88, 8)
             Me.btnPalMerchant.Name = "btnPalMerchant"
-            Dim btnPalMerchant2 As Global.System.Windows.Forms.Control = Me.btnPalMerchant
-            size = New Global.System.Drawing.Size(22, 22)
-            btnPalMerchant2.Size = size
+            Me.btnPalMerchant.Size = New Global.System.Drawing.Size(22, 22)
             Me.btnPalMerchant.TabIndex = 10
             Me.ToolTip1.SetToolTip(Me.btnPalMerchant, "Merchants")
-            Me.btnPalWaypoint.Image = CType(resourceManager.GetObject("btnPalWaypoint.Image"), Global.System.Drawing.Image)
+            Me.btnPalWaypoint.Image = CType(resources.GetObject("Me.btnPalWaypoint.Image"), Global.System.Drawing.Image)
             Me.btnPalWaypoint.ImageAlign = Global.System.Drawing.ContentAlignment.BottomRight
-            Dim btnPalWaypoint As Global.System.Windows.Forms.Control = Me.btnPalWaypoint
-            point = New Global.System.Drawing.Point(195, 8)
-            btnPalWaypoint.Location = point
+            Me.btnPalWaypoint.Location = New Global.System.Drawing.Point(195, 8)
             Me.btnPalWaypoint.Name = "btnPalWaypoint"
-            Dim btnPalWaypoint2 As Global.System.Windows.Forms.Control = Me.btnPalWaypoint
-            size = New Global.System.Drawing.Size(22, 22)
-            btnPalWaypoint2.Size = size
+            Me.btnPalWaypoint.Size = New Global.System.Drawing.Size(22, 22)
             Me.btnPalWaypoint.TabIndex = 10
             Me.ToolTip1.SetToolTip(Me.btnPalWaypoint, "Waypoints")
-            Me.btnPalSound.Image = CType(resourceManager.GetObject("btnPalSound.Image"), Global.System.Drawing.Image)
+            Me.btnPalSound.Image = CType(resources.GetObject("Me.btnPalSound.Image"), Global.System.Drawing.Image)
             Me.btnPalSound.ImageAlign = Global.System.Drawing.ContentAlignment.BottomRight
-            Dim btnPalSound As Global.System.Windows.Forms.Control = Me.btnPalSound
-            point = New Global.System.Drawing.Point(141, 8)
-            btnPalSound.Location = point
+            Me.btnPalSound.Location = New Global.System.Drawing.Point(141, 8)
             Me.btnPalSound.Name = "btnPalSound"
-            Dim btnPalSound2 As Global.System.Windows.Forms.Control = Me.btnPalSound
-            size = New Global.System.Drawing.Size(22, 22)
-            btnPalSound2.Size = size
+            Me.btnPalSound.Size = New Global.System.Drawing.Size(22, 22)
             Me.btnPalSound.TabIndex = 10
             Me.ToolTip1.SetToolTip(Me.btnPalSound, "Sounds")
-            Me.btnPalTrigger.Image = CType(resourceManager.GetObject("btnPalTrigger.Image"), Global.System.Drawing.Image)
+            Me.btnPalTrigger.Image = CType(resources.GetObject("Me.btnPalTrigger.Image"), Global.System.Drawing.Image)
             Me.btnPalTrigger.ImageAlign = Global.System.Drawing.ContentAlignment.BottomRight
-            Dim btnPalTrigger As Global.System.Windows.Forms.Control = Me.btnPalTrigger
-            point = New Global.System.Drawing.Point(168, 8)
-            btnPalTrigger.Location = point
+            Me.btnPalTrigger.Location = New Global.System.Drawing.Point(168, 8)
             Me.btnPalTrigger.Name = "btnPalTrigger"
-            Dim btnPalTrigger2 As Global.System.Windows.Forms.Control = Me.btnPalTrigger
-            size = New Global.System.Drawing.Size(22, 22)
-            btnPalTrigger2.Size = size
+            Me.btnPalTrigger.Size = New Global.System.Drawing.Size(22, 22)
             Me.btnPalTrigger.TabIndex = 10
             Me.ToolTip1.SetToolTip(Me.btnPalTrigger, "Triggers")
             Me.chkbShowResRefs.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Dim chkbShowResRefs As Global.System.Windows.Forms.Control = Me.chkbShowResRefs
-            point = New Global.System.Drawing.Point(117, 235)
-            chkbShowResRefs.Location = point
+            Me.chkbShowResRefs.Location = New Global.System.Drawing.Point(117, 235)
             Me.chkbShowResRefs.Name = "chkbShowResRefs"
-            Dim chkbShowResRefs2 As Global.System.Windows.Forms.Control = Me.chkbShowResRefs
-            size = New Global.System.Drawing.Size(98, 24)
-            chkbShowResRefs2.Size = size
+            Me.chkbShowResRefs.Size = New Global.System.Drawing.Size(98, 24)
             Me.chkbShowResRefs.TabIndex = 11
             Me.chkbShowResRefs.Text = "Show ResRefs"
             Me.btnLogFactors.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Right
-            Dim btnLogFactors As Global.System.Windows.Forms.Control = Me.btnLogFactors
-            point = New Global.System.Drawing.Point(154, 376)
-            btnLogFactors.Location = point
+            Me.btnLogFactors.Location = New Global.System.Drawing.Point(154, 376)
             Me.btnLogFactors.Name = "btnLogFactors"
-            Dim btnLogFactors2 As Global.System.Windows.Forms.Control = Me.btnLogFactors
-            size = New Global.System.Drawing.Size(32, 23)
-            btnLogFactors2.Size = size
+            Me.btnLogFactors.Size = New Global.System.Drawing.Size(32, 23)
             Me.btnLogFactors.TabIndex = 4
             Me.btnLogFactors.Text = "Log factors"
             Me.btnLogFactors.Visible = False
@@ -441,47 +462,31 @@
             Me.pnlPalette.Controls.Add(Me.Label5)
             Me.pnlPalette.Controls.Add(Me.tbHelp)
             Me.pnlPalette.Controls.Add(Me.tabctrlPalette)
-            Dim pnlPalette As Global.System.Windows.Forms.Control = Me.pnlPalette
-            point = New Global.System.Drawing.Point(632, 8)
-            pnlPalette.Location = point
+            Me.pnlPalette.Location = New Global.System.Drawing.Point(632, 8)
             Me.pnlPalette.Name = "pnlPalette"
-            Dim pnlPalette2 As Global.System.Windows.Forms.Control = Me.pnlPalette
-            size = New Global.System.Drawing.Size(232, 424)
-            pnlPalette2.Size = size
+            Me.pnlPalette.Size = New Global.System.Drawing.Size(232, 424)
             Me.pnlPalette.TabIndex = 13
             Me.Label5.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Dim label As Global.System.Windows.Forms.Control = Me.Label5
-            point = New Global.System.Drawing.Point(16, 312)
-            label.Location = point
+            Me.Label5.Location = New Global.System.Drawing.Point(16, 312)
             Me.Label5.Name = "Label5"
-            Dim label2 As Global.System.Windows.Forms.Control = Me.Label5
-            size = New Global.System.Drawing.Size(56, 16)
-            label2.Size = size
+            Me.Label5.Size = New Global.System.Drawing.Size(56, 16)
             Me.Label5.TabIndex = 14
             Me.Label5.Text = "Help Info"
             Me.tbHelp.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Dim tbHelp As Global.System.Windows.Forms.Control = Me.tbHelp
-            point = New Global.System.Drawing.Point(8, 328)
-            tbHelp.Location = point
+            Me.tbHelp.Location = New Global.System.Drawing.Point(8, 328)
             Me.tbHelp.Multiline = True
             Me.tbHelp.Name = "tbHelp"
-            Dim tbHelp2 As Global.System.Windows.Forms.Control = Me.tbHelp
-            size = New Global.System.Drawing.Size(208, 88)
-            tbHelp2.Size = size
+            Me.tbHelp.Size = New Global.System.Drawing.Size(208, 88)
             Me.tbHelp.TabIndex = 13
             Me.tbHelp.Text = ""
             Me.tabctrlPalette.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
             Me.tabctrlPalette.Controls.Add(Me.TabPage1)
             Me.tabctrlPalette.Controls.Add(Me.tabpagUserPalette)
             Me.tabctrlPalette.Enabled = False
-            Dim tabctrlPalette As Global.System.Windows.Forms.Control = Me.tabctrlPalette
-            point = New Global.System.Drawing.Point(0, 8)
-            tabctrlPalette.Location = point
+            Me.tabctrlPalette.Location = New Global.System.Drawing.Point(0, 8)
             Me.tabctrlPalette.Name = "tabctrlPalette"
             Me.tabctrlPalette.SelectedIndex = 0
-            Dim tabctrlPalette2 As Global.System.Windows.Forms.Control = Me.tabctrlPalette
-            size = New Global.System.Drawing.Size(228, 288)
-            tabctrlPalette2.Size = size
+            Me.tabctrlPalette.Size = New Global.System.Drawing.Size(228, 288)
             Me.tabctrlPalette.TabIndex = 12
             Me.TabPage1.Controls.Add(Me.btnPalWaypoint)
             Me.TabPage1.Controls.Add(Me.btnPalSound)
@@ -495,60 +500,40 @@
             Me.TabPage1.Controls.Add(Me.chkbShowResRefs)
             Me.TabPage1.Controls.Add(Me.chkbShowNames)
             Me.TabPage1.Controls.Add(Me.btnPalItem)
-            Dim tabPage As Global.System.Windows.Forms.Control = Me.TabPage1
-            point = New Global.System.Drawing.Point(4, 22)
-            tabPage.Location = point
+            Me.TabPage1.Location = New Global.System.Drawing.Point(4, 22)
             Me.TabPage1.Name = "TabPage1"
-            Dim tabPage2 As Global.System.Windows.Forms.Control = Me.TabPage1
-            size = New Global.System.Drawing.Size(220, 262)
-            tabPage2.Size = size
+            Me.TabPage1.Size = New Global.System.Drawing.Size(220, 262)
             Me.TabPage1.TabIndex = 0
             Me.TabPage1.Text = "Standard"
             Me.chkbShowNames.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
             Me.chkbShowNames.Checked = True
             Me.chkbShowNames.CheckState = Global.System.Windows.Forms.CheckState.Checked
-            Dim chkbShowNames As Global.System.Windows.Forms.Control = Me.chkbShowNames
-            point = New Global.System.Drawing.Point(11, 235)
-            chkbShowNames.Location = point
+            Me.chkbShowNames.Location = New Global.System.Drawing.Point(11, 235)
             Me.chkbShowNames.Name = "chkbShowNames"
-            Dim chkbShowNames2 As Global.System.Windows.Forms.Control = Me.chkbShowNames
-            size = New Global.System.Drawing.Size(96, 24)
-            chkbShowNames2.Size = size
+            Me.chkbShowNames.Size = New Global.System.Drawing.Size(96, 24)
             Me.chkbShowNames.TabIndex = 11
             Me.chkbShowNames.Text = "Show Names"
             Me.tabpagUserPalette.Controls.Add(Me.tvUserPalette)
-            Dim tabpagUserPalette As Global.System.Windows.Forms.Control = Me.tabpagUserPalette
-            point = New Global.System.Drawing.Point(4, 22)
-            tabpagUserPalette.Location = point
+            Me.tabpagUserPalette.Location = New Global.System.Drawing.Point(4, 22)
             Me.tabpagUserPalette.Name = "tabpagUserPalette"
-            Dim tabpagUserPalette2 As Global.System.Windows.Forms.Control = Me.tabpagUserPalette
-            size = New Global.System.Drawing.Size(220, 262)
-            tabpagUserPalette2.Size = size
+            Me.tabpagUserPalette.Size = New Global.System.Drawing.Size(220, 262)
             Me.tabpagUserPalette.TabIndex = 1
             Me.tabpagUserPalette.Text = "User"
             Me.tvUserPalette.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
             Me.tvUserPalette.ImageIndex = -1
-            Dim tvUserPalette As Global.System.Windows.Forms.Control = Me.tvUserPalette
-            point = New Global.System.Drawing.Point(8, 16)
-            tvUserPalette.Location = point
+            Me.tvUserPalette.Location = New Global.System.Drawing.Point(8, 16)
             Me.tvUserPalette.Name = "tvUserPalette"
             Me.tvUserPalette.Nodes.AddRange(New Global.System.Windows.Forms.TreeNode() {New Global.System.Windows.Forms.TreeNode("Creatures"), New Global.System.Windows.Forms.TreeNode("Doors"), New Global.System.Windows.Forms.TreeNode("Encounters"), New Global.System.Windows.Forms.TreeNode("Stores"), New Global.System.Windows.Forms.TreeNode("Placeables"), New Global.System.Windows.Forms.TreeNode("Sounds"), New Global.System.Windows.Forms.TreeNode("Triggers")})
             Me.tvUserPalette.SelectedImageIndex = -1
-            Dim tvUserPalette2 As Global.System.Windows.Forms.Control = Me.tvUserPalette
-            size = New Global.System.Drawing.Size(200, 232)
-            tvUserPalette2.Size = size
+            Me.tvUserPalette.Size = New Global.System.Drawing.Size(200, 232)
             Me.tvUserPalette.TabIndex = 9
             Me.btnCalToolsToggle.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Right
             Me.btnCalToolsToggle.BackColor = Global.System.Drawing.SystemColors.Control
             Me.btnCalToolsToggle.FlatStyle = Global.System.Windows.Forms.FlatStyle.Flat
             Me.btnCalToolsToggle.ForeColor = Global.System.Drawing.SystemColors.Control
-            Dim btnCalToolsToggle As Global.System.Windows.Forms.Control = Me.btnCalToolsToggle
-            point = New Global.System.Drawing.Point(616, 436)
-            btnCalToolsToggle.Location = point
+            Me.btnCalToolsToggle.Location = New Global.System.Drawing.Point(616, 436)
             Me.btnCalToolsToggle.Name = "btnCalToolsToggle"
-            Dim btnCalToolsToggle2 As Global.System.Windows.Forms.Control = Me.btnCalToolsToggle
-            size = New Global.System.Drawing.Size(8, 8)
-            btnCalToolsToggle2.Size = size
+            Me.btnCalToolsToggle.Size = New Global.System.Drawing.Size(8, 8)
             Me.btnCalToolsToggle.TabIndex = 8
             Me.btnCalToolsToggle.TabStop = False
             Me.pnlModElements.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
@@ -566,13 +551,9 @@
             Me.pnlModElements.Controls.Add(Me.btnTweakRight)
             Me.pnlModElements.Controls.Add(Me.btnTweakDown)
             Me.pnlModElements.Controls.Add(Me.chkbFine)
-            Dim pnlModElements As Global.System.Windows.Forms.Control = Me.pnlModElements
-            point = New Global.System.Drawing.Point(0, 8)
-            pnlModElements.Location = point
+            Me.pnlModElements.Location = New Global.System.Drawing.Point(0, 8)
             Me.pnlModElements.Name = "pnlModElements"
-            Dim pnlModElements2 As Global.System.Windows.Forms.Control = Me.pnlModElements
-            size = New Global.System.Drawing.Size(192, 424)
-            pnlModElements2.Size = size
+            Me.pnlModElements.Size = New Global.System.Drawing.Size(192, 424)
             Me.pnlModElements.TabIndex = 15
             Me.ToolBarModElementsFilter.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
             Me.ToolBarModElementsFilter.BorderStyle = Global.System.Windows.Forms.BorderStyle.FixedSingle
@@ -582,14 +563,10 @@
             Me.ToolBarModElementsFilter.DropDownArrows = True
             Me.ToolBarModElementsFilter.Enabled = False
             Me.ToolBarModElementsFilter.ImageList = Me.ilModElementsFilter
-            Dim toolBarModElementsFilter As Global.System.Windows.Forms.Control = Me.ToolBarModElementsFilter
-            point = New Global.System.Drawing.Point(16, 304)
-            toolBarModElementsFilter.Location = point
+            Me.ToolBarModElementsFilter.Location = New Global.System.Drawing.Point(16, 304)
             Me.ToolBarModElementsFilter.Name = "ToolBarModElementsFilter"
             Me.ToolBarModElementsFilter.ShowToolTips = True
-            Dim toolBarModElementsFilter2 As Global.System.Windows.Forms.Control = Me.ToolBarModElementsFilter
-            size = New Global.System.Drawing.Size(96, 49)
-            toolBarModElementsFilter2.Size = size
+            Me.ToolBarModElementsFilter.Size = New Global.System.Drawing.Size(96, 49)
             Me.ToolBarModElementsFilter.TabIndex = 18
             Me.tbarbtnCreature.ImageIndex = 0
             Me.tbarbtnCreature.Style = Global.System.Windows.Forms.ToolBarButtonStyle.ToggleButton
@@ -615,166 +592,108 @@
             Me.tbarbtnWaypoint.ImageIndex = 7
             Me.tbarbtnWaypoint.Style = Global.System.Windows.Forms.ToolBarButtonStyle.ToggleButton
             Me.tbarbtnWaypoint.ToolTipText = "Show Waypoints"
-            Dim ilModElementsFilter As Global.System.Windows.Forms.ImageList = Me.ilModElementsFilter
-            size = New Global.System.Drawing.Size(16, 16)
-            ilModElementsFilter.ImageSize = size
-            Me.ilModElementsFilter.ImageStream = CType(resourceManager.GetObject("ilModElementsFilter.ImageStream"), Global.System.Windows.Forms.ImageListStreamer)
+            Me.ilModElementsFilter.ImageSize = New Global.System.Drawing.Size(16, 16)
+            Me.ilModElementsFilter.ImageStream = CType(resources.GetObject("Me.ilModElementsFilter.ImageStream"), Global.System.Windows.Forms.ImageListStreamer)
             Me.ilModElementsFilter.TransparentColor = Global.System.Drawing.Color.Transparent
             Me.tabctrlModule.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
             Me.tabctrlModule.Controls.Add(Me.tabpagModuleElements)
             Me.tabctrlModule.Controls.Add(Me.tabpagScripts)
             Me.tabctrlModule.Controls.Add(Me.tabpagDialogs)
-            Dim tabctrlModule As Global.System.Windows.Forms.TabControl = Me.tabctrlModule
-            size = New Global.System.Drawing.Size(93, 20)
-            tabctrlModule.ItemSize = size
-            Dim tabctrlModule2 As Global.System.Windows.Forms.Control = Me.tabctrlModule
-            point = New Global.System.Drawing.Point(0, 8)
-            tabctrlModule2.Location = point
+            Me.tabctrlModule.ItemSize = New Global.System.Drawing.Size(93, 20)
+            Me.tabctrlModule.Location = New Global.System.Drawing.Point(0, 8)
             Me.tabctrlModule.Multiline = True
             Me.tabctrlModule.Name = "tabctrlModule"
-            Dim tabctrlModule3 As Global.System.Windows.Forms.TabControl = Me.tabctrlModule
-            point = New Global.System.Drawing.Point(8, 3)
-            tabctrlModule3.Padding = point
+            Me.tabctrlModule.Padding = New Global.System.Drawing.Point(8, 3)
             Me.tabctrlModule.SelectedIndex = 0
-            Dim tabctrlModule4 As Global.System.Windows.Forms.Control = Me.tabctrlModule
-            size = New Global.System.Drawing.Size(192, 264)
-            tabctrlModule4.Size = size
+            Me.tabctrlModule.Size = New Global.System.Drawing.Size(192, 264)
             Me.tabctrlModule.SizeMode = Global.System.Windows.Forms.TabSizeMode.FillToRight
             Me.tabctrlModule.TabIndex = 13
             Me.tabpagModuleElements.Controls.Add(Me.tvModule)
-            Dim tabpagModuleElements As Global.System.Windows.Forms.Control = Me.tabpagModuleElements
-            point = New Global.System.Drawing.Point(4, 44)
-            tabpagModuleElements.Location = point
+            Me.tabpagModuleElements.Location = New Global.System.Drawing.Point(4, 44)
             Me.tabpagModuleElements.Name = "tabpagModuleElements"
-            Dim tabpagModuleElements2 As Global.System.Windows.Forms.Control = Me.tabpagModuleElements
-            size = New Global.System.Drawing.Size(184, 216)
-            tabpagModuleElements2.Size = size
+            Me.tabpagModuleElements.Size = New Global.System.Drawing.Size(184, 216)
             Me.tabpagModuleElements.TabIndex = 0
             Me.tabpagModuleElements.Text = "Module Elements"
             Me.tabpagScripts.Controls.Add(Me.lbScripts)
-            Dim tabpagScripts As Global.System.Windows.Forms.Control = Me.tabpagScripts
-            point = New Global.System.Drawing.Point(4, 44)
-            tabpagScripts.Location = point
+            Me.tabpagScripts.Location = New Global.System.Drawing.Point(4, 44)
             Me.tabpagScripts.Name = "tabpagScripts"
-            Dim tabpagScripts2 As Global.System.Windows.Forms.Control = Me.tabpagScripts
-            size = New Global.System.Drawing.Size(184, 216)
-            tabpagScripts2.Size = size
+            Me.tabpagScripts.Size = New Global.System.Drawing.Size(184, 216)
             Me.tabpagScripts.TabIndex = 1
             Me.tabpagScripts.Text = "Scripts"
             Me.lbScripts.AllowDrop = True
             Me.lbScripts.Dock = Global.System.Windows.Forms.DockStyle.Fill
-            Dim lbScripts As Global.System.Windows.Forms.Control = Me.lbScripts
-            point = New Global.System.Drawing.Point(0, 0)
-            lbScripts.Location = point
+            Me.lbScripts.Location = New Global.System.Drawing.Point(0, 0)
             Me.lbScripts.Name = "lbScripts"
-            Dim lbScripts2 As Global.System.Windows.Forms.Control = Me.lbScripts
-            size = New Global.System.Drawing.Size(184, 216)
-            lbScripts2.Size = size
+            Me.lbScripts.Size = New Global.System.Drawing.Size(184, 216)
             Me.lbScripts.Sorted = True
             Me.lbScripts.TabIndex = 0
             Me.tabpagDialogs.Controls.Add(Me.lbDialogs)
-            Dim tabpagDialogs As Global.System.Windows.Forms.Control = Me.tabpagDialogs
-            point = New Global.System.Drawing.Point(4, 44)
-            tabpagDialogs.Location = point
+            Me.tabpagDialogs.Location = New Global.System.Drawing.Point(4, 44)
             Me.tabpagDialogs.Name = "tabpagDialogs"
-            Dim tabpagDialogs2 As Global.System.Windows.Forms.Control = Me.tabpagDialogs
-            size = New Global.System.Drawing.Size(184, 216)
-            tabpagDialogs2.Size = size
+            Me.tabpagDialogs.Size = New Global.System.Drawing.Size(184, 216)
             Me.tabpagDialogs.TabIndex = 2
             Me.tabpagDialogs.Text = "Dialogs"
             Me.lbDialogs.AllowDrop = True
             Me.lbDialogs.Dock = Global.System.Windows.Forms.DockStyle.Fill
-            Dim lbDialogs As Global.System.Windows.Forms.Control = Me.lbDialogs
-            point = New Global.System.Drawing.Point(0, 0)
-            lbDialogs.Location = point
+            Me.lbDialogs.Location = New Global.System.Drawing.Point(0, 0)
             Me.lbDialogs.Name = "lbDialogs"
-            Dim lbDialogs2 As Global.System.Windows.Forms.Control = Me.lbDialogs
-            size = New Global.System.Drawing.Size(184, 216)
-            lbDialogs2.Size = size
+            Me.lbDialogs.Size = New Global.System.Drawing.Size(184, 216)
             Me.lbDialogs.Sorted = True
             Me.lbDialogs.TabIndex = 1
             Me.chkbUseFactors.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Right
-            Dim chkbUseFactors As Global.System.Windows.Forms.Control = Me.chkbUseFactors
-            point = New Global.System.Drawing.Point(8, 400)
-            chkbUseFactors.Location = point
+            Me.chkbUseFactors.Location = New Global.System.Drawing.Point(8, 400)
             Me.chkbUseFactors.Name = "chkbUseFactors"
-            Dim chkbUseFactors2 As Global.System.Windows.Forms.Control = Me.chkbUseFactors
-            size = New Global.System.Drawing.Size(112, 16)
-            chkbUseFactors2.Size = size
+            Me.chkbUseFactors.Size = New Global.System.Drawing.Size(112, 16)
             Me.chkbUseFactors.TabIndex = 17
             Me.chkbUseFactors.Text = "Use these factors"
             Me.chkbUseFactors.Visible = False
             Me.chkbShowTags.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Right
             Me.chkbShowTags.Enabled = False
-            Dim chkbShowTags As Global.System.Windows.Forms.Control = Me.chkbShowTags
-            point = New Global.System.Drawing.Point(56, 280)
-            chkbShowTags.Location = point
+            Me.chkbShowTags.Location = New Global.System.Drawing.Point(56, 280)
             Me.chkbShowTags.Name = "chkbShowTags"
-            Dim chkbShowTags2 As Global.System.Windows.Forms.Control = Me.chkbShowTags
-            size = New Global.System.Drawing.Size(80, 16)
-            chkbShowTags2.Size = size
+            Me.chkbShowTags.Size = New Global.System.Drawing.Size(80, 16)
             Me.chkbShowTags.TabIndex = 17
             Me.chkbShowTags.Text = "Show Tags"
             Me.btnTweakUp.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
             Me.btnTweakUp.Font = New Global.System.Drawing.Font("Microsoft Sans Serif", 8.25F, Global.System.Drawing.FontStyle.Regular, Global.System.Drawing.GraphicsUnit.Point, 0)
             Me.btnTweakUp.Interval = 100
-            Dim btnTweakUp As Global.System.Windows.Forms.Control = Me.btnTweakUp
-            point = New Global.System.Drawing.Point(160, 296)
-            btnTweakUp.Location = point
+            Me.btnTweakUp.Location = New Global.System.Drawing.Point(160, 296)
             Me.btnTweakUp.Name = "btnTweakUp"
-            Dim btnTweakUp2 As Global.System.Windows.Forms.Control = Me.btnTweakUp
-            size = New Global.System.Drawing.Size(16, 16)
-            btnTweakUp2.Size = size
+            Me.btnTweakUp.Size = New Global.System.Drawing.Size(16, 16)
             Me.btnTweakUp.TabIndex = 4
             Me.btnTweakUp.Text = "^"
             Me.btnTweakUp.TextAlign = Global.System.Drawing.ContentAlignment.TopLeft
             Me.btnTweakLeft.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
             Me.btnTweakLeft.Font = New Global.System.Drawing.Font("Microsoft Sans Serif", 8.25F, Global.System.Drawing.FontStyle.Regular, Global.System.Drawing.GraphicsUnit.Point, 0)
             Me.btnTweakLeft.Interval = 100
-            Dim btnTweakLeft As Global.System.Windows.Forms.Control = Me.btnTweakLeft
-            point = New Global.System.Drawing.Point(144, 312)
-            btnTweakLeft.Location = point
+            Me.btnTweakLeft.Location = New Global.System.Drawing.Point(144, 312)
             Me.btnTweakLeft.Name = "btnTweakLeft"
-            Dim btnTweakLeft2 As Global.System.Windows.Forms.Control = Me.btnTweakLeft
-            size = New Global.System.Drawing.Size(16, 16)
-            btnTweakLeft2.Size = size
+            Me.btnTweakLeft.Size = New Global.System.Drawing.Size(16, 16)
             Me.btnTweakLeft.TabIndex = 4
             Me.btnTweakLeft.Text = "<"
             Me.btnTweakLeft.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
             Me.btnTweakRight.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
             Me.btnTweakRight.Font = New Global.System.Drawing.Font("Microsoft Sans Serif", 8.25F, Global.System.Drawing.FontStyle.Regular, Global.System.Drawing.GraphicsUnit.Point, 0)
             Me.btnTweakRight.Interval = 100
-            Dim btnTweakRight As Global.System.Windows.Forms.Control = Me.btnTweakRight
-            point = New Global.System.Drawing.Point(176, 312)
-            btnTweakRight.Location = point
+            Me.btnTweakRight.Location = New Global.System.Drawing.Point(176, 312)
             Me.btnTweakRight.Name = "btnTweakRight"
-            Dim btnTweakRight2 As Global.System.Windows.Forms.Control = Me.btnTweakRight
-            size = New Global.System.Drawing.Size(16, 16)
-            btnTweakRight2.Size = size
+            Me.btnTweakRight.Size = New Global.System.Drawing.Size(16, 16)
             Me.btnTweakRight.TabIndex = 4
             Me.btnTweakRight.Text = ">"
             Me.btnTweakRight.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
             Me.btnTweakDown.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
             Me.btnTweakDown.Font = New Global.System.Drawing.Font("Microsoft Sans Serif", 8.25F, Global.System.Drawing.FontStyle.Regular, Global.System.Drawing.GraphicsUnit.Point, 0)
             Me.btnTweakDown.Interval = 100
-            Dim btnTweakDown As Global.System.Windows.Forms.Control = Me.btnTweakDown
-            point = New Global.System.Drawing.Point(160, 328)
-            btnTweakDown.Location = point
+            Me.btnTweakDown.Location = New Global.System.Drawing.Point(160, 328)
             Me.btnTweakDown.Name = "btnTweakDown"
-            Dim btnTweakDown2 As Global.System.Windows.Forms.Control = Me.btnTweakDown
-            size = New Global.System.Drawing.Size(16, 16)
-            btnTweakDown2.Size = size
+            Me.btnTweakDown.Size = New Global.System.Drawing.Size(16, 16)
             Me.btnTweakDown.TabIndex = 4
             Me.btnTweakDown.Text = "v"
             Me.btnTweakDown.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
             Me.chkbFine.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Right
-            Dim chkbFine As Global.System.Windows.Forms.Control = Me.chkbFine
-            point = New Global.System.Drawing.Point(128, 400)
-            chkbFine.Location = point
+            Me.chkbFine.Location = New Global.System.Drawing.Point(128, 400)
             Me.chkbFine.Name = "chkbFine"
-            Dim chkbFine2 As Global.System.Windows.Forms.Control = Me.chkbFine
-            size = New Global.System.Drawing.Size(48, 16)
-            chkbFine2.Size = size
+            Me.chkbFine.Size = New Global.System.Drawing.Size(48, 16)
             Me.chkbFine.TabIndex = 17
             Me.chkbFine.Text = "Fine"
             Me.chkbFine.Visible = False
@@ -852,7 +771,7 @@
             Me.MenuItem11.Text = "-"
             Me.miShowModuleEntryPoint.Enabled = False
             Me.miShowModuleEntryPoint.Index = 8
-            Me.miShowModuleEntryPoint.Text = "Show Module Entry Point"
+            Me.miShowModuleEntryPoint.Text = "Show Module Entry localPoint"
             Me.miShowModulePaths.Enabled = False
             Me.miShowModulePaths.Index = 9
             Me.miShowModulePaths.Text = "&Show Module Paths"
@@ -877,24 +796,16 @@
             Me.miOptions.Text = "&Options..."
             Me.btnDebug.FlatStyle = Global.System.Windows.Forms.FlatStyle.Flat
             Me.btnDebug.ForeColor = Global.System.Drawing.SystemColors.Control
-            Dim btnDebug As Global.System.Windows.Forms.Control = Me.btnDebug
-            point = New Global.System.Drawing.Point(0, 0)
-            btnDebug.Location = point
+            Me.btnDebug.Location = New Global.System.Drawing.Point(0, 0)
             Me.btnDebug.Name = "btnDebug"
-            Dim btnDebug2 As Global.System.Windows.Forms.Control = Me.btnDebug
-            size = New Global.System.Drawing.Size(8, 8)
-            btnDebug2.Size = size
+            Me.btnDebug.Size = New Global.System.Drawing.Size(8, 8)
             Me.btnDebug.TabIndex = 16
             Me.btnDebug.TabStop = False
-            Dim sbar As Global.System.Windows.Forms.Control = Me.sbar
-            point = New Global.System.Drawing.Point(0, 451)
-            sbar.Location = point
+            Me.sbar.Location = New Global.System.Drawing.Point(0, 451)
             Me.sbar.Name = "sbar"
             Me.sbar.Panels.AddRange(New Global.System.Windows.Forms.StatusBarPanel() {Me.sbarpnlLocX, Me.sbarpnlLocY, Me.sbarpnlDesc, Me.sbarpnlAddlInfo, Me.sbarpnlStatus})
             Me.sbar.ShowPanels = True
-            Dim sbar2 As Global.System.Windows.Forms.Control = Me.sbar
-            size = New Global.System.Drawing.Size(864, 22)
-            sbar2.Size = size
+            Me.sbar.Size = New Global.System.Drawing.Size(864, 22)
             Me.sbar.TabIndex = 18
             Me.sbar.Text = "StatusBar1"
             Me.sbarpnlLocX.Width = 70
@@ -907,7 +818,7 @@
             Me.cmiCreateCameraHere.Index = 0
             Me.cmiCreateCameraHere.Text = "Create Camera here"
             Me.cmiSetModuleStartPoint.Index = 1
-            Me.cmiSetModuleStartPoint.Text = "Set as Module starting point"
+            Me.cmiSetModuleStartPoint.Text = "Set as Module starting localPoint"
             Me.MenuItem13.Index = 2
             Me.MenuItem13.Text = "-"
             Me.cmiModuleProperties.Index = 3
@@ -922,109 +833,71 @@
             Me.cmiAddNewSpawnPoint.Index = 3
             Me.cmiAddNewSpawnPoint.Text = "Add New SpawnPoint"
             Me.tbMouseX.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Dim tbMouseX As Global.System.Windows.Forms.Control = Me.tbMouseX
-            point = New Global.System.Drawing.Point(0, 432)
-            tbMouseX.Location = point
+            Me.tbMouseX.Location = New Global.System.Drawing.Point(0, 432)
             Me.tbMouseX.Name = "tbMouseX"
-            Dim tbMouseX2 As Global.System.Windows.Forms.Control = Me.tbMouseX
-            size = New Global.System.Drawing.Size(64, 20)
-            tbMouseX2.Size = size
+            Me.tbMouseX.Size = New Global.System.Drawing.Size(64, 20)
             Me.tbMouseX.TabIndex = 0
             Me.tbMouseX.Text = ""
             Me.tbMouseX.Visible = False
             Me.tbMouseY.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Dim tbMouseY As Global.System.Windows.Forms.Control = Me.tbMouseY
-            point = New Global.System.Drawing.Point(88, 432)
-            tbMouseY.Location = point
+            Me.tbMouseY.Location = New Global.System.Drawing.Point(88, 432)
             Me.tbMouseY.Name = "tbMouseY"
-            Dim tbMouseY2 As Global.System.Windows.Forms.Control = Me.tbMouseY
-            size = New Global.System.Drawing.Size(64, 20)
-            tbMouseY2.Size = size
+            Me.tbMouseY.Size = New Global.System.Drawing.Size(64, 20)
             Me.tbMouseY.TabIndex = 1
             Me.tbMouseY.Text = ""
             Me.tbMouseY.Visible = False
             Me.btnAssignPt1.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Dim btnAssignPt As Global.System.Windows.Forms.Control = Me.btnAssignPt1
-            point = New Global.System.Drawing.Point(160, 435)
-            btnAssignPt.Location = point
+            Me.btnAssignPt1.Location = New Global.System.Drawing.Point(160, 435)
             Me.btnAssignPt1.Name = "btnAssignPt1"
-            Dim btnAssignPt2 As Global.System.Windows.Forms.Control = Me.btnAssignPt1
-            size = New Global.System.Drawing.Size(16, 16)
-            btnAssignPt2.Size = size
+            Me.btnAssignPt1.Size = New Global.System.Drawing.Size(16, 16)
             Me.btnAssignPt1.TabIndex = 2
             Me.btnAssignPt1.Text = "1"
             Me.btnAssignPt1.Visible = False
             Me.btnAssignPt2.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Dim btnAssignPt3 As Global.System.Windows.Forms.Control = Me.btnAssignPt2
-            point = New Global.System.Drawing.Point(184, 435)
-            btnAssignPt3.Location = point
+            Me.btnAssignPt2.Location = New Global.System.Drawing.Point(184, 435)
             Me.btnAssignPt2.Name = "btnAssignPt2"
-            Dim btnAssignPt4 As Global.System.Windows.Forms.Control = Me.btnAssignPt2
-            size = New Global.System.Drawing.Size(16, 16)
-            btnAssignPt4.Size = size
+            Me.btnAssignPt2.Size = New Global.System.Drawing.Size(16, 16)
             Me.btnAssignPt2.TabIndex = 3
             Me.btnAssignPt2.Text = "2"
             Me.btnAssignPt2.Visible = False
             Me.tb3dsMaxPt1X.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Dim tb3dsMaxPt1X As Global.System.Windows.Forms.Control = Me.tb3dsMaxPt1X
-            point = New Global.System.Drawing.Point(264, 432)
-            tb3dsMaxPt1X.Location = point
+            Me.tb3dsMaxPt1X.Location = New Global.System.Drawing.Point(264, 432)
             Me.tb3dsMaxPt1X.Name = "tb3dsMaxPt1X"
-            Dim tb3dsMaxPt1X2 As Global.System.Windows.Forms.Control = Me.tb3dsMaxPt1X
-            size = New Global.System.Drawing.Size(64, 20)
-            tb3dsMaxPt1X2.Size = size
+            Me.tb3dsMaxPt1X.Size = New Global.System.Drawing.Size(64, 20)
             Me.tb3dsMaxPt1X.TabIndex = 4
             Me.tb3dsMaxPt1X.Text = "110.516"
             Me.tb3dsMaxPt1X.Visible = False
             Me.tb3dsMaxPt1Y.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Dim tb3dsMaxPt1Y As Global.System.Windows.Forms.Control = Me.tb3dsMaxPt1Y
-            point = New Global.System.Drawing.Point(344, 432)
-            tb3dsMaxPt1Y.Location = point
+            Me.tb3dsMaxPt1Y.Location = New Global.System.Drawing.Point(344, 432)
             Me.tb3dsMaxPt1Y.Name = "tb3dsMaxPt1Y"
-            Dim tb3dsMaxPt1Y2 As Global.System.Windows.Forms.Control = Me.tb3dsMaxPt1Y
-            size = New Global.System.Drawing.Size(64, 20)
-            tb3dsMaxPt1Y2.Size = size
+            Me.tb3dsMaxPt1Y.Size = New Global.System.Drawing.Size(64, 20)
             Me.tb3dsMaxPt1Y.TabIndex = 5
             Me.tb3dsMaxPt1Y.Text = "133.604"
             Me.tb3dsMaxPt1Y.Visible = False
             Me.tb3dsMaxPt2Y.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Dim tb3dsMaxPt2Y As Global.System.Windows.Forms.Control = Me.tb3dsMaxPt2Y
-            point = New Global.System.Drawing.Point(528, 432)
-            tb3dsMaxPt2Y.Location = point
+            Me.tb3dsMaxPt2Y.Location = New Global.System.Drawing.Point(528, 432)
             Me.tb3dsMaxPt2Y.Name = "tb3dsMaxPt2Y"
-            Dim tb3dsMaxPt2Y2 As Global.System.Windows.Forms.Control = Me.tb3dsMaxPt2Y
-            size = New Global.System.Drawing.Size(64, 20)
-            tb3dsMaxPt2Y2.Size = size
+            Me.tb3dsMaxPt2Y.Size = New Global.System.Drawing.Size(64, 20)
             Me.tb3dsMaxPt2Y.TabIndex = 7
             Me.tb3dsMaxPt2Y.Text = "78.001"
             Me.tb3dsMaxPt2Y.Visible = False
             Me.tb3dsMaxPt2X.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Dim tb3dsMaxPt2X As Global.System.Windows.Forms.Control = Me.tb3dsMaxPt2X
-            point = New Global.System.Drawing.Point(448, 432)
-            tb3dsMaxPt2X.Location = point
+            Me.tb3dsMaxPt2X.Location = New Global.System.Drawing.Point(448, 432)
             Me.tb3dsMaxPt2X.Name = "tb3dsMaxPt2X"
-            Dim tb3dsMaxPt2X2 As Global.System.Windows.Forms.Control = Me.tb3dsMaxPt2X
-            size = New Global.System.Drawing.Size(64, 20)
-            tb3dsMaxPt2X2.Size = size
+            Me.tb3dsMaxPt2X.Size = New Global.System.Drawing.Size(64, 20)
             Me.tb3dsMaxPt2X.TabIndex = 6
             Me.tb3dsMaxPt2X.Text = "105.987"
             Me.tb3dsMaxPt2X.Visible = False
             Me.btnCalcCalibrationVals.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
             Me.btnCalcCalibrationVals.Enabled = False
-            Dim btnCalcCalibrationVals As Global.System.Windows.Forms.Control = Me.btnCalcCalibrationVals
-            point = New Global.System.Drawing.Point(208, 435)
-            btnCalcCalibrationVals.Location = point
+            Me.btnCalcCalibrationVals.Location = New Global.System.Drawing.Point(208, 435)
             Me.btnCalcCalibrationVals.Name = "btnCalcCalibrationVals"
-            Dim btnCalcCalibrationVals2 As Global.System.Windows.Forms.Control = Me.btnCalcCalibrationVals
-            size = New Global.System.Drawing.Size(16, 16)
-            btnCalcCalibrationVals2.Size = size
+            Me.btnCalcCalibrationVals.Size = New Global.System.Drawing.Size(16, 16)
             Me.btnCalcCalibrationVals.TabIndex = 8
             Me.btnCalcCalibrationVals.Text = "C"
             Me.btnCalcCalibrationVals.Visible = False
-            size = New Global.System.Drawing.Size(5, 13)
-            Me.AutoScaleBaseSize = size
-            size = New Global.System.Drawing.Size(864, 473)
-            Me.ClientSize = size
+            Me.AutoScaleBaseSize = New Global.System.Drawing.Size(5, 13)
+            Me.ClientSize = New Global.System.Drawing.Size(864, 473)
             Me.Controls.Add(Me.btnAssignPt1)
             Me.Controls.Add(Me.tbMouseX)
             Me.Controls.Add(Me.sbar)
@@ -1042,10 +915,9 @@
             Me.Controls.Add(Me.tb3dsMaxPt2X)
             Me.Controls.Add(Me.btnCalcCalibrationVals)
             Me.Controls.Add(Me.btnCalToolsToggle)
-            Me.Icon = CType(resourceManager.GetObject("$this.Icon"), Global.System.Drawing.Icon)
+            Me.Icon = CType(resources.GetObject("$this.Icon"), Global.System.Drawing.Icon)
             Me.Menu = Me.MainMenu1
-            size = New Global.System.Drawing.Size(576, 480)
-            Me.MinimumSize = size
+            Me.MinimumSize = New Global.System.Drawing.Size(576, 480)
             Me.Name = "frmModule_Editor"
             Me.SizeGripStyle = Global.System.Windows.Forms.SizeGripStyle.Show
             Me.StartPosition = Global.System.Windows.Forms.FormStartPosition.CenterScreen
@@ -1069,10 +941,87 @@
             CType(Me.sbarpnlDesc, Global.System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.sbarpnlAddlInfo, Global.System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.sbarpnlStatus, Global.System.ComponentModel.ISupportInitialize).EndInit()
+
+            ' -------------------------------------------------------------
+            ' Event bindings restored from decompiled synchronized
+            ' AccessedThroughProperty wrappers.
+            ' -------------------------------------------------------------
+            AddHandler Me.Panel1.DragEnter, AddressOf Me.Panel1_DragEnter
+            AddHandler Me.Panel1.DragDrop, AddressOf Me.Panel1_DragDrop
+            AddHandler Me.pbox.MouseLeave, AddressOf Me.pbox_MouseLeave
+            AddHandler Me.pbox.MouseUp, AddressOf Me.pbox_MouseUp
+            AddHandler Me.pbox.MouseMove, AddressOf Me.pbox_MouseMove
+            AddHandler Me.pbox.MouseDown, AddressOf Me.pbox_MouseDown
+            AddHandler Me.nudXmul.ValueChanged, AddressOf Me.nudMulOff_ValueChanged
+            AddHandler Me.nudYmul.ValueChanged, AddressOf Me.nudMulOff_ValueChanged
+            AddHandler Me.nudXoff.ValueChanged, AddressOf Me.nudMulOff_ValueChanged
+            AddHandler Me.nudYoff.ValueChanged, AddressOf Me.nudMulOff_ValueChanged
+            AddHandler Me.btnTest.Click, AddressOf Me.btnTest_Click
+            AddHandler Me.btnClean.Click, AddressOf Me.btnClean_Click
+            AddHandler Me.tvModule.BeforeCollapse, AddressOf Me.tvModule_BeforeCollapse
+            AddHandler Me.tvModule.BeforeExpand, AddressOf Me.tvModule_BeforeExpand
+            AddHandler Me.tvModule.KeyUp, AddressOf Me.tvModule_KeyUp
+            AddHandler Me.tvModule.MouseUp, AddressOf Me.tvModule_MouseUp
+            AddHandler Me.tvModule.MouseDown, AddressOf Me.tvModule_MouseDown
+            AddHandler Me.tvPalette.ItemDrag, AddressOf Me.tvPalette_ItemDrag
+            AddHandler Me.cmiTvModuleItemProperties.Click, AddressOf Me.cmiTvModuleItemProperties_Click
+            AddHandler Me.btnPalDoor.Click, AddressOf Me.btnPalDoor_Click
+            AddHandler Me.btnPalCreature.Click, AddressOf Me.btnPalCreature_Click
+            AddHandler Me.btnPalEncounter.Click, AddressOf Me.btnPalEncounter_Click
+            AddHandler Me.btnPalItem.Click, AddressOf Me.btnPalItem_Click
+            AddHandler Me.btnPalMerchant.Click, AddressOf Me.btnPalMerchant_Click
+            AddHandler Me.btnPalPlaceable.Click, AddressOf Me.btnPalPlaceable_Click
+            AddHandler Me.btnPalWaypoint.Click, AddressOf Me.btnPalWaypoint_Click
+            AddHandler Me.btnPalSound.Click, AddressOf Me.btnPalSound_Click
+            AddHandler Me.btnPalTrigger.Click, AddressOf Me.btnPalTrigger_Click
+            AddHandler Me.chkbShowResRefs.CheckedChanged, AddressOf Me.chkbShowResRefs_CheckedChanged
+            AddHandler Me.btnLogFactors.Click, AddressOf Me.btnLogFactors_Click
+            AddHandler Me.miSave.Click, AddressOf Me.miSave_Click
+            AddHandler Me.miClose.Click, AddressOf Me.miClose_Click
+            AddHandler Me.miShowHideModuleElements.Click, AddressOf Me.miShowHideModuleElements_Click
+            AddHandler Me.miShowHidePalette.Click, AddressOf Me.miShowHidePalette_Click
+            AddHandler Me.miShowModulePaths.Click, AddressOf Me.miShowModulePaths_Click
+            AddHandler Me.btnDebug.Click, AddressOf Me.btnDebug_Click
+            AddHandler Me.miOptions.Click, AddressOf Me.miOptions_Click
+            AddHandler Me.tvUserPalette.ItemDrag, AddressOf Me.tvUserPalette_ItemDrag
+            AddHandler Me.chkbShowNames.CheckedChanged, AddressOf Me.chkbShowNames_CheckedChanged
+            AddHandler Me.cmiTvModuleItemEdit.Click, AddressOf Me.cmiTvModuleItemEdit_Click
+            AddHandler Me.cmiTvModuleItemDelete.Click, AddressOf Me.cmiTvModuleItemDelete_Click
+            AddHandler Me.tabctrlPalette.SelectedIndexChanged, AddressOf Me.TabControl1_SelectedIndexChanged
+            AddHandler Me.miOpenProject.Click, AddressOf Me.miOpenProject_Click
+            AddHandler Me.miExploreModuleFolder.Click, AddressOf Me.miExploreModuleFolder_Click
+            AddHandler Me.miBuildModFile.Click, AddressOf Me.miBuildModFile_Click
+            AddHandler Me.miModuleProperties.Click, AddressOf Me.miModuleProperties_Click
+            AddHandler Me.miShowGitDump.Click, AddressOf Me.miShowGffDump_Click
+            AddHandler Me.miShowAreDump.Click, AddressOf Me.miShowGffDump_Click
+            AddHandler Me.miShowIfoDump.Click, AddressOf Me.miShowGffDump_Click
+            AddHandler Me.ToolBarModElementsFilter.ButtonClick, AddressOf Me.ToolBarModElementsFilter_ButtonClick
+            AddHandler Me.miUseLargeMap.Click, AddressOf Me.miUseLargeMap_Click
+            AddHandler Me.miUseSmallMap.Click, AddressOf Me.miUseSmallMap_Click
+            AddHandler Me.miShowItemLabels.Click, AddressOf Me.miShowItemLabels_Click
+            AddHandler Me.cmiModuleProperties.Click, AddressOf Me.cmiModuleProperties_Click
+            AddHandler Me.cmiCreateCameraHere.Click, AddressOf Me.cmiCreateCameraHere_Click
+            AddHandler Me.cmiSetModuleStartPoint.Click, AddressOf Me.cmiSetModuleStartPoint_Click
+            AddHandler Me.btnTweakUp.Click, AddressOf Me.btnTweakUp_Click
+            AddHandler Me.btnTweakLeft.Click, AddressOf Me.btnTweakLeft_Click
+            AddHandler Me.btnTweakRight.Click, AddressOf Me.btnTweakRight_Click
+            AddHandler Me.btnTweakDown.Click, AddressOf Me.btnTweakDown_Click
+            AddHandler Me.cmiProperties.Click, AddressOf Me.cmiProperties_Click
+            AddHandler Me.cmiDelete.Click, AddressOf Me.cmiDelete_Click
+            AddHandler Me.cmiEditGFFFile.Click, AddressOf Me.cmiEdit_Click
+            AddHandler Me.cmiAddNewSpawnPoint.Click, AddressOf Me.cmiAddNewSpawnPoint_Click
+            AddHandler Me.miShowModuleEntryPoint.Click, AddressOf Me.miShowModuleEntryPoint_Click
+            AddHandler Me.lbScripts.DoubleClick, AddressOf Me.lbScripts_DoubleClick
+            AddHandler Me.lbDialogs.DoubleClick, AddressOf Me.lbDialogs_DoubleClick
+            AddHandler Me.chkbFine.CheckedChanged, AddressOf Me.chkbFine_CheckedChanged
+            AddHandler Me.btnAssignPt1.Click, AddressOf Me.btnAssignPt1_Click
+            AddHandler Me.btnAssignPt2.Click, AddressOf Me.btnAssignPt2_Click
+            AddHandler Me.btnCalcCalibrationVals.Click, AddressOf Me.btnCalcCalibrationVals_Click
+            AddHandler Me.btnCalToolsToggle.MouseDown, AddressOf Me.btnCalToolsToggle_MouseDown
+            AddHandler Me.miFont.Click, AddressOf Me.miFont_Click
+            AddHandler Me.miUseAltSmallMap.Click, AddressOf Me.miUseAltSmallMap_Click
             Me.ResumeLayout(False)
         End Sub
 
-		' Token: 0x0400045F RID: 1119
-		Private components As Global.System.ComponentModel.IContainer
 	End Class
 End Namespace

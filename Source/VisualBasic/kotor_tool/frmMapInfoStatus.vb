@@ -1,4 +1,4 @@
-﻿Imports System
+Imports System
 Imports System.Collections
 Imports System.ComponentModel
 Imports System.Data
@@ -31,31 +31,14 @@ Namespace kotor_tool
 			Me.Width = Me.g_totalColWidth + 80
 		End Sub
 
-		' Token: 0x1700022E RID: 558
-		' (get) Token: 0x0600076E RID: 1902 RVA: 0x00258BE0 File Offset: 0x00257BE0
-		' (set) Token: 0x0600076D RID: 1901 RVA: 0x00258BF4 File Offset: 0x00257BF4
-		Friend Overridable Property dgMapInfoStatus As DataGrid
-			Get
-				Return Me._dgMapInfoStatus
-			End Get
-            <MethodImpl(MethodImplOptions.Synchronized)> _
-               Set(ByVal value As DataGrid)
-                If Me._dgMapInfoStatus IsNot Nothing Then
-                End If
-                Me._dgMapInfoStatus = value
-                If Me._dgMapInfoStatus IsNot Nothing Then
-                End If
-            End Set
-        End Property
-
 		' Token: 0x06000770 RID: 1904 RVA: 0x00258D58 File Offset: 0x00257D58
-		Public Shared Function ReadMapInfoFile() As MapInfo
-			Dim binaryFormatter As BinaryFormatter = New BinaryFormatter()
-			Dim stream As Stream = File.OpenRead(frmMain.gRootPath + "MapInfo.bfd")
-			Dim mapInfo As MapInfo
-			Try
-				mapInfo = CType(binaryFormatter.Deserialize(stream), MapInfo)
-				stream.Close()
+        Public Shared Function ReadMapInfoFile() As MapInfo
+            Dim binaryFormatter As BinaryFormatter = New BinaryFormatter()
+            Dim stream As Stream = File.OpenRead(frmMain.gRootPath + "MapInfo.bfd")
+            Dim mapInfo As MapInfo
+            Try
+                mapInfo = CType(binaryFormatter.Deserialize(stream), MapInfo)
+                stream.Close()
             Catch ex As System.Exception
                 stream.Seek(0L, SeekOrigin.Begin)
                 binaryFormatter = frmMapInfoStatus.CreateMapInfoFormatter(Type.[GetType]("kotor_tool.MapInfo"))
@@ -69,9 +52,9 @@ Namespace kotor_tool
                 Else
                     Interaction.MsgBox("Unable to load MapInfo.bfd file." & vbLf & vbLf & "Please download a fresh copy.", MsgBoxStyle.Critical, "MapInfo error")
                 End If
-			End Try
-			Return mapInfo
-		End Function
+            End Try
+            Return mapInfo
+        End Function
 
 		' Token: 0x06000771 RID: 1905 RVA: 0x00258E3C File Offset: 0x00257E3C
 		Public Shared Function CreateMapInfoFormatter(type As Type) As BinaryFormatter
@@ -226,10 +209,6 @@ Namespace kotor_tool
 			End Try
 			Return CInt(Math.Round(CDbl((num + 10F))))
 		End Function
-
-		' Token: 0x040003D1 RID: 977
-        <AccessedThroughProperty("dgMapInfoStatus")> _
-  Private _dgMapInfoStatus As DataGrid
 
 		' Token: 0x040003D3 RID: 979
 		Private dt As DataTable
