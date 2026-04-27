@@ -14,7 +14,7 @@
   <bModuleEditorConfirmDeletes>true</bModuleEditorConfirmDeletes>
   <ModuleEditorModuleElementIndicatorSize>0</ModuleEditorModuleElementIndicatorSize>
   <MainWindowSplitterPos>0</MainWindowSplitterPos>
-  <ModelExportLocation></ModelExportLocation>
+  <ModelExportLocation>F:\Unreal Project Library\StarWars\KOTOR\DOORS\LDA</ModelExportLocation>
   <ModuleExtractPath />
   <defaultKotORLocation />
   <defaultKotORLocation2 />
@@ -23,7 +23,7 @@
   <defaultImportLocation />
   <TextEditorSavePath />
   <bUseOverrideFiles>false</bUseOverrideFiles>
-  <LastClickedTVNodePath></LastClickedTVNodePath>
+  <LastClickedTVNodePath>Kotor I\BIFs\models.bif\Aurora Model\dor_lda01.mdl</LastClickedTVNodePath>
   <bRememberLastTreeNode>true</bRememberLastTreeNode>
   <bRememberTreeViewState>true</bRememberTreeViewState>
   <bBuildModelsBifNode>true</bBuildModelsBifNode>

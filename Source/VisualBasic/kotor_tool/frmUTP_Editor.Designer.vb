@@ -1,7 +1,133 @@
-﻿Namespace kotor_tool
+Namespace kotor_tool
 	' Token: 0x02000081 RID: 129
 	Public Partial Class frmUTP_Editor
 		Inherits Global.kotor_tool.frmParent
+
+        ' -----------------------------------------------------------------
+        ' Designer fields restored from decompiled
+        ' AccessedThroughProperty wrappers.
+        ' Kept before InitializeComponent for VS2010 CodeDom safety.
+        ' -----------------------------------------------------------------
+        Private components As Global.System.ComponentModel.IContainer
+        Friend WithEvents TabControl1 As Global.System.Windows.Forms.TabControl
+        Friend WithEvents TabPageBasic As Global.System.Windows.Forms.TabPage
+        Friend WithEvents btnSetNameLang As Global.System.Windows.Forms.Button
+        Friend WithEvents Label5 As Global.System.Windows.Forms.Label
+        Friend WithEvents nudWill As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents nudFort As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents nudHP As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents lblTextureVariation As Global.System.Windows.Forms.Label
+        Friend WithEvents Label8 As Global.System.Windows.Forms.Label
+        Friend WithEvents nudHardness As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents nudRef As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents Label12 As Global.System.Windows.Forms.Label
+        Friend WithEvents lblBodyVariation As Global.System.Windows.Forms.Label
+        Friend WithEvents chkbPlotItem As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents tbTag As Global.System.Windows.Forms.TextBox
+        Friend WithEvents tbName As Global.System.Windows.Forms.TextBox
+        Friend WithEvents Label1 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label2 As Global.System.Windows.Forms.Label
+        Friend WithEvents chkbStatic As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents TabPageLock As Global.System.Windows.Forms.TabPage
+        Friend WithEvents tbKeyName As Global.System.Windows.Forms.TextBox
+        Friend WithEvents lblKeyTag As Global.System.Windows.Forms.Label
+        Friend WithEvents nudCloseLockDC As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents lblCloseLockDC As Global.System.Windows.Forms.Label
+        Friend WithEvents nudOpenLockDC As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents lblOpenLockDC As Global.System.Windows.Forms.Label
+        Friend WithEvents chkbLockable As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkbLocked As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkbKeyRequired As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkbAutoRemoveKey As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents TabPageScripts As Global.System.Windows.Forms.TabPage
+        Friend WithEvents Label34 As Global.System.Windows.Forms.Label
+        Friend WithEvents tbOnDeath As Global.System.Windows.Forms.TextBox
+        Friend WithEvents Label33 As Global.System.Windows.Forms.Label
+        Friend WithEvents tbOnDamaged As Global.System.Windows.Forms.TextBox
+        Friend WithEvents Label32 As Global.System.Windows.Forms.Label
+        Friend WithEvents tbOnClosed As Global.System.Windows.Forms.TextBox
+        Friend WithEvents Label35 As Global.System.Windows.Forms.Label
+        Friend WithEvents tbOnDisarm As Global.System.Windows.Forms.TextBox
+        Friend WithEvents tbOnHeartbeat As Global.System.Windows.Forms.TextBox
+        Friend WithEvents Label36 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label37 As Global.System.Windows.Forms.Label
+        Friend WithEvents tbOnLock As Global.System.Windows.Forms.TextBox
+        Friend WithEvents tbOnMeleeAttacked As Global.System.Windows.Forms.TextBox
+        Friend WithEvents Label38 As Global.System.Windows.Forms.Label
+        Friend WithEvents tbOnOpen As Global.System.Windows.Forms.TextBox
+        Friend WithEvents Label39 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label40 As Global.System.Windows.Forms.Label
+        Friend WithEvents tbOnSpellCastAt As Global.System.Windows.Forms.TextBox
+        Friend WithEvents Label41 As Global.System.Windows.Forms.Label
+        Friend WithEvents tbOnTrapTriggered As Global.System.Windows.Forms.TextBox
+        Friend WithEvents tbOnUnlock As Global.System.Windows.Forms.TextBox
+        Friend WithEvents Label42 As Global.System.Windows.Forms.Label
+        Friend WithEvents tbOnUserDefined As Global.System.Windows.Forms.TextBox
+        Friend WithEvents Label43 As Global.System.Windows.Forms.Label
+        Friend WithEvents TabPageAdvanced As Global.System.Windows.Forms.TabPage
+        Friend WithEvents tbConversation As Global.System.Windows.Forms.TextBox
+        Friend WithEvents tbFaction As Global.System.Windows.Forms.TextBox
+        Friend WithEvents tbTemplateResRef As Global.System.Windows.Forms.TextBox
+        Friend WithEvents Label10 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label11 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label13 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label14 As Global.System.Windows.Forms.Label
+        Friend WithEvents tbAnimationState As Global.System.Windows.Forms.TextBox
+        Friend WithEvents TabPageDescription As Global.System.Windows.Forms.TabPage
+        Friend WithEvents btnSetDescriptionLang As Global.System.Windows.Forms.Button
+        Friend WithEvents tbDescription As Global.System.Windows.Forms.TextBox
+        Friend WithEvents TabPageComments As Global.System.Windows.Forms.TabPage
+        Friend WithEvents tbComment As Global.System.Windows.Forms.TextBox
+        Friend WithEvents btnSave As Global.System.Windows.Forms.Button
+        Friend WithEvents btnCancel As Global.System.Windows.Forms.Button
+        Friend WithEvents chkbMin1HP As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents TabPageTrap As Global.System.Windows.Forms.TabPage
+        Friend WithEvents chkbTrapDisarmable As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkbTrapDetectable As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents Label6 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label3 As Global.System.Windows.Forms.Label
+        Friend WithEvents nudDisarmDC As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents Label4 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label15 As Global.System.Windows.Forms.Label
+        Friend WithEvents nudTrapDetectDC As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents Label16 As Global.System.Windows.Forms.Label
+        Friend WithEvents lblTrapDetectable As Global.System.Windows.Forms.Label
+        Friend WithEvents nudTrapType As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents Label17 As Global.System.Windows.Forms.Label
+        Friend WithEvents chkbTrapFlag As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkbTrapOneShot As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents Label19 As Global.System.Windows.Forms.Label
+        Friend WithEvents cmbxAppearance As Global.System.Windows.Forms.ComboBox
+        Friend WithEvents Label20 As Global.System.Windows.Forms.Label
+        Friend WithEvents tbType As Global.System.Windows.Forms.TextBox
+        Friend WithEvents tbOnUsed As Global.System.Windows.Forms.TextBox
+        Friend WithEvents Label18 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label21 As Global.System.Windows.Forms.Label
+        Friend WithEvents tbOnEndDialogue As Global.System.Windows.Forms.TextBox
+        Friend WithEvents tbOnInvDisturbed As Global.System.Windows.Forms.TextBox
+        Friend WithEvents Label22 As Global.System.Windows.Forms.Label
+        Friend WithEvents chkbHasInventory As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkbPartyInteract As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents btnInventory As Global.System.Windows.Forms.Button
+        Friend WithEvents btnDebug As Global.System.Windows.Forms.Button
+        Friend WithEvents chkbUsable As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkbInterruptable As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents btnEditOnClosed As Global.System.Windows.Forms.Button
+        Friend WithEvents btnEditOnDamaged As Global.System.Windows.Forms.Button
+        Friend WithEvents btnEditOnDeath As Global.System.Windows.Forms.Button
+        Friend WithEvents btnEditOnDisarm As Global.System.Windows.Forms.Button
+        Friend WithEvents btnEditOnHeartbeat As Global.System.Windows.Forms.Button
+        Friend WithEvents btnEditOnLock As Global.System.Windows.Forms.Button
+        Friend WithEvents btnEditOnMeleeAttacked As Global.System.Windows.Forms.Button
+        Friend WithEvents btnEditOnOpen As Global.System.Windows.Forms.Button
+        Friend WithEvents btnEditOnSpellCastAt As Global.System.Windows.Forms.Button
+        Friend WithEvents btnEditOnTrapTriggered As Global.System.Windows.Forms.Button
+        Friend WithEvents btnEditOnUserDefined As Global.System.Windows.Forms.Button
+        Friend WithEvents btnEditOnUnlock As Global.System.Windows.Forms.Button
+        Friend WithEvents btnEditOnUsed As Global.System.Windows.Forms.Button
+        Friend WithEvents btnEditOnInvDisturbed As Global.System.Windows.Forms.Button
+        Friend WithEvents btnEditOnEndDialogue As Global.System.Windows.Forms.Button
+
 
 		' Token: 0x06001440 RID: 5184 RVA: 0x002B8068 File Offset: 0x002B7068
 		Protected Overrides Sub Dispose(disposing As Boolean)
@@ -159,18 +285,12 @@
             Me.TabControl1.Controls.Add(Me.TabPageDescription)
             Me.TabControl1.Controls.Add(Me.TabPageComments)
             Me.TabControl1.Controls.Add(Me.TabPageTrap)
-            Dim tabControl As Global.System.Windows.Forms.Control = Me.TabControl1
-            Dim point As Global.System.Drawing.Point = New Global.System.Drawing.Point(19, 11)
-            tabControl.Location = point
+            Me.TabControl1.Location = New Global.System.Drawing.Point(19, 11)
             Me.TabControl1.Multiline = True
             Me.TabControl1.Name = "TabControl1"
-            Dim tabControl2 As Global.System.Windows.Forms.TabControl = Me.TabControl1
-            point = New Global.System.Drawing.Point(15, 3)
-            tabControl2.Padding = point
+            Me.TabControl1.Padding = New Global.System.Drawing.Point(15, 3)
             Me.TabControl1.SelectedIndex = 0
-            Dim tabControl3 As Global.System.Windows.Forms.Control = Me.TabControl1
-            Dim size As Global.System.Drawing.Size = New Global.System.Drawing.Size(456, 461)
-            tabControl3.Size = size
+            Me.TabControl1.Size = New Global.System.Drawing.Size(456, 461)
             Me.TabControl1.SizeMode = Global.System.Windows.Forms.TabSizeMode.FillToRight
             Me.TabControl1.TabIndex = 0
             Me.TabPageBasic.Controls.Add(Me.Label19)
@@ -193,212 +313,124 @@
             Me.TabPageBasic.Controls.Add(Me.Label2)
             Me.TabPageBasic.Controls.Add(Me.chkbStatic)
             Me.TabPageBasic.Controls.Add(Me.chkbMin1HP)
-            Dim tabPageBasic As Global.System.Windows.Forms.Control = Me.TabPageBasic
-            point = New Global.System.Drawing.Point(4, 40)
-            tabPageBasic.Location = point
+            Me.TabPageBasic.Location = New Global.System.Drawing.Point(4, 40)
             Me.TabPageBasic.Name = "TabPageBasic"
-            Dim tabPageBasic2 As Global.System.Windows.Forms.Control = Me.TabPageBasic
-            size = New Global.System.Drawing.Size(448, 393)
-            tabPageBasic2.Size = size
+            Me.TabPageBasic.Size = New Global.System.Drawing.Size(448, 393)
             Me.TabPageBasic.TabIndex = 0
             Me.TabPageBasic.Text = "Basic"
-            Dim label As Global.System.Windows.Forms.Control = Me.Label19
-            point = New Global.System.Drawing.Point(48, 80)
-            label.Location = point
+            Me.Label19.Location = New Global.System.Drawing.Point(48, 80)
             Me.Label19.Name = "Label19"
-            Dim label2 As Global.System.Windows.Forms.Control = Me.Label19
-            size = New Global.System.Drawing.Size(80, 16)
-            label2.Size = size
+            Me.Label19.Size = New Global.System.Drawing.Size(80, 16)
             Me.Label19.TabIndex = 10
             Me.Label19.Text = "Appearance"
             Me.Label19.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
             Me.cmbxAppearance.DropDownStyle = Global.System.Windows.Forms.ComboBoxStyle.DropDownList
-            Dim cmbxAppearance As Global.System.Windows.Forms.Control = Me.cmbxAppearance
-            point = New Global.System.Drawing.Point(128, 80)
-            cmbxAppearance.Location = point
+            Me.cmbxAppearance.Location = New Global.System.Drawing.Point(128, 80)
             Me.cmbxAppearance.Name = "cmbxAppearance"
-            Dim cmbxAppearance2 As Global.System.Windows.Forms.Control = Me.cmbxAppearance
-            size = New Global.System.Drawing.Size(184, 21)
-            cmbxAppearance2.Size = size
+            Me.cmbxAppearance.Size = New Global.System.Drawing.Size(184, 21)
             Me.cmbxAppearance.TabIndex = 3
-            Dim btnSetNameLang As Global.System.Windows.Forms.Control = Me.btnSetNameLang
-            point = New Global.System.Drawing.Point(344, 32)
-            btnSetNameLang.Location = point
+            Me.btnSetNameLang.Location = New Global.System.Drawing.Point(344, 32)
             Me.btnSetNameLang.Name = "btnSetNameLang"
-            Dim btnSetNameLang2 As Global.System.Windows.Forms.Control = Me.btnSetNameLang
-            size = New Global.System.Drawing.Size(88, 23)
-            btnSetNameLang2.Size = size
+            Me.btnSetNameLang.Size = New Global.System.Drawing.Size(88, 23)
             Me.btnSetNameLang.TabIndex = 1
             Me.btnSetNameLang.Text = "Set Language"
-            Dim label3 As Global.System.Windows.Forms.Control = Me.Label5
-            point = New Global.System.Drawing.Point(48, 200)
-            label3.Location = point
+            Me.Label5.Location = New Global.System.Drawing.Point(48, 200)
             Me.Label5.Name = "Label5"
-            Dim label4 As Global.System.Windows.Forms.Control = Me.Label5
-            size = New Global.System.Drawing.Size(88, 16)
-            label4.Size = size
+            Me.Label5.Size = New Global.System.Drawing.Size(88, 16)
             Me.Label5.TabIndex = 8
             Me.Label5.Text = "Fortitude Save"
             Me.Label5.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim nudWill As Global.System.Windows.Forms.Control = Me.nudWill
-            point = New Global.System.Drawing.Point(192, 248)
-            nudWill.Location = point
+            Me.nudWill.Location = New Global.System.Drawing.Point(192, 248)
             Me.nudWill.Name = "nudWill"
             Me.nudWill.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Dim nudWill2 As Global.System.Windows.Forms.Control = Me.nudWill
-            size = New Global.System.Drawing.Size(48, 20)
-            nudWill2.Size = size
+            Me.nudWill.Size = New Global.System.Drawing.Size(48, 20)
             Me.nudWill.TabIndex = 11
             Me.nudWill.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Dim nudFort As Global.System.Windows.Forms.Control = Me.nudFort
-            point = New Global.System.Drawing.Point(192, 200)
-            nudFort.Location = point
+            Me.nudFort.Location = New Global.System.Drawing.Point(192, 200)
             Me.nudFort.Name = "nudFort"
             Me.nudFort.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Dim nudFort2 As Global.System.Windows.Forms.Control = Me.nudFort
-            size = New Global.System.Drawing.Size(48, 20)
-            nudFort2.Size = size
+            Me.nudFort.Size = New Global.System.Drawing.Size(48, 20)
             Me.nudFort.TabIndex = 9
             Me.nudFort.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Dim nudHP As Global.System.Windows.Forms.Control = Me.nudHP
-            point = New Global.System.Drawing.Point(192, 176)
-            nudHP.Location = point
-            Dim nudHP2 As Global.System.Windows.Forms.NumericUpDown = Me.nudHP
-            Dim num As Decimal = New Decimal(New Integer() {99999, 0, 0, 0})
-            nudHP2.Maximum = num
+            Me.nudHP.Location = New Global.System.Drawing.Point(192, 176)
+            Me.nudHP.Maximum = New Decimal(New Integer() {99999, 0, 0, 0})
             Me.nudHP.Name = "nudHP"
             Me.nudHP.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Dim nudHP3 As Global.System.Windows.Forms.Control = Me.nudHP
-            size = New Global.System.Drawing.Size(48, 20)
-            nudHP3.Size = size
+            Me.nudHP.Size = New Global.System.Drawing.Size(48, 20)
             Me.nudHP.TabIndex = 8
             Me.nudHP.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Dim lblTextureVariation As Global.System.Windows.Forms.Control = Me.lblTextureVariation
-            point = New Global.System.Drawing.Point(48, 248)
-            lblTextureVariation.Location = point
+            Me.lblTextureVariation.Location = New Global.System.Drawing.Point(48, 248)
             Me.lblTextureVariation.Name = "lblTextureVariation"
-            Dim lblTextureVariation2 As Global.System.Windows.Forms.Control = Me.lblTextureVariation
-            size = New Global.System.Drawing.Size(96, 16)
-            lblTextureVariation2.Size = size
+            Me.lblTextureVariation.Size = New Global.System.Drawing.Size(96, 16)
             Me.lblTextureVariation.TabIndex = 5
             Me.lblTextureVariation.Text = "Will Save"
             Me.lblTextureVariation.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim label5 As Global.System.Windows.Forms.Control = Me.Label8
-            point = New Global.System.Drawing.Point(48, 176)
-            label5.Location = point
+            Me.Label8.Location = New Global.System.Drawing.Point(48, 176)
             Me.Label8.Name = "Label8"
-            Dim label6 As Global.System.Windows.Forms.Control = Me.Label8
-            size = New Global.System.Drawing.Size(88, 16)
-            label6.Size = size
+            Me.Label8.Size = New Global.System.Drawing.Size(88, 16)
             Me.Label8.TabIndex = 4
             Me.Label8.Text = "Hit Points"
             Me.Label8.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim nudHardness As Global.System.Windows.Forms.Control = Me.nudHardness
-            point = New Global.System.Drawing.Point(192, 152)
-            nudHardness.Location = point
-            Dim nudHardness2 As Global.System.Windows.Forms.NumericUpDown = Me.nudHardness
-            num = New Decimal(New Integer() {255, 0, 0, 0})
-            nudHardness2.Maximum = num
+            Me.nudHardness.Location = New Global.System.Drawing.Point(192, 152)
+            Me.nudHardness.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
             Me.nudHardness.Name = "nudHardness"
             Me.nudHardness.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Dim nudHardness3 As Global.System.Windows.Forms.Control = Me.nudHardness
-            size = New Global.System.Drawing.Size(48, 20)
-            nudHardness3.Size = size
+            Me.nudHardness.Size = New Global.System.Drawing.Size(48, 20)
             Me.nudHardness.TabIndex = 7
             Me.nudHardness.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Dim nudRef As Global.System.Windows.Forms.Control = Me.nudRef
-            point = New Global.System.Drawing.Point(192, 224)
-            nudRef.Location = point
+            Me.nudRef.Location = New Global.System.Drawing.Point(192, 224)
             Me.nudRef.Name = "nudRef"
             Me.nudRef.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Dim nudRef2 As Global.System.Windows.Forms.Control = Me.nudRef
-            size = New Global.System.Drawing.Size(48, 20)
-            nudRef2.Size = size
+            Me.nudRef.Size = New Global.System.Drawing.Size(48, 20)
             Me.nudRef.TabIndex = 10
             Me.nudRef.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Dim label7 As Global.System.Windows.Forms.Control = Me.Label12
-            point = New Global.System.Drawing.Point(48, 152)
-            label7.Location = point
+            Me.Label12.Location = New Global.System.Drawing.Point(48, 152)
             Me.Label12.Name = "Label12"
-            Dim label8 As Global.System.Windows.Forms.Control = Me.Label12
-            size = New Global.System.Drawing.Size(88, 16)
-            label8.Size = size
+            Me.Label12.Size = New Global.System.Drawing.Size(88, 16)
             Me.Label12.TabIndex = 7
             Me.Label12.Text = "Hardness"
             Me.Label12.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim lblBodyVariation As Global.System.Windows.Forms.Control = Me.lblBodyVariation
-            point = New Global.System.Drawing.Point(48, 224)
-            lblBodyVariation.Location = point
+            Me.lblBodyVariation.Location = New Global.System.Drawing.Point(48, 224)
             Me.lblBodyVariation.Name = "lblBodyVariation"
-            Dim lblBodyVariation2 As Global.System.Windows.Forms.Control = Me.lblBodyVariation
-            size = New Global.System.Drawing.Size(88, 16)
-            lblBodyVariation2.Size = size
+            Me.lblBodyVariation.Size = New Global.System.Drawing.Size(88, 16)
             Me.lblBodyVariation.TabIndex = 6
             Me.lblBodyVariation.Text = "Reflex Save"
             Me.lblBodyVariation.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim chkbPlotItem As Global.System.Windows.Forms.Control = Me.chkbPlotItem
-            point = New Global.System.Drawing.Point(48, 112)
-            chkbPlotItem.Location = point
+            Me.chkbPlotItem.Location = New Global.System.Drawing.Point(48, 112)
             Me.chkbPlotItem.Name = "chkbPlotItem"
-            Dim chkbPlotItem2 As Global.System.Windows.Forms.Control = Me.chkbPlotItem
-            size = New Global.System.Drawing.Size(72, 24)
-            chkbPlotItem2.Size = size
+            Me.chkbPlotItem.Size = New Global.System.Drawing.Size(72, 24)
             Me.chkbPlotItem.TabIndex = 4
             Me.chkbPlotItem.Text = "Plot item"
-            Dim tbTag As Global.System.Windows.Forms.Control = Me.tbTag
-            point = New Global.System.Drawing.Point(128, 56)
-            tbTag.Location = point
+            Me.tbTag.Location = New Global.System.Drawing.Point(128, 56)
             Me.tbTag.Name = "tbTag"
-            Dim tbTag2 As Global.System.Windows.Forms.Control = Me.tbTag
-            size = New Global.System.Drawing.Size(200, 20)
-            tbTag2.Size = size
+            Me.tbTag.Size = New Global.System.Drawing.Size(200, 20)
             Me.tbTag.TabIndex = 2
             Me.tbTag.Text = ""
-            Dim tbName As Global.System.Windows.Forms.Control = Me.tbName
-            point = New Global.System.Drawing.Point(128, 32)
-            tbName.Location = point
+            Me.tbName.Location = New Global.System.Drawing.Point(128, 32)
             Me.tbName.Name = "tbName"
-            Dim tbName2 As Global.System.Windows.Forms.Control = Me.tbName
-            size = New Global.System.Drawing.Size(200, 20)
-            tbName2.Size = size
+            Me.tbName.Size = New Global.System.Drawing.Size(200, 20)
             Me.tbName.TabIndex = 0
             Me.tbName.Text = ""
-            Dim label9 As Global.System.Windows.Forms.Control = Me.Label1
-            point = New Global.System.Drawing.Point(48, 32)
-            label9.Location = point
+            Me.Label1.Location = New Global.System.Drawing.Point(48, 32)
             Me.Label1.Name = "Label1"
-            Dim label10 As Global.System.Windows.Forms.Control = Me.Label1
-            size = New Global.System.Drawing.Size(100, 16)
-            label10.Size = size
+            Me.Label1.Size = New Global.System.Drawing.Size(100, 16)
             Me.Label1.TabIndex = 0
             Me.Label1.Text = "Name"
             Me.Label1.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim label11 As Global.System.Windows.Forms.Control = Me.Label2
-            point = New Global.System.Drawing.Point(48, 56)
-            label11.Location = point
+            Me.Label2.Location = New Global.System.Drawing.Point(48, 56)
             Me.Label2.Name = "Label2"
-            Dim label12 As Global.System.Windows.Forms.Control = Me.Label2
-            size = New Global.System.Drawing.Size(100, 16)
-            label12.Size = size
+            Me.Label2.Size = New Global.System.Drawing.Size(100, 16)
             Me.Label2.TabIndex = 0
             Me.Label2.Text = "Tag"
             Me.Label2.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim chkbStatic As Global.System.Windows.Forms.Control = Me.chkbStatic
-            point = New Global.System.Drawing.Point(192, 112)
-            chkbStatic.Location = point
+            Me.chkbStatic.Location = New Global.System.Drawing.Point(192, 112)
             Me.chkbStatic.Name = "chkbStatic"
-            Dim chkbStatic2 As Global.System.Windows.Forms.Control = Me.chkbStatic
-            size = New Global.System.Drawing.Size(72, 24)
-            chkbStatic2.Size = size
+            Me.chkbStatic.Size = New Global.System.Drawing.Size(72, 24)
             Me.chkbStatic.TabIndex = 5
             Me.chkbStatic.Text = "Static"
-            Dim chkbMin1HP As Global.System.Windows.Forms.Control = Me.chkbMin1HP
-            point = New Global.System.Drawing.Point(296, 112)
-            chkbMin1HP.Location = point
+            Me.chkbMin1HP.Location = New Global.System.Drawing.Point(296, 112)
             Me.chkbMin1HP.Name = "chkbMin1HP"
-            Dim chkbMin1HP2 As Global.System.Windows.Forms.Control = Me.chkbMin1HP
-            size = New Global.System.Drawing.Size(72, 24)
-            chkbMin1HP2.Size = size
+            Me.chkbMin1HP.Size = New Global.System.Drawing.Size(72, 24)
             Me.chkbMin1HP.TabIndex = 6
             Me.chkbMin1HP.Text = "Min1HP"
             Me.TabPageLock.Controls.Add(Me.tbKeyName)
@@ -411,117 +443,73 @@
             Me.TabPageLock.Controls.Add(Me.chkbLocked)
             Me.TabPageLock.Controls.Add(Me.chkbKeyRequired)
             Me.TabPageLock.Controls.Add(Me.chkbAutoRemoveKey)
-            Dim tabPageLock As Global.System.Windows.Forms.Control = Me.TabPageLock
-            point = New Global.System.Drawing.Point(4, 40)
-            tabPageLock.Location = point
+            Me.TabPageLock.Location = New Global.System.Drawing.Point(4, 40)
             Me.TabPageLock.Name = "TabPageLock"
-            Dim tabPageLock2 As Global.System.Windows.Forms.Control = Me.TabPageLock
-            size = New Global.System.Drawing.Size(448, 393)
-            tabPageLock2.Size = size
+            Me.TabPageLock.Size = New Global.System.Drawing.Size(448, 393)
             Me.TabPageLock.TabIndex = 1
             Me.TabPageLock.Text = "Lock"
             Me.TabPageLock.Visible = False
             Me.tbKeyName.Enabled = False
-            Dim tbKeyName As Global.System.Windows.Forms.Control = Me.tbKeyName
-            point = New Global.System.Drawing.Point(176, 256)
-            tbKeyName.Location = point
+            Me.tbKeyName.Location = New Global.System.Drawing.Point(176, 256)
             Me.tbKeyName.Name = "tbKeyName"
-            Dim tbKeyName2 As Global.System.Windows.Forms.Control = Me.tbKeyName
-            size = New Global.System.Drawing.Size(200, 20)
-            tbKeyName2.Size = size
+            Me.tbKeyName.Size = New Global.System.Drawing.Size(200, 20)
             Me.tbKeyName.TabIndex = 6
             Me.tbKeyName.Text = ""
             Me.lblKeyTag.Enabled = False
-            Dim lblKeyTag As Global.System.Windows.Forms.Control = Me.lblKeyTag
-            point = New Global.System.Drawing.Point(52, 256)
-            lblKeyTag.Location = point
+            Me.lblKeyTag.Location = New Global.System.Drawing.Point(52, 256)
             Me.lblKeyTag.Name = "lblKeyTag"
-            Dim lblKeyTag2 As Global.System.Windows.Forms.Control = Me.lblKeyTag
-            size = New Global.System.Drawing.Size(100, 16)
-            lblKeyTag2.Size = size
+            Me.lblKeyTag.Size = New Global.System.Drawing.Size(100, 16)
             Me.lblKeyTag.TabIndex = 18
             Me.lblKeyTag.Text = "Key Tag"
             Me.lblKeyTag.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
             Me.nudCloseLockDC.Enabled = False
-            Dim nudCloseLockDC As Global.System.Windows.Forms.Control = Me.nudCloseLockDC
-            point = New Global.System.Drawing.Point(176, 216)
-            nudCloseLockDC.Location = point
+            Me.nudCloseLockDC.Location = New Global.System.Drawing.Point(176, 216)
             Me.nudCloseLockDC.Name = "nudCloseLockDC"
             Me.nudCloseLockDC.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Dim nudCloseLockDC2 As Global.System.Windows.Forms.Control = Me.nudCloseLockDC
-            size = New Global.System.Drawing.Size(48, 20)
-            nudCloseLockDC2.Size = size
+            Me.nudCloseLockDC.Size = New Global.System.Drawing.Size(48, 20)
             Me.nudCloseLockDC.TabIndex = 5
             Me.nudCloseLockDC.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
             Me.lblCloseLockDC.Enabled = False
-            Dim lblCloseLockDC As Global.System.Windows.Forms.Control = Me.lblCloseLockDC
-            point = New Global.System.Drawing.Point(48, 216)
-            lblCloseLockDC.Location = point
+            Me.lblCloseLockDC.Location = New Global.System.Drawing.Point(48, 216)
             Me.lblCloseLockDC.Name = "lblCloseLockDC"
-            Dim lblCloseLockDC2 As Global.System.Windows.Forms.Control = Me.lblCloseLockDC
-            size = New Global.System.Drawing.Size(88, 16)
-            lblCloseLockDC2.Size = size
+            Me.lblCloseLockDC.Size = New Global.System.Drawing.Size(88, 16)
             Me.lblCloseLockDC.TabIndex = 14
             Me.lblCloseLockDC.Text = "Close Lock DC"
             Me.lblCloseLockDC.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
             Me.nudOpenLockDC.Enabled = False
-            Dim nudOpenLockDC As Global.System.Windows.Forms.Control = Me.nudOpenLockDC
-            point = New Global.System.Drawing.Point(176, 176)
-            nudOpenLockDC.Location = point
+            Me.nudOpenLockDC.Location = New Global.System.Drawing.Point(176, 176)
             Me.nudOpenLockDC.Name = "nudOpenLockDC"
             Me.nudOpenLockDC.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Dim nudOpenLockDC2 As Global.System.Windows.Forms.Control = Me.nudOpenLockDC
-            size = New Global.System.Drawing.Size(48, 20)
-            nudOpenLockDC2.Size = size
+            Me.nudOpenLockDC.Size = New Global.System.Drawing.Size(48, 20)
             Me.nudOpenLockDC.TabIndex = 4
             Me.nudOpenLockDC.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
             Me.lblOpenLockDC.Enabled = False
-            Dim lblOpenLockDC As Global.System.Windows.Forms.Control = Me.lblOpenLockDC
-            point = New Global.System.Drawing.Point(48, 176)
-            lblOpenLockDC.Location = point
+            Me.lblOpenLockDC.Location = New Global.System.Drawing.Point(48, 176)
             Me.lblOpenLockDC.Name = "lblOpenLockDC"
-            Dim lblOpenLockDC2 As Global.System.Windows.Forms.Control = Me.lblOpenLockDC
-            size = New Global.System.Drawing.Size(88, 16)
-            lblOpenLockDC2.Size = size
+            Me.lblOpenLockDC.Size = New Global.System.Drawing.Size(88, 16)
             Me.lblOpenLockDC.TabIndex = 15
             Me.lblOpenLockDC.Text = "Open Lock DC"
             Me.lblOpenLockDC.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim chkbLockable As Global.System.Windows.Forms.Control = Me.chkbLockable
-            point = New Global.System.Drawing.Point(48, 66)
-            chkbLockable.Location = point
+            Me.chkbLockable.Location = New Global.System.Drawing.Point(48, 66)
             Me.chkbLockable.Name = "chkbLockable"
-            Dim chkbLockable2 As Global.System.Windows.Forms.Control = Me.chkbLockable
-            size = New Global.System.Drawing.Size(112, 24)
-            chkbLockable2.Size = size
+            Me.chkbLockable.Size = New Global.System.Drawing.Size(112, 24)
             Me.chkbLockable.TabIndex = 1
             Me.chkbLockable.Text = "Can be relocked"
-            Dim chkbLocked As Global.System.Windows.Forms.Control = Me.chkbLocked
-            point = New Global.System.Drawing.Point(48, 32)
-            chkbLocked.Location = point
+            Me.chkbLocked.Location = New Global.System.Drawing.Point(48, 32)
             Me.chkbLocked.Name = "chkbLocked"
-            Dim chkbLocked2 As Global.System.Windows.Forms.Control = Me.chkbLocked
-            size = New Global.System.Drawing.Size(72, 24)
-            chkbLocked2.Size = size
+            Me.chkbLocked.Size = New Global.System.Drawing.Size(72, 24)
             Me.chkbLocked.TabIndex = 0
             Me.chkbLocked.Text = "Locked"
             Me.chkbKeyRequired.Enabled = False
-            Dim chkbKeyRequired As Global.System.Windows.Forms.Control = Me.chkbKeyRequired
-            point = New Global.System.Drawing.Point(48, 134)
-            chkbKeyRequired.Location = point
+            Me.chkbKeyRequired.Location = New Global.System.Drawing.Point(48, 134)
             Me.chkbKeyRequired.Name = "chkbKeyRequired"
-            Dim chkbKeyRequired2 As Global.System.Windows.Forms.Control = Me.chkbKeyRequired
-            size = New Global.System.Drawing.Size(184, 24)
-            chkbKeyRequired2.Size = size
+            Me.chkbKeyRequired.Size = New Global.System.Drawing.Size(184, 24)
             Me.chkbKeyRequired.TabIndex = 3
             Me.chkbKeyRequired.Text = "Key required to unlock or lock"
             Me.chkbAutoRemoveKey.Enabled = False
-            Dim chkbAutoRemoveKey As Global.System.Windows.Forms.Control = Me.chkbAutoRemoveKey
-            point = New Global.System.Drawing.Point(48, 100)
-            chkbAutoRemoveKey.Location = point
+            Me.chkbAutoRemoveKey.Location = New Global.System.Drawing.Point(48, 100)
             Me.chkbAutoRemoveKey.Name = "chkbAutoRemoveKey"
-            Dim chkbAutoRemoveKey2 As Global.System.Windows.Forms.Control = Me.chkbAutoRemoveKey
-            size = New Global.System.Drawing.Size(200, 24)
-            chkbAutoRemoveKey2.Size = size
+            Me.chkbAutoRemoveKey.Size = New Global.System.Drawing.Size(200, 24)
             Me.chkbAutoRemoveKey.TabIndex = 2
             Me.chkbAutoRemoveKey.Text = "Automatically remove key after use"
             Me.TabPageAdvanced.Controls.Add(Me.chkbPartyInteract)
@@ -538,147 +526,87 @@
             Me.TabPageAdvanced.Controls.Add(Me.Label14)
             Me.TabPageAdvanced.Controls.Add(Me.tbAnimationState)
             Me.TabPageAdvanced.Controls.Add(Me.chkbUsable)
-            Dim tabPageAdvanced As Global.System.Windows.Forms.Control = Me.TabPageAdvanced
-            point = New Global.System.Drawing.Point(4, 40)
-            tabPageAdvanced.Location = point
+            Me.TabPageAdvanced.Location = New Global.System.Drawing.Point(4, 40)
             Me.TabPageAdvanced.Name = "TabPageAdvanced"
-            Dim tabPageAdvanced2 As Global.System.Windows.Forms.Control = Me.TabPageAdvanced
-            size = New Global.System.Drawing.Size(448, 393)
-            tabPageAdvanced2.Size = size
+            Me.TabPageAdvanced.Size = New Global.System.Drawing.Size(448, 393)
             Me.TabPageAdvanced.TabIndex = 5
             Me.TabPageAdvanced.Text = "Advanced"
             Me.TabPageAdvanced.Visible = False
-            Dim chkbPartyInteract As Global.System.Windows.Forms.Control = Me.chkbPartyInteract
-            point = New Global.System.Drawing.Point(168, 240)
-            chkbPartyInteract.Location = point
+            Me.chkbPartyInteract.Location = New Global.System.Drawing.Point(168, 240)
             Me.chkbPartyInteract.Name = "chkbPartyInteract"
-            Dim chkbPartyInteract2 As Global.System.Windows.Forms.Control = Me.chkbPartyInteract
-            size = New Global.System.Drawing.Size(184, 24)
-            chkbPartyInteract2.Size = size
+            Me.chkbPartyInteract.Size = New Global.System.Drawing.Size(184, 24)
             Me.chkbPartyInteract.TabIndex = 6
             Me.chkbPartyInteract.Text = "Party Interact"
-            Dim chkbHasInventory As Global.System.Windows.Forms.Control = Me.chkbHasInventory
-            point = New Global.System.Drawing.Point(168, 208)
-            chkbHasInventory.Location = point
+            Me.chkbHasInventory.Location = New Global.System.Drawing.Point(168, 208)
             Me.chkbHasInventory.Name = "chkbHasInventory"
-            Dim chkbHasInventory2 As Global.System.Windows.Forms.Control = Me.chkbHasInventory
-            size = New Global.System.Drawing.Size(184, 24)
-            chkbHasInventory2.Size = size
+            Me.chkbHasInventory.Size = New Global.System.Drawing.Size(184, 24)
             Me.chkbHasInventory.TabIndex = 5
             Me.chkbHasInventory.Text = "Has Inventory"
-            Dim label13 As Global.System.Windows.Forms.Control = Me.Label20
-            point = New Global.System.Drawing.Point(56, 176)
-            label13.Location = point
+            Me.Label20.Location = New Global.System.Drawing.Point(56, 176)
             Me.Label20.Name = "Label20"
-            Dim label14 As Global.System.Windows.Forms.Control = Me.Label20
-            size = New Global.System.Drawing.Size(48, 16)
-            label14.Size = size
+            Me.Label20.Size = New Global.System.Drawing.Size(48, 16)
             Me.Label20.TabIndex = 5
             Me.Label20.Text = "Type"
             Me.Label20.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim tbType As Global.System.Windows.Forms.Control = Me.tbType
-            point = New Global.System.Drawing.Point(168, 176)
-            tbType.Location = point
+            Me.tbType.Location = New Global.System.Drawing.Point(168, 176)
             Me.tbType.Name = "tbType"
-            Dim tbType2 As Global.System.Windows.Forms.Control = Me.tbType
-            size = New Global.System.Drawing.Size(72, 20)
-            tbType2.Size = size
+            Me.tbType.Size = New Global.System.Drawing.Size(72, 20)
             Me.tbType.TabIndex = 4
             Me.tbType.Text = ""
-            Dim chkbInterruptable As Global.System.Windows.Forms.Control = Me.chkbInterruptable
-            point = New Global.System.Drawing.Point(352, 112)
-            chkbInterruptable.Location = point
+            Me.chkbInterruptable.Location = New Global.System.Drawing.Point(352, 112)
             Me.chkbInterruptable.Name = "chkbInterruptable"
-            Dim chkbInterruptable2 As Global.System.Windows.Forms.Control = Me.chkbInterruptable
-            size = New Global.System.Drawing.Size(88, 24)
-            chkbInterruptable2.Size = size
+            Me.chkbInterruptable.Size = New Global.System.Drawing.Size(88, 24)
             Me.chkbInterruptable.TabIndex = 2
             Me.chkbInterruptable.Text = "Interruptable"
-            Dim tbConversation As Global.System.Windows.Forms.Control = Me.tbConversation
-            point = New Global.System.Drawing.Point(168, 112)
-            tbConversation.Location = point
+            Me.tbConversation.Location = New Global.System.Drawing.Point(168, 112)
             Me.tbConversation.Name = "tbConversation"
-            Dim tbConversation2 As Global.System.Windows.Forms.Control = Me.tbConversation
-            size = New Global.System.Drawing.Size(168, 20)
-            tbConversation2.Size = size
+            Me.tbConversation.Size = New Global.System.Drawing.Size(168, 20)
             Me.tbConversation.TabIndex = 1
             Me.tbConversation.Text = ""
-            Dim tbFaction As Global.System.Windows.Forms.Control = Me.tbFaction
-            point = New Global.System.Drawing.Point(168, 80)
-            tbFaction.Location = point
+            Me.tbFaction.Location = New Global.System.Drawing.Point(168, 80)
             Me.tbFaction.Name = "tbFaction"
-            Dim tbFaction2 As Global.System.Windows.Forms.Control = Me.tbFaction
-            size = New Global.System.Drawing.Size(30, 20)
-            tbFaction2.Size = size
+            Me.tbFaction.Size = New Global.System.Drawing.Size(30, 20)
             Me.tbFaction.TabIndex = 0
             Me.tbFaction.Text = ""
             Me.tbTemplateResRef.CharacterCasing = Global.System.Windows.Forms.CharacterCasing.Lower
-            Dim tbTemplateResRef As Global.System.Windows.Forms.Control = Me.tbTemplateResRef
-            point = New Global.System.Drawing.Point(168, 32)
-            tbTemplateResRef.Location = point
+            Me.tbTemplateResRef.Location = New Global.System.Drawing.Point(168, 32)
             Me.tbTemplateResRef.MaxLength = 16
             Me.tbTemplateResRef.Name = "tbTemplateResRef"
-            Dim tbTemplateResRef2 As Global.System.Windows.Forms.Control = Me.tbTemplateResRef
-            size = New Global.System.Drawing.Size(200, 20)
-            tbTemplateResRef2.Size = size
+            Me.tbTemplateResRef.Size = New Global.System.Drawing.Size(200, 20)
             Me.tbTemplateResRef.TabIndex = 3
             Me.tbTemplateResRef.Text = ""
-            Dim label15 As Global.System.Windows.Forms.Control = Me.Label10
-            point = New Global.System.Drawing.Point(52, 32)
-            label15.Location = point
+            Me.Label10.Location = New Global.System.Drawing.Point(52, 32)
             Me.Label10.Name = "Label10"
-            Dim label16 As Global.System.Windows.Forms.Control = Me.Label10
-            size = New Global.System.Drawing.Size(100, 16)
-            label16.Size = size
+            Me.Label10.Size = New Global.System.Drawing.Size(100, 16)
             Me.Label10.TabIndex = 2
             Me.Label10.Text = "Template ResRef"
             Me.Label10.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim label17 As Global.System.Windows.Forms.Control = Me.Label11
-            point = New Global.System.Drawing.Point(56, 80)
-            label17.Location = point
+            Me.Label11.Location = New Global.System.Drawing.Point(56, 80)
             Me.Label11.Name = "Label11"
-            Dim label18 As Global.System.Windows.Forms.Control = Me.Label11
-            size = New Global.System.Drawing.Size(100, 16)
-            label18.Size = size
+            Me.Label11.Size = New Global.System.Drawing.Size(100, 16)
             Me.Label11.TabIndex = 2
             Me.Label11.Text = "Faction"
             Me.Label11.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim label19 As Global.System.Windows.Forms.Control = Me.Label13
-            point = New Global.System.Drawing.Point(56, 112)
-            label19.Location = point
+            Me.Label13.Location = New Global.System.Drawing.Point(56, 112)
             Me.Label13.Name = "Label13"
-            Dim label20 As Global.System.Windows.Forms.Control = Me.Label13
-            size = New Global.System.Drawing.Size(100, 16)
-            label20.Size = size
+            Me.Label13.Size = New Global.System.Drawing.Size(100, 16)
             Me.Label13.TabIndex = 2
             Me.Label13.Text = "Conversation"
             Me.Label13.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim label21 As Global.System.Windows.Forms.Control = Me.Label14
-            point = New Global.System.Drawing.Point(56, 144)
-            label21.Location = point
+            Me.Label14.Location = New Global.System.Drawing.Point(56, 144)
             Me.Label14.Name = "Label14"
-            Dim label22 As Global.System.Windows.Forms.Control = Me.Label14
-            size = New Global.System.Drawing.Size(100, 16)
-            label22.Size = size
+            Me.Label14.Size = New Global.System.Drawing.Size(100, 16)
             Me.Label14.TabIndex = 2
             Me.Label14.Text = "Animation State"
             Me.Label14.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim tbAnimationState As Global.System.Windows.Forms.Control = Me.tbAnimationState
-            point = New Global.System.Drawing.Point(168, 144)
-            tbAnimationState.Location = point
+            Me.tbAnimationState.Location = New Global.System.Drawing.Point(168, 144)
             Me.tbAnimationState.Name = "tbAnimationState"
-            Dim tbAnimationState2 As Global.System.Windows.Forms.Control = Me.tbAnimationState
-            size = New Global.System.Drawing.Size(32, 20)
-            tbAnimationState2.Size = size
+            Me.tbAnimationState.Size = New Global.System.Drawing.Size(32, 20)
             Me.tbAnimationState.TabIndex = 3
             Me.tbAnimationState.Text = ""
-            Dim chkbUsable As Global.System.Windows.Forms.Control = Me.chkbUsable
-            point = New Global.System.Drawing.Point(168, 272)
-            chkbUsable.Location = point
+            Me.chkbUsable.Location = New Global.System.Drawing.Point(168, 272)
             Me.chkbUsable.Name = "chkbUsable"
-            Dim chkbUsable2 As Global.System.Windows.Forms.Control = Me.chkbUsable
-            size = New Global.System.Drawing.Size(184, 24)
-            chkbUsable2.Size = size
+            Me.chkbUsable.Size = New Global.System.Drawing.Size(184, 24)
             Me.chkbUsable.TabIndex = 6
             Me.chkbUsable.Text = "Usable"
             Me.TabPageScripts.Controls.Add(Me.btnEditOnUserDefined)
@@ -726,351 +654,207 @@
             Me.TabPageScripts.Controls.Add(Me.btnEditOnUsed)
             Me.TabPageScripts.Controls.Add(Me.btnEditOnInvDisturbed)
             Me.TabPageScripts.Controls.Add(Me.btnEditOnEndDialogue)
-            Dim tabPageScripts As Global.System.Windows.Forms.Control = Me.TabPageScripts
-            point = New Global.System.Drawing.Point(4, 40)
-            tabPageScripts.Location = point
+            Me.TabPageScripts.Location = New Global.System.Drawing.Point(4, 40)
             Me.TabPageScripts.Name = "TabPageScripts"
-            Dim tabPageScripts2 As Global.System.Windows.Forms.Control = Me.TabPageScripts
-            size = New Global.System.Drawing.Size(448, 417)
-            tabPageScripts2.Size = size
+            Me.TabPageScripts.Size = New Global.System.Drawing.Size(448, 417)
             Me.TabPageScripts.TabIndex = 4
             Me.TabPageScripts.Text = "Scripts"
             Me.TabPageScripts.Visible = False
-            Dim tbOnUsed As Global.System.Windows.Forms.Control = Me.tbOnUsed
-            point = New Global.System.Drawing.Point(160, 354)
-            tbOnUsed.Location = point
+            Me.tbOnUsed.Location = New Global.System.Drawing.Point(160, 354)
             Me.tbOnUsed.Name = "tbOnUsed"
-            Dim tbOnUsed2 As Global.System.Windows.Forms.Control = Me.tbOnUsed
-            size = New Global.System.Drawing.Size(204, 20)
-            tbOnUsed2.Size = size
+            Me.tbOnUsed.Size = New Global.System.Drawing.Size(204, 20)
             Me.tbOnUsed.TabIndex = 26
             Me.tbOnUsed.Text = ""
-            Dim label23 As Global.System.Windows.Forms.Control = Me.Label18
-            point = New Global.System.Drawing.Point(40, 354)
-            label23.Location = point
+            Me.Label18.Location = New Global.System.Drawing.Point(40, 354)
             Me.Label18.Name = "Label18"
-            Dim label24 As Global.System.Windows.Forms.Control = Me.Label18
-            size = New Global.System.Drawing.Size(112, 18)
-            label24.Size = size
+            Me.Label18.Size = New Global.System.Drawing.Size(112, 18)
             Me.Label18.TabIndex = 30
             Me.Label18.Text = "OnUsed"
             Me.Label18.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim label25 As Global.System.Windows.Forms.Control = Me.Label34
-            point = New Global.System.Drawing.Point(40, 68)
-            label25.Location = point
+            Me.Label34.Location = New Global.System.Drawing.Point(40, 68)
             Me.Label34.Name = "Label34"
-            Dim label26 As Global.System.Windows.Forms.Control = Me.Label34
-            size = New Global.System.Drawing.Size(112, 18)
-            label26.Size = size
+            Me.Label34.Size = New Global.System.Drawing.Size(112, 18)
             Me.Label34.TabIndex = 27
             Me.Label34.Text = "OnDeath"
             Me.Label34.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim tbOnDeath As Global.System.Windows.Forms.Control = Me.tbOnDeath
-            point = New Global.System.Drawing.Point(160, 68)
-            tbOnDeath.Location = point
+            Me.tbOnDeath.Location = New Global.System.Drawing.Point(160, 68)
             Me.tbOnDeath.Name = "tbOnDeath"
-            Dim tbOnDeath2 As Global.System.Windows.Forms.Control = Me.tbOnDeath
-            size = New Global.System.Drawing.Size(204, 20)
-            tbOnDeath2.Size = size
+            Me.tbOnDeath.Size = New Global.System.Drawing.Size(204, 20)
             Me.tbOnDeath.TabIndex = 4
             Me.tbOnDeath.Text = ""
-            Dim label27 As Global.System.Windows.Forms.Control = Me.Label33
-            point = New Global.System.Drawing.Point(40, 42)
-            label27.Location = point
+            Me.Label33.Location = New Global.System.Drawing.Point(40, 42)
             Me.Label33.Name = "Label33"
-            Dim label28 As Global.System.Windows.Forms.Control = Me.Label33
-            size = New Global.System.Drawing.Size(112, 18)
-            label28.Size = size
+            Me.Label33.Size = New Global.System.Drawing.Size(112, 18)
             Me.Label33.TabIndex = 17
             Me.Label33.Text = "OnDamaged"
             Me.Label33.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim tbOnDamaged As Global.System.Windows.Forms.Control = Me.tbOnDamaged
-            point = New Global.System.Drawing.Point(160, 42)
-            tbOnDamaged.Location = point
+            Me.tbOnDamaged.Location = New Global.System.Drawing.Point(160, 42)
             Me.tbOnDamaged.Name = "tbOnDamaged"
-            Dim tbOnDamaged2 As Global.System.Windows.Forms.Control = Me.tbOnDamaged
-            size = New Global.System.Drawing.Size(204, 20)
-            tbOnDamaged2.Size = size
+            Me.tbOnDamaged.Size = New Global.System.Drawing.Size(204, 20)
             Me.tbOnDamaged.TabIndex = 2
             Me.tbOnDamaged.Text = ""
-            Dim label29 As Global.System.Windows.Forms.Control = Me.Label32
-            point = New Global.System.Drawing.Point(40, 16)
-            label29.Location = point
+            Me.Label32.Location = New Global.System.Drawing.Point(40, 16)
             Me.Label32.Name = "Label32"
-            Dim label30 As Global.System.Windows.Forms.Control = Me.Label32
-            size = New Global.System.Drawing.Size(112, 18)
-            label30.Size = size
+            Me.Label32.Size = New Global.System.Drawing.Size(112, 18)
             Me.Label32.TabIndex = 14
             Me.Label32.Text = "OnClosed"
             Me.Label32.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim tbOnClosed As Global.System.Windows.Forms.Control = Me.tbOnClosed
-            point = New Global.System.Drawing.Point(160, 16)
-            tbOnClosed.Location = point
+            Me.tbOnClosed.Location = New Global.System.Drawing.Point(160, 16)
             Me.tbOnClosed.Name = "tbOnClosed"
-            Dim tbOnClosed2 As Global.System.Windows.Forms.Control = Me.tbOnClosed
-            size = New Global.System.Drawing.Size(204, 20)
-            tbOnClosed2.Size = size
+            Me.tbOnClosed.Size = New Global.System.Drawing.Size(204, 20)
             Me.tbOnClosed.TabIndex = 0
             Me.tbOnClosed.Text = ""
-            Dim label31 As Global.System.Windows.Forms.Control = Me.Label35
-            point = New Global.System.Drawing.Point(40, 94)
-            label31.Location = point
+            Me.Label35.Location = New Global.System.Drawing.Point(40, 94)
             Me.Label35.Name = "Label35"
-            Dim label32 As Global.System.Windows.Forms.Control = Me.Label35
-            size = New Global.System.Drawing.Size(112, 18)
-            label32.Size = size
+            Me.Label35.Size = New Global.System.Drawing.Size(112, 18)
             Me.Label35.TabIndex = 26
             Me.Label35.Text = "OnDisarm"
             Me.Label35.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim tbOnDisarm As Global.System.Windows.Forms.Control = Me.tbOnDisarm
-            point = New Global.System.Drawing.Point(160, 94)
-            tbOnDisarm.Location = point
+            Me.tbOnDisarm.Location = New Global.System.Drawing.Point(160, 94)
             Me.tbOnDisarm.Name = "tbOnDisarm"
-            Dim tbOnDisarm2 As Global.System.Windows.Forms.Control = Me.tbOnDisarm
-            size = New Global.System.Drawing.Size(204, 20)
-            tbOnDisarm2.Size = size
+            Me.tbOnDisarm.Size = New Global.System.Drawing.Size(204, 20)
             Me.tbOnDisarm.TabIndex = 6
             Me.tbOnDisarm.Text = ""
-            Dim tbOnHeartbeat As Global.System.Windows.Forms.Control = Me.tbOnHeartbeat
-            point = New Global.System.Drawing.Point(160, 146)
-            tbOnHeartbeat.Location = point
+            Me.tbOnHeartbeat.Location = New Global.System.Drawing.Point(160, 146)
             Me.tbOnHeartbeat.Name = "tbOnHeartbeat"
-            Dim tbOnHeartbeat2 As Global.System.Windows.Forms.Control = Me.tbOnHeartbeat
-            size = New Global.System.Drawing.Size(204, 20)
-            tbOnHeartbeat2.Size = size
+            Me.tbOnHeartbeat.Size = New Global.System.Drawing.Size(204, 20)
             Me.tbOnHeartbeat.TabIndex = 10
             Me.tbOnHeartbeat.Text = ""
-            Dim label33 As Global.System.Windows.Forms.Control = Me.Label36
-            point = New Global.System.Drawing.Point(40, 146)
-            label33.Location = point
+            Me.Label36.Location = New Global.System.Drawing.Point(40, 146)
             Me.Label36.Name = "Label36"
-            Dim label34 As Global.System.Windows.Forms.Control = Me.Label36
-            size = New Global.System.Drawing.Size(112, 18)
-            label34.Size = size
+            Me.Label36.Size = New Global.System.Drawing.Size(112, 18)
             Me.Label36.TabIndex = 25
             Me.Label36.Text = "OnHeartbeat"
             Me.Label36.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim label35 As Global.System.Windows.Forms.Control = Me.Label37
-            point = New Global.System.Drawing.Point(40, 198)
-            label35.Location = point
+            Me.Label37.Location = New Global.System.Drawing.Point(40, 198)
             Me.Label37.Name = "Label37"
-            Dim label36 As Global.System.Windows.Forms.Control = Me.Label37
-            size = New Global.System.Drawing.Size(112, 18)
-            label36.Size = size
+            Me.Label37.Size = New Global.System.Drawing.Size(112, 18)
             Me.Label37.TabIndex = 28
             Me.Label37.Text = "OnLock"
             Me.Label37.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim tbOnLock As Global.System.Windows.Forms.Control = Me.tbOnLock
-            point = New Global.System.Drawing.Point(160, 198)
-            tbOnLock.Location = point
+            Me.tbOnLock.Location = New Global.System.Drawing.Point(160, 198)
             Me.tbOnLock.Name = "tbOnLock"
-            Dim tbOnLock2 As Global.System.Windows.Forms.Control = Me.tbOnLock
-            size = New Global.System.Drawing.Size(204, 20)
-            tbOnLock2.Size = size
+            Me.tbOnLock.Size = New Global.System.Drawing.Size(204, 20)
             Me.tbOnLock.TabIndex = 14
             Me.tbOnLock.Text = ""
-            Dim tbOnMeleeAttacked As Global.System.Windows.Forms.Control = Me.tbOnMeleeAttacked
-            point = New Global.System.Drawing.Point(160, 224)
-            tbOnMeleeAttacked.Location = point
+            Me.tbOnMeleeAttacked.Location = New Global.System.Drawing.Point(160, 224)
             Me.tbOnMeleeAttacked.Name = "tbOnMeleeAttacked"
-            Dim tbOnMeleeAttacked2 As Global.System.Windows.Forms.Control = Me.tbOnMeleeAttacked
-            size = New Global.System.Drawing.Size(204, 20)
-            tbOnMeleeAttacked2.Size = size
+            Me.tbOnMeleeAttacked.Size = New Global.System.Drawing.Size(204, 20)
             Me.tbOnMeleeAttacked.TabIndex = 16
             Me.tbOnMeleeAttacked.Text = ""
-            Dim label37 As Global.System.Windows.Forms.Control = Me.Label38
-            point = New Global.System.Drawing.Point(40, 224)
-            label37.Location = point
+            Me.Label38.Location = New Global.System.Drawing.Point(40, 224)
             Me.Label38.Name = "Label38"
-            Dim label38 As Global.System.Windows.Forms.Control = Me.Label38
-            size = New Global.System.Drawing.Size(112, 18)
-            label38.Size = size
+            Me.Label38.Size = New Global.System.Drawing.Size(112, 18)
             Me.Label38.TabIndex = 20
             Me.Label38.Text = "OnMeleeAttacked"
             Me.Label38.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim tbOnOpen As Global.System.Windows.Forms.Control = Me.tbOnOpen
-            point = New Global.System.Drawing.Point(160, 250)
-            tbOnOpen.Location = point
+            Me.tbOnOpen.Location = New Global.System.Drawing.Point(160, 250)
             Me.tbOnOpen.Name = "tbOnOpen"
-            Dim tbOnOpen2 As Global.System.Windows.Forms.Control = Me.tbOnOpen
-            size = New Global.System.Drawing.Size(204, 20)
-            tbOnOpen2.Size = size
+            Me.tbOnOpen.Size = New Global.System.Drawing.Size(204, 20)
             Me.tbOnOpen.TabIndex = 18
             Me.tbOnOpen.Text = ""
-            Dim label39 As Global.System.Windows.Forms.Control = Me.Label39
-            point = New Global.System.Drawing.Point(40, 250)
-            label39.Location = point
+            Me.Label39.Location = New Global.System.Drawing.Point(40, 250)
             Me.Label39.Name = "Label39"
-            Dim label40 As Global.System.Windows.Forms.Control = Me.Label39
-            size = New Global.System.Drawing.Size(112, 18)
-            label40.Size = size
+            Me.Label39.Size = New Global.System.Drawing.Size(112, 18)
             Me.Label39.TabIndex = 21
             Me.Label39.Text = "OnOpen"
             Me.Label39.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim label41 As Global.System.Windows.Forms.Control = Me.Label40
-            point = New Global.System.Drawing.Point(40, 276)
-            label41.Location = point
+            Me.Label40.Location = New Global.System.Drawing.Point(40, 276)
             Me.Label40.Name = "Label40"
-            Dim label42 As Global.System.Windows.Forms.Control = Me.Label40
-            size = New Global.System.Drawing.Size(112, 18)
-            label42.Size = size
+            Me.Label40.Size = New Global.System.Drawing.Size(112, 18)
             Me.Label40.TabIndex = 19
             Me.Label40.Text = "OnSpellCastAt"
             Me.Label40.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim tbOnSpellCastAt As Global.System.Windows.Forms.Control = Me.tbOnSpellCastAt
-            point = New Global.System.Drawing.Point(160, 276)
-            tbOnSpellCastAt.Location = point
+            Me.tbOnSpellCastAt.Location = New Global.System.Drawing.Point(160, 276)
             Me.tbOnSpellCastAt.Name = "tbOnSpellCastAt"
-            Dim tbOnSpellCastAt2 As Global.System.Windows.Forms.Control = Me.tbOnSpellCastAt
-            size = New Global.System.Drawing.Size(204, 20)
-            tbOnSpellCastAt2.Size = size
+            Me.tbOnSpellCastAt.Size = New Global.System.Drawing.Size(204, 20)
             Me.tbOnSpellCastAt.TabIndex = 20
             Me.tbOnSpellCastAt.Text = ""
-            Dim label43 As Global.System.Windows.Forms.Control = Me.Label41
-            point = New Global.System.Drawing.Point(40, 302)
-            label43.Location = point
+            Me.Label41.Location = New Global.System.Drawing.Point(40, 302)
             Me.Label41.Name = "Label41"
-            Dim label44 As Global.System.Windows.Forms.Control = Me.Label41
-            size = New Global.System.Drawing.Size(112, 18)
-            label44.Size = size
+            Me.Label41.Size = New Global.System.Drawing.Size(112, 18)
             Me.Label41.TabIndex = 24
             Me.Label41.Text = "OnTrapTriggered"
             Me.Label41.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim tbOnTrapTriggered As Global.System.Windows.Forms.Control = Me.tbOnTrapTriggered
-            point = New Global.System.Drawing.Point(160, 302)
-            tbOnTrapTriggered.Location = point
+            Me.tbOnTrapTriggered.Location = New Global.System.Drawing.Point(160, 302)
             Me.tbOnTrapTriggered.Name = "tbOnTrapTriggered"
-            Dim tbOnTrapTriggered2 As Global.System.Windows.Forms.Control = Me.tbOnTrapTriggered
-            size = New Global.System.Drawing.Size(204, 20)
-            tbOnTrapTriggered2.Size = size
+            Me.tbOnTrapTriggered.Size = New Global.System.Drawing.Size(204, 20)
             Me.tbOnTrapTriggered.TabIndex = 22
             Me.tbOnTrapTriggered.Text = ""
-            Dim tbOnUnlock As Global.System.Windows.Forms.Control = Me.tbOnUnlock
-            point = New Global.System.Drawing.Point(160, 328)
-            tbOnUnlock.Location = point
+            Me.tbOnUnlock.Location = New Global.System.Drawing.Point(160, 328)
             Me.tbOnUnlock.Name = "tbOnUnlock"
-            Dim tbOnUnlock2 As Global.System.Windows.Forms.Control = Me.tbOnUnlock
-            size = New Global.System.Drawing.Size(204, 20)
-            tbOnUnlock2.Size = size
+            Me.tbOnUnlock.Size = New Global.System.Drawing.Size(204, 20)
             Me.tbOnUnlock.TabIndex = 24
             Me.tbOnUnlock.Text = ""
-            Dim label45 As Global.System.Windows.Forms.Control = Me.Label42
-            point = New Global.System.Drawing.Point(40, 328)
-            label45.Location = point
+            Me.Label42.Location = New Global.System.Drawing.Point(40, 328)
             Me.Label42.Name = "Label42"
-            Dim label46 As Global.System.Windows.Forms.Control = Me.Label42
-            size = New Global.System.Drawing.Size(112, 18)
-            label46.Size = size
+            Me.Label42.Size = New Global.System.Drawing.Size(112, 18)
             Me.Label42.TabIndex = 23
             Me.Label42.Text = "OnUnlock"
             Me.Label42.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim tbOnUserDefined As Global.System.Windows.Forms.Control = Me.tbOnUserDefined
-            point = New Global.System.Drawing.Point(160, 380)
-            tbOnUserDefined.Location = point
+            Me.tbOnUserDefined.Location = New Global.System.Drawing.Point(160, 380)
             Me.tbOnUserDefined.Name = "tbOnUserDefined"
-            Dim tbOnUserDefined2 As Global.System.Windows.Forms.Control = Me.tbOnUserDefined
-            size = New Global.System.Drawing.Size(204, 20)
-            tbOnUserDefined2.Size = size
+            Me.tbOnUserDefined.Size = New Global.System.Drawing.Size(204, 20)
             Me.tbOnUserDefined.TabIndex = 28
             Me.tbOnUserDefined.Text = ""
-            Dim label47 As Global.System.Windows.Forms.Control = Me.Label43
-            point = New Global.System.Drawing.Point(40, 380)
-            label47.Location = point
+            Me.Label43.Location = New Global.System.Drawing.Point(40, 380)
             Me.Label43.Name = "Label43"
-            Dim label48 As Global.System.Windows.Forms.Control = Me.Label43
-            size = New Global.System.Drawing.Size(112, 18)
-            label48.Size = size
+            Me.Label43.Size = New Global.System.Drawing.Size(112, 18)
             Me.Label43.TabIndex = 22
             Me.Label43.Text = "OnUserDefined"
             Me.Label43.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim label49 As Global.System.Windows.Forms.Control = Me.Label21
-            point = New Global.System.Drawing.Point(40, 120)
-            label49.Location = point
+            Me.Label21.Location = New Global.System.Drawing.Point(40, 120)
             Me.Label21.Name = "Label21"
-            Dim label50 As Global.System.Windows.Forms.Control = Me.Label21
-            size = New Global.System.Drawing.Size(112, 18)
-            label50.Size = size
+            Me.Label21.Size = New Global.System.Drawing.Size(112, 18)
             Me.Label21.TabIndex = 30
             Me.Label21.Text = "OnEndDialogue"
             Me.Label21.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim tbOnEndDialogue As Global.System.Windows.Forms.Control = Me.tbOnEndDialogue
-            point = New Global.System.Drawing.Point(160, 120)
-            tbOnEndDialogue.Location = point
+            Me.tbOnEndDialogue.Location = New Global.System.Drawing.Point(160, 120)
             Me.tbOnEndDialogue.Name = "tbOnEndDialogue"
-            Dim tbOnEndDialogue2 As Global.System.Windows.Forms.Control = Me.tbOnEndDialogue
-            size = New Global.System.Drawing.Size(204, 20)
-            tbOnEndDialogue2.Size = size
+            Me.tbOnEndDialogue.Size = New Global.System.Drawing.Size(204, 20)
             Me.tbOnEndDialogue.TabIndex = 8
             Me.tbOnEndDialogue.Text = ""
-            Dim tbOnInvDisturbed As Global.System.Windows.Forms.Control = Me.tbOnInvDisturbed
-            point = New Global.System.Drawing.Point(160, 172)
-            tbOnInvDisturbed.Location = point
+            Me.tbOnInvDisturbed.Location = New Global.System.Drawing.Point(160, 172)
             Me.tbOnInvDisturbed.Name = "tbOnInvDisturbed"
-            Dim tbOnInvDisturbed2 As Global.System.Windows.Forms.Control = Me.tbOnInvDisturbed
-            size = New Global.System.Drawing.Size(204, 20)
-            tbOnInvDisturbed2.Size = size
+            Me.tbOnInvDisturbed.Size = New Global.System.Drawing.Size(204, 20)
             Me.tbOnInvDisturbed.TabIndex = 12
             Me.tbOnInvDisturbed.Text = ""
-            Dim label51 As Global.System.Windows.Forms.Control = Me.Label22
-            point = New Global.System.Drawing.Point(40, 172)
-            label51.Location = point
+            Me.Label22.Location = New Global.System.Drawing.Point(40, 172)
             Me.Label22.Name = "Label22"
-            Dim label52 As Global.System.Windows.Forms.Control = Me.Label22
-            size = New Global.System.Drawing.Size(112, 18)
-            label52.Size = size
+            Me.Label22.Size = New Global.System.Drawing.Size(112, 18)
             Me.Label22.TabIndex = 30
             Me.Label22.Text = "OnInvDisturbed"
             Me.Label22.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
             Me.TabPageDescription.Controls.Add(Me.btnSetDescriptionLang)
             Me.TabPageDescription.Controls.Add(Me.tbDescription)
-            Dim tabPageDescription As Global.System.Windows.Forms.Control = Me.TabPageDescription
-            point = New Global.System.Drawing.Point(4, 40)
-            tabPageDescription.Location = point
+            Me.TabPageDescription.Location = New Global.System.Drawing.Point(4, 40)
             Me.TabPageDescription.Name = "TabPageDescription"
-            Dim tabPageDescription2 As Global.System.Windows.Forms.Control = Me.TabPageDescription
-            size = New Global.System.Drawing.Size(448, 393)
-            tabPageDescription2.Size = size
+            Me.TabPageDescription.Size = New Global.System.Drawing.Size(448, 393)
             Me.TabPageDescription.TabIndex = 6
             Me.TabPageDescription.Text = "Description"
             Me.TabPageDescription.Visible = False
-            Dim btnSetDescriptionLang As Global.System.Windows.Forms.Control = Me.btnSetDescriptionLang
-            point = New Global.System.Drawing.Point(40, 320)
-            btnSetDescriptionLang.Location = point
+            Me.btnSetDescriptionLang.Location = New Global.System.Drawing.Point(40, 320)
             Me.btnSetDescriptionLang.Name = "btnSetDescriptionLang"
-            Dim btnSetDescriptionLang2 As Global.System.Windows.Forms.Control = Me.btnSetDescriptionLang
-            size = New Global.System.Drawing.Size(88, 23)
-            btnSetDescriptionLang2.Size = size
+            Me.btnSetDescriptionLang.Size = New Global.System.Drawing.Size(88, 23)
             Me.btnSetDescriptionLang.TabIndex = 1
             Me.btnSetDescriptionLang.Text = "Set Language"
-            Dim tbDescription As Global.System.Windows.Forms.Control = Me.tbDescription
-            point = New Global.System.Drawing.Point(12, 7)
-            tbDescription.Location = point
+            Me.tbDescription.Location = New Global.System.Drawing.Point(12, 7)
             Me.tbDescription.Multiline = True
             Me.tbDescription.Name = "tbDescription"
-            Dim tbDescription2 As Global.System.Windows.Forms.Control = Me.tbDescription
-            size = New Global.System.Drawing.Size(424, 305)
-            tbDescription2.Size = size
+            Me.tbDescription.Size = New Global.System.Drawing.Size(424, 305)
             Me.tbDescription.TabIndex = 0
             Me.tbDescription.Text = ""
             Me.TabPageComments.Controls.Add(Me.tbComment)
-            Dim tabPageComments As Global.System.Windows.Forms.Control = Me.TabPageComments
-            point = New Global.System.Drawing.Point(4, 40)
-            tabPageComments.Location = point
+            Me.TabPageComments.Location = New Global.System.Drawing.Point(4, 40)
             Me.TabPageComments.Name = "TabPageComments"
-            Dim tabPageComments2 As Global.System.Windows.Forms.Control = Me.TabPageComments
-            size = New Global.System.Drawing.Size(448, 393)
-            tabPageComments2.Size = size
+            Me.TabPageComments.Size = New Global.System.Drawing.Size(448, 393)
             Me.TabPageComments.TabIndex = 7
             Me.TabPageComments.Text = "Comments"
             Me.TabPageComments.Visible = False
-            Dim tbComment As Global.System.Windows.Forms.Control = Me.tbComment
-            point = New Global.System.Drawing.Point(12, 7)
-            tbComment.Location = point
+            Me.tbComment.Location = New Global.System.Drawing.Point(12, 7)
             Me.tbComment.Multiline = True
             Me.tbComment.Name = "tbComment"
-            Dim tbComment2 As Global.System.Windows.Forms.Control = Me.tbComment
-            size = New Global.System.Drawing.Size(424, 336)
-            tbComment2.Size = size
+            Me.tbComment.Size = New Global.System.Drawing.Size(424, 336)
             Me.tbComment.TabIndex = 0
             Me.tbComment.Text = ""
             Me.TabPageTrap.Controls.Add(Me.chkbTrapDisarmable)
@@ -1087,345 +871,205 @@
             Me.TabPageTrap.Controls.Add(Me.Label17)
             Me.TabPageTrap.Controls.Add(Me.chkbTrapFlag)
             Me.TabPageTrap.Controls.Add(Me.chkbTrapOneShot)
-            Dim tabPageTrap As Global.System.Windows.Forms.Control = Me.TabPageTrap
-            point = New Global.System.Drawing.Point(4, 40)
-            tabPageTrap.Location = point
+            Me.TabPageTrap.Location = New Global.System.Drawing.Point(4, 40)
             Me.TabPageTrap.Name = "TabPageTrap"
-            Dim tabPageTrap2 As Global.System.Windows.Forms.Control = Me.TabPageTrap
-            size = New Global.System.Drawing.Size(448, 393)
-            tabPageTrap2.Size = size
+            Me.TabPageTrap.Size = New Global.System.Drawing.Size(448, 393)
             Me.TabPageTrap.TabIndex = 10
             Me.TabPageTrap.Text = "Trap"
-            Dim chkbTrapDisarmable As Global.System.Windows.Forms.Control = Me.chkbTrapDisarmable
-            point = New Global.System.Drawing.Point(192, 85)
-            chkbTrapDisarmable.Location = point
+            Me.chkbTrapDisarmable.Location = New Global.System.Drawing.Point(192, 85)
             Me.chkbTrapDisarmable.Name = "chkbTrapDisarmable"
-            Dim chkbTrapDisarmable2 As Global.System.Windows.Forms.Control = Me.chkbTrapDisarmable
-            size = New Global.System.Drawing.Size(24, 24)
-            chkbTrapDisarmable2.Size = size
+            Me.chkbTrapDisarmable.Size = New Global.System.Drawing.Size(24, 24)
             Me.chkbTrapDisarmable.TabIndex = 2
-            Dim chkbTrapDetectable As Global.System.Windows.Forms.Control = Me.chkbTrapDetectable
-            point = New Global.System.Drawing.Point(192, 21)
-            chkbTrapDetectable.Location = point
+            Me.chkbTrapDetectable.Location = New Global.System.Drawing.Point(192, 21)
             Me.chkbTrapDetectable.Name = "chkbTrapDetectable"
-            Dim chkbTrapDetectable2 As Global.System.Windows.Forms.Control = Me.chkbTrapDetectable
-            size = New Global.System.Drawing.Size(24, 24)
-            chkbTrapDetectable2.Size = size
+            Me.chkbTrapDetectable.Size = New Global.System.Drawing.Size(24, 24)
             Me.chkbTrapDetectable.TabIndex = 0
-            Dim label53 As Global.System.Windows.Forms.Control = Me.Label6
-            point = New Global.System.Drawing.Point(48, 184)
-            label53.Location = point
+            Me.Label6.Location = New Global.System.Drawing.Point(48, 184)
             Me.Label6.Name = "Label6"
-            Dim label54 As Global.System.Windows.Forms.Control = Me.Label6
-            size = New Global.System.Drawing.Size(88, 16)
-            label54.Size = size
+            Me.Label6.Size = New Global.System.Drawing.Size(88, 16)
             Me.Label6.TabIndex = 26
             Me.Label6.Text = "TrapOneShot"
             Me.Label6.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim label55 As Global.System.Windows.Forms.Control = Me.Label3
-            point = New Global.System.Drawing.Point(48, 152)
-            label55.Location = point
+            Me.Label3.Location = New Global.System.Drawing.Point(48, 152)
             Me.Label3.Name = "Label3"
-            Dim label56 As Global.System.Windows.Forms.Control = Me.Label3
-            size = New Global.System.Drawing.Size(88, 16)
-            label56.Size = size
+            Me.Label3.Size = New Global.System.Drawing.Size(88, 16)
             Me.Label3.TabIndex = 27
             Me.Label3.Text = "TrapFlag"
             Me.Label3.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim nudDisarmDC As Global.System.Windows.Forms.Control = Me.nudDisarmDC
-            point = New Global.System.Drawing.Point(176, 120)
-            nudDisarmDC.Location = point
-            Dim nudDisarmDC2 As Global.System.Windows.Forms.NumericUpDown = Me.nudDisarmDC
-            num = New Decimal(New Integer() {250, 0, 0, 0})
-            nudDisarmDC2.Maximum = num
+            Me.nudDisarmDC.Location = New Global.System.Drawing.Point(176, 120)
+            Me.nudDisarmDC.Maximum = New Decimal(New Integer() {250, 0, 0, 0})
             Me.nudDisarmDC.Name = "nudDisarmDC"
             Me.nudDisarmDC.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Dim nudDisarmDC3 As Global.System.Windows.Forms.Control = Me.nudDisarmDC
-            size = New Global.System.Drawing.Size(48, 20)
-            nudDisarmDC3.Size = size
+            Me.nudDisarmDC.Size = New Global.System.Drawing.Size(48, 20)
             Me.nudDisarmDC.TabIndex = 3
             Me.nudDisarmDC.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Dim label57 As Global.System.Windows.Forms.Control = Me.Label4
-            point = New Global.System.Drawing.Point(48, 120)
-            label57.Location = point
+            Me.Label4.Location = New Global.System.Drawing.Point(48, 120)
             Me.Label4.Name = "Label4"
-            Dim label58 As Global.System.Windows.Forms.Control = Me.Label4
-            size = New Global.System.Drawing.Size(88, 16)
-            label58.Size = size
+            Me.Label4.Size = New Global.System.Drawing.Size(88, 16)
             Me.Label4.TabIndex = 22
             Me.Label4.Text = "DisarmDC"
             Me.Label4.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim label59 As Global.System.Windows.Forms.Control = Me.Label15
-            point = New Global.System.Drawing.Point(48, 88)
-            label59.Location = point
+            Me.Label15.Location = New Global.System.Drawing.Point(48, 88)
             Me.Label15.Name = "Label15"
-            Dim label60 As Global.System.Windows.Forms.Control = Me.Label15
-            size = New Global.System.Drawing.Size(88, 16)
-            label60.Size = size
+            Me.Label15.Size = New Global.System.Drawing.Size(88, 16)
             Me.Label15.TabIndex = 23
             Me.Label15.Text = "TrapDisarmable"
             Me.Label15.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim nudTrapDetectDC As Global.System.Windows.Forms.Control = Me.nudTrapDetectDC
-            point = New Global.System.Drawing.Point(176, 56)
-            nudTrapDetectDC.Location = point
-            Dim nudTrapDetectDC2 As Global.System.Windows.Forms.NumericUpDown = Me.nudTrapDetectDC
-            num = New Decimal(New Integer() {250, 0, 0, 0})
-            nudTrapDetectDC2.Maximum = num
+            Me.nudTrapDetectDC.Location = New Global.System.Drawing.Point(176, 56)
+            Me.nudTrapDetectDC.Maximum = New Decimal(New Integer() {250, 0, 0, 0})
             Me.nudTrapDetectDC.Name = "nudTrapDetectDC"
             Me.nudTrapDetectDC.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Dim nudTrapDetectDC3 As Global.System.Windows.Forms.Control = Me.nudTrapDetectDC
-            size = New Global.System.Drawing.Size(48, 20)
-            nudTrapDetectDC3.Size = size
+            Me.nudTrapDetectDC.Size = New Global.System.Drawing.Size(48, 20)
             Me.nudTrapDetectDC.TabIndex = 1
             Me.nudTrapDetectDC.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Dim label61 As Global.System.Windows.Forms.Control = Me.Label16
-            point = New Global.System.Drawing.Point(48, 56)
-            label61.Location = point
+            Me.Label16.Location = New Global.System.Drawing.Point(48, 56)
             Me.Label16.Name = "Label16"
-            Dim label62 As Global.System.Windows.Forms.Control = Me.Label16
-            size = New Global.System.Drawing.Size(88, 16)
-            label62.Size = size
+            Me.Label16.Size = New Global.System.Drawing.Size(88, 16)
             Me.Label16.TabIndex = 18
             Me.Label16.Text = "TrapDetectDC"
             Me.Label16.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim lblTrapDetectable As Global.System.Windows.Forms.Control = Me.lblTrapDetectable
-            point = New Global.System.Drawing.Point(48, 24)
-            lblTrapDetectable.Location = point
+            Me.lblTrapDetectable.Location = New Global.System.Drawing.Point(48, 24)
             Me.lblTrapDetectable.Name = "lblTrapDetectable"
-            Dim lblTrapDetectable2 As Global.System.Windows.Forms.Control = Me.lblTrapDetectable
-            size = New Global.System.Drawing.Size(88, 16)
-            lblTrapDetectable2.Size = size
+            Me.lblTrapDetectable.Size = New Global.System.Drawing.Size(88, 16)
             Me.lblTrapDetectable.TabIndex = 19
             Me.lblTrapDetectable.Text = "TrapDetectable"
             Me.lblTrapDetectable.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim nudTrapType As Global.System.Windows.Forms.Control = Me.nudTrapType
-            point = New Global.System.Drawing.Point(176, 216)
-            nudTrapType.Location = point
-            Dim nudTrapType2 As Global.System.Windows.Forms.NumericUpDown = Me.nudTrapType
-            num = New Decimal(New Integer() {2, 0, 0, 0})
-            nudTrapType2.Maximum = num
+            Me.nudTrapType.Location = New Global.System.Drawing.Point(176, 216)
+            Me.nudTrapType.Maximum = New Decimal(New Integer() {2, 0, 0, 0})
             Me.nudTrapType.Name = "nudTrapType"
             Me.nudTrapType.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Dim nudTrapType3 As Global.System.Windows.Forms.Control = Me.nudTrapType
-            size = New Global.System.Drawing.Size(48, 20)
-            nudTrapType3.Size = size
+            Me.nudTrapType.Size = New Global.System.Drawing.Size(48, 20)
             Me.nudTrapType.TabIndex = 6
             Me.nudTrapType.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Dim label63 As Global.System.Windows.Forms.Control = Me.Label17
-            point = New Global.System.Drawing.Point(48, 216)
-            label63.Location = point
+            Me.Label17.Location = New Global.System.Drawing.Point(48, 216)
             Me.Label17.Name = "Label17"
-            Dim label64 As Global.System.Windows.Forms.Control = Me.Label17
-            size = New Global.System.Drawing.Size(88, 16)
-            label64.Size = size
+            Me.Label17.Size = New Global.System.Drawing.Size(88, 16)
             Me.Label17.TabIndex = 26
             Me.Label17.Text = "TrapType"
             Me.Label17.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim chkbTrapFlag As Global.System.Windows.Forms.Control = Me.chkbTrapFlag
-            point = New Global.System.Drawing.Point(192, 152)
-            chkbTrapFlag.Location = point
+            Me.chkbTrapFlag.Location = New Global.System.Drawing.Point(192, 152)
             Me.chkbTrapFlag.Name = "chkbTrapFlag"
-            Dim chkbTrapFlag2 As Global.System.Windows.Forms.Control = Me.chkbTrapFlag
-            size = New Global.System.Drawing.Size(24, 24)
-            chkbTrapFlag2.Size = size
+            Me.chkbTrapFlag.Size = New Global.System.Drawing.Size(24, 24)
             Me.chkbTrapFlag.TabIndex = 4
-            Dim chkbTrapOneShot As Global.System.Windows.Forms.Control = Me.chkbTrapOneShot
-            point = New Global.System.Drawing.Point(192, 184)
-            chkbTrapOneShot.Location = point
+            Me.chkbTrapOneShot.Location = New Global.System.Drawing.Point(192, 184)
             Me.chkbTrapOneShot.Name = "chkbTrapOneShot"
-            Dim chkbTrapOneShot2 As Global.System.Windows.Forms.Control = Me.chkbTrapOneShot
-            size = New Global.System.Drawing.Size(24, 24)
-            chkbTrapOneShot2.Size = size
+            Me.chkbTrapOneShot.Size = New Global.System.Drawing.Size(24, 24)
             Me.chkbTrapOneShot.TabIndex = 5
             Me.btnSave.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Right
-            Dim btnSave As Global.System.Windows.Forms.Control = Me.btnSave
-            point = New Global.System.Drawing.Point(312, 480)
-            btnSave.Location = point
+            Me.btnSave.Location = New Global.System.Drawing.Point(312, 480)
             Me.btnSave.Name = "btnSave"
             Me.btnSave.TabIndex = 4
             Me.btnSave.Text = "&Save"
             Me.btnCancel.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Right
-            Dim btnCancel As Global.System.Windows.Forms.Control = Me.btnCancel
-            point = New Global.System.Drawing.Point(408, 480)
-            btnCancel.Location = point
+            Me.btnCancel.Location = New Global.System.Drawing.Point(408, 480)
             Me.btnCancel.Name = "btnCancel"
             Me.btnCancel.TabIndex = 5
             Me.btnCancel.Text = "&Cancel"
             Me.btnInventory.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Dim btnInventory As Global.System.Windows.Forms.Control = Me.btnInventory
-            point = New Global.System.Drawing.Point(64, 480)
-            btnInventory.Location = point
+            Me.btnInventory.Location = New Global.System.Drawing.Point(64, 480)
             Me.btnInventory.Name = "btnInventory"
-            Dim btnInventory2 As Global.System.Windows.Forms.Control = Me.btnInventory
-            size = New Global.System.Drawing.Size(72, 24)
-            btnInventory2.Size = size
+            Me.btnInventory.Size = New Global.System.Drawing.Size(72, 24)
             Me.btnInventory.TabIndex = 9
             Me.btnInventory.Text = "&Inventory"
             Me.btnDebug.FlatStyle = Global.System.Windows.Forms.FlatStyle.Flat
             Me.btnDebug.ForeColor = Global.System.Drawing.SystemColors.Control
-            Dim btnDebug As Global.System.Windows.Forms.Control = Me.btnDebug
-            point = New Global.System.Drawing.Point(0, 0)
-            btnDebug.Location = point
+            Me.btnDebug.Location = New Global.System.Drawing.Point(0, 0)
             Me.btnDebug.Name = "btnDebug"
-            Dim btnDebug2 As Global.System.Windows.Forms.Control = Me.btnDebug
-            size = New Global.System.Drawing.Size(8, 9)
-            btnDebug2.Size = size
+            Me.btnDebug.Size = New Global.System.Drawing.Size(8, 9)
             Me.btnDebug.TabIndex = 19
             Me.btnDebug.TabStop = False
-            Dim btnEditOnClosed As Global.System.Windows.Forms.Control = Me.btnEditOnClosed
-            point = New Global.System.Drawing.Point(384, 16)
-            btnEditOnClosed.Location = point
+            Me.btnEditOnClosed.Location = New Global.System.Drawing.Point(384, 16)
             Me.btnEditOnClosed.Name = "btnEditOnClosed"
-            Dim btnEditOnClosed2 As Global.System.Windows.Forms.Control = Me.btnEditOnClosed
-            size = New Global.System.Drawing.Size(32, 23)
-            btnEditOnClosed2.Size = size
+            Me.btnEditOnClosed.Size = New Global.System.Drawing.Size(32, 23)
             Me.btnEditOnClosed.TabIndex = 1
             Me.btnEditOnClosed.Text = "Edit"
             Me.btnEditOnClosed.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim btnEditOnDamaged As Global.System.Windows.Forms.Control = Me.btnEditOnDamaged
-            point = New Global.System.Drawing.Point(384, 42)
-            btnEditOnDamaged.Location = point
+            Me.btnEditOnDamaged.Location = New Global.System.Drawing.Point(384, 42)
             Me.btnEditOnDamaged.Name = "btnEditOnDamaged"
-            Dim btnEditOnDamaged2 As Global.System.Windows.Forms.Control = Me.btnEditOnDamaged
-            size = New Global.System.Drawing.Size(32, 23)
-            btnEditOnDamaged2.Size = size
+            Me.btnEditOnDamaged.Size = New Global.System.Drawing.Size(32, 23)
             Me.btnEditOnDamaged.TabIndex = 3
             Me.btnEditOnDamaged.Text = "Edit"
             Me.btnEditOnDamaged.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim btnEditOnDeath As Global.System.Windows.Forms.Control = Me.btnEditOnDeath
-            point = New Global.System.Drawing.Point(384, 68)
-            btnEditOnDeath.Location = point
+            Me.btnEditOnDeath.Location = New Global.System.Drawing.Point(384, 68)
             Me.btnEditOnDeath.Name = "btnEditOnDeath"
-            Dim btnEditOnDeath2 As Global.System.Windows.Forms.Control = Me.btnEditOnDeath
-            size = New Global.System.Drawing.Size(32, 23)
-            btnEditOnDeath2.Size = size
+            Me.btnEditOnDeath.Size = New Global.System.Drawing.Size(32, 23)
             Me.btnEditOnDeath.TabIndex = 5
             Me.btnEditOnDeath.Text = "Edit"
             Me.btnEditOnDeath.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim btnEditOnDisarm As Global.System.Windows.Forms.Control = Me.btnEditOnDisarm
-            point = New Global.System.Drawing.Point(384, 94)
-            btnEditOnDisarm.Location = point
+            Me.btnEditOnDisarm.Location = New Global.System.Drawing.Point(384, 94)
             Me.btnEditOnDisarm.Name = "btnEditOnDisarm"
-            Dim btnEditOnDisarm2 As Global.System.Windows.Forms.Control = Me.btnEditOnDisarm
-            size = New Global.System.Drawing.Size(32, 23)
-            btnEditOnDisarm2.Size = size
+            Me.btnEditOnDisarm.Size = New Global.System.Drawing.Size(32, 23)
             Me.btnEditOnDisarm.TabIndex = 7
             Me.btnEditOnDisarm.Text = "Edit"
             Me.btnEditOnDisarm.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim btnEditOnHeartbeat As Global.System.Windows.Forms.Control = Me.btnEditOnHeartbeat
-            point = New Global.System.Drawing.Point(384, 146)
-            btnEditOnHeartbeat.Location = point
+            Me.btnEditOnHeartbeat.Location = New Global.System.Drawing.Point(384, 146)
             Me.btnEditOnHeartbeat.Name = "btnEditOnHeartbeat"
-            Dim btnEditOnHeartbeat2 As Global.System.Windows.Forms.Control = Me.btnEditOnHeartbeat
-            size = New Global.System.Drawing.Size(32, 23)
-            btnEditOnHeartbeat2.Size = size
+            Me.btnEditOnHeartbeat.Size = New Global.System.Drawing.Size(32, 23)
             Me.btnEditOnHeartbeat.TabIndex = 11
             Me.btnEditOnHeartbeat.Text = "Edit"
             Me.btnEditOnHeartbeat.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim btnEditOnLock As Global.System.Windows.Forms.Control = Me.btnEditOnLock
-            point = New Global.System.Drawing.Point(384, 198)
-            btnEditOnLock.Location = point
+            Me.btnEditOnLock.Location = New Global.System.Drawing.Point(384, 198)
             Me.btnEditOnLock.Name = "btnEditOnLock"
-            Dim btnEditOnLock2 As Global.System.Windows.Forms.Control = Me.btnEditOnLock
-            size = New Global.System.Drawing.Size(32, 23)
-            btnEditOnLock2.Size = size
+            Me.btnEditOnLock.Size = New Global.System.Drawing.Size(32, 23)
             Me.btnEditOnLock.TabIndex = 15
             Me.btnEditOnLock.Text = "Edit"
             Me.btnEditOnLock.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim btnEditOnMeleeAttacked As Global.System.Windows.Forms.Control = Me.btnEditOnMeleeAttacked
-            point = New Global.System.Drawing.Point(384, 224)
-            btnEditOnMeleeAttacked.Location = point
+            Me.btnEditOnMeleeAttacked.Location = New Global.System.Drawing.Point(384, 224)
             Me.btnEditOnMeleeAttacked.Name = "btnEditOnMeleeAttacked"
-            Dim btnEditOnMeleeAttacked2 As Global.System.Windows.Forms.Control = Me.btnEditOnMeleeAttacked
-            size = New Global.System.Drawing.Size(32, 23)
-            btnEditOnMeleeAttacked2.Size = size
+            Me.btnEditOnMeleeAttacked.Size = New Global.System.Drawing.Size(32, 23)
             Me.btnEditOnMeleeAttacked.TabIndex = 17
             Me.btnEditOnMeleeAttacked.Text = "Edit"
             Me.btnEditOnMeleeAttacked.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim btnEditOnOpen As Global.System.Windows.Forms.Control = Me.btnEditOnOpen
-            point = New Global.System.Drawing.Point(384, 250)
-            btnEditOnOpen.Location = point
+            Me.btnEditOnOpen.Location = New Global.System.Drawing.Point(384, 250)
             Me.btnEditOnOpen.Name = "btnEditOnOpen"
-            Dim btnEditOnOpen2 As Global.System.Windows.Forms.Control = Me.btnEditOnOpen
-            size = New Global.System.Drawing.Size(32, 23)
-            btnEditOnOpen2.Size = size
+            Me.btnEditOnOpen.Size = New Global.System.Drawing.Size(32, 23)
             Me.btnEditOnOpen.TabIndex = 19
             Me.btnEditOnOpen.Text = "Edit"
             Me.btnEditOnOpen.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim btnEditOnSpellCastAt As Global.System.Windows.Forms.Control = Me.btnEditOnSpellCastAt
-            point = New Global.System.Drawing.Point(384, 276)
-            btnEditOnSpellCastAt.Location = point
+            Me.btnEditOnSpellCastAt.Location = New Global.System.Drawing.Point(384, 276)
             Me.btnEditOnSpellCastAt.Name = "btnEditOnSpellCastAt"
-            Dim btnEditOnSpellCastAt2 As Global.System.Windows.Forms.Control = Me.btnEditOnSpellCastAt
-            size = New Global.System.Drawing.Size(32, 23)
-            btnEditOnSpellCastAt2.Size = size
+            Me.btnEditOnSpellCastAt.Size = New Global.System.Drawing.Size(32, 23)
             Me.btnEditOnSpellCastAt.TabIndex = 21
             Me.btnEditOnSpellCastAt.Text = "Edit"
             Me.btnEditOnSpellCastAt.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim btnEditOnTrapTriggered As Global.System.Windows.Forms.Control = Me.btnEditOnTrapTriggered
-            point = New Global.System.Drawing.Point(384, 302)
-            btnEditOnTrapTriggered.Location = point
+            Me.btnEditOnTrapTriggered.Location = New Global.System.Drawing.Point(384, 302)
             Me.btnEditOnTrapTriggered.Name = "btnEditOnTrapTriggered"
-            Dim btnEditOnTrapTriggered2 As Global.System.Windows.Forms.Control = Me.btnEditOnTrapTriggered
-            size = New Global.System.Drawing.Size(32, 23)
-            btnEditOnTrapTriggered2.Size = size
+            Me.btnEditOnTrapTriggered.Size = New Global.System.Drawing.Size(32, 23)
             Me.btnEditOnTrapTriggered.TabIndex = 23
             Me.btnEditOnTrapTriggered.Text = "Edit"
             Me.btnEditOnTrapTriggered.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim btnEditOnUserDefined As Global.System.Windows.Forms.Control = Me.btnEditOnUserDefined
-            point = New Global.System.Drawing.Point(384, 380)
-            btnEditOnUserDefined.Location = point
+            Me.btnEditOnUserDefined.Location = New Global.System.Drawing.Point(384, 380)
             Me.btnEditOnUserDefined.Name = "btnEditOnUserDefined"
-            Dim btnEditOnUserDefined2 As Global.System.Windows.Forms.Control = Me.btnEditOnUserDefined
-            size = New Global.System.Drawing.Size(32, 23)
-            btnEditOnUserDefined2.Size = size
+            Me.btnEditOnUserDefined.Size = New Global.System.Drawing.Size(32, 23)
             Me.btnEditOnUserDefined.TabIndex = 29
             Me.btnEditOnUserDefined.Text = "Edit"
             Me.btnEditOnUserDefined.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim btnEditOnUnlock As Global.System.Windows.Forms.Control = Me.btnEditOnUnlock
-            point = New Global.System.Drawing.Point(384, 328)
-            btnEditOnUnlock.Location = point
+            Me.btnEditOnUnlock.Location = New Global.System.Drawing.Point(384, 328)
             Me.btnEditOnUnlock.Name = "btnEditOnUnlock"
-            Dim btnEditOnUnlock2 As Global.System.Windows.Forms.Control = Me.btnEditOnUnlock
-            size = New Global.System.Drawing.Size(32, 23)
-            btnEditOnUnlock2.Size = size
+            Me.btnEditOnUnlock.Size = New Global.System.Drawing.Size(32, 23)
             Me.btnEditOnUnlock.TabIndex = 25
             Me.btnEditOnUnlock.Text = "Edit"
             Me.btnEditOnUnlock.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim btnEditOnUsed As Global.System.Windows.Forms.Control = Me.btnEditOnUsed
-            point = New Global.System.Drawing.Point(384, 354)
-            btnEditOnUsed.Location = point
+            Me.btnEditOnUsed.Location = New Global.System.Drawing.Point(384, 354)
             Me.btnEditOnUsed.Name = "btnEditOnUsed"
-            Dim btnEditOnUsed2 As Global.System.Windows.Forms.Control = Me.btnEditOnUsed
-            size = New Global.System.Drawing.Size(32, 23)
-            btnEditOnUsed2.Size = size
+            Me.btnEditOnUsed.Size = New Global.System.Drawing.Size(32, 23)
             Me.btnEditOnUsed.TabIndex = 27
             Me.btnEditOnUsed.Text = "Edit"
             Me.btnEditOnUsed.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim btnEditOnInvDisturbed As Global.System.Windows.Forms.Control = Me.btnEditOnInvDisturbed
-            point = New Global.System.Drawing.Point(384, 172)
-            btnEditOnInvDisturbed.Location = point
+            Me.btnEditOnInvDisturbed.Location = New Global.System.Drawing.Point(384, 172)
             Me.btnEditOnInvDisturbed.Name = "btnEditOnInvDisturbed"
-            Dim btnEditOnInvDisturbed2 As Global.System.Windows.Forms.Control = Me.btnEditOnInvDisturbed
-            size = New Global.System.Drawing.Size(32, 23)
-            btnEditOnInvDisturbed2.Size = size
+            Me.btnEditOnInvDisturbed.Size = New Global.System.Drawing.Size(32, 23)
             Me.btnEditOnInvDisturbed.TabIndex = 13
             Me.btnEditOnInvDisturbed.Text = "Edit"
             Me.btnEditOnInvDisturbed.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim btnEditOnEndDialogue As Global.System.Windows.Forms.Control = Me.btnEditOnEndDialogue
-            point = New Global.System.Drawing.Point(384, 120)
-            btnEditOnEndDialogue.Location = point
+            Me.btnEditOnEndDialogue.Location = New Global.System.Drawing.Point(384, 120)
             Me.btnEditOnEndDialogue.Name = "btnEditOnEndDialogue"
-            Dim btnEditOnEndDialogue2 As Global.System.Windows.Forms.Control = Me.btnEditOnEndDialogue
-            size = New Global.System.Drawing.Size(32, 23)
-            btnEditOnEndDialogue2.Size = size
+            Me.btnEditOnEndDialogue.Size = New Global.System.Drawing.Size(32, 23)
             Me.btnEditOnEndDialogue.TabIndex = 9
             Me.btnEditOnEndDialogue.Text = "Edit"
             Me.btnEditOnEndDialogue.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            size = New Global.System.Drawing.Size(5, 13)
-            Me.AutoScaleBaseSize = size
-            size = New Global.System.Drawing.Size(496, 517)
-            Me.ClientSize = size
+            Me.AutoScaleBaseSize = New Global.System.Drawing.Size(5, 13)
+            Me.ClientSize = New Global.System.Drawing.Size(496, 517)
             Me.Controls.Add(Me.btnDebug)
             Me.Controls.Add(Me.TabControl1)
             Me.Controls.Add(Me.btnSave)
@@ -1451,10 +1095,36 @@
             CType(Me.nudDisarmDC, Global.System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.nudTrapDetectDC, Global.System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.nudTrapType, Global.System.ComponentModel.ISupportInitialize).EndInit()
+
+            ' -------------------------------------------------------------
+            ' Event bindings restored from decompiled synchronized
+            ' AccessedThroughProperty wrappers.
+            ' -------------------------------------------------------------
+            AddHandler Me.btnSetNameLang.Click, AddressOf Me.btnSetNameLang_Click
+            AddHandler Me.chkbLockable.CheckedChanged, AddressOf Me.chkbLockable_CheckedChanged
+            AddHandler Me.chkbLocked.CheckedChanged, AddressOf Me.chkbLocked_CheckedChanged
+            AddHandler Me.btnSetDescriptionLang.Click, AddressOf Me.btnSetDescLang_Click
+            AddHandler Me.btnSave.Click, AddressOf Me.btnSave_Click
+            AddHandler Me.btnCancel.Click, AddressOf Me.btnCancel_Click
+            AddHandler Me.btnInventory.Click, AddressOf Me.btnInventory_Click
+            AddHandler Me.btnDebug.Click, AddressOf Me.btnDebug_Click
+            AddHandler Me.btnEditOnClosed.Click, AddressOf Me.btnEditScript_Click
+            AddHandler Me.btnEditOnDamaged.Click, AddressOf Me.btnEditScript_Click
+            AddHandler Me.btnEditOnDeath.Click, AddressOf Me.btnEditScript_Click
+            AddHandler Me.btnEditOnDisarm.Click, AddressOf Me.btnEditScript_Click
+            AddHandler Me.btnEditOnHeartbeat.Click, AddressOf Me.btnEditScript_Click
+            AddHandler Me.btnEditOnLock.Click, AddressOf Me.btnEditScript_Click
+            AddHandler Me.btnEditOnMeleeAttacked.Click, AddressOf Me.btnEditScript_Click
+            AddHandler Me.btnEditOnOpen.Click, AddressOf Me.btnEditScript_Click
+            AddHandler Me.btnEditOnSpellCastAt.Click, AddressOf Me.btnEditScript_Click
+            AddHandler Me.btnEditOnTrapTriggered.Click, AddressOf Me.btnEditScript_Click
+            AddHandler Me.btnEditOnUserDefined.Click, AddressOf Me.btnEditScript_Click
+            AddHandler Me.btnEditOnUnlock.Click, AddressOf Me.btnEditScript_Click
+            AddHandler Me.btnEditOnUsed.Click, AddressOf Me.btnEditScript_Click
+            AddHandler Me.btnEditOnInvDisturbed.Click, AddressOf Me.btnEditScript_Click
+            AddHandler Me.btnEditOnEndDialogue.Click, AddressOf Me.btnEditScript_Click
             Me.ResumeLayout(False)
         End Sub
 
-		' Token: 0x04000A49 RID: 2633
-		Private components As Global.System.ComponentModel.IContainer
 	End Class
 End Namespace

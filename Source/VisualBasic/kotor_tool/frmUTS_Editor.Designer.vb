@@ -1,21 +1,142 @@
-﻿Namespace kotor_tool
-	' Token: 0x02000082 RID: 130
-	Public Partial Class frmUTS_Editor
-		Inherits Global.kotor_tool.frmParent
+Imports System.Windows.Forms
 
-		' Token: 0x06001543 RID: 5443 RVA: 0x002BF118 File Offset: 0x002BE118
-		Protected Overrides Sub Dispose(disposing As Boolean)
-			If disposing AndAlso Me.components IsNot Nothing Then
-				Me.components.Dispose()
-			End If
-			MyBase.Dispose(disposing)
-		End Sub
+Namespace kotor_tool
+    ' Token: 0x02000082 RID: 130
+    Partial Public Class frmUTS_Editor
+        Inherits Global.kotor_tool.frmParent
 
-		' Token: 0x06001622 RID: 5666 RVA: 0x002C0BB0 File Offset: 0x002BFBB0
+        ' -----------------------------------------------------------------
+        ' Designer fields restored from decompiled
+        ' AccessedThroughProperty wrappers.
+        ' Kept before InitializeComponent for VS2010 CodeDom safety.
+        ' -----------------------------------------------------------------
+        Private components As Global.System.ComponentModel.IContainer
+        Friend WithEvents TabControl1 As Global.System.Windows.Forms.TabControl
+        Friend WithEvents btnSetNameLang As Global.System.Windows.Forms.Button
+        Friend WithEvents tbTag As Global.System.Windows.Forms.TextBox
+        Friend WithEvents tbName As Global.System.Windows.Forms.TextBox
+        Friend WithEvents Label1 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label2 As Global.System.Windows.Forms.Label
+        Friend WithEvents tbComment As Global.System.Windows.Forms.TextBox
+        Friend WithEvents Label3 As Global.System.Windows.Forms.Label
+        Friend WithEvents btnMoveUp As Global.System.Windows.Forms.Button
+        Friend WithEvents btnMoveDown As Global.System.Windows.Forms.Button
+        Friend WithEvents Label4 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label5 As Global.System.Windows.Forms.Label
+        Friend WithEvents lbSounds As Global.System.Windows.Forms.ListBox
+        Friend WithEvents rbPlaysEverywhere As Global.System.Windows.Forms.RadioButton
+        Friend WithEvents rbRandomPosition As Global.System.Windows.Forms.RadioButton
+        Friend WithEvents rbSpecificPosition As Global.System.Windows.Forms.RadioButton
+        Friend WithEvents tabpagBasic As Global.System.Windows.Forms.TabPage
+        Friend WithEvents tbapagPositioning As Global.System.Windows.Forms.TabPage
+        Friend WithEvents tabpagAdvanced As Global.System.Windows.Forms.TabPage
+        Friend WithEvents GroupBox4 As Global.System.Windows.Forms.GroupBox
+        Friend WithEvents GroupBox5 As Global.System.Windows.Forms.GroupBox
+        Friend WithEvents GroupBox6 As Global.System.Windows.Forms.GroupBox
+        Friend WithEvents chkbActive As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents Label6 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label7 As Global.System.Windows.Forms.Label
+        Friend WithEvents gbHeight As Global.System.Windows.Forms.GroupBox
+        Friend WithEvents gbVolumeDistances As Global.System.Windows.Forms.GroupBox
+        Friend WithEvents gbRandomRange As Global.System.Windows.Forms.GroupBox
+        Friend WithEvents Label8 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label9 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label10 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label11 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label12 As Global.System.Windows.Forms.Label
+        Friend WithEvents PictureBox1 As Global.System.Windows.Forms.PictureBox
+        Friend WithEvents PictureBox2 As Global.System.Windows.Forms.PictureBox
+        Friend WithEvents PictureBox3 As Global.System.Windows.Forms.PictureBox
+        Friend WithEvents rbPlayDay As Global.System.Windows.Forms.RadioButton
+        Friend WithEvents rbPlayNight As Global.System.Windows.Forms.RadioButton
+        Friend WithEvents rbPlayAllTimes As Global.System.Windows.Forms.RadioButton
+        Friend WithEvents rbPlaySpecificHours As Global.System.Windows.Forms.RadioButton
+        Friend WithEvents trkbarVolumeVrtn As Global.System.Windows.Forms.TrackBar
+        Friend WithEvents rbOnce As Global.System.Windows.Forms.RadioButton
+        Friend WithEvents rbRepeating As Global.System.Windows.Forms.RadioButton
+        Friend WithEvents rbSequential As Global.System.Windows.Forms.RadioButton
+        Friend WithEvents rbRandom As Global.System.Windows.Forms.RadioButton
+        Friend WithEvents gbInterval As Global.System.Windows.Forms.GroupBox
+        Friend WithEvents nudInterval As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents nudIntervalVrtn As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents trkbarPitchVrtn As Global.System.Windows.Forms.TrackBar
+        Friend WithEvents lbl12 As Global.System.Windows.Forms.Label
+        Friend WithEvents lblPM As Global.System.Windows.Forms.Label
+        Friend WithEvents Label15 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label16 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label13 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label14 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label17 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label18 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label19 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label20 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label21 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label22 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label23 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label24 As Global.System.Windows.Forms.Label
+        Friend WithEvents Label25 As Global.System.Windows.Forms.Label
+        Friend WithEvents lblAM As Global.System.Windows.Forms.Label
+        Friend WithEvents tbPitchVrtn As Global.System.Windows.Forms.TextBox
+        Friend WithEvents nudElevation As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents nudRandomRangeY As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents nudRandomRangeX As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents pnlHours As Global.System.Windows.Forms.Panel
+        Friend WithEvents rbLooping As Global.System.Windows.Forms.RadioButton
+        Friend WithEvents pnlVolPitch As Global.System.Windows.Forms.Panel
+        Friend WithEvents btnAddSound As Global.System.Windows.Forms.Button
+        Friend WithEvents btnRemoveSound As Global.System.Windows.Forms.Button
+        Friend WithEvents btnSave As Global.System.Windows.Forms.Button
+        Friend WithEvents btnCancel As Global.System.Windows.Forms.Button
+        Friend WithEvents btnDebug As Global.System.Windows.Forms.Button
+        Friend WithEvents trkbarVolume As Global.System.Windows.Forms.TrackBar
+        Friend WithEvents nudMaxDistance As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents tbVolumeVrtn As Global.System.Windows.Forms.TextBox
+        Friend WithEvents nudMinDistance As Global.System.Windows.Forms.NumericUpDown
+        Friend WithEvents tbVolume As Global.System.Windows.Forms.TextBox
+        Friend WithEvents chkb3a As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb3p As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb10p As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb4a As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb6a As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb5a As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb7a As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb8p As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb2p As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb9p As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb11p As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb11a As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb9a As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb10a As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb8a As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb7p As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb5p As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb6p As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb4p As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb1a As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb2a As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb12a As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb12p As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkb1p As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents btnPlaySound As Global.System.Windows.Forms.Button
+        Friend WithEvents Timer1 As Timer
+        Friend WithEvents btnStopSound As Global.System.Windows.Forms.Button
+        Friend WithEvents tbSoundStatus As Global.System.Windows.Forms.TextBox
+        Friend WithEvents Label26 As Global.System.Windows.Forms.Label
+
+
+        ' Token: 0x06001543 RID: 5443 RVA: 0x002BF118 File Offset: 0x002BE118
+        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+            If disposing AndAlso Me.components IsNot Nothing Then
+                Me.components.Dispose()
+            End If
+            MyBase.Dispose(disposing)
+        End Sub
+
+        ' Token: 0x06001622 RID: 5666 RVA: 0x002C0BB0 File Offset: 0x002BFBB0
         <Global.System.Diagnostics.DebuggerStepThrough()> _
-  Private Sub InitializeComponent()
+        Private Sub InitializeComponent()
             Me.components = New Global.System.ComponentModel.Container()
-            Dim resourceManager As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager(GetType(Global.kotor_tool.frmUTS_Editor))
+            Dim resources As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager(GetType(Global.kotor_tool.frmUTS_Editor))
             Me.TabControl1 = New Global.System.Windows.Forms.TabControl()
             Me.tabpagBasic = New Global.System.Windows.Forms.TabPage()
             Me.tbVolume = New Global.System.Windows.Forms.TextBox()
@@ -126,7 +247,7 @@
             Me.btnSave = New Global.System.Windows.Forms.Button()
             Me.btnCancel = New Global.System.Windows.Forms.Button()
             Me.btnDebug = New Global.System.Windows.Forms.Button()
-            Me.Timer1 = New Global.System.Windows.Forms.Timer(Me.components)
+            Me.Timer1 = New Global.System.Windows.Forms.Timer()
             Me.TabControl1.SuspendLayout()
             Me.tabpagBasic.SuspendLayout()
             CType(Me.trkbarVolume, Global.System.ComponentModel.ISupportInitialize).BeginInit()
@@ -154,14 +275,10 @@
             Me.TabControl1.Controls.Add(Me.tabpagBasic)
             Me.TabControl1.Controls.Add(Me.tbapagPositioning)
             Me.TabControl1.Controls.Add(Me.tabpagAdvanced)
-            Dim tabControl As Global.System.Windows.Forms.Control = Me.TabControl1
-            Dim point As Global.System.Drawing.Point = New Global.System.Drawing.Point(16, 8)
-            tabControl.Location = point
+            Me.TabControl1.Location = New Global.System.Drawing.Point(16, 8)
             Me.TabControl1.Name = "TabControl1"
             Me.TabControl1.SelectedIndex = 0
-            Dim tabControl2 As Global.System.Windows.Forms.Control = Me.TabControl1
-            Dim size As Global.System.Drawing.Size = New Global.System.Drawing.Size(504, 504)
-            tabControl2.Size = size
+            Me.TabControl1.Size = New Global.System.Drawing.Size(504, 504)
             Me.TabControl1.TabIndex = 0
             Me.tabpagBasic.Controls.Add(Me.tbVolume)
             Me.tabpagBasic.Controls.Add(Me.trkbarVolume)
@@ -183,215 +300,131 @@
             Me.tabpagBasic.Controls.Add(Me.btnStopSound)
             Me.tabpagBasic.Controls.Add(Me.tbSoundStatus)
             Me.tabpagBasic.Controls.Add(Me.Label26)
-            Dim tabpagBasic As Global.System.Windows.Forms.Control = Me.tabpagBasic
-            point = New Global.System.Drawing.Point(4, 22)
-            tabpagBasic.Location = point
+            Me.tabpagBasic.Location = New Global.System.Drawing.Point(4, 22)
             Me.tabpagBasic.Name = "tabpagBasic"
-            Dim tabpagBasic2 As Global.System.Windows.Forms.Control = Me.tabpagBasic
-            size = New Global.System.Drawing.Size(496, 478)
-            tabpagBasic2.Size = size
+            Me.tabpagBasic.Size = New Global.System.Drawing.Size(496, 478)
             Me.tabpagBasic.TabIndex = 0
             Me.tabpagBasic.Text = "Basic"
-            Dim tbVolume As Global.System.Windows.Forms.Control = Me.tbVolume
-            point = New Global.System.Drawing.Point(136, 424)
-            tbVolume.Location = point
+            Me.tbVolume.Location = New Global.System.Drawing.Point(136, 424)
             Me.tbVolume.Name = "tbVolume"
             Me.tbVolume.[ReadOnly] = True
-            Dim tbVolume2 As Global.System.Windows.Forms.Control = Me.tbVolume
-            size = New Global.System.Drawing.Size(40, 20)
-            tbVolume2.Size = size
+            Me.tbVolume.Size = New Global.System.Drawing.Size(40, 20)
             Me.tbVolume.TabIndex = 25
             Me.tbVolume.Text = ""
-            Dim trkbarVolume As Global.System.Windows.Forms.Control = Me.trkbarVolume
-            point = New Global.System.Drawing.Point(184, 424)
-            trkbarVolume.Location = point
+            Me.trkbarVolume.Location = New Global.System.Drawing.Point(184, 424)
             Me.trkbarVolume.Maximum = 127
             Me.trkbarVolume.Name = "trkbarVolume"
-            Dim trkbarVolume2 As Global.System.Windows.Forms.Control = Me.trkbarVolume
-            size = New Global.System.Drawing.Size(216, 42)
-            trkbarVolume2.Size = size
+            Me.trkbarVolume.Size = New Global.System.Drawing.Size(216, 42)
             Me.trkbarVolume.TabIndex = 21
             Me.trkbarVolume.TickFrequency = 5
             Me.btnAddSound.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Right
-            Dim btnAddSound As Global.System.Windows.Forms.Control = Me.btnAddSound
-            point = New Global.System.Drawing.Point(328, 160)
-            btnAddSound.Location = point
+            Me.btnAddSound.Location = New Global.System.Drawing.Point(328, 160)
             Me.btnAddSound.Name = "btnAddSound"
-            Dim btnAddSound2 As Global.System.Windows.Forms.Control = Me.btnAddSound
-            size = New Global.System.Drawing.Size(80, 23)
-            btnAddSound2.Size = size
+            Me.btnAddSound.Size = New Global.System.Drawing.Size(80, 23)
             Me.btnAddSound.TabIndex = 19
             Me.btnAddSound.Text = "Add Sound..."
             Me.btnRemoveSound.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Right
             Me.btnRemoveSound.Enabled = False
-            Dim btnRemoveSound As Global.System.Windows.Forms.Control = Me.btnRemoveSound
-            point = New Global.System.Drawing.Point(328, 192)
-            btnRemoveSound.Location = point
+            Me.btnRemoveSound.Location = New Global.System.Drawing.Point(328, 192)
             Me.btnRemoveSound.Name = "btnRemoveSound"
-            Dim btnRemoveSound2 As Global.System.Windows.Forms.Control = Me.btnRemoveSound
-            size = New Global.System.Drawing.Size(80, 23)
-            btnRemoveSound2.Size = size
+            Me.btnRemoveSound.Size = New Global.System.Drawing.Size(80, 23)
             Me.btnRemoveSound.TabIndex = 20
             Me.btnRemoveSound.Text = "Remove"
             Me.btnMoveUp.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Right
             Me.btnMoveUp.Enabled = False
-            Dim btnMoveUp As Global.System.Windows.Forms.Control = Me.btnMoveUp
-            point = New Global.System.Drawing.Point(328, 320)
-            btnMoveUp.Location = point
+            Me.btnMoveUp.Location = New Global.System.Drawing.Point(328, 320)
             Me.btnMoveUp.Name = "btnMoveUp"
-            Dim btnMoveUp2 As Global.System.Windows.Forms.Control = Me.btnMoveUp
-            size = New Global.System.Drawing.Size(80, 23)
-            btnMoveUp2.Size = size
+            Me.btnMoveUp.Size = New Global.System.Drawing.Size(80, 23)
             Me.btnMoveUp.TabIndex = 17
             Me.btnMoveUp.Text = "Move Up"
             Me.btnMoveDown.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Right
             Me.btnMoveDown.Enabled = False
-            Dim btnMoveDown As Global.System.Windows.Forms.Control = Me.btnMoveDown
-            point = New Global.System.Drawing.Point(328, 352)
-            btnMoveDown.Location = point
+            Me.btnMoveDown.Location = New Global.System.Drawing.Point(328, 352)
             Me.btnMoveDown.Name = "btnMoveDown"
-            Dim btnMoveDown2 As Global.System.Windows.Forms.Control = Me.btnMoveDown
-            size = New Global.System.Drawing.Size(80, 23)
-            btnMoveDown2.Size = size
+            Me.btnMoveDown.Size = New Global.System.Drawing.Size(80, 23)
             Me.btnMoveDown.TabIndex = 18
             Me.btnMoveDown.Text = "Move Down"
-            Dim lbSounds As Global.System.Windows.Forms.Control = Me.lbSounds
-            point = New Global.System.Drawing.Point(136, 160)
-            lbSounds.Location = point
+            Me.lbSounds.Location = New Global.System.Drawing.Point(136, 160)
             Me.lbSounds.Name = "lbSounds"
             Me.lbSounds.SelectionMode = Global.System.Windows.Forms.SelectionMode.MultiExtended
-            Dim lbSounds2 As Global.System.Windows.Forms.Control = Me.lbSounds
-            size = New Global.System.Drawing.Size(144, 212)
-            lbSounds2.Size = size
+            Me.lbSounds.Size = New Global.System.Drawing.Size(144, 212)
             Me.lbSounds.TabIndex = 16
-            Dim tbComment As Global.System.Windows.Forms.Control = Me.tbComment
-            point = New Global.System.Drawing.Point(136, 80)
-            tbComment.Location = point
+            Me.tbComment.Location = New Global.System.Drawing.Point(136, 80)
             Me.tbComment.Multiline = True
             Me.tbComment.Name = "tbComment"
-            Dim tbComment2 As Global.System.Windows.Forms.Control = Me.tbComment
-            size = New Global.System.Drawing.Size(272, 64)
-            tbComment2.Size = size
+            Me.tbComment.Size = New Global.System.Drawing.Size(272, 64)
             Me.tbComment.TabIndex = 15
             Me.tbComment.Text = ""
-            Dim btnSetNameLang As Global.System.Windows.Forms.Control = Me.btnSetNameLang
-            point = New Global.System.Drawing.Point(344, 24)
-            btnSetNameLang.Location = point
+            Me.btnSetNameLang.Location = New Global.System.Drawing.Point(344, 24)
             Me.btnSetNameLang.Name = "btnSetNameLang"
-            Dim btnSetNameLang2 As Global.System.Windows.Forms.Control = Me.btnSetNameLang
-            size = New Global.System.Drawing.Size(88, 23)
-            btnSetNameLang2.Size = size
+            Me.btnSetNameLang.Size = New Global.System.Drawing.Size(88, 23)
             Me.btnSetNameLang.TabIndex = 14
             Me.btnSetNameLang.Text = "Set Language"
-            Dim tbTag As Global.System.Windows.Forms.Control = Me.tbTag
-            point = New Global.System.Drawing.Point(136, 48)
-            tbTag.Location = point
+            Me.tbTag.Location = New Global.System.Drawing.Point(136, 48)
             Me.tbTag.Name = "tbTag"
-            Dim tbTag2 As Global.System.Windows.Forms.Control = Me.tbTag
-            size = New Global.System.Drawing.Size(200, 20)
-            tbTag2.Size = size
+            Me.tbTag.Size = New Global.System.Drawing.Size(200, 20)
             Me.tbTag.TabIndex = 13
             Me.tbTag.Text = ""
-            Dim tbName As Global.System.Windows.Forms.Control = Me.tbName
-            point = New Global.System.Drawing.Point(136, 24)
-            tbName.Location = point
+            Me.tbName.Location = New Global.System.Drawing.Point(136, 24)
             Me.tbName.Name = "tbName"
-            Dim tbName2 As Global.System.Windows.Forms.Control = Me.tbName
-            size = New Global.System.Drawing.Size(200, 20)
-            tbName2.Size = size
+            Me.tbName.Size = New Global.System.Drawing.Size(200, 20)
             Me.tbName.TabIndex = 12
             Me.tbName.Text = ""
-            Dim label As Global.System.Windows.Forms.Control = Me.Label1
-            point = New Global.System.Drawing.Point(40, 24)
-            label.Location = point
+            Me.Label1.Location = New Global.System.Drawing.Point(40, 24)
             Me.Label1.Name = "Label1"
-            Dim label2 As Global.System.Windows.Forms.Control = Me.Label1
-            size = New Global.System.Drawing.Size(100, 16)
-            label2.Size = size
+            Me.Label1.Size = New Global.System.Drawing.Size(100, 16)
             Me.Label1.TabIndex = 10
             Me.Label1.Text = "Name"
             Me.Label1.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim label3 As Global.System.Windows.Forms.Control = Me.Label2
-            point = New Global.System.Drawing.Point(40, 48)
-            label3.Location = point
+            Me.Label2.Location = New Global.System.Drawing.Point(40, 48)
             Me.Label2.Name = "Label2"
-            Dim label4 As Global.System.Windows.Forms.Control = Me.Label2
-            size = New Global.System.Drawing.Size(100, 16)
-            label4.Size = size
+            Me.Label2.Size = New Global.System.Drawing.Size(100, 16)
             Me.Label2.TabIndex = 11
             Me.Label2.Text = "Tag"
             Me.Label2.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim label5 As Global.System.Windows.Forms.Control = Me.Label3
-            point = New Global.System.Drawing.Point(40, 88)
-            label5.Location = point
+            Me.Label3.Location = New Global.System.Drawing.Point(40, 88)
             Me.Label3.Name = "Label3"
-            Dim label6 As Global.System.Windows.Forms.Control = Me.Label3
-            size = New Global.System.Drawing.Size(80, 16)
-            label6.Size = size
+            Me.Label3.Size = New Global.System.Drawing.Size(80, 16)
             Me.Label3.TabIndex = 11
             Me.Label3.Text = "Comments"
             Me.Label3.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim label7 As Global.System.Windows.Forms.Control = Me.Label4
-            point = New Global.System.Drawing.Point(40, 160)
-            label7.Location = point
+            Me.Label4.Location = New Global.System.Drawing.Point(40, 160)
             Me.Label4.Name = "Label4"
-            Dim label8 As Global.System.Windows.Forms.Control = Me.Label4
-            size = New Global.System.Drawing.Size(88, 24)
-            label8.Size = size
+            Me.Label4.Size = New Global.System.Drawing.Size(88, 24)
             Me.Label4.TabIndex = 11
             Me.Label4.Text = "Sounds to Play"
             Me.Label4.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim label9 As Global.System.Windows.Forms.Control = Me.Label5
-            point = New Global.System.Drawing.Point(40, 424)
-            label9.Location = point
+            Me.Label5.Location = New Global.System.Drawing.Point(40, 424)
             Me.Label5.Name = "Label5"
-            Dim label10 As Global.System.Windows.Forms.Control = Me.Label5
-            size = New Global.System.Drawing.Size(88, 16)
-            label10.Size = size
+            Me.Label5.Size = New Global.System.Drawing.Size(88, 16)
             Me.Label5.TabIndex = 11
             Me.Label5.Text = "In-game Volume"
             Me.Label5.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
             Me.btnPlaySound.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Right
             Me.btnPlaySound.Enabled = False
-            Dim btnPlaySound As Global.System.Windows.Forms.Control = Me.btnPlaySound
-            point = New Global.System.Drawing.Point(328, 240)
-            btnPlaySound.Location = point
+            Me.btnPlaySound.Location = New Global.System.Drawing.Point(328, 240)
             Me.btnPlaySound.Name = "btnPlaySound"
-            Dim btnPlaySound2 As Global.System.Windows.Forms.Control = Me.btnPlaySound
-            size = New Global.System.Drawing.Size(80, 23)
-            btnPlaySound2.Size = size
+            Me.btnPlaySound.Size = New Global.System.Drawing.Size(80, 23)
             Me.btnPlaySound.TabIndex = 19
             Me.btnPlaySound.Text = "Play Sound"
             Me.btnStopSound.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Right
             Me.btnStopSound.Enabled = False
-            Dim btnStopSound As Global.System.Windows.Forms.Control = Me.btnStopSound
-            point = New Global.System.Drawing.Point(328, 272)
-            btnStopSound.Location = point
+            Me.btnStopSound.Location = New Global.System.Drawing.Point(328, 272)
             Me.btnStopSound.Name = "btnStopSound"
-            Dim btnStopSound2 As Global.System.Windows.Forms.Control = Me.btnStopSound
-            size = New Global.System.Drawing.Size(80, 23)
-            btnStopSound2.Size = size
+            Me.btnStopSound.Size = New Global.System.Drawing.Size(80, 23)
             Me.btnStopSound.TabIndex = 19
             Me.btnStopSound.Text = "Stop"
             Me.tbSoundStatus.Font = New Global.System.Drawing.Font("Courier New", 8.25F, Global.System.Drawing.FontStyle.Regular, Global.System.Drawing.GraphicsUnit.Point, 0)
-            Dim tbSoundStatus As Global.System.Windows.Forms.Control = Me.tbSoundStatus
-            point = New Global.System.Drawing.Point(136, 384)
-            tbSoundStatus.Location = point
+            Me.tbSoundStatus.Location = New Global.System.Drawing.Point(136, 384)
             Me.tbSoundStatus.Name = "tbSoundStatus"
             Me.tbSoundStatus.[ReadOnly] = True
-            Dim tbSoundStatus2 As Global.System.Windows.Forms.Control = Me.tbSoundStatus
-            size = New Global.System.Drawing.Size(144, 20)
-            tbSoundStatus2.Size = size
+            Me.tbSoundStatus.Size = New Global.System.Drawing.Size(144, 20)
             Me.tbSoundStatus.TabIndex = 25
             Me.tbSoundStatus.Text = ""
             Me.tbSoundStatus.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Dim label11 As Global.System.Windows.Forms.Control = Me.Label26
-            point = New Global.System.Drawing.Point(40, 384)
-            label11.Location = point
+            Me.Label26.Location = New Global.System.Drawing.Point(40, 384)
             Me.Label26.Name = "Label26"
-            Dim label12 As Global.System.Windows.Forms.Control = Me.Label26
-            size = New Global.System.Drawing.Size(80, 16)
-            label12.Size = size
+            Me.Label26.Size = New Global.System.Drawing.Size(80, 16)
             Me.Label26.TabIndex = 11
             Me.Label26.Text = "Time"
             Me.Label26.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
@@ -401,57 +434,35 @@
             Me.tbapagPositioning.Controls.Add(Me.rbRandomPosition)
             Me.tbapagPositioning.Controls.Add(Me.rbSpecificPosition)
             Me.tbapagPositioning.Controls.Add(Me.gbRandomRange)
-            Dim tbapagPositioning As Global.System.Windows.Forms.Control = Me.tbapagPositioning
-            point = New Global.System.Drawing.Point(4, 22)
-            tbapagPositioning.Location = point
+            Me.tbapagPositioning.Location = New Global.System.Drawing.Point(4, 22)
             Me.tbapagPositioning.Name = "tbapagPositioning"
-            Dim tbapagPositioning2 As Global.System.Windows.Forms.Control = Me.tbapagPositioning
-            size = New Global.System.Drawing.Size(496, 478)
-            tbapagPositioning2.Size = size
+            Me.tbapagPositioning.Size = New Global.System.Drawing.Size(496, 478)
             Me.tbapagPositioning.TabIndex = 1
             Me.tbapagPositioning.Text = "Positioning"
             Me.gbHeight.Controls.Add(Me.PictureBox2)
             Me.gbHeight.Controls.Add(Me.nudElevation)
             Me.gbHeight.Controls.Add(Me.Label10)
-            Dim gbHeight As Global.System.Windows.Forms.Control = Me.gbHeight
-            point = New Global.System.Drawing.Point(16, 248)
-            gbHeight.Location = point
+            Me.gbHeight.Location = New Global.System.Drawing.Point(16, 248)
             Me.gbHeight.Name = "gbHeight"
-            Dim gbHeight2 As Global.System.Windows.Forms.Control = Me.gbHeight
-            size = New Global.System.Drawing.Size(184, 176)
-            gbHeight2.Size = size
+            Me.gbHeight.Size = New Global.System.Drawing.Size(184, 176)
             Me.gbHeight.TabIndex = 2
             Me.gbHeight.TabStop = False
             Me.gbHeight.Text = "Height (m)"
-            Me.PictureBox2.Image = CType(resourceManager.GetObject("PictureBox2.Image"), Global.System.Drawing.Image)
-            Dim pictureBox As Global.System.Windows.Forms.Control = Me.PictureBox2
-            point = New Global.System.Drawing.Point(8, 40)
-            pictureBox.Location = point
+            Me.PictureBox2.Image = CType(resources.GetObject("Me.PictureBox2.Image"), Global.System.Drawing.Image)
+            Me.PictureBox2.Location = New Global.System.Drawing.Point(8, 40)
             Me.PictureBox2.Name = "PictureBox2"
-            Dim pictureBox2 As Global.System.Windows.Forms.Control = Me.PictureBox2
-            size = New Global.System.Drawing.Size(94, 96)
-            pictureBox2.Size = size
+            Me.PictureBox2.Size = New Global.System.Drawing.Size(94, 96)
             Me.PictureBox2.TabIndex = 3
             Me.PictureBox2.TabStop = False
             Me.nudElevation.DecimalPlaces = 1
-            Dim nudElevation As Global.System.Windows.Forms.Control = Me.nudElevation
-            point = New Global.System.Drawing.Point(112, 72)
-            nudElevation.Location = point
-            Dim nudElevation2 As Global.System.Windows.Forms.NumericUpDown = Me.nudElevation
-            Dim num As Decimal = New Decimal(New Integer() {100, 0, 0, Integer.MinValue})
-            nudElevation2.Minimum = num
+            Me.nudElevation.Location = New Global.System.Drawing.Point(112, 72)
+            Me.nudElevation.Minimum = New Decimal(New Integer() {100, 0, 0, Integer.MinValue})
             Me.nudElevation.Name = "nudElevation"
-            Dim nudElevation3 As Global.System.Windows.Forms.Control = Me.nudElevation
-            size = New Global.System.Drawing.Size(64, 20)
-            nudElevation3.Size = size
+            Me.nudElevation.Size = New Global.System.Drawing.Size(64, 20)
             Me.nudElevation.TabIndex = 0
-            Dim label13 As Global.System.Windows.Forms.Control = Me.Label10
-            point = New Global.System.Drawing.Point(112, 56)
-            label13.Location = point
+            Me.Label10.Location = New Global.System.Drawing.Point(112, 56)
             Me.Label10.Name = "Label10"
-            Dim label14 As Global.System.Windows.Forms.Control = Me.Label10
-            size = New Global.System.Drawing.Size(64, 16)
-            label14.Size = size
+            Me.Label10.Size = New Global.System.Drawing.Size(64, 16)
             Me.Label10.TabIndex = 2
             Me.Label10.Text = "Height (m)"
             Me.gbVolumeDistances.Controls.Add(Me.PictureBox1)
@@ -459,88 +470,52 @@
             Me.gbVolumeDistances.Controls.Add(Me.nudMaxDistance)
             Me.gbVolumeDistances.Controls.Add(Me.Label9)
             Me.gbVolumeDistances.Controls.Add(Me.nudMinDistance)
-            Dim gbVolumeDistances As Global.System.Windows.Forms.Control = Me.gbVolumeDistances
-            point = New Global.System.Drawing.Point(16, 104)
-            gbVolumeDistances.Location = point
+            Me.gbVolumeDistances.Location = New Global.System.Drawing.Point(16, 104)
             Me.gbVolumeDistances.Name = "gbVolumeDistances"
-            Dim gbVolumeDistances2 As Global.System.Windows.Forms.Control = Me.gbVolumeDistances
-            size = New Global.System.Drawing.Size(408, 120)
-            gbVolumeDistances2.Size = size
+            Me.gbVolumeDistances.Size = New Global.System.Drawing.Size(408, 120)
             Me.gbVolumeDistances.TabIndex = 1
             Me.gbVolumeDistances.TabStop = False
             Me.gbVolumeDistances.Text = "Volume Distances"
-            Me.PictureBox1.Image = CType(resourceManager.GetObject("PictureBox1.Image"), Global.System.Drawing.Image)
-            Dim pictureBox3 As Global.System.Windows.Forms.Control = Me.PictureBox1
-            point = New Global.System.Drawing.Point(8, 24)
-            pictureBox3.Location = point
+            Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Global.System.Drawing.Image)
+            Me.PictureBox1.Location = New Global.System.Drawing.Point(8, 24)
             Me.PictureBox1.Name = "PictureBox1"
-            Dim pictureBox4 As Global.System.Windows.Forms.Control = Me.PictureBox1
-            size = New Global.System.Drawing.Size(90, 82)
-            pictureBox4.Size = size
+            Me.PictureBox1.Size = New Global.System.Drawing.Size(90, 82)
             Me.PictureBox1.TabIndex = 3
             Me.PictureBox1.TabStop = False
-            Dim label15 As Global.System.Windows.Forms.Control = Me.Label8
-            point = New Global.System.Drawing.Point(128, 16)
-            label15.Location = point
+            Me.Label8.Location = New Global.System.Drawing.Point(128, 16)
             Me.Label8.Name = "Label8"
-            Dim label16 As Global.System.Windows.Forms.Control = Me.Label8
-            size = New Global.System.Drawing.Size(100, 16)
-            label16.Size = size
+            Me.Label8.Size = New Global.System.Drawing.Size(100, 16)
             Me.Label8.TabIndex = 2
             Me.Label8.Text = "Cutoff distance (m)"
             Me.nudMaxDistance.DecimalPlaces = 1
-            Dim nudMaxDistance As Global.System.Windows.Forms.Control = Me.nudMaxDistance
-            point = New Global.System.Drawing.Point(128, 32)
-            nudMaxDistance.Location = point
+            Me.nudMaxDistance.Location = New Global.System.Drawing.Point(128, 32)
             Me.nudMaxDistance.Name = "nudMaxDistance"
-            Dim nudMaxDistance2 As Global.System.Windows.Forms.Control = Me.nudMaxDistance
-            size = New Global.System.Drawing.Size(64, 20)
-            nudMaxDistance2.Size = size
+            Me.nudMaxDistance.Size = New Global.System.Drawing.Size(64, 20)
             Me.nudMaxDistance.TabIndex = 0
-            Dim label17 As Global.System.Windows.Forms.Control = Me.Label9
-            point = New Global.System.Drawing.Point(128, 64)
-            label17.Location = point
+            Me.Label9.Location = New Global.System.Drawing.Point(128, 64)
             Me.Label9.Name = "Label9"
-            Dim label18 As Global.System.Windows.Forms.Control = Me.Label9
-            size = New Global.System.Drawing.Size(152, 16)
-            label18.Size = size
+            Me.Label9.Size = New Global.System.Drawing.Size(152, 16)
             Me.Label9.TabIndex = 2
             Me.Label9.Text = "Max Volume distance (m)"
             Me.nudMinDistance.DecimalPlaces = 1
-            Dim nudMinDistance As Global.System.Windows.Forms.Control = Me.nudMinDistance
-            point = New Global.System.Drawing.Point(128, 80)
-            nudMinDistance.Location = point
+            Me.nudMinDistance.Location = New Global.System.Drawing.Point(128, 80)
             Me.nudMinDistance.Name = "nudMinDistance"
-            Dim nudMinDistance2 As Global.System.Windows.Forms.Control = Me.nudMinDistance
-            size = New Global.System.Drawing.Size(64, 20)
-            nudMinDistance2.Size = size
+            Me.nudMinDistance.Size = New Global.System.Drawing.Size(64, 20)
             Me.nudMinDistance.TabIndex = 0
-            Dim rbPlaysEverywhere As Global.System.Windows.Forms.Control = Me.rbPlaysEverywhere
-            point = New Global.System.Drawing.Point(24, 16)
-            rbPlaysEverywhere.Location = point
+            Me.rbPlaysEverywhere.Location = New Global.System.Drawing.Point(24, 16)
             Me.rbPlaysEverywhere.Name = "rbPlaysEverywhere"
-            Dim rbPlaysEverywhere2 As Global.System.Windows.Forms.Control = Me.rbPlaysEverywhere
-            size = New Global.System.Drawing.Size(160, 24)
-            rbPlaysEverywhere2.Size = size
+            Me.rbPlaysEverywhere.Size = New Global.System.Drawing.Size(160, 24)
             Me.rbPlaysEverywhere.TabIndex = 0
             Me.rbPlaysEverywhere.Text = "Plays everywhere in area"
-            Dim rbRandomPosition As Global.System.Windows.Forms.Control = Me.rbRandomPosition
-            point = New Global.System.Drawing.Point(24, 40)
-            rbRandomPosition.Location = point
+            Me.rbRandomPosition.Location = New Global.System.Drawing.Point(24, 40)
             Me.rbRandomPosition.Name = "rbRandomPosition"
-            Dim rbRandomPosition2 As Global.System.Windows.Forms.Control = Me.rbRandomPosition
-            size = New Global.System.Drawing.Size(288, 24)
-            rbRandomPosition2.Size = size
+            Me.rbRandomPosition.Size = New Global.System.Drawing.Size(288, 24)
             Me.rbRandomPosition.TabIndex = 0
             Me.rbRandomPosition.Text = "Plays from a random position each time it is played"
             Me.rbSpecificPosition.Checked = True
-            Dim rbSpecificPosition As Global.System.Windows.Forms.Control = Me.rbSpecificPosition
-            point = New Global.System.Drawing.Point(24, 64)
-            rbSpecificPosition.Location = point
+            Me.rbSpecificPosition.Location = New Global.System.Drawing.Point(24, 64)
             Me.rbSpecificPosition.Name = "rbSpecificPosition"
-            Dim rbSpecificPosition2 As Global.System.Windows.Forms.Control = Me.rbSpecificPosition
-            size = New Global.System.Drawing.Size(168, 24)
-            rbSpecificPosition2.Size = size
+            Me.rbSpecificPosition.Size = New Global.System.Drawing.Size(168, 24)
             Me.rbSpecificPosition.TabIndex = 0
             Me.rbSpecificPosition.TabStop = True
             Me.rbSpecificPosition.Text = "Plays from a specific position"
@@ -549,60 +524,36 @@
             Me.gbRandomRange.Controls.Add(Me.nudRandomRangeX)
             Me.gbRandomRange.Controls.Add(Me.Label11)
             Me.gbRandomRange.Controls.Add(Me.Label12)
-            Dim gbRandomRange As Global.System.Windows.Forms.Control = Me.gbRandomRange
-            point = New Global.System.Drawing.Point(208, 248)
-            gbRandomRange.Location = point
+            Me.gbRandomRange.Location = New Global.System.Drawing.Point(208, 248)
             Me.gbRandomRange.Name = "gbRandomRange"
-            Dim gbRandomRange2 As Global.System.Windows.Forms.Control = Me.gbRandomRange
-            size = New Global.System.Drawing.Size(280, 176)
-            gbRandomRange2.Size = size
+            Me.gbRandomRange.Size = New Global.System.Drawing.Size(280, 176)
             Me.gbRandomRange.TabIndex = 2
             Me.gbRandomRange.TabStop = False
             Me.gbRandomRange.Text = "Random Range"
-            Me.PictureBox3.Image = CType(resourceManager.GetObject("PictureBox3.Image"), Global.System.Drawing.Image)
-            Dim pictureBox5 As Global.System.Windows.Forms.Control = Me.PictureBox3
-            point = New Global.System.Drawing.Point(8, 24)
-            pictureBox5.Location = point
+            Me.PictureBox3.Image = CType(resources.GetObject("Me.PictureBox1.Image"), Global.System.Drawing.Image)
+            Me.PictureBox3.Location = New Global.System.Drawing.Point(8, 24)
             Me.PictureBox3.Name = "PictureBox3"
-            Dim pictureBox6 As Global.System.Windows.Forms.Control = Me.PictureBox3
-            size = New Global.System.Drawing.Size(96, 95)
-            pictureBox6.Size = size
+            Me.PictureBox3.Size = New Global.System.Drawing.Size(96, 95)
             Me.PictureBox3.TabIndex = 3
             Me.PictureBox3.TabStop = False
             Me.nudRandomRangeY.DecimalPlaces = 1
-            Dim nudRandomRangeY As Global.System.Windows.Forms.Control = Me.nudRandomRangeY
-            point = New Global.System.Drawing.Point(112, 40)
-            nudRandomRangeY.Location = point
+            Me.nudRandomRangeY.Location = New Global.System.Drawing.Point(112, 40)
             Me.nudRandomRangeY.Name = "nudRandomRangeY"
-            Dim nudRandomRangeY2 As Global.System.Windows.Forms.Control = Me.nudRandomRangeY
-            size = New Global.System.Drawing.Size(64, 20)
-            nudRandomRangeY2.Size = size
+            Me.nudRandomRangeY.Size = New Global.System.Drawing.Size(64, 20)
             Me.nudRandomRangeY.TabIndex = 0
             Me.nudRandomRangeX.DecimalPlaces = 1
-            Dim nudRandomRangeX As Global.System.Windows.Forms.Control = Me.nudRandomRangeX
-            point = New Global.System.Drawing.Point(16, 144)
-            nudRandomRangeX.Location = point
+            Me.nudRandomRangeX.Location = New Global.System.Drawing.Point(16, 144)
             Me.nudRandomRangeX.Name = "nudRandomRangeX"
-            Dim nudRandomRangeX2 As Global.System.Windows.Forms.Control = Me.nudRandomRangeX
-            size = New Global.System.Drawing.Size(64, 20)
-            nudRandomRangeX2.Size = size
+            Me.nudRandomRangeX.Size = New Global.System.Drawing.Size(64, 20)
             Me.nudRandomRangeX.TabIndex = 0
-            Dim label19 As Global.System.Windows.Forms.Control = Me.Label11
-            point = New Global.System.Drawing.Point(112, 24)
-            label19.Location = point
+            Me.Label11.Location = New Global.System.Drawing.Point(112, 24)
             Me.Label11.Name = "Label11"
-            Dim label20 As Global.System.Windows.Forms.Control = Me.Label11
-            size = New Global.System.Drawing.Size(160, 16)
-            label20.Size = size
+            Me.Label11.Size = New Global.System.Drawing.Size(160, 16)
             Me.Label11.TabIndex = 2
             Me.Label11.Text = "North-South Random Range (m)"
-            Dim label21 As Global.System.Windows.Forms.Control = Me.Label12
-            point = New Global.System.Drawing.Point(16, 128)
-            label21.Location = point
+            Me.Label12.Location = New Global.System.Drawing.Point(16, 128)
             Me.Label12.Name = "Label12"
-            Dim label22 As Global.System.Windows.Forms.Control = Me.Label12
-            size = New Global.System.Drawing.Size(160, 16)
-            label22.Size = size
+            Me.Label12.Size = New Global.System.Drawing.Size(160, 16)
             Me.Label12.TabIndex = 2
             Me.Label12.Text = "West-East Random Range (m)"
             Me.tabpagAdvanced.Controls.Add(Me.pnlVolPitch)
@@ -611,13 +562,9 @@
             Me.tabpagAdvanced.Controls.Add(Me.GroupBox6)
             Me.tabpagAdvanced.Controls.Add(Me.gbInterval)
             Me.tabpagAdvanced.Controls.Add(Me.GroupBox5)
-            Dim tabpagAdvanced As Global.System.Windows.Forms.Control = Me.tabpagAdvanced
-            point = New Global.System.Drawing.Point(4, 22)
-            tabpagAdvanced.Location = point
+            Me.tabpagAdvanced.Location = New Global.System.Drawing.Point(4, 22)
             Me.tabpagAdvanced.Name = "tabpagAdvanced"
-            Dim tabpagAdvanced2 As Global.System.Windows.Forms.Control = Me.tabpagAdvanced
-            size = New Global.System.Drawing.Size(496, 478)
-            tabpagAdvanced2.Size = size
+            Me.tabpagAdvanced.Size = New Global.System.Drawing.Size(496, 478)
             Me.tabpagAdvanced.TabIndex = 2
             Me.tabpagAdvanced.Text = "Advanced"
             Me.pnlVolPitch.Controls.Add(Me.tbPitchVrtn)
@@ -626,72 +573,44 @@
             Me.pnlVolPitch.Controls.Add(Me.Label7)
             Me.pnlVolPitch.Controls.Add(Me.trkbarPitchVrtn)
             Me.pnlVolPitch.Controls.Add(Me.tbVolumeVrtn)
-            Dim pnlVolPitch As Global.System.Windows.Forms.Control = Me.pnlVolPitch
-            point = New Global.System.Drawing.Point(8, 368)
-            pnlVolPitch.Location = point
+            Me.pnlVolPitch.Location = New Global.System.Drawing.Point(8, 368)
             Me.pnlVolPitch.Name = "pnlVolPitch"
-            Dim pnlVolPitch2 As Global.System.Windows.Forms.Control = Me.pnlVolPitch
-            size = New Global.System.Drawing.Size(480, 104)
-            pnlVolPitch2.Size = size
+            Me.pnlVolPitch.Size = New Global.System.Drawing.Size(480, 104)
             Me.pnlVolPitch.TabIndex = 25
-            Dim tbPitchVrtn As Global.System.Windows.Forms.Control = Me.tbPitchVrtn
-            point = New Global.System.Drawing.Point(160, 64)
-            tbPitchVrtn.Location = point
+            Me.tbPitchVrtn.Location = New Global.System.Drawing.Point(160, 64)
             Me.tbPitchVrtn.Name = "tbPitchVrtn"
             Me.tbPitchVrtn.[ReadOnly] = True
-            Dim tbPitchVrtn2 As Global.System.Windows.Forms.Control = Me.tbPitchVrtn
-            size = New Global.System.Drawing.Size(40, 20)
-            tbPitchVrtn2.Size = size
+            Me.tbPitchVrtn.Size = New Global.System.Drawing.Size(40, 20)
             Me.tbPitchVrtn.TabIndex = 24
             Me.tbPitchVrtn.Text = ""
-            Dim trkbarVolumeVrtn As Global.System.Windows.Forms.Control = Me.trkbarVolumeVrtn
-            point = New Global.System.Drawing.Point(216, 8)
-            trkbarVolumeVrtn.Location = point
+            Me.trkbarVolumeVrtn.Location = New Global.System.Drawing.Point(216, 8)
             Me.trkbarVolumeVrtn.Maximum = 100
             Me.trkbarVolumeVrtn.Name = "trkbarVolumeVrtn"
-            Dim trkbarVolumeVrtn2 As Global.System.Windows.Forms.Control = Me.trkbarVolumeVrtn
-            size = New Global.System.Drawing.Size(216, 42)
-            trkbarVolumeVrtn2.Size = size
+            Me.trkbarVolumeVrtn.Size = New Global.System.Drawing.Size(216, 42)
             Me.trkbarVolumeVrtn.TabIndex = 23
             Me.trkbarVolumeVrtn.TickFrequency = 5
-            Dim label23 As Global.System.Windows.Forms.Control = Me.Label6
-            point = New Global.System.Drawing.Point(24, 16)
-            label23.Location = point
+            Me.Label6.Location = New Global.System.Drawing.Point(24, 16)
             Me.Label6.Name = "Label6"
-            Dim label24 As Global.System.Windows.Forms.Control = Me.Label6
-            size = New Global.System.Drawing.Size(96, 16)
-            label24.Size = size
+            Me.Label6.Size = New Global.System.Drawing.Size(96, 16)
             Me.Label6.TabIndex = 22
             Me.Label6.Text = "Volume Variation"
             Me.Label6.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim label25 As Global.System.Windows.Forms.Control = Me.Label7
-            point = New Global.System.Drawing.Point(24, 64)
-            label25.Location = point
+            Me.Label7.Location = New Global.System.Drawing.Point(24, 64)
             Me.Label7.Name = "Label7"
-            Dim label26 As Global.System.Windows.Forms.Control = Me.Label7
-            size = New Global.System.Drawing.Size(160, 24)
-            label26.Size = size
+            Me.Label7.Size = New Global.System.Drawing.Size(160, 24)
             Me.Label7.TabIndex = 22
             Me.Label7.Text = "Pitch  Variation (octaves)"
             Me.Label7.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Dim trkbarPitchVrtn As Global.System.Windows.Forms.Control = Me.trkbarPitchVrtn
-            point = New Global.System.Drawing.Point(216, 56)
-            trkbarPitchVrtn.Location = point
+            Me.trkbarPitchVrtn.Location = New Global.System.Drawing.Point(216, 56)
             Me.trkbarPitchVrtn.Maximum = 100
             Me.trkbarPitchVrtn.Name = "trkbarPitchVrtn"
-            Dim trkbarPitchVrtn2 As Global.System.Windows.Forms.Control = Me.trkbarPitchVrtn
-            size = New Global.System.Drawing.Size(216, 42)
-            trkbarPitchVrtn2.Size = size
+            Me.trkbarPitchVrtn.Size = New Global.System.Drawing.Size(216, 42)
             Me.trkbarPitchVrtn.TabIndex = 23
             Me.trkbarPitchVrtn.TickFrequency = 5
-            Dim tbVolumeVrtn As Global.System.Windows.Forms.Control = Me.tbVolumeVrtn
-            point = New Global.System.Drawing.Point(160, 16)
-            tbVolumeVrtn.Location = point
+            Me.tbVolumeVrtn.Location = New Global.System.Drawing.Point(160, 16)
             Me.tbVolumeVrtn.Name = "tbVolumeVrtn"
             Me.tbVolumeVrtn.[ReadOnly] = True
-            Dim tbVolumeVrtn2 As Global.System.Windows.Forms.Control = Me.tbVolumeVrtn
-            size = New Global.System.Drawing.Size(40, 20)
-            tbVolumeVrtn2.Size = size
+            Me.tbVolumeVrtn.Size = New Global.System.Drawing.Size(40, 20)
             Me.tbVolumeVrtn.TabIndex = 24
             Me.tbVolumeVrtn.Text = ""
             Me.GroupBox4.Controls.Add(Me.rbPlayDay)
@@ -699,52 +618,32 @@
             Me.GroupBox4.Controls.Add(Me.rbPlayAllTimes)
             Me.GroupBox4.Controls.Add(Me.rbPlaySpecificHours)
             Me.GroupBox4.Controls.Add(Me.pnlHours)
-            Dim groupBox As Global.System.Windows.Forms.Control = Me.GroupBox4
-            point = New Global.System.Drawing.Point(8, 48)
-            groupBox.Location = point
+            Me.GroupBox4.Location = New Global.System.Drawing.Point(8, 48)
             Me.GroupBox4.Name = "GroupBox4"
-            Dim groupBox2 As Global.System.Windows.Forms.Control = Me.GroupBox4
-            size = New Global.System.Drawing.Size(472, 160)
-            groupBox2.Size = size
+            Me.GroupBox4.Size = New Global.System.Drawing.Size(472, 160)
             Me.GroupBox4.TabIndex = 1
             Me.GroupBox4.TabStop = False
             Me.GroupBox4.Text = "When to play"
-            Dim rbPlayDay As Global.System.Windows.Forms.Control = Me.rbPlayDay
-            point = New Global.System.Drawing.Point(40, 16)
-            rbPlayDay.Location = point
+            Me.rbPlayDay.Location = New Global.System.Drawing.Point(40, 16)
             Me.rbPlayDay.Name = "rbPlayDay"
-            Dim rbPlayDay2 As Global.System.Windows.Forms.Control = Me.rbPlayDay
-            size = New Global.System.Drawing.Size(128, 16)
-            rbPlayDay2.Size = size
+            Me.rbPlayDay.Size = New Global.System.Drawing.Size(128, 16)
             Me.rbPlayDay.TabIndex = 0
             Me.rbPlayDay.Text = "Play during the day"
-            Dim rbPlayNight As Global.System.Windows.Forms.Control = Me.rbPlayNight
-            point = New Global.System.Drawing.Point(40, 32)
-            rbPlayNight.Location = point
+            Me.rbPlayNight.Location = New Global.System.Drawing.Point(40, 32)
             Me.rbPlayNight.Name = "rbPlayNight"
-            Dim rbPlayNight2 As Global.System.Windows.Forms.Control = Me.rbPlayNight
-            size = New Global.System.Drawing.Size(128, 16)
-            rbPlayNight2.Size = size
+            Me.rbPlayNight.Size = New Global.System.Drawing.Size(128, 16)
             Me.rbPlayNight.TabIndex = 0
             Me.rbPlayNight.Text = "Play at night"
             Me.rbPlayAllTimes.Checked = True
-            Dim rbPlayAllTimes As Global.System.Windows.Forms.Control = Me.rbPlayAllTimes
-            point = New Global.System.Drawing.Point(40, 48)
-            rbPlayAllTimes.Location = point
+            Me.rbPlayAllTimes.Location = New Global.System.Drawing.Point(40, 48)
             Me.rbPlayAllTimes.Name = "rbPlayAllTimes"
-            Dim rbPlayAllTimes2 As Global.System.Windows.Forms.Control = Me.rbPlayAllTimes
-            size = New Global.System.Drawing.Size(128, 16)
-            rbPlayAllTimes2.Size = size
+            Me.rbPlayAllTimes.Size = New Global.System.Drawing.Size(128, 16)
             Me.rbPlayAllTimes.TabIndex = 0
             Me.rbPlayAllTimes.TabStop = True
             Me.rbPlayAllTimes.Text = "Play at all times"
-            Dim rbPlaySpecificHours As Global.System.Windows.Forms.Control = Me.rbPlaySpecificHours
-            point = New Global.System.Drawing.Point(40, 64)
-            rbPlaySpecificHours.Location = point
+            Me.rbPlaySpecificHours.Location = New Global.System.Drawing.Point(40, 64)
             Me.rbPlaySpecificHours.Name = "rbPlaySpecificHours"
-            Dim rbPlaySpecificHours2 As Global.System.Windows.Forms.Control = Me.rbPlaySpecificHours
-            size = New Global.System.Drawing.Size(128, 16)
-            rbPlaySpecificHours2.Size = size
+            Me.rbPlaySpecificHours.Size = New Global.System.Drawing.Size(128, 16)
             Me.rbPlaySpecificHours.TabIndex = 0
             Me.rbPlaySpecificHours.Text = "Specific Hours"
             Me.pnlHours.Controls.Add(Me.chkb3a)
@@ -785,546 +684,328 @@
             Me.pnlHours.Controls.Add(Me.Label14)
             Me.pnlHours.Controls.Add(Me.chkb12a)
             Me.pnlHours.Controls.Add(Me.Label19)
-            Dim pnlHours As Global.System.Windows.Forms.Control = Me.pnlHours
-            point = New Global.System.Drawing.Point(40, 80)
-            pnlHours.Location = point
+            Me.pnlHours.Location = New Global.System.Drawing.Point(40, 80)
             Me.pnlHours.Name = "pnlHours"
-            Dim pnlHours2 As Global.System.Windows.Forms.Control = Me.pnlHours
-            size = New Global.System.Drawing.Size(352, 72)
-            pnlHours2.Size = size
+            Me.pnlHours.Size = New Global.System.Drawing.Size(352, 72)
             Me.pnlHours.TabIndex = 4
-            Dim chkb3a As Global.System.Windows.Forms.Control = Me.chkb3a
-            point = New Global.System.Drawing.Point(128, 24)
-            chkb3a.Location = point
+            Me.chkb3a.Location = New Global.System.Drawing.Point(128, 24)
             Me.chkb3a.Name = "chkb3a"
-            Dim chkb3a2 As Global.System.Windows.Forms.Control = Me.chkb3a
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb3a2.Size = size
+            Me.chkb3a.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb3a.TabIndex = 1
             Me.chkb3a.Tag = "3"
             Me.chkb3a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim label27 As Global.System.Windows.Forms.Control = Me.Label21
-            point = New Global.System.Drawing.Point(224, 8)
-            label27.Location = point
+            Me.Label21.Location = New Global.System.Drawing.Point(224, 8)
             Me.Label21.Name = "Label21"
-            Dim label28 As Global.System.Windows.Forms.Control = Me.Label21
-            size = New Global.System.Drawing.Size(16, 16)
-            label28.Size = size
+            Me.Label21.Size = New Global.System.Drawing.Size(16, 16)
             Me.Label21.TabIndex = 3
             Me.Label21.Text = "7"
-            Dim label29 As Global.System.Windows.Forms.Control = Me.Label20
-            point = New Global.System.Drawing.Point(200, 8)
-            label29.Location = point
+            Me.Label20.Location = New Global.System.Drawing.Point(200, 8)
             Me.Label20.Name = "Label20"
-            Dim label30 As Global.System.Windows.Forms.Control = Me.Label20
-            size = New Global.System.Drawing.Size(16, 16)
-            label30.Size = size
+            Me.Label20.Size = New Global.System.Drawing.Size(16, 16)
             Me.Label20.TabIndex = 3
             Me.Label20.Text = "6"
-            Dim label31 As Global.System.Windows.Forms.Control = Me.Label18
-            point = New Global.System.Drawing.Point(152, 8)
-            label31.Location = point
+            Me.Label18.Location = New Global.System.Drawing.Point(152, 8)
             Me.Label18.Name = "Label18"
-            Dim label32 As Global.System.Windows.Forms.Control = Me.Label18
-            size = New Global.System.Drawing.Size(16, 16)
-            label32.Size = size
+            Me.Label18.Size = New Global.System.Drawing.Size(16, 16)
             Me.Label18.TabIndex = 3
             Me.Label18.Text = "4"
-            Dim chkb3p As Global.System.Windows.Forms.Control = Me.chkb3p
-            point = New Global.System.Drawing.Point(128, 48)
-            chkb3p.Location = point
+            Me.chkb3p.Location = New Global.System.Drawing.Point(128, 48)
             Me.chkb3p.Name = "chkb3p"
-            Dim chkb3p2 As Global.System.Windows.Forms.Control = Me.chkb3p
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb3p2.Size = size
+            Me.chkb3p.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb3p.TabIndex = 1
             Me.chkb3p.Tag = "15"
             Me.chkb3p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim chkb10p As Global.System.Windows.Forms.Control = Me.chkb10p
-            point = New Global.System.Drawing.Point(296, 48)
-            chkb10p.Location = point
+            Me.chkb10p.Location = New Global.System.Drawing.Point(296, 48)
             Me.chkb10p.Name = "chkb10p"
-            Dim chkb10p2 As Global.System.Windows.Forms.Control = Me.chkb10p
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb10p2.Size = size
+            Me.chkb10p.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb10p.TabIndex = 1
             Me.chkb10p.Tag = "22"
             Me.chkb10p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim chkb12p As Global.System.Windows.Forms.Control = Me.chkb12p
-            point = New Global.System.Drawing.Point(56, 48)
-            chkb12p.Location = point
+            Me.chkb12p.Location = New Global.System.Drawing.Point(56, 48)
             Me.chkb12p.Name = "chkb12p"
-            Dim chkb12p2 As Global.System.Windows.Forms.Control = Me.chkb12p
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb12p2.Size = size
+            Me.chkb12p.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb12p.TabIndex = 1
             Me.chkb12p.Tag = "12"
             Me.chkb12p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim chkb1p As Global.System.Windows.Forms.Control = Me.chkb1p
-            point = New Global.System.Drawing.Point(80, 48)
-            chkb1p.Location = point
+            Me.chkb1p.Location = New Global.System.Drawing.Point(80, 48)
             Me.chkb1p.Name = "chkb1p"
-            Dim chkb1p2 As Global.System.Windows.Forms.Control = Me.chkb1p
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb1p2.Size = size
+            Me.chkb1p.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb1p.TabIndex = 1
             Me.chkb1p.Tag = "13"
             Me.chkb1p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim chkb4a As Global.System.Windows.Forms.Control = Me.chkb4a
-            point = New Global.System.Drawing.Point(152, 24)
-            chkb4a.Location = point
+            Me.chkb4a.Location = New Global.System.Drawing.Point(152, 24)
             Me.chkb4a.Name = "chkb4a"
-            Dim chkb4a2 As Global.System.Windows.Forms.Control = Me.chkb4a
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb4a2.Size = size
+            Me.chkb4a.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb4a.TabIndex = 1
             Me.chkb4a.Tag = "4"
             Me.chkb4a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim chkb6a As Global.System.Windows.Forms.Control = Me.chkb6a
-            point = New Global.System.Drawing.Point(200, 24)
-            chkb6a.Location = point
+            Me.chkb6a.Location = New Global.System.Drawing.Point(200, 24)
             Me.chkb6a.Name = "chkb6a"
-            Dim chkb6a2 As Global.System.Windows.Forms.Control = Me.chkb6a
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb6a2.Size = size
+            Me.chkb6a.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb6a.TabIndex = 1
             Me.chkb6a.Tag = "6"
             Me.chkb6a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim chkb5a As Global.System.Windows.Forms.Control = Me.chkb5a
-            point = New Global.System.Drawing.Point(176, 24)
-            chkb5a.Location = point
+            Me.chkb5a.Location = New Global.System.Drawing.Point(176, 24)
             Me.chkb5a.Name = "chkb5a"
-            Dim chkb5a2 As Global.System.Windows.Forms.Control = Me.chkb5a
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb5a2.Size = size
+            Me.chkb5a.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb5a.TabIndex = 1
             Me.chkb5a.Tag = "5"
             Me.chkb5a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim chkb7a As Global.System.Windows.Forms.Control = Me.chkb7a
-            point = New Global.System.Drawing.Point(224, 24)
-            chkb7a.Location = point
+            Me.chkb7a.Location = New Global.System.Drawing.Point(224, 24)
             Me.chkb7a.Name = "chkb7a"
-            Dim chkb7a2 As Global.System.Windows.Forms.Control = Me.chkb7a
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb7a2.Size = size
+            Me.chkb7a.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb7a.TabIndex = 1
             Me.chkb7a.Tag = "7"
             Me.chkb7a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim label33 As Global.System.Windows.Forms.Control = Me.Label25
-            point = New Global.System.Drawing.Point(318, 8)
-            label33.Location = point
+            Me.Label25.Location = New Global.System.Drawing.Point(318, 8)
             Me.Label25.Name = "Label25"
-            Dim label34 As Global.System.Windows.Forms.Control = Me.Label25
-            size = New Global.System.Drawing.Size(24, 16)
-            label34.Size = size
+            Me.Label25.Size = New Global.System.Drawing.Size(24, 16)
             Me.Label25.TabIndex = 3
             Me.Label25.Text = "11"
-            Dim chkb8p As Global.System.Windows.Forms.Control = Me.chkb8p
-            point = New Global.System.Drawing.Point(248, 48)
-            chkb8p.Location = point
+            Me.chkb8p.Location = New Global.System.Drawing.Point(248, 48)
             Me.chkb8p.Name = "chkb8p"
-            Dim chkb8p2 As Global.System.Windows.Forms.Control = Me.chkb8p
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb8p2.Size = size
+            Me.chkb8p.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb8p.TabIndex = 1
             Me.chkb8p.Tag = "20"
             Me.chkb8p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim chkb2p As Global.System.Windows.Forms.Control = Me.chkb2p
-            point = New Global.System.Drawing.Point(104, 48)
-            chkb2p.Location = point
+            Me.chkb2p.Location = New Global.System.Drawing.Point(104, 48)
             Me.chkb2p.Name = "chkb2p"
-            Dim chkb2p2 As Global.System.Windows.Forms.Control = Me.chkb2p
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb2p2.Size = size
+            Me.chkb2p.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb2p.TabIndex = 1
             Me.chkb2p.Tag = "14"
             Me.chkb2p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim chkb9p As Global.System.Windows.Forms.Control = Me.chkb9p
-            point = New Global.System.Drawing.Point(272, 48)
-            chkb9p.Location = point
+            Me.chkb9p.Location = New Global.System.Drawing.Point(272, 48)
             Me.chkb9p.Name = "chkb9p"
-            Dim chkb9p2 As Global.System.Windows.Forms.Control = Me.chkb9p
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb9p2.Size = size
+            Me.chkb9p.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb9p.TabIndex = 1
             Me.chkb9p.Tag = "21"
             Me.chkb9p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim chkb11p As Global.System.Windows.Forms.Control = Me.chkb11p
-            point = New Global.System.Drawing.Point(320, 48)
-            chkb11p.Location = point
+            Me.chkb11p.Location = New Global.System.Drawing.Point(320, 48)
             Me.chkb11p.Name = "chkb11p"
-            Dim chkb11p2 As Global.System.Windows.Forms.Control = Me.chkb11p
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb11p2.Size = size
+            Me.chkb11p.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb11p.TabIndex = 1
             Me.chkb11p.Tag = "23"
             Me.chkb11p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim chkb11a As Global.System.Windows.Forms.Control = Me.chkb11a
-            point = New Global.System.Drawing.Point(320, 24)
-            chkb11a.Location = point
+            Me.chkb11a.Location = New Global.System.Drawing.Point(320, 24)
             Me.chkb11a.Name = "chkb11a"
-            Dim chkb11a2 As Global.System.Windows.Forms.Control = Me.chkb11a
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb11a2.Size = size
+            Me.chkb11a.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb11a.TabIndex = 1
             Me.chkb11a.Tag = "11"
             Me.chkb11a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim chkb9a As Global.System.Windows.Forms.Control = Me.chkb9a
-            point = New Global.System.Drawing.Point(272, 24)
-            chkb9a.Location = point
+            Me.chkb9a.Location = New Global.System.Drawing.Point(272, 24)
             Me.chkb9a.Name = "chkb9a"
-            Dim chkb9a2 As Global.System.Windows.Forms.Control = Me.chkb9a
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb9a2.Size = size
+            Me.chkb9a.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb9a.TabIndex = 1
             Me.chkb9a.Tag = "9"
             Me.chkb9a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim chkb10a As Global.System.Windows.Forms.Control = Me.chkb10a
-            point = New Global.System.Drawing.Point(296, 24)
-            chkb10a.Location = point
+            Me.chkb10a.Location = New Global.System.Drawing.Point(296, 24)
             Me.chkb10a.Name = "chkb10a"
-            Dim chkb10a2 As Global.System.Windows.Forms.Control = Me.chkb10a
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb10a2.Size = size
+            Me.chkb10a.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb10a.TabIndex = 1
             Me.chkb10a.Tag = "10"
             Me.chkb10a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim chkb8a As Global.System.Windows.Forms.Control = Me.chkb8a
-            point = New Global.System.Drawing.Point(248, 24)
-            chkb8a.Location = point
+            Me.chkb8a.Location = New Global.System.Drawing.Point(248, 24)
             Me.chkb8a.Name = "chkb8a"
-            Dim chkb8a2 As Global.System.Windows.Forms.Control = Me.chkb8a
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb8a2.Size = size
+            Me.chkb8a.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb8a.TabIndex = 1
             Me.chkb8a.Tag = "8"
             Me.chkb8a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim chkb7p As Global.System.Windows.Forms.Control = Me.chkb7p
-            point = New Global.System.Drawing.Point(224, 48)
-            chkb7p.Location = point
+            Me.chkb7p.Location = New Global.System.Drawing.Point(224, 48)
             Me.chkb7p.Name = "chkb7p"
-            Dim chkb7p2 As Global.System.Windows.Forms.Control = Me.chkb7p
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb7p2.Size = size
+            Me.chkb7p.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb7p.TabIndex = 1
             Me.chkb7p.Tag = "19"
             Me.chkb7p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim chkb5p As Global.System.Windows.Forms.Control = Me.chkb5p
-            point = New Global.System.Drawing.Point(176, 48)
-            chkb5p.Location = point
+            Me.chkb5p.Location = New Global.System.Drawing.Point(176, 48)
             Me.chkb5p.Name = "chkb5p"
-            Dim chkb5p2 As Global.System.Windows.Forms.Control = Me.chkb5p
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb5p2.Size = size
+            Me.chkb5p.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb5p.TabIndex = 1
             Me.chkb5p.Tag = "17"
             Me.chkb5p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim chkb6p As Global.System.Windows.Forms.Control = Me.chkb6p
-            point = New Global.System.Drawing.Point(200, 48)
-            chkb6p.Location = point
+            Me.chkb6p.Location = New Global.System.Drawing.Point(200, 48)
             Me.chkb6p.Name = "chkb6p"
-            Dim chkb6p2 As Global.System.Windows.Forms.Control = Me.chkb6p
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb6p2.Size = size
+            Me.chkb6p.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb6p.TabIndex = 1
             Me.chkb6p.Tag = "18"
             Me.chkb6p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim chkb4p As Global.System.Windows.Forms.Control = Me.chkb4p
-            point = New Global.System.Drawing.Point(152, 48)
-            chkb4p.Location = point
+            Me.chkb4p.Location = New Global.System.Drawing.Point(152, 48)
             Me.chkb4p.Name = "chkb4p"
-            Dim chkb4p2 As Global.System.Windows.Forms.Control = Me.chkb4p
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb4p2.Size = size
+            Me.chkb4p.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb4p.TabIndex = 1
             Me.chkb4p.Tag = "16"
             Me.chkb4p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim label35 As Global.System.Windows.Forms.Control = Me.Label13
-            point = New Global.System.Drawing.Point(80, 8)
-            label35.Location = point
+            Me.Label13.Location = New Global.System.Drawing.Point(80, 8)
             Me.Label13.Name = "Label13"
-            Dim label36 As Global.System.Windows.Forms.Control = Me.Label13
-            size = New Global.System.Drawing.Size(16, 16)
-            label36.Size = size
+            Me.Label13.Size = New Global.System.Drawing.Size(16, 16)
             Me.Label13.TabIndex = 3
             Me.Label13.Text = "1"
-            Dim chkb1a As Global.System.Windows.Forms.Control = Me.chkb1a
-            point = New Global.System.Drawing.Point(80, 24)
-            chkb1a.Location = point
+            Me.chkb1a.Location = New Global.System.Drawing.Point(80, 24)
             Me.chkb1a.Name = "chkb1a"
-            Dim chkb1a2 As Global.System.Windows.Forms.Control = Me.chkb1a
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb1a2.Size = size
+            Me.chkb1a.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb1a.TabIndex = 1
             Me.chkb1a.Tag = "1"
             Me.chkb1a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim lblAM As Global.System.Windows.Forms.Control = Me.lblAM
-            point = New Global.System.Drawing.Point(16, 24)
-            lblAM.Location = point
+            Me.lblAM.Location = New Global.System.Drawing.Point(16, 24)
             Me.lblAM.Name = "lblAM"
-            Dim lblAM2 As Global.System.Windows.Forms.Control = Me.lblAM
-            size = New Global.System.Drawing.Size(24, 16)
-            lblAM2.Size = size
+            Me.lblAM.Size = New Global.System.Drawing.Size(24, 16)
             Me.lblAM.TabIndex = 3
             Me.lblAM.Text = "AM"
-            Dim lblPM As Global.System.Windows.Forms.Control = Me.lblPM
-            point = New Global.System.Drawing.Point(16, 48)
-            lblPM.Location = point
+            Me.lblPM.Location = New Global.System.Drawing.Point(16, 48)
             Me.lblPM.Name = "lblPM"
-            Dim lblPM2 As Global.System.Windows.Forms.Control = Me.lblPM
-            size = New Global.System.Drawing.Size(24, 16)
-            lblPM2.Size = size
+            Me.lblPM.Size = New Global.System.Drawing.Size(24, 16)
             Me.lblPM.TabIndex = 3
             Me.lblPM.Text = "PM"
-            Dim label37 As Global.System.Windows.Forms.Control = Me.Label23
-            point = New Global.System.Drawing.Point(272, 8)
-            label37.Location = point
+            Me.Label23.Location = New Global.System.Drawing.Point(272, 8)
             Me.Label23.Name = "Label23"
-            Dim label38 As Global.System.Windows.Forms.Control = Me.Label23
-            size = New Global.System.Drawing.Size(16, 16)
-            label38.Size = size
+            Me.Label23.Size = New Global.System.Drawing.Size(16, 16)
             Me.Label23.TabIndex = 3
             Me.Label23.Text = "9"
-            Dim label39 As Global.System.Windows.Forms.Control = Me.Label24
-            point = New Global.System.Drawing.Point(294, 8)
-            label39.Location = point
+            Me.Label24.Location = New Global.System.Drawing.Point(294, 8)
             Me.Label24.Name = "Label24"
-            Dim label40 As Global.System.Windows.Forms.Control = Me.Label24
-            size = New Global.System.Drawing.Size(24, 16)
-            label40.Size = size
+            Me.Label24.Size = New Global.System.Drawing.Size(24, 16)
             Me.Label24.TabIndex = 3
             Me.Label24.Text = "10"
-            Dim chkb2a As Global.System.Windows.Forms.Control = Me.chkb2a
-            point = New Global.System.Drawing.Point(104, 24)
-            chkb2a.Location = point
+            Me.chkb2a.Location = New Global.System.Drawing.Point(104, 24)
             Me.chkb2a.Name = "chkb2a"
-            Dim chkb2a2 As Global.System.Windows.Forms.Control = Me.chkb2a
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb2a2.Size = size
+            Me.chkb2a.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb2a.TabIndex = 1
             Me.chkb2a.Tag = "2"
             Me.chkb2a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim lbl As Global.System.Windows.Forms.Control = Me.lbl12
-            point = New Global.System.Drawing.Point(54, 8)
-            lbl.Location = point
+            Me.lbl12.Location = New Global.System.Drawing.Point(54, 8)
             Me.lbl12.Name = "lbl12"
-            Dim lbl2 As Global.System.Windows.Forms.Control = Me.lbl12
-            size = New Global.System.Drawing.Size(24, 16)
-            lbl2.Size = size
+            Me.lbl12.Size = New Global.System.Drawing.Size(24, 16)
             Me.lbl12.TabIndex = 3
             Me.lbl12.Text = "12"
-            Dim label41 As Global.System.Windows.Forms.Control = Me.Label17
-            point = New Global.System.Drawing.Point(128, 8)
-            label41.Location = point
+            Me.Label17.Location = New Global.System.Drawing.Point(128, 8)
             Me.Label17.Name = "Label17"
-            Dim label42 As Global.System.Windows.Forms.Control = Me.Label17
-            size = New Global.System.Drawing.Size(16, 16)
-            label42.Size = size
+            Me.Label17.Size = New Global.System.Drawing.Size(16, 16)
             Me.Label17.TabIndex = 3
             Me.Label17.Text = "3"
-            Dim label43 As Global.System.Windows.Forms.Control = Me.Label22
-            point = New Global.System.Drawing.Point(248, 8)
-            label43.Location = point
+            Me.Label22.Location = New Global.System.Drawing.Point(248, 8)
             Me.Label22.Name = "Label22"
-            Dim label44 As Global.System.Windows.Forms.Control = Me.Label22
-            size = New Global.System.Drawing.Size(16, 16)
-            label44.Size = size
+            Me.Label22.Size = New Global.System.Drawing.Size(16, 16)
             Me.Label22.TabIndex = 3
             Me.Label22.Text = "8"
-            Dim label45 As Global.System.Windows.Forms.Control = Me.Label14
-            point = New Global.System.Drawing.Point(104, 8)
-            label45.Location = point
+            Me.Label14.Location = New Global.System.Drawing.Point(104, 8)
             Me.Label14.Name = "Label14"
-            Dim label46 As Global.System.Windows.Forms.Control = Me.Label14
-            size = New Global.System.Drawing.Size(16, 16)
-            label46.Size = size
+            Me.Label14.Size = New Global.System.Drawing.Size(16, 16)
             Me.Label14.TabIndex = 3
             Me.Label14.Text = "2"
-            Dim chkb12a As Global.System.Windows.Forms.Control = Me.chkb12a
-            point = New Global.System.Drawing.Point(56, 24)
-            chkb12a.Location = point
+            Me.chkb12a.Location = New Global.System.Drawing.Point(56, 24)
             Me.chkb12a.Name = "chkb12a"
-            Dim chkb12a2 As Global.System.Windows.Forms.Control = Me.chkb12a
-            size = New Global.System.Drawing.Size(16, 16)
-            chkb12a2.Size = size
+            Me.chkb12a.Size = New Global.System.Drawing.Size(16, 16)
             Me.chkb12a.TabIndex = 1
             Me.chkb12a.Tag = "0"
             Me.chkb12a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Dim label47 As Global.System.Windows.Forms.Control = Me.Label19
-            point = New Global.System.Drawing.Point(176, 8)
-            label47.Location = point
+            Me.Label19.Location = New Global.System.Drawing.Point(176, 8)
             Me.Label19.Name = "Label19"
-            Dim label48 As Global.System.Windows.Forms.Control = Me.Label19
-            size = New Global.System.Drawing.Size(16, 16)
-            label48.Size = size
+            Me.Label19.Size = New Global.System.Drawing.Size(16, 16)
             Me.Label19.TabIndex = 3
             Me.Label19.Text = "5"
             Me.chkbActive.Checked = True
             Me.chkbActive.CheckState = Global.System.Windows.Forms.CheckState.Checked
-            Dim chkbActive As Global.System.Windows.Forms.Control = Me.chkbActive
-            point = New Global.System.Drawing.Point(32, 16)
-            chkbActive.Location = point
+            Me.chkbActive.Location = New Global.System.Drawing.Point(32, 16)
             Me.chkbActive.Name = "chkbActive"
             Me.chkbActive.TabIndex = 0
             Me.chkbActive.Text = "Active"
             Me.GroupBox6.Controls.Add(Me.rbSequential)
             Me.GroupBox6.Controls.Add(Me.rbRandom)
-            Dim groupBox3 As Global.System.Windows.Forms.Control = Me.GroupBox6
-            point = New Global.System.Drawing.Point(256, 216)
-            groupBox3.Location = point
+            Me.GroupBox6.Location = New Global.System.Drawing.Point(256, 216)
             Me.GroupBox6.Name = "GroupBox6"
-            Dim groupBox4 As Global.System.Windows.Forms.Control = Me.GroupBox6
-            size = New Global.System.Drawing.Size(224, 56)
-            groupBox4.Size = size
+            Me.GroupBox6.Size = New Global.System.Drawing.Size(224, 56)
             Me.GroupBox6.TabIndex = 2
             Me.GroupBox6.TabStop = False
             Me.GroupBox6.Text = "Play Order"
             Me.rbSequential.Checked = True
-            Dim rbSequential As Global.System.Windows.Forms.Control = Me.rbSequential
-            point = New Global.System.Drawing.Point(40, 16)
-            rbSequential.Location = point
+            Me.rbSequential.Location = New Global.System.Drawing.Point(40, 16)
             Me.rbSequential.Name = "rbSequential"
-            Dim rbSequential2 As Global.System.Windows.Forms.Control = Me.rbSequential
-            size = New Global.System.Drawing.Size(104, 16)
-            rbSequential2.Size = size
+            Me.rbSequential.Size = New Global.System.Drawing.Size(104, 16)
             Me.rbSequential.TabIndex = 2
             Me.rbSequential.TabStop = True
             Me.rbSequential.Text = "Sequential"
-            Dim rbRandom As Global.System.Windows.Forms.Control = Me.rbRandom
-            point = New Global.System.Drawing.Point(40, 32)
-            rbRandom.Location = point
+            Me.rbRandom.Location = New Global.System.Drawing.Point(40, 32)
             Me.rbRandom.Name = "rbRandom"
-            Dim rbRandom2 As Global.System.Windows.Forms.Control = Me.rbRandom
-            size = New Global.System.Drawing.Size(104, 16)
-            rbRandom2.Size = size
+            Me.rbRandom.Size = New Global.System.Drawing.Size(104, 16)
             Me.rbRandom.TabIndex = 1
             Me.rbRandom.Text = "Random"
             Me.gbInterval.Controls.Add(Me.Label16)
             Me.gbInterval.Controls.Add(Me.Label15)
             Me.gbInterval.Controls.Add(Me.nudInterval)
             Me.gbInterval.Controls.Add(Me.nudIntervalVrtn)
-            Dim gbInterval As Global.System.Windows.Forms.Control = Me.gbInterval
-            point = New Global.System.Drawing.Point(8, 296)
-            gbInterval.Location = point
+            Me.gbInterval.Location = New Global.System.Drawing.Point(8, 296)
             Me.gbInterval.Name = "gbInterval"
-            Dim gbInterval2 As Global.System.Windows.Forms.Control = Me.gbInterval
-            size = New Global.System.Drawing.Size(472, 72)
-            gbInterval2.Size = size
+            Me.gbInterval.Size = New Global.System.Drawing.Size(472, 72)
             Me.gbInterval.TabIndex = 1
             Me.gbInterval.TabStop = False
             Me.gbInterval.Text = "Interval"
-            Dim label49 As Global.System.Windows.Forms.Control = Me.Label16
-            point = New Global.System.Drawing.Point(24, 40)
-            label49.Location = point
+            Me.Label16.Location = New Global.System.Drawing.Point(24, 40)
             Me.Label16.Name = "Label16"
-            Dim label50 As Global.System.Windows.Forms.Control = Me.Label16
-            size = New Global.System.Drawing.Size(144, 16)
-            label50.Size = size
+            Me.Label16.Size = New Global.System.Drawing.Size(144, 16)
             Me.Label16.TabIndex = 4
             Me.Label16.Text = "Interval Variation (seconds)"
-            Dim label51 As Global.System.Windows.Forms.Control = Me.Label15
-            point = New Global.System.Drawing.Point(24, 16)
-            label51.Location = point
+            Me.Label15.Location = New Global.System.Drawing.Point(24, 16)
             Me.Label15.Name = "Label15"
-            Dim label52 As Global.System.Windows.Forms.Control = Me.Label15
-            size = New Global.System.Drawing.Size(232, 16)
-            label52.Size = size
+            Me.Label15.Size = New Global.System.Drawing.Size(232, 16)
             Me.Label15.TabIndex = 3
             Me.Label15.Text = "Interval between playing sounds (seconds)"
             Me.nudInterval.DecimalPlaces = 2
-            Dim nudInterval As Global.System.Windows.Forms.Control = Me.nudInterval
-            point = New Global.System.Drawing.Point(272, 16)
-            nudInterval.Location = point
-            Dim nudInterval2 As Global.System.Windows.Forms.NumericUpDown = Me.nudInterval
-            num = New Decimal(New Integer() {600, 0, 0, 0})
-            nudInterval2.Maximum = num
+            Me.nudInterval.Location = New Global.System.Drawing.Point(272, 16)
+            Me.nudInterval.Maximum = New Decimal(New Integer() {600, 0, 0, 0})
             Me.nudInterval.Name = "nudInterval"
-            Dim nudInterval3 As Global.System.Windows.Forms.Control = Me.nudInterval
-            size = New Global.System.Drawing.Size(64, 20)
-            nudInterval3.Size = size
+            Me.nudInterval.Size = New Global.System.Drawing.Size(64, 20)
             Me.nudInterval.TabIndex = 0
             Me.nudIntervalVrtn.DecimalPlaces = 2
-            Dim nudIntervalVrtn As Global.System.Windows.Forms.Control = Me.nudIntervalVrtn
-            point = New Global.System.Drawing.Point(272, 40)
-            nudIntervalVrtn.Location = point
+            Me.nudIntervalVrtn.Location = New Global.System.Drawing.Point(272, 40)
             Me.nudIntervalVrtn.Name = "nudIntervalVrtn"
-            Dim nudIntervalVrtn2 As Global.System.Windows.Forms.Control = Me.nudIntervalVrtn
-            size = New Global.System.Drawing.Size(64, 20)
-            nudIntervalVrtn2.Size = size
+            Me.nudIntervalVrtn.Size = New Global.System.Drawing.Size(64, 20)
             Me.nudIntervalVrtn.TabIndex = 0
             Me.GroupBox5.Controls.Add(Me.rbOnce)
             Me.GroupBox5.Controls.Add(Me.rbRepeating)
             Me.GroupBox5.Controls.Add(Me.rbLooping)
-            Dim groupBox5 As Global.System.Windows.Forms.Control = Me.GroupBox5
-            point = New Global.System.Drawing.Point(8, 216)
-            groupBox5.Location = point
+            Me.GroupBox5.Location = New Global.System.Drawing.Point(8, 216)
             Me.GroupBox5.Name = "GroupBox5"
-            Dim groupBox6 As Global.System.Windows.Forms.Control = Me.GroupBox5
-            size = New Global.System.Drawing.Size(232, 72)
-            groupBox6.Size = size
+            Me.GroupBox5.Size = New Global.System.Drawing.Size(232, 72)
             Me.GroupBox5.TabIndex = 2
             Me.GroupBox5.TabStop = False
             Me.GroupBox5.Text = "Play Style"
             Me.rbOnce.Checked = True
-            Dim rbOnce As Global.System.Windows.Forms.Control = Me.rbOnce
-            point = New Global.System.Drawing.Point(40, 16)
-            rbOnce.Location = point
+            Me.rbOnce.Location = New Global.System.Drawing.Point(40, 16)
             Me.rbOnce.Name = "rbOnce"
-            Dim rbOnce2 As Global.System.Windows.Forms.Control = Me.rbOnce
-            size = New Global.System.Drawing.Size(104, 16)
-            rbOnce2.Size = size
+            Me.rbOnce.Size = New Global.System.Drawing.Size(104, 16)
             Me.rbOnce.TabIndex = 2
             Me.rbOnce.TabStop = True
             Me.rbOnce.Text = "Once"
-            Dim rbRepeating As Global.System.Windows.Forms.Control = Me.rbRepeating
-            point = New Global.System.Drawing.Point(40, 32)
-            rbRepeating.Location = point
+            Me.rbRepeating.Location = New Global.System.Drawing.Point(40, 32)
             Me.rbRepeating.Name = "rbRepeating"
-            Dim rbRepeating2 As Global.System.Windows.Forms.Control = Me.rbRepeating
-            size = New Global.System.Drawing.Size(104, 16)
-            rbRepeating2.Size = size
+            Me.rbRepeating.Size = New Global.System.Drawing.Size(104, 16)
             Me.rbRepeating.TabIndex = 1
             Me.rbRepeating.Text = "Repeating"
             Me.rbLooping.Enabled = False
-            Dim rbLooping As Global.System.Windows.Forms.Control = Me.rbLooping
-            point = New Global.System.Drawing.Point(40, 48)
-            rbLooping.Location = point
+            Me.rbLooping.Location = New Global.System.Drawing.Point(40, 48)
             Me.rbLooping.Name = "rbLooping"
-            Dim rbLooping2 As Global.System.Windows.Forms.Control = Me.rbLooping
-            size = New Global.System.Drawing.Size(136, 16)
-            rbLooping2.Size = size
+            Me.rbLooping.Size = New Global.System.Drawing.Size(136, 16)
             Me.rbLooping.TabIndex = 1
             Me.rbLooping.Text = "Seamlessly looping"
-            Dim btnSave As Global.System.Windows.Forms.Control = Me.btnSave
-            point = New Global.System.Drawing.Point(336, 520)
-            btnSave.Location = point
+            Me.btnSave.Location = New Global.System.Drawing.Point(336, 520)
             Me.btnSave.Name = "btnSave"
             Me.btnSave.TabIndex = 3
             Me.btnSave.Text = "&Save"
             Me.btnCancel.DialogResult = Global.System.Windows.Forms.DialogResult.Cancel
-            Dim btnCancel As Global.System.Windows.Forms.Control = Me.btnCancel
-            point = New Global.System.Drawing.Point(432, 520)
-            btnCancel.Location = point
+            Me.btnCancel.Location = New Global.System.Drawing.Point(432, 520)
             Me.btnCancel.Name = "btnCancel"
             Me.btnCancel.TabIndex = 4
             Me.btnCancel.Text = "&Cancel"
             Me.btnDebug.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
             Me.btnDebug.FlatStyle = Global.System.Windows.Forms.FlatStyle.Flat
             Me.btnDebug.ForeColor = Global.System.Drawing.SystemColors.Control
-            Dim btnDebug As Global.System.Windows.Forms.Control = Me.btnDebug
-            point = New Global.System.Drawing.Point(0, 0)
-            btnDebug.Location = point
+            Me.btnDebug.Location = New Global.System.Drawing.Point(0, 0)
             Me.btnDebug.Name = "btnDebug"
-            Dim btnDebug2 As Global.System.Windows.Forms.Control = Me.btnDebug
-            size = New Global.System.Drawing.Size(8, 8)
-            btnDebug2.Size = size
+            Me.btnDebug.Size = New Global.System.Drawing.Size(8, 8)
             Me.btnDebug.TabIndex = 19
             Me.btnDebug.TabStop = False
             Me.Timer1.Interval = 10
-            size = New Global.System.Drawing.Size(5, 13)
-            Me.AutoScaleBaseSize = size
-            size = New Global.System.Drawing.Size(536, 549)
-            Me.ClientSize = size
+            Me.AutoScaleBaseSize = New Global.System.Drawing.Size(5, 13)
+            Me.ClientSize = New Global.System.Drawing.Size(536, 549)
             Me.Controls.Add(Me.btnSave)
             Me.Controls.Add(Me.btnCancel)
             Me.Controls.Add(Me.TabControl1)
@@ -1354,10 +1035,39 @@
             CType(Me.nudInterval, Global.System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.nudIntervalVrtn, Global.System.ComponentModel.ISupportInitialize).EndInit()
             Me.GroupBox5.ResumeLayout(False)
+
+            ' -------------------------------------------------------------
+            ' Event bindings restored from decompiled synchronized
+            ' AccessedThroughProperty wrappers.
+            ' -------------------------------------------------------------
+            AddHandler Me.btnSetNameLang.Click, AddressOf Me.btnSetNameLang_Click
+            AddHandler Me.btnMoveUp.Click, AddressOf Me.btnMoveUp_Click
+            AddHandler Me.btnMoveDown.Click, AddressOf Me.btnMoveDown_Click
+            AddHandler Me.lbSounds.SelectedIndexChanged, AddressOf Me.lbSounds_SelectedIndexChanged
+            AddHandler Me.lbSounds.DoubleClick, AddressOf Me.lbSounds_DoubleClick
+            AddHandler Me.rbPlaysEverywhere.CheckedChanged, AddressOf Me.rbPlaysWhere_CheckedChanged
+            AddHandler Me.rbRandomPosition.CheckedChanged, AddressOf Me.rbPlaysWhere_CheckedChanged
+            AddHandler Me.rbSpecificPosition.CheckedChanged, AddressOf Me.rbPlaysWhere_CheckedChanged
+            AddHandler Me.rbPlayDay.CheckedChanged, AddressOf Me.rbPlayDay_CheckedChanged
+            AddHandler Me.rbPlayNight.CheckedChanged, AddressOf Me.rbPlayDay_CheckedChanged
+            AddHandler Me.rbPlayAllTimes.CheckedChanged, AddressOf Me.rbPlayDay_CheckedChanged
+            AddHandler Me.rbPlaySpecificHours.CheckedChanged, AddressOf Me.rbPlayDay_CheckedChanged
+            AddHandler Me.trkbarVolumeVrtn.ValueChanged, AddressOf Me.trkbarVolumeVrtn_ValueChanged
+            AddHandler Me.rbOnce.CheckedChanged, AddressOf Me.rbLooping_CheckedChanged
+            AddHandler Me.rbRepeating.CheckedChanged, AddressOf Me.rbLooping_CheckedChanged
+            AddHandler Me.trkbarPitchVrtn.ValueChanged, AddressOf Me.trkbarPitchVrtn_ValueChanged
+            AddHandler Me.rbLooping.CheckedChanged, AddressOf Me.rbLooping_CheckedChanged
+            AddHandler Me.btnAddSound.Click, AddressOf Me.btnAddSound_Click
+            AddHandler Me.btnRemoveSound.Click, AddressOf Me.btnRemoveSound_Click
+            AddHandler Me.btnSave.Click, AddressOf Me.btnSave_Click
+            AddHandler Me.btnCancel.Click, AddressOf Me.btnCancel_Click
+            AddHandler Me.btnDebug.Click, AddressOf Me.btnDebug_Click
+            AddHandler Me.trkbarVolume.ValueChanged, AddressOf Me.trkbarVolume_ValueChanged
+            AddHandler Me.btnPlaySound.Click, AddressOf Me.btnPlaySound_Click
+            AddHandler Me.Timer1.Tick, AddressOf Me.Timer1_Tick
+            AddHandler Me.btnStopSound.Click, AddressOf Me.btnStopSound_Click
             Me.ResumeLayout(False)
         End Sub
 
-		' Token: 0x04000AC0 RID: 2752
-		Private components As Global.System.ComponentModel.IContainer
-	End Class
+    End Class
 End Namespace
