@@ -340,3 +340,55 @@ Until then, treat this repository as a restoration and preservation work-in-prog
 
 ```text
 HKLM\software\SCM\Kotor Tool
+
+
+# KOTOR Tool - v1.0.3.1 Changelog
+
+## Release Date:
+- 27.04.26
+
+## Status:
+- Source recovery / Visual Studio 2010 repair milestone
+
+## Overview
+
+This update focuses on restoring and stabilising the original KOTOR Tool source code after decompilation, with particular attention to WinForms Designer compatibility and safe recovery of the VB.NET project structure.
+
+## Core Source Repair Fixes
+- Restored multiple decompiled WinForms forms so they now open correctly in the Visual Studio 2010 Designer.
+- Repaired forms where decompiled AccessedThroughProperty wrappers prevented proper Designer loading.
+- Converted recovered control wrappers back into proper Friend WithEvents Designer declarations.
+- Moved Designer control declarations into the correct .Designer.vb files.
+- Preserved original event bindings by restoring them as explicit AddHandler calls inside InitializeComponent.
+- Removed obsolete private backing fields such as _Button1, _Panel1, _MenuItem1, etc., where they were no longer needed.
+- Fixed forms that previously produced "undeclared or never assigned" Designer errors.
+
+## WinForms Designer Compatibility
+- Fixed duplicate temporary-variable issues inside InitializeComponent, including repeated num, size, and point style locals.
+- Repaired NumericUpDown decimal assignments that caused Designer failures.
+- Fixed panel/control initialization order problems, including cases where controls such as Panel1 were reported as undeclared.
+- Repaired component-container handling for controls such as ToolTip.
+- Improved Designer-safe layout generation for recovered forms.
+- Reduced malformed decompiler output that confused the old VS2010 CodeDom Designer.
+
+## Project Stability Fixes
+- Cleaned up decompiled Designer/code-behind separation across affected forms.
+- Reduced source clutter by removing hundreds of unnecessary wrapper lines from repaired forms.
+- Preserved original form behaviour while restoring Designer editability.
+- Improved consistency of restored control declarations across repaired forms.
+- Ensured repaired source remains compatible with the older VB.NET / .NET-era structure used by KOTOR Tool.
+
+## Forms Repaired During This Pass
+- frmBWMEditor
+- frmCreateAnimListEntry
+- frmDialogEditor
+- frmDialogTlk
+- Additional affected forms tested and confirmed working where the same repair pattern applied.
+
+## Developer Notes
+This update is not a feature expansion of KOTOR Tool itself. It is a source recovery and maintainability patch.
+The major achievement is that previously broken decompiled forms can now be opened, inspected, edited, and rebuilt through Visual Studio 2010 without the common Designer crashes caused by decompiler artefacts.
+
+## Summary
+KOTOR Tool v1.0.3.1 marks a major step in restoring the project from decompiled source into a maintainable Visual Studio solution.
+The WinForms layer is now significantly cleaner, safer, and closer to a proper source-code layout, giving the project a stronger foundation for future bug fixes, UI improvements, and modern compatibility work.
