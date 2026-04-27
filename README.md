@@ -469,3 +469,8 @@ decompiled source into a maintainable Visual Studio solution.
 The WinForms layer is now significantly cleaner, safer, and closer to a
 proper source-code layout, giving the project a stronger foundation for
 future bug fixes, UI improvements, and modern compatibility work.
+
+## Licening
+````
+See the attached Licence.txt for licening terms.
+````
