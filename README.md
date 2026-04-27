@@ -330,14 +330,6 @@ All Star Wars and Knights of the Old Republic names, assets, and trademarks rema
 
 This repository is intended only for lawful modding, archival, educational, and preservation purposes.
 
----
-
-## License
-
-A formal license should be added before public distribution.
-
-Until then, treat this repository as a restoration and preservation work-in-progress.
-
 ```text
 HKLM\software\SCM\Kotor Tool
 ```
