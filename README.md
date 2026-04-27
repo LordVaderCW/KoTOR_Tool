@@ -340,7 +340,7 @@ Until then, treat this repository as a restoration and preservation work-in-prog
 
 ```text
 HKLM\software\SCM\Kotor Tool
-
+```
 
 
 ## Summary
