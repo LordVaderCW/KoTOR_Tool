@@ -4,7 +4,7 @@
 # ------------------------------------------------------------
 
 # Exclude compiled build output
-KoTOR_Tool/Source/VisualBasic/kotor_tool/bin/x86/
+Source/VisualBasic/kotor_tool/bin/
 
 # Exclude intermediate object files
-KoTOR_Tool/Source/VisualBasic/kotor_tool/obj/x86/
+Source/VisualBasic/kotor_tool/obj/
