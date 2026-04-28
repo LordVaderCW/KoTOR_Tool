@@ -1,0 +1,10 @@
+# ------------------------------------------------------------
+# Visual Studio / VB.NET build output
+# KoTOR Tool Restoration Project
+# ------------------------------------------------------------
+
+# Exclude compiled build output
+KoTOR_Tool/Source/VisualBasic/kotor_tool/bin/x86/
+
+# Exclude intermediate object files
+KoTOR_Tool/Source/VisualBasic/kotor_tool/obj/x86/
