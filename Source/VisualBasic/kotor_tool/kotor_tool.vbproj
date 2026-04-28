@@ -161,6 +161,11 @@
     <Compile Include="Classes\DLGConvListNode.vb" />
     <Compile Include="Classes\ERFKeyEntry.vb" />
     <Compile Include="Classes\ERFLocalizedString.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="WinForms\frm2DAEditor.Designer.vb">
       <DependentUpon>frm2DAEditor.vb</DependentUpon>
     </Compile>
@@ -539,6 +544,11 @@
     <Compile Include="Classes\utilWindowRelativePositioner.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frm2DAEditor.resources">
       <LogicalName>kotor_tool.frm2DAEditor.resources</LogicalName>
     </EmbeddedResource>
