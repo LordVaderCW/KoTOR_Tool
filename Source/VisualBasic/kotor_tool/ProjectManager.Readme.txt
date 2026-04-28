@@ -1,0 +1,951 @@
+﻿PROJECTMANAGER.PY README
+
+KoTOR Tool Restoration Project
+VB.NET .vbproj Project File Organiser
+Author: LordVaderCW / James Stuart
+
+OVERVIEW
+
+ProjectManager.py is a Python/Tkinter GUI tool for inspecting, organising, and repairing Visual Basic .vbproj project files.
+
+It was created for the KoTOR Tool Restoration Project, especially for restored, repaired, or decompiled Visual Studio 2010 / VB.NET WinForms projects.
+
+The script is designed to help when files have been moved into cleaner folders such as:
+
+Classes
+WinForms
+Themes
+ConfigurationFiles
+My Project
+Lib
+
+The tool edits the .vbproj file directly while preserving the Microsoft MSBuild XML namespace used by Visual Studio project files.
+
+PURPOSE
+
+When restoring an old VB.NET project, Visual Studio may still reference files from their old locations.
+
+For example, if you move a form into the WinForms folder:
+
+WinForms\frmMain.vb
+WinForms\frmMain.Designer.vb
+WinForms\frmMain.resources
+
+the .vbproj file may still reference:
+
+frmMain.vb
+frmMain.Designer.vb
+frmMain.resources
+
+Visual Studio will then report missing files because the project file still points to the old root location.
+
+ProjectManager.py helps correct those paths safely.
+
+For example, it can update:
+
+Compile Include="frmMain.vb"
+
+to:
+
+Compile Include="WinForms\frmMain.vb"
+
+It can also update:
+
+EmbeddedResource Include="frmMain.resources"
+
+to:
+
+EmbeddedResource Include="WinForms\frmMain.resources"
+
+The important point is that file paths are corrected while important metadata is preserved.
+
+This includes:
+
+DependentUpon
+SubType
+LogicalName
+CopyToOutputDirectory
+
+REQUIREMENTS
+
+Python 3.10 or newer is recommended.
+
+The script uses only the Python standard library.
+
+No third-party Python packages are required.
+
+Tkinter is required, but on Windows it is normally included with the standard Python installer.
+
+RECOMMENDED LOCATION
+
+Place ProjectManager.py inside the same folder as the .vbproj file.
+
+Example project layout:
+
+kotor_tool
+kotor_tool.vbproj
+ProjectManager.py
+Classes
+WinForms
+Themes
+ConfigurationFiles
+My Project
+Lib\
+
+HOW TO RUN
+
+Open Command Prompt or PowerShell inside the project folder.
+
+Example:
+
+cd "P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool"
+
+Then run:
+
+python ProjectManager.py
+
+Alternatively, if the Python launcher is installed:
+
+py ProjectManager.py
+
+AUTO-LOADING THE PROJECT
+
+When the script starts, it automatically searches the current folder for a .vbproj file.
+
+If it finds one .vbproj file, it loads it automatically.
+
+If it finds more than one .vbproj file, it will try to prefer:
+
+kotor_tool.vbproj
+kotor tool.vbproj
+a .vbproj file matching the current folder name
+
+If none of those preferred names are found, it loads the first .vbproj file alphabetically.
+
+MAIN WINDOW LAYOUT
+
+The interface is divided into several areas.
+
+Top header:
+Shows the loaded project name, project path, target framework, and output type.
+
+Top buttons:
+Open
+Save
+Reload
+
+Main toolbar:
+Auto Organise KoTOR Layout
+Rebuild Item Groups
+Add Existing File
+Remove Entry
+Move To Folder
+Repair DependentUpon
+Repair WinForms Resources
+
+Filter/search bar:
+Allows project entries to be filtered by group or item type.
+
+Left panel:
+Shows the .vbproj entries grouped into logical categories.
+
+Right panel:
+Shows project summary information and a folder/file view showing tracked and untracked files.
+
+Bottom status bar:
+Shows current action results and warnings.
+
+PROJECT ENTRY GROUPS
+
+The script groups project entries into the following categories:
+
+References
+
+Application Designer
+
+Compile - Classes
+
+Compile - WinForms
+
+Compile - Root / Other
+
+Embedded Resources - ResX
+
+Embedded Resources - Compiled
+
+Content
+
+None / Configuration
+
+Folders
+
+Bootstrapper Packages
+
+Other
+
+COMMON BUTTONS AND WHAT THEY DO
+
+Open
+
+Allows you to manually select a .vbproj file.
+
+Use this if the project was not auto-loaded or if you want to open a different project file.
+
+Save
+
+Saves changes back to the .vbproj file.
+
+Before saving, the script creates a timestamped backup of the original .vbproj file.
+
+Example backup name:
+
+kotor_tool.vbproj.20260428_153012.bak
+
+Reload
+
+Reloads the current .vbproj from disk.
+
+Use this if you changed the file externally or want to discard unsaved GUI changes by reloading from the last saved version.
+
+Auto Organise KoTOR Layout
+
+Attempts to automatically move or re-path obvious project files into the preferred restoration layout.
+
+The intended folders are:
+
+Classes
+WinForms
+Themes
+ConfigurationFiles
+
+The script uses conservative rules.
+
+Typical rules include:
+
+frm*.vb files go to WinForms
+frm*.Designer.vb files go to WinForms
+RegReminder.vb files go to WinForms
+frm*.resx files go to WinForms
+frm*.resources files go to WinForms
+cls*.vb files go to Classes
+KotorTheme.vb goes to Classes
+ThemeManager.vb goes to Classes
+known data/helper classes go to Classes
+.ini files go to Themes
+app.config and settings.xml can go to ConfigurationFiles when appropriate
+
+When clicked, the tool asks whether to move files on disk.
+
+Choose Yes if the files are still in the old location and you want the script to physically move them.
+
+Choose No if you already moved the files manually and only want the .vbproj paths updated.
+
+After using this button, review the entries, run Scan Missing, then Save.
+
+Rebuild Item Groups
+
+Rebuilds the .vbproj ItemGroup sections into a cleaner order.
+
+This does not move files on disk.
+
+It reorganises project XML entries into the grouping order used by the tool.
+
+Use this when the project file has become messy after decompilation, manual editing, or repeated Visual Studio changes.
+
+Add Existing File
+
+Adds one or more files from disk into the .vbproj.
+
+The script guesses the correct project item type based on extension.
+
+Examples:
+
+.vb becomes Compile
+.resx becomes EmbeddedResource
+.resources becomes EmbeddedResource
+.txt becomes Content
+.ico becomes Content
+.xml becomes None
+.ini becomes None
+.config becomes None
+.manifest becomes None
+
+For .Designer.vb files, the script adds a DependentUpon entry where possible.
+
+For .resx files, the script adds DependentUpon and SubType metadata where possible.
+
+Remove Entry
+
+Removes the selected entry from the .vbproj.
+
+This does not delete the physical file from disk.
+
+Use this when the project references a file that should no longer be included.
+
+Move To Folder
+
+Moves selected project entries to a chosen folder.
+
+You will be asked for a destination folder relative to the project root.
+
+Examples:
+
+Classes
+WinForms
+Themes
+ConfigurationFiles
+
+The script then asks whether to also move files on disk.
+
+Choose Yes to physically move the file and update the .vbproj.
+
+Choose No to only update the .vbproj Include path.
+
+Use No when you have already manually moved the file in Windows Explorer or Visual Studio.
+
+Repair DependentUpon
+
+Repairs metadata for selected entries.
+
+For a .Designer.vb file, it ensures that the file depends on the matching .vb file.
+
+Example:
+
+frmMain.Designer.vb
+
+will get:
+
+DependentUpon = frmMain.vb
+
+For a .resx file, it ensures:
+
+DependentUpon = frmMain.vb
+SubType = Designer
+
+This is important for Visual Studio to nest designer and resource files correctly under the main form file.
+
+Repair WinForms Resources
+
+This is specifically for fixing WinForms resource files after forms have been moved into the WinForms folder.
+
+Visual Studio 2010 VB projects may contain precompiled resource files like:
+
+frmMain.resources
+frmDialogTlk.resources
+RegReminder.resources
+
+If the actual file now lives in:
+
+WinForms\frmMain.resources
+
+but the .vbproj still references:
+
+frmMain.resources
+
+then Visual Studio will report that the resource file cannot be found.
+
+Repair WinForms Resources checks each WinForms-looking EmbeddedResource entry.
+
+It looks for files beginning with:
+
+frm
+RegReminder
+
+and ending with:
+
+.resources
+.resx
+
+If the project entry points to the old location but the file exists in WinForms, the script updates the Include path.
+
+Example correction:
+
+EmbeddedResource Include="frmMain.resources"
+
+becomes:
+
+EmbeddedResource Include="WinForms\frmMain.resources"
+
+For .resources files, the script preserves LogicalName.
+
+For .resx files, the script repairs DependentUpon and SubType.
+
+This is one of the most useful functions when cleaning up a restored WinForms project.
+
+Scan Missing
+
+Checks whether project-referenced files actually exist on disk.
+
+Use this before saving and before reopening the project in Visual Studio.
+
+If files are missing, the tool will list the missing project entries.
+
+Common missing file causes include:
+
+The file was moved but the .vbproj path was not updated.
+The file was deleted.
+The file exists in WinForms but the project still points to the root.
+A resource file is referenced as .resources but only a .resx exists.
+A file path has incorrect casing or folder name.
+
+Scan Untracked
+
+Scans the project directory for supported files that exist on disk but are not included in the .vbproj.
+
+Supported file types include:
+
+.vb
+.resx
+.resources
+.txt
+.xml
+.ini
+.config
+.manifest
+.ico
+
+Ignored folders include:
+
+.git
+.vs
+bin
+obj
+backup
+backups
+packages
+publish
+pycache
+
+Use this to find files that may need adding to the project.
+
+Add All Untracked
+
+Adds every supported untracked file found by the scan into the .vbproj.
+
+Use this carefully.
+
+It is useful after a bulk restoration where many source files exist on disk but are missing from the project file.
+
+After using this function, review the project tree before saving.
+
+Expand All
+
+Expands all project entry groups in the left panel.
+
+Collapse All
+
+Collapses all project entry groups in the left panel.
+
+RECOMMENDED WORKFLOW
+
+For a restored or decompiled project:
+
+Back up the whole project folder manually.
+Place ProjectManager.py in the same folder as the .vbproj file.
+Run the script from the project root.
+Let it auto-load the project.
+Press Rebuild Item Groups.
+Press Scan Missing.
+If forms/resources have been moved into WinForms, press Repair WinForms Resources.
+Press Scan Missing again.
+Use Move To Folder or Auto Organise KoTOR Layout if needed.
+Press Scan Untracked.
+Add any required untracked files.
+Press Save.
+Reload the project in Visual Studio 2010.
+Build the project and check remaining errors.
+
+SAFE USAGE RULES
+
+Always close Visual Studio before saving changes to the .vbproj.
+
+Visual Studio may overwrite project files if it is open while external tools edit them.
+
+Always keep a backup.
+
+The script creates a timestamped .bak file before saving, but a full project folder backup is still recommended.
+
+After saving, reopen or reload the project in Visual Studio.
+
+Use Scan Missing before and after major changes.
+
+Do not repeatedly auto-organise without reviewing the result.
+
+HOW BACKUPS WORK
+
+When Save is pressed, the current .vbproj file is copied first.
+
+The backup is created beside the project file.
+
+Example:
+
+kotor_tool.vbproj
+kotor_tool.vbproj.20260428_153012.bak
+
+If something goes wrong, close Visual Studio, delete or rename the damaged .vbproj, and restore the backup.
+
+HOW TO RESTORE A BACKUP
+
+Example:
+
+Original project file:
+
+kotor_tool.vbproj
+
+Backup file:
+
+kotor_tool.vbproj.20260428_153012.bak
+
+To restore:
+
+Close Visual Studio.
+Rename kotor_tool.vbproj to kotor_tool.vbproj.bad
+Rename kotor_tool.vbproj.20260428_153012.bak to kotor_tool.vbproj
+Reopen the project in Visual Studio.
+
+HOW THE SCRIPT UNDERSTANDS PROJECT ITEMS
+
+The script reads MSBuild XML item entries.
+
+Common VB.NET project item types include:
+
+Compile
+EmbeddedResource
+None
+Content
+Folder
+Reference
+AppDesigner
+BootstrapperPackage
+
+Compile is normally used for .vb files.
+
+EmbeddedResource is normally used for .resx and .resources files.
+
+None is used for files included in the project but not compiled.
+
+Content is used for output/deployment files.
+
+Reference is used for assembly references.
+
+Folder is used to preserve empty folders in the project.
+
+AppDesigner is usually used for My Project.
+
+HOW TO MODIFY THE GROUPS
+
+Project grouping is controlled by the GROUP_ORDER list.
+
+Example:
+
+GROUP_ORDER = [
+"References",
+"Application Designer",
+"Compile - Classes",
+"Compile - WinForms",
+"Compile - Root / Other",
+"Embedded Resources - ResX",
+"Embedded Resources - Compiled",
+"Content",
+"None / Configuration",
+"Folders",
+"Bootstrapper Packages",
+"Other",
+]
+
+To add a new group, add its name to GROUP_ORDER and then update the group_for_entry function so the script knows when to place files into that group.
+
+Example new group:
+
+"Compile - Tools"
+
+Then in group_for_entry, add logic such as:
+
+if include_lower.startswith("tools\"):
+return "Compile - Tools"
+
+HOW TO MODIFY FILE TYPE DETECTION
+
+File type detection is controlled by VB_EXTENSIONS and guess_item_type.
+
+VB_EXTENSIONS maps file extensions to project item types.
+
+Example:
+
+VB_EXTENSIONS = {
+".vb": "Compile",
+".resx": "EmbeddedResource",
+".resources": "EmbeddedResource",
+".ico": "Content",
+".txt": "Content",
+".xml": "None",
+".ini": "None",
+".config": "None",
+".manifest": "None",
+}
+
+To add support for another extension, add it here.
+
+Example:
+
+".dll": "Content"
+
+However, be careful with DLL files. Visual Studio references are usually stored as Reference entries, not Content entries.
+
+HOW TO MODIFY IGNORED FOLDERS
+
+The scan system ignores folders listed in IGNORED_SCAN_DIRS.
+
+Example:
+
+IGNORED_SCAN_DIRS = {
+".git",
+".vs",
+"bin",
+"obj",
+"backup",
+"backups",
+"packages",
+"publish",
+"pycache",
+}
+
+To stop the scanner from entering another folder, add its lowercase folder name to this set.
+
+Example:
+
+"temp"
+
+HOW TO MODIFY AUTO ORGANISE RULES
+
+The automatic organiser is controlled mainly by:
+
+auto_organise_kotor_layout
+
+Inside that function, the script checks each project file entry and decides whether it belongs in:
+
+Classes
+WinForms
+Themes
+ConfigurationFiles
+
+Typical logic:
+
+Files beginning with frm go to WinForms.
+Files beginning with cls go to Classes.
+Known helper/data classes go to Classes.
+INI files go to Themes.
+
+To add another known class file to Classes, add its lowercase filename to the known class list.
+
+Example:
+
+"mynewhelper.vb",
+
+To route another form naming style to WinForms, add a rule such as:
+
+if name_lower.startswith("dlg"):
+destination = "WinForms"
+
+Be conservative. Automatic movement rules should be predictable and easy to reverse.
+
+HOW TO MODIFY WINFORMS RESOURCE REPAIR
+
+WinForms resource repair is controlled by:
+
+repair_winforms_resource_entries
+
+By default it targets EmbeddedResource entries where the filename starts with:
+
+frm
+regreminder
+
+and ends with:
+
+.resources
+.resx
+
+To support more form prefixes, modify this check:
+
+if not include_name_lower.startswith(("frm", "regreminder")):
+continue
+
+Example:
+
+if not include_name_lower.startswith(("frm", "dlg", "regreminder")):
+continue
+
+This would also repair resource files beginning with dlg.
+
+HOW TO MODIFY THE GUI THEME
+
+The GUI styling is controlled in:
+
+_configure_style
+
+Important colours include:
+
+#15181d
+#11151b
+#20242b
+#111318
+#252b34
+#2f5f88
+#e6e6e6
+#ffffff
+#aeb7c4
+#b9c0cc
+
+To change the theme, edit the colours in _configure_style.
+
+The interface uses ttk widgets, so some colours may depend on the selected Tk theme.
+
+The script currently tries to use:
+
+clam
+
+This is usually more themeable than the default Windows Tk theme.
+
+HOW TO CHANGE WINDOW SIZE
+
+The starting window size is set here:
+
+self.geometry("1320x780")
+
+The minimum window size is set here:
+
+self.minsize(1120, 640)
+
+You can increase or reduce these values depending on your monitor.
+
+HOW TO CHANGE THE AUTO-LOADED PROJECT NAME PREFERENCE
+
+The auto-loader is controlled by:
+
+find_vbproj_in_current_directory
+
+Preferred project names are listed here:
+
+preferred_names = {
+current_dir.name.lower() + ".vbproj",
+"kotor_tool.vbproj",
+"kotor tool.vbproj",
+}
+
+To prefer another project name, add it to the set.
+
+Example:
+
+"myproject.vbproj",
+
+IMPORTANT NOTES ABOUT .RESX AND .RESOURCES
+
+A .resx file is a source resource file.
+
+A .resources file is usually a compiled resource file.
+
+In restored/decompiled projects, it is common to see .resources files referenced directly.
+
+For .resx files, Visual Studio normally expects:
+
+DependentUpon = frmMain.vb
+SubType = Designer
+
+For .resources files, Visual Studio may use:
+
+LogicalName = kotor_tool.frmMain.resources
+
+When moving files into WinForms, do not blindly change LogicalName.
+
+Usually only the Include path should change.
+
+Example:
+
+EmbeddedResource Include="WinForms\frmMain.resources"
+
+while keeping:
+
+LogicalName = kotor_tool.frmMain.resources
+
+TROUBLESHOOTING
+
+Problem:
+The script opens but does not load a project.
+
+Cause:
+The script was not run from the folder containing the .vbproj file.
+
+Fix:
+Open a terminal in the project folder and run it again, or use the Open button.
+
+Problem:
+Python gives a SyntaxWarning about invalid escape sequences.
+
+Cause:
+A normal Python string contains backslashes such as path\to\file.
+
+Fix:
+Use double backslashes or a raw string.
+
+Correct:
+
+cd "path\to\kotor_tool"
+
+The script header uses a raw docstring to avoid this issue.
+
+Problem:
+Visual Studio still says files are missing.
+
+Cause:
+The .vbproj paths still do not match the physical file locations.
+
+Fix:
+Run Scan Missing.
+Use Repair WinForms Resources.
+Use Move To Folder or edit the Include path manually.
+Save and reload the project.
+
+Problem:
+The file exists but Scan Missing still reports it missing.
+
+Cause:
+The .vbproj Include path does not match the actual folder location.
+
+Example:
+
+Project references:
+
+frmMain.resources
+
+Actual file:
+
+WinForms\frmMain.resources
+
+Fix:
+Use Repair WinForms Resources.
+
+Problem:
+A moved form is not nested correctly in Visual Studio.
+
+Cause:
+DependentUpon metadata is missing or wrong.
+
+Fix:
+Select the .Designer.vb or .resx entry and press Repair DependentUpon.
+
+Problem:
+A .resources file appears under the wrong namespace.
+
+Cause:
+LogicalName may have been changed incorrectly.
+
+Fix:
+Restore the expected LogicalName.
+
+Example:
+
+kotor_tool.frmMain.resources
+
+For this restoration project, the LogicalName should generally remain stable even when the file moves folders.
+
+Problem:
+Visual Studio overwrote changes.
+
+Cause:
+Visual Studio was open while the .vbproj was externally edited.
+
+Fix:
+Close Visual Studio before saving changes from ProjectManager.py.
+
+LIMITATIONS
+
+This tool edits the .vbproj file only.
+
+It does not rewrite VB.NET source code namespaces.
+
+It does not edit .sln files.
+
+It does not compile the project.
+
+It does not validate every possible MSBuild condition.
+
+It does not understand every custom Visual Studio project item type.
+
+It is designed primarily for restored VB.NET WinForms projects using the classic MSBuild project format.
+
+BEST PRACTICE FOR RESTORATION WORK
+
+Use the tool in small passes.
+
+Recommended pass order:
+
+Load project.
+Rebuild Item Groups.
+Scan Missing.
+Repair WinForms Resources.
+Scan Missing again.
+Move obvious files.
+Scan Untracked.
+Add needed untracked files.
+Save.
+Reload in Visual Studio.
+Build.
+Repeat only where needed.
+
+Do not try to fix hundreds of project entries blindly in one pass without reviewing the results.
+
+PROJECT-SPECIFIC NOTES FOR KOTOR TOOL
+
+For the KoTOR Tool Restoration Project, a clean project layout may look like:
+
+Classes
+WinForms
+Themes
+ConfigurationFiles
+Lib
+My Project
+
+Recommended usage:
+
+Classes:
+General helper classes, file format classes, data structures, theme classes, utility classes.
+
+WinForms:
+frm*.vb
+frm*.Designer.vb
+frm*.resx
+frm*.resources
+RegReminder.vb
+RegReminder.Designer.vb
+RegReminder.resources
+
+Themes:
+DarkSaber.ini
+future theme files
+
+ConfigurationFiles:
+app.config
+settings.xml
+other configuration templates
+
+Lib:
+External DLLs referenced by the project.
+
+My Project:
+AssemblyInfo.vb
+app.manifest
+Visual Basic application metadata.
+
+FINAL WARNING
+
+ProjectManager.py is a powerful restoration utility.
+
+It can save a large amount of manual XML editing, but it still modifies the project file.
+
+Always review changes before saving.
+
+Always keep backups.
+
+Always reload the project in Visual Studio after saving.
+
+Always run Scan Missing before assuming the project is repaired.

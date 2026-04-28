@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<Options xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <bProjMgrUseExternTxtEditor>false</bProjMgrUseExternTxtEditor>
+  <bProjMgrUseExternDLGEditor>false</bProjMgrUseExternDLGEditor>
+  <ProjMgrDLGEditorPath />
+  <ProjMgrTxtEditorPath />
+  <bModelExtraction_ExtractAnimations>false</bModelExtraction_ExtractAnimations>
+  <bModelExtraction_ConvertSkinToTrimesh>false</bModelExtraction_ConvertSkinToTrimesh>
+  <bModelExtraction_EachModelInOwnDirectory>true</bModelExtraction_EachModelInOwnDirectory>
+  <bModelExtraction_CleanWorkingDirectoryBeforeExport>true</bModelExtraction_CleanWorkingDirectoryBeforeExport>
+  <bCheckForUpdatesAtStartup>false</bCheckForUpdatesAtStartup>
+  <bDownloadUpdatesAutomatically>false</bDownloadUpdatesAutomatically>
+  <bModuleEditorShowLocatorRay>true</bModuleEditorShowLocatorRay>
+  <bModuleEditorConfirmDeletes>true</bModuleEditorConfirmDeletes>
+  <ModuleEditorModuleElementIndicatorSize>0</ModuleEditorModuleElementIndicatorSize>
+  <MainWindowSplitterPos>0</MainWindowSplitterPos>
+  <ModelExportLocation>F:\Unreal Project Library\StarWars\KOTOR\DOORS\LDA</ModelExportLocation>
+  <ModuleExtractPath />
+  <defaultKotORLocation>h:\steam\steamapps\common\swkotor</defaultKotORLocation>
+  <defaultKotORLocation2>h:\steam\steamapps\common\Knights of the Old Republic II</defaultKotORLocation2>
+  <ImageViewerLocation />
+  <defaultSaveLocation />
+  <defaultImportLocation />
+  <TextEditorSavePath />
+  <bUseOverrideFiles>false</bUseOverrideFiles>
+  <LastClickedTVNodePath>Kotor I\BIFs\models.bif\Aurora Model\dor_lda01.mdl</LastClickedTVNodePath>
+  <bRememberLastTreeNode>true</bRememberLastTreeNode>
+  <bRememberTreeViewState>true</bRememberTreeViewState>
+  <bBuildModelsBifNode>true</bBuildModelsBifNode>
+  <bBuildBIFFtreeOnStartup>false</bBuildBIFFtreeOnStartup>
+  <bAlwaysUnknownGFFasText>false</bAlwaysUnknownGFFasText>
+  <bAlwaysConvertTPC2TGA>false</bAlwaysConvertTPC2TGA>
+  <bDockImageViewer>false</bDockImageViewer>
+  <bTextEditorWordWrap>false</bTextEditorWordWrap>
+  <bShowModuleDescriptions>false</bShowModuleDescriptions>
+  <bShowModuleLocations>false</bShowModuleLocations>
+  <MainWindowLoc>
+    <X>0</X>
+    <Y>0</Y>
+  </MainWindowLoc>
+  <MainWindowSize>
+    <Width>756</Width>
+    <Height>766</Height>
+  </MainWindowSize>
+  <TextEditorWindowLoc>
+    <X>0</X>
+    <Y>0</Y>
+  </TextEditorWindowLoc>
+  <TextEditorWindowSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </TextEditorWindowSize>
+  <ImageViewerWindowLoc>
+    <X>0</X>
+    <Y>0</Y>
+  </ImageViewerWindowLoc>
+  <ImageViewerWindowSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </ImageViewerWindowSize>
+  <ByteViewerWindowLoc>
+    <X>0</X>
+    <Y>0</Y>
+  </ByteViewerWindowLoc>
+  <ByteViewerWindowSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </ByteViewerWindowSize>
+  <ERFManagerWindowLoc>
+    <X>0</X>
+    <Y>0</Y>
+  </ERFManagerWindowLoc>
+  <ERFManagerWindowSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </ERFManagerWindowSize>
+  <TwoDAEditorWindowLoc>
+    <X>0</X>
+    <Y>0</Y>
+  </TwoDAEditorWindowLoc>
+  <TwoDAEditorWindowSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </TwoDAEditorWindowSize>
+  <UTCEditorWindowLoc>
+    <X>0</X>
+    <Y>0</Y>
+  </UTCEditorWindowLoc>
+  <UTCEditorWindowSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </UTCEditorWindowSize>
+  <UTDEditorWindowLoc>
+    <X>0</X>
+    <Y>0</Y>
+  </UTDEditorWindowLoc>
+  <UTdEditorWindowSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </UTdEditorWindowSize>
+  <UTIEditorWindowLoc>
+    <X>0</X>
+    <Y>0</Y>
+  </UTIEditorWindowLoc>
+  <UTIEditorWindowSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </UTIEditorWindowSize>
+  <UTMEditorWindowLoc>
+    <X>0</X>
+    <Y>0</Y>
+  </UTMEditorWindowLoc>
+  <UTMEditorWindowSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </UTMEditorWindowSize>
+  <UTPEditorWindowLoc>
+    <X>0</X>
+    <Y>0</Y>
+  </UTPEditorWindowLoc>
+  <UTPEditorWindowSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </UTPEditorWindowSize>
+  <UTSEditorWindowLoc>
+    <X>0</X>
+    <Y>0</Y>
+  </UTSEditorWindowLoc>
+  <UTSEditorWindowSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </UTSEditorWindowSize>
+  <UTTEditorWindowLoc>
+    <X>0</X>
+    <Y>0</Y>
+  </UTTEditorWindowLoc>
+  <UTTEditorWindowSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </UTTEditorWindowSize>
+  <UTWEditorWindowLoc>
+    <X>0</X>
+    <Y>0</Y>
+  </UTWEditorWindowLoc>
+  <UTWEditorWindowSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </UTWEditorWindowSize>
+  <ProjectManagerWindowLoc>
+    <X>0</X>
+    <Y>0</Y>
+  </ProjectManagerWindowLoc>
+  <ProjectManagerWindowSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </ProjectManagerWindowSize>
+  <InventoryEditorWindowLoc>
+    <X>0</X>
+    <Y>0</Y>
+  </InventoryEditorWindowLoc>
+  <InventoryEditorWindowSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </InventoryEditorWindowSize>
+  <ModuleEditorWindowLoc>
+    <X>0</X>
+    <Y>0</Y>
+  </ModuleEditorWindowLoc>
+  <ModuleEditorWindowSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </ModuleEditorWindowSize>
+  <Key />
+  <LastModuleEditedPath />
+  <MRUMainFiles />
+  <TreeOpenPaths>
+    <string>Kotor I</string>
+    <string>Kotor I\BIFs</string>
+    <string>Kotor I\BIFs\models.bif</string>
+    <string>Kotor I\BIFs\models.bif\Aurora Model</string>
+  </TreeOpenPaths>
+</Options>

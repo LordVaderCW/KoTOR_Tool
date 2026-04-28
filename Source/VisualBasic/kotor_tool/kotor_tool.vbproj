@@ -85,6 +85,9 @@
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314,42353,42354,42355</NoWarn>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="FMODCL">
       <HintPath>Lib\FMODCL.dll</HintPath>
@@ -111,604 +114,610 @@
     <AppDesigner Include="My Project\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnimListEntry.vb" />
-    <Compile Include="BIFFArchive.vb" />
-    <Compile Include="BIFFEntry.vb" />
-    <Compile Include="BIFFVarRsrcEntry.vb" />
-    <Compile Include="BIFFVarRsrcEntryInfo.vb" />
-    <Compile Include="cls2DA.vb" />
-    <Compile Include="clsBaseItems2DA.vb" />
-    <Compile Include="clsBWM.vb" />
-    <Compile Include="clsChitinKey.vb" />
-    <Compile Include="clsDialogTlk.vb" />
-    <Compile Include="clsDLG.vb" />
-    <Compile Include="clsERF.vb" />
-    <Compile Include="clsGFF.vb" />
-    <Compile Include="clsGlobalVars.vb" />
-    <Compile Include="clsGridDisplay.vb">
+    <Compile Include="Classes\AnimListEntry.vb" />
+    <Compile Include="Classes\BIFFArchive.vb" />
+    <Compile Include="Classes\BIFFEntry.vb" />
+    <Compile Include="Classes\BIFFVarRsrcEntry.vb" />
+    <Compile Include="Classes\BIFFVarRsrcEntryInfo.vb" />
+    <Compile Include="Classes\KotorTheme.vb" />
+    <Compile Include="Classes\ThemeManager.vb" />
+    <Compile Include="Classes\cls2DA.vb" />
+    <Compile Include="Classes\clsBaseItems2DA.vb" />
+    <Compile Include="Classes\clsBWM.vb" />
+    <Compile Include="Classes\clsChitinKey.vb" />
+    <Compile Include="Classes\clsDialogTlk.vb" />
+    <Compile Include="Classes\clsDLG.vb" />
+    <Compile Include="Classes\clsERF.vb" />
+    <Compile Include="Classes\clsGFF.vb" />
+    <Compile Include="Classes\clsGlobalVars.vb" />
+    <Compile Include="Classes\clsGridDisplay.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="clsMapInfoCreator.vb" />
-    <Compile Include="clsProject.vb" />
-    <Compile Include="clsProjectManager.vb" />
-    <Compile Include="clsRIM.vb" />
-    <Compile Include="clsSSF.vb" />
-    <Compile Include="clsUTC.vb" />
-    <Compile Include="clsUTD.vb" />
-    <Compile Include="clsUTI.vb" />
-    <Compile Include="clsUTM.vb" />
-    <Compile Include="clsUTP.vb" />
-    <Compile Include="clsUTS.vb" />
-    <Compile Include="clsUTT.vb" />
-    <Compile Include="clsUTW.vb" />
-    <Compile Include="ColumnEntry.vb" />
-    <Compile Include="ColumnEntryList.vb" />
-    <Compile Include="ColumnSortEntry.vb" />
-    <Compile Include="ColumnSortEntryList.vb" />
-    <Compile Include="ColumnVOEntry.vb" />
-    <Compile Include="ColumnVOEntryList.vb" />
-    <Compile Include="ComboBoxListItem.vb" />
-    <Compile Include="Crypt.vb" />
-    <Compile Include="DataGridEnableTextBoxColumn.vb">
+    <Compile Include="Classes\clsMapInfoCreator.vb" />
+    <Compile Include="Classes\clsProject.vb" />
+    <Compile Include="Classes\clsProjectManager.vb" />
+    <Compile Include="Classes\clsRIM.vb" />
+    <Compile Include="Classes\clsSSF.vb" />
+    <Compile Include="Classes\clsUTC.vb" />
+    <Compile Include="Classes\clsUTD.vb" />
+    <Compile Include="Classes\clsUTI.vb" />
+    <Compile Include="Classes\clsUTM.vb" />
+    <Compile Include="Classes\clsUTP.vb" />
+    <Compile Include="Classes\clsUTS.vb" />
+    <Compile Include="Classes\clsUTT.vb" />
+    <Compile Include="Classes\clsUTW.vb" />
+    <Compile Include="Classes\ColumnEntry.vb" />
+    <Compile Include="Classes\ColumnEntryList.vb" />
+    <Compile Include="Classes\ColumnSortEntry.vb" />
+    <Compile Include="Classes\ColumnSortEntryList.vb" />
+    <Compile Include="Classes\ColumnVOEntry.vb" />
+    <Compile Include="Classes\ColumnVOEntryList.vb" />
+    <Compile Include="Classes\ComboBoxListItem.vb" />
+    <Compile Include="Classes\Crypt.vb" />
+    <Compile Include="Classes\DataGridEnableTextBoxColumn.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DialogTlkStrDataElement.vb" />
-    <Compile Include="DLGConvListNode.vb" />
-    <Compile Include="ERFKeyEntry.vb" />
-    <Compile Include="ERFLocalizedString.vb" />
-    <Compile Include="frm2DAEditor.Designer.vb">
+    <Compile Include="Classes\DialogTlkStrDataElement.vb" />
+    <Compile Include="Classes\DLGConvListNode.vb" />
+    <Compile Include="Classes\ERFKeyEntry.vb" />
+    <Compile Include="Classes\ERFLocalizedString.vb" />
+    <Compile Include="WinForms\frm2DAEditor.Designer.vb">
       <DependentUpon>frm2DAEditor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm2DAEditor.vb">
+    <Compile Include="WinForms\frm2DAEditor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAbout.Designer.vb">
+    <Compile Include="WinForms\frmAbout.Designer.vb">
       <DependentUpon>frmAbout.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmAbout.vb">
+    <Compile Include="WinForms\frmAbout.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAppearanceWizard.Designer.vb">
+    <Compile Include="WinForms\frmAppearanceWizard.Designer.vb">
       <DependentUpon>frmAppearanceWizard.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmAppearanceWizard.vb">
+    <Compile Include="WinForms\frmAppearanceWizard.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAutoDialog.Designer.vb">
+    <Compile Include="WinForms\frmAutoDialog.Designer.vb">
       <DependentUpon>frmAutoDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmAutoDialog.vb">
+    <Compile Include="WinForms\frmAutoDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBasicHelp.Designer.vb">
+    <Compile Include="WinForms\frmBasicHelp.Designer.vb">
       <DependentUpon>frmBasicHelp.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmBasicHelp.vb">
+    <Compile Include="WinForms\frmBasicHelp.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBWMEditor.Designer.vb">
+    <Compile Include="WinForms\frmBWMEditor.Designer.vb">
       <DependentUpon>frmBWMEditor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmBWMEditor.vb">
+    <Compile Include="WinForms\frmBWMEditor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmByteViewer.Designer.vb">
+    <Compile Include="WinForms\frmByteViewer.Designer.vb">
       <DependentUpon>frmByteViewer.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmByteViewer.vb">
+    <Compile Include="WinForms\frmByteViewer.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCExoLocStringLanguagePicker.Designer.vb">
+    <Compile Include="WinForms\frmCExoLocStringLanguagePicker.Designer.vb">
       <DependentUpon>frmCExoLocStringLanguagePicker.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmCExoLocStringLanguagePicker.vb">
+    <Compile Include="WinForms\frmCExoLocStringLanguagePicker.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCreateAnimListEntry.Designer.vb">
+    <Compile Include="WinForms\frmCreateAnimListEntry.Designer.vb">
       <DependentUpon>frmCreateAnimListEntry.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmCreateAnimListEntry.vb">
+    <Compile Include="WinForms\frmCreateAnimListEntry.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDialogEditor.Designer.vb">
+    <Compile Include="WinForms\frmDialogEditor.Designer.vb">
       <DependentUpon>frmDialogEditor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmDialogEditor.vb">
+    <Compile Include="WinForms\frmDialogEditor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDialogTlk.Designer.vb">
+    <Compile Include="WinForms\frmDialogTlk.Designer.vb">
       <DependentUpon>frmDialogTlk.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmDialogTlk.vb">
+    <Compile Include="WinForms\frmDialogTlk.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmERFManager.Designer.vb">
+    <Compile Include="WinForms\frmERFManager.Designer.vb">
       <DependentUpon>frmERFManager.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmERFManager.vb">
+    <Compile Include="WinForms\frmERFManager.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmErrorMessageWithCopyableText.Designer.vb">
+    <Compile Include="WinForms\frmErrorMessageWithCopyableText.Designer.vb">
       <DependentUpon>frmErrorMessageWithCopyableText.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmErrorMessageWithCopyableText.vb">
+    <Compile Include="WinForms\frmErrorMessageWithCopyableText.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmFilterDesigner.Designer.vb">
+    <Compile Include="WinForms\frmFilterDesigner.Designer.vb">
       <DependentUpon>frmFilterDesigner.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmFilterDesigner.vb">
+    <Compile Include="WinForms\frmFilterDesigner.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGlobalVar_Editor.Designer.vb">
+    <Compile Include="WinForms\frmGlobalVar_Editor.Designer.vb">
       <DependentUpon>frmGlobalVar_Editor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmGlobalVar_Editor.vb">
+    <Compile Include="WinForms\frmGlobalVar_Editor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmImageViewer.Designer.vb">
+    <Compile Include="WinForms\frmImageViewer.Designer.vb">
       <DependentUpon>frmImageViewer.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmImageViewer.vb">
+    <Compile Include="WinForms\frmImageViewer.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmInstanceOrRefPrompt.Designer.vb">
+    <Compile Include="WinForms\frmInstanceOrRefPrompt.Designer.vb">
       <DependentUpon>frmInstanceOrRefPrompt.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmInstanceOrRefPrompt.vb">
+    <Compile Include="WinForms\frmInstanceOrRefPrompt.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmInventoryEditor.Designer.vb">
+    <Compile Include="WinForms\frmInventoryEditor.Designer.vb">
       <DependentUpon>frmInventoryEditor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmInventoryEditor.vb">
+    <Compile Include="WinForms\frmInventoryEditor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmItemPropertyEditor.Designer.vb">
+    <Compile Include="WinForms\frmItemPropertyEditor.Designer.vb">
       <DependentUpon>frmItemPropertyEditor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmItemPropertyEditor.vb">
+    <Compile Include="WinForms\frmItemPropertyEditor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.vb">
+    <Compile Include="WinForms\frmMain.Designer.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.vb">
+    <Compile Include="WinForms\frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMapInfoStatus.Designer.vb">
+    <Compile Include="WinForms\frmMapInfoStatus.Designer.vb">
       <DependentUpon>frmMapInfoStatus.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmMapInfoStatus.vb">
+    <Compile Include="WinForms\frmMapInfoStatus.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMdlOpsSwitches.Designer.vb">
+    <Compile Include="WinForms\frmMdlOpsSwitches.Designer.vb">
       <DependentUpon>frmMdlOpsSwitches.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmMdlOpsSwitches.vb">
+    <Compile Include="WinForms\frmMdlOpsSwitches.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmModuleEditorOptions.Designer.vb">
+    <Compile Include="WinForms\frmModuleEditorOptions.Designer.vb">
       <DependentUpon>frmModuleEditorOptions.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmModuleEditorOptions.vb">
+    <Compile Include="WinForms\frmModuleEditorOptions.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmModuleEditor_MissingItemSelector.Designer.vb">
+    <Compile Include="WinForms\frmModuleEditor_MissingItemSelector.Designer.vb">
       <DependentUpon>frmModuleEditor_MissingItemSelector.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmModuleEditor_MissingItemSelector.vb">
+    <Compile Include="WinForms\frmModuleEditor_MissingItemSelector.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmModuleIfo_AreaEditor.Designer.vb">
+    <Compile Include="WinForms\frmModuleIfo_AreaEditor.Designer.vb">
       <DependentUpon>frmModuleIfo_AreaEditor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmModuleIfo_AreaEditor.vb">
+    <Compile Include="WinForms\frmModuleIfo_AreaEditor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmModuleItem_Base_Editor.Designer.vb">
+    <Compile Include="WinForms\frmModuleItem_Base_Editor.Designer.vb">
       <DependentUpon>frmModuleItem_Base_Editor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmModuleItem_Base_Editor.vb">
+    <Compile Include="WinForms\frmModuleItem_Base_Editor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmModule_Editor.Designer.vb">
+    <Compile Include="WinForms\frmModule_Editor.Designer.vb">
       <DependentUpon>frmModule_Editor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmModule_Editor.vb">
+    <Compile Include="WinForms\frmModule_Editor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmOptions.Designer.vb">
+    <Compile Include="WinForms\frmOptions.Designer.vb">
       <DependentUpon>frmOptions.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmOptions.vb">
+    <Compile Include="WinForms\frmOptions.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmOverrideFilesUsed.Designer.vb">
+    <Compile Include="WinForms\frmOverrideFilesUsed.Designer.vb">
       <DependentUpon>frmOverrideFilesUsed.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmOverrideFilesUsed.vb">
+    <Compile Include="WinForms\frmOverrideFilesUsed.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPackageTypeSelector.Designer.vb">
+    <Compile Include="WinForms\frmPackageTypeSelector.Designer.vb">
       <DependentUpon>frmPackageTypeSelector.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmPackageTypeSelector.vb">
+    <Compile Include="WinForms\frmPackageTypeSelector.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmParent.Designer.vb">
+    <Compile Include="WinForms\frmParent.Designer.vb">
       <DependentUpon>frmParent.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmParent.vb">
+    <Compile Include="WinForms\frmParent.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPathManager.Designer.vb">
+    <Compile Include="WinForms\frmPathManager.Designer.vb">
       <DependentUpon>frmPathManager.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmPathManager.vb">
+    <Compile Include="WinForms\frmPathManager.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmProgressMeter.Designer.vb">
+    <Compile Include="WinForms\frmProgressMeter.Designer.vb">
       <DependentUpon>frmProgressMeter.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmProgressMeter.vb">
+    <Compile Include="WinForms\frmProgressMeter.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmProjectManager.Designer.vb">
+    <Compile Include="WinForms\frmProjectManager.Designer.vb">
       <DependentUpon>frmProjectManager.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmProjectManager.vb">
+    <Compile Include="WinForms\frmProjectManager.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmProjectManagerProperties.Designer.vb">
+    <Compile Include="WinForms\frmProjectManagerProperties.Designer.vb">
       <DependentUpon>frmProjectManagerProperties.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmProjectManagerProperties.vb">
+    <Compile Include="WinForms\frmProjectManagerProperties.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPromptForString.Designer.vb">
+    <Compile Include="WinForms\frmPromptForString.Designer.vb">
       <DependentUpon>frmPromptForString.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmPromptForString.vb">
+    <Compile Include="WinForms\frmPromptForString.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmQueryUserInfo.Designer.vb">
+    <Compile Include="WinForms\frmQueryUserInfo.Designer.vb">
       <DependentUpon>frmQueryUserInfo.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmQueryUserInfo.vb">
+    <Compile Include="WinForms\frmQueryUserInfo.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRefSearchCriteria.Designer.vb">
+    <Compile Include="WinForms\frmRefSearchCriteria.Designer.vb">
       <DependentUpon>frmRefSearchCriteria.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmRefSearchCriteria.vb">
+    <Compile Include="WinForms\frmRefSearchCriteria.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRefSearchResults.Designer.vb">
+    <Compile Include="WinForms\frmRefSearchResults.Designer.vb">
       <DependentUpon>frmRefSearchResults.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmRefSearchResults.vb">
+    <Compile Include="WinForms\frmRefSearchResults.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmResourceTypeSelector.Designer.vb">
+    <Compile Include="WinForms\frmResourceTypeSelector.Designer.vb">
       <DependentUpon>frmResourceTypeSelector.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmResourceTypeSelector.vb">
+    <Compile Include="WinForms\frmResourceTypeSelector.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSoundChooser.Designer.vb">
+    <Compile Include="WinForms\frmSoundChooser.Designer.vb">
       <DependentUpon>frmSoundChooser.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmSoundChooser.vb">
+    <Compile Include="WinForms\frmSoundChooser.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSpecifyKotorVersion.Designer.vb">
+    <Compile Include="WinForms\frmSpecifyKotorVersion.Designer.vb">
       <DependentUpon>frmSpecifyKotorVersion.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmSpecifyKotorVersion.vb">
+    <Compile Include="WinForms\frmSpecifyKotorVersion.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSSFEditor.Designer.vb">
+    <Compile Include="WinForms\frmSSFEditor.Designer.vb">
       <DependentUpon>frmSSFEditor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmSSFEditor.vb">
+    <Compile Include="WinForms\frmSSFEditor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTextEditor.Designer.vb">
+    <Compile Include="WinForms\frmTextEditor.Designer.vb">
       <DependentUpon>frmTextEditor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmTextEditor.vb">
+    <Compile Include="WinForms\frmTextEditor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTextEditorFind.Designer.vb">
+    <Compile Include="WinForms\frmTextEditorFind.Designer.vb">
       <DependentUpon>frmTextEditorFind.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmTextEditorFind.vb">
+    <Compile Include="WinForms\frmTextEditorFind.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTPCFileSaveType.Designer.vb">
+    <Compile Include="WinForms\frmTPCFileSaveType.Designer.vb">
       <DependentUpon>frmTPCFileSaveType.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmTPCFileSaveType.vb">
+    <Compile Include="WinForms\frmTPCFileSaveType.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmUserRegistration.Designer.vb">
+    <Compile Include="WinForms\frmUserRegistration.Designer.vb">
       <DependentUpon>frmUserRegistration.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmUserRegistration.vb">
+    <Compile Include="WinForms\frmUserRegistration.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmUTC_Editor.Designer.vb">
+    <Compile Include="WinForms\frmUTC_Editor.Designer.vb">
       <DependentUpon>frmUTC_Editor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmUTC_Editor.vb">
+    <Compile Include="WinForms\frmUTC_Editor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmUTD_Editor.Designer.vb">
+    <Compile Include="WinForms\frmUTD_Editor.Designer.vb">
       <DependentUpon>frmUTD_Editor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmUTD_Editor.vb">
+    <Compile Include="WinForms\frmUTD_Editor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmUTI_Editor.Designer.vb">
+    <Compile Include="WinForms\frmUTI_Editor.Designer.vb">
       <DependentUpon>frmUTI_Editor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmUTI_Editor.vb">
+    <Compile Include="WinForms\frmUTI_Editor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmUTM_Editor.Designer.vb">
+    <Compile Include="WinForms\frmUTM_Editor.Designer.vb">
       <DependentUpon>frmUTM_Editor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmUTM_Editor.vb">
+    <Compile Include="WinForms\frmUTM_Editor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmUTP_Editor.Designer.vb">
+    <Compile Include="WinForms\frmUTP_Editor.Designer.vb">
       <DependentUpon>frmUTP_Editor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmUTP_Editor.vb">
+    <Compile Include="WinForms\frmUTP_Editor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmUTS_Editor.Designer.vb">
+    <Compile Include="WinForms\frmUTS_Editor.Designer.vb">
       <DependentUpon>frmUTS_Editor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmUTS_Editor.vb">
+    <Compile Include="WinForms\frmUTS_Editor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmUTT_Editor.Designer.vb">
+    <Compile Include="WinForms\frmUTT_Editor.Designer.vb">
       <DependentUpon>frmUTT_Editor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmUTT_Editor.vb">
+    <Compile Include="WinForms\frmUTT_Editor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmUTW_Editor.Designer.vb">
+    <Compile Include="WinForms\frmUTW_Editor.Designer.vb">
       <DependentUpon>frmUTW_Editor.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmUTW_Editor.vb">
+    <Compile Include="WinForms\frmUTW_Editor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GFFExoLocString.vb" />
-    <Compile Include="GFFExoLocSubString.vb" />
-    <Compile Include="GFFField.vb" />
-    <Compile Include="GFFFieldEntry.vb" />
-    <Compile Include="GFFList.vb" />
-    <Compile Include="GFFStructEntry.vb" />
-    <Compile Include="GFFType16.vb" />
-    <Compile Include="GFFType17.vb" />
-    <Compile Include="GFFVoid.vb" />
-    <Compile Include="GFF_Field.vb" />
-    <Compile Include="GFF_Struct.vb" />
-    <Compile Include="InventoryItem.vb" />
-    <Compile Include="InventoryPanel.vb">
+    <Compile Include="Classes\GFFExoLocString.vb" />
+    <Compile Include="Classes\GFFExoLocSubString.vb" />
+    <Compile Include="Classes\GFFField.vb" />
+    <Compile Include="Classes\GFFFieldEntry.vb" />
+    <Compile Include="Classes\GFFList.vb" />
+    <Compile Include="Classes\GFFStructEntry.vb" />
+    <Compile Include="Classes\GFFType16.vb" />
+    <Compile Include="Classes\GFFType17.vb" />
+    <Compile Include="Classes\GFFVoid.vb" />
+    <Compile Include="Classes\GFF_Field.vb" />
+    <Compile Include="Classes\GFF_Struct.vb" />
+    <Compile Include="Classes\InventoryItem.vb" />
+    <Compile Include="Classes\InventoryPanel.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="KeyEntry.vb" />
-    <Compile Include="KotorTreeNode.vb" />
-    <Compile Include="KTSoundInfo.vb" />
-    <Compile Include="KT_Launch.vb" />
-    <Compile Include="MapInfo.vb" />
-    <Compile Include="ModItem.vb" />
-    <Compile Include="ModItemTvNode.vb" />
-    <Compile Include="ModuleEditorProjectOptions.vb" />
-    <Compile Include="ModuleEditorProjectSettings.vb" />
-    <Compile Include="ModuleFileEntry.vb" />
+    <Compile Include="Classes\KeyEntry.vb" />
+    <Compile Include="Classes\KotorTreeNode.vb" />
+    <Compile Include="Classes\KTSoundInfo.vb" />
+    <Compile Include="Classes\KT_Launch.vb" />
+    <Compile Include="Classes\MapInfo.vb" />
+    <Compile Include="Classes\ModItem.vb" />
+    <Compile Include="Classes\ModItemTvNode.vb" />
+    <Compile Include="Classes\ModuleEditorProjectOptions.vb" />
+    <Compile Include="Classes\ModuleEditorProjectSettings.vb" />
+    <Compile Include="Classes\ModuleFileEntry.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="MyMapInfoSurrogate.vb" />
-    <Compile Include="Options.vb" />
-    <Compile Include="ProjectFileItemTreeNode.vb" />
-    <Compile Include="RegReminder.Designer.vb">
+    <Compile Include="Classes\MyMapInfoSurrogate.vb" />
+    <Compile Include="Classes\Options.vb" />
+    <Compile Include="Classes\ProjectFileItemTreeNode.vb" />
+    <Compile Include="WinForms\RegReminder.Designer.vb">
       <DependentUpon>RegReminder.vb</DependentUpon>
     </Compile>
-    <Compile Include="RegReminder.vb">
+    <Compile Include="WinForms\RegReminder.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RepeatButton.vb">
+    <Compile Include="Classes\RepeatButton.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="RIMKeyEntry.vb" />
-    <Compile Include="RowFilter.vb" />
-    <Compile Include="RowFilterPart.vb" />
-    <Compile Include="TreeBaseItem.vb" />
-    <Compile Include="UserSettings.vb" />
-    <Compile Include="utilFileValidator.vb" />
-    <Compile Include="Utils.vb" />
-    <Compile Include="utilWindowRelativePositioner.vb" />
+    <Compile Include="Classes\RIMKeyEntry.vb" />
+    <Compile Include="Classes\RowFilter.vb" />
+    <Compile Include="Classes\RowFilterPart.vb" />
+    <Compile Include="Classes\TreeBaseItem.vb" />
+    <Compile Include="Classes\UserSettings.vb" />
+    <Compile Include="Classes\utilFileValidator.vb" />
+    <Compile Include="Classes\Utils.vb" />
+    <Compile Include="Classes\utilWindowRelativePositioner.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frm2DAEditor.resources">
+    <EmbeddedResource Include="WinForms\frm2DAEditor.resources">
       <LogicalName>kotor_tool.frm2DAEditor.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAbout.resx">
+    <EmbeddedResource Include="WinForms\frmAbout.resx">
       <DependentUpon>frmAbout.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAppearanceWizard.resources">
+    <EmbeddedResource Include="WinForms\frmAppearanceWizard.resources">
       <LogicalName>kotor_tool.frmAppearanceWizard.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAutoDialog.resources">
+    <EmbeddedResource Include="WinForms\frmAutoDialog.resources">
       <LogicalName>kotor_tool.frmAutoDialog.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBasicHelp.resources">
+    <EmbeddedResource Include="WinForms\frmBasicHelp.resources">
       <LogicalName>kotor_tool.frmBasicHelp.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBWMEditor.resources">
+    <EmbeddedResource Include="WinForms\frmBWMEditor.resources">
       <LogicalName>kotor_tool.frmBWMEditor.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmByteViewer.resources">
+    <EmbeddedResource Include="WinForms\frmByteViewer.resources">
       <LogicalName>kotor_tool.frmByteViewer.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCExoLocStringLanguagePicker.resources">
+    <EmbeddedResource Include="WinForms\frmCExoLocStringLanguagePicker.resources">
       <LogicalName>kotor_tool.frmCExoLocStringLanguagePicker.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCreateAnimListEntry.resources">
+    <EmbeddedResource Include="WinForms\frmCreateAnimListEntry.resources">
       <LogicalName>kotor_tool.frmCreateAnimListEntry.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDialogEditor.resources">
+    <EmbeddedResource Include="WinForms\frmDialogEditor.resources">
       <LogicalName>kotor_tool.frmDialogEditor.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDialogTlk.resources">
+    <EmbeddedResource Include="WinForms\frmDialogTlk.resources">
       <LogicalName>kotor_tool.frmDialogTlk.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmERFManager.resources">
+    <EmbeddedResource Include="WinForms\frmERFManager.resources">
       <LogicalName>kotor_tool.frmERFManager.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmErrorMessageWithCopyableText.resources">
+    <EmbeddedResource Include="WinForms\frmErrorMessageWithCopyableText.resources">
       <LogicalName>kotor_tool.frmErrorMessageWithCopyableText.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmFilterDesigner.resources">
+    <EmbeddedResource Include="WinForms\frmFilterDesigner.resources">
       <LogicalName>kotor_tool.frmFilterDesigner.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmGlobalVar_Editor.resx">
+    <EmbeddedResource Include="WinForms\frmGlobalVar_Editor.resx">
       <DependentUpon>frmGlobalVar_Editor.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmImageViewer.resources">
+    <EmbeddedResource Include="WinForms\frmImageViewer.resources">
       <LogicalName>kotor_tool.frmImageViewer.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmInstanceOrRefPrompt.resources">
+    <EmbeddedResource Include="WinForms\frmInstanceOrRefPrompt.resources">
       <LogicalName>kotor_tool.frmInstanceOrRefPrompt.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmInventoryEditor.resources">
+    <EmbeddedResource Include="WinForms\frmInventoryEditor.resources">
       <LogicalName>kotor_tool.frmInventoryEditor.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmItemPropertyEditor.resources">
+    <EmbeddedResource Include="WinForms\frmItemPropertyEditor.resources">
       <LogicalName>kotor_tool.frmItemPropertyEditor.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
+    <EmbeddedResource Include="WinForms\frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMapInfoStatus.resources">
+    <EmbeddedResource Include="WinForms\frmMapInfoStatus.resources">
       <LogicalName>kotor_tool.frmMapInfoStatus.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMdlOpsSwitches.resx">
+    <EmbeddedResource Include="WinForms\frmMdlOpsSwitches.resx">
       <DependentUpon>frmMdlOpsSwitches.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmModuleEditorOptions.resources">
+    <EmbeddedResource Include="WinForms\frmModuleEditorOptions.resources">
       <LogicalName>kotor_tool.frmModuleEditorOptions.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmModuleEditor_MissingItemSelector.resources">
+    <EmbeddedResource Include="WinForms\frmModuleEditor_MissingItemSelector.resources">
       <LogicalName>kotor_tool.frmModuleEditor_MissingItemSelector.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmModuleIfo_AreaEditor.resources">
+    <EmbeddedResource Include="WinForms\frmModuleIfo_AreaEditor.resources">
       <LogicalName>kotor_tool.frmModuleIfo_AreaEditor.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmModuleItem_Base_Editor.resources">
+    <EmbeddedResource Include="WinForms\frmModuleItem_Base_Editor.resources">
       <LogicalName>kotor_tool.frmModuleItem_Base_Editor.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmModule_Editor.resources">
+    <EmbeddedResource Include="WinForms\frmModule_Editor.resources">
       <LogicalName>kotor_tool.frmModule_Editor.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmOptions.resources">
+    <EmbeddedResource Include="WinForms\frmOptions.resources">
       <LogicalName>kotor_tool.frmOptions.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmOverrideFilesUsed.resources">
+    <EmbeddedResource Include="WinForms\frmOverrideFilesUsed.resources">
       <LogicalName>kotor_tool.frmOverrideFilesUsed.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPackageTypeSelector.resources">
+    <EmbeddedResource Include="WinForms\frmPackageTypeSelector.resources">
       <LogicalName>kotor_tool.frmPackageTypeSelector.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmParent.resources">
+    <EmbeddedResource Include="WinForms\frmParent.resources">
       <LogicalName>kotor_tool.frmParent.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPathManager.resources">
+    <EmbeddedResource Include="WinForms\frmPathManager.resources">
       <LogicalName>kotor_tool.frmPathManager.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmProgressMeter.resources">
+    <EmbeddedResource Include="WinForms\frmProgressMeter.resources">
       <LogicalName>kotor_tool.frmProgressMeter.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmProjectManager.resources">
+    <EmbeddedResource Include="WinForms\frmProjectManager.resources">
       <LogicalName>kotor_tool.frmProjectManager.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmProjectManagerProperties.resources">
+    <EmbeddedResource Include="WinForms\frmProjectManagerProperties.resources">
       <LogicalName>kotor_tool.frmProjectManagerProperties.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPromptForString.resources">
+    <EmbeddedResource Include="WinForms\frmPromptForString.resources">
       <LogicalName>kotor_tool.frmPromptForString.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmQueryUserInfo.resources">
+    <EmbeddedResource Include="WinForms\frmQueryUserInfo.resources">
       <LogicalName>kotor_tool.frmQueryUserInfo.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRefSearchCriteria.resources">
+    <EmbeddedResource Include="WinForms\frmRefSearchCriteria.resources">
       <LogicalName>kotor_tool.frmRefSearchCriteria.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRefSearchResults.resources">
+    <EmbeddedResource Include="WinForms\frmRefSearchResults.resources">
       <LogicalName>kotor_tool.frmRefSearchResults.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmResourceTypeSelector.resources">
+    <EmbeddedResource Include="WinForms\frmResourceTypeSelector.resources">
       <LogicalName>kotor_tool.frmResourceTypeSelector.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSoundChooser.resources">
+    <EmbeddedResource Include="WinForms\frmSoundChooser.resources">
       <LogicalName>kotor_tool.frmSoundChooser.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSpecifyKotorVersion.resources">
+    <EmbeddedResource Include="WinForms\frmSpecifyKotorVersion.resources">
       <LogicalName>kotor_tool.frmSpecifyKotorVersion.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSSFEditor.resources">
+    <EmbeddedResource Include="WinForms\frmSSFEditor.resources">
       <LogicalName>kotor_tool.frmSSFEditor.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTextEditor.resources">
+    <EmbeddedResource Include="WinForms\frmTextEditor.resources">
       <LogicalName>kotor_tool.frmTextEditor.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTextEditorFind.resources">
+    <EmbeddedResource Include="WinForms\frmTextEditorFind.resources">
       <LogicalName>kotor_tool.frmTextEditorFind.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTPCFileSaveType.resources">
+    <EmbeddedResource Include="WinForms\frmTPCFileSaveType.resources">
       <LogicalName>kotor_tool.frmTPCFileSaveType.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUserRegistration.resources">
+    <EmbeddedResource Include="WinForms\frmUserRegistration.resources">
       <LogicalName>kotor_tool.frmUserRegistration.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUTC_Editor.resources">
+    <EmbeddedResource Include="WinForms\frmUTC_Editor.resources">
       <LogicalName>kotor_tool.frmUTC_Editor.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUTD_Editor.resources">
+    <EmbeddedResource Include="WinForms\frmUTD_Editor.resources">
       <LogicalName>kotor_tool.frmUTD_Editor.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUTI_Editor.resources">
+    <EmbeddedResource Include="WinForms\frmUTI_Editor.resources">
       <LogicalName>kotor_tool.frmUTI_Editor.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUTM_Editor.resources">
+    <EmbeddedResource Include="WinForms\frmUTM_Editor.resources">
       <LogicalName>kotor_tool.frmUTM_Editor.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUTP_Editor.resources">
+    <EmbeddedResource Include="WinForms\frmUTP_Editor.resources">
       <LogicalName>kotor_tool.frmUTP_Editor.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUTS_Editor.resources">
+    <EmbeddedResource Include="WinForms\frmUTS_Editor.resources">
       <LogicalName>kotor_tool.frmUTS_Editor.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUTT_Editor.resources">
+    <EmbeddedResource Include="WinForms\frmUTT_Editor.resources">
       <LogicalName>kotor_tool.frmUTT_Editor.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUTW_Editor.resources">
+    <EmbeddedResource Include="WinForms\frmUTW_Editor.resources">
       <LogicalName>kotor_tool.frmUTW_Editor.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegReminder.resources">
+    <EmbeddedResource Include="WinForms\RegReminder.resources">
       <LogicalName>kotor_tool.RegReminder.resources</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="ConfigurationFiles\app.config" />
+    <None Include="My Project\app.manifest" />
+    <None Include="Themes\DarkSaber.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -731,9 +740,15 @@
     <Content Include="Changelog.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="ProjectManager.Readme.txt" />
+    <Content Include="Licence.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ProjectManager.py" />
     <Content Include="settings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

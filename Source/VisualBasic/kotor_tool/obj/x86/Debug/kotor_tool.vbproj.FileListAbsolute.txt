@@ -1,0 +1,26 @@
+P:\GAME TOOLS\Modding\KOTOR_TOOL_DECOMP\dnSpy\Vs2008Raw\kotor_tool\obj\x86\Debug\ResolveAssemblyReference.cache
+P:\GAME TOOLS\Modding\KOTOR_TOOL_DECOMP\dnSpy\Vs2008Raw\kotor_tool\bin\x86\Debug\kotor_tool.exe.config
+P:\GAME TOOLS\Modding\KOTOR_TOOL_DECOMP\dnSpy\Vs2008Raw - Copy\kotor_tool\bin\x86\Debug\kotor_tool.exe.config
+P:\GAME TOOLS\Modding\KOTOR_TOOL_DECOMP\dnSpy\Vs2008Raw - Copy\kotor_tool\obj\x86\Debug\kotor_tool.vbprojResolveAssemblyReference.cache
+P:\GAME TOOLS\Modding\KOTOR_TOOL_DECOMP\dnSpy\Vs2008Raw - Copy\kotor_tool\bin\x86\Debug\kotor_tool.exe
+P:\GAME TOOLS\Modding\KOTOR_TOOL_DECOMP\dnSpy\Vs2008Raw - Copy\kotor_tool\bin\x86\Debug\kotor_tool.pdb
+P:\GAME TOOLS\Modding\KOTOR_TOOL_DECOMP\dnSpy\Vs2008Raw - Copy\kotor_tool\bin\x86\Debug\FMODCL.dll
+P:\GAME TOOLS\Modding\KOTOR_TOOL_DECOMP\dnSpy\Vs2008Raw - Copy\kotor_tool\bin\x86\Debug\ImageTools.dll
+P:\GAME TOOLS\Modding\KOTOR_TOOL_DECOMP\dnSpy\Vs2008Raw - Copy\kotor_tool\bin\x86\Debug\RTFLinenumberTextBox.dll
+P:\GAME TOOLS\Modding\KOTOR_TOOL_DECOMP\dnSpy\Vs2008Raw - Copy\kotor_tool\obj\x86\Debug\kotor_tool.exe
+P:\GAME TOOLS\Modding\KOTOR_TOOL_DECOMP\dnSpy\Vs2008Raw - Copy\kotor_tool\obj\x86\Debug\kotor_tool.pdb
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\bin\x86\Debug\settings.xml
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\bin\x86\Debug\Changelog.txt
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\bin\x86\Debug\kotor_tool.exe.config
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\bin\x86\Debug\kotor_tool.exe
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\bin\x86\Debug\kotor_tool.pdb
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\bin\x86\Debug\FMODCL.dll
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\bin\x86\Debug\ImageTools.dll
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\bin\x86\Debug\RTFLinenumberTextBox.dll
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\obj\x86\Debug\kotor_tool.frmAbout.resources
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\obj\x86\Debug\kotor_tool.frmGlobalVar_Editor.resources
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\obj\x86\Debug\kotor_tool.frmMain.resources
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\obj\x86\Debug\kotor_tool.frmMdlOpsSwitches.resources
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\obj\x86\Debug\kotor_tool.vbproj.GenerateResource.Cache
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\obj\x86\Debug\kotor_tool.exe
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\obj\x86\Debug\kotor_tool.pdb

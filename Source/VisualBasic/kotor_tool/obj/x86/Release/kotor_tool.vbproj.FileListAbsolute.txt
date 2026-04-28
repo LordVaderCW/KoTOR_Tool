@@ -1,0 +1,17 @@
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\bin\x86\Release\kotor_tool.exe.config
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\bin\x86\Release\settings.xml
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\bin\x86\Release\Changelog.txt
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\bin\x86\Release\kotor_tool.exe
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\bin\x86\Release\kotor_tool.pdb
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\bin\x86\Release\FMODCL.dll
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\bin\x86\Release\ImageTools.dll
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\bin\x86\Release\RTFLinenumberTextBox.dll
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\obj\x86\Release\kotor_tool.frmAbout.resources
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\obj\x86\Release\kotor_tool.frmGlobalVar_Editor.resources
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\obj\x86\Release\kotor_tool.frmMain.resources
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\obj\x86\Release\kotor_tool.frmMdlOpsSwitches.resources
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\obj\x86\Release\kotor_tool.vbproj.GenerateResource.Cache
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\obj\x86\Release\kotor_tool.exe
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\obj\x86\Release\kotor_tool.pdb
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\bin\x86\Release\Licence.txt
+P:\GAME TOOLS\Modding\KoTOR Tool\Source\kotor_tool\bin\x86\Release\Themes\DarkSaber.ini
