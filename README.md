@@ -12,7 +12,7 @@ Rebuild and rebirth of the original **KoTOR Tool**, originally developed by Fred
 
 **Project Status:** Restored source build confirmed
 
-**Target IDE:** Visual Studio 2010
+**Target IDE:** Visual Studio 2010/2022
 
 **Target Framework:** .NET Framework 4.0
 
