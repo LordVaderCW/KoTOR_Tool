@@ -8,3 +8,5 @@ Source/VisualBasic/kotor_tool/bin/
 
 # Exclude intermediate object files
 Source/VisualBasic/kotor_tool/obj/
+Source/VisualBasic/.vs/kotor_tool/FileContentIndex/40d28436-b121-46eb-a6ad-e4fcdc2cb7d5.vsidx
+Source/VisualBasic/.vs/kotor_tool/FileContentIndex/50815bf3-f328-49fa-b3fb-48c3b29d2331.vsidx
