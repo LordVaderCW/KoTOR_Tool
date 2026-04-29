@@ -21,12 +21,95 @@ Namespace kotor_tool
     Partial Public Class frmMain
         Inherits Form
 
-        ' Token: 0x06000678 RID: 1656 RVA: 0x0024C8E0 File Offset: 0x0024B8E0
+        Private Sub WireModernToolbar()
+            If Me.btnTool2DA IsNot Nothing Then
+                RemoveHandler Me.btnTool2DA.Click, AddressOf Me.btnTool2DA_Click
+                AddHandler Me.btnTool2DA.Click, AddressOf Me.btnTool2DA_Click
+            End If
+
+            If Me.btnToolConversation IsNot Nothing Then
+                RemoveHandler Me.btnToolConversation.Click, AddressOf Me.btnToolConversation_Click
+                AddHandler Me.btnToolConversation.Click, AddressOf Me.btnToolConversation_Click
+            End If
+
+            If Me.btnToolText IsNot Nothing Then
+                RemoveHandler Me.btnToolText.Click, AddressOf Me.btnToolText_Click
+                AddHandler Me.btnToolText.Click, AddressOf Me.btnToolText_Click
+            End If
+
+            If Me.btnToolERF IsNot Nothing Then
+                RemoveHandler Me.btnToolERF.Click, AddressOf Me.btnToolERF_Click
+                AddHandler Me.btnToolERF.Click, AddressOf Me.btnToolERF_Click
+            End If
+        End Sub
+
+        Private Sub btnTool2DA_Click(ByVal sender As Object, ByVal e As EventArgs)
+            Me.Open2DAFileEditor()
+        End Sub
+
+        Private Sub btnToolConversation_Click(ByVal sender As Object, ByVal e As EventArgs)
+            Me.OpenConversationEditor()
+        End Sub
+
+        Private Sub btnToolText_Click(ByVal sender As Object, ByVal e As EventArgs)
+            Me.OpenTextEditor()
+        End Sub
+
+        Private Sub btnToolERF_Click(ByVal sender As Object, ByVal e As EventArgs)
+            Me.OpenERFBuilder()
+        End Sub
+
+        Private Sub LoadModernToolbarImages()
+            Me.SetToolbarButtonImage(Me.btnTool2DA, "toolbar_2da")
+            Me.SetToolbarButtonImage(Me.btnToolConversation, "toolbar_dialog")
+            Me.SetToolbarButtonImage(Me.btnToolText, "toolbar_text")
+            Me.SetToolbarButtonImage(Me.btnToolERF, "toolbar_erf")
+        End Sub
+
+        Private Sub SetToolbarButtonImage(ByVal button As Button, ByVal resourceName As String)
+            If button Is Nothing Then
+                Return
+            End If
+
+            If resourceName Is Nothing OrElse resourceName.Trim().Length = 0 Then
+                Return
+            End If
+
+            Try
+                Dim resourceObject As Object = My.Resources.ResourceManager.GetObject(resourceName)
+
+                If resourceObject Is Nothing Then
+                    Return
+                End If
+
+                If TypeOf resourceObject Is Image Then
+                    button.Image = CType(resourceObject, Image)
+                    button.ImageAlign = ContentAlignment.MiddleLeft
+                    button.TextAlign = ContentAlignment.MiddleCenter
+                    button.TextImageRelation = TextImageRelation.ImageBeforeText
+                End If
+
+            Catch ex As System.Exception
+                Console.WriteLine("Toolbar image could not be loaded: " & resourceName & " - " & ex.Message)
+            End Try
+        End Sub
+
+
+        Private Sub ApplyApplicationIcon()
+            Try
+                Me.Icon = My.Resources.koTOR_icn
+
+            Catch ex As System.Exception
+                Console.WriteLine("Application icon could not be applied: " & ex.Message)
+            End Try
+        End Sub
+
         Public Sub New(ByVal CmdArgs As String())
             AddHandler MyBase.Load, AddressOf Me.Form1_Load
             AddHandler MyBase.Closing, AddressOf Me.frmMain_Closing
             AddHandler MyBase.Move, AddressOf Me.frmMain_Move
             AddHandler MyBase.Activated, AddressOf Me.frmMain_Activated
+
             Me.BiffEntryListArray = New ArrayList(1, 30) {}
             Me.biffEntries = New ArrayList(2) {}
             Me.g_downloadURL = ""
@@ -34,16 +117,21 @@ Namespace kotor_tool
             Me.hasK1 = False
             Me.hasK2 = False
             Me.g_abbbIndex = 0
+
             Me.InitializeComponent()
+            Me.ApplyApplicationIcon()
+            Me.WireModernToolbar()
+            Me.LoadModernToolbarImages()
+
             Me.CmdArgs = CmdArgs
         End Sub
 
-        ' Token: 0x06000679 RID: 1657 RVA: 0x0024C990 File Offset: 0x0024B990
         Public Sub New()
             AddHandler MyBase.Load, AddressOf Me.Form1_Load
             AddHandler MyBase.Closing, AddressOf Me.frmMain_Closing
             AddHandler MyBase.Move, AddressOf Me.frmMain_Move
             AddHandler MyBase.Activated, AddressOf Me.frmMain_Activated
+
             Me.BiffEntryListArray = New ArrayList(1, 30) {}
             Me.biffEntries = New ArrayList(2) {}
             Me.g_downloadURL = ""
@@ -51,7 +139,11 @@ Namespace kotor_tool
             Me.hasK1 = False
             Me.hasK2 = False
             Me.g_abbbIndex = 0
+
             Me.InitializeComponent()
+            Me.ApplyApplicationIcon()
+            Me.WireModernToolbar()
+            Me.LoadModernToolbarImages()
         End Sub
 
         ' Token: 0x060006E8 RID: 1768 RVA: 0x0024EC68 File Offset: 0x0024DC68
@@ -1354,11 +1446,25 @@ Namespace kotor_tool
         End Function
 
         ' Token: 0x06000706 RID: 1798 RVA: 0x002517C0 File Offset: 0x002507C0
+        'Public Shared Sub WriteByteArray(ByVal outputPath As String, ByVal byteArray As Byte())
+        '    Dim fileStream As FileStream = New FileStream(outputPath, FileMode.Create)
+        '    Dim binaryWriter As BinaryWriter = New BinaryWriter(fileStream)
+        '    binaryWriter.Write(byteArray)
+        '    binaryWriter.Close()
+        'End Sub
+
         Public Shared Sub WriteByteArray(ByVal outputPath As String, ByVal byteArray As Byte())
-            Dim fileStream As FileStream = New FileStream(outputPath, FileMode.Create)
-            Dim binaryWriter As BinaryWriter = New BinaryWriter(fileStream)
-            binaryWriter.Write(byteArray)
-            binaryWriter.Close()
+            Dim outputDirectory As String = IO.Path.GetDirectoryName(outputPath)
+
+            If Not String.IsNullOrEmpty(outputDirectory) AndAlso Not IO.Directory.Exists(outputDirectory) Then
+                IO.Directory.CreateDirectory(outputDirectory)
+            End If
+
+            Using fileStream As New FileStream(outputPath, FileMode.Create, FileAccess.Write, FileShare.None)
+                Using binaryWriter As New BinaryWriter(fileStream)
+                    binaryWriter.Write(byteArray)
+                End Using
+            End Using
         End Sub
 
         ' Token: 0x06000707 RID: 1799 RVA: 0x002517EC File Offset: 0x002507EC
@@ -2203,12 +2309,22 @@ Namespace kotor_tool
 
         ' Token: 0x0600070E RID: 1806 RVA: 0x00252E14 File Offset: 0x00251E14
         Private Sub EditGFFResource(ByVal filename As String, ByVal data As Byte())
-            Me.EnsureWorkingDirectoryExists()
-            If File.Exists(frmMain.gRootPath + "working\" + filename) Then
-                File.Delete(frmMain.gRootPath + "working\" + filename)
+            'Me.EnsureWorkingDirectoryExists()
+            'If File.Exists(frmMain.gRootPath + "working\" + filename) Then
+            '    File.Delete(frmMain.gRootPath + "working\" + filename)
+            'End If
+            'frmMain.WriteByteArray(frmMain.gRootPath + "working\" + filename, data)
+            'Me.LaunchGFFEditor(frmMain.gRootPath + "working\" + filename)
+
+            Dim workingFilePath As String = frmMain.GetWorkingFilePath(filename)
+
+            If File.Exists(workingFilePath) Then
+                File.Delete(workingFilePath)
             End If
-            frmMain.WriteByteArray(frmMain.gRootPath + "working\" + filename, data)
-            Me.LaunchGFFEditor(frmMain.gRootPath + "working\" + filename)
+
+            frmMain.WriteByteArray(workingFilePath, data)
+            Me.LaunchGFFEditor(workingFilePath)
+
         End Sub
 
         ' Token: 0x0600070F RID: 1807 RVA: 0x00252E80 File Offset: 0x00251E80
@@ -2289,9 +2405,11 @@ Namespace kotor_tool
 
         ' Token: 0x06000713 RID: 1811 RVA: 0x002531B8 File Offset: 0x002521B8
         Public Sub EnsureWorkingDirectoryExists()
-            If Not Directory.Exists(frmMain.gRootPath + "working") Then
-                Directory.CreateDirectory(frmMain.gRootPath + "working")
-            End If
+            ''If Not Directory.Exists(frmMain.gRootPath + "working") Then
+            ''Directory.CreateDirectory(frmMain.gRootPath + "working")
+            ''End If
+
+            frmMain.gWorkingPath = frmMain.GetWorkingDirectoryPath()
         End Sub
 
         '' Token: 0x06000714 RID: 1812 RVA: 0x002531E8 File Offset: 0x002521E8
@@ -2820,79 +2938,254 @@ Namespace kotor_tool
             Return utilFileValidator.Validate(filePath, signature)
         End Function
 
+
+        Private Sub LoadAndApplyTheme()
+            Try
+                _theme = KotorThemeManager.LoadTheme("DarkSaber")
+            Catch
+                _theme = KotorTheme.CreateDefault()
+            End Try
+
+            ApplyMainTheme()
+        End Sub
+
+        Private Sub ApplyMainTheme()
+            If _theme Is Nothing Then
+                _theme = KotorTheme.CreateDefault()
+            End If
+
+            Me.BackColor = _theme.WindowBack
+
+            If Me.pnlRoot IsNot Nothing Then
+                Me.pnlRoot.BackColor = _theme.PanelRoot
+            End If
+
+            If Me.pnlMainArea IsNot Nothing Then
+                Me.pnlMainArea.BackColor = _theme.PanelBody
+            End If
+
+            If Me.pnlActionPanel IsNot Nothing Then
+                Me.pnlActionPanel.BackColor = _theme.PanelHeader
+            End If
+
+            If Me.lblMainSeparator IsNot Nothing Then
+                Me.lblMainSeparator.BackColor = _theme.AccentGold
+            End If
+
+            If Me.lblActionHeader IsNot Nothing Then
+                Me.lblActionHeader.ForeColor = _theme.AccentGoldLight
+                Me.lblActionHeader.Font = New Font(_theme.BodyFontName, 8.25F, FontStyle.Bold, GraphicsUnit.Point)
+            End If
+
+            ApplyTreeViewTheme()
+            ApplyToolBarTheme()
+            ApplyButtonTheme(Me.btnExtract)
+            ApplyButtonTheme(Me.btnExtractForModuleEditing)
+            ApplyButtonTheme(Me.btnHexViewer)
+            ApplyButtonTheme(Me.Button4)
+            ApplyButtonTheme(Me.Button1)
+            ApplyButtonTheme(Me.btnCreateMapInfoBFD)
+        End Sub
+
+        Private Sub ApplyTreeViewTheme()
+            If Me.TreeView Is Nothing Then
+                Return
+            End If
+
+            Me.TreeView.BackColor = _theme.LogoBack
+            Me.TreeView.ForeColor = _theme.TextPrimary
+            Me.TreeView.LineColor = _theme.BorderDark
+            Me.TreeView.BorderStyle = BorderStyle.FixedSingle
+            Me.TreeView.HideSelection = False
+
+            Try
+                Me.TreeView.Font = _theme.CreateBodyFont()
+            Catch
+                Me.TreeView.Font = New Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point)
+            End Try
+        End Sub
+
+        Private Sub ApplyToolBarTheme()
+            If _theme Is Nothing Then
+                _theme = KotorTheme.CreateDefault()
+            End If
+
+            If Me.pnlToolBar IsNot Nothing Then
+                Me.pnlToolBar.BackColor = _theme.PanelHeader
+            End If
+
+            Me.ApplyModernToolbarButtonTheme(Me.btnTool2DA)
+            Me.ApplyModernToolbarButtonTheme(Me.btnToolConversation)
+            Me.ApplyModernToolbarButtonTheme(Me.btnToolText)
+            Me.ApplyModernToolbarButtonTheme(Me.btnToolERF)
+        End Sub
+
+        Private Sub ApplyModernToolbarButtonTheme(ByVal button As Button)
+            If button Is Nothing Then
+                Return
+            End If
+
+            button.BackColor = _theme.ControlDark
+            button.ForeColor = _theme.TextPrimary
+            button.FlatStyle = FlatStyle.Flat
+            button.UseVisualStyleBackColor = False
+
+            button.FlatAppearance.BorderColor = _theme.BorderDark
+            button.FlatAppearance.MouseOverBackColor = _theme.ControlHover
+            button.FlatAppearance.MouseDownBackColor = _theme.ControlDown
+
+            button.TextAlign = ContentAlignment.MiddleCenter
+            button.ImageAlign = ContentAlignment.MiddleLeft
+            button.TextImageRelation = TextImageRelation.ImageBeforeText
+
+            Try
+                button.Font = New Font(_theme.BodyFontName, 8.25F, FontStyle.Bold, GraphicsUnit.Point)
+            Catch
+                button.Font = New Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point)
+            End Try
+        End Sub
+
+
+
+        Private Sub ApplyButtonTheme(ByVal button As Button)
+            If button Is Nothing Then
+                Return
+            End If
+
+            button.BackColor = _theme.ControlDark
+            button.ForeColor = _theme.TextPrimary
+            button.FlatStyle = FlatStyle.Flat
+            button.UseVisualStyleBackColor = False
+
+            button.FlatAppearance.BorderColor = _theme.AccentGold
+            button.FlatAppearance.MouseOverBackColor = _theme.ControlHover
+            button.FlatAppearance.MouseDownBackColor = _theme.ControlDown
+
+            Try
+                button.Font = _theme.CreateBodyFont()
+            Catch
+                button.Font = New Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point)
+            End Try
+        End Sub
+
+        Private Sub RefreshTreeNodeColours()
+            If _theme Is Nothing Then
+                _theme = KotorTheme.CreateDefault()
+            End If
+
+            If Me.TreeView Is Nothing Then
+                Return
+            End If
+
+            For Each node As TreeNode In Me.TreeView.Nodes
+                ApplyTreeNodeColourRecursive(node)
+            Next
+        End Sub
+
+
+        Private Sub ApplyTreeNodeColourRecursive(ByVal node As TreeNode)
+            If node Is Nothing Then
+                Return
+            End If
+
+            If Me.TreeView.Nodes.Count > 0 AndAlso Object.ReferenceEquals(node, Me.TreeView.Nodes(0)) AndAlso Not Me.hasK1 Then
+                node.ForeColor = _theme.TextMuted
+            ElseIf Me.TreeView.Nodes.Count > 1 AndAlso Object.ReferenceEquals(node, Me.TreeView.Nodes(1)) AndAlso Not Me.hasK2 Then
+                node.ForeColor = _theme.TextMuted
+            Else
+                node.ForeColor = _theme.TextPrimary
+            End If
+
+            For Each child As TreeNode In node.Nodes
+                ApplyTreeNodeColourRecursive(child)
+            Next
+        End Sub
+
+        ' Token: 0x06000727 RID: 1831 RVA: 0x002542A8 File Offset: 0x002532A8
         ' Token: 0x06000727 RID: 1831 RVA: 0x002542A8 File Offset: 0x002532A8
         Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs)
             frmMain.mainform = Me
-            frmMain.gRootPath = "Thomas A. Luetz II"
+
+            ' -----------------------------------------------------------------
+            ' Apply runtime theme before visible setup continues.
+            ' -----------------------------------------------------------------
+            Me.LoadAndApplyTheme()
+
+            frmMain.gRootPath = ""
+
             Dim registryKey As RegistryKey = Registry.LocalMachine.OpenSubKey("software\SCM\Kotor Tool")
+
             If registryKey Is Nothing Then
-                Interaction.MsgBox("Kotor Tool cannot find its key in the registry at HKLM\software\SCM\Kotor Tool." & vbLf & vbLf & "Please reinstall Kotor Tool.", MsgBoxStyle.Critical, Nothing)
-                Environment.[Exit](0)
+                Dim registryErrorMessage As String = "Kotor Tool cannot find its key in the registry at HKLM\software\SCM\Kotor Tool." & vbLf & vbLf & "Please reinstall Kotor Tool."
+                Interaction.MsgBox(registryErrorMessage, MsgBoxStyle.Critical, Nothing)
+                System.Environment.Exit(0)
+                Return
             End If
-            frmMain.gRootPath = StringType.FromObject(registryKey.GetValue("path"))
-            If Not frmMain.gRootPath.EndsWith("\") Then
-                frmMain.gRootPath += "\"
-            End If
+
+            'frmMain.gRootPath = StringType.FromObject(registryKey.GetValue("path"))
+            '
+            'If Not frmMain.gRootPath.EndsWith("\") Then
+            'frmMain.gRootPath += "\"
+            'End If
+
+            ' -----------------------------------------------------------------
+            ' Portable runtime root.
+            ' The original tool used the registry install path, which commonly
+            ' points to Program Files and causes UnauthorizedAccessException
+            ' when extracting resources into the working folder.
+            ' -----------------------------------------------------------------
+            frmMain.gRootPath = frmMain.GetApplicationRootPath()
+            frmMain.gWorkingPath = frmMain.GetWorkingDirectoryPath()
+
             Me.TreeView.HideSelection = False
-            Me.Text = "Kotor Tool v" + Application.ProductVersion + ""
-            Me.hasK1 = frmMain.hasKotor1()
-            Me.hasK2 = frmMain.hasKotor2()
+            Me.Text = "Kotor Tool v" & Application.ProductVersion
+
             frmMain.CurrentSettings = UserSettings.GetSettings()
+
+            ' -----------------------------------------------------------------
+            ' Restore main window location safely.
+            ' -----------------------------------------------------------------
             Dim mainWindowLoc As Point = frmMain.CurrentSettings.MainWindowLoc
-            If (mainWindowLoc.X < 0) Or (mainWindowLoc.Y < 0) Then
+
+            If (mainWindowLoc.X < 0) OrElse (mainWindowLoc.Y < 0) Then
                 mainWindowLoc.X = 100
                 mainWindowLoc.Y = 100
                 frmMain.CurrentSettings.MainWindowLoc = mainWindowLoc
                 UserSettings.SaveSettings(frmMain.CurrentSettings)
             End If
+
             Me.Location = mainWindowLoc
+
+            ' -----------------------------------------------------------------
+            ' Restore main window size safely.
+            ' -----------------------------------------------------------------
             If Not frmMain.CurrentSettings.MainWindowSize.IsEmpty Then
-                Dim size As Size = frmMain.CurrentSettings.MainWindowSize
-                Dim height As Integer
-                Dim size2 As Size
-                If size.Height > Screen.PrimaryScreen.WorkingArea.Height Then
-                    Dim location As Point = Me.Location
-                    Dim location2 As Point = New Point(location.X, Screen.PrimaryScreen.WorkingArea.Top)
-                    Me.Location = location2
-                    height = Screen.PrimaryScreen.WorkingArea.Height
-                    size = Me.Size
-                    size2 = New Size(size.Width, height)
-                    Me.Size = size2
+                Dim savedSize As Size = frmMain.CurrentSettings.MainWindowSize
+                Dim adjustedHeight As Integer = 0
+                Dim adjustedWidth As Integer = 0
+
+                If savedSize.Height > Screen.PrimaryScreen.WorkingArea.Height Then
+                    Dim currentLocation As Point = Me.Location
+                    Me.Location = New Point(currentLocation.X, Screen.PrimaryScreen.WorkingArea.Top)
+
+                    adjustedHeight = Screen.PrimaryScreen.WorkingArea.Height
+                    Me.Size = New Size(Me.Size.Width, adjustedHeight)
                 End If
-                size2 = frmMain.CurrentSettings.MainWindowSize
-                Dim width As Integer
-                If size2.Width > Screen.PrimaryScreen.WorkingArea.Width Then
-                    Dim left As Integer = Screen.PrimaryScreen.WorkingArea.Left
-                    Dim location2 As Point = Me.Location
-                    Dim location As Point = New Point(left, location2.Y)
-                    Me.Location = location
-                    width = Screen.PrimaryScreen.WorkingArea.Width
-                    Dim num As Integer = width
-                    size2 = Me.Size
-                    size = New Size(num, size2.Height)
-                    Me.Size = size
+
+                savedSize = frmMain.CurrentSettings.MainWindowSize
+
+                If savedSize.Width > Screen.PrimaryScreen.WorkingArea.Width Then
+                    Dim currentLocation As Point = Me.Location
+                    Me.Location = New Point(Screen.PrimaryScreen.WorkingArea.Left, currentLocation.Y)
+
+                    adjustedWidth = Screen.PrimaryScreen.WorkingArea.Width
+                    Me.Size = New Size(adjustedWidth, Me.Size.Height)
                 End If
-                If (width = 0) And (height = 0) Then
+
+                If (adjustedWidth = 0) AndAlso (adjustedHeight = 0) Then
                     Me.Size = frmMain.CurrentSettings.MainWindowSize
                 End If
             End If
-            If Not Me.hasK1 And Not Me.hasK2 Then
-                Interaction.MsgBox("No installation of Kotor I or II was detected." & vbLf & vbLf & "Most features will not work.", MsgBoxStyle.Critical, "No games detected")
-            End If
-            'If ((StringType.StrCmp(frmMain.CurrentSettings.defaultKotORLocation, "", False) = 0) And Me.hasK1) Or ((StringType.StrCmp(frmMain.CurrentSettings.defaultKotORLocation2, "", False) = 0) And Me.hasK2) Then
-            '    Dim frmPathManager As frmPathManager = New frmPathManager()
-            '    Interaction.MsgBox("We've attempted to detect your KotOR installation," & vbCr & "but please verify the directories are correct.", MsgBoxStyle.Information, "First run configuration")
-            '    If (StringType.StrCmp(frmMain.CurrentSettings.defaultKotORLocation, "", False) = 0) And Me.hasK1 Then
-            '        frmPathManager.btnAutoDetectKotor1_Click(Nothing, Nothing)
-            '    End If
-            '    If (StringType.StrCmp(frmMain.CurrentSettings.defaultKotORLocation2, "", False) = 0) And Me.hasK2 Then
-            '        frmPathManager.btnAutoDetectKotor2_Click(Nothing, Nothing)
-            '    End If
-            '    frmPathManager.StartPosition = FormStartPosition.CenterScreen
-            '    frmPathManager.ShowDialog(Me)
-            '    frmMain.CurrentSettings = UserSettings.GetSettings()
-            '    frmMain.CurrentSettings.bBuildModelsBifNode = True
-            'End If
 
             ' -----------------------------------------------------------------
             ' First-run / missing-path auto-detection.
@@ -2930,9 +3223,7 @@ Namespace kotor_tool
             Me.hasK1 = frmMain.hasKotor1()
             Me.hasK2 = frmMain.hasKotor2()
 
-            If ((StringType.StrCmp(frmMain.CurrentSettings.defaultKotORLocation, "", False) = 0) AndAlso Not Me.hasK1) OrElse _
-               ((StringType.StrCmp(frmMain.CurrentSettings.defaultKotORLocation2, "", False) = 0) AndAlso Not Me.hasK2) Then
-
+            If ((StringType.StrCmp(frmMain.CurrentSettings.defaultKotORLocation, "", False) = 0) AndAlso Not Me.hasK1) OrElse ((StringType.StrCmp(frmMain.CurrentSettings.defaultKotORLocation2, "", False) = 0) AndAlso Not Me.hasK2) Then
                 Dim frmPathManager As frmPathManager = New frmPathManager()
 
                 If detectedKotor1Path.Length > 0 Then
@@ -2943,12 +3234,8 @@ Namespace kotor_tool
                     frmPathManager.tbKotorPath2.Text = detectedKotor2Path
                 End If
 
-                Interaction.MsgBox( _
-                    "KotOR Tool has attempted to detect your KotOR installation paths." & vbCrLf & _
-                    "Please verify the directories before continuing.", _
-                    MsgBoxStyle.Information, _
-                    "First run configuration" _
-                )
+                Dim firstRunMessage As String = "KotOR Tool has attempted to detect your KotOR installation paths." & vbCrLf & "Please verify the directories before continuing."
+                Interaction.MsgBox(firstRunMessage, MsgBoxStyle.Information, "First run configuration")
 
                 frmPathManager.StartPosition = FormStartPosition.CenterScreen
                 frmPathManager.ShowDialog(Me)
@@ -2960,64 +3247,107 @@ Namespace kotor_tool
                 Me.hasK2 = frmMain.hasKotor2()
             End If
 
+            ' -----------------------------------------------------------------
+            ' Warn only after upgraded detection and Path Manager verification.
+            ' -----------------------------------------------------------------
+            If Not Me.hasK1 AndAlso Not Me.hasK2 Then
+                Dim noGamesMessage As String = "No installation of Kotor I or II was detected." & vbLf & vbLf & "Most features will not work."
+                Interaction.MsgBox(noGamesMessage, MsgBoxStyle.Critical, "No games detected")
+            End If
+
+            ' -----------------------------------------------------------------
+            ' Load chitin.key data for detected games.
+            ' -----------------------------------------------------------------
             If Me.hasK1 Then
                 frmMain.gK1ChitinKey = New clsChitinKey(frmMain.CurrentSettings.KeyFileLocation(0))
-                Console.WriteLine("gK1ChitinKey: Lsum = " + StringType.FromLong(frmMain.gK1ChitinKey.Lsum) + ", Llength = " + StringType.FromLong(frmMain.gK1ChitinKey.Llength))
+
+                Console.WriteLine("gK1ChitinKey: Lsum = " & StringType.FromLong(frmMain.gK1ChitinKey.Lsum) & ", Llength = " & StringType.FromLong(frmMain.gK1ChitinKey.Llength))
+
                 If Not frmMain.gK1ChitinKey.IsValid(0) Then
                     Interaction.MsgBox("Your Kotor I chitin.key file appears to be corrupt." & vbLf & "You may want to reinstall KotOR II to fix this.", MsgBoxStyle.Information, "Chitin.key file not valid")
                 End If
+
                 If frmMain.gK1ChitinKey.BiffList.Length <> 26 Then
                     Interaction.MsgBox("Your Kotor I chitin.key file appears to have been altered from the official version." & vbLf & vbLf & "If you have not altered it by installing custom packages, you may want to reinstall KotOR to fix this.", MsgBoxStyle.Critical, "Chitin.key file altered")
                 End If
             End If
+
             If Me.hasK2 Then
                 frmMain.gK2ChitinKey = New clsChitinKey(frmMain.CurrentSettings.KeyFileLocation(1))
-                Console.WriteLine("gK2ChitinKey: Lsum = " + StringType.FromLong(frmMain.gK2ChitinKey.Lsum) + ", Llength = " + StringType.FromLong(frmMain.gK2ChitinKey.Llength))
+
+                Console.WriteLine("gK2ChitinKey: Lsum = " & StringType.FromLong(frmMain.gK2ChitinKey.Lsum) & ", Llength = " & StringType.FromLong(frmMain.gK2ChitinKey.Llength))
+
                 If Not frmMain.gK2ChitinKey.IsValid(1) Then
                     Interaction.MsgBox("Your Kotor II chitin.key file appears to be corrupt or is a non-US version.", MsgBoxStyle.Information, "Chitin.key file not valid")
                 End If
+
                 If frmMain.gK2ChitinKey.BiffList.Length <> 11 Then
                     Interaction.MsgBox("Your Kotor II chitin.key file appears to have been altered from the official version." & vbLf & vbLf & "If you have not altered it by installing custom packages, you may want to reinstall KotOR to fix this.", MsgBoxStyle.Critical, "Chitin.key file altered")
                 End If
             End If
+
+            ' -----------------------------------------------------------------
+            ' Build main resource roots and apply theme-aware tree colours.
+            ' -----------------------------------------------------------------
             Me.SetupTreeRoots()
+
+            If _theme Is Nothing Then
+                _theme = KotorTheme.CreateDefault()
+            End If
+
             If Not Me.hasK1 Then
-                Me.TreeView.Nodes(0).ForeColor = Color.Gray
+                Me.TreeView.Nodes(0).ForeColor = _theme.TextMuted
             End If
+
             If Not Me.hasK2 Then
-                Me.TreeView.Nodes(1).ForeColor = Color.Gray
+                Me.TreeView.Nodes(1).ForeColor = _theme.TextMuted
             End If
+
             If Me.hasK1 Then
                 Me.SetupRootChildren(CType(Me.TreeView.Nodes(0), KotorTreeNode))
             End If
+
             If Me.hasK2 Then
                 Me.SetupRootChildren(CType(Me.TreeView.Nodes(1), KotorTreeNode))
             End If
+
+            Me.RefreshTreeNodeColours()
+
             If frmMain.CurrentSettings.bBuildBIFFtreeOnStartup Then
                 If Me.hasK1 Then
                     Me.BuildTreeView(CType(Me.TreeView.Nodes(0), KotorTreeNode), False)
                 End If
+
                 If Me.hasK2 Then
                     Me.BuildTreeView(CType(Me.TreeView.Nodes(1), KotorTreeNode), False)
                 End If
+
+                Me.RefreshTreeNodeColours()
             End If
+
             If frmMain.IsOnly1KotORInstalled() Then
                 If Me.hasK1 Then
                     Me.TreeView.SelectedNode = Me.TreeView.Nodes(0)
                 End If
+
                 If Me.hasK2 Then
                     Me.TreeView.SelectedNode = Me.TreeView.Nodes(1)
                 End If
             End If
+
             Me.CreateTemplateTagsHashFiles()
             Me.ExtractNWScripts()
+
             If Me.CmdArgs IsNot Nothing Then
                 Me.g_CmdLineOpenedForm = Me.OpenFileFromCmdLine()
             End If
+
             Me.ManageMRUMainFileMenu()
+
             If frmMain.CurrentSettings.bRememberLastTreeNode AndAlso frmMain.CurrentSettings.LastClickedTVNodePath IsNot Nothing AndAlso StringType.StrCmp(frmMain.CurrentSettings.LastClickedTVNodePath, "", False) <> 0 Then
                 frmMain.OpenTreeViewToPath(frmMain.CurrentSettings.LastClickedTVNodePath, Me.TreeView.Nodes(0), 0, True)
             End If
+
             If frmMain.CurrentSettings.bRememberTreeViewState Then
                 Try
                     For Each obj As Object In frmMain.CurrentSettings.TreeOpenPaths
@@ -3026,17 +3356,22 @@ Namespace kotor_tool
                     Next
                 Finally
                     Dim enumerator As IEnumerator
+
                     If TypeOf enumerator Is IDisposable Then
                         CType(enumerator, IDisposable).Dispose()
                     End If
                 End Try
             End If
+
             If frmMain.CurrentSettings.bCheckForUpdatesAtStartup Then
                 Me.g_CheckForUpdatesSilently = False
+
                 Dim checkForUpdate As frmMain.CheckForUpdate = AddressOf Me.CheckForUpdateA
+
                 Console.WriteLine("Starting CheckForUpdate thread")
                 checkForUpdate.BeginInvoke(Nothing, Nothing)
             End If
+
             UserSettings.SaveSettings(frmMain.CurrentSettings)
         End Sub
 
@@ -3528,89 +3863,198 @@ Namespace kotor_tool
                 End If
                 frmTextEditor.Show()
             Else
+
+
+
+
+
+
+                ''' PRESERVED JUST IN CASE WE NEED TO REVERT IT BACK. 
+
+                'If StringType.StrCmp(resTypeStr, "ncs", False) = 0 Then
+                '    Me.EnsureWorkingDirectoryExists()
+                '    frmMain.WriteByteArray(frmMain.gRootPath + "working\temp.ncs", array)
+                '    Dim text6 As String = frmMain.gRootPath + "nwnnsscomp.exe"
+                '    Try
+                '        Dim process2 As Process = New Process()
+                '        process2.StartInfo.FileName = text6
+                '        process2.StartInfo.UseShellExecute = False
+                '        process2.StartInfo.CreateNoWindow = True
+                '        process2.StartInfo.Arguments = String.Concat(New String() {"-d -o """, frmMain.gRootPath, "working\temp.nss", """", " ", """", frmMain.gRootPath, "working\temp.ncs", """"})
+                '        process2.StartInfo.WindowStyle = ProcessWindowStyle.Hidden
+                '        process2.StartInfo.RedirectStandardOutput = True
+                '        process2.Start()
+                '        Dim text7 As String = process2.StandardOutput.ReadToEnd()
+                '        process2.WaitForExit(4000)
+                '        Dim fileStream3 As FileStream = New FileStream(frmMain.gRootPath + "working\temp.nss", FileMode.Open)
+                '        Dim frmTextEditor2 As frmTextEditor = New frmTextEditor(node.Filename, False, "")
+                '        Dim asciiencoding2 As ASCIIEncoding = New ASCIIEncoding()
+                '        array = New Byte(CInt((fileStream3.Length - 1L)) + 1 - 1) {}
+                '        fileStream3.Read(array, 0, CInt(fileStream3.Length))
+                '        frmTextEditor2.tbGeneric.Text = asciiencoding2.GetString(array)
+                '        frmTextEditor2.tbGeneric.SelectionLength = 0
+                '        fileStream3.Close()
+                '        frmTextEditor2.Show()
+                '        GoTo IL_12BE
+                '    Catch ex2 As System.Exception
+                '        If StringType.StrCmp(ex2.Message, "", False) <> 0 Then
+                '            Interaction.MsgBox("                      Error launching nwnnsscomp" & vbCr & vbCr & "Is it installed in the same directory as this program?", MsgBoxStyle.OkOnly, Nothing)
+                '        End If
+                '        GoTo IL_12BE
+                '    End Try
+                'End If
+
+               
+
+
+                '' Fixed Issue with not finding nwnnsscomp.exe after updating to relative directory root.
+                '' Updated for Fred Tetra nwnnsscomp v1.03 syntax.
+                '' Fixed Issue with nwscript.nss lookup by copying it beside nwnnsscomp.exe.
+                '' Test layout now runs nwnnsscomp fully from Application.StartupPath:
+                ''   nwnnsscomp.exe
+                ''   nwscript.nss
+                ''   temp.ncs
+                ''   temp.nss
+                '' STILL BUGGY AS FUCK. 
+                '' For KoTOR I decompile:
+                ''   -d -g 1 "temp.ncs"
+                ''
+                '' Game numbers:
+                ''   -g 1 = KoTOR
+                ''   -g 2 = KoTOR:TSL
+
+
                 If StringType.StrCmp(resTypeStr, "ncs", False) = 0 Then
                     Me.EnsureWorkingDirectoryExists()
-                    frmMain.WriteByteArray(frmMain.gRootPath + "working\temp.ncs", array)
-                    Dim text6 As String = frmMain.gRootPath + "nwnnsscomp.exe"
+
+                    Dim workingDirectory As String = frmMain.GetWorkingDirectoryPath()
+                    Dim tempNcsPath As String = System.IO.Path.Combine(workingDirectory, "temp.ncs")
+                    Dim tempNssPath As String = System.IO.Path.Combine(workingDirectory, "temp.nss")
+                    Dim expectedNssPath As String = System.IO.Path.Combine(workingDirectory, System.IO.Path.GetFileNameWithoutExtension(node.Filename) & ".nss")
+                    Dim compilerPath As String = System.IO.Path.Combine(Application.StartupPath, "nwnnsscomp.exe")
+
+                    frmMain.WriteByteArray(tempNcsPath, array)
+
+                    ' -------------------------------------------------------------
+                    ' Preferred path:
+                    ' If the matching NSS source file has already been extracted into
+                    ' the working folder, open that directly instead of invoking
+                    ' nwnnsscomp.
+                    ' -------------------------------------------------------------
+                    If System.IO.File.Exists(expectedNssPath) Then
+                        Dim existingSourceStream As FileStream = New FileStream(expectedNssPath, FileMode.Open, FileAccess.Read)
+                        Dim existingTextEditor As frmTextEditor = New frmTextEditor(node.Filename, False, "")
+                        Dim existingAsciiEncoding As ASCIIEncoding = New ASCIIEncoding()
+
+                        array = New Byte(CInt(existingSourceStream.Length - 1L)) {}
+                        existingSourceStream.Read(array, 0, CInt(existingSourceStream.Length))
+
+                        existingTextEditor.tbGeneric.Text = existingAsciiEncoding.GetString(array)
+                        existingTextEditor.tbGeneric.SelectionLength = 0
+
+                        existingSourceStream.Close()
+                        existingTextEditor.Show()
+
+                        GoTo IL_12BE
+                    End If
+
+                    If Not System.IO.File.Exists(compilerPath) Then
+                        Interaction.MsgBox( _
+                            "Error launching nwnnsscomp.exe." & vbCrLf & vbCrLf & _
+                            "Expected location:" & vbCrLf & _
+                            compilerPath, _
+                            MsgBoxStyle.OkOnly, _
+                            "Kotor Tool" _
+                        )
+
+                        GoTo IL_12BE
+                    End If
+
                     Try
                         Dim process2 As Process = New Process()
-                        process2.StartInfo.FileName = text6
+
+                        process2.StartInfo.FileName = compilerPath
                         process2.StartInfo.UseShellExecute = False
                         process2.StartInfo.CreateNoWindow = True
-                        process2.StartInfo.Arguments = String.Concat(New String() {"-d -o """, frmMain.gRootPath, "working\temp.nss", """", " ", """", frmMain.gRootPath, "working\temp.ncs", """"})
                         process2.StartInfo.WindowStyle = ProcessWindowStyle.Hidden
                         process2.StartInfo.RedirectStandardOutput = True
+
+                        process2.StartInfo.Arguments = _
+                            "-d -o " & _
+                            """" & tempNssPath & """" & " " & _
+                            """" & tempNcsPath & """"
+
                         process2.Start()
+
                         Dim text7 As String = process2.StandardOutput.ReadToEnd()
                         process2.WaitForExit(4000)
-                        Dim fileStream3 As FileStream = New FileStream(frmMain.gRootPath + "working\temp.nss", FileMode.Open)
+
+                        Dim outputNssPath As String = tempNssPath
+
+                        If Not System.IO.File.Exists(outputNssPath) Then
+                            If System.IO.File.Exists(expectedNssPath) Then
+                                outputNssPath = expectedNssPath
+                            End If
+                        End If
+
+                        If Not System.IO.File.Exists(outputNssPath) Then
+                            Interaction.MsgBox( _
+                                "nwnnsscomp ran, but did not create an NSS file." & vbCrLf & vbCrLf & _
+                                "Compiler:" & vbCrLf & compilerPath & vbCrLf & vbCrLf & _
+                                "Arguments:" & vbCrLf & process2.StartInfo.Arguments & vbCrLf & vbCrLf & _
+                                "Expected temp output:" & vbCrLf & tempNssPath & vbCrLf & vbCrLf & _
+                                "Expected named output:" & vbCrLf & expectedNssPath & vbCrLf & vbCrLf & _
+                                "Output:" & vbCrLf & text7, _
+                                MsgBoxStyle.OkOnly, _
+                                "Kotor Tool" _
+                            )
+
+                            GoTo IL_12BE
+                        End If
+
+                        Dim fileStream3 As FileStream = New FileStream(outputNssPath, FileMode.Open, FileAccess.Read)
                         Dim frmTextEditor2 As frmTextEditor = New frmTextEditor(node.Filename, False, "")
                         Dim asciiencoding2 As ASCIIEncoding = New ASCIIEncoding()
-                        array = New Byte(CInt((fileStream3.Length - 1L)) + 1 - 1) {}
+
+                        array = New Byte(CInt(fileStream3.Length - 1L)) {}
                         fileStream3.Read(array, 0, CInt(fileStream3.Length))
+
                         frmTextEditor2.tbGeneric.Text = asciiencoding2.GetString(array)
                         frmTextEditor2.tbGeneric.SelectionLength = 0
+
                         fileStream3.Close()
                         frmTextEditor2.Show()
+
                         GoTo IL_12BE
+
                     Catch ex2 As System.Exception
-                        If StringType.StrCmp(ex2.Message, "", False) <> 0 Then
-                            Interaction.MsgBox("                      Error launching nwnnsscomp" & vbCr & vbCr & "Is it installed in the same directory as this program?", MsgBoxStyle.OkOnly, Nothing)
-                        End If
+                        Interaction.MsgBox( _
+                            "Error launching nwnnsscomp.exe." & vbCrLf & vbCrLf & _
+                            "Compiler path:" & vbCrLf & _
+                            compilerPath & vbCrLf & vbCrLf & _
+                            "Exception:" & vbCrLf & _
+                            ex2.Message, _
+                            MsgBoxStyle.OkOnly, _
+                            "Kotor Tool" _
+                        )
+
                         GoTo IL_12BE
                     End Try
                 End If
-                '           If StringType.StrCmp(resTypeStr, "are", False) = 0 OrElse StringType.StrCmp(resTypeStr, "fac", False) = 0 OrElse StringType.StrCmp(resTypeStr, "jrl", False) = 0 OrElse StringType.StrCmp(resTypeStr, "git", False) = 0 OrElse StringType.StrCmp(resTypeStr, "gui", False) = 0 OrElse StringType.StrCmp(resTypeStr, "ifo", False) = 0 OrElse StringType.StrCmp(resTypeStr, "itp", False) = 0 OrElse StringType.StrCmp(resTypeStr, "pth", False) = 0 OrElse StringType.StrCmp(resTypeStr, "ptm", False) = 0 OrElse StringType.StrCmp(resTypeStr, "ptt", False) = 0 OrElse StringType.StrCmp(resTypeStr, "res", False) = 0 OrElse StringType.StrCmp(resTypeStr, "ute", False) = 0 Then
-                '               cursor.Current = Cursors.WaitCursor
-                '               If (Control.ModifierKeys And Keys.Shift) > Keys.None Then
-                '                   Dim clsGFF As clsGFF = New clsGFF(Me.NodeTreeRootIndex(node))
-                '                   clsGFF.RTFMode = False
-                '                   clsGFF.Parse(array)
-                '	New frmTextEditor() With { .Filename = node.Filename, .Text = "Text Editor - " + node.Filename, .RTFMode = False, .tbGeneric = { .Text = clsGFF.ToString(), .SelectionLength = 0 } }.Show()
-                '               ElseIf ((Control.ModifierKeys And Keys.Control) Or If(-If((frmMain.CurrentSettings.bAlwaysUnknownGFFasText > False), Keys.LButton, Keys.None), Keys.LButton, Keys.None)) > Keys.None Then
-                '                   Dim clsGFF2 As clsGFF = New clsGFF(Me.NodeTreeRootIndex(node))
-                '                   clsGFF2.RTFMode = True
-                '                   clsGFF2.Parse(array)
-                '	New frmTextEditor() With { .Filename = node.Filename, .Text = "Text Editor - " + node.Filename, .RTFMode = True, .tbGeneric = { .Rtf = clsGFF2.ToString(), .SelectionLength = 0 } }.Show()
-                '               Else
-                '                   Me.EditGFFResource(node.Filename, array)
-                '               End If
-                '           ElseIf StringType.StrCmp(resTypeStr, "utc", False) = 0 Then
-                '               Dim clsUTC As clsUTC = New clsUTC(array, Me.NodeTreeRootIndex(node))
-                'New frmUTC_Editor(clsUTC, Me.NodeTreeRootIndex(node), False, "") With { .EditingFilePath = frmMain.CurrentSettings.defaultSaveLocation + "\" + node.Text }.Show()
-                '           ElseIf StringType.StrCmp(resTypeStr, "utd", False) = 0 Then
-                '               Dim clsUTD As clsUTD = New clsUTD(array, Me.NodeTreeRootIndex(node))
-                'New frmUTD_Editor(clsUTD, Me.NodeTreeRootIndex(node), False, "") With { .EditingFilePath = frmMain.CurrentSettings.defaultSaveLocation + "\" + node.Text }.Show()
-                '           ElseIf StringType.StrCmp(resTypeStr, "uti", False) = 0 Then
-                '               Dim clsUTI As clsUTI = New clsUTI(array, Me.NodeTreeRootIndex(node))
-                'New frmUTI_Editor(clsUTI, Me.NodeTreeRootIndex(node), False, "") With { .EditingFilePath = frmMain.CurrentSettings.defaultSaveLocation + "\" + node.Text }.Show()
-                '           ElseIf StringType.StrCmp(resTypeStr, "utm", False) = 0 Then
-                '               Dim clsUTM As clsUTM = New clsUTM(array, Me.NodeTreeRootIndex(node))
-                'New frmUTM_Editor(clsUTM, Me.NodeTreeRootIndex(node), False, "") With { .EditingFilePath = frmMain.CurrentSettings.defaultSaveLocation + "\" + node.Text }.Show()
-                '           ElseIf StringType.StrCmp(resTypeStr, "utp", False) = 0 Then
-                '               Dim clsUTP As clsUTP = New clsUTP(array, Me.NodeTreeRootIndex(node))
-                'New frmUTP_Editor(clsUTP, Me.NodeTreeRootIndex(node), False, "") With { .EditingFilePath = frmMain.CurrentSettings.defaultSaveLocation + "\" + node.Text }.Show()
-                '           ElseIf StringType.StrCmp(resTypeStr, "uts", False) = 0 Then
-                '               Dim clsUTS As clsUTS = New clsUTS(array, Me.NodeTreeRootIndex(node))
-                'New frmUTS_Editor(clsUTS, Me.NodeTreeRootIndex(node), False, "") With { .EditingFilePath = frmMain.CurrentSettings.defaultSaveLocation + "\" + node.Text }.Show()
-                '           ElseIf StringType.StrCmp(resTypeStr, "utt", False) = 0 Then
-                '               Dim clsUTT As clsUTT = New clsUTT(array, Me.NodeTreeRootIndex(node))
-                'New frmUTT_Editor(clsUTT, Me.NodeTreeRootIndex(node), False, "") With { .EditingFilePath = frmMain.CurrentSettings.defaultSaveLocation + "\" + node.Text }.Show()
-                '           ElseIf StringType.StrCmp(resTypeStr, "utw", False) = 0 Then
-                '               Dim clsUTW As clsUTW = New clsUTW(array, Me.NodeTreeRootIndex(node))
-                'New frmUTW_Editor(clsUTW, Me.NodeTreeRootIndex(node), False, "") With { .EditingFilePath = frmMain.CurrentSettings.defaultSaveLocation + "\" + node.Text }.Show()
+
+
                 If StringType.StrCmp(resTypeStr, "are", False) = 0 OrElse _
-   StringType.StrCmp(resTypeStr, "fac", False) = 0 OrElse _
-   StringType.StrCmp(resTypeStr, "jrl", False) = 0 OrElse _
-   StringType.StrCmp(resTypeStr, "git", False) = 0 OrElse _
-   StringType.StrCmp(resTypeStr, "gui", False) = 0 OrElse _
-   StringType.StrCmp(resTypeStr, "ifo", False) = 0 OrElse _
-   StringType.StrCmp(resTypeStr, "itp", False) = 0 OrElse _
-   StringType.StrCmp(resTypeStr, "pth", False) = 0 OrElse _
-   StringType.StrCmp(resTypeStr, "ptm", False) = 0 OrElse _
-   StringType.StrCmp(resTypeStr, "ptt", False) = 0 OrElse _
-   StringType.StrCmp(resTypeStr, "res", False) = 0 OrElse _
-   StringType.StrCmp(resTypeStr, "ute", False) = 0 Then
+                   StringType.StrCmp(resTypeStr, "fac", False) = 0 OrElse _
+                   StringType.StrCmp(resTypeStr, "jrl", False) = 0 OrElse _
+                   StringType.StrCmp(resTypeStr, "git", False) = 0 OrElse _
+                   StringType.StrCmp(resTypeStr, "gui", False) = 0 OrElse _
+                   StringType.StrCmp(resTypeStr, "ifo", False) = 0 OrElse _
+                   StringType.StrCmp(resTypeStr, "itp", False) = 0 OrElse _
+                   StringType.StrCmp(resTypeStr, "pth", False) = 0 OrElse _
+                   StringType.StrCmp(resTypeStr, "ptm", False) = 0 OrElse _
+                   StringType.StrCmp(resTypeStr, "ptt", False) = 0 OrElse _
+                   StringType.StrCmp(resTypeStr, "res", False) = 0 OrElse _
+                   StringType.StrCmp(resTypeStr, "ute", False) = 0 Then
 
                     cursor.Current = Cursors.WaitCursor
 
@@ -4430,18 +4874,33 @@ IL_12BE:
             End If
         End Sub
 
+
+        ' -----------------------------------------------------------------
+        ' Legacy ToolBar1 handler removed.
+        '
+        ' The original WinForms ToolBar/ToolBarButton system has been replaced
+        ' by pnlToolBar and normal themed Button controls:
+        '
+        '   btnTool2DA
+        '   btnToolConversation
+        '   btnToolText
+        '   btnToolERF
+        '
+        ' Click events are now wired by WireModernToolbar().
+        ' -----------------------------------------------------------------
+
         ' Token: 0x06000757 RID: 1879 RVA: 0x00258040 File Offset: 0x00257040
-        Private Sub ToolBar1_ButtonClick(ByVal sender As Object, ByVal e As ToolBarButtonClickEventArgs) Handles ToolBar1.ButtonClick
-            If e.Button Is Me.tbbtn2DAEditor Then
-                Me.Open2DAFileEditor()
-            ElseIf e.Button Is Me.tbbtnConversationEditor Then
-                Me.OpenConversationEditor()
-            ElseIf e.Button Is Me.tbbtnERFBuilder Then
-                Me.OpenERFBuilder()
-            ElseIf e.Button Is Me.tbbtnTextEditor Then
-                Me.OpenTextEditor()
-            End If
-        End Sub
+        'Private Sub ToolBar1_ButtonClick(ByVal sender As Object, ByVal e As ToolBarButtonClickEventArgs) Handles ToolBar1.ButtonClick
+        '    If e.Button Is Me.tbbtn2DAEditor Then
+        '        Me.Open2DAFileEditor()
+        '    ElseIf e.Button Is Me.tbbtnConversationEditor Then
+        '        Me.OpenConversationEditor()
+        '    ElseIf e.Button Is Me.tbbtnERFBuilder Then
+        '        Me.OpenERFBuilder()
+        '    ElseIf e.Button Is Me.tbbtnTextEditor Then
+        '        Me.OpenTextEditor()
+        '    End If
+        'End Sub
 
         ' Token: 0x06000758 RID: 1880 RVA: 0x002580A4 File Offset: 0x002570A4
         Private Sub Button6_Click(ByVal sender As Object, ByVal e As EventArgs)
@@ -4702,6 +5161,35 @@ IL_12BE:
 
         ' Token: 0x040003B5 RID: 949
         Public Shared gRootPath As String
+        Public Shared gWorkingPath As String
+
+        Public Shared Function GetApplicationRootPath() As String
+            Dim path As String = Application.StartupPath
+
+            If Not path.EndsWith("\") Then
+                path &= "\"
+            End If
+
+            Return path
+        End Function
+
+        Public Shared Function GetWorkingDirectoryPath() As String
+            Dim path As String = IO.Path.Combine(GetApplicationRootPath(), "working")
+
+            If Not IO.Directory.Exists(path) Then
+                IO.Directory.CreateDirectory(path)
+            End If
+
+            If Not path.EndsWith("\") Then
+                path &= "\"
+            End If
+
+            Return path
+        End Function
+
+        Public Shared Function GetWorkingFilePath(ByVal fileName As String) As String
+            Return IO.Path.Combine(GetWorkingDirectoryPath(), IO.Path.GetFileName(fileName))
+        End Function
 
         ' Token: 0x040003B6 RID: 950
         Public Shared gImageViewer As frmImageViewer
@@ -4765,6 +5253,8 @@ IL_12BE:
 
         ' Token: 0x040003CA RID: 970
         Private g_abbbIndex As Integer
+
+        Private _theme As KotorTheme
 
         ' Token: 0x02000055 RID: 85
         ' (Invoke) Token: 0x06000765 RID: 1893

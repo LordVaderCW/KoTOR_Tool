@@ -43,7 +43,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06001701 RID: 5889 RVA: 0x002CAE18 File Offset: 0x002C9E18
-        Private Sub btnCancel_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnCancel_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnCancel.Click
             Me.Close()
         End Sub
 
@@ -78,7 +78,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06001704 RID: 5892 RVA: 0x002CB028 File Offset: 0x002CA028
-        Private Sub btnSave_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnSave_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSave.Click
             Me.SetGFFNodeValues()
             If Not Me.m_bSaveGameMode Then
                 Me.m_EditingFilePath = StringType.FromObject(frmMain.GetFilePath("save", Me.CurrentSettings.defaultSaveLocation, Path.GetFileNameWithoutExtension(Me.m_EditingFilePath) + ".utw", "", "", False, True))
@@ -93,7 +93,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06001705 RID: 5893 RVA: 0x002CB0C0 File Offset: 0x002CA0C0
-        Private Sub btnSetNameLang_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnSetNameLang_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSetNameLang.Click
             Dim frmCExoLocStringLanguagePicker As frmCExoLocStringLanguagePicker = New frmCExoLocStringLanguagePicker(Me.NameLang)
             If frmCExoLocStringLanguagePicker.ShowDialog(Me) = DialogResult.OK Then
                 Me.NameLang = frmCExoLocStringLanguagePicker.LanguageID
@@ -101,7 +101,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06001706 RID: 5894 RVA: 0x002CB0F0 File Offset: 0x002CA0F0
-        Private Sub btnDebug_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnDebug_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnDebug.Click
             Dim frmTextEditor As frmTextEditor = New frmTextEditor()
             frmTextEditor.Filename = Me.tbName.Text + ".utt"
             frmTextEditor.Text = "Text Editor - " + frmTextEditor.Filename

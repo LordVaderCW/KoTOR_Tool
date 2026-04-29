@@ -138,7 +138,6 @@ Namespace kotor_tool
         Friend WithEvents tbActionsTakenScript2 As Global.System.Windows.Forms.TextBox
         Friend WithEvents Label39 As Global.System.Windows.Forms.Label
 
-
         ' Token: 0x0600030F RID: 783 RVA: 0x002310AC File Offset: 0x002300AC
         Protected Overrides Sub Dispose(ByVal disposing As Boolean)
             If disposing AndAlso Me.components IsNot Nothing Then
@@ -150,194 +149,216 @@ Namespace kotor_tool
         ' Token: 0x0600040C RID: 1036 RVA: 0x00232F1C File Offset: 0x00231F1C
         <Global.System.Diagnostics.DebuggerStepThrough()> _
         Private Sub InitializeComponent()
-            Me.components = New Global.System.ComponentModel.Container()
-            Dim resources As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager(GetType(Global.kotor_tool.frmDialogEditor))
-            Me.tvConversation = New Global.System.Windows.Forms.TreeView()
-            Me.tbConversationText = New Global.System.Windows.Forms.TextBox()
-            Me.Label1 = New Global.System.Windows.Forms.Label()
-            Me.Label2 = New Global.System.Windows.Forms.Label()
-            Me.TabControl1 = New Global.System.Windows.Forms.TabControl()
-            Me.tabpagActionsTaken = New Global.System.Windows.Forms.TabPage()
-            Me.tbTextActiveScript = New Global.System.Windows.Forms.TextBox()
-            Me.Label3 = New Global.System.Windows.Forms.Label()
-            Me.tbActionsTakenScript = New Global.System.Windows.Forms.TextBox()
-            Me.Label4 = New Global.System.Windows.Forms.Label()
-            Me.tbTextActiveScript2 = New Global.System.Windows.Forms.TextBox()
-            Me.Label38 = New Global.System.Windows.Forms.Label()
-            Me.tbActionsTakenScript2 = New Global.System.Windows.Forms.TextBox()
-            Me.Label39 = New Global.System.Windows.Forms.Label()
-            Me.tabpagCamera = New Global.System.Windows.Forms.TabPage()
-            Me.nudCamFieldOfView = New Global.System.Windows.Forms.NumericUpDown()
-            Me.cmbxCamVidEffect = New Global.System.Windows.Forms.ComboBox()
-            Me.nudFadeColorG = New Global.System.Windows.Forms.NumericUpDown()
-            Me.nudFadeColorB = New Global.System.Windows.Forms.NumericUpDown()
-            Me.nudFadeColorR = New Global.System.Windows.Forms.NumericUpDown()
-            Me.cmbxFadeType = New Global.System.Windows.Forms.ComboBox()
-            Me.nudCameraID = New Global.System.Windows.Forms.NumericUpDown()
-            Me.nudCamHeightOffset = New Global.System.Windows.Forms.NumericUpDown()
-            Me.nudCameraAngle = New Global.System.Windows.Forms.NumericUpDown()
-            Me.Label7 = New Global.System.Windows.Forms.Label()
-            Me.Label8 = New Global.System.Windows.Forms.Label()
-            Me.tbListener = New Global.System.Windows.Forms.TextBox()
-            Me.Label9 = New Global.System.Windows.Forms.Label()
-            Me.Label11 = New Global.System.Windows.Forms.Label()
-            Me.Label13 = New Global.System.Windows.Forms.Label()
-            Me.Label14 = New Global.System.Windows.Forms.Label()
-            Me.Label15 = New Global.System.Windows.Forms.Label()
-            Me.Label16 = New Global.System.Windows.Forms.Label()
-            Me.btnChooseColor = New Global.System.Windows.Forms.Button()
-            Me.nudTarHeightOffset = New Global.System.Windows.Forms.NumericUpDown()
-            Me.nudFadeDelay = New Global.System.Windows.Forms.NumericUpDown()
-            Me.nudFadeLength = New Global.System.Windows.Forms.NumericUpDown()
-            Me.Label28 = New Global.System.Windows.Forms.Label()
-            Me.Label29 = New Global.System.Windows.Forms.Label()
-            Me.Label37 = New Global.System.Windows.Forms.Label()
-            Me.tabpagAnimationSound = New Global.System.Windows.Forms.TabPage()
-            Me.dgAnimList = New Global.System.Windows.Forms.DataGrid()
-            Me.Label5 = New Global.System.Windows.Forms.Label()
-            Me.tbSound = New Global.System.Windows.Forms.TextBox()
-            Me.Label6 = New Global.System.Windows.Forms.Label()
-            Me.tbVoiceOverResRef = New Global.System.Windows.Forms.TextBox()
-            Me.Label10 = New Global.System.Windows.Forms.Label()
-            Me.btnDeleteAnimListEntry = New Global.System.Windows.Forms.Button()
-            Me.btnAddAnimListEntry = New Global.System.Windows.Forms.Button()
-            Me.tabpagPlot = New Global.System.Windows.Forms.TabPage()
-            Me.tbQuest = New Global.System.Windows.Forms.TextBox()
-            Me.Label35 = New Global.System.Windows.Forms.Label()
-            Me.nudPlotIndex = New Global.System.Windows.Forms.NumericUpDown()
-            Me.lblPlotIndex = New Global.System.Windows.Forms.Label()
-            Me.Label12 = New Global.System.Windows.Forms.Label()
-            Me.nudPlotXPPercentage = New Global.System.Windows.Forms.NumericUpDown()
-            Me.Label36 = New Global.System.Windows.Forms.Label()
-            Me.nudQuestEntry = New Global.System.Windows.Forms.NumericUpDown()
-            Me.tabpagComment = New Global.System.Windows.Forms.TabPage()
-            Me.tbComments = New Global.System.Windows.Forms.TextBox()
-            Me.tabpagThisFile1 = New Global.System.Windows.Forms.TabPage()
-            Me.chkbAnimatedCut = New Global.System.Windows.Forms.CheckBox()
-            Me.tbCameraModel = New Global.System.Windows.Forms.TextBox()
-            Me.Label31 = New Global.System.Windows.Forms.Label()
-            Me.cmbxConversationType = New Global.System.Windows.Forms.ComboBox()
-            Me.chkbSkippable = New Global.System.Windows.Forms.CheckBox()
-            Me.tbVO_ID = New Global.System.Windows.Forms.TextBox()
-            Me.Label20 = New Global.System.Windows.Forms.Label()
-            Me.Label21 = New Global.System.Windows.Forms.Label()
-            Me.tbEndConversation = New Global.System.Windows.Forms.TextBox()
-            Me.Label22 = New Global.System.Windows.Forms.Label()
-            Me.Label23 = New Global.System.Windows.Forms.Label()
-            Me.tbEndConverAbort = New Global.System.Windows.Forms.TextBox()
-            Me.Label24 = New Global.System.Windows.Forms.Label()
-            Me.tbAmbientTrack = New Global.System.Windows.Forms.TextBox()
-            Me.Label25 = New Global.System.Windows.Forms.Label()
-            Me.chkbUnequipItems = New Global.System.Windows.Forms.CheckBox()
-            Me.chkbUnequipHItem = New Global.System.Windows.Forms.CheckBox()
-            Me.Label26 = New Global.System.Windows.Forms.Label()
-            Me.nudDelayEntry = New Global.System.Windows.Forms.NumericUpDown()
-            Me.nudDelayReply = New Global.System.Windows.Forms.NumericUpDown()
-            Me.Label27 = New Global.System.Windows.Forms.Label()
-            Me.cmbxComputerType = New Global.System.Windows.Forms.ComboBox()
-            Me.tabpagThisFile2 = New Global.System.Windows.Forms.TabPage()
-            Me.dgStuntList = New Global.System.Windows.Forms.DataGrid()
-            Me.Label30 = New Global.System.Windows.Forms.Label()
-            Me.tabpagThisFile3 = New Global.System.Windows.Forms.TabPage()
-            Me.tabpagDebug = New Global.System.Windows.Forms.TabPage()
-            Me.trkbTVIndent = New Global.System.Windows.Forms.TrackBar()
-            Me.Label17 = New Global.System.Windows.Forms.Label()
-            Me.tbLinkID = New Global.System.Windows.Forms.TextBox()
-            Me.tbLinkedCnt = New Global.System.Windows.Forms.TextBox()
-            Me.tbSharedCnt = New Global.System.Windows.Forms.TextBox()
-            Me.Label18 = New Global.System.Windows.Forms.Label()
-            Me.Label19 = New Global.System.Windows.Forms.Label()
-            Me.btnDebug = New Global.System.Windows.Forms.Button()
-            Me.Label32 = New Global.System.Windows.Forms.Label()
-            Me.Label33 = New Global.System.Windows.Forms.Label()
-            Me.trkbTVItemHeight = New Global.System.Windows.Forms.TrackBar()
-            Me.tbLinkDesc = New Global.System.Windows.Forms.TextBox()
-            Me.Label34 = New Global.System.Windows.Forms.Label()
-            Me.btnShowLists = New Global.System.Windows.Forms.Button()
-            Me.btnCollapseAll = New Global.System.Windows.Forms.Button()
-            Me.btnExpandAll = New Global.System.Windows.Forms.Button()
-            Me.btnSave = New Global.System.Windows.Forms.Button()
-            Me.btnTest = New Global.System.Windows.Forms.Button()
-            Me.cmTVfunctions = New Global.System.Windows.Forms.ContextMenu()
-            Me.cmiTV_Add = New Global.System.Windows.Forms.MenuItem()
-            Me.cmiTV_Cut = New Global.System.Windows.Forms.MenuItem()
-            Me.cmiTV_Copy = New Global.System.Windows.Forms.MenuItem()
-            Me.cmiTV_Paste = New Global.System.Windows.Forms.MenuItem()
-            Me.cmiTV_PasteTree = New Global.System.Windows.Forms.MenuItem()
-            Me.cmiTV_PasteAsLink = New Global.System.Windows.Forms.MenuItem()
-            Me.MenuItem2 = New Global.System.Windows.Forms.MenuItem()
-            Me.cmiTV_MoveNodeUp = New Global.System.Windows.Forms.MenuItem()
-            Me.cmiTV_MoveNodeDown = New Global.System.Windows.Forms.MenuItem()
-            Me.tbSpeaker = New Global.System.Windows.Forms.TextBox()
-            Me.btnOpen = New Global.System.Windows.Forms.Button()
-            Me.MainMenu1 = New Global.System.Windows.Forms.MainMenu()
-            Me.MenuItem1 = New Global.System.Windows.Forms.MenuItem()
-            Me.miNew = New Global.System.Windows.Forms.MenuItem()
-            Me.miOpen = New Global.System.Windows.Forms.MenuItem()
-            Me.miSave = New Global.System.Windows.Forms.MenuItem()
-            Me.MenuItem4 = New Global.System.Windows.Forms.MenuItem()
-            Me.miQuit = New Global.System.Windows.Forms.MenuItem()
-            Me.ToolTip1 = New Global.System.Windows.Forms.ToolTip()
+            Me.components = New System.ComponentModel.Container()
+            Me.tvConversation = New System.Windows.Forms.TreeView()
+            Me.tbConversationText = New System.Windows.Forms.TextBox()
+            Me.Label1 = New System.Windows.Forms.Label()
+            Me.Label2 = New System.Windows.Forms.Label()
+            Me.TabControl1 = New System.Windows.Forms.TabControl()
+            Me.tabpagActionsTaken = New System.Windows.Forms.TabPage()
+            Me.tbTextActiveScript = New System.Windows.Forms.TextBox()
+            Me.Label3 = New System.Windows.Forms.Label()
+            Me.tbActionsTakenScript = New System.Windows.Forms.TextBox()
+            Me.Label4 = New System.Windows.Forms.Label()
+            Me.tbTextActiveScript2 = New System.Windows.Forms.TextBox()
+            Me.Label38 = New System.Windows.Forms.Label()
+            Me.tbActionsTakenScript2 = New System.Windows.Forms.TextBox()
+            Me.Label39 = New System.Windows.Forms.Label()
+            Me.tabpagCamera = New System.Windows.Forms.TabPage()
+            Me.nudCamFieldOfView = New System.Windows.Forms.NumericUpDown()
+            Me.cmbxCamVidEffect = New System.Windows.Forms.ComboBox()
+            Me.nudFadeColorG = New System.Windows.Forms.NumericUpDown()
+            Me.nudFadeColorB = New System.Windows.Forms.NumericUpDown()
+            Me.nudFadeColorR = New System.Windows.Forms.NumericUpDown()
+            Me.cmbxFadeType = New System.Windows.Forms.ComboBox()
+            Me.nudCameraID = New System.Windows.Forms.NumericUpDown()
+            Me.nudCamHeightOffset = New System.Windows.Forms.NumericUpDown()
+            Me.nudCameraAngle = New System.Windows.Forms.NumericUpDown()
+            Me.Label7 = New System.Windows.Forms.Label()
+            Me.Label8 = New System.Windows.Forms.Label()
+            Me.tbListener = New System.Windows.Forms.TextBox()
+            Me.Label9 = New System.Windows.Forms.Label()
+            Me.Label11 = New System.Windows.Forms.Label()
+            Me.Label13 = New System.Windows.Forms.Label()
+            Me.Label14 = New System.Windows.Forms.Label()
+            Me.Label15 = New System.Windows.Forms.Label()
+            Me.Label16 = New System.Windows.Forms.Label()
+            Me.btnChooseColor = New System.Windows.Forms.Button()
+            Me.nudTarHeightOffset = New System.Windows.Forms.NumericUpDown()
+            Me.nudFadeDelay = New System.Windows.Forms.NumericUpDown()
+            Me.nudFadeLength = New System.Windows.Forms.NumericUpDown()
+            Me.Label28 = New System.Windows.Forms.Label()
+            Me.Label29 = New System.Windows.Forms.Label()
+            Me.Label37 = New System.Windows.Forms.Label()
+            Me.tabpagAnimationSound = New System.Windows.Forms.TabPage()
+            Me.dgAnimList = New System.Windows.Forms.DataGrid()
+            Me.Label5 = New System.Windows.Forms.Label()
+            Me.tbSound = New System.Windows.Forms.TextBox()
+            Me.Label6 = New System.Windows.Forms.Label()
+            Me.tbVoiceOverResRef = New System.Windows.Forms.TextBox()
+            Me.Label10 = New System.Windows.Forms.Label()
+            Me.btnDeleteAnimListEntry = New System.Windows.Forms.Button()
+            Me.btnAddAnimListEntry = New System.Windows.Forms.Button()
+            Me.tabpagPlot = New System.Windows.Forms.TabPage()
+            Me.tbQuest = New System.Windows.Forms.TextBox()
+            Me.Label35 = New System.Windows.Forms.Label()
+            Me.nudPlotIndex = New System.Windows.Forms.NumericUpDown()
+            Me.lblPlotIndex = New System.Windows.Forms.Label()
+            Me.Label12 = New System.Windows.Forms.Label()
+            Me.nudPlotXPPercentage = New System.Windows.Forms.NumericUpDown()
+            Me.Label36 = New System.Windows.Forms.Label()
+            Me.nudQuestEntry = New System.Windows.Forms.NumericUpDown()
+            Me.tabpagComment = New System.Windows.Forms.TabPage()
+            Me.tbComments = New System.Windows.Forms.TextBox()
+            Me.tabpagThisFile1 = New System.Windows.Forms.TabPage()
+            Me.chkbAnimatedCut = New System.Windows.Forms.CheckBox()
+            Me.tbCameraModel = New System.Windows.Forms.TextBox()
+            Me.Label31 = New System.Windows.Forms.Label()
+            Me.cmbxConversationType = New System.Windows.Forms.ComboBox()
+            Me.chkbSkippable = New System.Windows.Forms.CheckBox()
+            Me.tbVO_ID = New System.Windows.Forms.TextBox()
+            Me.Label20 = New System.Windows.Forms.Label()
+            Me.Label21 = New System.Windows.Forms.Label()
+            Me.tbEndConversation = New System.Windows.Forms.TextBox()
+            Me.Label22 = New System.Windows.Forms.Label()
+            Me.Label23 = New System.Windows.Forms.Label()
+            Me.tbEndConverAbort = New System.Windows.Forms.TextBox()
+            Me.Label24 = New System.Windows.Forms.Label()
+            Me.tbAmbientTrack = New System.Windows.Forms.TextBox()
+            Me.Label25 = New System.Windows.Forms.Label()
+            Me.chkbUnequipItems = New System.Windows.Forms.CheckBox()
+            Me.chkbUnequipHItem = New System.Windows.Forms.CheckBox()
+            Me.Label26 = New System.Windows.Forms.Label()
+            Me.nudDelayEntry = New System.Windows.Forms.NumericUpDown()
+            Me.nudDelayReply = New System.Windows.Forms.NumericUpDown()
+            Me.Label27 = New System.Windows.Forms.Label()
+            Me.cmbxComputerType = New System.Windows.Forms.ComboBox()
+            Me.tabpagThisFile2 = New System.Windows.Forms.TabPage()
+            Me.dgStuntList = New System.Windows.Forms.DataGrid()
+            Me.Label30 = New System.Windows.Forms.Label()
+            Me.tabpagThisFile3 = New System.Windows.Forms.TabPage()
+            Me.tabpagDebug = New System.Windows.Forms.TabPage()
+            Me.trkbTVIndent = New System.Windows.Forms.TrackBar()
+            Me.Label17 = New System.Windows.Forms.Label()
+            Me.tbLinkID = New System.Windows.Forms.TextBox()
+            Me.tbLinkedCnt = New System.Windows.Forms.TextBox()
+            Me.tbSharedCnt = New System.Windows.Forms.TextBox()
+            Me.Label18 = New System.Windows.Forms.Label()
+            Me.Label19 = New System.Windows.Forms.Label()
+            Me.btnDebug = New System.Windows.Forms.Button()
+            Me.Label32 = New System.Windows.Forms.Label()
+            Me.Label33 = New System.Windows.Forms.Label()
+            Me.trkbTVItemHeight = New System.Windows.Forms.TrackBar()
+            Me.tbLinkDesc = New System.Windows.Forms.TextBox()
+            Me.Label34 = New System.Windows.Forms.Label()
+            Me.btnShowLists = New System.Windows.Forms.Button()
+            Me.btnCollapseAll = New System.Windows.Forms.Button()
+            Me.btnExpandAll = New System.Windows.Forms.Button()
+            Me.btnSave = New System.Windows.Forms.Button()
+            Me.btnTest = New System.Windows.Forms.Button()
+            Me.cmTVfunctions = New System.Windows.Forms.ContextMenu()
+            Me.cmiTV_Add = New System.Windows.Forms.MenuItem()
+            Me.cmiTV_Cut = New System.Windows.Forms.MenuItem()
+            Me.cmiTV_Copy = New System.Windows.Forms.MenuItem()
+            Me.cmiTV_Paste = New System.Windows.Forms.MenuItem()
+            Me.cmiTV_PasteTree = New System.Windows.Forms.MenuItem()
+            Me.cmiTV_PasteAsLink = New System.Windows.Forms.MenuItem()
+            Me.MenuItem2 = New System.Windows.Forms.MenuItem()
+            Me.cmiTV_MoveNodeUp = New System.Windows.Forms.MenuItem()
+            Me.cmiTV_MoveNodeDown = New System.Windows.Forms.MenuItem()
+            Me.tbSpeaker = New System.Windows.Forms.TextBox()
+            Me.btnOpen = New System.Windows.Forms.Button()
+            Me.MainMenu1 = New System.Windows.Forms.MainMenu(Me.components)
+            Me.MenuItem1 = New System.Windows.Forms.MenuItem()
+            Me.miNew = New System.Windows.Forms.MenuItem()
+            Me.miOpen = New System.Windows.Forms.MenuItem()
+            Me.miSave = New System.Windows.Forms.MenuItem()
+            Me.MenuItem4 = New System.Windows.Forms.MenuItem()
+            Me.miQuit = New System.Windows.Forms.MenuItem()
+            Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
             Me.TabControl1.SuspendLayout()
             Me.tabpagActionsTaken.SuspendLayout()
             Me.tabpagCamera.SuspendLayout()
-            CType(Me.nudCamFieldOfView, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudFadeColorG, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudFadeColorB, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudFadeColorR, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudCameraID, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudCamHeightOffset, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudCameraAngle, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudTarHeightOffset, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudFadeDelay, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudFadeLength, Global.System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudCamFieldOfView, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudFadeColorG, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudFadeColorB, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudFadeColorR, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudCameraID, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudCamHeightOffset, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudCameraAngle, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudTarHeightOffset, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudFadeDelay, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudFadeLength, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.tabpagAnimationSound.SuspendLayout()
-            CType(Me.dgAnimList, Global.System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.dgAnimList, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.tabpagPlot.SuspendLayout()
-            CType(Me.nudPlotIndex, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudPlotXPPercentage, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudQuestEntry, Global.System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudPlotIndex, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudPlotXPPercentage, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudQuestEntry, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.tabpagComment.SuspendLayout()
             Me.tabpagThisFile1.SuspendLayout()
-            CType(Me.nudDelayEntry, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudDelayReply, Global.System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudDelayEntry, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudDelayReply, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.tabpagThisFile2.SuspendLayout()
-            CType(Me.dgStuntList, Global.System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.dgStuntList, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.tabpagDebug.SuspendLayout()
-            CType(Me.trkbTVIndent, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.trkbTVItemHeight, Global.System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.trkbTVIndent, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.trkbTVItemHeight, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.SuspendLayout()
-            Me.tvConversation.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left Or Global.System.Windows.Forms.AnchorStyles.Right
+            '
+            'tvConversation
+            '
+            Me.tvConversation.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                        Or System.Windows.Forms.AnchorStyles.Left) _
+                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.tvConversation.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tvConversation.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tvConversation.HideSelection = False
-            Me.tvConversation.ImageIndex = -1
             Me.tvConversation.Indent = 16
             Me.tvConversation.ItemHeight = 16
-            Me.tvConversation.Location = New Global.System.Drawing.Point(32, 8)
+            Me.tvConversation.Location = New System.Drawing.Point(32, 45)
             Me.tvConversation.Name = "tvConversation"
-            Me.tvConversation.SelectedImageIndex = -1
-            Me.tvConversation.Size = New Global.System.Drawing.Size(736, 272)
+            Me.tvConversation.Size = New System.Drawing.Size(905, 198)
             Me.tvConversation.TabIndex = 0
-            Me.tbConversationText.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Me.tbConversationText.Location = New Global.System.Drawing.Point(32, 400)
+            '
+            'tbConversationText
+            '
+            Me.tbConversationText.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+            Me.tbConversationText.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tbConversationText.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbConversationText.Location = New System.Drawing.Point(12, 382)
             Me.tbConversationText.Multiline = True
             Me.tbConversationText.Name = "tbConversationText"
-            Me.tbConversationText.ScrollBars = Global.System.Windows.Forms.ScrollBars.Vertical
-            Me.tbConversationText.Size = New Global.System.Drawing.Size(240, 104)
+            Me.tbConversationText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+            Me.tbConversationText.Size = New System.Drawing.Size(260, 120)
             Me.tbConversationText.TabIndex = 4
-            Me.tbConversationText.Text = ""
-            Me.Label1.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Me.Label1.Location = New Global.System.Drawing.Point(32, 336)
+            '
+            'Label1
+            '
+            Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+            Me.Label1.BackColor = System.Drawing.Color.Transparent
+            Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label1.Location = New System.Drawing.Point(12, 302)
             Me.Label1.Name = "Label1"
-            Me.Label1.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label1.Size = New System.Drawing.Size(260, 18)
             Me.Label1.TabIndex = 3
             Me.Label1.Text = "Speaker Tag"
-            Me.Label2.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Me.Label2.Location = New Global.System.Drawing.Point(32, 384)
+            '
+            'Label2
+            '
+            Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+            Me.Label2.BackColor = System.Drawing.Color.Transparent
+            Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label2.Location = New System.Drawing.Point(12, 360)
             Me.Label2.Name = "Label2"
-            Me.Label2.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label2.Size = New System.Drawing.Size(260, 19)
             Me.Label2.TabIndex = 3
             Me.Label2.Text = "Text"
-            Me.TabControl1.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left Or Global.System.Windows.Forms.AnchorStyles.Right
+            '
+            'TabControl1
+            '
+            Me.TabControl1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.TabControl1.Controls.Add(Me.tabpagActionsTaken)
             Me.TabControl1.Controls.Add(Me.tabpagCamera)
             Me.TabControl1.Controls.Add(Me.tabpagAnimationSound)
@@ -347,14 +368,18 @@ Namespace kotor_tool
             Me.TabControl1.Controls.Add(Me.tabpagThisFile2)
             Me.TabControl1.Controls.Add(Me.tabpagThisFile3)
             Me.TabControl1.Controls.Add(Me.tabpagDebug)
-            Me.TabControl1.Location = New Global.System.Drawing.Point(280, 296)
+            Me.TabControl1.Location = New System.Drawing.Point(280, 249)
             Me.TabControl1.Multiline = True
             Me.TabControl1.Name = "TabControl1"
-            Me.TabControl1.Padding = New Global.System.Drawing.Point(8, 3)
+            Me.TabControl1.Padding = New System.Drawing.Point(8, 3)
             Me.TabControl1.SelectedIndex = 0
-            Me.TabControl1.Size = New Global.System.Drawing.Size(488, 216)
-            Me.TabControl1.SizeMode = Global.System.Windows.Forms.TabSizeMode.FillToRight
+            Me.TabControl1.Size = New System.Drawing.Size(657, 249)
+            Me.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
             Me.TabControl1.TabIndex = 5
+            '
+            'tabpagActionsTaken
+            '
+            Me.tabpagActionsTaken.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tabpagActionsTaken.Controls.Add(Me.tbTextActiveScript)
             Me.tabpagActionsTaken.Controls.Add(Me.Label3)
             Me.tabpagActionsTaken.Controls.Add(Me.tbActionsTakenScript)
@@ -363,63 +388,104 @@ Namespace kotor_tool
             Me.tabpagActionsTaken.Controls.Add(Me.Label38)
             Me.tabpagActionsTaken.Controls.Add(Me.tbActionsTakenScript2)
             Me.tabpagActionsTaken.Controls.Add(Me.Label39)
-            Me.tabpagActionsTaken.Location = New Global.System.Drawing.Point(4, 40)
+            Me.tabpagActionsTaken.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tabpagActionsTaken.Location = New System.Drawing.Point(4, 40)
             Me.tabpagActionsTaken.Name = "tabpagActionsTaken"
-            Me.tabpagActionsTaken.Size = New Global.System.Drawing.Size(480, 172)
+            Me.tabpagActionsTaken.Size = New System.Drawing.Size(649, 205)
             Me.tabpagActionsTaken.TabIndex = 0
             Me.tabpagActionsTaken.Text = "Node Scripts"
-            Me.tbTextActiveScript.CharacterCasing = Global.System.Windows.Forms.CharacterCasing.Lower
-            Me.tbTextActiveScript.Location = New Global.System.Drawing.Point(32, 88)
+            '
+            'tbTextActiveScript
+            '
+            Me.tbTextActiveScript.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tbTextActiveScript.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
+            Me.tbTextActiveScript.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbTextActiveScript.Location = New System.Drawing.Point(32, 102)
             Me.tbTextActiveScript.MaxLength = 16
             Me.tbTextActiveScript.Name = "tbTextActiveScript"
-            Me.tbTextActiveScript.Size = New Global.System.Drawing.Size(120, 20)
+            Me.tbTextActiveScript.Size = New System.Drawing.Size(120, 22)
             Me.tbTextActiveScript.TabIndex = 6
-            Me.tbTextActiveScript.Text = ""
-            Me.Label3.Location = New Global.System.Drawing.Point(32, 72)
+            '
+            'Label3
+            '
+            Me.Label3.BackColor = System.Drawing.Color.Transparent
+            Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label3.Location = New System.Drawing.Point(32, 83)
             Me.Label3.Name = "Label3"
-            Me.Label3.Size = New Global.System.Drawing.Size(216, 24)
+            Me.Label3.Size = New System.Drawing.Size(216, 28)
             Me.Label3.TabIndex = 7
             Me.Label3.Text = "Script that determines if node is available"
-            Me.tbActionsTakenScript.CharacterCasing = Global.System.Windows.Forms.CharacterCasing.Lower
-            Me.tbActionsTakenScript.Location = New Global.System.Drawing.Point(32, 32)
+            '
+            'tbActionsTakenScript
+            '
+            Me.tbActionsTakenScript.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tbActionsTakenScript.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
+            Me.tbActionsTakenScript.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbActionsTakenScript.Location = New System.Drawing.Point(32, 37)
             Me.tbActionsTakenScript.MaxLength = 16
             Me.tbActionsTakenScript.Name = "tbActionsTakenScript"
-            Me.tbActionsTakenScript.Size = New Global.System.Drawing.Size(120, 20)
+            Me.tbActionsTakenScript.Size = New System.Drawing.Size(120, 22)
             Me.tbActionsTakenScript.TabIndex = 4
-            Me.tbActionsTakenScript.Text = ""
-            Me.Label4.Location = New Global.System.Drawing.Point(32, 16)
+            '
+            'Label4
+            '
+            Me.Label4.BackColor = System.Drawing.Color.Transparent
+            Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label4.Location = New System.Drawing.Point(32, 18)
             Me.Label4.Name = "Label4"
-            Me.Label4.Size = New Global.System.Drawing.Size(136, 16)
+            Me.Label4.Size = New System.Drawing.Size(136, 19)
             Me.Label4.TabIndex = 5
             Me.Label4.Text = "Script to run for this node"
-            Me.tbTextActiveScript2.CharacterCasing = Global.System.Windows.Forms.CharacterCasing.Lower
-            Me.tbTextActiveScript2.Location = New Global.System.Drawing.Point(252, 88)
+            '
+            'tbTextActiveScript2
+            '
+            Me.tbTextActiveScript2.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tbTextActiveScript2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
+            Me.tbTextActiveScript2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbTextActiveScript2.Location = New System.Drawing.Point(252, 102)
             Me.tbTextActiveScript2.MaxLength = 16
             Me.tbTextActiveScript2.Name = "tbTextActiveScript2"
-            Me.tbTextActiveScript2.Size = New Global.System.Drawing.Size(128, 20)
+            Me.tbTextActiveScript2.Size = New System.Drawing.Size(128, 22)
             Me.tbTextActiveScript2.TabIndex = 6
-            Me.tbTextActiveScript2.Text = ""
             Me.tbTextActiveScript2.Visible = False
-            Me.Label38.Location = New Global.System.Drawing.Point(252, 72)
+            '
+            'Label38
+            '
+            Me.Label38.BackColor = System.Drawing.Color.Transparent
+            Me.Label38.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label38.Location = New System.Drawing.Point(252, 83)
             Me.Label38.Name = "Label38"
-            Me.Label38.Size = New Global.System.Drawing.Size(232, 24)
+            Me.Label38.Size = New System.Drawing.Size(232, 28)
             Me.Label38.TabIndex = 7
             Me.Label38.Text = "Script #2 that determines if node is available"
             Me.Label38.Visible = False
-            Me.tbActionsTakenScript2.CharacterCasing = Global.System.Windows.Forms.CharacterCasing.Lower
-            Me.tbActionsTakenScript2.Location = New Global.System.Drawing.Point(252, 32)
+            '
+            'tbActionsTakenScript2
+            '
+            Me.tbActionsTakenScript2.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tbActionsTakenScript2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
+            Me.tbActionsTakenScript2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbActionsTakenScript2.Location = New System.Drawing.Point(252, 37)
             Me.tbActionsTakenScript2.MaxLength = 16
             Me.tbActionsTakenScript2.Name = "tbActionsTakenScript2"
-            Me.tbActionsTakenScript2.Size = New Global.System.Drawing.Size(128, 20)
+            Me.tbActionsTakenScript2.Size = New System.Drawing.Size(128, 22)
             Me.tbActionsTakenScript2.TabIndex = 4
-            Me.tbActionsTakenScript2.Text = ""
             Me.tbActionsTakenScript2.Visible = False
-            Me.Label39.Location = New Global.System.Drawing.Point(252, 16)
+            '
+            'Label39
+            '
+            Me.Label39.BackColor = System.Drawing.Color.Transparent
+            Me.Label39.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label39.Location = New System.Drawing.Point(252, 18)
             Me.Label39.Name = "Label39"
-            Me.Label39.Size = New Global.System.Drawing.Size(144, 16)
+            Me.Label39.Size = New System.Drawing.Size(144, 19)
             Me.Label39.TabIndex = 5
             Me.Label39.Text = "Script #2 to run for this node"
             Me.Label39.Visible = False
+            '
+            'tabpagCamera
+            '
+            Me.tabpagCamera.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tabpagCamera.Controls.Add(Me.nudCamFieldOfView)
             Me.tabpagCamera.Controls.Add(Me.cmbxCamVidEffect)
             Me.tabpagCamera.Controls.Add(Me.nudFadeColorG)
@@ -445,170 +511,306 @@ Namespace kotor_tool
             Me.tabpagCamera.Controls.Add(Me.Label28)
             Me.tabpagCamera.Controls.Add(Me.Label29)
             Me.tabpagCamera.Controls.Add(Me.Label37)
-            Me.tabpagCamera.Location = New Global.System.Drawing.Point(4, 40)
+            Me.tabpagCamera.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tabpagCamera.Location = New System.Drawing.Point(4, 40)
             Me.tabpagCamera.Name = "tabpagCamera"
-            Me.tabpagCamera.Size = New Global.System.Drawing.Size(480, 172)
+            Me.tabpagCamera.Size = New System.Drawing.Size(649, 205)
             Me.tabpagCamera.TabIndex = 5
             Me.tabpagCamera.Text = "Camera"
+            '
+            'nudCamFieldOfView
+            '
+            Me.nudCamFieldOfView.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.nudCamFieldOfView.DecimalPlaces = 2
             Me.nudCamFieldOfView.Enabled = False
-            Me.nudCamFieldOfView.Location = New Global.System.Drawing.Point(296, 80)
+            Me.nudCamFieldOfView.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudCamFieldOfView.Location = New System.Drawing.Point(296, 92)
             Me.nudCamFieldOfView.Maximum = New Decimal(New Integer() {35999, 0, 0, 131072})
             Me.nudCamFieldOfView.Name = "nudCamFieldOfView"
-            Me.nudCamFieldOfView.Size = New Global.System.Drawing.Size(56, 20)
+            Me.nudCamFieldOfView.Size = New System.Drawing.Size(56, 22)
             Me.nudCamFieldOfView.TabIndex = 8
-            Me.nudCamFieldOfView.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudCamFieldOfView.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
             Me.ToolTip1.SetToolTip(Me.nudCamFieldOfView, "This is the angle in degrees that the camera sees")
             Me.nudCamFieldOfView.Value = New Decimal(New Integer() {35999, 0, 0, 131072})
-            Me.cmbxCamVidEffect.DropDownStyle = Global.System.Windows.Forms.ComboBoxStyle.DropDownList
+            '
+            'cmbxCamVidEffect
+            '
+            Me.cmbxCamVidEffect.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.cmbxCamVidEffect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+            Me.cmbxCamVidEffect.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxCamVidEffect.Items.AddRange(New Object() {"(none)", "Blue Filter", "Red Filter"})
-            Me.cmbxCamVidEffect.Location = New Global.System.Drawing.Point(256, 48)
+            Me.cmbxCamVidEffect.Location = New System.Drawing.Point(256, 55)
             Me.cmbxCamVidEffect.Name = "cmbxCamVidEffect"
-            Me.cmbxCamVidEffect.Size = New Global.System.Drawing.Size(96, 21)
+            Me.cmbxCamVidEffect.Size = New System.Drawing.Size(96, 21)
             Me.cmbxCamVidEffect.TabIndex = 12
-            Me.ToolTip1.SetToolTip(Me.cmbxCamVidEffect, "Selecting one of the two colors will make the conversation look like it was viewed through a filter of that color")
+            Me.ToolTip1.SetToolTip(Me.cmbxCamVidEffect, "Selecting one of the two colors will make the conversation look like it was viewe" & _
+                    "d through a filter of that color")
+            '
+            'nudFadeColorG
+            '
+            Me.nudFadeColorG.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.nudFadeColorG.Enabled = False
-            Me.nudFadeColorG.Location = New Global.System.Drawing.Point(368, 112)
+            Me.nudFadeColorG.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudFadeColorG.Location = New System.Drawing.Point(368, 129)
             Me.nudFadeColorG.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
             Me.nudFadeColorG.Name = "nudFadeColorG"
-            Me.nudFadeColorG.Size = New Global.System.Drawing.Size(48, 20)
+            Me.nudFadeColorG.Size = New System.Drawing.Size(48, 22)
             Me.nudFadeColorG.TabIndex = 8
-            Me.nudFadeColorG.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudFadeColorG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'nudFadeColorB
+            '
+            Me.nudFadeColorB.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.nudFadeColorB.Enabled = False
-            Me.nudFadeColorB.Location = New Global.System.Drawing.Point(424, 112)
+            Me.nudFadeColorB.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudFadeColorB.Location = New System.Drawing.Point(424, 129)
             Me.nudFadeColorB.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
             Me.nudFadeColorB.Name = "nudFadeColorB"
-            Me.nudFadeColorB.Size = New Global.System.Drawing.Size(48, 20)
+            Me.nudFadeColorB.Size = New System.Drawing.Size(48, 22)
             Me.nudFadeColorB.TabIndex = 9
-            Me.nudFadeColorB.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudFadeColorB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'nudFadeColorR
+            '
+            Me.nudFadeColorR.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.nudFadeColorR.Enabled = False
-            Me.nudFadeColorR.Location = New Global.System.Drawing.Point(312, 112)
+            Me.nudFadeColorR.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudFadeColorR.Location = New System.Drawing.Point(312, 129)
             Me.nudFadeColorR.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
             Me.nudFadeColorR.Name = "nudFadeColorR"
-            Me.nudFadeColorR.Size = New Global.System.Drawing.Size(48, 20)
+            Me.nudFadeColorR.Size = New System.Drawing.Size(48, 22)
             Me.nudFadeColorR.TabIndex = 8
-            Me.nudFadeColorR.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.cmbxFadeType.DropDownStyle = Global.System.Windows.Forms.ComboBoxStyle.DropDownList
+            Me.nudFadeColorR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'cmbxFadeType
+            '
+            Me.cmbxFadeType.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.cmbxFadeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+            Me.cmbxFadeType.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxFadeType.Items.AddRange(New Object() {"(none)", "Cut to Black", "Cut to Scene", "Fade to Scene", "Fade to Fade Color"})
-            Me.cmbxFadeType.Location = New Global.System.Drawing.Point(384, 16)
+            Me.cmbxFadeType.Location = New System.Drawing.Point(384, 18)
             Me.cmbxFadeType.Name = "cmbxFadeType"
-            Me.cmbxFadeType.Size = New Global.System.Drawing.Size(96, 21)
+            Me.cmbxFadeType.Size = New System.Drawing.Size(96, 21)
             Me.cmbxFadeType.TabIndex = 12
-            Me.nudCameraID.Location = New Global.System.Drawing.Point(264, 16)
+            '
+            'nudCameraID
+            '
+            Me.nudCameraID.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.nudCameraID.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudCameraID.Location = New System.Drawing.Point(264, 18)
             Me.nudCameraID.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
             Me.nudCameraID.Name = "nudCameraID"
-            Me.nudCameraID.Size = New Global.System.Drawing.Size(40, 20)
+            Me.nudCameraID.Size = New System.Drawing.Size(40, 22)
             Me.nudCameraID.TabIndex = 11
-            Me.nudCameraID.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.ToolTip1.SetToolTip(Me.nudCameraID, "The Camera ID indicates which Camera in a module shoould the Conversation be viewed from. It should be in the same room and the conversants.")
+            Me.nudCameraID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.ToolTip1.SetToolTip(Me.nudCameraID, "The Camera ID indicates which Camera in a module shoould the Conversation be view" & _
+                    "ed from. It should be in the same room and the conversants.")
+            '
+            'nudCamHeightOffset
+            '
+            Me.nudCamHeightOffset.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.nudCamHeightOffset.DecimalPlaces = 2
+            Me.nudCamHeightOffset.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.nudCamHeightOffset.Increment = New Decimal(New Integer() {5, 0, 0, 131072})
-            Me.nudCamHeightOffset.Location = New Global.System.Drawing.Point(120, 48)
+            Me.nudCamHeightOffset.Location = New System.Drawing.Point(120, 55)
             Me.nudCamHeightOffset.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
             Me.nudCamHeightOffset.Name = "nudCamHeightOffset"
-            Me.nudCamHeightOffset.[ReadOnly] = True
-            Me.nudCamHeightOffset.Size = New Global.System.Drawing.Size(56, 20)
+            Me.nudCamHeightOffset.ReadOnly = True
+            Me.nudCamHeightOffset.Size = New System.Drawing.Size(56, 22)
             Me.nudCamHeightOffset.TabIndex = 11
-            Me.nudCamHeightOffset.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.nudCameraAngle.Location = New Global.System.Drawing.Point(120, 16)
+            Me.nudCamHeightOffset.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'nudCameraAngle
+            '
+            Me.nudCameraAngle.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.nudCameraAngle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudCameraAngle.Location = New System.Drawing.Point(120, 18)
             Me.nudCameraAngle.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
             Me.nudCameraAngle.Name = "nudCameraAngle"
-            Me.nudCameraAngle.Size = New Global.System.Drawing.Size(40, 20)
+            Me.nudCameraAngle.Size = New System.Drawing.Size(40, 22)
             Me.nudCameraAngle.TabIndex = 11
-            Me.nudCameraAngle.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.Label7.Location = New Global.System.Drawing.Point(8, 16)
+            Me.nudCameraAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'Label7
+            '
+            Me.Label7.BackColor = System.Drawing.Color.Transparent
+            Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label7.Location = New System.Drawing.Point(8, 18)
             Me.Label7.Name = "Label7"
-            Me.Label7.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label7.Size = New System.Drawing.Size(100, 19)
             Me.Label7.TabIndex = 5
             Me.Label7.Text = "Camera Angle"
-            Me.Label8.Location = New Global.System.Drawing.Point(320, 16)
+            '
+            'Label8
+            '
+            Me.Label8.BackColor = System.Drawing.Color.Transparent
+            Me.Label8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label8.Location = New System.Drawing.Point(320, 18)
             Me.Label8.Name = "Label8"
-            Me.Label8.Size = New Global.System.Drawing.Size(64, 16)
+            Me.Label8.Size = New System.Drawing.Size(64, 19)
             Me.Label8.TabIndex = 5
             Me.Label8.Text = "Fade Type"
-            Me.tbListener.Location = New Global.System.Drawing.Point(88, 112)
+            '
+            'tbListener
+            '
+            Me.tbListener.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tbListener.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbListener.Location = New System.Drawing.Point(88, 129)
             Me.tbListener.Name = "tbListener"
-            Me.tbListener.Size = New Global.System.Drawing.Size(136, 20)
+            Me.tbListener.Size = New System.Drawing.Size(136, 22)
             Me.tbListener.TabIndex = 3
-            Me.tbListener.Text = ""
-            Me.Label9.Location = New Global.System.Drawing.Point(8, 112)
+            '
+            'Label9
+            '
+            Me.Label9.BackColor = System.Drawing.Color.Transparent
+            Me.Label9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label9.Location = New System.Drawing.Point(8, 129)
             Me.Label9.Name = "Label9"
-            Me.Label9.Size = New Global.System.Drawing.Size(48, 16)
+            Me.Label9.Size = New System.Drawing.Size(48, 19)
             Me.Label9.TabIndex = 5
             Me.Label9.Text = "Listener"
-            Me.Label11.Location = New Global.System.Drawing.Point(360, 48)
+            '
+            'Label11
+            '
+            Me.Label11.BackColor = System.Drawing.Color.Transparent
+            Me.Label11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label11.Location = New System.Drawing.Point(360, 55)
             Me.Label11.Name = "Label11"
-            Me.Label11.Size = New Global.System.Drawing.Size(64, 16)
+            Me.Label11.Size = New System.Drawing.Size(64, 19)
             Me.Label11.TabIndex = 5
             Me.Label11.Text = "Fade Delay"
-            Me.Label13.Location = New Global.System.Drawing.Point(8, 48)
+            '
+            'Label13
+            '
+            Me.Label13.BackColor = System.Drawing.Color.Transparent
+            Me.Label13.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label13.Location = New System.Drawing.Point(8, 55)
             Me.Label13.Name = "Label13"
-            Me.Label13.Size = New Global.System.Drawing.Size(120, 16)
+            Me.Label13.Size = New System.Drawing.Size(120, 19)
             Me.Label13.TabIndex = 5
             Me.Label13.Text = "Camera Height Offset"
-            Me.Label14.Location = New Global.System.Drawing.Point(360, 80)
+            '
+            'Label14
+            '
+            Me.Label14.BackColor = System.Drawing.Color.Transparent
+            Me.Label14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label14.Location = New System.Drawing.Point(360, 92)
             Me.Label14.Name = "Label14"
-            Me.Label14.Size = New Global.System.Drawing.Size(72, 16)
+            Me.Label14.Size = New System.Drawing.Size(72, 19)
             Me.Label14.TabIndex = 5
             Me.Label14.Text = "Fade Length"
-            Me.Label15.Location = New Global.System.Drawing.Point(248, 112)
+            '
+            'Label15
+            '
+            Me.Label15.BackColor = System.Drawing.Color.Transparent
+            Me.Label15.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label15.Location = New System.Drawing.Point(248, 129)
             Me.Label15.Name = "Label15"
-            Me.Label15.Size = New Global.System.Drawing.Size(72, 16)
+            Me.Label15.Size = New System.Drawing.Size(72, 19)
             Me.Label15.TabIndex = 5
             Me.Label15.Text = "Fade Color"
-            Me.Label16.Location = New Global.System.Drawing.Point(8, 80)
+            '
+            'Label16
+            '
+            Me.Label16.BackColor = System.Drawing.Color.Transparent
+            Me.Label16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label16.Location = New System.Drawing.Point(8, 92)
             Me.Label16.Name = "Label16"
-            Me.Label16.Size = New Global.System.Drawing.Size(96, 16)
+            Me.Label16.Size = New System.Drawing.Size(96, 19)
             Me.Label16.TabIndex = 5
             Me.Label16.Text = "Tar Height Offset"
-            Me.btnChooseColor.Location = New Global.System.Drawing.Point(448, 144)
+            '
+            'btnChooseColor
+            '
+            Me.btnChooseColor.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnChooseColor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnChooseColor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnChooseColor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnChooseColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnChooseColor.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnChooseColor.Location = New System.Drawing.Point(448, 166)
             Me.btnChooseColor.Name = "btnChooseColor"
-            Me.btnChooseColor.Size = New Global.System.Drawing.Size(24, 23)
+            Me.btnChooseColor.Size = New System.Drawing.Size(24, 27)
             Me.btnChooseColor.TabIndex = 10
             Me.btnChooseColor.Text = "..."
+            Me.btnChooseColor.UseVisualStyleBackColor = False
             Me.btnChooseColor.Visible = False
+            '
+            'nudTarHeightOffset
+            '
+            Me.nudTarHeightOffset.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.nudTarHeightOffset.DecimalPlaces = 2
+            Me.nudTarHeightOffset.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.nudTarHeightOffset.Increment = New Decimal(New Integer() {5, 0, 0, 131072})
-            Me.nudTarHeightOffset.Location = New Global.System.Drawing.Point(120, 80)
+            Me.nudTarHeightOffset.Location = New System.Drawing.Point(120, 92)
             Me.nudTarHeightOffset.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
             Me.nudTarHeightOffset.Name = "nudTarHeightOffset"
-            Me.nudTarHeightOffset.[ReadOnly] = True
-            Me.nudTarHeightOffset.Size = New Global.System.Drawing.Size(56, 20)
+            Me.nudTarHeightOffset.ReadOnly = True
+            Me.nudTarHeightOffset.Size = New System.Drawing.Size(56, 22)
             Me.nudTarHeightOffset.TabIndex = 11
-            Me.nudTarHeightOffset.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudTarHeightOffset.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'nudFadeDelay
+            '
+            Me.nudFadeDelay.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.nudFadeDelay.DecimalPlaces = 2
             Me.nudFadeDelay.Enabled = False
+            Me.nudFadeDelay.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.nudFadeDelay.Increment = New Decimal(New Integer() {5, 0, 0, 131072})
-            Me.nudFadeDelay.Location = New Global.System.Drawing.Point(432, 48)
+            Me.nudFadeDelay.Location = New System.Drawing.Point(432, 55)
             Me.nudFadeDelay.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
             Me.nudFadeDelay.Name = "nudFadeDelay"
-            Me.nudFadeDelay.Size = New Global.System.Drawing.Size(48, 20)
+            Me.nudFadeDelay.Size = New System.Drawing.Size(48, 22)
             Me.nudFadeDelay.TabIndex = 11
-            Me.nudFadeDelay.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudFadeDelay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'nudFadeLength
+            '
+            Me.nudFadeLength.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.nudFadeLength.DecimalPlaces = 2
             Me.nudFadeLength.Enabled = False
+            Me.nudFadeLength.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.nudFadeLength.Increment = New Decimal(New Integer() {5, 0, 0, 131072})
-            Me.nudFadeLength.Location = New Global.System.Drawing.Point(432, 80)
+            Me.nudFadeLength.Location = New System.Drawing.Point(432, 92)
             Me.nudFadeLength.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
             Me.nudFadeLength.Name = "nudFadeLength"
-            Me.nudFadeLength.Size = New Global.System.Drawing.Size(48, 20)
+            Me.nudFadeLength.Size = New System.Drawing.Size(48, 22)
             Me.nudFadeLength.TabIndex = 11
-            Me.nudFadeLength.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.Label28.Location = New Global.System.Drawing.Point(192, 16)
+            Me.nudFadeLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'Label28
+            '
+            Me.Label28.BackColor = System.Drawing.Color.Transparent
+            Me.Label28.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label28.Location = New System.Drawing.Point(192, 18)
             Me.Label28.Name = "Label28"
-            Me.Label28.Size = New Global.System.Drawing.Size(80, 16)
+            Me.Label28.Size = New System.Drawing.Size(80, 19)
             Me.Label28.TabIndex = 5
             Me.Label28.Text = "Camera ID"
-            Me.Label29.Location = New Global.System.Drawing.Point(192, 46)
+            '
+            'Label29
+            '
+            Me.Label29.BackColor = System.Drawing.Color.Transparent
+            Me.Label29.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label29.Location = New System.Drawing.Point(192, 53)
             Me.Label29.Name = "Label29"
-            Me.Label29.Size = New Global.System.Drawing.Size(80, 32)
+            Me.Label29.Size = New System.Drawing.Size(80, 37)
             Me.Label29.TabIndex = 5
             Me.Label29.Text = "Camera Vid Effect"
-            Me.Label37.Location = New Global.System.Drawing.Point(192, 81)
+            '
+            'Label37
+            '
+            Me.Label37.BackColor = System.Drawing.Color.Transparent
+            Me.Label37.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label37.Location = New System.Drawing.Point(192, 93)
             Me.Label37.Name = "Label37"
-            Me.Label37.Size = New Global.System.Drawing.Size(112, 16)
+            Me.Label37.Size = New System.Drawing.Size(112, 19)
             Me.Label37.TabIndex = 5
             Me.Label37.Text = "Camera Field of View"
+            '
+            'tabpagAnimationSound
+            '
+            Me.tabpagAnimationSound.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tabpagAnimationSound.Controls.Add(Me.dgAnimList)
             Me.tabpagAnimationSound.Controls.Add(Me.Label5)
             Me.tabpagAnimationSound.Controls.Add(Me.tbSound)
@@ -617,58 +819,112 @@ Namespace kotor_tool
             Me.tabpagAnimationSound.Controls.Add(Me.Label10)
             Me.tabpagAnimationSound.Controls.Add(Me.btnDeleteAnimListEntry)
             Me.tabpagAnimationSound.Controls.Add(Me.btnAddAnimListEntry)
-            Me.tabpagAnimationSound.Location = New Global.System.Drawing.Point(4, 40)
+            Me.tabpagAnimationSound.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tabpagAnimationSound.Location = New System.Drawing.Point(4, 40)
             Me.tabpagAnimationSound.Name = "tabpagAnimationSound"
-            Me.tabpagAnimationSound.Size = New Global.System.Drawing.Size(480, 172)
+            Me.tabpagAnimationSound.Size = New System.Drawing.Size(649, 205)
             Me.tabpagAnimationSound.TabIndex = 1
             Me.tabpagAnimationSound.Text = "Animation/Sound"
+            '
+            'dgAnimList
+            '
+            Me.dgAnimList.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.dgAnimList.CaptionVisible = False
             Me.dgAnimList.DataMember = ""
-            Me.dgAnimList.HeaderForeColor = Global.System.Drawing.SystemColors.ControlText
-            Me.dgAnimList.Location = New Global.System.Drawing.Point(224, 32)
+            Me.dgAnimList.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.dgAnimList.HeaderBackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.dgAnimList.HeaderForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.dgAnimList.Location = New System.Drawing.Point(224, 37)
             Me.dgAnimList.Name = "dgAnimList"
-            Me.dgAnimList.Size = New Global.System.Drawing.Size(248, 104)
+            Me.dgAnimList.Size = New System.Drawing.Size(248, 120)
             Me.dgAnimList.TabIndex = 8
-            Me.Label5.Location = New Global.System.Drawing.Point(248, 8)
+            '
+            'Label5
+            '
+            Me.Label5.BackColor = System.Drawing.Color.Transparent
+            Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label5.Location = New System.Drawing.Point(248, 9)
             Me.Label5.Name = "Label5"
-            Me.Label5.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label5.Size = New System.Drawing.Size(100, 19)
             Me.Label5.TabIndex = 7
             Me.Label5.Text = "Play Animation"
-            Me.tbSound.CharacterCasing = Global.System.Windows.Forms.CharacterCasing.Lower
-            Me.tbSound.Location = New Global.System.Drawing.Point(32, 89)
+            '
+            'tbSound
+            '
+            Me.tbSound.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tbSound.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
+            Me.tbSound.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbSound.Location = New System.Drawing.Point(32, 103)
             Me.tbSound.MaxLength = 16
             Me.tbSound.Name = "tbSound"
-            Me.tbSound.Size = New Global.System.Drawing.Size(120, 20)
+            Me.tbSound.Size = New System.Drawing.Size(120, 22)
             Me.tbSound.TabIndex = 2
-            Me.tbSound.Text = ""
-            Me.Label6.Location = New Global.System.Drawing.Point(32, 64)
+            '
+            'Label6
+            '
+            Me.Label6.BackColor = System.Drawing.Color.Transparent
+            Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label6.Location = New System.Drawing.Point(32, 74)
             Me.Label6.Name = "Label6"
-            Me.Label6.Size = New Global.System.Drawing.Size(136, 16)
+            Me.Label6.Size = New System.Drawing.Size(136, 18)
             Me.Label6.TabIndex = 7
             Me.Label6.Text = "Play this sound (ResRef)"
-            Me.tbVoiceOverResRef.CharacterCasing = Global.System.Windows.Forms.CharacterCasing.Lower
-            Me.tbVoiceOverResRef.Location = New Global.System.Drawing.Point(32, 32)
+            '
+            'tbVoiceOverResRef
+            '
+            Me.tbVoiceOverResRef.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tbVoiceOverResRef.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
+            Me.tbVoiceOverResRef.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbVoiceOverResRef.Location = New System.Drawing.Point(32, 37)
             Me.tbVoiceOverResRef.MaxLength = 16
             Me.tbVoiceOverResRef.Name = "tbVoiceOverResRef"
-            Me.tbVoiceOverResRef.Size = New Global.System.Drawing.Size(120, 20)
+            Me.tbVoiceOverResRef.Size = New System.Drawing.Size(120, 22)
             Me.tbVoiceOverResRef.TabIndex = 3
-            Me.tbVoiceOverResRef.Text = ""
-            Me.Label10.Location = New Global.System.Drawing.Point(32, 8)
+            '
+            'Label10
+            '
+            Me.Label10.BackColor = System.Drawing.Color.Transparent
+            Me.Label10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label10.Location = New System.Drawing.Point(32, 9)
             Me.Label10.Name = "Label10"
-            Me.Label10.Size = New Global.System.Drawing.Size(184, 16)
+            Me.Label10.Size = New System.Drawing.Size(184, 19)
             Me.Label10.TabIndex = 7
             Me.Label10.Text = "Play this Voice Over (ResRef)"
+            '
+            'btnDeleteAnimListEntry
+            '
+            Me.btnDeleteAnimListEntry.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
             Me.btnDeleteAnimListEntry.Enabled = False
-            Me.btnDeleteAnimListEntry.Location = New Global.System.Drawing.Point(360, 144)
+            Me.btnDeleteAnimListEntry.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnDeleteAnimListEntry.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnDeleteAnimListEntry.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnDeleteAnimListEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnDeleteAnimListEntry.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnDeleteAnimListEntry.Location = New System.Drawing.Point(360, 166)
             Me.btnDeleteAnimListEntry.Name = "btnDeleteAnimListEntry"
-            Me.btnDeleteAnimListEntry.Size = New Global.System.Drawing.Size(56, 23)
+            Me.btnDeleteAnimListEntry.Size = New System.Drawing.Size(56, 27)
             Me.btnDeleteAnimListEntry.TabIndex = 6
             Me.btnDeleteAnimListEntry.Text = "Delete"
-            Me.btnAddAnimListEntry.Location = New Global.System.Drawing.Point(288, 144)
+            Me.btnDeleteAnimListEntry.UseVisualStyleBackColor = False
+            '
+            'btnAddAnimListEntry
+            '
+            Me.btnAddAnimListEntry.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnAddAnimListEntry.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnAddAnimListEntry.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnAddAnimListEntry.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnAddAnimListEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnAddAnimListEntry.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnAddAnimListEntry.Location = New System.Drawing.Point(288, 166)
             Me.btnAddAnimListEntry.Name = "btnAddAnimListEntry"
-            Me.btnAddAnimListEntry.Size = New Global.System.Drawing.Size(56, 23)
+            Me.btnAddAnimListEntry.Size = New System.Drawing.Size(56, 27)
             Me.btnAddAnimListEntry.TabIndex = 6
             Me.btnAddAnimListEntry.Text = "Add"
+            Me.btnAddAnimListEntry.UseVisualStyleBackColor = False
+            '
+            'tabpagPlot
+            '
+            Me.tabpagPlot.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tabpagPlot.Controls.Add(Me.tbQuest)
             Me.tabpagPlot.Controls.Add(Me.Label35)
             Me.tabpagPlot.Controls.Add(Me.nudPlotIndex)
@@ -677,71 +933,126 @@ Namespace kotor_tool
             Me.tabpagPlot.Controls.Add(Me.nudPlotXPPercentage)
             Me.tabpagPlot.Controls.Add(Me.Label36)
             Me.tabpagPlot.Controls.Add(Me.nudQuestEntry)
-            Me.tabpagPlot.Location = New Global.System.Drawing.Point(4, 40)
+            Me.tabpagPlot.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tabpagPlot.Location = New System.Drawing.Point(4, 40)
             Me.tabpagPlot.Name = "tabpagPlot"
-            Me.tabpagPlot.Size = New Global.System.Drawing.Size(480, 172)
+            Me.tabpagPlot.Size = New System.Drawing.Size(649, 205)
             Me.tabpagPlot.TabIndex = 6
             Me.tabpagPlot.Text = "Plot/Quest"
-            Me.tbQuest.CharacterCasing = Global.System.Windows.Forms.CharacterCasing.Lower
-            Me.tbQuest.Location = New Global.System.Drawing.Point(176, 40)
+            '
+            'tbQuest
+            '
+            Me.tbQuest.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tbQuest.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
+            Me.tbQuest.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbQuest.Location = New System.Drawing.Point(176, 46)
             Me.tbQuest.Name = "tbQuest"
-            Me.tbQuest.Size = New Global.System.Drawing.Size(224, 20)
+            Me.tbQuest.Size = New System.Drawing.Size(224, 22)
             Me.tbQuest.TabIndex = 14
-            Me.tbQuest.Text = ""
-            Me.Label35.Location = New Global.System.Drawing.Point(176, 80)
+            '
+            'Label35
+            '
+            Me.Label35.BackColor = System.Drawing.Color.Transparent
+            Me.Label35.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label35.Location = New System.Drawing.Point(176, 92)
             Me.Label35.Name = "Label35"
-            Me.Label35.Size = New Global.System.Drawing.Size(128, 16)
+            Me.Label35.Size = New System.Drawing.Size(128, 19)
             Me.Label35.TabIndex = 15
             Me.Label35.Text = "Quest Entry"
-            Me.nudPlotIndex.Location = New Global.System.Drawing.Point(32, 40)
+            '
+            'nudPlotIndex
+            '
+            Me.nudPlotIndex.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.nudPlotIndex.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudPlotIndex.Location = New System.Drawing.Point(32, 46)
             Me.nudPlotIndex.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
-            Me.nudPlotIndex.Minimum = New Decimal(New Integer() {1, 0, 0, Integer.MinValue})
+            Me.nudPlotIndex.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
             Me.nudPlotIndex.Name = "nudPlotIndex"
-            Me.nudPlotIndex.Size = New Global.System.Drawing.Size(40, 20)
+            Me.nudPlotIndex.Size = New System.Drawing.Size(40, 22)
             Me.nudPlotIndex.TabIndex = 12
-            Me.nudPlotIndex.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.nudPlotIndex.Value = New Decimal(New Integer() {1, 0, 0, Integer.MinValue})
-            Me.lblPlotIndex.Location = New Global.System.Drawing.Point(32, 24)
+            Me.nudPlotIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudPlotIndex.Value = New Decimal(New Integer() {1, 0, 0, -2147483648})
+            '
+            'lblPlotIndex
+            '
+            Me.lblPlotIndex.BackColor = System.Drawing.Color.Transparent
+            Me.lblPlotIndex.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.lblPlotIndex.Location = New System.Drawing.Point(32, 28)
             Me.lblPlotIndex.Name = "lblPlotIndex"
-            Me.lblPlotIndex.Size = New Global.System.Drawing.Size(100, 16)
+            Me.lblPlotIndex.Size = New System.Drawing.Size(100, 18)
             Me.lblPlotIndex.TabIndex = 11
             Me.lblPlotIndex.Text = "Plot Index"
-            Me.Label12.Location = New Global.System.Drawing.Point(32, 80)
+            '
+            'Label12
+            '
+            Me.Label12.BackColor = System.Drawing.Color.Transparent
+            Me.Label12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label12.Location = New System.Drawing.Point(32, 92)
             Me.Label12.Name = "Label12"
-            Me.Label12.Size = New Global.System.Drawing.Size(120, 16)
+            Me.Label12.Size = New System.Drawing.Size(120, 19)
             Me.Label12.TabIndex = 10
             Me.Label12.Text = "Plot XP Percentage"
-            Me.nudPlotXPPercentage.Location = New Global.System.Drawing.Point(32, 96)
+            '
+            'nudPlotXPPercentage
+            '
+            Me.nudPlotXPPercentage.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.nudPlotXPPercentage.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudPlotXPPercentage.Location = New System.Drawing.Point(32, 111)
             Me.nudPlotXPPercentage.Name = "nudPlotXPPercentage"
-            Me.nudPlotXPPercentage.Size = New Global.System.Drawing.Size(40, 20)
+            Me.nudPlotXPPercentage.Size = New System.Drawing.Size(40, 22)
             Me.nudPlotXPPercentage.TabIndex = 12
-            Me.nudPlotXPPercentage.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudPlotXPPercentage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
             Me.nudPlotXPPercentage.Value = New Decimal(New Integer() {100, 0, 0, 0})
-            Me.Label36.Location = New Global.System.Drawing.Point(176, 24)
+            '
+            'Label36
+            '
+            Me.Label36.BackColor = System.Drawing.Color.Transparent
+            Me.Label36.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label36.Location = New System.Drawing.Point(176, 28)
             Me.Label36.Name = "Label36"
-            Me.Label36.Size = New Global.System.Drawing.Size(128, 16)
+            Me.Label36.Size = New System.Drawing.Size(128, 18)
             Me.Label36.TabIndex = 15
             Me.Label36.Text = "Quest"
-            Me.nudQuestEntry.Location = New Global.System.Drawing.Point(176, 96)
+            '
+            'nudQuestEntry
+            '
+            Me.nudQuestEntry.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.nudQuestEntry.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudQuestEntry.Location = New System.Drawing.Point(176, 111)
             Me.nudQuestEntry.Maximum = New Decimal(New Integer() {-1, 0, 0, 0})
             Me.nudQuestEntry.Name = "nudQuestEntry"
-            Me.nudQuestEntry.Size = New Global.System.Drawing.Size(88, 20)
+            Me.nudQuestEntry.Size = New System.Drawing.Size(88, 22)
             Me.nudQuestEntry.TabIndex = 12
-            Me.nudQuestEntry.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudQuestEntry.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'tabpagComment
+            '
+            Me.tabpagComment.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tabpagComment.Controls.Add(Me.tbComments)
-            Me.tabpagComment.Location = New Global.System.Drawing.Point(4, 40)
+            Me.tabpagComment.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tabpagComment.Location = New System.Drawing.Point(4, 40)
             Me.tabpagComment.Name = "tabpagComment"
-            Me.tabpagComment.Size = New Global.System.Drawing.Size(480, 172)
+            Me.tabpagComment.Size = New System.Drawing.Size(649, 205)
             Me.tabpagComment.TabIndex = 2
             Me.tabpagComment.Text = "Comments"
-            Me.tbComments.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left Or Global.System.Windows.Forms.AnchorStyles.Right
-            Me.tbComments.Location = New Global.System.Drawing.Point(8, 16)
+            '
+            'tbComments
+            '
+            Me.tbComments.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                        Or System.Windows.Forms.AnchorStyles.Left) _
+                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.tbComments.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tbComments.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbComments.Location = New System.Drawing.Point(8, 18)
             Me.tbComments.Multiline = True
             Me.tbComments.Name = "tbComments"
-            Me.tbComments.ScrollBars = Global.System.Windows.Forms.ScrollBars.Vertical
-            Me.tbComments.Size = New Global.System.Drawing.Size(456, 136)
+            Me.tbComments.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+            Me.tbComments.Size = New System.Drawing.Size(625, 157)
             Me.tbComments.TabIndex = 1
-            Me.tbComments.Text = ""
+            '
+            'tabpagThisFile1
+            '
+            Me.tabpagThisFile1.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tabpagThisFile1.Controls.Add(Me.chkbAnimatedCut)
             Me.tabpagThisFile1.Controls.Add(Me.tbCameraModel)
             Me.tabpagThisFile1.Controls.Add(Me.Label31)
@@ -764,159 +1075,295 @@ Namespace kotor_tool
             Me.tabpagThisFile1.Controls.Add(Me.nudDelayReply)
             Me.tabpagThisFile1.Controls.Add(Me.Label27)
             Me.tabpagThisFile1.Controls.Add(Me.cmbxComputerType)
-            Me.tabpagThisFile1.Location = New Global.System.Drawing.Point(4, 40)
+            Me.tabpagThisFile1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tabpagThisFile1.Location = New System.Drawing.Point(4, 40)
             Me.tabpagThisFile1.Name = "tabpagThisFile1"
-            Me.tabpagThisFile1.Size = New Global.System.Drawing.Size(480, 172)
+            Me.tabpagThisFile1.Size = New System.Drawing.Size(649, 205)
             Me.tabpagThisFile1.TabIndex = 3
             Me.tabpagThisFile1.Text = "This File (1)"
-            Me.chkbAnimatedCut.Location = New Global.System.Drawing.Point(16, 136)
+            '
+            'chkbAnimatedCut
+            '
+            Me.chkbAnimatedCut.BackColor = System.Drawing.Color.Transparent
+            Me.chkbAnimatedCut.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.chkbAnimatedCut.Location = New System.Drawing.Point(16, 157)
             Me.chkbAnimatedCut.Name = "chkbAnimatedCut"
-            Me.chkbAnimatedCut.Size = New Global.System.Drawing.Size(128, 24)
+            Me.chkbAnimatedCut.Size = New System.Drawing.Size(128, 28)
             Me.chkbAnimatedCut.TabIndex = 16
             Me.chkbAnimatedCut.Text = "Animated Cutscene"
+            Me.chkbAnimatedCut.UseVisualStyleBackColor = False
+            '
+            'tbCameraModel
+            '
+            Me.tbCameraModel.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.tbCameraModel.Enabled = False
-            Me.tbCameraModel.Location = New Global.System.Drawing.Point(160, 143)
+            Me.tbCameraModel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbCameraModel.Location = New System.Drawing.Point(160, 165)
             Me.tbCameraModel.MaxLength = 16
             Me.tbCameraModel.Name = "tbCameraModel"
-            Me.tbCameraModel.Size = New Global.System.Drawing.Size(120, 20)
+            Me.tbCameraModel.Size = New System.Drawing.Size(120, 22)
             Me.tbCameraModel.TabIndex = 14
-            Me.tbCameraModel.Text = ""
             Me.ToolTip1.SetToolTip(Me.tbCameraModel, "This is the model name of the camera to use in Animated Cutscenes")
-            Me.Label31.Location = New Global.System.Drawing.Point(160, 128)
+            '
+            'Label31
+            '
+            Me.Label31.BackColor = System.Drawing.Color.Transparent
+            Me.Label31.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label31.Location = New System.Drawing.Point(160, 148)
             Me.Label31.Name = "Label31"
-            Me.Label31.Size = New Global.System.Drawing.Size(80, 16)
+            Me.Label31.Size = New System.Drawing.Size(80, 18)
             Me.Label31.TabIndex = 15
             Me.Label31.Text = "Camera Model"
-            Me.cmbxConversationType.DropDownStyle = Global.System.Windows.Forms.ComboBoxStyle.DropDownList
+            '
+            'cmbxConversationType
+            '
+            Me.cmbxConversationType.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.cmbxConversationType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+            Me.cmbxConversationType.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxConversationType.Items.AddRange(New Object() {"Human", "Computer", "Type 2", "Type 3", "Type 4"})
-            Me.cmbxConversationType.Location = New Global.System.Drawing.Point(8, 64)
+            Me.cmbxConversationType.Location = New System.Drawing.Point(8, 74)
             Me.cmbxConversationType.Name = "cmbxConversationType"
-            Me.cmbxConversationType.Size = New Global.System.Drawing.Size(88, 21)
+            Me.cmbxConversationType.Size = New System.Drawing.Size(88, 21)
             Me.cmbxConversationType.TabIndex = 12
-            Me.chkbSkippable.Location = New Global.System.Drawing.Point(320, 8)
+            '
+            'chkbSkippable
+            '
+            Me.chkbSkippable.BackColor = System.Drawing.Color.Transparent
+            Me.chkbSkippable.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.chkbSkippable.Location = New System.Drawing.Point(320, 9)
             Me.chkbSkippable.Name = "chkbSkippable"
-            Me.chkbSkippable.Size = New Global.System.Drawing.Size(80, 24)
+            Me.chkbSkippable.Size = New System.Drawing.Size(80, 28)
             Me.chkbSkippable.TabIndex = 11
             Me.chkbSkippable.Text = "Skippable"
-            Me.tbVO_ID.CharacterCasing = Global.System.Windows.Forms.CharacterCasing.Lower
-            Me.tbVO_ID.Location = New Global.System.Drawing.Point(8, 24)
+            Me.chkbSkippable.UseVisualStyleBackColor = False
+            '
+            'tbVO_ID
+            '
+            Me.tbVO_ID.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tbVO_ID.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
+            Me.tbVO_ID.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbVO_ID.Location = New System.Drawing.Point(8, 28)
             Me.tbVO_ID.Name = "tbVO_ID"
-            Me.tbVO_ID.Size = New Global.System.Drawing.Size(128, 20)
+            Me.tbVO_ID.Size = New System.Drawing.Size(128, 22)
             Me.tbVO_ID.TabIndex = 8
-            Me.tbVO_ID.Text = ""
-            Me.Label20.Location = New Global.System.Drawing.Point(8, 8)
+            '
+            'Label20
+            '
+            Me.Label20.BackColor = System.Drawing.Color.Transparent
+            Me.Label20.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label20.Location = New System.Drawing.Point(8, 9)
             Me.Label20.Name = "Label20"
-            Me.Label20.Size = New Global.System.Drawing.Size(112, 16)
+            Me.Label20.Size = New System.Drawing.Size(112, 19)
             Me.Label20.TabIndex = 9
             Me.Label20.Text = "Voice Over Family ID"
-            Me.Label21.Location = New Global.System.Drawing.Point(8, 48)
+            '
+            'Label21
+            '
+            Me.Label21.BackColor = System.Drawing.Color.Transparent
+            Me.Label21.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label21.Location = New System.Drawing.Point(8, 55)
             Me.Label21.Name = "Label21"
-            Me.Label21.Size = New Global.System.Drawing.Size(104, 16)
+            Me.Label21.Size = New System.Drawing.Size(104, 19)
             Me.Label21.TabIndex = 9
             Me.Label21.Text = "Conversation Type"
-            Me.tbEndConversation.CharacterCasing = Global.System.Windows.Forms.CharacterCasing.Lower
-            Me.tbEndConversation.Location = New Global.System.Drawing.Point(160, 24)
+            '
+            'tbEndConversation
+            '
+            Me.tbEndConversation.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tbEndConversation.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
+            Me.tbEndConversation.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbEndConversation.Location = New System.Drawing.Point(160, 28)
             Me.tbEndConversation.MaxLength = 16
             Me.tbEndConversation.Name = "tbEndConversation"
-            Me.tbEndConversation.Size = New Global.System.Drawing.Size(128, 20)
+            Me.tbEndConversation.Size = New System.Drawing.Size(128, 22)
             Me.tbEndConversation.TabIndex = 8
-            Me.tbEndConversation.Text = ""
-            Me.Label22.Location = New Global.System.Drawing.Point(160, 8)
+            '
+            'Label22
+            '
+            Me.Label22.BackColor = System.Drawing.Color.Transparent
+            Me.Label22.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label22.Location = New System.Drawing.Point(160, 9)
             Me.Label22.Name = "Label22"
-            Me.Label22.Size = New Global.System.Drawing.Size(128, 16)
+            Me.Label22.Size = New System.Drawing.Size(128, 19)
             Me.Label22.TabIndex = 9
             Me.Label22.Text = "End Conv Normal Script"
-            Me.Label23.Location = New Global.System.Drawing.Point(160, 48)
+            '
+            'Label23
+            '
+            Me.Label23.BackColor = System.Drawing.Color.Transparent
+            Me.Label23.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label23.Location = New System.Drawing.Point(160, 55)
             Me.Label23.Name = "Label23"
-            Me.Label23.Size = New Global.System.Drawing.Size(128, 16)
+            Me.Label23.Size = New System.Drawing.Size(128, 19)
             Me.Label23.TabIndex = 9
             Me.Label23.Text = "End Conv Abort Script"
-            Me.tbEndConverAbort.CharacterCasing = Global.System.Windows.Forms.CharacterCasing.Lower
-            Me.tbEndConverAbort.Location = New Global.System.Drawing.Point(160, 64)
+            '
+            'tbEndConverAbort
+            '
+            Me.tbEndConverAbort.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tbEndConverAbort.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
+            Me.tbEndConverAbort.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbEndConverAbort.Location = New System.Drawing.Point(160, 74)
             Me.tbEndConverAbort.MaxLength = 16
             Me.tbEndConverAbort.Name = "tbEndConverAbort"
-            Me.tbEndConverAbort.Size = New Global.System.Drawing.Size(128, 20)
+            Me.tbEndConverAbort.Size = New System.Drawing.Size(128, 22)
             Me.tbEndConverAbort.TabIndex = 8
-            Me.tbEndConverAbort.Text = ""
-            Me.Label24.Location = New Global.System.Drawing.Point(8, 88)
+            '
+            'Label24
+            '
+            Me.Label24.BackColor = System.Drawing.Color.Transparent
+            Me.Label24.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label24.Location = New System.Drawing.Point(8, 102)
             Me.Label24.Name = "Label24"
-            Me.Label24.Size = New Global.System.Drawing.Size(104, 16)
+            Me.Label24.Size = New System.Drawing.Size(104, 18)
             Me.Label24.TabIndex = 9
             Me.Label24.Text = "Computer Type"
-            Me.tbAmbientTrack.CharacterCasing = Global.System.Windows.Forms.CharacterCasing.Lower
-            Me.tbAmbientTrack.Location = New Global.System.Drawing.Point(160, 104)
+            '
+            'tbAmbientTrack
+            '
+            Me.tbAmbientTrack.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tbAmbientTrack.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
+            Me.tbAmbientTrack.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbAmbientTrack.Location = New System.Drawing.Point(160, 120)
             Me.tbAmbientTrack.MaxLength = 16
             Me.tbAmbientTrack.Name = "tbAmbientTrack"
-            Me.tbAmbientTrack.Size = New Global.System.Drawing.Size(128, 20)
+            Me.tbAmbientTrack.Size = New System.Drawing.Size(128, 22)
             Me.tbAmbientTrack.TabIndex = 8
-            Me.tbAmbientTrack.Text = ""
-            Me.Label25.Location = New Global.System.Drawing.Point(160, 88)
+            '
+            'Label25
+            '
+            Me.Label25.BackColor = System.Drawing.Color.Transparent
+            Me.Label25.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label25.Location = New System.Drawing.Point(160, 102)
             Me.Label25.Name = "Label25"
-            Me.Label25.Size = New Global.System.Drawing.Size(128, 16)
+            Me.Label25.Size = New System.Drawing.Size(128, 18)
             Me.Label25.TabIndex = 9
             Me.Label25.Text = "Ambient Track"
-            Me.chkbUnequipItems.Location = New Global.System.Drawing.Point(320, 32)
+            '
+            'chkbUnequipItems
+            '
+            Me.chkbUnequipItems.BackColor = System.Drawing.Color.Transparent
+            Me.chkbUnequipItems.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.chkbUnequipItems.Location = New System.Drawing.Point(320, 37)
             Me.chkbUnequipItems.Name = "chkbUnequipItems"
-            Me.chkbUnequipItems.Size = New Global.System.Drawing.Size(96, 24)
+            Me.chkbUnequipItems.Size = New System.Drawing.Size(96, 28)
             Me.chkbUnequipItems.TabIndex = 11
             Me.chkbUnequipItems.Text = "Unequip Items"
-            Me.chkbUnequipHItem.Location = New Global.System.Drawing.Point(320, 56)
+            Me.chkbUnequipItems.UseVisualStyleBackColor = False
+            '
+            'chkbUnequipHItem
+            '
+            Me.chkbUnequipHItem.BackColor = System.Drawing.Color.Transparent
+            Me.chkbUnequipHItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.chkbUnequipHItem.Location = New System.Drawing.Point(320, 65)
             Me.chkbUnequipHItem.Name = "chkbUnequipHItem"
+            Me.chkbUnequipHItem.Size = New System.Drawing.Size(104, 27)
             Me.chkbUnequipHItem.TabIndex = 11
             Me.chkbUnequipHItem.Text = "Unequip HItem"
-            Me.Label26.Location = New Global.System.Drawing.Point(307, 88)
+            Me.chkbUnequipHItem.UseVisualStyleBackColor = False
+            '
+            'Label26
+            '
+            Me.Label26.BackColor = System.Drawing.Color.Transparent
+            Me.Label26.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label26.Location = New System.Drawing.Point(307, 102)
             Me.Label26.Name = "Label26"
-            Me.Label26.Size = New Global.System.Drawing.Size(64, 16)
+            Me.Label26.Size = New System.Drawing.Size(64, 18)
             Me.Label26.TabIndex = 9
             Me.Label26.Text = "Delay Entry"
-            Me.nudDelayEntry.Location = New Global.System.Drawing.Point(304, 104)
+            '
+            'nudDelayEntry
+            '
+            Me.nudDelayEntry.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.nudDelayEntry.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudDelayEntry.Location = New System.Drawing.Point(304, 120)
             Me.nudDelayEntry.Maximum = New Decimal(New Integer() {100000, 0, 0, 0})
             Me.nudDelayEntry.Name = "nudDelayEntry"
-            Me.nudDelayEntry.Size = New Global.System.Drawing.Size(64, 20)
+            Me.nudDelayEntry.Size = New System.Drawing.Size(64, 22)
             Me.nudDelayEntry.TabIndex = 10
-            Me.nudDelayEntry.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.nudDelayReply.Location = New Global.System.Drawing.Point(400, 104)
+            Me.nudDelayEntry.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'nudDelayReply
+            '
+            Me.nudDelayReply.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.nudDelayReply.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudDelayReply.Location = New System.Drawing.Point(400, 120)
             Me.nudDelayReply.Maximum = New Decimal(New Integer() {100000, 0, 0, 0})
             Me.nudDelayReply.Name = "nudDelayReply"
-            Me.nudDelayReply.Size = New Global.System.Drawing.Size(64, 20)
+            Me.nudDelayReply.Size = New System.Drawing.Size(64, 22)
             Me.nudDelayReply.TabIndex = 10
-            Me.nudDelayReply.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.Label27.Location = New Global.System.Drawing.Point(400, 88)
+            Me.nudDelayReply.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'Label27
+            '
+            Me.Label27.BackColor = System.Drawing.Color.Transparent
+            Me.Label27.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label27.Location = New System.Drawing.Point(400, 102)
             Me.Label27.Name = "Label27"
-            Me.Label27.Size = New Global.System.Drawing.Size(72, 16)
+            Me.Label27.Size = New System.Drawing.Size(72, 18)
             Me.Label27.TabIndex = 9
             Me.Label27.Text = "Delay Reply"
-            Me.cmbxComputerType.DropDownStyle = Global.System.Windows.Forms.ComboBoxStyle.DropDownList
+            '
+            'cmbxComputerType
+            '
+            Me.cmbxComputerType.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.cmbxComputerType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
             Me.cmbxComputerType.Enabled = False
+            Me.cmbxComputerType.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxComputerType.Items.AddRange(New Object() {"Modern", "Ancient"})
-            Me.cmbxComputerType.Location = New Global.System.Drawing.Point(8, 104)
+            Me.cmbxComputerType.Location = New System.Drawing.Point(8, 120)
             Me.cmbxComputerType.Name = "cmbxComputerType"
-            Me.cmbxComputerType.Size = New Global.System.Drawing.Size(88, 21)
+            Me.cmbxComputerType.Size = New System.Drawing.Size(88, 21)
             Me.cmbxComputerType.TabIndex = 12
+            '
+            'tabpagThisFile2
+            '
+            Me.tabpagThisFile2.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tabpagThisFile2.Controls.Add(Me.dgStuntList)
             Me.tabpagThisFile2.Controls.Add(Me.Label30)
-            Me.tabpagThisFile2.Location = New Global.System.Drawing.Point(4, 40)
+            Me.tabpagThisFile2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tabpagThisFile2.Location = New System.Drawing.Point(4, 40)
             Me.tabpagThisFile2.Name = "tabpagThisFile2"
-            Me.tabpagThisFile2.Size = New Global.System.Drawing.Size(480, 172)
+            Me.tabpagThisFile2.Size = New System.Drawing.Size(649, 205)
             Me.tabpagThisFile2.TabIndex = 8
             Me.tabpagThisFile2.Text = "This File (2)"
+            '
+            'dgStuntList
+            '
+            Me.dgStuntList.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.dgStuntList.DataMember = ""
-            Me.dgStuntList.HeaderForeColor = Global.System.Drawing.SystemColors.ControlText
-            Me.dgStuntList.Location = New Global.System.Drawing.Point(56, 24)
+            Me.dgStuntList.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.dgStuntList.HeaderBackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.dgStuntList.HeaderForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.dgStuntList.Location = New System.Drawing.Point(3, 13)
             Me.dgStuntList.Name = "dgStuntList"
-            Me.dgStuntList.Size = New Global.System.Drawing.Size(368, 112)
+            Me.dgStuntList.Size = New System.Drawing.Size(643, 189)
             Me.dgStuntList.TabIndex = 0
-            Me.Label30.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Me.Label30.Location = New Global.System.Drawing.Point(56, 24)
+            '
+            'Label30
+            '
+            Me.Label30.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+            Me.Label30.BackColor = System.Drawing.Color.Transparent
+            Me.Label30.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label30.Location = New System.Drawing.Point(56, 28)
             Me.Label30.Name = "Label30"
-            Me.Label30.Size = New Global.System.Drawing.Size(136, 16)
+            Me.Label30.Size = New System.Drawing.Size(136, 18)
             Me.Label30.TabIndex = 3
             Me.Label30.Text = "(Stunt List is View-only)"
-            Me.tabpagThisFile3.Location = New Global.System.Drawing.Point(4, 40)
+            '
+            'tabpagThisFile3
+            '
+            Me.tabpagThisFile3.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.tabpagThisFile3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tabpagThisFile3.Location = New System.Drawing.Point(4, 40)
             Me.tabpagThisFile3.Name = "tabpagThisFile3"
-            Me.tabpagThisFile3.Size = New Global.System.Drawing.Size(480, 172)
+            Me.tabpagThisFile3.Size = New System.Drawing.Size(649, 205)
             Me.tabpagThisFile3.TabIndex = 9
             Me.tabpagThisFile3.Text = "This File (3)"
+            '
+            'tabpagDebug
+            '
+            Me.tabpagDebug.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tabpagDebug.Controls.Add(Me.trkbTVIndent)
             Me.tabpagDebug.Controls.Add(Me.Label17)
             Me.tabpagDebug.Controls.Add(Me.tbLinkID)
@@ -931,163 +1378,342 @@ Namespace kotor_tool
             Me.tabpagDebug.Controls.Add(Me.tbLinkDesc)
             Me.tabpagDebug.Controls.Add(Me.Label34)
             Me.tabpagDebug.Controls.Add(Me.btnShowLists)
-            Me.tabpagDebug.Location = New Global.System.Drawing.Point(4, 40)
+            Me.tabpagDebug.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tabpagDebug.Location = New System.Drawing.Point(4, 40)
             Me.tabpagDebug.Name = "tabpagDebug"
-            Me.tabpagDebug.Size = New Global.System.Drawing.Size(480, 172)
+            Me.tabpagDebug.Size = New System.Drawing.Size(649, 205)
             Me.tabpagDebug.TabIndex = 7
             Me.tabpagDebug.Text = "Debug information/Options"
-            Me.trkbTVIndent.Location = New Global.System.Drawing.Point(280, 40)
+            '
+            'trkbTVIndent
+            '
+            Me.trkbTVIndent.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.trkbTVIndent.Location = New System.Drawing.Point(280, 46)
             Me.trkbTVIndent.Maximum = 30
             Me.trkbTVIndent.Minimum = 15
             Me.trkbTVIndent.Name = "trkbTVIndent"
-            Me.trkbTVIndent.Size = New Global.System.Drawing.Size(120, 42)
+            Me.trkbTVIndent.Size = New System.Drawing.Size(120, 45)
             Me.trkbTVIndent.TabIndex = 9
             Me.trkbTVIndent.Value = 16
-            Me.Label17.Location = New Global.System.Drawing.Point(56, 32)
+            '
+            'Label17
+            '
+            Me.Label17.BackColor = System.Drawing.Color.Transparent
+            Me.Label17.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label17.Location = New System.Drawing.Point(56, 37)
             Me.Label17.Name = "Label17"
-            Me.Label17.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label17.Size = New System.Drawing.Size(100, 18)
             Me.Label17.TabIndex = 8
             Me.Label17.Text = "Link ID"
-            Me.tbLinkID.Location = New Global.System.Drawing.Point(168, 30)
+            '
+            'tbLinkID
+            '
+            Me.tbLinkID.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tbLinkID.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbLinkID.Location = New System.Drawing.Point(168, 35)
             Me.tbLinkID.Name = "tbLinkID"
-            Me.tbLinkID.Size = New Global.System.Drawing.Size(56, 20)
+            Me.tbLinkID.Size = New System.Drawing.Size(56, 22)
             Me.tbLinkID.TabIndex = 7
-            Me.tbLinkID.Text = ""
-            Me.tbLinkedCnt.Location = New Global.System.Drawing.Point(168, 64)
+            '
+            'tbLinkedCnt
+            '
+            Me.tbLinkedCnt.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tbLinkedCnt.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbLinkedCnt.Location = New System.Drawing.Point(168, 74)
             Me.tbLinkedCnt.Name = "tbLinkedCnt"
-            Me.tbLinkedCnt.Size = New Global.System.Drawing.Size(56, 20)
+            Me.tbLinkedCnt.Size = New System.Drawing.Size(56, 22)
             Me.tbLinkedCnt.TabIndex = 7
-            Me.tbLinkedCnt.Text = ""
-            Me.tbSharedCnt.Location = New Global.System.Drawing.Point(168, 96)
+            '
+            'tbSharedCnt
+            '
+            Me.tbSharedCnt.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tbSharedCnt.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbSharedCnt.Location = New System.Drawing.Point(168, 111)
             Me.tbSharedCnt.Name = "tbSharedCnt"
-            Me.tbSharedCnt.Size = New Global.System.Drawing.Size(56, 20)
+            Me.tbSharedCnt.Size = New System.Drawing.Size(56, 22)
             Me.tbSharedCnt.TabIndex = 7
-            Me.tbSharedCnt.Text = ""
-            Me.Label18.Location = New Global.System.Drawing.Point(56, 66)
+            '
+            'Label18
+            '
+            Me.Label18.BackColor = System.Drawing.Color.Transparent
+            Me.Label18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label18.Location = New System.Drawing.Point(56, 76)
             Me.Label18.Name = "Label18"
-            Me.Label18.Size = New Global.System.Drawing.Size(80, 16)
+            Me.Label18.Size = New System.Drawing.Size(80, 19)
             Me.Label18.TabIndex = 8
             Me.Label18.Text = "Linked to this"
-            Me.Label19.Location = New Global.System.Drawing.Point(56, 98)
+            '
+            'Label19
+            '
+            Me.Label19.BackColor = System.Drawing.Color.Transparent
+            Me.Label19.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label19.Location = New System.Drawing.Point(56, 113)
             Me.Label19.Name = "Label19"
-            Me.Label19.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label19.Size = New System.Drawing.Size(100, 19)
             Me.Label19.TabIndex = 8
             Me.Label19.Text = "Nodes sharing link"
-            Me.btnDebug.Location = New Global.System.Drawing.Point(280, 144)
+            '
+            'btnDebug
+            '
+            Me.btnDebug.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnDebug.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnDebug.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnDebug.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnDebug.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnDebug.Location = New System.Drawing.Point(280, 166)
             Me.btnDebug.Name = "btnDebug"
-            Me.btnDebug.Size = New Global.System.Drawing.Size(120, 23)
+            Me.btnDebug.Size = New System.Drawing.Size(120, 27)
             Me.btnDebug.TabIndex = 6
             Me.btnDebug.Text = "Show Debug Listing"
-            Me.Label32.Location = New Global.System.Drawing.Point(288, 24)
+            Me.btnDebug.UseVisualStyleBackColor = False
+            '
+            'Label32
+            '
+            Me.Label32.BackColor = System.Drawing.Color.Transparent
+            Me.Label32.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label32.Location = New System.Drawing.Point(288, 28)
             Me.Label32.Name = "Label32"
-            Me.Label32.Size = New Global.System.Drawing.Size(112, 16)
+            Me.Label32.Size = New System.Drawing.Size(112, 18)
             Me.Label32.TabIndex = 8
             Me.Label32.Text = "Treeview indent level"
-            Me.Label33.Location = New Global.System.Drawing.Point(288, 88)
+            '
+            'Label33
+            '
+            Me.Label33.BackColor = System.Drawing.Color.Transparent
+            Me.Label33.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label33.Location = New System.Drawing.Point(288, 102)
             Me.Label33.Name = "Label33"
-            Me.Label33.Size = New Global.System.Drawing.Size(112, 16)
+            Me.Label33.Size = New System.Drawing.Size(112, 18)
             Me.Label33.TabIndex = 8
             Me.Label33.Text = "Treeview item height"
-            Me.trkbTVItemHeight.Location = New Global.System.Drawing.Point(280, 104)
+            '
+            'trkbTVItemHeight
+            '
+            Me.trkbTVItemHeight.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.trkbTVItemHeight.Location = New System.Drawing.Point(280, 120)
             Me.trkbTVItemHeight.Maximum = 21
             Me.trkbTVItemHeight.Minimum = 7
             Me.trkbTVItemHeight.Name = "trkbTVItemHeight"
-            Me.trkbTVItemHeight.Size = New Global.System.Drawing.Size(120, 42)
+            Me.trkbTVItemHeight.Size = New System.Drawing.Size(120, 45)
             Me.trkbTVItemHeight.TabIndex = 9
             Me.trkbTVItemHeight.Value = 9
-            Me.tbLinkDesc.Location = New Global.System.Drawing.Point(168, 128)
+            '
+            'tbLinkDesc
+            '
+            Me.tbLinkDesc.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tbLinkDesc.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbLinkDesc.Location = New System.Drawing.Point(168, 148)
             Me.tbLinkDesc.Name = "tbLinkDesc"
-            Me.tbLinkDesc.Size = New Global.System.Drawing.Size(56, 20)
+            Me.tbLinkDesc.Size = New System.Drawing.Size(56, 22)
             Me.tbLinkDesc.TabIndex = 7
-            Me.tbLinkDesc.Text = ""
-            Me.Label34.Location = New Global.System.Drawing.Point(56, 128)
+            '
+            'Label34
+            '
+            Me.Label34.BackColor = System.Drawing.Color.Transparent
+            Me.Label34.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label34.Location = New System.Drawing.Point(56, 148)
             Me.Label34.Name = "Label34"
-            Me.Label34.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label34.Size = New System.Drawing.Size(100, 18)
             Me.Label34.TabIndex = 8
             Me.Label34.Text = "Link Desc"
-            Me.btnShowLists.Location = New Global.System.Drawing.Point(448, 144)
+            '
+            'btnShowLists
+            '
+            Me.btnShowLists.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnShowLists.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnShowLists.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnShowLists.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnShowLists.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnShowLists.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnShowLists.Location = New System.Drawing.Point(448, 166)
             Me.btnShowLists.Name = "btnShowLists"
-            Me.btnShowLists.Size = New Global.System.Drawing.Size(24, 23)
+            Me.btnShowLists.Size = New System.Drawing.Size(24, 27)
             Me.btnShowLists.TabIndex = 6
             Me.btnShowLists.Text = "D"
+            Me.btnShowLists.UseVisualStyleBackColor = False
             Me.btnShowLists.Visible = False
-            Me.btnCollapseAll.Image = CType(resources.GetObject("Me.btnCollapseAll.Image"), Global.System.Drawing.Image)
-            Me.btnCollapseAll.Location = New Global.System.Drawing.Point(5, 240)
+            '
+            'btnCollapseAll
+            '
+            Me.btnCollapseAll.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnCollapseAll.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnCollapseAll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnCollapseAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnCollapseAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnCollapseAll.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnCollapseAll.Location = New System.Drawing.Point(5, 217)
             Me.btnCollapseAll.Name = "btnCollapseAll"
-            Me.btnCollapseAll.Size = New Global.System.Drawing.Size(24, 23)
+            Me.btnCollapseAll.Size = New System.Drawing.Size(24, 26)
             Me.btnCollapseAll.TabIndex = 2
             Me.btnCollapseAll.Text = "C"
             Me.ToolTip1.SetToolTip(Me.btnCollapseAll, "Collapse all nodes in the treeview")
-            Me.btnExpandAll.Image = CType(resources.GetObject("Me.btnExpandAll.Image"), Global.System.Drawing.Image)
-            Me.btnExpandAll.Location = New Global.System.Drawing.Point(5, 184)
+            Me.btnCollapseAll.UseVisualStyleBackColor = False
+            '
+            'btnExpandAll
+            '
+            Me.btnExpandAll.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnExpandAll.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnExpandAll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnExpandAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnExpandAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnExpandAll.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnExpandAll.Location = New System.Drawing.Point(5, 45)
             Me.btnExpandAll.Name = "btnExpandAll"
-            Me.btnExpandAll.Size = New Global.System.Drawing.Size(24, 23)
+            Me.btnExpandAll.Size = New System.Drawing.Size(24, 27)
             Me.btnExpandAll.TabIndex = 1
             Me.btnExpandAll.Text = "E"
             Me.ToolTip1.SetToolTip(Me.btnExpandAll, "Expand all nodes in the treeview")
-            Me.btnSave.Location = New Global.System.Drawing.Point(152, 312)
+            Me.btnExpandAll.UseVisualStyleBackColor = False
+            '
+            'btnSave
+            '
+            Me.btnSave.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnSave.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnSave.Location = New System.Drawing.Point(59, 12)
             Me.btnSave.Name = "btnSave"
-            Me.btnSave.Size = New Global.System.Drawing.Size(42, 23)
+            Me.btnSave.Size = New System.Drawing.Size(42, 27)
             Me.btnSave.TabIndex = 6
             Me.btnSave.Text = "Save"
+            Me.btnSave.UseVisualStyleBackColor = False
             Me.btnSave.Visible = False
-            Me.btnTest.Location = New Global.System.Drawing.Point(8, 312)
+            '
+            'btnTest
+            '
+            Me.btnTest.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnTest.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnTest.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnTest.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnTest.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnTest.Location = New System.Drawing.Point(107, 12)
             Me.btnTest.Name = "btnTest"
-            Me.btnTest.Size = New Global.System.Drawing.Size(40, 23)
+            Me.btnTest.Size = New System.Drawing.Size(40, 27)
             Me.btnTest.TabIndex = 5
             Me.btnTest.Text = "Test"
+            Me.btnTest.UseVisualStyleBackColor = False
             Me.btnTest.Visible = False
-            Me.cmTVfunctions.MenuItems.AddRange(New Global.System.Windows.Forms.MenuItem() {Me.cmiTV_Add, Me.cmiTV_Cut, Me.cmiTV_Copy, Me.cmiTV_Paste, Me.cmiTV_PasteTree, Me.cmiTV_PasteAsLink, Me.MenuItem2, Me.cmiTV_MoveNodeUp, Me.cmiTV_MoveNodeDown})
-            Me.cmiTV_Add.Index = 0
-            Me.cmiTV_Add.Text = "Add"
-            Me.cmiTV_Cut.Index = 1
-            Me.cmiTV_Cut.Text = "Cut"
-            Me.cmiTV_Copy.Index = 2
-            Me.cmiTV_Copy.Text = "Copy"
-            Me.cmiTV_Paste.Index = 3
-            Me.cmiTV_Paste.Text = "Paste Top Node on Clipboard"
-            Me.cmiTV_PasteTree.Index = 4
-            Me.cmiTV_PasteTree.Text = "Paste Tree on Clipboard"
-            Me.cmiTV_PasteAsLink.Index = 5
-            Me.cmiTV_PasteAsLink.Text = "Paste As Link"
-            Me.MenuItem2.Index = 6
-            Me.MenuItem2.Text = "-"
-            Me.cmiTV_MoveNodeUp.Index = 7
-            Me.cmiTV_MoveNodeUp.Text = "Move up"
-            Me.cmiTV_MoveNodeDown.Index = 8
-            Me.cmiTV_MoveNodeDown.Text = "Move down"
-            Me.tbSpeaker.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Me.tbSpeaker.CharacterCasing = Global.System.Windows.Forms.CharacterCasing.Lower
-            Me.tbSpeaker.Location = New Global.System.Drawing.Point(32, 360)
+            '
+            'cmiTV_Add
+            '
+            Me.cmiTV_Add.Index = -1
+            Me.cmiTV_Add.Text = ""
+            '
+            'cmiTV_Cut
+            '
+            Me.cmiTV_Cut.Index = -1
+            Me.cmiTV_Cut.Text = ""
+            '
+            'cmiTV_Copy
+            '
+            Me.cmiTV_Copy.Index = -1
+            Me.cmiTV_Copy.Text = ""
+            '
+            'cmiTV_Paste
+            '
+            Me.cmiTV_Paste.Index = -1
+            Me.cmiTV_Paste.Text = ""
+            '
+            'cmiTV_PasteTree
+            '
+            Me.cmiTV_PasteTree.Index = -1
+            Me.cmiTV_PasteTree.Text = ""
+            '
+            'cmiTV_PasteAsLink
+            '
+            Me.cmiTV_PasteAsLink.Index = -1
+            Me.cmiTV_PasteAsLink.Text = ""
+            '
+            'MenuItem2
+            '
+            Me.MenuItem2.Index = -1
+            Me.MenuItem2.Text = ""
+            '
+            'cmiTV_MoveNodeUp
+            '
+            Me.cmiTV_MoveNodeUp.Index = -1
+            Me.cmiTV_MoveNodeUp.Text = ""
+            '
+            'cmiTV_MoveNodeDown
+            '
+            Me.cmiTV_MoveNodeDown.Index = -1
+            Me.cmiTV_MoveNodeDown.Text = ""
+            '
+            'tbSpeaker
+            '
+            Me.tbSpeaker.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+            Me.tbSpeaker.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tbSpeaker.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
+            Me.tbSpeaker.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbSpeaker.Location = New System.Drawing.Point(12, 327)
             Me.tbSpeaker.Name = "tbSpeaker"
-            Me.tbSpeaker.Size = New Global.System.Drawing.Size(128, 20)
+            Me.tbSpeaker.Size = New System.Drawing.Size(260, 22)
             Me.tbSpeaker.TabIndex = 9
-            Me.tbSpeaker.Text = ""
-            Me.btnOpen.Location = New Global.System.Drawing.Point(88, 312)
+            '
+            'btnOpen
+            '
+            Me.btnOpen.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnOpen.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnOpen.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnOpen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnOpen.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnOpen.Location = New System.Drawing.Point(5, 12)
             Me.btnOpen.Name = "btnOpen"
-            Me.btnOpen.Size = New Global.System.Drawing.Size(48, 23)
+            Me.btnOpen.Size = New System.Drawing.Size(48, 27)
             Me.btnOpen.TabIndex = 6
             Me.btnOpen.Text = "Open"
+            Me.btnOpen.UseVisualStyleBackColor = False
             Me.btnOpen.Visible = False
-            Me.MainMenu1.MenuItems.AddRange(New Global.System.Windows.Forms.MenuItem() {Me.MenuItem1})
+            '
+            'MainMenu1
+            '
+            Me.MainMenu1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem1})
+            '
+            'MenuItem1
+            '
             Me.MenuItem1.Index = 0
-            Me.MenuItem1.MenuItems.AddRange(New Global.System.Windows.Forms.MenuItem() {Me.miNew, Me.miOpen, Me.miSave, Me.MenuItem4, Me.miQuit})
+            Me.MenuItem1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miNew, Me.miOpen, Me.miSave, Me.MenuItem4, Me.miQuit})
             Me.MenuItem1.Text = "File"
+            '
+            'miNew
+            '
             Me.miNew.Index = 0
             Me.miNew.Text = "New"
+            '
+            'miOpen
+            '
             Me.miOpen.Index = 1
-            Me.miOpen.Shortcut = Global.System.Windows.Forms.Shortcut.CtrlO
+            Me.miOpen.Shortcut = System.Windows.Forms.Shortcut.CtrlO
             Me.miOpen.Text = "&Open"
+            '
+            'miSave
+            '
             Me.miSave.Index = 2
-            Me.miSave.Shortcut = Global.System.Windows.Forms.Shortcut.CtrlS
+            Me.miSave.Shortcut = System.Windows.Forms.Shortcut.CtrlS
             Me.miSave.Text = "&Save"
+            '
+            'MenuItem4
+            '
             Me.MenuItem4.Index = 3
             Me.MenuItem4.Text = "-"
+            '
+            'miQuit
+            '
             Me.miQuit.Index = 4
-            Me.miQuit.Shortcut = Global.System.Windows.Forms.Shortcut.CtrlQ
+            Me.miQuit.Shortcut = System.Windows.Forms.Shortcut.CtrlQ
             Me.miQuit.Text = "&Quit"
-            Me.AutoScaleBaseSize = New Global.System.Drawing.Size(5, 13)
-            Me.ClientSize = New Global.System.Drawing.Size(792, 517)
+            '
+            'frmDialogEditor
+            '
+            Me.AcceptButton = Me.btnTest
+            Me.AutoScaleBaseSize = New System.Drawing.Size(5, 15)
+            Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.ClientSize = New System.Drawing.Size(961, 517)
             Me.Controls.Add(Me.tbSpeaker)
             Me.Controls.Add(Me.tbConversationText)
             Me.Controls.Add(Me.btnCollapseAll)
@@ -1099,74 +1725,49 @@ Namespace kotor_tool
             Me.Controls.Add(Me.btnSave)
             Me.Controls.Add(Me.btnTest)
             Me.Controls.Add(Me.btnOpen)
+            Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.Menu = Me.MainMenu1
             Me.Name = "frmDialogEditor"
             Me.Text = "Conversation Editor"
             Me.TabControl1.ResumeLayout(False)
             Me.tabpagActionsTaken.ResumeLayout(False)
+            Me.tabpagActionsTaken.PerformLayout()
             Me.tabpagCamera.ResumeLayout(False)
-            CType(Me.nudCamFieldOfView, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudFadeColorG, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudFadeColorB, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudFadeColorR, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudCameraID, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudCamHeightOffset, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudCameraAngle, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudTarHeightOffset, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudFadeDelay, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudFadeLength, Global.System.ComponentModel.ISupportInitialize).EndInit()
+            Me.tabpagCamera.PerformLayout()
+            CType(Me.nudCamFieldOfView, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudFadeColorG, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudFadeColorB, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudFadeColorR, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudCameraID, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudCamHeightOffset, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudCameraAngle, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudTarHeightOffset, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudFadeDelay, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudFadeLength, System.ComponentModel.ISupportInitialize).EndInit()
             Me.tabpagAnimationSound.ResumeLayout(False)
-            CType(Me.dgAnimList, Global.System.ComponentModel.ISupportInitialize).EndInit()
+            Me.tabpagAnimationSound.PerformLayout()
+            CType(Me.dgAnimList, System.ComponentModel.ISupportInitialize).EndInit()
             Me.tabpagPlot.ResumeLayout(False)
-            CType(Me.nudPlotIndex, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudPlotXPPercentage, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudQuestEntry, Global.System.ComponentModel.ISupportInitialize).EndInit()
+            Me.tabpagPlot.PerformLayout()
+            CType(Me.nudPlotIndex, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudPlotXPPercentage, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudQuestEntry, System.ComponentModel.ISupportInitialize).EndInit()
             Me.tabpagComment.ResumeLayout(False)
+            Me.tabpagComment.PerformLayout()
             Me.tabpagThisFile1.ResumeLayout(False)
-            CType(Me.nudDelayEntry, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudDelayReply, Global.System.ComponentModel.ISupportInitialize).EndInit()
+            Me.tabpagThisFile1.PerformLayout()
+            CType(Me.nudDelayEntry, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudDelayReply, System.ComponentModel.ISupportInitialize).EndInit()
             Me.tabpagThisFile2.ResumeLayout(False)
-            CType(Me.dgStuntList, Global.System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.dgStuntList, System.ComponentModel.ISupportInitialize).EndInit()
             Me.tabpagDebug.ResumeLayout(False)
-            CType(Me.trkbTVIndent, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.trkbTVItemHeight, Global.System.ComponentModel.ISupportInitialize).EndInit()
-
-            ' -------------------------------------------------------------
-            ' Event bindings restored from decompiled synchronized
-            ' AccessedThroughProperty wrappers.
-            ' -------------------------------------------------------------
-            AddHandler Me.tvConversation.AfterSelect, AddressOf Me.tvConversation_AfterSelect
-            AddHandler Me.tvConversation.MouseUp, AddressOf Me.tvConversation_MouseUp
-            AddHandler Me.tvConversation.MouseDown, AddressOf Me.tvConversation_MouseDown
-            AddHandler Me.btnCollapseAll.Click, AddressOf Me.btnCollapseAll_Click
-            AddHandler Me.btnExpandAll.Click, AddressOf Me.btnExpandAll_Click
-            AddHandler Me.btnDebug.Click, AddressOf Me.btnDebug_Click
-            AddHandler Me.btnTest.Click, AddressOf Me.btnTest_Click
-            AddHandler Me.btnChooseColor.Click, AddressOf Me.btnChooseColor_Click
-            AddHandler Me.cmiTV_Add.Click, AddressOf Me.cmiTV_Add_Click
-            AddHandler Me.cmiTV_Copy.Click, AddressOf Me.cmiTV_Copy_Click
-            AddHandler Me.cmiTV_Paste.Click, AddressOf Me.cmiTV_Paste_Click
-            AddHandler Me.cmiTV_PasteAsLink.Click, AddressOf Me.cmiTV_PasteAsLink_Click
-            AddHandler Me.cmiTV_Cut.Click, AddressOf Me.cmiTV_Cut_Click
-            AddHandler Me.btnSave.Click, AddressOf Me.Button1_Click
-            AddHandler Me.btnOpen.Click, AddressOf Me.btnOpen_Click
-            AddHandler Me.miOpen.Click, AddressOf Me.miOpen_Click
-            AddHandler Me.miSave.Click, AddressOf Me.miSave_Click
-            AddHandler Me.miQuit.Click, AddressOf Me.miQuit_Click
-            AddHandler Me.dgAnimList.Validated, AddressOf Me.dgAnimList_Validated
-            AddHandler Me.dgAnimList.Click, AddressOf Me.dgAnimList_Click
-            AddHandler Me.btnDeleteAnimListEntry.Click, AddressOf Me.btnDeleteAnimListEntry_Click
-            AddHandler Me.btnAddAnimListEntry.Click, AddressOf Me.btnAddAnimListEntry_Click
-            AddHandler Me.trkbTVIndent.Scroll, AddressOf Me.trkbTVIndent_Scroll
-            AddHandler Me.miNew.Click, AddressOf Me.miNew_Click
-            AddHandler Me.trkbTVItemHeight.Scroll, AddressOf Me.trkbTVItemHeight_Scroll
-            AddHandler Me.cmiTV_PasteTree.Click, AddressOf Me.cmiTV_PasteTree_Click
-            AddHandler Me.cmbxConversationType.SelectedIndexChanged, AddressOf Me.cmbxConversationType_SelectedIndexChanged
-            AddHandler Me.btnShowLists.Click, AddressOf Me.btnShowLists_Click
-            AddHandler Me.chkbAnimatedCut.CheckedChanged, AddressOf Me.chkbAnimatedCut_CheckedChanged
-            AddHandler Me.cmiTV_MoveNodeUp.Click, AddressOf Me.cmiTV_MoveNodeUp_Click
-            AddHandler Me.cmiTV_MoveNodeDown.Click, AddressOf Me.cmiTV_MoveNodeDown_Click
+            Me.tabpagDebug.PerformLayout()
+            CType(Me.trkbTVIndent, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.trkbTVItemHeight, System.ComponentModel.ISupportInitialize).EndInit()
             Me.ResumeLayout(False)
+            Me.PerformLayout()
+
         End Sub
 
     End Class

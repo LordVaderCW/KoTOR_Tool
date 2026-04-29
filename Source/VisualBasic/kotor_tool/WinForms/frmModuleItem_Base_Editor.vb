@@ -348,7 +348,7 @@ Namespace kotor_tool
         End Property
 
         ' Token: 0x06000C66 RID: 3174 RVA: 0x0028109C File Offset: 0x0028009C
-        Private Sub btnSetNameLang_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnSetNameLang_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSetNameLang.Click
             Dim frmCExoLocStringLanguagePicker As frmCExoLocStringLanguagePicker = New frmCExoLocStringLanguagePicker(Me.NameLang)
             If frmCExoLocStringLanguagePicker.ShowDialog(Me) = DialogResult.OK Then
                 Me.NameLang = frmCExoLocStringLanguagePicker.LanguageID
@@ -356,7 +356,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000C67 RID: 3175 RVA: 0x002810CC File Offset: 0x002800CC
-        Private Sub nudXY_KeyUp(ByVal sender As Object, ByVal e As KeyEventArgs)
+        Private Sub nudXY_KeyUp(ByVal sender As Object, ByVal e As KeyEventArgs) Handles nudXY.KeyUp
             Me._XYAngle = DoubleType.FromObject(LateBinding.LateGet(sender, Nothing, "value", New Object(-1) {}, Nothing, Nothing))
             Me.DrawXYOrientation()
             Me._XOrientation = -CSng(Math.Round(Math.Cos((Me._XYAngle + 90.0) / 180.0 * 3.1415926535897931), 5))
@@ -366,7 +366,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000C68 RID: 3176 RVA: 0x0028119C File Offset: 0x0028019C
-        Private Sub nudXY_ValueChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub nudXY_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles nudXY.ValueChanged
             Me._XYAngle = DoubleType.FromObject(LateBinding.LateGet(sender, Nothing, "value", New Object(-1) {}, Nothing, Nothing))
             Me.DrawXYOrientation()
             Me._XOrientation = -CSng(Math.Round(Math.Cos((Me._XYAngle + 90.0) / 180.0 * 3.1415926535897931), 5))
@@ -376,7 +376,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000C69 RID: 3177 RVA: 0x0028126C File Offset: 0x0028026C
-        Private Sub nudXYSpawnPointBearing_ValueChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub nudXYSpawnPointBearing_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles nudXYSpawnPointBearing.ValueChanged
             Me._SpawnPointXYAngle = DoubleType.FromObject(LateBinding.LateGet(sender, Nothing, "value", New Object(-1) {}, Nothing, Nothing))
             Me.DrawXYOrientationSpawnPointBearing()
             If Me._SpawnPointXYAngle <= 180.0 Then
@@ -391,7 +391,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000C6A RID: 3178 RVA: 0x00281340 File Offset: 0x00280340
-        Private Sub btnShowQuaternion_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs)
+        Private Sub btnShowQuaternion_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles btnShowQuaternion.MouseDown
             Me.tbCamOrientationF1.Visible = True
             Me.tbCamOrientationF2.Visible = True
             Me.tbCamOrientationF3.Visible = True
@@ -400,7 +400,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000C6B RID: 3179 RVA: 0x00281380 File Offset: 0x00280380
-        Private Sub btnShowQuaternion_MouseUp(ByVal sender As Object, ByVal e As MouseEventArgs)
+        Private Sub btnShowQuaternion_MouseUp(ByVal sender As Object, ByVal e As MouseEventArgs) Handles btnShowQuaternion.MouseUp
             Me.tbCamOrientationF1.Visible = False
             Me.tbCamOrientationF2.Visible = False
             Me.tbCamOrientationF3.Visible = False
@@ -409,12 +409,12 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000C6C RID: 3180 RVA: 0x002813C0 File Offset: 0x002803C0
-        Private Sub nudCamOrientation_ValueChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub nudCamOrientation_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles nudCamOrientationZ.ValueChanged, nudCamOrientationY.ValueChanged, nudCamOrientationX.ValueChanged
             Me.ErrorProvider1.SetError(Me.nudCamOrientationX, "")
         End Sub
 
         ' Token: 0x06000C6D RID: 3181 RVA: 0x002813D8 File Offset: 0x002803D8
-        Private Sub lbSpawnPoints_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub lbSpawnPoints_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles lbSpawnPoints.SelectedIndexChanged
             Me.nudSpawnPointX.Enabled = True
             Me.nudSpawnPointY.Enabled = True
             Me.nudSpawnPointZ.Enabled = True
@@ -426,7 +426,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000C6E RID: 3182 RVA: 0x002814A8 File Offset: 0x002804A8
-        Private Sub nudXYSpawnPointBearing_KeyUp(ByVal sender As Object, ByVal e As KeyEventArgs)
+        Private Sub nudXYSpawnPointBearing_KeyUp(ByVal sender As Object, ByVal e As KeyEventArgs) Handles nudXYSpawnPointBearing.KeyUp
             Me.nudXYSpawnPointBearing.Value = Me.nudXYSpawnPointBearing.Value
         End Sub
 

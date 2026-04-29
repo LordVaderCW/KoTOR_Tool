@@ -197,193 +197,193 @@ Namespace kotor_tool
 		End Sub
 
 		' Token: 0x06001626 RID: 5670 RVA: 0x002C5334 File Offset: 0x002C4334
-		Private Sub btnAddSound_Click(sender As Object, e As EventArgs)
-			Dim frmSoundChooser As frmSoundChooser = New frmSoundChooser()
-			frmSoundChooser.SoundBifFilesHash = Me.htBIFSounds
-			If Me.htStreamSounds Is Nothing Then
-				Me.htStreamSounds = New Hashtable()
-				Dim directoryInfo As DirectoryInfo = New DirectoryInfo(frmMain.CurrentSettings.KotorLocation(Me.KotorVersionIndex) + "\StreamSounds")
-				For Each fileInfo As FileInfo In directoryInfo.GetFiles()
-					Me.htStreamSounds.Add(fileInfo.Name, Nothing)
-				Next
-			End If
-			frmSoundChooser.StreamSoundsFilesHash = Me.htStreamSounds
-			frmSoundChooser.ShowDialog(Me)
-			If frmSoundChooser.DialogResult = DialogResult.OK Then
-				Try
-					For Each obj As Object In frmSoundChooser.SelectedSounds
-						Dim text As String = StringType.FromObject(obj)
-						If text.Length > 16 Then
-							Interaction.MsgBox(String.Concat(New String() { "The sound """, text, """", " must be renamed to be no more than 16 characters long, not including the extension, to be used.", vbLf, vbLf, "The sound will not be added." }), MsgBoxStyle.Critical, "ResRef too long")
-						Else
-							Me.lbSounds.Items.Add(text)
-						End If
-					Next
-				Finally
+        Private Sub btnAddSound_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnAddSound.Click
+            Dim frmSoundChooser As frmSoundChooser = New frmSoundChooser()
+            frmSoundChooser.SoundBifFilesHash = Me.htBIFSounds
+            If Me.htStreamSounds Is Nothing Then
+                Me.htStreamSounds = New Hashtable()
+                Dim directoryInfo As DirectoryInfo = New DirectoryInfo(frmMain.CurrentSettings.KotorLocation(Me.KotorVersionIndex) + "\StreamSounds")
+                For Each fileInfo As FileInfo In directoryInfo.GetFiles()
+                    Me.htStreamSounds.Add(fileInfo.Name, Nothing)
+                Next
+            End If
+            frmSoundChooser.StreamSoundsFilesHash = Me.htStreamSounds
+            frmSoundChooser.ShowDialog(Me)
+            If frmSoundChooser.DialogResult = DialogResult.OK Then
+                Try
+                    For Each obj As Object In frmSoundChooser.SelectedSounds
+                        Dim text As String = StringType.FromObject(obj)
+                        If text.Length > 16 Then
+                            Interaction.MsgBox(String.Concat(New String() {"The sound """, text, """", " must be renamed to be no more than 16 characters long, not including the extension, to be used.", vbLf, vbLf, "The sound will not be added."}), MsgBoxStyle.Critical, "ResRef too long")
+                        Else
+                            Me.lbSounds.Items.Add(text)
+                        End If
+                    Next
+                Finally
                     Dim enumerator As IEnumerator = Nothing
-					If TypeOf enumerator Is IDisposable Then
-						CType(enumerator, IDisposable).Dispose()
-					End If
-				End Try
-			End If
-			Me.UpdateUI()
-		End Sub
+                    If TypeOf enumerator Is IDisposable Then
+                        CType(enumerator, IDisposable).Dispose()
+                    End If
+                End Try
+            End If
+            Me.UpdateUI()
+        End Sub
 
 		' Token: 0x06001627 RID: 5671 RVA: 0x002C54A8 File Offset: 0x002C44A8
-		Private Sub btnRemoveSound_Click(sender As Object, e As EventArgs)
-			' The following expression was wrapped in a checked-statement
-			If Me.lbSounds.SelectedIndices.Count = 1 Then
-				Me.lbSounds.Items.RemoveAt(Me.lbSounds.SelectedIndex)
-			ElseIf Me.lbSounds.SelectedIndices.Count > 1 AndAlso Interaction.MsgBox("Remove all " + StringType.FromInteger(Me.lbSounds.SelectedIndices.Count) + " sounds?", MsgBoxStyle.OkCancel Or MsgBoxStyle.DefaultButton2, "Confirm removal") = MsgBoxResult.Ok Then
-				For i As Integer = Me.lbSounds.SelectedIndices.Count - 1 To 0 Step -1
-					Me.lbSounds.Items.RemoveAt(Me.lbSounds.SelectedIndices(i))
-				Next
-			End If
-			Me.UpdateUI()
-		End Sub
+        Private Sub btnRemoveSound_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnRemoveSound.Click
+            ' The following expression was wrapped in a checked-statement
+            If Me.lbSounds.SelectedIndices.Count = 1 Then
+                Me.lbSounds.Items.RemoveAt(Me.lbSounds.SelectedIndex)
+            ElseIf Me.lbSounds.SelectedIndices.Count > 1 AndAlso Interaction.MsgBox("Remove all " + StringType.FromInteger(Me.lbSounds.SelectedIndices.Count) + " sounds?", MsgBoxStyle.OkCancel Or MsgBoxStyle.DefaultButton2, "Confirm removal") = MsgBoxResult.Ok Then
+                For i As Integer = Me.lbSounds.SelectedIndices.Count - 1 To 0 Step -1
+                    Me.lbSounds.Items.RemoveAt(Me.lbSounds.SelectedIndices(i))
+                Next
+            End If
+            Me.UpdateUI()
+        End Sub
 
 		' Token: 0x06001628 RID: 5672 RVA: 0x002C5578 File Offset: 0x002C4578
-		Private Sub btnPlaySound_Click(sender As Object, e As EventArgs)
-			If Me.PlaySound(StringType.FromObject(ObjectType.StrCatObj(Me.lbSounds.SelectedItem, ".wav"))) Then
-				Me.btnPlaySound.Enabled = False
-				Me.btnStopSound.Enabled = True
-			End If
-		End Sub
+        Private Sub btnPlaySound_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnPlaySound.Click
+            If Me.PlaySound(StringType.FromObject(ObjectType.StrCatObj(Me.lbSounds.SelectedItem, ".wav"))) Then
+                Me.btnPlaySound.Enabled = False
+                Me.btnStopSound.Enabled = True
+            End If
+        End Sub
 
 		' Token: 0x06001629 RID: 5673 RVA: 0x002C55B4 File Offset: 0x002C45B4
-		Private Sub btnStopSound_Click(sender As Object, e As EventArgs)
-			Me.StopSound()
-		End Sub
+        Private Sub btnStopSound_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnStopSound.Click
+            Me.StopSound()
+        End Sub
 
 		' Token: 0x0600162A RID: 5674 RVA: 0x002C55BC File Offset: 0x002C45BC
-		Private Sub btnMoveUp_Click(sender As Object, e As EventArgs)
-			Dim selectedIndex As Integer = Me.lbSounds.SelectedIndex
-			If selectedIndex > 0 Then
-				Dim text As String = StringType.FromObject(Me.lbSounds.SelectedItem)
-				Me.lbSounds.Items(selectedIndex) = RuntimeHelpers.GetObjectValue(Me.lbSounds.Items(selectedIndex - 1))
-				Me.lbSounds.Items(selectedIndex - 1) = text
-				Dim lbSounds As ListBox = Me.lbSounds
-				lbSounds.SelectedIndex -= 1
-			End If
-		End Sub
+        Private Sub btnMoveUp_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnMoveUp.Click
+            Dim selectedIndex As Integer = Me.lbSounds.SelectedIndex
+            If selectedIndex > 0 Then
+                Dim text As String = StringType.FromObject(Me.lbSounds.SelectedItem)
+                Me.lbSounds.Items(selectedIndex) = RuntimeHelpers.GetObjectValue(Me.lbSounds.Items(selectedIndex - 1))
+                Me.lbSounds.Items(selectedIndex - 1) = text
+                Dim lbSounds As ListBox = Me.lbSounds
+                lbSounds.SelectedIndex -= 1
+            End If
+        End Sub
 
 		' Token: 0x0600162B RID: 5675 RVA: 0x002C563C File Offset: 0x002C463C
-		Private Sub btnMoveDown_Click(sender As Object, e As EventArgs)
-			Dim selectedIndex As Integer = Me.lbSounds.SelectedIndex
-			If selectedIndex < Me.lbSounds.Items.Count - 1 Then
-				Dim text As String = StringType.FromObject(Me.lbSounds.SelectedItem)
-				Me.lbSounds.Items(selectedIndex) = RuntimeHelpers.GetObjectValue(Me.lbSounds.Items(selectedIndex + 1))
-				Me.lbSounds.Items(selectedIndex + 1) = text
-				Dim lbSounds As ListBox = Me.lbSounds
-				lbSounds.SelectedIndex += 1
-			End If
-		End Sub
+        Private Sub btnMoveDown_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnMoveDown.Click
+            Dim selectedIndex As Integer = Me.lbSounds.SelectedIndex
+            If selectedIndex < Me.lbSounds.Items.Count - 1 Then
+                Dim text As String = StringType.FromObject(Me.lbSounds.SelectedItem)
+                Me.lbSounds.Items(selectedIndex) = RuntimeHelpers.GetObjectValue(Me.lbSounds.Items(selectedIndex + 1))
+                Me.lbSounds.Items(selectedIndex + 1) = text
+                Dim lbSounds As ListBox = Me.lbSounds
+                lbSounds.SelectedIndex += 1
+            End If
+        End Sub
 
 		' Token: 0x0600162C RID: 5676 RVA: 0x002C56D0 File Offset: 0x002C46D0
-		Private Sub btnSetNameLang_Click(sender As Object, e As EventArgs)
-			Dim frmCExoLocStringLanguagePicker As frmCExoLocStringLanguagePicker = New frmCExoLocStringLanguagePicker(Me.NameLang)
-			If frmCExoLocStringLanguagePicker.ShowDialog(Me) = DialogResult.OK Then
-				Me.NameLang = frmCExoLocStringLanguagePicker.LanguageID
-			End If
-		End Sub
+        Private Sub btnSetNameLang_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSetNameLang.Click
+            Dim frmCExoLocStringLanguagePicker As frmCExoLocStringLanguagePicker = New frmCExoLocStringLanguagePicker(Me.NameLang)
+            If frmCExoLocStringLanguagePicker.ShowDialog(Me) = DialogResult.OK Then
+                Me.NameLang = frmCExoLocStringLanguagePicker.LanguageID
+            End If
+        End Sub
 
 		' Token: 0x0600162D RID: 5677 RVA: 0x002C5700 File Offset: 0x002C4700
-		Private Sub btnDebug_Click(sender As Object, e As EventArgs)
-			Dim frmTextEditor As frmTextEditor = New frmTextEditor()
-			frmTextEditor.Filename = Me.tbName.Text + ".uts"
-			frmTextEditor.Text = "Text Editor - " + frmTextEditor.Filename
-			frmTextEditor.RTFMode = True
-			frmTextEditor.tbGeneric.Rtf = Me.UTS.ToString()
-			frmTextEditor.tbGeneric.SelectionLength = 0
-			frmTextEditor.Show()
-		End Sub
+        Private Sub btnDebug_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnDebug.Click
+            Dim frmTextEditor As frmTextEditor = New frmTextEditor()
+            frmTextEditor.Filename = Me.tbName.Text + ".uts"
+            frmTextEditor.Text = "Text Editor - " + frmTextEditor.Filename
+            frmTextEditor.RTFMode = True
+            frmTextEditor.tbGeneric.Rtf = Me.UTS.ToString()
+            frmTextEditor.tbGeneric.SelectionLength = 0
+            frmTextEditor.Show()
+        End Sub
 
 		' Token: 0x0600162E RID: 5678 RVA: 0x002C5774 File Offset: 0x002C4774
-		Private Sub btnSave_Click(sender As Object, e As EventArgs)
-			Me.SetGFFNodeValues()
-			If Not Me.m_bSaveGameMode Then
-				Me.m_EditingFilePath = StringType.FromObject(frmMain.GetFilePath("save", Me.CurrentSettings.defaultSaveLocation, Path.GetFileNameWithoutExtension(Me.m_EditingFilePath) + ".uts", "", "", False, True))
-				If StringType.StrCmp(Me.m_EditingFilePath, "", False) = 0 Then
-					Return
-				End If
-			End If
-			Me.UTS.WriteFile(Me.m_EditingFilePath, "UTS")
-			If Me.m_bSaveGameMode Then
-				Me.Close()
-			End If
-		End Sub
+        Private Sub btnSave_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSave.Click
+            Me.SetGFFNodeValues()
+            If Not Me.m_bSaveGameMode Then
+                Me.m_EditingFilePath = StringType.FromObject(frmMain.GetFilePath("save", Me.CurrentSettings.defaultSaveLocation, Path.GetFileNameWithoutExtension(Me.m_EditingFilePath) + ".uts", "", "", False, True))
+                If StringType.StrCmp(Me.m_EditingFilePath, "", False) = 0 Then
+                    Return
+                End If
+            End If
+            Me.UTS.WriteFile(Me.m_EditingFilePath, "UTS")
+            If Me.m_bSaveGameMode Then
+                Me.Close()
+            End If
+        End Sub
 
 		' Token: 0x0600162F RID: 5679 RVA: 0x002C580C File Offset: 0x002C480C
-		Private Sub btnCancel_Click(sender As Object, e As EventArgs)
-			Me.Close()
-		End Sub
+        Private Sub btnCancel_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnCancel.Click
+            Me.Close()
+        End Sub
 
 		' Token: 0x06001630 RID: 5680 RVA: 0x002C5814 File Offset: 0x002C4814
-		Private Sub lbSounds_SelectedIndexChanged(sender As Object, e As EventArgs)
-			If Me.lbSounds.SelectedIndex = -1 Then
-				Me.btnMoveUp.Enabled = False
-				Me.btnMoveDown.Enabled = False
-				Me.btnRemoveSound.Enabled = False
-				Me.btnPlaySound.Enabled = False
-				Me.IsItemSelected = False
-			Else
-				Me.IsItemSelected = True
-				If Not Me.IsSoundPlaying() Then
-					Me.btnPlaySound.Enabled = True
-				End If
-				Me.btnRemoveSound.Enabled = True
-				If(Me.lbSounds.Items.Count = 1) Or (Me.lbSounds.SelectedIndices.Count > 1) Then
-					Me.btnMoveUp.Enabled = False
-					Me.btnMoveDown.Enabled = False
-				ElseIf Me.lbSounds.SelectedIndices.Count = 1 Then
-					' The following expression was wrapped in a checked-expression
-					If Me.lbSounds.SelectedIndex = Me.lbSounds.Items.Count - 1 Then
-						Me.btnMoveUp.Enabled = True
-						Me.btnMoveDown.Enabled = False
-					ElseIf Me.lbSounds.SelectedIndex = 0 Then
-						Me.btnMoveUp.Enabled = False
-						Me.btnMoveDown.Enabled = True
-					Else
-						Me.btnMoveUp.Enabled = True
-						Me.btnMoveDown.Enabled = True
-					End If
-				End If
-			End If
-		End Sub
+        Private Sub lbSounds_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles lbSounds.SelectedIndexChanged
+            If Me.lbSounds.SelectedIndex = -1 Then
+                Me.btnMoveUp.Enabled = False
+                Me.btnMoveDown.Enabled = False
+                Me.btnRemoveSound.Enabled = False
+                Me.btnPlaySound.Enabled = False
+                Me.IsItemSelected = False
+            Else
+                Me.IsItemSelected = True
+                If Not Me.IsSoundPlaying() Then
+                    Me.btnPlaySound.Enabled = True
+                End If
+                Me.btnRemoveSound.Enabled = True
+                If (Me.lbSounds.Items.Count = 1) Or (Me.lbSounds.SelectedIndices.Count > 1) Then
+                    Me.btnMoveUp.Enabled = False
+                    Me.btnMoveDown.Enabled = False
+                ElseIf Me.lbSounds.SelectedIndices.Count = 1 Then
+                    ' The following expression was wrapped in a checked-expression
+                    If Me.lbSounds.SelectedIndex = Me.lbSounds.Items.Count - 1 Then
+                        Me.btnMoveUp.Enabled = True
+                        Me.btnMoveDown.Enabled = False
+                    ElseIf Me.lbSounds.SelectedIndex = 0 Then
+                        Me.btnMoveUp.Enabled = False
+                        Me.btnMoveDown.Enabled = True
+                    Else
+                        Me.btnMoveUp.Enabled = True
+                        Me.btnMoveDown.Enabled = True
+                    End If
+                End If
+            End If
+        End Sub
 
 		' Token: 0x06001631 RID: 5681 RVA: 0x002C5964 File Offset: 0x002C4964
-		Private Sub lbSounds_DoubleClick(sender As Object, e As EventArgs)
-			If(Me.lbSounds.SelectedIndex <> -1) And Not Me.IsSoundPlaying() Then
-				Me.btnPlaySound_Click(Nothing, Nothing)
-			End If
-		End Sub
+        Private Sub lbSounds_DoubleClick(ByVal sender As Object, ByVal e As EventArgs) Handles lbSounds.DoubleClick
+            If (Me.lbSounds.SelectedIndex <> -1) And Not Me.IsSoundPlaying() Then
+                Me.btnPlaySound_Click(Nothing, Nothing)
+            End If
+        End Sub
 
 		' Token: 0x06001632 RID: 5682 RVA: 0x002C598C File Offset: 0x002C498C
-		Private Sub rbPlaysWhere_CheckedChanged(sender As Object, e As EventArgs)
-			Me.gbHeight.Enabled = Not Me.rbPlaysEverywhere.Checked
-			Me.gbVolumeDistances.Enabled = Not Me.rbPlaysEverywhere.Checked
-			Me.gbRandomRange.Enabled = Me.rbRandomPosition.Checked
-		End Sub
+        Private Sub rbPlaysWhere_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles rbSpecificPosition.CheckedChanged, rbRandomPosition.CheckedChanged, rbPlaysEverywhere.CheckedChanged
+            Me.gbHeight.Enabled = Not Me.rbPlaysEverywhere.Checked
+            Me.gbVolumeDistances.Enabled = Not Me.rbPlaysEverywhere.Checked
+            Me.gbRandomRange.Enabled = Me.rbRandomPosition.Checked
+        End Sub
 
 		' Token: 0x06001633 RID: 5683 RVA: 0x002C59E4 File Offset: 0x002C49E4
-		Private Sub rbPlayDay_CheckedChanged(sender As Object, e As EventArgs)
-			Me.pnlHours.Enabled = Me.rbPlaySpecificHours.Checked
-		End Sub
+        Private Sub rbPlayDay_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles rbPlaySpecificHours.CheckedChanged, rbPlayNight.CheckedChanged, rbPlayDay.CheckedChanged, rbPlayAllTimes.CheckedChanged
+            Me.pnlHours.Enabled = Me.rbPlaySpecificHours.Checked
+        End Sub
 
 		' Token: 0x06001634 RID: 5684 RVA: 0x002C59FC File Offset: 0x002C49FC
-		Private Sub rbLooping_CheckedChanged(sender As Object, e As EventArgs)
-			Me.rbSequential.Enabled = Not Me.rbLooping.Checked
-			Me.rbRandom.Enabled = Not Me.rbLooping.Checked
-			Me.pnlVolPitch.Enabled = Not Me.rbLooping.Checked
-			Me.gbInterval.Enabled = Me.rbRepeating.Checked
-			If Me.rbLooping.Checked Then
-				If Me.rbRandomPosition.Checked Then
-					Me.rbPlaysEverywhere.Checked = True
-				End If
-				Me.rbSequential.Checked = True
-			End If
-			Me.rbRandomPosition.Enabled = Not Me.rbLooping.Checked
-		End Sub
+        Private Sub rbLooping_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles rbRepeating.CheckedChanged, rbOnce.CheckedChanged, rbLooping.CheckedChanged
+            Me.rbSequential.Enabled = Not Me.rbLooping.Checked
+            Me.rbRandom.Enabled = Not Me.rbLooping.Checked
+            Me.pnlVolPitch.Enabled = Not Me.rbLooping.Checked
+            Me.gbInterval.Enabled = Me.rbRepeating.Checked
+            If Me.rbLooping.Checked Then
+                If Me.rbRandomPosition.Checked Then
+                    Me.rbPlaysEverywhere.Checked = True
+                End If
+                Me.rbSequential.Checked = True
+            End If
+            Me.rbRandomPosition.Enabled = Not Me.rbLooping.Checked
+        End Sub
 
 		' Token: 0x06001635 RID: 5685 RVA: 0x002C5AB8 File Offset: 0x002C4AB8
 		Private Sub frmUTS_Editor_Load(sender As Object, e As EventArgs)
@@ -397,51 +397,51 @@ Namespace kotor_tool
 		End Sub
 
 		' Token: 0x06001637 RID: 5687 RVA: 0x002C5AE8 File Offset: 0x002C4AE8
-		Private Sub trkbarVolumeVrtn_ValueChanged(sender As Object, e As EventArgs)
-			Me.tbVolumeVrtn.Text = StringType.FromInteger(Me.trkbarVolumeVrtn.Value)
-		End Sub
+        Private Sub trkbarVolumeVrtn_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles trkbarVolumeVrtn.ValueChanged
+            Me.tbVolumeVrtn.Text = StringType.FromInteger(Me.trkbarVolumeVrtn.Value)
+        End Sub
 
 		' Token: 0x06001638 RID: 5688 RVA: 0x002C5B08 File Offset: 0x002C4B08
-		Private Sub trkbarPitchVrtn_ValueChanged(sender As Object, e As EventArgs)
-			Me.tbPitchVrtn.Text = StringType.FromDouble(CDbl(Me.trkbarPitchVrtn.Value) / 100.0)
-		End Sub
+        Private Sub trkbarPitchVrtn_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles trkbarPitchVrtn.ValueChanged
+            Me.tbPitchVrtn.Text = StringType.FromDouble(CDbl(Me.trkbarPitchVrtn.Value) / 100.0)
+        End Sub
 
 		' Token: 0x06001639 RID: 5689 RVA: 0x002C5B30 File Offset: 0x002C4B30
-		Private Sub trkbarVolume_ValueChanged(sender As Object, e As EventArgs)
-			Me.tbVolume.Text = StringType.FromInteger(Me.trkbarVolume.Value)
-		End Sub
+        Private Sub trkbarVolume_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles trkbarVolume.ValueChanged
+            Me.tbVolume.Text = StringType.FromInteger(Me.trkbarVolume.Value)
+        End Sub
 
 		' Token: 0x0600163A RID: 5690 RVA: 0x002C5B50 File Offset: 0x002C4B50
-		Private Sub Timer1_Tick(sender As Object, e As EventArgs)
-			If Me.IsSoundPlaying() Then
-				Dim num As UInteger
-				Me.result = Me.channel.getPosition(num, TIMEUNIT.MS)
+        Private Sub Timer1_Tick(ByVal sender As Object, ByVal e As EventArgs) Handles Timer1.Tick
+            If Me.IsSoundPlaying() Then
+                Dim num As UInteger
+                Me.result = Me.channel.getPosition(num, TIMEUNIT.MS)
                 Dim sound As Sound = Nothing
-				Me.channel.getCurrentSound(sound)
-				Dim num2 As UInteger
-				If sound IsNot Nothing Then
-					Me.result = sound.getLength(num2, TIMEUNIT.MS)
-					If Me.result <> RESULT.OK AndAlso Me.result <> RESULT.ERR_INVALID_HANDLE AndAlso Me.result <> RESULT.ERR_CHANNEL_STOLEN Then
-						Me.ERRCHECK(Me.result)
-					End If
-				End If
-				Dim num3 As Integer = Convert.ToInt32(num2)
-				Dim num4 As Integer = Convert.ToInt32(num)
-				Me.tbSoundStatus.Text = String.Concat(New String() { (CLng(Math.Round(CDbl(num4) / 1000.0)) / 60L).ToString().PadLeft(2, "0"c), ":", Conversion.Int(CDbl(num4) / 1000.0 Mod 60.0).ToString().PadLeft(2, "0"c), ":", Conversion.Int(CDbl(num4) / 10.0 Mod 100.0).ToString().PadLeft(2, "0"c), "/", (CLng(Math.Round(CDbl(num3) / 1000.0)) / 60L).ToString().PadLeft(2, "0"c), ":", Conversion.Int(CDbl(num3) / 1000.0 Mod 60.0).ToString().PadLeft(2, "0"c), ":", Conversion.Int(CDbl(num3) / 10.0 Mod 100.0).ToString().PadLeft(2, "0"c) })
-			Else
-				Me.btnStopSound.Enabled = False
-				If Me.IsItemSelected Then
-					Me.btnPlaySound.Enabled = True
-				End If
-				Me.Timer1.Enabled = False
-				If Me.sound1 IsNot Nothing Then
-					Me.sound1.release()
-				End If
-				If Me.StoppedPlayingEvent IsNot Nothing Then
-					Me.StoppedPlayingEvent()
-				End If
-			End If
-		End Sub
+                Me.channel.getCurrentSound(sound)
+                Dim num2 As UInteger
+                If sound IsNot Nothing Then
+                    Me.result = sound.getLength(num2, TIMEUNIT.MS)
+                    If Me.result <> result.OK AndAlso Me.result <> result.ERR_INVALID_HANDLE AndAlso Me.result <> result.ERR_CHANNEL_STOLEN Then
+                        Me.ERRCHECK(Me.result)
+                    End If
+                End If
+                Dim num3 As Integer = Convert.ToInt32(num2)
+                Dim num4 As Integer = Convert.ToInt32(num)
+                Me.tbSoundStatus.Text = String.Concat(New String() {(CLng(Math.Round(CDbl(num4) / 1000.0)) / 60L).ToString().PadLeft(2, "0"c), ":", Conversion.Int(CDbl(num4) / 1000.0 Mod 60.0).ToString().PadLeft(2, "0"c), ":", Conversion.Int(CDbl(num4) / 10.0 Mod 100.0).ToString().PadLeft(2, "0"c), "/", (CLng(Math.Round(CDbl(num3) / 1000.0)) / 60L).ToString().PadLeft(2, "0"c), ":", Conversion.Int(CDbl(num3) / 1000.0 Mod 60.0).ToString().PadLeft(2, "0"c), ":", Conversion.Int(CDbl(num3) / 10.0 Mod 100.0).ToString().PadLeft(2, "0"c)})
+            Else
+                Me.btnStopSound.Enabled = False
+                If Me.IsItemSelected Then
+                    Me.btnPlaySound.Enabled = True
+                End If
+                Me.Timer1.Enabled = False
+                If Me.sound1 IsNot Nothing Then
+                    Me.sound1.release()
+                End If
+                If Me.StoppedPlayingEvent IsNot Nothing Then
+                    Me.StoppedPlayingEvent()
+                End If
+            End If
+        End Sub
 
 		' Token: 0x0600163B RID: 5691 RVA: 0x002C5D98 File Offset: 0x002C4D98
 		Private Sub ClosedownSound()

@@ -21,7 +21,7 @@ Namespace kotor_tool
 
         Private Sub frmAbout_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
             LoadAndApplyTheme()
-            DrawAboutLogo()
+            'DrawAboutLogo()
         End Sub
 
         Private Sub LoadAndApplyTheme()

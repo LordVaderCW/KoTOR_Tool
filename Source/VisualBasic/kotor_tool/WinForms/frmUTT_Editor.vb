@@ -47,7 +47,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060016C6 RID: 5830 RVA: 0x002C9318 File Offset: 0x002C8318
-        Private Sub btnCancel_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnCancel_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnCancel.Click
             Me.Close()
         End Sub
 
@@ -200,7 +200,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060016CD RID: 5837 RVA: 0x002C9B80 File Offset: 0x002C8B80
-        Private Sub btnSave_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnSave_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSave.Click
             Me.SetGFFNodeValues()
             If Not Me.m_bSaveGameMode Then
                 Me.m_EditingFilePath = StringType.FromObject(frmMain.GetFilePath("save", Me.CurrentSettings.defaultSaveLocation, Path.GetFileNameWithoutExtension(Me.m_EditingFilePath) + ".utt", "", "", False, True))
@@ -215,7 +215,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060016CE RID: 5838 RVA: 0x002C9C18 File Offset: 0x002C8C18
-        Private Sub btnSetNameLang_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnSetNameLang_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSetNameLang.Click
             Dim frmCExoLocStringLanguagePicker As frmCExoLocStringLanguagePicker = New frmCExoLocStringLanguagePicker(Me.NameLang)
             If frmCExoLocStringLanguagePicker.ShowDialog(Me) = DialogResult.OK Then
                 Me.NameLang = frmCExoLocStringLanguagePicker.LanguageID
@@ -223,7 +223,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060016CF RID: 5839 RVA: 0x002C9C48 File Offset: 0x002C8C48
-        Private Sub btnDebug_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnDebug_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnDebug.Click
             Dim frmTextEditor As frmTextEditor = New frmTextEditor()
             frmTextEditor.Filename = Me.tbName.Text + ".utt"
             frmTextEditor.Text = "Text Editor - " + frmTextEditor.Filename
@@ -249,12 +249,12 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060016D3 RID: 5843 RVA: 0x002C9CF8 File Offset: 0x002C8CF8
-        Private Sub cmbxType_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmbxType_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbxType.SelectedIndexChanged
             Me.TabPageTrap.Enabled = Me.cmbxType.SelectedIndex = 2
         End Sub
 
         ' Token: 0x060016D4 RID: 5844 RVA: 0x002C9D14 File Offset: 0x002C8D14
-        Private Sub btnEditScript_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnEditScript_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnEditScriptUserDefine.Click, btnEditScriptOnExit.Click, btnEditScriptOnEnter.Click, btnEditScriptHeartbeat.Click, btnEditOnTrapTriggered.Click, btnEditOnDisarm.Click, btnEditOnClick.Click
             Utils.EditScriptForTextBox(CType(sender, Button), Me.m_EditingFilePath, Me.KotorVersionIndex)
         End Sub
 

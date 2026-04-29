@@ -20,6 +20,18 @@ Namespace kotor_tool
             Me.InitializeComponent()
         End Sub
 
+        Private Sub ApplyKotorTheme()
+            Dim theme As KotorTheme = KotorThemeManager.LoadTheme("DarkSaber")
+
+            Me.BackColor = theme.WindowBack
+            Me.ForeColor = theme.TextPrimary
+            Me.Font = theme.CreateBodyFont()
+
+            Me.Label1.BackColor = Color.Transparent
+            Me.Label1.ForeColor = theme.TextSecondary
+            Me.Label1.Font = theme.CreateBodyFont()
+        End Sub
+
         ' Token: 0x17000092 RID: 146
         ' (get) Token: 0x0600026B RID: 619 RVA: 0x0022CAC8 File Offset: 0x0022BAC8
         ' (set) Token: 0x0600026A RID: 618 RVA: 0x0022CA74 File Offset: 0x0022BA74
@@ -46,7 +58,9 @@ Namespace kotor_tool
 
         ' Token: 0x06000272 RID: 626 RVA: 0x0022CC98 File Offset: 0x0022BC98
         Private Sub frmAutoDialog_Load(ByVal sender As Object, ByVal e As EventArgs)
+            Me.ApplyKotorTheme()
             Me.Timer1.Enabled = True
+
         End Sub
 
         ' Token: 0x06000273 RID: 627 RVA: 0x0022CCA8 File Offset: 0x0022BCA8

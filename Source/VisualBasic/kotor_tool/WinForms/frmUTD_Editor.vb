@@ -45,7 +45,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x0600136F RID: 4975 RVA: 0x002AFD54 File Offset: 0x002AED54
-        Private Sub btnCancel_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnCancel_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnCancel.Click
             Me.Close()
         End Sub
 
@@ -226,7 +226,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06001375 RID: 4981 RVA: 0x002B08B8 File Offset: 0x002AF8B8
-        Private Sub chkbLocked_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub chkbLocked_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles chkbLocked.CheckedChanged
             If Not Me.chkbLockable.Checked Then
                 Dim flag As Boolean = BooleanType.FromObject(LateBinding.LateGet(sender, Nothing, "checked", New Object(-1) {}, Nothing, Nothing))
                 Me.chkbAutoRemoveKey.Enabled = flag
@@ -240,7 +240,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06001376 RID: 4982 RVA: 0x002B0940 File Offset: 0x002AF940
-        Private Sub chkbLockable_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub chkbLockable_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles chkbLockable.CheckedChanged
             Dim flag As Boolean = BooleanType.FromObject(LateBinding.LateGet(sender, Nothing, "checked", New Object(-1) {}, Nothing, Nothing))
             If Not Me.chkbLocked.Checked Then
                 Me.chkbAutoRemoveKey.Enabled = flag
@@ -256,7 +256,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06001377 RID: 4983 RVA: 0x002B09E0 File Offset: 0x002AF9E0
-        Private Sub btnSave_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnSave_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSave.Click
             Me.SetGFFNodeValues()
             If Not Me.m_bSaveGameMode Then
                 Me.m_EditingFilePath = StringType.FromObject(frmMain.GetFilePath("save", Me.CurrentSettings.defaultSaveLocation, Path.GetFileNameWithoutExtension(Me.m_EditingFilePath) + ".utd", "", "", False, True))
@@ -271,7 +271,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06001378 RID: 4984 RVA: 0x002B0A78 File Offset: 0x002AFA78
-        Private Sub btnSetNameLang_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnSetNameLang_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSetNameLang.Click
             Dim frmCExoLocStringLanguagePicker As frmCExoLocStringLanguagePicker = New frmCExoLocStringLanguagePicker(Me.NameLang)
             If frmCExoLocStringLanguagePicker.ShowDialog(Me) = DialogResult.OK Then
                 Me.NameLang = frmCExoLocStringLanguagePicker.LanguageID
@@ -279,7 +279,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06001379 RID: 4985 RVA: 0x002B0AA8 File Offset: 0x002AFAA8
-        Private Sub btnSetDescLang_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnSetDescLang_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSetDescriptionLang.Click
             Dim frmCExoLocStringLanguagePicker As frmCExoLocStringLanguagePicker = New frmCExoLocStringLanguagePicker(Me.DescriptionLang)
             If frmCExoLocStringLanguagePicker.ShowDialog(Me) = DialogResult.OK Then
                 Me.DescriptionLang = frmCExoLocStringLanguagePicker.LanguageID
@@ -287,7 +287,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x0600137A RID: 4986 RVA: 0x002B0AD8 File Offset: 0x002AFAD8
-        Private Sub btnDebug_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnDebug_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnDebug.Click
             Dim frmTextEditor As frmTextEditor = New frmTextEditor()
             frmTextEditor.Filename = Me.tbName.Text + ".utd"
             frmTextEditor.Text = "Text Editor - " + frmTextEditor.Filename
@@ -313,7 +313,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x0600137E RID: 4990 RVA: 0x002B0B88 File Offset: 0x002AFB88
-        Private Sub btnEditScript_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnEditScript_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnEditOnUserDefined.Click, btnEditOnUnlock.Click, btnEditOnTrapTriggered.Click, btnEditOnSpellCastAt.Click, btnEditOnOpen.Click, btnEditOnMeleeAttacked.Click, btnEditOnLock.Click, btnEditOnHeartbeat.Click, btnEditOnFailToOpen.Click, btnEditOnDisarm.Click, btnEditOnDeath.Click, btnEditOnDamaged.Click, btnEditOnClosed.Click, btnEditOnClick.Click
             Utils.EditScriptForTextBox(CType(sender, Button), Me.m_EditingFilePath, Me.KotorVersionIndex)
         End Sub
 

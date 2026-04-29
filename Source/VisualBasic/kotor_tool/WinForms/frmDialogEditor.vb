@@ -571,18 +571,18 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x0600041C RID: 1052 RVA: 0x00239330 File Offset: 0x00238330
-        Private Sub btnExpandAll_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnExpandAll_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnExpandAll.Click
             Me.tvConversation.ExpandAll()
             Me.tvConversation.SelectedNode = Me.tvConversation.Nodes(0)
         End Sub
 
         ' Token: 0x0600041D RID: 1053 RVA: 0x0023935C File Offset: 0x0023835C
-        Private Sub btnCollapseAll_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnCollapseAll_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnCollapseAll.Click
             Me.tvConversation.CollapseAll()
         End Sub
 
         ' Token: 0x0600041E RID: 1054 RVA: 0x0023936C File Offset: 0x0023836C
-        Private Sub btnDebug_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnDebug_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnDebug.Click
             Dim frmTextEditor As frmTextEditor = New frmTextEditor()
             frmTextEditor.Filename = "dialog"
             frmTextEditor.Text = "Text Editor - " + frmTextEditor.Filename
@@ -593,7 +593,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x0600041F RID: 1055 RVA: 0x002393D0 File Offset: 0x002383D0
-        Private Sub btnTest_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnTest_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnTest.Click
             Dim dlgconvListNode As DLGConvListNode = CType(Me.tvConversation.SelectedNode, DLGConvListNode)
             Dim dlgconvListNode2 As DLGConvListNode = CType(dlgconvListNode.Parent, DLGConvListNode)
             Dim num As Integer = dlgconvListNode2.Nodes.IndexOf(dlgconvListNode)
@@ -602,7 +602,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000420 RID: 1056 RVA: 0x00239424 File Offset: 0x00238424
-        Private Sub btnChooseColor_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnChooseColor_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnChooseColor.Click
             Dim colorDialog As ColorDialog = New ColorDialog()
             Dim dlgconvListNode As DLGConvListNode = CType(Me.tvConversation.SelectedNode, DLGConvListNode)
             If dlgconvListNode.FadeColor Is Nothing Then
@@ -900,14 +900,14 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x0600043B RID: 1083 RVA: 0x0023A390 File Offset: 0x00239390
-        Private Sub tvConversation_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs)
+        Private Sub tvConversation_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles tvConversation.MouseDown
             Dim point As Point = New Point(e.X, e.Y)
             Dim point2 As Point = point
             Me.LastClickedTvConversationNode = CType(Me.tvConversation.GetNodeAt(point2), DLGConvListNode)
         End Sub
 
         ' Token: 0x0600043C RID: 1084 RVA: 0x0023A3CC File Offset: 0x002393CC
-        Private Sub tvConversation_MouseUp(ByVal sender As Object, ByVal e As MouseEventArgs)
+        Private Sub tvConversation_MouseUp(ByVal sender As Object, ByVal e As MouseEventArgs) Handles tvConversation.MouseUp
             Dim point As Point = New Point(e.X, e.Y)
             Dim point2 As Point = point
             Dim lastClickedTvConversationNode As DLGConvListNode = Me.LastClickedTvConversationNode
@@ -926,7 +926,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x0600043D RID: 1085 RVA: 0x0023A464 File Offset: 0x00239464
-        Private Sub tvConversation_AfterSelect(ByVal sender As Object, ByVal e As TreeViewEventArgs)
+        Private Sub tvConversation_AfterSelect(ByVal sender As Object, ByVal e As TreeViewEventArgs) Handles tvConversation.AfterSelect
             Dim dlgconvListNode As DLGConvListNode = CType(CType(sender, TreeView).SelectedNode, DLGConvListNode)
             Me.AdjustTabPagesEnabledState(dlgconvListNode)
             If dlgconvListNode Is Me.tvConversation.Nodes(0) Then
@@ -1015,7 +1015,7 @@ IL_01DA:
         End Sub
 
         ' Token: 0x0600043E RID: 1086 RVA: 0x0023A89C File Offset: 0x0023989C
-        Private Sub cmiTV_Add_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmiTV_Add_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiTV_Add.Click
             If Me.LastClickedTvConversationNode.IsLink > 0 Then
                 Return
             End If
@@ -1055,12 +1055,12 @@ IL_01DA:
         End Sub
 
         ' Token: 0x0600043F RID: 1087 RVA: 0x0023AA04 File Offset: 0x00239A04
-        Private Sub cmiTV_Copy_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmiTV_Copy_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiTV_Copy.Click
             Me.ClipBoardNode = Me.CurrentContextMenuTvConversationNode
         End Sub
 
         ' Token: 0x06000440 RID: 1088 RVA: 0x0023AA14 File Offset: 0x00239A14
-        Private Sub cmiTV_Paste_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmiTV_Paste_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiTV_Paste.Click
             Dim dlgconvListNode As DLGConvListNode = Me.ClipBoardNode.Copy()
             If Me.LastClickedTvConversationNode.IsReply Then
                 dlgconvListNode.IsEntry = True
@@ -1083,7 +1083,7 @@ IL_01DA:
         End Sub
 
         ' Token: 0x06000441 RID: 1089 RVA: 0x0023AAEC File Offset: 0x00239AEC
-        Private Sub cmiTV_PasteTree_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmiTV_PasteTree_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiTV_PasteTree.Click
             Dim clipBoardNode As DLGConvListNode = Me.ClipBoardNode
             If Me.LastClickedTvConversationNode.IsReply Then
                 clipBoardNode.IsEntry = True
@@ -1108,7 +1108,7 @@ IL_01DA:
         End Sub
 
         ' Token: 0x06000442 RID: 1090 RVA: 0x0023ABD4 File Offset: 0x00239BD4
-        Private Sub cmiTV_PasteAsLink_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmiTV_PasteAsLink_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiTV_PasteAsLink.Click
             Dim dlgconvListNode As DLGConvListNode = Me.ClipBoardNode.Copy()
             dlgconvListNode.IsLink = Byte.MaxValue
             dlgconvListNode.LinkedNodesList = Nothing
@@ -1126,7 +1126,7 @@ IL_01DA:
         End Sub
 
         ' Token: 0x06000443 RID: 1091 RVA: 0x0023AC98 File Offset: 0x00239C98
-        Private Sub cmiTV_Cut_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmiTV_Cut_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiTV_Cut.Click
             Me.ClipBoardNode = Me.CurrentContextMenuTvConversationNode
             Me.RemoveChildLinks(Me.ClipBoardNode)
             Dim dlgconvListNode As DLGConvListNode = CType(Me.ClipBoardNode.Parent, DLGConvListNode)
@@ -1170,12 +1170,12 @@ IL_01DA:
         End Sub
 
         ' Token: 0x06000446 RID: 1094 RVA: 0x0023AF44 File Offset: 0x00239F44
-        Private Sub btnOpen_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnOpen_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnOpen.Click
             Me.OpenFile()
         End Sub
 
         ' Token: 0x06000447 RID: 1095 RVA: 0x0023AF4C File Offset: 0x00239F4C
-        Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSave.Click
             Me.SaveFile()
         End Sub
 
@@ -1201,27 +1201,27 @@ IL_01DA:
         End Sub
 
         ' Token: 0x06000449 RID: 1097 RVA: 0x0023B024 File Offset: 0x0023A024
-        Private Sub miNew_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miNew_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miNew.Click
             Me.SetupForNewDialog()
         End Sub
 
         ' Token: 0x0600044A RID: 1098 RVA: 0x0023B02C File Offset: 0x0023A02C
-        Private Sub miOpen_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOpen_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpen.Click
             Me.OpenFile()
         End Sub
 
         ' Token: 0x0600044B RID: 1099 RVA: 0x0023B034 File Offset: 0x0023A034
-        Private Sub miSave_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miSave_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miSave.Click
             Me.SaveFile()
         End Sub
 
         ' Token: 0x0600044C RID: 1100 RVA: 0x0023B03C File Offset: 0x0023A03C
-        Private Sub miQuit_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miQuit_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miQuit.Click
             Me.Close()
         End Sub
 
         ' Token: 0x0600044D RID: 1101 RVA: 0x0023B044 File Offset: 0x0023A044
-        Private Sub btnAddAnimListEntry_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnAddAnimListEntry_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnAddAnimListEntry.Click
             If Me.LastClickedTvConversationNode.Animlist Is Nothing Then
                 Me.LastClickedTvConversationNode.Animlist = New ArrayList(1)
             End If
@@ -1238,7 +1238,7 @@ IL_01DA:
         End Sub
 
         ' Token: 0x0600044E RID: 1102 RVA: 0x0023B0F4 File Offset: 0x0023A0F4
-        Private Sub btnDeleteAnimListEntry_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnDeleteAnimListEntry_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnDeleteAnimListEntry.Click
             Dim currencyManager As CurrencyManager = CType(Me.dgAnimList.BindingContext(RuntimeHelpers.GetObjectValue(Me.dgAnimList.DataSource)), CurrencyManager)
             Dim position As Integer = currencyManager.Position
             Me.LastClickedTvConversationNode.Animlist.RemoveAt(position)
@@ -1249,7 +1249,7 @@ IL_01DA:
         End Sub
 
         ' Token: 0x0600044F RID: 1103 RVA: 0x0023B154 File Offset: 0x0023A154
-        Private Sub dgAnimList_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub dgAnimList_Click(ByVal sender As Object, ByVal e As EventArgs) Handles dgAnimList.Click
             Dim dataGrid As DataGrid = CType(sender, DataGrid)
             Dim hitTestInfo As DataGrid.HitTestInfo = dataGrid.HitTest(dataGrid.PointToClient(Control.MousePosition).X, dataGrid.PointToClient(Control.MousePosition).Y)
             If (hitTestInfo.Type = dataGrid.HitTestType.RowHeader) Or (hitTestInfo.Type = dataGrid.HitTestType.Cell) Then
@@ -1259,28 +1259,28 @@ IL_01DA:
         End Sub
 
         ' Token: 0x06000450 RID: 1104 RVA: 0x0023B1C8 File Offset: 0x0023A1C8
-        Private Sub dgAnimList_Validated(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub dgAnimList_Validated(ByVal sender As Object, ByVal e As EventArgs) Handles dgAnimList.Validated
             Me.btnDeleteAnimListEntry.Enabled = False
         End Sub
 
         ' Token: 0x06000451 RID: 1105 RVA: 0x0023B1D8 File Offset: 0x0023A1D8
-        Private Sub trkbTVIndent_Scroll(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub trkbTVIndent_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles trkbTVIndent.Scroll
             Me.tvConversation.Indent = Me.trkbTVIndent.Value
         End Sub
 
         ' Token: 0x06000452 RID: 1106 RVA: 0x0023B1F0 File Offset: 0x0023A1F0
-        Private Sub trkbTVItemHeight_Scroll(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub trkbTVItemHeight_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles trkbTVItemHeight.Scroll
             ' The following expression was wrapped in a checked-expression
             Me.tvConversation.ItemHeight = Me.trkbTVItemHeight.Value * 2
         End Sub
 
         ' Token: 0x06000453 RID: 1107 RVA: 0x0023B20C File Offset: 0x0023A20C
-        Private Sub cmbxConversationType_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmbxConversationType_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbxConversationType.SelectedIndexChanged
             Me.cmbxComputerType.Enabled = Me.cmbxConversationType.SelectedIndex = 1
         End Sub
 
         ' Token: 0x06000454 RID: 1108 RVA: 0x0023B228 File Offset: 0x0023A228
-        Private Sub btnShowLists_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnShowLists_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnShowLists.Click
             Console.WriteLine("-----------------------------------------")
             Console.WriteLine("Entries")
             Console.WriteLine("-----------------------------------------")
@@ -1327,13 +1327,13 @@ IL_01DA:
         End Sub
 
         ' Token: 0x06000455 RID: 1109 RVA: 0x0023B54C File Offset: 0x0023A54C
-        Private Sub chkbAnimatedCut_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub chkbAnimatedCut_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles chkbAnimatedCut.CheckedChanged
             Me.tbCameraModel.Enabled = CType(sender, CheckBox).Checked
             Me.nudCamFieldOfView.Enabled = CType(sender, CheckBox).Checked
         End Sub
 
         ' Token: 0x06000456 RID: 1110 RVA: 0x0023B57C File Offset: 0x0023A57C
-        Private Sub cmiTV_MoveNodeUp_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmiTV_MoveNodeUp_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiTV_MoveNodeUp.Click
             Dim dlgconvListNode As DLGConvListNode = CType(Me.tvConversation.SelectedNode, DLGConvListNode)
             Dim dlgconvListNode2 As DLGConvListNode = CType(dlgconvListNode.Parent, DLGConvListNode)
             Dim num As Integer = dlgconvListNode2.Nodes.IndexOf(dlgconvListNode)
@@ -1343,7 +1343,7 @@ IL_01DA:
         End Sub
 
         ' Token: 0x06000457 RID: 1111 RVA: 0x0023B5DC File Offset: 0x0023A5DC
-        Private Sub cmiTV_MoveNodeDown_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmiTV_MoveNodeDown_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiTV_MoveNodeDown.Click
             Dim dlgconvListNode As DLGConvListNode = CType(Me.tvConversation.SelectedNode, DLGConvListNode)
             Dim dlgconvListNode2 As DLGConvListNode = CType(dlgconvListNode.Parent, DLGConvListNode)
             Dim num As Integer = dlgconvListNode2.Nodes.IndexOf(dlgconvListNode)

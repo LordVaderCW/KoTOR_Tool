@@ -46,7 +46,7 @@ Namespace kotor_tool
         Public LogoFontStyle As FontStyle
 
         Public Shared Function CreateDefault() As KotorTheme
-            Dim theme As New KotorTheme()
+            Dim theme As KotorTheme = New KotorTheme()
 
             theme.Name = "DarkSaber"
 
@@ -89,20 +89,36 @@ Namespace kotor_tool
             Return theme
         End Function
 
+        Private Function CreateSafeFont(ByVal preferredFontName As String, ByVal fallbackFontName As String, ByVal fontSize As Single, ByVal fontStyle As FontStyle) As Font
+            Try
+                If preferredFontName IsNot Nothing AndAlso preferredFontName.Trim().Length > 0 Then
+                    Return New Font(preferredFontName, fontSize, fontStyle, GraphicsUnit.Point)
+                End If
+            Catch ex As System.Exception
+            End Try
+
+            Try
+                Return New Font(fallbackFontName, fontSize, fontStyle, GraphicsUnit.Point)
+            Catch ex As System.Exception
+            End Try
+
+            Return SystemFonts.DefaultFont
+        End Function
+
         Public Function CreateTitleFont() As Font
-            Return New Font(Me.TitleFontName, Me.TitleFontSize, Me.TitleFontStyle, GraphicsUnit.Point)
+            Return Me.CreateSafeFont(Me.TitleFontName, "Segoe UI", Me.TitleFontSize, Me.TitleFontStyle)
         End Function
 
         Public Function CreateBodyFont() As Font
-            Return New Font(Me.BodyFontName, Me.BodyFontSize, Me.BodyFontStyle, GraphicsUnit.Point)
+            Return Me.CreateSafeFont(Me.BodyFontName, "Segoe UI", Me.BodyFontSize, Me.BodyFontStyle)
         End Function
 
         Public Function CreateMonoFont() As Font
-            Return New Font(Me.MonoFontName, Me.MonoFontSize, Me.MonoFontStyle, GraphicsUnit.Point)
+            Return Me.CreateSafeFont(Me.MonoFontName, "Consolas", Me.MonoFontSize, Me.MonoFontStyle)
         End Function
 
         Public Function CreateLogoFont() As Font
-            Return New Font(Me.LogoFontName, Me.LogoFontSize, Me.LogoFontStyle, GraphicsUnit.Point)
+            Return Me.CreateSafeFont(Me.LogoFontName, "Georgia", Me.LogoFontSize, Me.LogoFontStyle)
         End Function
 
     End Class

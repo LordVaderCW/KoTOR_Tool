@@ -1,7 +1,11 @@
+Option Strict Off
+Option Explicit On
+
 Imports System.Windows.Forms
 
 Namespace kotor_tool
-    ' Token: 0x02000082 RID: 130
+
+    <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
     Partial Public Class frmUTS_Editor
         Inherits Global.kotor_tool.frmParent
 
@@ -11,6 +15,16 @@ Namespace kotor_tool
         ' Kept before InitializeComponent for VS2010 CodeDom safety.
         ' -----------------------------------------------------------------
         Private components As Global.System.ComponentModel.IContainer
+
+        Friend WithEvents pnlRoot As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlHeader As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlBody As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlFooter As Global.System.Windows.Forms.Panel
+        Friend WithEvents lblTitle As Global.System.Windows.Forms.Label
+        Friend WithEvents lblSubtitle As Global.System.Windows.Forms.Label
+        Friend WithEvents lblHeaderRule As Global.System.Windows.Forms.Label
+        Friend WithEvents lblFooterRule As Global.System.Windows.Forms.Label
+
         Friend WithEvents TabControl1 As Global.System.Windows.Forms.TabControl
         Friend WithEvents btnSetNameLang As Global.System.Windows.Forms.Button
         Friend WithEvents tbTag As Global.System.Windows.Forms.TextBox
@@ -123,8 +137,8 @@ Namespace kotor_tool
         Friend WithEvents tbSoundStatus As Global.System.Windows.Forms.TextBox
         Friend WithEvents Label26 As Global.System.Windows.Forms.Label
 
-
         ' Token: 0x06001543 RID: 5443 RVA: 0x002BF118 File Offset: 0x002BE118
+        <Global.System.Diagnostics.DebuggerNonUserCode()> _
         Protected Overrides Sub Dispose(ByVal disposing As Boolean)
             If disposing AndAlso Me.components IsNot Nothing Then
                 Me.components.Dispose()
@@ -135,151 +149,197 @@ Namespace kotor_tool
         ' Token: 0x06001622 RID: 5666 RVA: 0x002C0BB0 File Offset: 0x002BFBB0
         <Global.System.Diagnostics.DebuggerStepThrough()> _
         Private Sub InitializeComponent()
-            Me.components = New Global.System.ComponentModel.Container()
-            Dim resources As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager(GetType(Global.kotor_tool.frmUTS_Editor))
-            Me.TabControl1 = New Global.System.Windows.Forms.TabControl()
-            Me.tabpagBasic = New Global.System.Windows.Forms.TabPage()
-            Me.tbVolume = New Global.System.Windows.Forms.TextBox()
-            Me.trkbarVolume = New Global.System.Windows.Forms.TrackBar()
-            Me.btnAddSound = New Global.System.Windows.Forms.Button()
-            Me.btnRemoveSound = New Global.System.Windows.Forms.Button()
-            Me.btnMoveUp = New Global.System.Windows.Forms.Button()
-            Me.btnMoveDown = New Global.System.Windows.Forms.Button()
-            Me.lbSounds = New Global.System.Windows.Forms.ListBox()
-            Me.tbComment = New Global.System.Windows.Forms.TextBox()
-            Me.btnSetNameLang = New Global.System.Windows.Forms.Button()
-            Me.tbTag = New Global.System.Windows.Forms.TextBox()
-            Me.tbName = New Global.System.Windows.Forms.TextBox()
-            Me.Label1 = New Global.System.Windows.Forms.Label()
-            Me.Label2 = New Global.System.Windows.Forms.Label()
-            Me.Label3 = New Global.System.Windows.Forms.Label()
-            Me.Label4 = New Global.System.Windows.Forms.Label()
-            Me.Label5 = New Global.System.Windows.Forms.Label()
-            Me.btnPlaySound = New Global.System.Windows.Forms.Button()
-            Me.btnStopSound = New Global.System.Windows.Forms.Button()
-            Me.tbSoundStatus = New Global.System.Windows.Forms.TextBox()
-            Me.Label26 = New Global.System.Windows.Forms.Label()
-            Me.tbapagPositioning = New Global.System.Windows.Forms.TabPage()
-            Me.gbHeight = New Global.System.Windows.Forms.GroupBox()
-            Me.PictureBox2 = New Global.System.Windows.Forms.PictureBox()
-            Me.nudElevation = New Global.System.Windows.Forms.NumericUpDown()
-            Me.Label10 = New Global.System.Windows.Forms.Label()
-            Me.gbVolumeDistances = New Global.System.Windows.Forms.GroupBox()
-            Me.PictureBox1 = New Global.System.Windows.Forms.PictureBox()
-            Me.Label8 = New Global.System.Windows.Forms.Label()
-            Me.nudMaxDistance = New Global.System.Windows.Forms.NumericUpDown()
-            Me.Label9 = New Global.System.Windows.Forms.Label()
-            Me.nudMinDistance = New Global.System.Windows.Forms.NumericUpDown()
-            Me.rbPlaysEverywhere = New Global.System.Windows.Forms.RadioButton()
-            Me.rbRandomPosition = New Global.System.Windows.Forms.RadioButton()
-            Me.rbSpecificPosition = New Global.System.Windows.Forms.RadioButton()
-            Me.gbRandomRange = New Global.System.Windows.Forms.GroupBox()
-            Me.PictureBox3 = New Global.System.Windows.Forms.PictureBox()
-            Me.nudRandomRangeY = New Global.System.Windows.Forms.NumericUpDown()
-            Me.nudRandomRangeX = New Global.System.Windows.Forms.NumericUpDown()
-            Me.Label11 = New Global.System.Windows.Forms.Label()
-            Me.Label12 = New Global.System.Windows.Forms.Label()
-            Me.tabpagAdvanced = New Global.System.Windows.Forms.TabPage()
-            Me.pnlVolPitch = New Global.System.Windows.Forms.Panel()
-            Me.tbPitchVrtn = New Global.System.Windows.Forms.TextBox()
-            Me.trkbarVolumeVrtn = New Global.System.Windows.Forms.TrackBar()
-            Me.Label6 = New Global.System.Windows.Forms.Label()
-            Me.Label7 = New Global.System.Windows.Forms.Label()
-            Me.trkbarPitchVrtn = New Global.System.Windows.Forms.TrackBar()
-            Me.tbVolumeVrtn = New Global.System.Windows.Forms.TextBox()
-            Me.GroupBox4 = New Global.System.Windows.Forms.GroupBox()
-            Me.rbPlayDay = New Global.System.Windows.Forms.RadioButton()
-            Me.rbPlayNight = New Global.System.Windows.Forms.RadioButton()
-            Me.rbPlayAllTimes = New Global.System.Windows.Forms.RadioButton()
-            Me.rbPlaySpecificHours = New Global.System.Windows.Forms.RadioButton()
-            Me.pnlHours = New Global.System.Windows.Forms.Panel()
-            Me.chkb3a = New Global.System.Windows.Forms.CheckBox()
-            Me.Label21 = New Global.System.Windows.Forms.Label()
-            Me.Label20 = New Global.System.Windows.Forms.Label()
-            Me.Label18 = New Global.System.Windows.Forms.Label()
-            Me.chkb3p = New Global.System.Windows.Forms.CheckBox()
-            Me.chkb10p = New Global.System.Windows.Forms.CheckBox()
-            Me.chkb12p = New Global.System.Windows.Forms.CheckBox()
-            Me.chkb1p = New Global.System.Windows.Forms.CheckBox()
-            Me.chkb4a = New Global.System.Windows.Forms.CheckBox()
-            Me.chkb6a = New Global.System.Windows.Forms.CheckBox()
-            Me.chkb5a = New Global.System.Windows.Forms.CheckBox()
-            Me.chkb7a = New Global.System.Windows.Forms.CheckBox()
-            Me.Label25 = New Global.System.Windows.Forms.Label()
-            Me.chkb8p = New Global.System.Windows.Forms.CheckBox()
-            Me.chkb2p = New Global.System.Windows.Forms.CheckBox()
-            Me.chkb9p = New Global.System.Windows.Forms.CheckBox()
-            Me.chkb11p = New Global.System.Windows.Forms.CheckBox()
-            Me.chkb11a = New Global.System.Windows.Forms.CheckBox()
-            Me.chkb9a = New Global.System.Windows.Forms.CheckBox()
-            Me.chkb10a = New Global.System.Windows.Forms.CheckBox()
-            Me.chkb8a = New Global.System.Windows.Forms.CheckBox()
-            Me.chkb7p = New Global.System.Windows.Forms.CheckBox()
-            Me.chkb5p = New Global.System.Windows.Forms.CheckBox()
-            Me.chkb6p = New Global.System.Windows.Forms.CheckBox()
-            Me.chkb4p = New Global.System.Windows.Forms.CheckBox()
-            Me.Label13 = New Global.System.Windows.Forms.Label()
-            Me.chkb1a = New Global.System.Windows.Forms.CheckBox()
-            Me.lblAM = New Global.System.Windows.Forms.Label()
-            Me.lblPM = New Global.System.Windows.Forms.Label()
-            Me.Label23 = New Global.System.Windows.Forms.Label()
-            Me.Label24 = New Global.System.Windows.Forms.Label()
-            Me.chkb2a = New Global.System.Windows.Forms.CheckBox()
-            Me.lbl12 = New Global.System.Windows.Forms.Label()
-            Me.Label17 = New Global.System.Windows.Forms.Label()
-            Me.Label22 = New Global.System.Windows.Forms.Label()
-            Me.Label14 = New Global.System.Windows.Forms.Label()
-            Me.chkb12a = New Global.System.Windows.Forms.CheckBox()
-            Me.Label19 = New Global.System.Windows.Forms.Label()
-            Me.chkbActive = New Global.System.Windows.Forms.CheckBox()
-            Me.GroupBox6 = New Global.System.Windows.Forms.GroupBox()
-            Me.rbSequential = New Global.System.Windows.Forms.RadioButton()
-            Me.rbRandom = New Global.System.Windows.Forms.RadioButton()
-            Me.gbInterval = New Global.System.Windows.Forms.GroupBox()
-            Me.Label16 = New Global.System.Windows.Forms.Label()
-            Me.Label15 = New Global.System.Windows.Forms.Label()
-            Me.nudInterval = New Global.System.Windows.Forms.NumericUpDown()
-            Me.nudIntervalVrtn = New Global.System.Windows.Forms.NumericUpDown()
-            Me.GroupBox5 = New Global.System.Windows.Forms.GroupBox()
-            Me.rbOnce = New Global.System.Windows.Forms.RadioButton()
-            Me.rbRepeating = New Global.System.Windows.Forms.RadioButton()
-            Me.rbLooping = New Global.System.Windows.Forms.RadioButton()
-            Me.btnSave = New Global.System.Windows.Forms.Button()
-            Me.btnCancel = New Global.System.Windows.Forms.Button()
-            Me.btnDebug = New Global.System.Windows.Forms.Button()
-            Me.Timer1 = New Global.System.Windows.Forms.Timer()
+            Me.components = New System.ComponentModel.Container()
+            Me.pnlRoot = New System.Windows.Forms.Panel()
+            Me.pnlBody = New System.Windows.Forms.Panel()
+            Me.TabControl1 = New System.Windows.Forms.TabControl()
+            Me.tabpagBasic = New System.Windows.Forms.TabPage()
+            Me.tbVolume = New System.Windows.Forms.TextBox()
+            Me.trkbarVolume = New System.Windows.Forms.TrackBar()
+            Me.btnAddSound = New System.Windows.Forms.Button()
+            Me.btnRemoveSound = New System.Windows.Forms.Button()
+            Me.btnMoveUp = New System.Windows.Forms.Button()
+            Me.btnMoveDown = New System.Windows.Forms.Button()
+            Me.lbSounds = New System.Windows.Forms.ListBox()
+            Me.tbComment = New System.Windows.Forms.TextBox()
+            Me.btnSetNameLang = New System.Windows.Forms.Button()
+            Me.tbTag = New System.Windows.Forms.TextBox()
+            Me.tbName = New System.Windows.Forms.TextBox()
+            Me.Label1 = New System.Windows.Forms.Label()
+            Me.Label2 = New System.Windows.Forms.Label()
+            Me.Label3 = New System.Windows.Forms.Label()
+            Me.Label4 = New System.Windows.Forms.Label()
+            Me.Label5 = New System.Windows.Forms.Label()
+            Me.btnPlaySound = New System.Windows.Forms.Button()
+            Me.btnStopSound = New System.Windows.Forms.Button()
+            Me.tbSoundStatus = New System.Windows.Forms.TextBox()
+            Me.Label26 = New System.Windows.Forms.Label()
+            Me.tbapagPositioning = New System.Windows.Forms.TabPage()
+            Me.gbHeight = New System.Windows.Forms.GroupBox()
+            Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+            Me.nudElevation = New System.Windows.Forms.NumericUpDown()
+            Me.Label10 = New System.Windows.Forms.Label()
+            Me.gbVolumeDistances = New System.Windows.Forms.GroupBox()
+            Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+            Me.Label8 = New System.Windows.Forms.Label()
+            Me.nudMaxDistance = New System.Windows.Forms.NumericUpDown()
+            Me.Label9 = New System.Windows.Forms.Label()
+            Me.nudMinDistance = New System.Windows.Forms.NumericUpDown()
+            Me.rbPlaysEverywhere = New System.Windows.Forms.RadioButton()
+            Me.rbRandomPosition = New System.Windows.Forms.RadioButton()
+            Me.rbSpecificPosition = New System.Windows.Forms.RadioButton()
+            Me.gbRandomRange = New System.Windows.Forms.GroupBox()
+            Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+            Me.nudRandomRangeY = New System.Windows.Forms.NumericUpDown()
+            Me.nudRandomRangeX = New System.Windows.Forms.NumericUpDown()
+            Me.Label11 = New System.Windows.Forms.Label()
+            Me.Label12 = New System.Windows.Forms.Label()
+            Me.tabpagAdvanced = New System.Windows.Forms.TabPage()
+            Me.pnlVolPitch = New System.Windows.Forms.Panel()
+            Me.tbPitchVrtn = New System.Windows.Forms.TextBox()
+            Me.trkbarVolumeVrtn = New System.Windows.Forms.TrackBar()
+            Me.Label6 = New System.Windows.Forms.Label()
+            Me.Label7 = New System.Windows.Forms.Label()
+            Me.trkbarPitchVrtn = New System.Windows.Forms.TrackBar()
+            Me.tbVolumeVrtn = New System.Windows.Forms.TextBox()
+            Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+            Me.rbPlayDay = New System.Windows.Forms.RadioButton()
+            Me.rbPlayNight = New System.Windows.Forms.RadioButton()
+            Me.rbPlayAllTimes = New System.Windows.Forms.RadioButton()
+            Me.rbPlaySpecificHours = New System.Windows.Forms.RadioButton()
+            Me.pnlHours = New System.Windows.Forms.Panel()
+            Me.chkb3a = New System.Windows.Forms.CheckBox()
+            Me.Label21 = New System.Windows.Forms.Label()
+            Me.Label20 = New System.Windows.Forms.Label()
+            Me.Label18 = New System.Windows.Forms.Label()
+            Me.chkb3p = New System.Windows.Forms.CheckBox()
+            Me.chkb10p = New System.Windows.Forms.CheckBox()
+            Me.chkb12p = New System.Windows.Forms.CheckBox()
+            Me.chkb1p = New System.Windows.Forms.CheckBox()
+            Me.chkb4a = New System.Windows.Forms.CheckBox()
+            Me.chkb6a = New System.Windows.Forms.CheckBox()
+            Me.chkb5a = New System.Windows.Forms.CheckBox()
+            Me.chkb7a = New System.Windows.Forms.CheckBox()
+            Me.Label25 = New System.Windows.Forms.Label()
+            Me.chkb8p = New System.Windows.Forms.CheckBox()
+            Me.chkb2p = New System.Windows.Forms.CheckBox()
+            Me.chkb9p = New System.Windows.Forms.CheckBox()
+            Me.chkb11p = New System.Windows.Forms.CheckBox()
+            Me.chkb11a = New System.Windows.Forms.CheckBox()
+            Me.chkb9a = New System.Windows.Forms.CheckBox()
+            Me.chkb10a = New System.Windows.Forms.CheckBox()
+            Me.chkb8a = New System.Windows.Forms.CheckBox()
+            Me.chkb7p = New System.Windows.Forms.CheckBox()
+            Me.chkb5p = New System.Windows.Forms.CheckBox()
+            Me.chkb6p = New System.Windows.Forms.CheckBox()
+            Me.chkb4p = New System.Windows.Forms.CheckBox()
+            Me.Label13 = New System.Windows.Forms.Label()
+            Me.chkb1a = New System.Windows.Forms.CheckBox()
+            Me.lblAM = New System.Windows.Forms.Label()
+            Me.lblPM = New System.Windows.Forms.Label()
+            Me.Label23 = New System.Windows.Forms.Label()
+            Me.Label24 = New System.Windows.Forms.Label()
+            Me.chkb2a = New System.Windows.Forms.CheckBox()
+            Me.lbl12 = New System.Windows.Forms.Label()
+            Me.Label17 = New System.Windows.Forms.Label()
+            Me.Label22 = New System.Windows.Forms.Label()
+            Me.Label14 = New System.Windows.Forms.Label()
+            Me.chkb12a = New System.Windows.Forms.CheckBox()
+            Me.Label19 = New System.Windows.Forms.Label()
+            Me.chkbActive = New System.Windows.Forms.CheckBox()
+            Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+            Me.rbSequential = New System.Windows.Forms.RadioButton()
+            Me.rbRandom = New System.Windows.Forms.RadioButton()
+            Me.gbInterval = New System.Windows.Forms.GroupBox()
+            Me.Label16 = New System.Windows.Forms.Label()
+            Me.Label15 = New System.Windows.Forms.Label()
+            Me.nudInterval = New System.Windows.Forms.NumericUpDown()
+            Me.nudIntervalVrtn = New System.Windows.Forms.NumericUpDown()
+            Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+            Me.rbOnce = New System.Windows.Forms.RadioButton()
+            Me.rbRepeating = New System.Windows.Forms.RadioButton()
+            Me.rbLooping = New System.Windows.Forms.RadioButton()
+            Me.btnDebug = New System.Windows.Forms.Button()
+            Me.pnlFooter = New System.Windows.Forms.Panel()
+            Me.lblFooterRule = New System.Windows.Forms.Label()
+            Me.btnSave = New System.Windows.Forms.Button()
+            Me.btnCancel = New System.Windows.Forms.Button()
+            Me.pnlHeader = New System.Windows.Forms.Panel()
+            Me.lblTitle = New System.Windows.Forms.Label()
+            Me.lblSubtitle = New System.Windows.Forms.Label()
+            Me.lblHeaderRule = New System.Windows.Forms.Label()
+            Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+            Me.pnlRoot.SuspendLayout()
+            Me.pnlBody.SuspendLayout()
             Me.TabControl1.SuspendLayout()
             Me.tabpagBasic.SuspendLayout()
-            CType(Me.trkbarVolume, Global.System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.trkbarVolume, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.tbapagPositioning.SuspendLayout()
             Me.gbHeight.SuspendLayout()
-            CType(Me.nudElevation, Global.System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudElevation, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.gbVolumeDistances.SuspendLayout()
-            CType(Me.nudMaxDistance, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudMinDistance, Global.System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudMaxDistance, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudMinDistance, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.gbRandomRange.SuspendLayout()
-            CType(Me.nudRandomRangeY, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudRandomRangeX, Global.System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudRandomRangeY, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudRandomRangeX, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.tabpagAdvanced.SuspendLayout()
             Me.pnlVolPitch.SuspendLayout()
-            CType(Me.trkbarVolumeVrtn, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.trkbarPitchVrtn, Global.System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.trkbarVolumeVrtn, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.trkbarPitchVrtn, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.GroupBox4.SuspendLayout()
             Me.pnlHours.SuspendLayout()
             Me.GroupBox6.SuspendLayout()
             Me.gbInterval.SuspendLayout()
-            CType(Me.nudInterval, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudIntervalVrtn, Global.System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudInterval, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudIntervalVrtn, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.GroupBox5.SuspendLayout()
+            Me.pnlFooter.SuspendLayout()
+            Me.pnlHeader.SuspendLayout()
             Me.SuspendLayout()
+            '
+            'pnlRoot
+            '
+            Me.pnlRoot.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.pnlRoot.Controls.Add(Me.pnlBody)
+            Me.pnlRoot.Controls.Add(Me.pnlFooter)
+            Me.pnlRoot.Controls.Add(Me.pnlHeader)
+            Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
+            Me.pnlRoot.Name = "pnlRoot"
+            Me.pnlRoot.Size = New System.Drawing.Size(560, 678)
+            Me.pnlRoot.TabIndex = 0
+            '
+            'pnlBody
+            '
+            Me.pnlBody.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.pnlBody.Controls.Add(Me.TabControl1)
+            Me.pnlBody.Controls.Add(Me.btnDebug)
+            Me.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.pnlBody.Location = New System.Drawing.Point(0, 67)
+            Me.pnlBody.Name = "pnlBody"
+            Me.pnlBody.Padding = New System.Windows.Forms.Padding(16, 10, 16, 10)
+            Me.pnlBody.Size = New System.Drawing.Size(560, 549)
+            Me.pnlBody.TabIndex = 1
+            '
+            'TabControl1
+            '
             Me.TabControl1.Controls.Add(Me.tabpagBasic)
             Me.TabControl1.Controls.Add(Me.tbapagPositioning)
             Me.TabControl1.Controls.Add(Me.tabpagAdvanced)
-            Me.TabControl1.Location = New Global.System.Drawing.Point(16, 8)
+            Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControl1.Location = New System.Drawing.Point(16, 10)
             Me.TabControl1.Name = "TabControl1"
             Me.TabControl1.SelectedIndex = 0
-            Me.TabControl1.Size = New Global.System.Drawing.Size(504, 504)
+            Me.TabControl1.Size = New System.Drawing.Size(528, 529)
             Me.TabControl1.TabIndex = 0
+            '
+            'tabpagBasic
+            '
+            Me.tabpagBasic.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tabpagBasic.Controls.Add(Me.tbVolume)
             Me.tabpagBasic.Controls.Add(Me.trkbarVolume)
             Me.tabpagBasic.Controls.Add(Me.btnAddSound)
@@ -300,352 +360,616 @@ Namespace kotor_tool
             Me.tabpagBasic.Controls.Add(Me.btnStopSound)
             Me.tabpagBasic.Controls.Add(Me.tbSoundStatus)
             Me.tabpagBasic.Controls.Add(Me.Label26)
-            Me.tabpagBasic.Location = New Global.System.Drawing.Point(4, 22)
+            Me.tabpagBasic.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tabpagBasic.Location = New System.Drawing.Point(4, 22)
             Me.tabpagBasic.Name = "tabpagBasic"
-            Me.tabpagBasic.Size = New Global.System.Drawing.Size(496, 478)
+            Me.tabpagBasic.Size = New System.Drawing.Size(520, 503)
             Me.tabpagBasic.TabIndex = 0
             Me.tabpagBasic.Text = "Basic"
-            Me.tbVolume.Location = New Global.System.Drawing.Point(136, 424)
+            '
+            'tbVolume
+            '
+            Me.tbVolume.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbVolume.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbVolume.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbVolume.Location = New System.Drawing.Point(136, 452)
             Me.tbVolume.Name = "tbVolume"
-            Me.tbVolume.[ReadOnly] = True
-            Me.tbVolume.Size = New Global.System.Drawing.Size(40, 20)
+            Me.tbVolume.ReadOnly = True
+            Me.tbVolume.Size = New System.Drawing.Size(40, 22)
             Me.tbVolume.TabIndex = 25
-            Me.tbVolume.Text = ""
-            Me.trkbarVolume.Location = New Global.System.Drawing.Point(184, 424)
+            '
+            'trkbarVolume
+            '
+            Me.trkbarVolume.Location = New System.Drawing.Point(184, 452)
             Me.trkbarVolume.Maximum = 127
             Me.trkbarVolume.Name = "trkbarVolume"
-            Me.trkbarVolume.Size = New Global.System.Drawing.Size(216, 42)
+            Me.trkbarVolume.Size = New System.Drawing.Size(216, 45)
             Me.trkbarVolume.TabIndex = 21
             Me.trkbarVolume.TickFrequency = 5
-            Me.btnAddSound.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Right
-            Me.btnAddSound.Location = New Global.System.Drawing.Point(328, 160)
+            '
+            'btnAddSound
+            '
+            Me.btnAddSound.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.btnAddSound.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnAddSound.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnAddSound.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnAddSound.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnAddSound.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnAddSound.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnAddSound.Location = New System.Drawing.Point(352, 175)
             Me.btnAddSound.Name = "btnAddSound"
-            Me.btnAddSound.Size = New Global.System.Drawing.Size(80, 23)
+            Me.btnAddSound.Size = New System.Drawing.Size(88, 27)
             Me.btnAddSound.TabIndex = 19
             Me.btnAddSound.Text = "Add Sound..."
-            Me.btnRemoveSound.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Right
+            Me.btnAddSound.UseVisualStyleBackColor = False
+            '
+            'btnRemoveSound
+            '
+            Me.btnRemoveSound.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.btnRemoveSound.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
             Me.btnRemoveSound.Enabled = False
-            Me.btnRemoveSound.Location = New Global.System.Drawing.Point(328, 192)
+            Me.btnRemoveSound.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnRemoveSound.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnRemoveSound.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnRemoveSound.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnRemoveSound.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnRemoveSound.Location = New System.Drawing.Point(352, 212)
             Me.btnRemoveSound.Name = "btnRemoveSound"
-            Me.btnRemoveSound.Size = New Global.System.Drawing.Size(80, 23)
+            Me.btnRemoveSound.Size = New System.Drawing.Size(88, 27)
             Me.btnRemoveSound.TabIndex = 20
             Me.btnRemoveSound.Text = "Remove"
-            Me.btnMoveUp.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Right
+            Me.btnRemoveSound.UseVisualStyleBackColor = False
+            '
+            'btnMoveUp
+            '
+            Me.btnMoveUp.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.btnMoveUp.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
             Me.btnMoveUp.Enabled = False
-            Me.btnMoveUp.Location = New Global.System.Drawing.Point(328, 320)
+            Me.btnMoveUp.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnMoveUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnMoveUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnMoveUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnMoveUp.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnMoveUp.Location = New System.Drawing.Point(352, 360)
             Me.btnMoveUp.Name = "btnMoveUp"
-            Me.btnMoveUp.Size = New Global.System.Drawing.Size(80, 23)
+            Me.btnMoveUp.Size = New System.Drawing.Size(88, 27)
             Me.btnMoveUp.TabIndex = 17
             Me.btnMoveUp.Text = "Move Up"
-            Me.btnMoveDown.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Right
+            Me.btnMoveUp.UseVisualStyleBackColor = False
+            '
+            'btnMoveDown
+            '
+            Me.btnMoveDown.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.btnMoveDown.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
             Me.btnMoveDown.Enabled = False
-            Me.btnMoveDown.Location = New Global.System.Drawing.Point(328, 352)
+            Me.btnMoveDown.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnMoveDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnMoveDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnMoveDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnMoveDown.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnMoveDown.Location = New System.Drawing.Point(352, 397)
             Me.btnMoveDown.Name = "btnMoveDown"
-            Me.btnMoveDown.Size = New Global.System.Drawing.Size(80, 23)
+            Me.btnMoveDown.Size = New System.Drawing.Size(88, 26)
             Me.btnMoveDown.TabIndex = 18
             Me.btnMoveDown.Text = "Move Down"
-            Me.lbSounds.Location = New Global.System.Drawing.Point(136, 160)
+            Me.btnMoveDown.UseVisualStyleBackColor = False
+            '
+            'lbSounds
+            '
+            Me.lbSounds.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.lbSounds.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.lbSounds.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.lbSounds.Location = New System.Drawing.Point(136, 175)
             Me.lbSounds.Name = "lbSounds"
-            Me.lbSounds.SelectionMode = Global.System.Windows.Forms.SelectionMode.MultiExtended
-            Me.lbSounds.Size = New Global.System.Drawing.Size(144, 212)
+            Me.lbSounds.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
+            Me.lbSounds.Size = New System.Drawing.Size(176, 236)
             Me.lbSounds.TabIndex = 16
-            Me.tbComment.Location = New Global.System.Drawing.Point(136, 80)
+            '
+            'tbComment
+            '
+            Me.tbComment.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbComment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbComment.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbComment.Location = New System.Drawing.Point(136, 92)
             Me.tbComment.Multiline = True
             Me.tbComment.Name = "tbComment"
-            Me.tbComment.Size = New Global.System.Drawing.Size(272, 64)
+            Me.tbComment.Size = New System.Drawing.Size(304, 65)
             Me.tbComment.TabIndex = 15
-            Me.tbComment.Text = ""
-            Me.btnSetNameLang.Location = New Global.System.Drawing.Point(344, 24)
+            '
+            'btnSetNameLang
+            '
+            Me.btnSetNameLang.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnSetNameLang.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnSetNameLang.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnSetNameLang.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnSetNameLang.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnSetNameLang.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnSetNameLang.Location = New System.Drawing.Point(352, 28)
             Me.btnSetNameLang.Name = "btnSetNameLang"
-            Me.btnSetNameLang.Size = New Global.System.Drawing.Size(88, 23)
+            Me.btnSetNameLang.Size = New System.Drawing.Size(96, 26)
             Me.btnSetNameLang.TabIndex = 14
             Me.btnSetNameLang.Text = "Set Language"
-            Me.tbTag.Location = New Global.System.Drawing.Point(136, 48)
+            Me.btnSetNameLang.UseVisualStyleBackColor = False
+            '
+            'tbTag
+            '
+            Me.tbTag.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbTag.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbTag.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbTag.Location = New System.Drawing.Point(136, 55)
             Me.tbTag.Name = "tbTag"
-            Me.tbTag.Size = New Global.System.Drawing.Size(200, 20)
+            Me.tbTag.Size = New System.Drawing.Size(200, 22)
             Me.tbTag.TabIndex = 13
-            Me.tbTag.Text = ""
-            Me.tbName.Location = New Global.System.Drawing.Point(136, 24)
+            '
+            'tbName
+            '
+            Me.tbName.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbName.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbName.Location = New System.Drawing.Point(136, 28)
             Me.tbName.Name = "tbName"
-            Me.tbName.Size = New Global.System.Drawing.Size(200, 20)
+            Me.tbName.Size = New System.Drawing.Size(200, 22)
             Me.tbName.TabIndex = 12
-            Me.tbName.Text = ""
-            Me.Label1.Location = New Global.System.Drawing.Point(40, 24)
+            '
+            'Label1
+            '
+            Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label1.Location = New System.Drawing.Point(40, 28)
             Me.Label1.Name = "Label1"
-            Me.Label1.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label1.Size = New System.Drawing.Size(100, 18)
             Me.Label1.TabIndex = 10
             Me.Label1.Text = "Name"
-            Me.Label1.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label2.Location = New Global.System.Drawing.Point(40, 48)
+            Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label2
+            '
+            Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label2.Location = New System.Drawing.Point(40, 55)
             Me.Label2.Name = "Label2"
-            Me.Label2.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label2.Size = New System.Drawing.Size(100, 19)
             Me.Label2.TabIndex = 11
             Me.Label2.Text = "Tag"
-            Me.Label2.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label3.Location = New Global.System.Drawing.Point(40, 88)
+            Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label3
+            '
+            Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label3.Location = New System.Drawing.Point(40, 102)
             Me.Label3.Name = "Label3"
-            Me.Label3.Size = New Global.System.Drawing.Size(80, 16)
+            Me.Label3.Size = New System.Drawing.Size(80, 18)
             Me.Label3.TabIndex = 11
             Me.Label3.Text = "Comments"
-            Me.Label3.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label4.Location = New Global.System.Drawing.Point(40, 160)
+            Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label4
+            '
+            Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label4.Location = New System.Drawing.Point(40, 185)
             Me.Label4.Name = "Label4"
-            Me.Label4.Size = New Global.System.Drawing.Size(88, 24)
+            Me.Label4.Size = New System.Drawing.Size(88, 27)
             Me.Label4.TabIndex = 11
             Me.Label4.Text = "Sounds to Play"
-            Me.Label4.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label5.Location = New Global.System.Drawing.Point(40, 424)
+            Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label5
+            '
+            Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label5.Location = New System.Drawing.Point(40, 452)
             Me.Label5.Name = "Label5"
-            Me.Label5.Size = New Global.System.Drawing.Size(88, 16)
+            Me.Label5.Size = New System.Drawing.Size(88, 19)
             Me.Label5.TabIndex = 11
             Me.Label5.Text = "In-game Volume"
-            Me.Label5.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.btnPlaySound.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Right
+            Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'btnPlaySound
+            '
+            Me.btnPlaySound.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.btnPlaySound.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
             Me.btnPlaySound.Enabled = False
-            Me.btnPlaySound.Location = New Global.System.Drawing.Point(328, 240)
+            Me.btnPlaySound.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnPlaySound.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnPlaySound.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnPlaySound.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnPlaySound.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnPlaySound.Location = New System.Drawing.Point(352, 268)
             Me.btnPlaySound.Name = "btnPlaySound"
-            Me.btnPlaySound.Size = New Global.System.Drawing.Size(80, 23)
+            Me.btnPlaySound.Size = New System.Drawing.Size(88, 26)
             Me.btnPlaySound.TabIndex = 19
             Me.btnPlaySound.Text = "Play Sound"
-            Me.btnStopSound.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Right
+            Me.btnPlaySound.UseVisualStyleBackColor = False
+            '
+            'btnStopSound
+            '
+            Me.btnStopSound.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.btnStopSound.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
             Me.btnStopSound.Enabled = False
-            Me.btnStopSound.Location = New Global.System.Drawing.Point(328, 272)
+            Me.btnStopSound.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnStopSound.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnStopSound.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnStopSound.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnStopSound.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnStopSound.Location = New System.Drawing.Point(352, 305)
             Me.btnStopSound.Name = "btnStopSound"
-            Me.btnStopSound.Size = New Global.System.Drawing.Size(80, 23)
+            Me.btnStopSound.Size = New System.Drawing.Size(88, 26)
             Me.btnStopSound.TabIndex = 19
             Me.btnStopSound.Text = "Stop"
-            Me.tbSoundStatus.Font = New Global.System.Drawing.Font("Courier New", 8.25F, Global.System.Drawing.FontStyle.Regular, Global.System.Drawing.GraphicsUnit.Point, 0)
-            Me.tbSoundStatus.Location = New Global.System.Drawing.Point(136, 384)
+            Me.btnStopSound.UseVisualStyleBackColor = False
+            '
+            'tbSoundStatus
+            '
+            Me.tbSoundStatus.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbSoundStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbSoundStatus.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.tbSoundStatus.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbSoundStatus.Location = New System.Drawing.Point(136, 425)
             Me.tbSoundStatus.Name = "tbSoundStatus"
-            Me.tbSoundStatus.[ReadOnly] = True
-            Me.tbSoundStatus.Size = New Global.System.Drawing.Size(144, 20)
+            Me.tbSoundStatus.ReadOnly = True
+            Me.tbSoundStatus.Size = New System.Drawing.Size(176, 20)
             Me.tbSoundStatus.TabIndex = 25
-            Me.tbSoundStatus.Text = ""
-            Me.tbSoundStatus.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.Label26.Location = New Global.System.Drawing.Point(40, 384)
+            Me.tbSoundStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'Label26
+            '
+            Me.Label26.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label26.Location = New System.Drawing.Point(40, 425)
             Me.Label26.Name = "Label26"
-            Me.Label26.Size = New Global.System.Drawing.Size(80, 16)
+            Me.Label26.Size = New System.Drawing.Size(80, 18)
             Me.Label26.TabIndex = 11
             Me.Label26.Text = "Time"
-            Me.Label26.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
+            Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbapagPositioning
+            '
+            Me.tbapagPositioning.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tbapagPositioning.Controls.Add(Me.gbHeight)
             Me.tbapagPositioning.Controls.Add(Me.gbVolumeDistances)
             Me.tbapagPositioning.Controls.Add(Me.rbPlaysEverywhere)
             Me.tbapagPositioning.Controls.Add(Me.rbRandomPosition)
             Me.tbapagPositioning.Controls.Add(Me.rbSpecificPosition)
             Me.tbapagPositioning.Controls.Add(Me.gbRandomRange)
-            Me.tbapagPositioning.Location = New Global.System.Drawing.Point(4, 22)
+            Me.tbapagPositioning.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbapagPositioning.Location = New System.Drawing.Point(4, 22)
             Me.tbapagPositioning.Name = "tbapagPositioning"
-            Me.tbapagPositioning.Size = New Global.System.Drawing.Size(496, 478)
+            Me.tbapagPositioning.Size = New System.Drawing.Size(520, 503)
             Me.tbapagPositioning.TabIndex = 1
             Me.tbapagPositioning.Text = "Positioning"
+            '
+            'gbHeight
+            '
             Me.gbHeight.Controls.Add(Me.PictureBox2)
             Me.gbHeight.Controls.Add(Me.nudElevation)
             Me.gbHeight.Controls.Add(Me.Label10)
-            Me.gbHeight.Location = New Global.System.Drawing.Point(16, 248)
+            Me.gbHeight.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.gbHeight.Location = New System.Drawing.Point(16, 252)
             Me.gbHeight.Name = "gbHeight"
-            Me.gbHeight.Size = New Global.System.Drawing.Size(184, 176)
+            Me.gbHeight.Size = New System.Drawing.Size(184, 203)
             Me.gbHeight.TabIndex = 2
             Me.gbHeight.TabStop = False
             Me.gbHeight.Text = "Height (m)"
-            Me.PictureBox2.Image = CType(resources.GetObject("Me.PictureBox2.Image"), Global.System.Drawing.Image)
-            Me.PictureBox2.Location = New Global.System.Drawing.Point(8, 40)
+            '
+            'PictureBox2
+            '
+            Me.PictureBox2.Location = New System.Drawing.Point(8, 46)
             Me.PictureBox2.Name = "PictureBox2"
-            Me.PictureBox2.Size = New Global.System.Drawing.Size(94, 96)
+            Me.PictureBox2.Size = New System.Drawing.Size(94, 111)
             Me.PictureBox2.TabIndex = 3
             Me.PictureBox2.TabStop = False
+            '
+            'nudElevation
+            '
+            Me.nudElevation.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.nudElevation.DecimalPlaces = 1
-            Me.nudElevation.Location = New Global.System.Drawing.Point(112, 72)
-            Me.nudElevation.Minimum = New Decimal(New Integer() {100, 0, 0, Integer.MinValue})
+            Me.nudElevation.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudElevation.Location = New System.Drawing.Point(112, 83)
+            Me.nudElevation.Minimum = New Decimal(New Integer() {100, 0, 0, -2147483648})
             Me.nudElevation.Name = "nudElevation"
-            Me.nudElevation.Size = New Global.System.Drawing.Size(64, 20)
+            Me.nudElevation.Size = New System.Drawing.Size(64, 22)
             Me.nudElevation.TabIndex = 0
-            Me.Label10.Location = New Global.System.Drawing.Point(112, 56)
+            '
+            'Label10
+            '
+            Me.Label10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label10.Location = New System.Drawing.Point(112, 65)
             Me.Label10.Name = "Label10"
-            Me.Label10.Size = New Global.System.Drawing.Size(64, 16)
+            Me.Label10.Size = New System.Drawing.Size(64, 18)
             Me.Label10.TabIndex = 2
             Me.Label10.Text = "Height (m)"
+            '
+            'gbVolumeDistances
+            '
             Me.gbVolumeDistances.Controls.Add(Me.PictureBox1)
             Me.gbVolumeDistances.Controls.Add(Me.Label8)
             Me.gbVolumeDistances.Controls.Add(Me.nudMaxDistance)
             Me.gbVolumeDistances.Controls.Add(Me.Label9)
             Me.gbVolumeDistances.Controls.Add(Me.nudMinDistance)
-            Me.gbVolumeDistances.Location = New Global.System.Drawing.Point(16, 104)
+            Me.gbVolumeDistances.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.gbVolumeDistances.Location = New System.Drawing.Point(16, 108)
             Me.gbVolumeDistances.Name = "gbVolumeDistances"
-            Me.gbVolumeDistances.Size = New Global.System.Drawing.Size(408, 120)
+            Me.gbVolumeDistances.Size = New System.Drawing.Size(484, 138)
             Me.gbVolumeDistances.TabIndex = 1
             Me.gbVolumeDistances.TabStop = False
             Me.gbVolumeDistances.Text = "Volume Distances"
-            Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Global.System.Drawing.Image)
-            Me.PictureBox1.Location = New Global.System.Drawing.Point(8, 24)
+            '
+            'PictureBox1
+            '
+            Me.PictureBox1.Location = New System.Drawing.Point(8, 28)
             Me.PictureBox1.Name = "PictureBox1"
-            Me.PictureBox1.Size = New Global.System.Drawing.Size(90, 82)
+            Me.PictureBox1.Size = New System.Drawing.Size(90, 94)
             Me.PictureBox1.TabIndex = 3
             Me.PictureBox1.TabStop = False
-            Me.Label8.Location = New Global.System.Drawing.Point(128, 16)
+            '
+            'Label8
+            '
+            Me.Label8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label8.Location = New System.Drawing.Point(128, 18)
             Me.Label8.Name = "Label8"
-            Me.Label8.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label8.Size = New System.Drawing.Size(120, 19)
             Me.Label8.TabIndex = 2
             Me.Label8.Text = "Cutoff distance (m)"
+            '
+            'nudMaxDistance
+            '
+            Me.nudMaxDistance.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.nudMaxDistance.DecimalPlaces = 1
-            Me.nudMaxDistance.Location = New Global.System.Drawing.Point(128, 32)
+            Me.nudMaxDistance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudMaxDistance.Location = New System.Drawing.Point(128, 37)
             Me.nudMaxDistance.Name = "nudMaxDistance"
-            Me.nudMaxDistance.Size = New Global.System.Drawing.Size(64, 20)
+            Me.nudMaxDistance.Size = New System.Drawing.Size(64, 22)
             Me.nudMaxDistance.TabIndex = 0
-            Me.Label9.Location = New Global.System.Drawing.Point(128, 64)
+            '
+            'Label9
+            '
+            Me.Label9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label9.Location = New System.Drawing.Point(128, 74)
             Me.Label9.Name = "Label9"
-            Me.Label9.Size = New Global.System.Drawing.Size(152, 16)
+            Me.Label9.Size = New System.Drawing.Size(152, 18)
             Me.Label9.TabIndex = 2
             Me.Label9.Text = "Max Volume distance (m)"
+            '
+            'nudMinDistance
+            '
+            Me.nudMinDistance.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.nudMinDistance.DecimalPlaces = 1
-            Me.nudMinDistance.Location = New Global.System.Drawing.Point(128, 80)
+            Me.nudMinDistance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudMinDistance.Location = New System.Drawing.Point(128, 92)
             Me.nudMinDistance.Name = "nudMinDistance"
-            Me.nudMinDistance.Size = New Global.System.Drawing.Size(64, 20)
+            Me.nudMinDistance.Size = New System.Drawing.Size(64, 22)
             Me.nudMinDistance.TabIndex = 0
-            Me.rbPlaysEverywhere.Location = New Global.System.Drawing.Point(24, 16)
+            '
+            'rbPlaysEverywhere
+            '
+            Me.rbPlaysEverywhere.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.rbPlaysEverywhere.Location = New System.Drawing.Point(24, 18)
             Me.rbPlaysEverywhere.Name = "rbPlaysEverywhere"
-            Me.rbPlaysEverywhere.Size = New Global.System.Drawing.Size(160, 24)
+            Me.rbPlaysEverywhere.Size = New System.Drawing.Size(176, 28)
             Me.rbPlaysEverywhere.TabIndex = 0
             Me.rbPlaysEverywhere.Text = "Plays everywhere in area"
-            Me.rbRandomPosition.Location = New Global.System.Drawing.Point(24, 40)
+            '
+            'rbRandomPosition
+            '
+            Me.rbRandomPosition.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.rbRandomPosition.Location = New System.Drawing.Point(24, 46)
             Me.rbRandomPosition.Name = "rbRandomPosition"
-            Me.rbRandomPosition.Size = New Global.System.Drawing.Size(288, 24)
+            Me.rbRandomPosition.Size = New System.Drawing.Size(288, 28)
             Me.rbRandomPosition.TabIndex = 0
             Me.rbRandomPosition.Text = "Plays from a random position each time it is played"
+            '
+            'rbSpecificPosition
+            '
             Me.rbSpecificPosition.Checked = True
-            Me.rbSpecificPosition.Location = New Global.System.Drawing.Point(24, 64)
+            Me.rbSpecificPosition.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.rbSpecificPosition.Location = New System.Drawing.Point(24, 74)
             Me.rbSpecificPosition.Name = "rbSpecificPosition"
-            Me.rbSpecificPosition.Size = New Global.System.Drawing.Size(168, 24)
+            Me.rbSpecificPosition.Size = New System.Drawing.Size(184, 28)
             Me.rbSpecificPosition.TabIndex = 0
             Me.rbSpecificPosition.TabStop = True
             Me.rbSpecificPosition.Text = "Plays from a specific position"
+            '
+            'gbRandomRange
+            '
             Me.gbRandomRange.Controls.Add(Me.PictureBox3)
             Me.gbRandomRange.Controls.Add(Me.nudRandomRangeY)
             Me.gbRandomRange.Controls.Add(Me.nudRandomRangeX)
             Me.gbRandomRange.Controls.Add(Me.Label11)
             Me.gbRandomRange.Controls.Add(Me.Label12)
-            Me.gbRandomRange.Location = New Global.System.Drawing.Point(208, 248)
+            Me.gbRandomRange.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.gbRandomRange.Location = New System.Drawing.Point(208, 252)
             Me.gbRandomRange.Name = "gbRandomRange"
-            Me.gbRandomRange.Size = New Global.System.Drawing.Size(280, 176)
+            Me.gbRandomRange.Size = New System.Drawing.Size(292, 203)
             Me.gbRandomRange.TabIndex = 2
             Me.gbRandomRange.TabStop = False
             Me.gbRandomRange.Text = "Random Range"
-            Me.PictureBox3.Image = CType(resources.GetObject("Me.PictureBox1.Image"), Global.System.Drawing.Image)
-            Me.PictureBox3.Location = New Global.System.Drawing.Point(8, 24)
+            '
+            'PictureBox3
+            '
+            Me.PictureBox3.Location = New System.Drawing.Point(8, 28)
             Me.PictureBox3.Name = "PictureBox3"
-            Me.PictureBox3.Size = New Global.System.Drawing.Size(96, 95)
+            Me.PictureBox3.Size = New System.Drawing.Size(96, 109)
             Me.PictureBox3.TabIndex = 3
             Me.PictureBox3.TabStop = False
+            '
+            'nudRandomRangeY
+            '
+            Me.nudRandomRangeY.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.nudRandomRangeY.DecimalPlaces = 1
-            Me.nudRandomRangeY.Location = New Global.System.Drawing.Point(112, 40)
+            Me.nudRandomRangeY.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudRandomRangeY.Location = New System.Drawing.Point(112, 46)
             Me.nudRandomRangeY.Name = "nudRandomRangeY"
-            Me.nudRandomRangeY.Size = New Global.System.Drawing.Size(64, 20)
+            Me.nudRandomRangeY.Size = New System.Drawing.Size(64, 22)
             Me.nudRandomRangeY.TabIndex = 0
+            '
+            'nudRandomRangeX
+            '
+            Me.nudRandomRangeX.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.nudRandomRangeX.DecimalPlaces = 1
-            Me.nudRandomRangeX.Location = New Global.System.Drawing.Point(16, 144)
+            Me.nudRandomRangeX.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudRandomRangeX.Location = New System.Drawing.Point(16, 166)
             Me.nudRandomRangeX.Name = "nudRandomRangeX"
-            Me.nudRandomRangeX.Size = New Global.System.Drawing.Size(64, 20)
+            Me.nudRandomRangeX.Size = New System.Drawing.Size(64, 22)
             Me.nudRandomRangeX.TabIndex = 0
-            Me.Label11.Location = New Global.System.Drawing.Point(112, 24)
+            '
+            'Label11
+            '
+            Me.Label11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label11.Location = New System.Drawing.Point(112, 28)
             Me.Label11.Name = "Label11"
-            Me.Label11.Size = New Global.System.Drawing.Size(160, 16)
+            Me.Label11.Size = New System.Drawing.Size(160, 18)
             Me.Label11.TabIndex = 2
             Me.Label11.Text = "North-South Random Range (m)"
-            Me.Label12.Location = New Global.System.Drawing.Point(16, 128)
+            '
+            'Label12
+            '
+            Me.Label12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label12.Location = New System.Drawing.Point(16, 148)
             Me.Label12.Name = "Label12"
-            Me.Label12.Size = New Global.System.Drawing.Size(160, 16)
+            Me.Label12.Size = New System.Drawing.Size(160, 18)
             Me.Label12.TabIndex = 2
             Me.Label12.Text = "West-East Random Range (m)"
+            '
+            'tabpagAdvanced
+            '
+            Me.tabpagAdvanced.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tabpagAdvanced.Controls.Add(Me.pnlVolPitch)
             Me.tabpagAdvanced.Controls.Add(Me.GroupBox4)
             Me.tabpagAdvanced.Controls.Add(Me.chkbActive)
             Me.tabpagAdvanced.Controls.Add(Me.GroupBox6)
             Me.tabpagAdvanced.Controls.Add(Me.gbInterval)
             Me.tabpagAdvanced.Controls.Add(Me.GroupBox5)
-            Me.tabpagAdvanced.Location = New Global.System.Drawing.Point(4, 22)
+            Me.tabpagAdvanced.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tabpagAdvanced.Location = New System.Drawing.Point(4, 22)
             Me.tabpagAdvanced.Name = "tabpagAdvanced"
-            Me.tabpagAdvanced.Size = New Global.System.Drawing.Size(496, 478)
+            Me.tabpagAdvanced.Size = New System.Drawing.Size(520, 503)
             Me.tabpagAdvanced.TabIndex = 2
             Me.tabpagAdvanced.Text = "Advanced"
+            '
+            'pnlVolPitch
+            '
             Me.pnlVolPitch.Controls.Add(Me.tbPitchVrtn)
             Me.pnlVolPitch.Controls.Add(Me.trkbarVolumeVrtn)
             Me.pnlVolPitch.Controls.Add(Me.Label6)
             Me.pnlVolPitch.Controls.Add(Me.Label7)
             Me.pnlVolPitch.Controls.Add(Me.trkbarPitchVrtn)
             Me.pnlVolPitch.Controls.Add(Me.tbVolumeVrtn)
-            Me.pnlVolPitch.Location = New Global.System.Drawing.Point(8, 368)
+            Me.pnlVolPitch.Location = New System.Drawing.Point(8, 378)
             Me.pnlVolPitch.Name = "pnlVolPitch"
-            Me.pnlVolPitch.Size = New Global.System.Drawing.Size(480, 104)
+            Me.pnlVolPitch.Size = New System.Drawing.Size(504, 101)
             Me.pnlVolPitch.TabIndex = 25
-            Me.tbPitchVrtn.Location = New Global.System.Drawing.Point(160, 64)
+            '
+            'tbPitchVrtn
+            '
+            Me.tbPitchVrtn.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbPitchVrtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbPitchVrtn.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbPitchVrtn.Location = New System.Drawing.Point(171, 62)
             Me.tbPitchVrtn.Name = "tbPitchVrtn"
-            Me.tbPitchVrtn.[ReadOnly] = True
-            Me.tbPitchVrtn.Size = New Global.System.Drawing.Size(40, 20)
+            Me.tbPitchVrtn.ReadOnly = True
+            Me.tbPitchVrtn.Size = New System.Drawing.Size(40, 22)
             Me.tbPitchVrtn.TabIndex = 24
-            Me.tbPitchVrtn.Text = ""
-            Me.trkbarVolumeVrtn.Location = New Global.System.Drawing.Point(216, 8)
+            '
+            'trkbarVolumeVrtn
+            '
+            Me.trkbarVolumeVrtn.Location = New System.Drawing.Point(216, 9)
             Me.trkbarVolumeVrtn.Maximum = 100
             Me.trkbarVolumeVrtn.Name = "trkbarVolumeVrtn"
-            Me.trkbarVolumeVrtn.Size = New Global.System.Drawing.Size(216, 42)
+            Me.trkbarVolumeVrtn.Size = New System.Drawing.Size(216, 45)
             Me.trkbarVolumeVrtn.TabIndex = 23
             Me.trkbarVolumeVrtn.TickFrequency = 5
-            Me.Label6.Location = New Global.System.Drawing.Point(24, 16)
+            '
+            'Label6
+            '
+            Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label6.Location = New System.Drawing.Point(21, 9)
             Me.Label6.Name = "Label6"
-            Me.Label6.Size = New Global.System.Drawing.Size(96, 16)
+            Me.Label6.Size = New System.Drawing.Size(136, 22)
             Me.Label6.TabIndex = 22
             Me.Label6.Text = "Volume Variation"
-            Me.Label6.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label7.Location = New Global.System.Drawing.Point(24, 64)
+            Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label7
+            '
+            Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label7.Location = New System.Drawing.Point(21, 56)
             Me.Label7.Name = "Label7"
-            Me.Label7.Size = New Global.System.Drawing.Size(160, 24)
+            Me.Label7.Size = New System.Drawing.Size(136, 28)
             Me.Label7.TabIndex = 22
             Me.Label7.Text = "Pitch  Variation (octaves)"
-            Me.Label7.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.trkbarPitchVrtn.Location = New Global.System.Drawing.Point(216, 56)
+            Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'trkbarPitchVrtn
+            '
+            Me.trkbarPitchVrtn.Location = New System.Drawing.Point(216, 53)
             Me.trkbarPitchVrtn.Maximum = 100
             Me.trkbarPitchVrtn.Name = "trkbarPitchVrtn"
-            Me.trkbarPitchVrtn.Size = New Global.System.Drawing.Size(216, 42)
+            Me.trkbarPitchVrtn.Size = New System.Drawing.Size(216, 45)
             Me.trkbarPitchVrtn.TabIndex = 23
             Me.trkbarPitchVrtn.TickFrequency = 5
-            Me.tbVolumeVrtn.Location = New Global.System.Drawing.Point(160, 16)
+            '
+            'tbVolumeVrtn
+            '
+            Me.tbVolumeVrtn.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbVolumeVrtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbVolumeVrtn.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbVolumeVrtn.Location = New System.Drawing.Point(171, 9)
             Me.tbVolumeVrtn.Name = "tbVolumeVrtn"
-            Me.tbVolumeVrtn.[ReadOnly] = True
-            Me.tbVolumeVrtn.Size = New Global.System.Drawing.Size(40, 20)
+            Me.tbVolumeVrtn.ReadOnly = True
+            Me.tbVolumeVrtn.Size = New System.Drawing.Size(40, 22)
             Me.tbVolumeVrtn.TabIndex = 24
-            Me.tbVolumeVrtn.Text = ""
+            '
+            'GroupBox4
+            '
             Me.GroupBox4.Controls.Add(Me.rbPlayDay)
             Me.GroupBox4.Controls.Add(Me.rbPlayNight)
             Me.GroupBox4.Controls.Add(Me.rbPlayAllTimes)
             Me.GroupBox4.Controls.Add(Me.rbPlaySpecificHours)
             Me.GroupBox4.Controls.Add(Me.pnlHours)
-            Me.GroupBox4.Location = New Global.System.Drawing.Point(8, 48)
+            Me.GroupBox4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.GroupBox4.Location = New System.Drawing.Point(8, 55)
             Me.GroupBox4.Name = "GroupBox4"
-            Me.GroupBox4.Size = New Global.System.Drawing.Size(472, 160)
+            Me.GroupBox4.Size = New System.Drawing.Size(504, 176)
             Me.GroupBox4.TabIndex = 1
             Me.GroupBox4.TabStop = False
             Me.GroupBox4.Text = "When to play"
-            Me.rbPlayDay.Location = New Global.System.Drawing.Point(40, 16)
+            '
+            'rbPlayDay
+            '
+            Me.rbPlayDay.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.rbPlayDay.Location = New System.Drawing.Point(40, 18)
             Me.rbPlayDay.Name = "rbPlayDay"
-            Me.rbPlayDay.Size = New Global.System.Drawing.Size(128, 16)
+            Me.rbPlayDay.Size = New System.Drawing.Size(128, 19)
             Me.rbPlayDay.TabIndex = 0
             Me.rbPlayDay.Text = "Play during the day"
-            Me.rbPlayNight.Location = New Global.System.Drawing.Point(40, 32)
+            '
+            'rbPlayNight
+            '
+            Me.rbPlayNight.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.rbPlayNight.Location = New System.Drawing.Point(40, 37)
             Me.rbPlayNight.Name = "rbPlayNight"
-            Me.rbPlayNight.Size = New Global.System.Drawing.Size(128, 16)
+            Me.rbPlayNight.Size = New System.Drawing.Size(128, 18)
             Me.rbPlayNight.TabIndex = 0
             Me.rbPlayNight.Text = "Play at night"
+            '
+            'rbPlayAllTimes
+            '
             Me.rbPlayAllTimes.Checked = True
-            Me.rbPlayAllTimes.Location = New Global.System.Drawing.Point(40, 48)
+            Me.rbPlayAllTimes.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.rbPlayAllTimes.Location = New System.Drawing.Point(40, 55)
             Me.rbPlayAllTimes.Name = "rbPlayAllTimes"
-            Me.rbPlayAllTimes.Size = New Global.System.Drawing.Size(128, 16)
+            Me.rbPlayAllTimes.Size = New System.Drawing.Size(128, 19)
             Me.rbPlayAllTimes.TabIndex = 0
             Me.rbPlayAllTimes.TabStop = True
             Me.rbPlayAllTimes.Text = "Play at all times"
-            Me.rbPlaySpecificHours.Location = New Global.System.Drawing.Point(40, 64)
+            '
+            'rbPlaySpecificHours
+            '
+            Me.rbPlaySpecificHours.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.rbPlaySpecificHours.Location = New System.Drawing.Point(40, 74)
             Me.rbPlaySpecificHours.Name = "rbPlaySpecificHours"
-            Me.rbPlaySpecificHours.Size = New Global.System.Drawing.Size(128, 16)
+            Me.rbPlaySpecificHours.Size = New System.Drawing.Size(128, 18)
             Me.rbPlaySpecificHours.TabIndex = 0
             Me.rbPlaySpecificHours.Text = "Specific Hours"
+            '
+            'pnlHours
+            '
             Me.pnlHours.Controls.Add(Me.chkb3a)
             Me.pnlHours.Controls.Add(Me.Label21)
             Me.pnlHours.Controls.Add(Me.Label20)
@@ -684,389 +1008,653 @@ Namespace kotor_tool
             Me.pnlHours.Controls.Add(Me.Label14)
             Me.pnlHours.Controls.Add(Me.chkb12a)
             Me.pnlHours.Controls.Add(Me.Label19)
-            Me.pnlHours.Location = New Global.System.Drawing.Point(40, 80)
+            Me.pnlHours.Location = New System.Drawing.Point(40, 92)
             Me.pnlHours.Name = "pnlHours"
-            Me.pnlHours.Size = New Global.System.Drawing.Size(352, 72)
+            Me.pnlHours.Size = New System.Drawing.Size(352, 74)
             Me.pnlHours.TabIndex = 4
-            Me.chkb3a.Location = New Global.System.Drawing.Point(128, 24)
+            '
+            'chkb3a
+            '
+            Me.chkb3a.Location = New System.Drawing.Point(128, 28)
             Me.chkb3a.Name = "chkb3a"
-            Me.chkb3a.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb3a.Size = New System.Drawing.Size(16, 18)
             Me.chkb3a.TabIndex = 1
             Me.chkb3a.Tag = "3"
-            Me.chkb3a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.Label21.Location = New Global.System.Drawing.Point(224, 8)
+            Me.chkb3a.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'Label21
+            '
+            Me.Label21.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label21.Location = New System.Drawing.Point(224, 9)
             Me.Label21.Name = "Label21"
-            Me.Label21.Size = New Global.System.Drawing.Size(16, 16)
+            Me.Label21.Size = New System.Drawing.Size(16, 19)
             Me.Label21.TabIndex = 3
             Me.Label21.Text = "7"
-            Me.Label20.Location = New Global.System.Drawing.Point(200, 8)
+            '
+            'Label20
+            '
+            Me.Label20.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label20.Location = New System.Drawing.Point(200, 9)
             Me.Label20.Name = "Label20"
-            Me.Label20.Size = New Global.System.Drawing.Size(16, 16)
+            Me.Label20.Size = New System.Drawing.Size(16, 19)
             Me.Label20.TabIndex = 3
             Me.Label20.Text = "6"
-            Me.Label18.Location = New Global.System.Drawing.Point(152, 8)
+            '
+            'Label18
+            '
+            Me.Label18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label18.Location = New System.Drawing.Point(152, 9)
             Me.Label18.Name = "Label18"
-            Me.Label18.Size = New Global.System.Drawing.Size(16, 16)
+            Me.Label18.Size = New System.Drawing.Size(16, 19)
             Me.Label18.TabIndex = 3
             Me.Label18.Text = "4"
-            Me.chkb3p.Location = New Global.System.Drawing.Point(128, 48)
+            '
+            'chkb3p
+            '
+            Me.chkb3p.Location = New System.Drawing.Point(128, 55)
             Me.chkb3p.Name = "chkb3p"
-            Me.chkb3p.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb3p.Size = New System.Drawing.Size(16, 19)
             Me.chkb3p.TabIndex = 1
             Me.chkb3p.Tag = "15"
-            Me.chkb3p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.chkb10p.Location = New Global.System.Drawing.Point(296, 48)
+            Me.chkb3p.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'chkb10p
+            '
+            Me.chkb10p.Location = New System.Drawing.Point(296, 55)
             Me.chkb10p.Name = "chkb10p"
-            Me.chkb10p.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb10p.Size = New System.Drawing.Size(16, 19)
             Me.chkb10p.TabIndex = 1
             Me.chkb10p.Tag = "22"
-            Me.chkb10p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.chkb12p.Location = New Global.System.Drawing.Point(56, 48)
+            Me.chkb10p.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'chkb12p
+            '
+            Me.chkb12p.Location = New System.Drawing.Point(56, 55)
             Me.chkb12p.Name = "chkb12p"
-            Me.chkb12p.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb12p.Size = New System.Drawing.Size(16, 19)
             Me.chkb12p.TabIndex = 1
             Me.chkb12p.Tag = "12"
-            Me.chkb12p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.chkb1p.Location = New Global.System.Drawing.Point(80, 48)
+            Me.chkb12p.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'chkb1p
+            '
+            Me.chkb1p.Location = New System.Drawing.Point(80, 55)
             Me.chkb1p.Name = "chkb1p"
-            Me.chkb1p.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb1p.Size = New System.Drawing.Size(16, 19)
             Me.chkb1p.TabIndex = 1
             Me.chkb1p.Tag = "13"
-            Me.chkb1p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.chkb4a.Location = New Global.System.Drawing.Point(152, 24)
+            Me.chkb1p.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'chkb4a
+            '
+            Me.chkb4a.Location = New System.Drawing.Point(152, 28)
             Me.chkb4a.Name = "chkb4a"
-            Me.chkb4a.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb4a.Size = New System.Drawing.Size(16, 18)
             Me.chkb4a.TabIndex = 1
             Me.chkb4a.Tag = "4"
-            Me.chkb4a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.chkb6a.Location = New Global.System.Drawing.Point(200, 24)
+            Me.chkb4a.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'chkb6a
+            '
+            Me.chkb6a.Location = New System.Drawing.Point(200, 28)
             Me.chkb6a.Name = "chkb6a"
-            Me.chkb6a.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb6a.Size = New System.Drawing.Size(16, 18)
             Me.chkb6a.TabIndex = 1
             Me.chkb6a.Tag = "6"
-            Me.chkb6a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.chkb5a.Location = New Global.System.Drawing.Point(176, 24)
+            Me.chkb6a.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'chkb5a
+            '
+            Me.chkb5a.Location = New System.Drawing.Point(176, 28)
             Me.chkb5a.Name = "chkb5a"
-            Me.chkb5a.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb5a.Size = New System.Drawing.Size(16, 18)
             Me.chkb5a.TabIndex = 1
             Me.chkb5a.Tag = "5"
-            Me.chkb5a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.chkb7a.Location = New Global.System.Drawing.Point(224, 24)
+            Me.chkb5a.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'chkb7a
+            '
+            Me.chkb7a.Location = New System.Drawing.Point(224, 28)
             Me.chkb7a.Name = "chkb7a"
-            Me.chkb7a.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb7a.Size = New System.Drawing.Size(16, 18)
             Me.chkb7a.TabIndex = 1
             Me.chkb7a.Tag = "7"
-            Me.chkb7a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.Label25.Location = New Global.System.Drawing.Point(318, 8)
+            Me.chkb7a.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'Label25
+            '
+            Me.Label25.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label25.Location = New System.Drawing.Point(318, 9)
             Me.Label25.Name = "Label25"
-            Me.Label25.Size = New Global.System.Drawing.Size(24, 16)
+            Me.Label25.Size = New System.Drawing.Size(24, 19)
             Me.Label25.TabIndex = 3
             Me.Label25.Text = "11"
-            Me.chkb8p.Location = New Global.System.Drawing.Point(248, 48)
+            '
+            'chkb8p
+            '
+            Me.chkb8p.Location = New System.Drawing.Point(248, 55)
             Me.chkb8p.Name = "chkb8p"
-            Me.chkb8p.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb8p.Size = New System.Drawing.Size(16, 19)
             Me.chkb8p.TabIndex = 1
             Me.chkb8p.Tag = "20"
-            Me.chkb8p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.chkb2p.Location = New Global.System.Drawing.Point(104, 48)
+            Me.chkb8p.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'chkb2p
+            '
+            Me.chkb2p.Location = New System.Drawing.Point(104, 55)
             Me.chkb2p.Name = "chkb2p"
-            Me.chkb2p.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb2p.Size = New System.Drawing.Size(16, 19)
             Me.chkb2p.TabIndex = 1
             Me.chkb2p.Tag = "14"
-            Me.chkb2p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.chkb9p.Location = New Global.System.Drawing.Point(272, 48)
+            Me.chkb2p.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'chkb9p
+            '
+            Me.chkb9p.Location = New System.Drawing.Point(272, 55)
             Me.chkb9p.Name = "chkb9p"
-            Me.chkb9p.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb9p.Size = New System.Drawing.Size(16, 19)
             Me.chkb9p.TabIndex = 1
             Me.chkb9p.Tag = "21"
-            Me.chkb9p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.chkb11p.Location = New Global.System.Drawing.Point(320, 48)
+            Me.chkb9p.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'chkb11p
+            '
+            Me.chkb11p.Location = New System.Drawing.Point(320, 55)
             Me.chkb11p.Name = "chkb11p"
-            Me.chkb11p.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb11p.Size = New System.Drawing.Size(16, 19)
             Me.chkb11p.TabIndex = 1
             Me.chkb11p.Tag = "23"
-            Me.chkb11p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.chkb11a.Location = New Global.System.Drawing.Point(320, 24)
+            Me.chkb11p.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'chkb11a
+            '
+            Me.chkb11a.Location = New System.Drawing.Point(320, 28)
             Me.chkb11a.Name = "chkb11a"
-            Me.chkb11a.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb11a.Size = New System.Drawing.Size(16, 18)
             Me.chkb11a.TabIndex = 1
             Me.chkb11a.Tag = "11"
-            Me.chkb11a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.chkb9a.Location = New Global.System.Drawing.Point(272, 24)
+            Me.chkb11a.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'chkb9a
+            '
+            Me.chkb9a.Location = New System.Drawing.Point(272, 28)
             Me.chkb9a.Name = "chkb9a"
-            Me.chkb9a.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb9a.Size = New System.Drawing.Size(16, 18)
             Me.chkb9a.TabIndex = 1
             Me.chkb9a.Tag = "9"
-            Me.chkb9a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.chkb10a.Location = New Global.System.Drawing.Point(296, 24)
+            Me.chkb9a.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'chkb10a
+            '
+            Me.chkb10a.Location = New System.Drawing.Point(296, 28)
             Me.chkb10a.Name = "chkb10a"
-            Me.chkb10a.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb10a.Size = New System.Drawing.Size(16, 18)
             Me.chkb10a.TabIndex = 1
             Me.chkb10a.Tag = "10"
-            Me.chkb10a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.chkb8a.Location = New Global.System.Drawing.Point(248, 24)
+            Me.chkb10a.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'chkb8a
+            '
+            Me.chkb8a.Location = New System.Drawing.Point(248, 28)
             Me.chkb8a.Name = "chkb8a"
-            Me.chkb8a.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb8a.Size = New System.Drawing.Size(16, 18)
             Me.chkb8a.TabIndex = 1
             Me.chkb8a.Tag = "8"
-            Me.chkb8a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.chkb7p.Location = New Global.System.Drawing.Point(224, 48)
+            Me.chkb8a.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'chkb7p
+            '
+            Me.chkb7p.Location = New System.Drawing.Point(224, 55)
             Me.chkb7p.Name = "chkb7p"
-            Me.chkb7p.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb7p.Size = New System.Drawing.Size(16, 19)
             Me.chkb7p.TabIndex = 1
             Me.chkb7p.Tag = "19"
-            Me.chkb7p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.chkb5p.Location = New Global.System.Drawing.Point(176, 48)
+            Me.chkb7p.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'chkb5p
+            '
+            Me.chkb5p.Location = New System.Drawing.Point(176, 55)
             Me.chkb5p.Name = "chkb5p"
-            Me.chkb5p.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb5p.Size = New System.Drawing.Size(16, 19)
             Me.chkb5p.TabIndex = 1
             Me.chkb5p.Tag = "17"
-            Me.chkb5p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.chkb6p.Location = New Global.System.Drawing.Point(200, 48)
+            Me.chkb5p.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'chkb6p
+            '
+            Me.chkb6p.Location = New System.Drawing.Point(200, 55)
             Me.chkb6p.Name = "chkb6p"
-            Me.chkb6p.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb6p.Size = New System.Drawing.Size(16, 19)
             Me.chkb6p.TabIndex = 1
             Me.chkb6p.Tag = "18"
-            Me.chkb6p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.chkb4p.Location = New Global.System.Drawing.Point(152, 48)
+            Me.chkb6p.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'chkb4p
+            '
+            Me.chkb4p.Location = New System.Drawing.Point(152, 55)
             Me.chkb4p.Name = "chkb4p"
-            Me.chkb4p.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb4p.Size = New System.Drawing.Size(16, 19)
             Me.chkb4p.TabIndex = 1
             Me.chkb4p.Tag = "16"
-            Me.chkb4p.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.Label13.Location = New Global.System.Drawing.Point(80, 8)
+            Me.chkb4p.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'Label13
+            '
+            Me.Label13.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label13.Location = New System.Drawing.Point(80, 9)
             Me.Label13.Name = "Label13"
-            Me.Label13.Size = New Global.System.Drawing.Size(16, 16)
+            Me.Label13.Size = New System.Drawing.Size(16, 19)
             Me.Label13.TabIndex = 3
             Me.Label13.Text = "1"
-            Me.chkb1a.Location = New Global.System.Drawing.Point(80, 24)
+            '
+            'chkb1a
+            '
+            Me.chkb1a.Location = New System.Drawing.Point(80, 28)
             Me.chkb1a.Name = "chkb1a"
-            Me.chkb1a.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb1a.Size = New System.Drawing.Size(16, 18)
             Me.chkb1a.TabIndex = 1
             Me.chkb1a.Tag = "1"
-            Me.chkb1a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.lblAM.Location = New Global.System.Drawing.Point(16, 24)
+            Me.chkb1a.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'lblAM
+            '
+            Me.lblAM.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.lblAM.Location = New System.Drawing.Point(16, 28)
             Me.lblAM.Name = "lblAM"
-            Me.lblAM.Size = New Global.System.Drawing.Size(24, 16)
+            Me.lblAM.Size = New System.Drawing.Size(24, 18)
             Me.lblAM.TabIndex = 3
             Me.lblAM.Text = "AM"
-            Me.lblPM.Location = New Global.System.Drawing.Point(16, 48)
+            '
+            'lblPM
+            '
+            Me.lblPM.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.lblPM.Location = New System.Drawing.Point(16, 55)
             Me.lblPM.Name = "lblPM"
-            Me.lblPM.Size = New Global.System.Drawing.Size(24, 16)
+            Me.lblPM.Size = New System.Drawing.Size(24, 19)
             Me.lblPM.TabIndex = 3
             Me.lblPM.Text = "PM"
-            Me.Label23.Location = New Global.System.Drawing.Point(272, 8)
+            '
+            'Label23
+            '
+            Me.Label23.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label23.Location = New System.Drawing.Point(272, 9)
             Me.Label23.Name = "Label23"
-            Me.Label23.Size = New Global.System.Drawing.Size(16, 16)
+            Me.Label23.Size = New System.Drawing.Size(16, 19)
             Me.Label23.TabIndex = 3
             Me.Label23.Text = "9"
-            Me.Label24.Location = New Global.System.Drawing.Point(294, 8)
+            '
+            'Label24
+            '
+            Me.Label24.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label24.Location = New System.Drawing.Point(294, 9)
             Me.Label24.Name = "Label24"
-            Me.Label24.Size = New Global.System.Drawing.Size(24, 16)
+            Me.Label24.Size = New System.Drawing.Size(24, 19)
             Me.Label24.TabIndex = 3
             Me.Label24.Text = "10"
-            Me.chkb2a.Location = New Global.System.Drawing.Point(104, 24)
+            '
+            'chkb2a
+            '
+            Me.chkb2a.Location = New System.Drawing.Point(104, 28)
             Me.chkb2a.Name = "chkb2a"
-            Me.chkb2a.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb2a.Size = New System.Drawing.Size(16, 18)
             Me.chkb2a.TabIndex = 1
             Me.chkb2a.Tag = "2"
-            Me.chkb2a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.lbl12.Location = New Global.System.Drawing.Point(54, 8)
+            Me.chkb2a.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'lbl12
+            '
+            Me.lbl12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.lbl12.Location = New System.Drawing.Point(54, 9)
             Me.lbl12.Name = "lbl12"
-            Me.lbl12.Size = New Global.System.Drawing.Size(24, 16)
+            Me.lbl12.Size = New System.Drawing.Size(24, 19)
             Me.lbl12.TabIndex = 3
             Me.lbl12.Text = "12"
-            Me.Label17.Location = New Global.System.Drawing.Point(128, 8)
+            '
+            'Label17
+            '
+            Me.Label17.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label17.Location = New System.Drawing.Point(128, 9)
             Me.Label17.Name = "Label17"
-            Me.Label17.Size = New Global.System.Drawing.Size(16, 16)
+            Me.Label17.Size = New System.Drawing.Size(16, 19)
             Me.Label17.TabIndex = 3
             Me.Label17.Text = "3"
-            Me.Label22.Location = New Global.System.Drawing.Point(248, 8)
+            '
+            'Label22
+            '
+            Me.Label22.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label22.Location = New System.Drawing.Point(248, 9)
             Me.Label22.Name = "Label22"
-            Me.Label22.Size = New Global.System.Drawing.Size(16, 16)
+            Me.Label22.Size = New System.Drawing.Size(16, 19)
             Me.Label22.TabIndex = 3
             Me.Label22.Text = "8"
-            Me.Label14.Location = New Global.System.Drawing.Point(104, 8)
+            '
+            'Label14
+            '
+            Me.Label14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label14.Location = New System.Drawing.Point(104, 9)
             Me.Label14.Name = "Label14"
-            Me.Label14.Size = New Global.System.Drawing.Size(16, 16)
+            Me.Label14.Size = New System.Drawing.Size(16, 19)
             Me.Label14.TabIndex = 3
             Me.Label14.Text = "2"
-            Me.chkb12a.Location = New Global.System.Drawing.Point(56, 24)
+            '
+            'chkb12a
+            '
+            Me.chkb12a.Location = New System.Drawing.Point(56, 28)
             Me.chkb12a.Name = "chkb12a"
-            Me.chkb12a.Size = New Global.System.Drawing.Size(16, 16)
+            Me.chkb12a.Size = New System.Drawing.Size(16, 18)
             Me.chkb12a.TabIndex = 1
             Me.chkb12a.Tag = "0"
-            Me.chkb12a.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.Label19.Location = New Global.System.Drawing.Point(176, 8)
+            Me.chkb12a.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'Label19
+            '
+            Me.Label19.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label19.Location = New System.Drawing.Point(176, 9)
             Me.Label19.Name = "Label19"
-            Me.Label19.Size = New Global.System.Drawing.Size(16, 16)
+            Me.Label19.Size = New System.Drawing.Size(16, 19)
             Me.Label19.TabIndex = 3
             Me.Label19.Text = "5"
+            '
+            'chkbActive
+            '
             Me.chkbActive.Checked = True
-            Me.chkbActive.CheckState = Global.System.Windows.Forms.CheckState.Checked
-            Me.chkbActive.Location = New Global.System.Drawing.Point(32, 16)
+            Me.chkbActive.CheckState = System.Windows.Forms.CheckState.Checked
+            Me.chkbActive.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.chkbActive.Location = New System.Drawing.Point(32, 18)
             Me.chkbActive.Name = "chkbActive"
+            Me.chkbActive.Size = New System.Drawing.Size(104, 28)
             Me.chkbActive.TabIndex = 0
             Me.chkbActive.Text = "Active"
+            '
+            'GroupBox6
+            '
             Me.GroupBox6.Controls.Add(Me.rbSequential)
             Me.GroupBox6.Controls.Add(Me.rbRandom)
-            Me.GroupBox6.Location = New Global.System.Drawing.Point(256, 216)
+            Me.GroupBox6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.GroupBox6.Location = New System.Drawing.Point(278, 237)
             Me.GroupBox6.Name = "GroupBox6"
-            Me.GroupBox6.Size = New Global.System.Drawing.Size(224, 56)
+            Me.GroupBox6.Size = New System.Drawing.Size(234, 65)
             Me.GroupBox6.TabIndex = 2
             Me.GroupBox6.TabStop = False
             Me.GroupBox6.Text = "Play Order"
+            '
+            'rbSequential
+            '
             Me.rbSequential.Checked = True
-            Me.rbSequential.Location = New Global.System.Drawing.Point(40, 16)
+            Me.rbSequential.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.rbSequential.Location = New System.Drawing.Point(40, 18)
             Me.rbSequential.Name = "rbSequential"
-            Me.rbSequential.Size = New Global.System.Drawing.Size(104, 16)
+            Me.rbSequential.Size = New System.Drawing.Size(104, 19)
             Me.rbSequential.TabIndex = 2
             Me.rbSequential.TabStop = True
             Me.rbSequential.Text = "Sequential"
-            Me.rbRandom.Location = New Global.System.Drawing.Point(40, 32)
+            '
+            'rbRandom
+            '
+            Me.rbRandom.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.rbRandom.Location = New System.Drawing.Point(40, 37)
             Me.rbRandom.Name = "rbRandom"
-            Me.rbRandom.Size = New Global.System.Drawing.Size(104, 16)
+            Me.rbRandom.Size = New System.Drawing.Size(104, 18)
             Me.rbRandom.TabIndex = 1
             Me.rbRandom.Text = "Random"
+            '
+            'gbInterval
+            '
             Me.gbInterval.Controls.Add(Me.Label16)
             Me.gbInterval.Controls.Add(Me.Label15)
             Me.gbInterval.Controls.Add(Me.nudInterval)
             Me.gbInterval.Controls.Add(Me.nudIntervalVrtn)
-            Me.gbInterval.Location = New Global.System.Drawing.Point(8, 296)
+            Me.gbInterval.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.gbInterval.Location = New System.Drawing.Point(8, 308)
             Me.gbInterval.Name = "gbInterval"
-            Me.gbInterval.Size = New Global.System.Drawing.Size(472, 72)
+            Me.gbInterval.Size = New System.Drawing.Size(504, 64)
             Me.gbInterval.TabIndex = 1
             Me.gbInterval.TabStop = False
             Me.gbInterval.Text = "Interval"
-            Me.Label16.Location = New Global.System.Drawing.Point(24, 40)
+            '
+            'Label16
+            '
+            Me.Label16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label16.Location = New System.Drawing.Point(24, 42)
             Me.Label16.Name = "Label16"
-            Me.Label16.Size = New Global.System.Drawing.Size(144, 16)
+            Me.Label16.Size = New System.Drawing.Size(176, 18)
             Me.Label16.TabIndex = 4
             Me.Label16.Text = "Interval Variation (seconds)"
-            Me.Label15.Location = New Global.System.Drawing.Point(24, 16)
+            '
+            'Label15
+            '
+            Me.Label15.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label15.Location = New System.Drawing.Point(24, 18)
             Me.Label15.Name = "Label15"
-            Me.Label15.Size = New Global.System.Drawing.Size(232, 16)
+            Me.Label15.Size = New System.Drawing.Size(232, 19)
             Me.Label15.TabIndex = 3
             Me.Label15.Text = "Interval between playing sounds (seconds)"
+            '
+            'nudInterval
+            '
+            Me.nudInterval.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.nudInterval.DecimalPlaces = 2
-            Me.nudInterval.Location = New Global.System.Drawing.Point(272, 16)
+            Me.nudInterval.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudInterval.Location = New System.Drawing.Point(272, 18)
             Me.nudInterval.Maximum = New Decimal(New Integer() {600, 0, 0, 0})
             Me.nudInterval.Name = "nudInterval"
-            Me.nudInterval.Size = New Global.System.Drawing.Size(64, 20)
+            Me.nudInterval.Size = New System.Drawing.Size(64, 22)
             Me.nudInterval.TabIndex = 0
+            '
+            'nudIntervalVrtn
+            '
+            Me.nudIntervalVrtn.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.nudIntervalVrtn.DecimalPlaces = 2
-            Me.nudIntervalVrtn.Location = New Global.System.Drawing.Point(272, 40)
+            Me.nudIntervalVrtn.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudIntervalVrtn.Location = New System.Drawing.Point(272, 42)
             Me.nudIntervalVrtn.Name = "nudIntervalVrtn"
-            Me.nudIntervalVrtn.Size = New Global.System.Drawing.Size(64, 20)
+            Me.nudIntervalVrtn.Size = New System.Drawing.Size(64, 22)
             Me.nudIntervalVrtn.TabIndex = 0
+            '
+            'GroupBox5
+            '
             Me.GroupBox5.Controls.Add(Me.rbOnce)
             Me.GroupBox5.Controls.Add(Me.rbRepeating)
             Me.GroupBox5.Controls.Add(Me.rbLooping)
-            Me.GroupBox5.Location = New Global.System.Drawing.Point(8, 216)
+            Me.GroupBox5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.GroupBox5.Location = New System.Drawing.Point(8, 237)
             Me.GroupBox5.Name = "GroupBox5"
-            Me.GroupBox5.Size = New Global.System.Drawing.Size(232, 72)
+            Me.GroupBox5.Size = New System.Drawing.Size(265, 65)
             Me.GroupBox5.TabIndex = 2
             Me.GroupBox5.TabStop = False
             Me.GroupBox5.Text = "Play Style"
+            '
+            'rbOnce
+            '
             Me.rbOnce.Checked = True
-            Me.rbOnce.Location = New Global.System.Drawing.Point(40, 16)
+            Me.rbOnce.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.rbOnce.Location = New System.Drawing.Point(40, 18)
             Me.rbOnce.Name = "rbOnce"
-            Me.rbOnce.Size = New Global.System.Drawing.Size(104, 16)
+            Me.rbOnce.Size = New System.Drawing.Size(104, 19)
             Me.rbOnce.TabIndex = 2
             Me.rbOnce.TabStop = True
             Me.rbOnce.Text = "Once"
-            Me.rbRepeating.Location = New Global.System.Drawing.Point(40, 32)
+            '
+            'rbRepeating
+            '
+            Me.rbRepeating.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.rbRepeating.Location = New System.Drawing.Point(40, 37)
             Me.rbRepeating.Name = "rbRepeating"
-            Me.rbRepeating.Size = New Global.System.Drawing.Size(104, 16)
+            Me.rbRepeating.Size = New System.Drawing.Size(104, 18)
             Me.rbRepeating.TabIndex = 1
             Me.rbRepeating.Text = "Repeating"
+            '
+            'rbLooping
+            '
             Me.rbLooping.Enabled = False
-            Me.rbLooping.Location = New Global.System.Drawing.Point(40, 48)
+            Me.rbLooping.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.rbLooping.Location = New System.Drawing.Point(128, 37)
             Me.rbLooping.Name = "rbLooping"
-            Me.rbLooping.Size = New Global.System.Drawing.Size(136, 16)
+            Me.rbLooping.Size = New System.Drawing.Size(136, 18)
             Me.rbLooping.TabIndex = 1
             Me.rbLooping.Text = "Seamlessly looping"
-            Me.btnSave.Location = New Global.System.Drawing.Point(336, 520)
-            Me.btnSave.Name = "btnSave"
-            Me.btnSave.TabIndex = 3
-            Me.btnSave.Text = "&Save"
-            Me.btnCancel.DialogResult = Global.System.Windows.Forms.DialogResult.Cancel
-            Me.btnCancel.Location = New Global.System.Drawing.Point(432, 520)
-            Me.btnCancel.Name = "btnCancel"
-            Me.btnCancel.TabIndex = 4
-            Me.btnCancel.Text = "&Cancel"
-            Me.btnDebug.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Me.btnDebug.FlatStyle = Global.System.Windows.Forms.FlatStyle.Flat
-            Me.btnDebug.ForeColor = Global.System.Drawing.SystemColors.Control
-            Me.btnDebug.Location = New Global.System.Drawing.Point(0, 0)
+            '
+            'btnDebug
+            '
+            Me.btnDebug.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+            Me.btnDebug.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnDebug.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnDebug.Location = New System.Drawing.Point(0, -7)
             Me.btnDebug.Name = "btnDebug"
-            Me.btnDebug.Size = New Global.System.Drawing.Size(8, 8)
+            Me.btnDebug.Size = New System.Drawing.Size(8, 9)
             Me.btnDebug.TabIndex = 19
             Me.btnDebug.TabStop = False
+            Me.btnDebug.UseVisualStyleBackColor = False
+            '
+            'pnlFooter
+            '
+            Me.pnlFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.pnlFooter.Controls.Add(Me.lblFooterRule)
+            Me.pnlFooter.Controls.Add(Me.btnSave)
+            Me.pnlFooter.Controls.Add(Me.btnCancel)
+            Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
+            Me.pnlFooter.Location = New System.Drawing.Point(0, 616)
+            Me.pnlFooter.Name = "pnlFooter"
+            Me.pnlFooter.Size = New System.Drawing.Size(560, 62)
+            Me.pnlFooter.TabIndex = 2
+            '
+            'lblFooterRule
+            '
+            Me.lblFooterRule.BackColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.lblFooterRule.Dock = System.Windows.Forms.DockStyle.Top
+            Me.lblFooterRule.Location = New System.Drawing.Point(0, 0)
+            Me.lblFooterRule.Name = "lblFooterRule"
+            Me.lblFooterRule.Size = New System.Drawing.Size(560, 1)
+            Me.lblFooterRule.TabIndex = 0
+            '
+            'btnSave
+            '
+            Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.btnSave.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnSave.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.btnSave.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnSave.Location = New System.Drawing.Point(372, 18)
+            Me.btnSave.Name = "btnSave"
+            Me.btnSave.Size = New System.Drawing.Size(80, 29)
+            Me.btnSave.TabIndex = 3
+            Me.btnSave.Text = "&Save"
+            Me.btnSave.UseVisualStyleBackColor = False
+            '
+            'btnCancel
+            '
+            Me.btnCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.btnCancel.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+            Me.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnCancel.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.btnCancel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnCancel.Location = New System.Drawing.Point(464, 18)
+            Me.btnCancel.Name = "btnCancel"
+            Me.btnCancel.Size = New System.Drawing.Size(80, 29)
+            Me.btnCancel.TabIndex = 4
+            Me.btnCancel.Text = "&Cancel"
+            Me.btnCancel.UseVisualStyleBackColor = False
+            '
+            'pnlHeader
+            '
+            Me.pnlHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.pnlHeader.Controls.Add(Me.lblTitle)
+            Me.pnlHeader.Controls.Add(Me.lblSubtitle)
+            Me.pnlHeader.Controls.Add(Me.lblHeaderRule)
+            Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
+            Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
+            Me.pnlHeader.Name = "pnlHeader"
+            Me.pnlHeader.Size = New System.Drawing.Size(560, 67)
+            Me.pnlHeader.TabIndex = 0
+            '
+            'lblTitle
+            '
+            Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.lblTitle.Location = New System.Drawing.Point(18, 12)
+            Me.lblTitle.Name = "lblTitle"
+            Me.lblTitle.Size = New System.Drawing.Size(360, 23)
+            Me.lblTitle.TabIndex = 0
+            Me.lblTitle.Text = "Sound Editor"
+            Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'lblSubtitle
+            '
+            Me.lblSubtitle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.lblSubtitle.Location = New System.Drawing.Point(20, 37)
+            Me.lblSubtitle.Name = "lblSubtitle"
+            Me.lblSubtitle.Size = New System.Drawing.Size(500, 18)
+            Me.lblSubtitle.TabIndex = 1
+            Me.lblSubtitle.Text = "Restored KoTOR Tool sound object editor."
+            Me.lblSubtitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'lblHeaderRule
+            '
+            Me.lblHeaderRule.BackColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.lblHeaderRule.Dock = System.Windows.Forms.DockStyle.Bottom
+            Me.lblHeaderRule.Location = New System.Drawing.Point(0, 65)
+            Me.lblHeaderRule.Name = "lblHeaderRule"
+            Me.lblHeaderRule.Size = New System.Drawing.Size(560, 2)
+            Me.lblHeaderRule.TabIndex = 2
+            '
+            'Timer1
+            '
             Me.Timer1.Interval = 10
-            Me.AutoScaleBaseSize = New Global.System.Drawing.Size(5, 13)
-            Me.ClientSize = New Global.System.Drawing.Size(536, 549)
-            Me.Controls.Add(Me.btnSave)
-            Me.Controls.Add(Me.btnCancel)
-            Me.Controls.Add(Me.TabControl1)
-            Me.Controls.Add(Me.btnDebug)
+            '
+            'frmUTS_Editor
+            '
+            Me.AutoScaleBaseSize = New System.Drawing.Size(5, 15)
+            Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.ClientSize = New System.Drawing.Size(560, 678)
+            Me.Controls.Add(Me.pnlRoot)
+            Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.MinimumSize = New System.Drawing.Size(568, 717)
             Me.Name = "frmUTS_Editor"
             Me.Text = "Sound Editor"
+            Me.pnlRoot.ResumeLayout(False)
+            Me.pnlBody.ResumeLayout(False)
             Me.TabControl1.ResumeLayout(False)
             Me.tabpagBasic.ResumeLayout(False)
-            CType(Me.trkbarVolume, Global.System.ComponentModel.ISupportInitialize).EndInit()
+            Me.tabpagBasic.PerformLayout()
+            CType(Me.trkbarVolume, System.ComponentModel.ISupportInitialize).EndInit()
             Me.tbapagPositioning.ResumeLayout(False)
             Me.gbHeight.ResumeLayout(False)
-            CType(Me.nudElevation, Global.System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudElevation, System.ComponentModel.ISupportInitialize).EndInit()
             Me.gbVolumeDistances.ResumeLayout(False)
-            CType(Me.nudMaxDistance, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudMinDistance, Global.System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudMaxDistance, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudMinDistance, System.ComponentModel.ISupportInitialize).EndInit()
             Me.gbRandomRange.ResumeLayout(False)
-            CType(Me.nudRandomRangeY, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudRandomRangeX, Global.System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudRandomRangeY, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudRandomRangeX, System.ComponentModel.ISupportInitialize).EndInit()
             Me.tabpagAdvanced.ResumeLayout(False)
             Me.pnlVolPitch.ResumeLayout(False)
-            CType(Me.trkbarVolumeVrtn, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.trkbarPitchVrtn, Global.System.ComponentModel.ISupportInitialize).EndInit()
+            Me.pnlVolPitch.PerformLayout()
+            CType(Me.trkbarVolumeVrtn, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.trkbarPitchVrtn, System.ComponentModel.ISupportInitialize).EndInit()
             Me.GroupBox4.ResumeLayout(False)
             Me.pnlHours.ResumeLayout(False)
             Me.GroupBox6.ResumeLayout(False)
             Me.gbInterval.ResumeLayout(False)
-            CType(Me.nudInterval, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudIntervalVrtn, Global.System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudInterval, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudIntervalVrtn, System.ComponentModel.ISupportInitialize).EndInit()
             Me.GroupBox5.ResumeLayout(False)
-
-            ' -------------------------------------------------------------
-            ' Event bindings restored from decompiled synchronized
-            ' AccessedThroughProperty wrappers.
-            ' -------------------------------------------------------------
-            AddHandler Me.btnSetNameLang.Click, AddressOf Me.btnSetNameLang_Click
-            AddHandler Me.btnMoveUp.Click, AddressOf Me.btnMoveUp_Click
-            AddHandler Me.btnMoveDown.Click, AddressOf Me.btnMoveDown_Click
-            AddHandler Me.lbSounds.SelectedIndexChanged, AddressOf Me.lbSounds_SelectedIndexChanged
-            AddHandler Me.lbSounds.DoubleClick, AddressOf Me.lbSounds_DoubleClick
-            AddHandler Me.rbPlaysEverywhere.CheckedChanged, AddressOf Me.rbPlaysWhere_CheckedChanged
-            AddHandler Me.rbRandomPosition.CheckedChanged, AddressOf Me.rbPlaysWhere_CheckedChanged
-            AddHandler Me.rbSpecificPosition.CheckedChanged, AddressOf Me.rbPlaysWhere_CheckedChanged
-            AddHandler Me.rbPlayDay.CheckedChanged, AddressOf Me.rbPlayDay_CheckedChanged
-            AddHandler Me.rbPlayNight.CheckedChanged, AddressOf Me.rbPlayDay_CheckedChanged
-            AddHandler Me.rbPlayAllTimes.CheckedChanged, AddressOf Me.rbPlayDay_CheckedChanged
-            AddHandler Me.rbPlaySpecificHours.CheckedChanged, AddressOf Me.rbPlayDay_CheckedChanged
-            AddHandler Me.trkbarVolumeVrtn.ValueChanged, AddressOf Me.trkbarVolumeVrtn_ValueChanged
-            AddHandler Me.rbOnce.CheckedChanged, AddressOf Me.rbLooping_CheckedChanged
-            AddHandler Me.rbRepeating.CheckedChanged, AddressOf Me.rbLooping_CheckedChanged
-            AddHandler Me.trkbarPitchVrtn.ValueChanged, AddressOf Me.trkbarPitchVrtn_ValueChanged
-            AddHandler Me.rbLooping.CheckedChanged, AddressOf Me.rbLooping_CheckedChanged
-            AddHandler Me.btnAddSound.Click, AddressOf Me.btnAddSound_Click
-            AddHandler Me.btnRemoveSound.Click, AddressOf Me.btnRemoveSound_Click
-            AddHandler Me.btnSave.Click, AddressOf Me.btnSave_Click
-            AddHandler Me.btnCancel.Click, AddressOf Me.btnCancel_Click
-            AddHandler Me.btnDebug.Click, AddressOf Me.btnDebug_Click
-            AddHandler Me.trkbarVolume.ValueChanged, AddressOf Me.trkbarVolume_ValueChanged
-            AddHandler Me.btnPlaySound.Click, AddressOf Me.btnPlaySound_Click
-            AddHandler Me.Timer1.Tick, AddressOf Me.Timer1_Tick
-            AddHandler Me.btnStopSound.Click, AddressOf Me.btnStopSound_Click
+            Me.pnlFooter.ResumeLayout(False)
+            Me.pnlHeader.ResumeLayout(False)
             Me.ResumeLayout(False)
+
         End Sub
 
     End Class

@@ -1,14 +1,23 @@
-Namespace kotor_tool
-	' Token: 0x02000075 RID: 117
-	Public Partial Class frmSpecifyKotorVersion
-		Inherits Global.System.Windows.Forms.Form
+Option Strict Off
+Option Explicit On
 
-        ' -----------------------------------------------------------------
-        ' Designer fields restored from decompiled
-        ' AccessedThroughProperty wrappers.
-        ' Kept before InitializeComponent for VS2010 CodeDom safety.
-        ' -----------------------------------------------------------------
+Namespace kotor_tool
+
+    <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+    Partial Public Class frmSpecifyKotorVersion
+        Inherits Global.System.Windows.Forms.Form
+
         Private components As Global.System.ComponentModel.IContainer
+
+        Friend WithEvents pnlRoot As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlHeader As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlBody As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlFooter As Global.System.Windows.Forms.Panel
+        Friend WithEvents lblTitle As Global.System.Windows.Forms.Label
+        Friend WithEvents lblSubtitle As Global.System.Windows.Forms.Label
+        Friend WithEvents lblHeaderSeparator As Global.System.Windows.Forms.Label
+        Friend WithEvents lblFooterSeparator As Global.System.Windows.Forms.Label
+
         Friend WithEvents btnOK As Global.System.Windows.Forms.Button
         Friend WithEvents btnCancel As Global.System.Windows.Forms.Button
         Friend WithEvents rbKotor1 As Global.System.Windows.Forms.RadioButton
@@ -16,89 +25,241 @@ Namespace kotor_tool
         Friend WithEvents lblMsg As Global.System.Windows.Forms.Label
         Friend WithEvents chkbRecordSelection As Global.System.Windows.Forms.CheckBox
 
+        <Global.System.Diagnostics.DebuggerNonUserCode()> _
+        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+            If disposing AndAlso Me.components IsNot Nothing Then
+                Me.components.Dispose()
+            End If
 
-		' Token: 0x06000F0A RID: 3850 RVA: 0x00292430 File Offset: 0x00291430
-		Protected Overrides Sub Dispose(disposing As Boolean)
-			If disposing AndAlso Me.components IsNot Nothing Then
-				Me.components.Dispose()
-			End If
-			MyBase.Dispose(disposing)
-		End Sub
-
-		' Token: 0x06000F17 RID: 3863 RVA: 0x002925E0 File Offset: 0x002915E0
-        <Global.System.Diagnostics.DebuggerStepThrough()> _
-  Private Sub InitializeComponent()
-            Dim resources As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager(GetType(Global.kotor_tool.frmSpecifyKotorVersion))
-            Me.rbKotor1 = New Global.System.Windows.Forms.RadioButton()
-            Me.rbKotor2 = New Global.System.Windows.Forms.RadioButton()
-            Me.lblMsg = New Global.System.Windows.Forms.Label()
-            Me.btnOK = New Global.System.Windows.Forms.Button()
-            Me.btnCancel = New Global.System.Windows.Forms.Button()
-            Me.chkbRecordSelection = New Global.System.Windows.Forms.CheckBox()
-            Me.SuspendLayout()
-            Me.rbKotor1.Location = New Global.System.Drawing.Point(134, 72)
-            Me.rbKotor1.Name = "rbKotor1"
-            Me.rbKotor1.Size = New Global.System.Drawing.Size(72, 20)
-            Me.rbKotor1.TabIndex = 0
-            Me.rbKotor1.Text = "&KotOR I"
-            Me.rbKotor2.Location = New Global.System.Drawing.Point(134, 96)
-            Me.rbKotor2.Name = "rbKotor2"
-            Me.rbKotor2.Size = New Global.System.Drawing.Size(106, 20)
-            Me.rbKotor2.TabIndex = 1
-            Me.rbKotor2.Text = "KotOR II : &TSL"
-            Me.lblMsg.Location = New Global.System.Drawing.Point(48, 24)
-            Me.lblMsg.Name = "lblMsg"
-            Me.lblMsg.Size = New Global.System.Drawing.Size(256, 32)
-            Me.lblMsg.TabIndex = 3
-            Me.lblMsg.Text = "Please indicate which game's data should be used for this file"
-            Me.lblMsg.TextAlign = Global.System.Drawing.ContentAlignment.TopCenter
-            Me.btnOK.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Right
-            Me.btnOK.DialogResult = Global.System.Windows.Forms.DialogResult.OK
-            Me.btnOK.Enabled = False
-            Me.btnOK.Location = New Global.System.Drawing.Point(168, 136)
-            Me.btnOK.Name = "btnOK"
-            Me.btnOK.TabIndex = 3
-            Me.btnOK.Text = "&OK"
-            Me.btnCancel.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Right
-            Me.btnCancel.DialogResult = Global.System.Windows.Forms.DialogResult.Cancel
-            Me.btnCancel.Location = New Global.System.Drawing.Point(264, 136)
-            Me.btnCancel.Name = "btnCancel"
-            Me.btnCancel.TabIndex = 4
-            Me.btnCancel.Text = "&Cancel"
-            Me.chkbRecordSelection.Checked = True
-            Me.chkbRecordSelection.CheckState = Global.System.Windows.Forms.CheckState.Checked
-            Me.chkbRecordSelection.Location = New Global.System.Drawing.Point(8, 160)
-            Me.chkbRecordSelection.Name = "chkbRecordSelection"
-            Me.chkbRecordSelection.Size = New Global.System.Drawing.Size(160, 16)
-            Me.chkbRecordSelection.TabIndex = 2
-            Me.chkbRecordSelection.Text = "&Record selection in file"
-            Me.chkbRecordSelection.Visible = False
-            Me.AcceptButton = Me.btnOK
-            Me.AutoScaleBaseSize = New Global.System.Drawing.Size(5, 13)
-            Me.CancelButton = Me.btnCancel
-            Me.ClientSize = New Global.System.Drawing.Size(352, 173)
-            Me.ControlBox = False
-            Me.Controls.Add(Me.btnOK)
-            Me.Controls.Add(Me.lblMsg)
-            Me.Controls.Add(Me.rbKotor1)
-            Me.Controls.Add(Me.rbKotor2)
-            Me.Controls.Add(Me.btnCancel)
-            Me.Controls.Add(Me.chkbRecordSelection)
-            Me.Icon = CType(resources.GetObject("$this.Icon"), Global.System.Drawing.Icon)
-            Me.MaximumSize = New Global.System.Drawing.Size(360, 240)
-            Me.Name = "frmSpecifyKotorVersion"
-            Me.SizeGripStyle = Global.System.Windows.Forms.SizeGripStyle.Hide
-            Me.StartPosition = Global.System.Windows.Forms.FormStartPosition.CenterParent
-            Me.Text = "Specify KotOR Version"
-
-            ' -------------------------------------------------------------
-            ' Event bindings restored from decompiled synchronized
-            ' AccessedThroughProperty wrappers.
-            ' -------------------------------------------------------------
-            AddHandler Me.rbKotor1.CheckedChanged, AddressOf Me.rb_CheckedChanged
-            AddHandler Me.rbKotor2.CheckedChanged, AddressOf Me.rb_CheckedChanged
-            Me.ResumeLayout(False)
+            MyBase.Dispose(disposing)
         End Sub
 
-	End Class
+        <Global.System.Diagnostics.DebuggerStepThrough()> _
+        Private Sub InitializeComponent()
+            Me.pnlRoot = New System.Windows.Forms.Panel()
+            Me.pnlBody = New System.Windows.Forms.Panel()
+            Me.chkbRecordSelection = New System.Windows.Forms.CheckBox()
+            Me.rbKotor2 = New System.Windows.Forms.RadioButton()
+            Me.rbKotor1 = New System.Windows.Forms.RadioButton()
+            Me.lblMsg = New System.Windows.Forms.Label()
+            Me.pnlFooter = New System.Windows.Forms.Panel()
+            Me.btnCancel = New System.Windows.Forms.Button()
+            Me.btnOK = New System.Windows.Forms.Button()
+            Me.lblFooterSeparator = New System.Windows.Forms.Label()
+            Me.pnlHeader = New System.Windows.Forms.Panel()
+            Me.lblSubtitle = New System.Windows.Forms.Label()
+            Me.lblTitle = New System.Windows.Forms.Label()
+            Me.lblHeaderSeparator = New System.Windows.Forms.Label()
+            Me.pnlRoot.SuspendLayout()
+            Me.pnlBody.SuspendLayout()
+            Me.pnlFooter.SuspendLayout()
+            Me.pnlHeader.SuspendLayout()
+            Me.SuspendLayout()
+            '
+            'pnlRoot
+            '
+            Me.pnlRoot.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.pnlRoot.Controls.Add(Me.pnlBody)
+            Me.pnlRoot.Controls.Add(Me.pnlFooter)
+            Me.pnlRoot.Controls.Add(Me.pnlHeader)
+            Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
+            Me.pnlRoot.Name = "pnlRoot"
+            Me.pnlRoot.Size = New System.Drawing.Size(412, 248)
+            Me.pnlRoot.TabIndex = 0
+            '
+            'pnlBody
+            '
+            Me.pnlBody.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.pnlBody.Controls.Add(Me.chkbRecordSelection)
+            Me.pnlBody.Controls.Add(Me.rbKotor2)
+            Me.pnlBody.Controls.Add(Me.rbKotor1)
+            Me.pnlBody.Controls.Add(Me.lblMsg)
+            Me.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.pnlBody.Location = New System.Drawing.Point(0, 76)
+            Me.pnlBody.Name = "pnlBody"
+            Me.pnlBody.Padding = New System.Windows.Forms.Padding(28, 20, 28, 18)
+            Me.pnlBody.Size = New System.Drawing.Size(412, 110)
+            Me.pnlBody.TabIndex = 1
+            '
+            'chkbRecordSelection
+            '
+            Me.chkbRecordSelection.BackColor = System.Drawing.Color.Transparent
+            Me.chkbRecordSelection.Checked = True
+            Me.chkbRecordSelection.CheckState = System.Windows.Forms.CheckState.Checked
+            Me.chkbRecordSelection.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.chkbRecordSelection.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.chkbRecordSelection.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.chkbRecordSelection.Location = New System.Drawing.Point(51, 69)
+            Me.chkbRecordSelection.Name = "chkbRecordSelection"
+            Me.chkbRecordSelection.Size = New System.Drawing.Size(317, 18)
+            Me.chkbRecordSelection.TabIndex = 2
+            Me.chkbRecordSelection.Text = "&Record selection in file"
+            Me.chkbRecordSelection.UseVisualStyleBackColor = False
+            Me.chkbRecordSelection.Visible = False
+            '
+            'rbKotor2
+            '
+            Me.rbKotor2.BackColor = System.Drawing.Color.Transparent
+            Me.rbKotor2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.rbKotor2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.rbKotor2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.rbKotor2.Location = New System.Drawing.Point(240, 41)
+            Me.rbKotor2.Name = "rbKotor2"
+            Me.rbKotor2.Size = New System.Drawing.Size(128, 22)
+            Me.rbKotor2.TabIndex = 1
+            Me.rbKotor2.Text = "KotOR II : &TSL"
+            Me.rbKotor2.UseVisualStyleBackColor = False
+            '
+            'rbKotor1
+            '
+            Me.rbKotor1.BackColor = System.Drawing.Color.Transparent
+            Me.rbKotor1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.rbKotor1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.rbKotor1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.rbKotor1.Location = New System.Drawing.Point(51, 41)
+            Me.rbKotor1.Name = "rbKotor1"
+            Me.rbKotor1.Size = New System.Drawing.Size(96, 22)
+            Me.rbKotor1.TabIndex = 0
+            Me.rbKotor1.Text = "&KotOR I"
+            Me.rbKotor1.UseVisualStyleBackColor = False
+            '
+            'lblMsg
+            '
+            Me.lblMsg.BackColor = System.Drawing.Color.Transparent
+            Me.lblMsg.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblMsg.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.lblMsg.Location = New System.Drawing.Point(51, 10)
+            Me.lblMsg.Name = "lblMsg"
+            Me.lblMsg.Size = New System.Drawing.Size(317, 28)
+            Me.lblMsg.TabIndex = 3
+            Me.lblMsg.Text = "Please indicate which game's data should be used for this file."
+            Me.lblMsg.TextAlign = System.Drawing.ContentAlignment.TopCenter
+            '
+            'pnlFooter
+            '
+            Me.pnlFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.pnlFooter.Controls.Add(Me.btnCancel)
+            Me.pnlFooter.Controls.Add(Me.btnOK)
+            Me.pnlFooter.Controls.Add(Me.lblFooterSeparator)
+            Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
+            Me.pnlFooter.Location = New System.Drawing.Point(0, 186)
+            Me.pnlFooter.Name = "pnlFooter"
+            Me.pnlFooter.Size = New System.Drawing.Size(412, 62)
+            Me.pnlFooter.TabIndex = 2
+            '
+            'btnCancel
+            '
+            Me.btnCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.btnCancel.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+            Me.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnCancel.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.btnCancel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnCancel.Location = New System.Drawing.Point(304, 20)
+            Me.btnCancel.Name = "btnCancel"
+            Me.btnCancel.Size = New System.Drawing.Size(76, 26)
+            Me.btnCancel.TabIndex = 4
+            Me.btnCancel.Text = "&Cancel"
+            Me.btnCancel.UseVisualStyleBackColor = False
+            '
+            'btnOK
+            '
+            Me.btnOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.btnOK.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK
+            Me.btnOK.Enabled = False
+            Me.btnOK.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnOK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnOK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnOK.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.btnOK.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnOK.Location = New System.Drawing.Point(220, 20)
+            Me.btnOK.Name = "btnOK"
+            Me.btnOK.Size = New System.Drawing.Size(76, 26)
+            Me.btnOK.TabIndex = 3
+            Me.btnOK.Text = "&OK"
+            Me.btnOK.UseVisualStyleBackColor = False
+            '
+            'lblFooterSeparator
+            '
+            Me.lblFooterSeparator.BackColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.lblFooterSeparator.Dock = System.Windows.Forms.DockStyle.Top
+            Me.lblFooterSeparator.Location = New System.Drawing.Point(0, 0)
+            Me.lblFooterSeparator.Name = "lblFooterSeparator"
+            Me.lblFooterSeparator.Size = New System.Drawing.Size(412, 1)
+            Me.lblFooterSeparator.TabIndex = 0
+            '
+            'pnlHeader
+            '
+            Me.pnlHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.pnlHeader.Controls.Add(Me.lblSubtitle)
+            Me.pnlHeader.Controls.Add(Me.lblTitle)
+            Me.pnlHeader.Controls.Add(Me.lblHeaderSeparator)
+            Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
+            Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
+            Me.pnlHeader.Name = "pnlHeader"
+            Me.pnlHeader.Size = New System.Drawing.Size(412, 76)
+            Me.pnlHeader.TabIndex = 0
+            '
+            'lblSubtitle
+            '
+            Me.lblSubtitle.BackColor = System.Drawing.Color.Transparent
+            Me.lblSubtitle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(186, Byte), Integer), CType(CType(198, Byte), Integer))
+            Me.lblSubtitle.Location = New System.Drawing.Point(24, 42)
+            Me.lblSubtitle.Name = "lblSubtitle"
+            Me.lblSubtitle.Size = New System.Drawing.Size(364, 18)
+            Me.lblSubtitle.TabIndex = 1
+            Me.lblSubtitle.Text = "Select the game data target for this resource."
+            '
+            'lblTitle
+            '
+            Me.lblTitle.BackColor = System.Drawing.Color.Transparent
+            Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.lblTitle.Location = New System.Drawing.Point(22, 15)
+            Me.lblTitle.Name = "lblTitle"
+            Me.lblTitle.Size = New System.Drawing.Size(364, 24)
+            Me.lblTitle.TabIndex = 0
+            Me.lblTitle.Text = "Specify KotOR Version"
+            '
+            'lblHeaderSeparator
+            '
+            Me.lblHeaderSeparator.BackColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.lblHeaderSeparator.Dock = System.Windows.Forms.DockStyle.Bottom
+            Me.lblHeaderSeparator.Location = New System.Drawing.Point(0, 74)
+            Me.lblHeaderSeparator.Name = "lblHeaderSeparator"
+            Me.lblHeaderSeparator.Size = New System.Drawing.Size(412, 2)
+            Me.lblHeaderSeparator.TabIndex = 2
+            '
+            'frmSpecifyKotorVersion
+            '
+            Me.AcceptButton = Me.btnOK
+            Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
+            Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.CancelButton = Me.btnCancel
+            Me.ClientSize = New System.Drawing.Size(412, 248)
+            Me.ControlBox = False
+            Me.Controls.Add(Me.pnlRoot)
+            Me.MaximumSize = New System.Drawing.Size(428, 287)
+            Me.MinimumSize = New System.Drawing.Size(428, 287)
+            Me.Name = "frmSpecifyKotorVersion"
+            Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
+            Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+            Me.Text = "Specify KotOR Version"
+            Me.pnlRoot.ResumeLayout(False)
+            Me.pnlBody.ResumeLayout(False)
+            Me.pnlFooter.ResumeLayout(False)
+            Me.pnlHeader.ResumeLayout(False)
+            Me.ResumeLayout(False)
+
+        End Sub
+
+    End Class
+
 End Namespace

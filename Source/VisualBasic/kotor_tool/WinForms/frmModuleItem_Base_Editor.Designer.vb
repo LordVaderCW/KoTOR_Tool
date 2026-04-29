@@ -1,16 +1,25 @@
+Option Strict Off
+Option Explicit On
+
 Imports System.Windows.Forms
 
 Namespace kotor_tool
-    ' Token: 0x02000063 RID: 99
+
+    <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
     Partial Public Class frmModuleItem_Base_Editor
         Inherits Global.kotor_tool.frmParent
 
-        ' -----------------------------------------------------------------
-        ' Designer fields restored from decompiled
-        ' AccessedThroughProperty wrappers.
-        ' Kept before InitializeComponent for VS2010 CodeDom safety.
-        ' -----------------------------------------------------------------
         Private components As Global.System.ComponentModel.IContainer
+
+        Friend WithEvents pnlRoot As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlHeader As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlBody As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlFooter As Global.System.Windows.Forms.Panel
+        Friend WithEvents lblTitle As Global.System.Windows.Forms.Label
+        Friend WithEvents lblSubtitle As Global.System.Windows.Forms.Label
+        Friend WithEvents lblHeaderRule As Global.System.Windows.Forms.Label
+        Friend WithEvents lblFooterRule As Global.System.Windows.Forms.Label
+
         Friend WithEvents Label2 As Global.System.Windows.Forms.Label
         Friend WithEvents Label3 As Global.System.Windows.Forms.Label
         Friend WithEvents Label4 As Global.System.Windows.Forms.Label
@@ -77,7 +86,7 @@ Namespace kotor_tool
         Friend WithEvents tbCamOrientationZ As Global.System.Windows.Forms.TextBox
         Friend WithEvents tbCamOrientationX As Global.System.Windows.Forms.TextBox
         Friend WithEvents tbCamOrientationY As Global.System.Windows.Forms.TextBox
-        Friend WithEvents ErrorProvider1 As ErrorProvider
+        Friend WithEvents ErrorProvider1 As Global.System.Windows.Forms.ErrorProvider
         Friend WithEvents btnShowQuaternion As Global.System.Windows.Forms.Button
         Friend WithEvents lblQuaternionW As Global.System.Windows.Forms.Label
         Friend WithEvents nudCamOrientationX As Global.System.Windows.Forms.NumericUpDown
@@ -104,8 +113,7 @@ Namespace kotor_tool
         Friend WithEvents Label7 As Global.System.Windows.Forms.Label
         Friend WithEvents btnSetNameLang As Global.System.Windows.Forms.Button
 
-
-        ' Token: 0x06000B90 RID: 2960 RVA: 0x0027B854 File Offset: 0x0027A854
+        <Global.System.Diagnostics.DebuggerNonUserCode()> _
         Protected Overrides Sub Dispose(ByVal disposing As Boolean)
             If disposing AndAlso Me.components IsNot Nothing Then
                 Me.components.Dispose()
@@ -113,212 +121,175 @@ Namespace kotor_tool
             MyBase.Dispose(disposing)
         End Sub
 
-        ' Token: 0x06000C49 RID: 3145 RVA: 0x0027CC04 File Offset: 0x0027BC04
         <Global.System.Diagnostics.DebuggerStepThrough()> _
         Private Sub InitializeComponent()
-            Dim resources As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager(GetType(Global.kotor_tool.frmModuleItem_Base_Editor))
-            Me.tbXPosition = New Global.System.Windows.Forms.TextBox()
-            Me.tbYPosition = New Global.System.Windows.Forms.TextBox()
-            Me.tbZPosition = New Global.System.Windows.Forms.TextBox()
-            Me.tbResRef = New Global.System.Windows.Forms.TextBox()
-            Me.lblResRef = New Global.System.Windows.Forms.Label()
-            Me.Label2 = New Global.System.Windows.Forms.Label()
-            Me.Label3 = New Global.System.Windows.Forms.Label()
-            Me.Label4 = New Global.System.Windows.Forms.Label()
-            Me.pboxXY = New Global.System.Windows.Forms.PictureBox()
-            Me.nudXY = New Global.System.Windows.Forms.NumericUpDown()
-            Me.Button1 = New Global.System.Windows.Forms.Button()
-            Me.Button2 = New Global.System.Windows.Forms.Button()
-            Me.Button3 = New Global.System.Windows.Forms.Button()
-            Me.tbTag = New Global.System.Windows.Forms.TextBox()
-            Me.lblTag = New Global.System.Windows.Forms.Label()
-            Me.tabctrl = New Global.System.Windows.Forms.TabControl()
-            Me.tabpagGeneral = New Global.System.Windows.Forms.TabPage()
-            Me.lblBearing = New Global.System.Windows.Forms.Label()
-            Me.tabpagWaypoint = New Global.System.Windows.Forms.TabPage()
-            Me.btnSetNameLang = New Global.System.Windows.Forms.Button()
-            Me.chkbHasMapNote = New Global.System.Windows.Forms.CheckBox()
-            Me.Label9 = New Global.System.Windows.Forms.Label()
-            Me.tbWPLinkedTo = New Global.System.Windows.Forms.TextBox()
-            Me.tbWpDescription = New Global.System.Windows.Forms.TextBox()
-            Me.tbWpMapNote = New Global.System.Windows.Forms.TextBox()
-            Me.Label11 = New Global.System.Windows.Forms.Label()
-            Me.Label12 = New Global.System.Windows.Forms.Label()
-            Me.tbWpLocalizedName = New Global.System.Windows.Forms.TextBox()
-            Me.lblLocalizedName = New Global.System.Windows.Forms.Label()
-            Me.chkbMapNoteEnabled = New Global.System.Windows.Forms.CheckBox()
-            Me.tabpagEncounter = New Global.System.Windows.Forms.TabPage()
-            Me.tbBearing = New Global.System.Windows.Forms.TextBox()
-            Me.tbxo = New Global.System.Windows.Forms.TextBox()
-            Me.tbyo = New Global.System.Windows.Forms.TextBox()
-            Me.pboxXYSpawnPointBearing = New Global.System.Windows.Forms.PictureBox()
-            Me.nudXYSpawnPointBearing = New Global.System.Windows.Forms.NumericUpDown()
-            Me.Label25 = New Global.System.Windows.Forms.Label()
-            Me.Label26 = New Global.System.Windows.Forms.Label()
-            Me.nudSpawnPointX = New Global.System.Windows.Forms.NumericUpDown()
-            Me.Label27 = New Global.System.Windows.Forms.Label()
-            Me.nudSpawnPointY = New Global.System.Windows.Forms.NumericUpDown()
-            Me.Label28 = New Global.System.Windows.Forms.Label()
-            Me.nudSpawnPointZ = New Global.System.Windows.Forms.NumericUpDown()
-            Me.Label24 = New Global.System.Windows.Forms.Label()
-            Me.lbSpawnPoints = New Global.System.Windows.Forms.ListBox()
-            Me.Label5 = New Global.System.Windows.Forms.Label()
-            Me.Label6 = New Global.System.Windows.Forms.Label()
-            Me.Label7 = New Global.System.Windows.Forms.Label()
-            Me.tabpagDoor = New Global.System.Windows.Forms.TabPage()
-            Me.gbTriggerNode = New Global.System.Windows.Forms.GroupBox()
-            Me.Label23 = New Global.System.Windows.Forms.Label()
-            Me.tbTriggerNodeYPosition = New Global.System.Windows.Forms.TextBox()
-            Me.tbTriggerNodeXPosition = New Global.System.Windows.Forms.TextBox()
-            Me.Label22 = New Global.System.Windows.Forms.Label()
-            Me.tbTriggerNodeZPosition = New Global.System.Windows.Forms.TextBox()
-            Me.Label21 = New Global.System.Windows.Forms.Label()
-            Me.cmbxDoorLinkedToFlags = New Global.System.Windows.Forms.ComboBox()
-            Me.lblDoorLinkedTo = New Global.System.Windows.Forms.Label()
-            Me.tbDoorLinkedTo = New Global.System.Windows.Forms.TextBox()
-            Me.tbDoorLinkedToModule = New Global.System.Windows.Forms.TextBox()
-            Me.tbDoorLinkedToTransitionDestin = New Global.System.Windows.Forms.TextBox()
-            Me.lblDoorLinkedToFlags = New Global.System.Windows.Forms.Label()
-            Me.lblDoorLinkedToModule = New Global.System.Windows.Forms.Label()
-            Me.lblDoorLinkedToTransitionDestin = New Global.System.Windows.Forms.Label()
-            Me.lblTransitionMsg = New Global.System.Windows.Forms.Label()
-            Me.tabpagCamera = New Global.System.Windows.Forms.TabPage()
-            Me.Label29 = New Global.System.Windows.Forms.Label()
-            Me.nudCamOrientationX = New Global.System.Windows.Forms.NumericUpDown()
-            Me.btnShowQuaternion = New Global.System.Windows.Forms.Button()
-            Me.Label1 = New Global.System.Windows.Forms.Label()
-            Me.tbCamPitch = New Global.System.Windows.Forms.TextBox()
-            Me.tbCamHeight = New Global.System.Windows.Forms.TextBox()
-            Me.Label15 = New Global.System.Windows.Forms.Label()
-            Me.tbCamMicRange = New Global.System.Windows.Forms.TextBox()
-            Me.Label16 = New Global.System.Windows.Forms.Label()
-            Me.Label17 = New Global.System.Windows.Forms.Label()
-            Me.tbCamFieldOfView = New Global.System.Windows.Forms.TextBox()
-            Me.tbCamOrientationF1 = New Global.System.Windows.Forms.TextBox()
-            Me.tbCamOrientationF2 = New Global.System.Windows.Forms.TextBox()
-            Me.tbCamOrientationF4 = New Global.System.Windows.Forms.TextBox()
-            Me.tbCamOrientationF3 = New Global.System.Windows.Forms.TextBox()
-            Me.lblQuaternionW = New Global.System.Windows.Forms.Label()
-            Me.Label18 = New Global.System.Windows.Forms.Label()
-            Me.Label19 = New Global.System.Windows.Forms.Label()
-            Me.Label20 = New Global.System.Windows.Forms.Label()
-            Me.tbCamOrientationZ = New Global.System.Windows.Forms.TextBox()
-            Me.tbCamOrientationX = New Global.System.Windows.Forms.TextBox()
-            Me.tbCamOrientationY = New Global.System.Windows.Forms.TextBox()
-            Me.nudCamOrientationY = New Global.System.Windows.Forms.NumericUpDown()
-            Me.nudCamOrientationZ = New Global.System.Windows.Forms.NumericUpDown()
-            Me.Label14 = New Global.System.Windows.Forms.Label()
-            Me.ErrorProvider1 = New Global.System.Windows.Forms.ErrorProvider()
-            CType(Me.nudXY, Global.System.ComponentModel.ISupportInitialize).BeginInit()
+            Me.components = New System.ComponentModel.Container()
+            Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmModuleItem_Base_Editor))
+            Me.pnlRoot = New System.Windows.Forms.Panel()
+            Me.pnlBody = New System.Windows.Forms.Panel()
+            Me.tabctrl = New System.Windows.Forms.TabControl()
+            Me.tabpagGeneral = New System.Windows.Forms.TabPage()
+            Me.tbXPosition = New System.Windows.Forms.TextBox()
+            Me.tbYPosition = New System.Windows.Forms.TextBox()
+            Me.tbZPosition = New System.Windows.Forms.TextBox()
+            Me.tbTag = New System.Windows.Forms.TextBox()
+            Me.tbResRef = New System.Windows.Forms.TextBox()
+            Me.lblTag = New System.Windows.Forms.Label()
+            Me.lblResRef = New System.Windows.Forms.Label()
+            Me.Label2 = New System.Windows.Forms.Label()
+            Me.Label3 = New System.Windows.Forms.Label()
+            Me.Label4 = New System.Windows.Forms.Label()
+            Me.pboxXY = New System.Windows.Forms.PictureBox()
+            Me.nudXY = New System.Windows.Forms.NumericUpDown()
+            Me.lblBearing = New System.Windows.Forms.Label()
+            Me.tabpagWaypoint = New System.Windows.Forms.TabPage()
+            Me.btnSetNameLang = New System.Windows.Forms.Button()
+            Me.chkbHasMapNote = New System.Windows.Forms.CheckBox()
+            Me.Label9 = New System.Windows.Forms.Label()
+            Me.tbWPLinkedTo = New System.Windows.Forms.TextBox()
+            Me.tbWpDescription = New System.Windows.Forms.TextBox()
+            Me.tbWpMapNote = New System.Windows.Forms.TextBox()
+            Me.Label11 = New System.Windows.Forms.Label()
+            Me.Label12 = New System.Windows.Forms.Label()
+            Me.tbWpLocalizedName = New System.Windows.Forms.TextBox()
+            Me.lblLocalizedName = New System.Windows.Forms.Label()
+            Me.chkbMapNoteEnabled = New System.Windows.Forms.CheckBox()
+            Me.tabpagDoor = New System.Windows.Forms.TabPage()
+            Me.gbTriggerNode = New System.Windows.Forms.GroupBox()
+            Me.Label23 = New System.Windows.Forms.Label()
+            Me.tbTriggerNodeYPosition = New System.Windows.Forms.TextBox()
+            Me.tbTriggerNodeXPosition = New System.Windows.Forms.TextBox()
+            Me.Label22 = New System.Windows.Forms.Label()
+            Me.tbTriggerNodeZPosition = New System.Windows.Forms.TextBox()
+            Me.Label21 = New System.Windows.Forms.Label()
+            Me.cmbxDoorLinkedToFlags = New System.Windows.Forms.ComboBox()
+            Me.lblDoorLinkedTo = New System.Windows.Forms.Label()
+            Me.tbDoorLinkedTo = New System.Windows.Forms.TextBox()
+            Me.tbDoorLinkedToModule = New System.Windows.Forms.TextBox()
+            Me.tbDoorLinkedToTransitionDestin = New System.Windows.Forms.TextBox()
+            Me.lblDoorLinkedToFlags = New System.Windows.Forms.Label()
+            Me.lblDoorLinkedToModule = New System.Windows.Forms.Label()
+            Me.lblDoorLinkedToTransitionDestin = New System.Windows.Forms.Label()
+            Me.lblTransitionMsg = New System.Windows.Forms.Label()
+            Me.tabpagEncounter = New System.Windows.Forms.TabPage()
+            Me.tbBearing = New System.Windows.Forms.TextBox()
+            Me.tbxo = New System.Windows.Forms.TextBox()
+            Me.tbyo = New System.Windows.Forms.TextBox()
+            Me.pboxXYSpawnPointBearing = New System.Windows.Forms.PictureBox()
+            Me.nudXYSpawnPointBearing = New System.Windows.Forms.NumericUpDown()
+            Me.Label25 = New System.Windows.Forms.Label()
+            Me.Label26 = New System.Windows.Forms.Label()
+            Me.nudSpawnPointX = New System.Windows.Forms.NumericUpDown()
+            Me.Label27 = New System.Windows.Forms.Label()
+            Me.nudSpawnPointY = New System.Windows.Forms.NumericUpDown()
+            Me.Label28 = New System.Windows.Forms.Label()
+            Me.nudSpawnPointZ = New System.Windows.Forms.NumericUpDown()
+            Me.Label24 = New System.Windows.Forms.Label()
+            Me.lbSpawnPoints = New System.Windows.Forms.ListBox()
+            Me.Label5 = New System.Windows.Forms.Label()
+            Me.Label6 = New System.Windows.Forms.Label()
+            Me.Label7 = New System.Windows.Forms.Label()
+            Me.tabpagCamera = New System.Windows.Forms.TabPage()
+            Me.Label29 = New System.Windows.Forms.Label()
+            Me.nudCamOrientationX = New System.Windows.Forms.NumericUpDown()
+            Me.btnShowQuaternion = New System.Windows.Forms.Button()
+            Me.Label1 = New System.Windows.Forms.Label()
+            Me.tbCamPitch = New System.Windows.Forms.TextBox()
+            Me.tbCamHeight = New System.Windows.Forms.TextBox()
+            Me.Label15 = New System.Windows.Forms.Label()
+            Me.tbCamMicRange = New System.Windows.Forms.TextBox()
+            Me.Label16 = New System.Windows.Forms.Label()
+            Me.Label17 = New System.Windows.Forms.Label()
+            Me.tbCamFieldOfView = New System.Windows.Forms.TextBox()
+            Me.tbCamOrientationF1 = New System.Windows.Forms.TextBox()
+            Me.tbCamOrientationF2 = New System.Windows.Forms.TextBox()
+            Me.tbCamOrientationF4 = New System.Windows.Forms.TextBox()
+            Me.tbCamOrientationF3 = New System.Windows.Forms.TextBox()
+            Me.lblQuaternionW = New System.Windows.Forms.Label()
+            Me.Label18 = New System.Windows.Forms.Label()
+            Me.Label19 = New System.Windows.Forms.Label()
+            Me.Label20 = New System.Windows.Forms.Label()
+            Me.tbCamOrientationZ = New System.Windows.Forms.TextBox()
+            Me.tbCamOrientationX = New System.Windows.Forms.TextBox()
+            Me.tbCamOrientationY = New System.Windows.Forms.TextBox()
+            Me.nudCamOrientationY = New System.Windows.Forms.NumericUpDown()
+            Me.nudCamOrientationZ = New System.Windows.Forms.NumericUpDown()
+            Me.Label14 = New System.Windows.Forms.Label()
+            Me.pnlFooter = New System.Windows.Forms.Panel()
+            Me.lblFooterRule = New System.Windows.Forms.Label()
+            Me.Button1 = New System.Windows.Forms.Button()
+            Me.Button2 = New System.Windows.Forms.Button()
+            Me.Button3 = New System.Windows.Forms.Button()
+            Me.pnlHeader = New System.Windows.Forms.Panel()
+            Me.lblTitle = New System.Windows.Forms.Label()
+            Me.lblSubtitle = New System.Windows.Forms.Label()
+            Me.lblHeaderRule = New System.Windows.Forms.Label()
+            Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+            Me.pnlRoot.SuspendLayout()
+            Me.pnlBody.SuspendLayout()
             Me.tabctrl.SuspendLayout()
             Me.tabpagGeneral.SuspendLayout()
+            CType(Me.pboxXY, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudXY, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.tabpagWaypoint.SuspendLayout()
-            Me.tabpagEncounter.SuspendLayout()
-            CType(Me.nudXYSpawnPointBearing, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudSpawnPointX, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudSpawnPointY, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudSpawnPointZ, Global.System.ComponentModel.ISupportInitialize).BeginInit()
             Me.tabpagDoor.SuspendLayout()
             Me.gbTriggerNode.SuspendLayout()
+            Me.tabpagEncounter.SuspendLayout()
+            CType(Me.pboxXYSpawnPointBearing, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudXYSpawnPointBearing, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudSpawnPointX, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudSpawnPointY, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudSpawnPointZ, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.tabpagCamera.SuspendLayout()
-            CType(Me.nudCamOrientationX, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudCamOrientationY, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudCamOrientationZ, Global.System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudCamOrientationX, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudCamOrientationY, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudCamOrientationZ, System.ComponentModel.ISupportInitialize).BeginInit()
+            Me.pnlFooter.SuspendLayout()
+            Me.pnlHeader.SuspendLayout()
+            CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.SuspendLayout()
-            Me.tbXPosition.Location = New Global.System.Drawing.Point(152, 80)
-            Me.tbXPosition.Name = "tbXPosition"
-            Me.tbXPosition.TabIndex = 0
-            Me.tbXPosition.Text = ""
-            Me.tbXPosition.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.tbYPosition.Location = New Global.System.Drawing.Point(152, 112)
-            Me.tbYPosition.Name = "tbYPosition"
-            Me.tbYPosition.TabIndex = 0
-            Me.tbYPosition.Text = ""
-            Me.tbYPosition.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.tbZPosition.Location = New Global.System.Drawing.Point(152, 144)
-            Me.tbZPosition.Name = "tbZPosition"
-            Me.tbZPosition.TabIndex = 0
-            Me.tbZPosition.Text = ""
-            Me.tbZPosition.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.tbResRef.Location = New Global.System.Drawing.Point(152, 16)
-            Me.tbResRef.MaxLength = 16
-            Me.tbResRef.Name = "tbResRef"
-            Me.tbResRef.Size = New Global.System.Drawing.Size(184, 20)
-            Me.tbResRef.TabIndex = 0
-            Me.tbResRef.Text = ""
-            Me.lblResRef.Location = New Global.System.Drawing.Point(40, 16)
-            Me.lblResRef.Name = "lblResRef"
-            Me.lblResRef.Size = New Global.System.Drawing.Size(96, 16)
-            Me.lblResRef.TabIndex = 1
-            Me.lblResRef.Text = "TemplateResRef"
-            Me.lblResRef.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label2.Location = New Global.System.Drawing.Point(40, 80)
-            Me.Label2.Name = "Label2"
-            Me.Label2.Size = New Global.System.Drawing.Size(88, 16)
-            Me.Label2.TabIndex = 1
-            Me.Label2.Text = "X Position"
-            Me.Label2.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label3.Location = New Global.System.Drawing.Point(40, 112)
-            Me.Label3.Name = "Label3"
-            Me.Label3.Size = New Global.System.Drawing.Size(88, 16)
-            Me.Label3.TabIndex = 1
-            Me.Label3.Text = "Y Position"
-            Me.Label3.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label4.Location = New Global.System.Drawing.Point(40, 144)
-            Me.Label4.Name = "Label4"
-            Me.Label4.Size = New Global.System.Drawing.Size(88, 16)
-            Me.Label4.TabIndex = 1
-            Me.Label4.Text = "Z Position"
-            Me.Label4.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.pboxXY.Location = New Global.System.Drawing.Point(280, 104)
-            Me.pboxXY.Name = "pboxXY"
-            Me.pboxXY.Size = New Global.System.Drawing.Size(50, 50)
-            Me.pboxXY.TabIndex = 2
-            Me.pboxXY.TabStop = False
-            Me.nudXY.DecimalPlaces = 2
-            Me.nudXY.Location = New Global.System.Drawing.Point(277, 160)
-            Me.nudXY.Maximum = New Decimal(New Integer() {736755711, 8381903, 0, 917504})
-            Me.nudXY.Name = "nudXY"
-            Me.nudXY.Size = New Global.System.Drawing.Size(64, 20)
-            Me.nudXY.TabIndex = 4
-            Me.nudXY.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Center
-            Me.Button1.Location = New Global.System.Drawing.Point(40, 352)
-            Me.Button1.Name = "Button1"
-            Me.Button1.TabIndex = 5
-            Me.Button1.Text = "Button1"
-            Me.Button1.Visible = False
-            Me.Button2.DialogResult = Global.System.Windows.Forms.DialogResult.OK
-            Me.Button2.Location = New Global.System.Drawing.Point(296, 352)
-            Me.Button2.Name = "Button2"
-            Me.Button2.TabIndex = 5
-            Me.Button2.Text = "OK"
-            Me.Button3.DialogResult = Global.System.Windows.Forms.DialogResult.Cancel
-            Me.Button3.Location = New Global.System.Drawing.Point(392, 352)
-            Me.Button3.Name = "Button3"
-            Me.Button3.TabIndex = 5
-            Me.Button3.Text = "Cancel"
-            Me.tbTag.Location = New Global.System.Drawing.Point(152, 48)
-            Me.tbTag.MaxLength = 16
-            Me.tbTag.Name = "tbTag"
-            Me.tbTag.Size = New Global.System.Drawing.Size(184, 20)
-            Me.tbTag.TabIndex = 0
-            Me.tbTag.Text = ""
-            Me.lblTag.Location = New Global.System.Drawing.Point(40, 48)
-            Me.lblTag.Name = "lblTag"
-            Me.lblTag.Size = New Global.System.Drawing.Size(96, 16)
-            Me.lblTag.TabIndex = 1
-            Me.lblTag.Text = "Tag"
-            Me.lblTag.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'pnlRoot
+            '
+            Me.pnlRoot.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.pnlRoot.Controls.Add(Me.pnlBody)
+            Me.pnlRoot.Controls.Add(Me.pnlFooter)
+            Me.pnlRoot.Controls.Add(Me.pnlHeader)
+            Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
+            Me.pnlRoot.Name = "pnlRoot"
+            Me.pnlRoot.Size = New System.Drawing.Size(520, 492)
+            Me.pnlRoot.TabIndex = 0
+            '
+            'pnlBody
+            '
+            Me.pnlBody.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.pnlBody.Controls.Add(Me.tabctrl)
+            Me.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.pnlBody.Location = New System.Drawing.Point(0, 67)
+            Me.pnlBody.Name = "pnlBody"
+            Me.pnlBody.Padding = New System.Windows.Forms.Padding(10)
+            Me.pnlBody.Size = New System.Drawing.Size(520, 363)
+            Me.pnlBody.TabIndex = 1
+            '
+            'tabctrl
+            '
             Me.tabctrl.Controls.Add(Me.tabpagGeneral)
             Me.tabctrl.Controls.Add(Me.tabpagWaypoint)
             Me.tabctrl.Controls.Add(Me.tabpagDoor)
             Me.tabctrl.Controls.Add(Me.tabpagEncounter)
             Me.tabctrl.Controls.Add(Me.tabpagCamera)
-            Me.tabctrl.Location = New Global.System.Drawing.Point(8, 8)
+            Me.tabctrl.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.tabctrl.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.tabctrl.Location = New System.Drawing.Point(10, 10)
             Me.tabctrl.Name = "tabctrl"
             Me.tabctrl.SelectedIndex = 0
-            Me.tabctrl.Size = New Global.System.Drawing.Size(480, 328)
+            Me.tabctrl.Size = New System.Drawing.Size(500, 343)
             Me.tabctrl.TabIndex = 6
+            '
+            'tabpagGeneral
+            '
+            Me.tabpagGeneral.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tabpagGeneral.Controls.Add(Me.tbXPosition)
             Me.tabpagGeneral.Controls.Add(Me.tbYPosition)
             Me.tabpagGeneral.Controls.Add(Me.tbZPosition)
@@ -332,17 +303,159 @@ Namespace kotor_tool
             Me.tabpagGeneral.Controls.Add(Me.pboxXY)
             Me.tabpagGeneral.Controls.Add(Me.nudXY)
             Me.tabpagGeneral.Controls.Add(Me.lblBearing)
-            Me.tabpagGeneral.Location = New Global.System.Drawing.Point(4, 22)
+            Me.tabpagGeneral.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tabpagGeneral.Location = New System.Drawing.Point(4, 22)
             Me.tabpagGeneral.Name = "tabpagGeneral"
-            Me.tabpagGeneral.Size = New Global.System.Drawing.Size(472, 302)
+            Me.tabpagGeneral.Size = New System.Drawing.Size(492, 255)
             Me.tabpagGeneral.TabIndex = 1
             Me.tabpagGeneral.Text = "General"
-            Me.lblBearing.Location = New Global.System.Drawing.Point(281, 80)
+            '
+            'tbXPosition
+            '
+            Me.tbXPosition.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbXPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbXPosition.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbXPosition.Location = New System.Drawing.Point(152, 92)
+            Me.tbXPosition.Name = "tbXPosition"
+            Me.tbXPosition.Size = New System.Drawing.Size(184, 22)
+            Me.tbXPosition.TabIndex = 0
+            Me.tbXPosition.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'tbYPosition
+            '
+            Me.tbYPosition.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbYPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbYPosition.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbYPosition.Location = New System.Drawing.Point(152, 129)
+            Me.tbYPosition.Name = "tbYPosition"
+            Me.tbYPosition.Size = New System.Drawing.Size(184, 22)
+            Me.tbYPosition.TabIndex = 1
+            Me.tbYPosition.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'tbZPosition
+            '
+            Me.tbZPosition.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbZPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbZPosition.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbZPosition.Location = New System.Drawing.Point(152, 166)
+            Me.tbZPosition.Name = "tbZPosition"
+            Me.tbZPosition.Size = New System.Drawing.Size(184, 22)
+            Me.tbZPosition.TabIndex = 2
+            Me.tbZPosition.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'tbTag
+            '
+            Me.tbTag.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbTag.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbTag.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbTag.Location = New System.Drawing.Point(152, 55)
+            Me.tbTag.MaxLength = 16
+            Me.tbTag.Name = "tbTag"
+            Me.tbTag.Size = New System.Drawing.Size(184, 22)
+            Me.tbTag.TabIndex = 4
+            '
+            'tbResRef
+            '
+            Me.tbResRef.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbResRef.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbResRef.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbResRef.Location = New System.Drawing.Point(152, 18)
+            Me.tbResRef.MaxLength = 16
+            Me.tbResRef.Name = "tbResRef"
+            Me.tbResRef.Size = New System.Drawing.Size(184, 22)
+            Me.tbResRef.TabIndex = 3
+            '
+            'lblTag
+            '
+            Me.lblTag.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblTag.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.lblTag.Location = New System.Drawing.Point(40, 55)
+            Me.lblTag.Name = "lblTag"
+            Me.lblTag.Size = New System.Drawing.Size(96, 19)
+            Me.lblTag.TabIndex = 1
+            Me.lblTag.Text = "Tag"
+            Me.lblTag.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'lblResRef
+            '
+            Me.lblResRef.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblResRef.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.lblResRef.Location = New System.Drawing.Point(40, 18)
+            Me.lblResRef.Name = "lblResRef"
+            Me.lblResRef.Size = New System.Drawing.Size(96, 19)
+            Me.lblResRef.TabIndex = 1
+            Me.lblResRef.Text = "TemplateResRef"
+            Me.lblResRef.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label2
+            '
+            Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label2.Location = New System.Drawing.Point(40, 92)
+            Me.Label2.Name = "Label2"
+            Me.Label2.Size = New System.Drawing.Size(88, 19)
+            Me.Label2.TabIndex = 1
+            Me.Label2.Text = "X Position"
+            Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label3
+            '
+            Me.Label3.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label3.Location = New System.Drawing.Point(40, 129)
+            Me.Label3.Name = "Label3"
+            Me.Label3.Size = New System.Drawing.Size(88, 19)
+            Me.Label3.TabIndex = 1
+            Me.Label3.Text = "Y Position"
+            Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label4
+            '
+            Me.Label4.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label4.Location = New System.Drawing.Point(40, 166)
+            Me.Label4.Name = "Label4"
+            Me.Label4.Size = New System.Drawing.Size(88, 19)
+            Me.Label4.TabIndex = 1
+            Me.Label4.Text = "Z Position"
+            Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'pboxXY
+            '
+            Me.pboxXY.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.pboxXY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.pboxXY.Location = New System.Drawing.Point(402, 150)
+            Me.pboxXY.Name = "pboxXY"
+            Me.pboxXY.Size = New System.Drawing.Size(50, 58)
+            Me.pboxXY.TabIndex = 2
+            Me.pboxXY.TabStop = False
+            '
+            'nudXY
+            '
+            Me.nudXY.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.nudXY.DecimalPlaces = 2
+            Me.nudXY.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudXY.Location = New System.Drawing.Point(312, 214)
+            Me.nudXY.Maximum = New Decimal(New Integer() {736755711, 8381903, 0, 917504})
+            Me.nudXY.Name = "nudXY"
+            Me.nudXY.Size = New System.Drawing.Size(170, 22)
+            Me.nudXY.TabIndex = 4
+            Me.nudXY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+            '
+            'lblBearing
+            '
+            Me.lblBearing.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblBearing.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.lblBearing.Location = New System.Drawing.Point(344, 169)
             Me.lblBearing.Name = "lblBearing"
-            Me.lblBearing.Size = New Global.System.Drawing.Size(48, 16)
+            Me.lblBearing.Size = New System.Drawing.Size(48, 19)
             Me.lblBearing.TabIndex = 1
             Me.lblBearing.Text = "Bearing"
-            Me.lblBearing.TextAlign = Global.System.Drawing.ContentAlignment.MiddleCenter
+            Me.lblBearing.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+            '
+            'tabpagWaypoint
+            '
+            Me.tabpagWaypoint.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tabpagWaypoint.Controls.Add(Me.btnSetNameLang)
             Me.tabpagWaypoint.Controls.Add(Me.chkbHasMapNote)
             Me.tabpagWaypoint.Controls.Add(Me.Label9)
@@ -354,73 +467,329 @@ Namespace kotor_tool
             Me.tabpagWaypoint.Controls.Add(Me.tbWpLocalizedName)
             Me.tabpagWaypoint.Controls.Add(Me.lblLocalizedName)
             Me.tabpagWaypoint.Controls.Add(Me.chkbMapNoteEnabled)
-            Me.tabpagWaypoint.Location = New Global.System.Drawing.Point(4, 22)
+            Me.tabpagWaypoint.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tabpagWaypoint.Location = New System.Drawing.Point(4, 22)
             Me.tabpagWaypoint.Name = "tabpagWaypoint"
-            Me.tabpagWaypoint.Size = New Global.System.Drawing.Size(472, 302)
+            Me.tabpagWaypoint.Size = New System.Drawing.Size(492, 255)
             Me.tabpagWaypoint.TabIndex = 3
             Me.tabpagWaypoint.Text = "Waypoint Specific"
-            Me.btnSetNameLang.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Me.btnSetNameLang.Location = New Global.System.Drawing.Point(296, 264)
+            '
+            'btnSetNameLang
+            '
+            Me.btnSetNameLang.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+            Me.btnSetNameLang.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnSetNameLang.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnSetNameLang.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnSetNameLang.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnSetNameLang.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnSetNameLang.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.btnSetNameLang.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnSetNameLang.Location = New System.Drawing.Point(390, 148)
             Me.btnSetNameLang.Name = "btnSetNameLang"
-            Me.btnSetNameLang.Size = New Global.System.Drawing.Size(88, 23)
+            Me.btnSetNameLang.Size = New System.Drawing.Size(96, 29)
             Me.btnSetNameLang.TabIndex = 10
             Me.btnSetNameLang.Text = "Set Language"
-            Me.chkbHasMapNote.Location = New Global.System.Drawing.Point(48, 168)
+            Me.btnSetNameLang.UseVisualStyleBackColor = False
+            '
+            'chkbHasMapNote
+            '
+            Me.chkbHasMapNote.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.chkbHasMapNote.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.chkbHasMapNote.Location = New System.Drawing.Point(51, 149)
             Me.chkbHasMapNote.Name = "chkbHasMapNote"
-            Me.chkbHasMapNote.Size = New Global.System.Drawing.Size(192, 24)
+            Me.chkbHasMapNote.Size = New System.Drawing.Size(192, 28)
             Me.chkbHasMapNote.TabIndex = 9
             Me.chkbHasMapNote.Text = "Waypoint Contains a Map Note"
-            Me.Label9.Location = New Global.System.Drawing.Point(48, 16)
+            '
+            'Label9
+            '
+            Me.Label9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label9.Location = New System.Drawing.Point(48, 18)
             Me.Label9.Name = "Label9"
-            Me.Label9.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label9.Size = New System.Drawing.Size(100, 19)
             Me.Label9.TabIndex = 8
             Me.Label9.Text = "Linked To"
-            Me.Label9.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbWPLinkedTo.Location = New Global.System.Drawing.Point(176, 16)
+            Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbWPLinkedTo
+            '
+            Me.tbWPLinkedTo.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbWPLinkedTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbWPLinkedTo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbWPLinkedTo.Location = New System.Drawing.Point(176, 18)
             Me.tbWPLinkedTo.Name = "tbWPLinkedTo"
-            Me.tbWPLinkedTo.Size = New Global.System.Drawing.Size(208, 20)
+            Me.tbWPLinkedTo.Size = New System.Drawing.Size(208, 22)
             Me.tbWPLinkedTo.TabIndex = 5
-            Me.tbWPLinkedTo.Text = ""
-            Me.tbWpDescription.Location = New Global.System.Drawing.Point(176, 96)
+            '
+            'tbWpDescription
+            '
+            Me.tbWpDescription.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbWpDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbWpDescription.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbWpDescription.Location = New System.Drawing.Point(176, 74)
             Me.tbWpDescription.Multiline = True
             Me.tbWpDescription.Name = "tbWpDescription"
-            Me.tbWpDescription.Size = New Global.System.Drawing.Size(208, 60)
+            Me.tbWpDescription.Size = New System.Drawing.Size(208, 69)
             Me.tbWpDescription.TabIndex = 2
-            Me.tbWpDescription.Text = ""
-            Me.tbWpMapNote.Location = New Global.System.Drawing.Point(176, 192)
+            '
+            'tbWpMapNote
+            '
+            Me.tbWpMapNote.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbWpMapNote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbWpMapNote.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbWpMapNote.Location = New System.Drawing.Point(179, 183)
             Me.tbWpMapNote.Multiline = True
             Me.tbWpMapNote.Name = "tbWpMapNote"
-            Me.tbWpMapNote.Size = New Global.System.Drawing.Size(208, 60)
+            Me.tbWpMapNote.Size = New System.Drawing.Size(208, 69)
             Me.tbWpMapNote.TabIndex = 3
-            Me.tbWpMapNote.Text = ""
-            Me.Label11.Location = New Global.System.Drawing.Point(48, 96)
+            '
+            'Label11
+            '
+            Me.Label11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label11.Location = New System.Drawing.Point(48, 74)
             Me.Label11.Name = "Label11"
-            Me.Label11.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label11.Size = New System.Drawing.Size(100, 18)
             Me.Label11.TabIndex = 6
             Me.Label11.Text = "Description"
-            Me.Label11.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label12.Location = New Global.System.Drawing.Point(48, 208)
+            Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label12
+            '
+            Me.Label12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label12.Location = New System.Drawing.Point(51, 201)
             Me.Label12.Name = "Label12"
-            Me.Label12.Size = New Global.System.Drawing.Size(120, 16)
+            Me.Label12.Size = New System.Drawing.Size(120, 18)
             Me.Label12.TabIndex = 7
             Me.Label12.Text = "Map Note"
-            Me.Label12.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbWpLocalizedName.Location = New Global.System.Drawing.Point(176, 56)
+            Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbWpLocalizedName
+            '
+            Me.tbWpLocalizedName.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbWpLocalizedName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbWpLocalizedName.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbWpLocalizedName.Location = New System.Drawing.Point(176, 46)
             Me.tbWpLocalizedName.Name = "tbWpLocalizedName"
-            Me.tbWpLocalizedName.Size = New Global.System.Drawing.Size(208, 20)
+            Me.tbWpLocalizedName.Size = New System.Drawing.Size(208, 22)
             Me.tbWpLocalizedName.TabIndex = 2
-            Me.tbWpLocalizedName.Text = ""
-            Me.lblLocalizedName.Location = New Global.System.Drawing.Point(48, 56)
+            '
+            'lblLocalizedName
+            '
+            Me.lblLocalizedName.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.lblLocalizedName.Location = New System.Drawing.Point(48, 46)
             Me.lblLocalizedName.Name = "lblLocalizedName"
-            Me.lblLocalizedName.Size = New Global.System.Drawing.Size(100, 16)
+            Me.lblLocalizedName.Size = New System.Drawing.Size(100, 18)
             Me.lblLocalizedName.TabIndex = 6
             Me.lblLocalizedName.Text = "Localized Name"
-            Me.lblLocalizedName.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.chkbMapNoteEnabled.Location = New Global.System.Drawing.Point(256, 168)
+            Me.lblLocalizedName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'chkbMapNoteEnabled
+            '
+            Me.chkbMapNoteEnabled.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.chkbMapNoteEnabled.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.chkbMapNoteEnabled.Location = New System.Drawing.Point(259, 149)
             Me.chkbMapNoteEnabled.Name = "chkbMapNoteEnabled"
-            Me.chkbMapNoteEnabled.Size = New Global.System.Drawing.Size(128, 24)
+            Me.chkbMapNoteEnabled.Size = New System.Drawing.Size(128, 28)
             Me.chkbMapNoteEnabled.TabIndex = 9
             Me.chkbMapNoteEnabled.Text = "Map Note Enabled"
+            '
+            'tabpagDoor
+            '
+            Me.tabpagDoor.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.tabpagDoor.Controls.Add(Me.gbTriggerNode)
+            Me.tabpagDoor.Controls.Add(Me.cmbxDoorLinkedToFlags)
+            Me.tabpagDoor.Controls.Add(Me.lblDoorLinkedTo)
+            Me.tabpagDoor.Controls.Add(Me.tbDoorLinkedTo)
+            Me.tabpagDoor.Controls.Add(Me.tbDoorLinkedToModule)
+            Me.tabpagDoor.Controls.Add(Me.tbDoorLinkedToTransitionDestin)
+            Me.tabpagDoor.Controls.Add(Me.lblDoorLinkedToFlags)
+            Me.tabpagDoor.Controls.Add(Me.lblDoorLinkedToModule)
+            Me.tabpagDoor.Controls.Add(Me.lblDoorLinkedToTransitionDestin)
+            Me.tabpagDoor.Controls.Add(Me.lblTransitionMsg)
+            Me.tabpagDoor.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tabpagDoor.Location = New System.Drawing.Point(4, 22)
+            Me.tabpagDoor.Name = "tabpagDoor"
+            Me.tabpagDoor.Size = New System.Drawing.Size(492, 317)
+            Me.tabpagDoor.TabIndex = 0
+            Me.tabpagDoor.Text = "Door/Trigger Specific"
+            '
+            'gbTriggerNode
+            '
+            Me.gbTriggerNode.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.gbTriggerNode.Controls.Add(Me.Label23)
+            Me.gbTriggerNode.Controls.Add(Me.tbTriggerNodeYPosition)
+            Me.gbTriggerNode.Controls.Add(Me.tbTriggerNodeXPosition)
+            Me.gbTriggerNode.Controls.Add(Me.Label22)
+            Me.gbTriggerNode.Controls.Add(Me.tbTriggerNodeZPosition)
+            Me.gbTriggerNode.Controls.Add(Me.Label21)
+            Me.gbTriggerNode.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.gbTriggerNode.Location = New System.Drawing.Point(25, 166)
+            Me.gbTriggerNode.Name = "gbTriggerNode"
+            Me.gbTriggerNode.Size = New System.Drawing.Size(442, 129)
+            Me.gbTriggerNode.TabIndex = 9
+            Me.gbTriggerNode.TabStop = False
+            Me.gbTriggerNode.Text = "Trigger Node"
+            Me.gbTriggerNode.Visible = False
+            '
+            'Label23
+            '
+            Me.Label23.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label23.Location = New System.Drawing.Point(23, 97)
+            Me.Label23.Name = "Label23"
+            Me.Label23.Size = New System.Drawing.Size(88, 18)
+            Me.Label23.TabIndex = 6
+            Me.Label23.Text = "Z Position"
+            Me.Label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbTriggerNodeYPosition
+            '
+            Me.tbTriggerNodeYPosition.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbTriggerNodeYPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbTriggerNodeYPosition.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbTriggerNodeYPosition.Location = New System.Drawing.Point(135, 62)
+            Me.tbTriggerNodeYPosition.Name = "tbTriggerNodeYPosition"
+            Me.tbTriggerNodeYPosition.Size = New System.Drawing.Size(285, 22)
+            Me.tbTriggerNodeYPosition.TabIndex = 4
+            Me.tbTriggerNodeYPosition.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'tbTriggerNodeXPosition
+            '
+            Me.tbTriggerNodeXPosition.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbTriggerNodeXPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbTriggerNodeXPosition.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbTriggerNodeXPosition.Location = New System.Drawing.Point(135, 28)
+            Me.tbTriggerNodeXPosition.Name = "tbTriggerNodeXPosition"
+            Me.tbTriggerNodeXPosition.Size = New System.Drawing.Size(285, 22)
+            Me.tbTriggerNodeXPosition.TabIndex = 5
+            Me.tbTriggerNodeXPosition.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'Label22
+            '
+            Me.Label22.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label22.Location = New System.Drawing.Point(23, 65)
+            Me.Label22.Name = "Label22"
+            Me.Label22.Size = New System.Drawing.Size(88, 18)
+            Me.Label22.TabIndex = 7
+            Me.Label22.Text = "Y Position"
+            Me.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbTriggerNodeZPosition
+            '
+            Me.tbTriggerNodeZPosition.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbTriggerNodeZPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbTriggerNodeZPosition.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbTriggerNodeZPosition.Location = New System.Drawing.Point(135, 97)
+            Me.tbTriggerNodeZPosition.Name = "tbTriggerNodeZPosition"
+            Me.tbTriggerNodeZPosition.Size = New System.Drawing.Size(285, 22)
+            Me.tbTriggerNodeZPosition.TabIndex = 3
+            Me.tbTriggerNodeZPosition.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'Label21
+            '
+            Me.Label21.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label21.Location = New System.Drawing.Point(23, 28)
+            Me.Label21.Name = "Label21"
+            Me.Label21.Size = New System.Drawing.Size(88, 18)
+            Me.Label21.TabIndex = 8
+            Me.Label21.Text = "X Position"
+            Me.Label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'cmbxDoorLinkedToFlags
+            '
+            Me.cmbxDoorLinkedToFlags.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.cmbxDoorLinkedToFlags.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+            Me.cmbxDoorLinkedToFlags.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.cmbxDoorLinkedToFlags.Items.AddRange(New Object() {"Does not link to anything", "Is an Area Transition and links to a Door", "Is an Area Transition and links to a Waypoint"})
+            Me.cmbxDoorLinkedToFlags.Location = New System.Drawing.Point(152, 9)
+            Me.cmbxDoorLinkedToFlags.Name = "cmbxDoorLinkedToFlags"
+            Me.cmbxDoorLinkedToFlags.Size = New System.Drawing.Size(272, 21)
+            Me.cmbxDoorLinkedToFlags.TabIndex = 2
+            '
+            'lblDoorLinkedTo
+            '
+            Me.lblDoorLinkedTo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.lblDoorLinkedTo.Location = New System.Drawing.Point(40, 73)
+            Me.lblDoorLinkedTo.Name = "lblDoorLinkedTo"
+            Me.lblDoorLinkedTo.Size = New System.Drawing.Size(100, 19)
+            Me.lblDoorLinkedTo.TabIndex = 1
+            Me.lblDoorLinkedTo.Text = "Linked To"
+            Me.lblDoorLinkedTo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbDoorLinkedTo
+            '
+            Me.tbDoorLinkedTo.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbDoorLinkedTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbDoorLinkedTo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbDoorLinkedTo.Location = New System.Drawing.Point(152, 73)
+            Me.tbDoorLinkedTo.Name = "tbDoorLinkedTo"
+            Me.tbDoorLinkedTo.Size = New System.Drawing.Size(272, 22)
+            Me.tbDoorLinkedTo.TabIndex = 0
+            '
+            'tbDoorLinkedToModule
+            '
+            Me.tbDoorLinkedToModule.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbDoorLinkedToModule.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbDoorLinkedToModule.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbDoorLinkedToModule.Location = New System.Drawing.Point(152, 36)
+            Me.tbDoorLinkedToModule.Name = "tbDoorLinkedToModule"
+            Me.tbDoorLinkedToModule.Size = New System.Drawing.Size(272, 22)
+            Me.tbDoorLinkedToModule.TabIndex = 0
+            '
+            'tbDoorLinkedToTransitionDestin
+            '
+            Me.tbDoorLinkedToTransitionDestin.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbDoorLinkedToTransitionDestin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbDoorLinkedToTransitionDestin.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbDoorLinkedToTransitionDestin.Location = New System.Drawing.Point(152, 110)
+            Me.tbDoorLinkedToTransitionDestin.Name = "tbDoorLinkedToTransitionDestin"
+            Me.tbDoorLinkedToTransitionDestin.Size = New System.Drawing.Size(272, 22)
+            Me.tbDoorLinkedToTransitionDestin.TabIndex = 0
+            '
+            'lblDoorLinkedToFlags
+            '
+            Me.lblDoorLinkedToFlags.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.lblDoorLinkedToFlags.Location = New System.Drawing.Point(40, 9)
+            Me.lblDoorLinkedToFlags.Name = "lblDoorLinkedToFlags"
+            Me.lblDoorLinkedToFlags.Size = New System.Drawing.Size(100, 19)
+            Me.lblDoorLinkedToFlags.TabIndex = 1
+            Me.lblDoorLinkedToFlags.Text = "Linked To Flag"
+            Me.lblDoorLinkedToFlags.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'lblDoorLinkedToModule
+            '
+            Me.lblDoorLinkedToModule.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.lblDoorLinkedToModule.Location = New System.Drawing.Point(40, 36)
+            Me.lblDoorLinkedToModule.Name = "lblDoorLinkedToModule"
+            Me.lblDoorLinkedToModule.Size = New System.Drawing.Size(100, 19)
+            Me.lblDoorLinkedToModule.TabIndex = 1
+            Me.lblDoorLinkedToModule.Text = "Linked To Module"
+            Me.lblDoorLinkedToModule.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'lblDoorLinkedToTransitionDestin
+            '
+            Me.lblDoorLinkedToTransitionDestin.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.lblDoorLinkedToTransitionDestin.Location = New System.Drawing.Point(40, 113)
+            Me.lblDoorLinkedToTransitionDestin.Name = "lblDoorLinkedToTransitionDestin"
+            Me.lblDoorLinkedToTransitionDestin.Size = New System.Drawing.Size(120, 18)
+            Me.lblDoorLinkedToTransitionDestin.TabIndex = 1
+            Me.lblDoorLinkedToTransitionDestin.Text = "Transition Destination"
+            Me.lblDoorLinkedToTransitionDestin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'lblTransitionMsg
+            '
+            Me.lblTransitionMsg.ForeColor = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(186, Byte), Integer), CType(CType(198, Byte), Integer))
+            Me.lblTransitionMsg.Location = New System.Drawing.Point(30, 135)
+            Me.lblTransitionMsg.Name = "lblTransitionMsg"
+            Me.lblTransitionMsg.Size = New System.Drawing.Size(432, 19)
+            Me.lblTransitionMsg.TabIndex = 1
+            Me.lblTransitionMsg.Text = "Note: To enable the above fields, set the type to Transition in the Trigger edito" & _
+                "r."
+            Me.lblTransitionMsg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            Me.lblTransitionMsg.Visible = False
+            '
+            'tabpagEncounter
+            '
+            Me.tabpagEncounter.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tabpagEncounter.Controls.Add(Me.tbBearing)
             Me.tabpagEncounter.Controls.Add(Me.tbxo)
             Me.tabpagEncounter.Controls.Add(Me.tbyo)
@@ -438,242 +807,215 @@ Namespace kotor_tool
             Me.tabpagEncounter.Controls.Add(Me.Label5)
             Me.tabpagEncounter.Controls.Add(Me.Label6)
             Me.tabpagEncounter.Controls.Add(Me.Label7)
-            Me.tabpagEncounter.Location = New Global.System.Drawing.Point(4, 22)
+            Me.tabpagEncounter.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tabpagEncounter.Location = New System.Drawing.Point(4, 22)
             Me.tabpagEncounter.Name = "tabpagEncounter"
-            Me.tabpagEncounter.Size = New Global.System.Drawing.Size(472, 302)
+            Me.tabpagEncounter.Size = New System.Drawing.Size(492, 317)
             Me.tabpagEncounter.TabIndex = 5
             Me.tabpagEncounter.Text = "Encounter Specific"
-            Me.tbBearing.Location = New Global.System.Drawing.Point(96, 248)
+            '
+            'tbBearing
+            '
+            Me.tbBearing.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbBearing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbBearing.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbBearing.Location = New System.Drawing.Point(59, 221)
             Me.tbBearing.Name = "tbBearing"
-            Me.tbBearing.[ReadOnly] = True
-            Me.tbBearing.Size = New Global.System.Drawing.Size(104, 20)
+            Me.tbBearing.ReadOnly = True
+            Me.tbBearing.Size = New System.Drawing.Size(104, 22)
             Me.tbBearing.TabIndex = 55
-            Me.tbBearing.Text = ""
-            Me.tbBearing.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
+            Me.tbBearing.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
             Me.tbBearing.Visible = False
-            Me.tbxo.Location = New Global.System.Drawing.Point(96, 192)
+            '
+            'tbxo
+            '
+            Me.tbxo.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbxo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbxo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbxo.Location = New System.Drawing.Point(59, 157)
             Me.tbxo.Name = "tbxo"
-            Me.tbxo.[ReadOnly] = True
-            Me.tbxo.Size = New Global.System.Drawing.Size(64, 20)
+            Me.tbxo.ReadOnly = True
+            Me.tbxo.Size = New System.Drawing.Size(104, 22)
             Me.tbxo.TabIndex = 54
-            Me.tbxo.Text = ""
-            Me.tbxo.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
+            Me.tbxo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
             Me.tbxo.Visible = False
-            Me.tbyo.Location = New Global.System.Drawing.Point(96, 216)
+            '
+            'tbyo
+            '
+            Me.tbyo.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbyo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbyo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbyo.Location = New System.Drawing.Point(59, 184)
             Me.tbyo.Name = "tbyo"
-            Me.tbyo.[ReadOnly] = True
-            Me.tbyo.Size = New Global.System.Drawing.Size(64, 20)
+            Me.tbyo.ReadOnly = True
+            Me.tbyo.Size = New System.Drawing.Size(104, 22)
             Me.tbyo.TabIndex = 53
-            Me.tbyo.Text = ""
-            Me.tbyo.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
+            Me.tbyo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
             Me.tbyo.Visible = False
-            Me.pboxXYSpawnPointBearing.Location = New Global.System.Drawing.Point(336, 80)
+            '
+            'pboxXYSpawnPointBearing
+            '
+            Me.pboxXYSpawnPointBearing.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.pboxXYSpawnPointBearing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.pboxXYSpawnPointBearing.Location = New System.Drawing.Point(352, 39)
             Me.pboxXYSpawnPointBearing.Name = "pboxXYSpawnPointBearing"
-            Me.pboxXYSpawnPointBearing.Size = New Global.System.Drawing.Size(50, 50)
+            Me.pboxXYSpawnPointBearing.Size = New System.Drawing.Size(50, 58)
             Me.pboxXYSpawnPointBearing.TabIndex = 51
             Me.pboxXYSpawnPointBearing.TabStop = False
+            '
+            'nudXYSpawnPointBearing
+            '
+            Me.nudXYSpawnPointBearing.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.nudXYSpawnPointBearing.DecimalPlaces = 2
             Me.nudXYSpawnPointBearing.Enabled = False
-            Me.nudXYSpawnPointBearing.Location = New Global.System.Drawing.Point(328, 136)
+            Me.nudXYSpawnPointBearing.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudXYSpawnPointBearing.Location = New System.Drawing.Point(341, 112)
             Me.nudXYSpawnPointBearing.Maximum = New Decimal(New Integer() {736755711, 8381903, 0, 917504})
             Me.nudXYSpawnPointBearing.Name = "nudXYSpawnPointBearing"
-            Me.nudXYSpawnPointBearing.Size = New Global.System.Drawing.Size(64, 20)
+            Me.nudXYSpawnPointBearing.Size = New System.Drawing.Size(80, 22)
             Me.nudXYSpawnPointBearing.TabIndex = 52
-            Me.nudXYSpawnPointBearing.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Center
-            Me.Label25.Location = New Global.System.Drawing.Point(336, 56)
+            Me.nudXYSpawnPointBearing.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+            '
+            'Label25
+            '
+            Me.Label25.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label25.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.Label25.Location = New System.Drawing.Point(338, 10)
             Me.Label25.Name = "Label25"
-            Me.Label25.Size = New Global.System.Drawing.Size(48, 16)
+            Me.Label25.Size = New System.Drawing.Size(83, 21)
             Me.Label25.TabIndex = 50
             Me.Label25.Text = "Bearing"
-            Me.Label25.TextAlign = Global.System.Drawing.ContentAlignment.MiddleCenter
-            Me.Label26.Location = New Global.System.Drawing.Point(168, 64)
+            Me.Label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+            '
+            'Label26
+            '
+            Me.Label26.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label26.Location = New System.Drawing.Point(167, 38)
             Me.Label26.Name = "Label26"
-            Me.Label26.Size = New Global.System.Drawing.Size(16, 16)
+            Me.Label26.Size = New System.Drawing.Size(16, 18)
             Me.Label26.TabIndex = 48
             Me.Label26.Text = "X"
-            Me.Label26.TextAlign = Global.System.Drawing.ContentAlignment.MiddleRight
+            Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+            '
+            'nudSpawnPointX
+            '
+            Me.nudSpawnPointX.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.nudSpawnPointX.DecimalPlaces = 4
             Me.nudSpawnPointX.Enabled = False
-            Me.nudSpawnPointX.Location = New Global.System.Drawing.Point(200, 64)
+            Me.nudSpawnPointX.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudSpawnPointX.Location = New System.Drawing.Point(199, 38)
             Me.nudSpawnPointX.Maximum = New Decimal(New Integer() {4000, 0, 0, 0})
-            Me.nudSpawnPointX.Minimum = New Decimal(New Integer() {4000, 0, 0, Integer.MinValue})
+            Me.nudSpawnPointX.Minimum = New Decimal(New Integer() {4000, 0, 0, -2147483648})
             Me.nudSpawnPointX.Name = "nudSpawnPointX"
-            Me.nudSpawnPointX.Size = New Global.System.Drawing.Size(96, 20)
+            Me.nudSpawnPointX.Size = New System.Drawing.Size(96, 22)
             Me.nudSpawnPointX.TabIndex = 44
-            Me.nudSpawnPointX.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.Label27.Location = New Global.System.Drawing.Point(168, 96)
+            Me.nudSpawnPointX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'Label27
+            '
+            Me.Label27.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label27.Location = New System.Drawing.Point(167, 75)
             Me.Label27.Name = "Label27"
-            Me.Label27.Size = New Global.System.Drawing.Size(16, 16)
+            Me.Label27.Size = New System.Drawing.Size(16, 18)
             Me.Label27.TabIndex = 49
             Me.Label27.Text = "Y"
-            Me.Label27.TextAlign = Global.System.Drawing.ContentAlignment.MiddleRight
+            Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+            '
+            'nudSpawnPointY
+            '
+            Me.nudSpawnPointY.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.nudSpawnPointY.DecimalPlaces = 4
             Me.nudSpawnPointY.Enabled = False
-            Me.nudSpawnPointY.Location = New Global.System.Drawing.Point(200, 96)
+            Me.nudSpawnPointY.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudSpawnPointY.Location = New System.Drawing.Point(199, 75)
             Me.nudSpawnPointY.Maximum = New Decimal(New Integer() {4000, 0, 0, 0})
-            Me.nudSpawnPointY.Minimum = New Decimal(New Integer() {4000, 0, 0, Integer.MinValue})
+            Me.nudSpawnPointY.Minimum = New Decimal(New Integer() {4000, 0, 0, -2147483648})
             Me.nudSpawnPointY.Name = "nudSpawnPointY"
-            Me.nudSpawnPointY.Size = New Global.System.Drawing.Size(96, 20)
+            Me.nudSpawnPointY.Size = New System.Drawing.Size(96, 22)
             Me.nudSpawnPointY.TabIndex = 45
-            Me.nudSpawnPointY.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.Label28.Location = New Global.System.Drawing.Point(168, 128)
+            Me.nudSpawnPointY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'Label28
+            '
+            Me.Label28.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label28.Location = New System.Drawing.Point(167, 112)
             Me.Label28.Name = "Label28"
-            Me.Label28.Size = New Global.System.Drawing.Size(16, 16)
+            Me.Label28.Size = New System.Drawing.Size(16, 18)
             Me.Label28.TabIndex = 47
             Me.Label28.Text = "Z"
-            Me.Label28.TextAlign = Global.System.Drawing.ContentAlignment.MiddleRight
+            Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+            '
+            'nudSpawnPointZ
+            '
+            Me.nudSpawnPointZ.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.nudSpawnPointZ.DecimalPlaces = 4
             Me.nudSpawnPointZ.Enabled = False
-            Me.nudSpawnPointZ.Location = New Global.System.Drawing.Point(200, 128)
+            Me.nudSpawnPointZ.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudSpawnPointZ.Location = New System.Drawing.Point(199, 112)
             Me.nudSpawnPointZ.Maximum = New Decimal(New Integer() {4000, 0, 0, 0})
-            Me.nudSpawnPointZ.Minimum = New Decimal(New Integer() {4000, 0, 0, Integer.MinValue})
+            Me.nudSpawnPointZ.Minimum = New Decimal(New Integer() {4000, 0, 0, -2147483648})
             Me.nudSpawnPointZ.Name = "nudSpawnPointZ"
-            Me.nudSpawnPointZ.Size = New Global.System.Drawing.Size(96, 20)
+            Me.nudSpawnPointZ.Size = New System.Drawing.Size(96, 22)
             Me.nudSpawnPointZ.TabIndex = 46
-            Me.nudSpawnPointZ.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.Label24.Location = New Global.System.Drawing.Point(72, 32)
+            Me.nudSpawnPointZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'Label24
+            '
+            Me.Label24.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label24.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.Label24.Location = New System.Drawing.Point(28, 14)
             Me.Label24.Name = "Label24"
-            Me.Label24.Size = New Global.System.Drawing.Size(80, 16)
+            Me.Label24.Size = New System.Drawing.Size(127, 17)
             Me.Label24.TabIndex = 43
             Me.Label24.Text = "Spawn Points"
-            Me.lbSpawnPoints.Location = New Global.System.Drawing.Point(80, 56)
+            '
+            'lbSpawnPoints
+            '
+            Me.lbSpawnPoints.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.lbSpawnPoints.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.lbSpawnPoints.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.lbSpawnPoints.Location = New System.Drawing.Point(28, 34)
             Me.lbSpawnPoints.Name = "lbSpawnPoints"
             Me.lbSpawnPoints.ScrollAlwaysVisible = True
-            Me.lbSpawnPoints.Size = New Global.System.Drawing.Size(56, 95)
+            Me.lbSpawnPoints.Size = New System.Drawing.Size(127, 106)
             Me.lbSpawnPoints.TabIndex = 42
-            Me.Label5.Location = New Global.System.Drawing.Point(64, 192)
+            '
+            'Label5
+            '
+            Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label5.Location = New System.Drawing.Point(27, 157)
             Me.Label5.Name = "Label5"
-            Me.Label5.Size = New Global.System.Drawing.Size(16, 16)
+            Me.Label5.Size = New System.Drawing.Size(16, 18)
             Me.Label5.TabIndex = 48
             Me.Label5.Text = "X"
-            Me.Label5.TextAlign = Global.System.Drawing.ContentAlignment.MiddleRight
+            Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
             Me.Label5.Visible = False
-            Me.Label6.Location = New Global.System.Drawing.Point(64, 216)
+            '
+            'Label6
+            '
+            Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label6.Location = New System.Drawing.Point(27, 184)
             Me.Label6.Name = "Label6"
-            Me.Label6.Size = New Global.System.Drawing.Size(16, 16)
+            Me.Label6.Size = New System.Drawing.Size(16, 19)
             Me.Label6.TabIndex = 49
             Me.Label6.Text = "Y"
-            Me.Label6.TextAlign = Global.System.Drawing.ContentAlignment.MiddleRight
+            Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
             Me.Label6.Visible = False
-            Me.Label7.Location = New Global.System.Drawing.Point(224, 40)
+            '
+            'Label7
+            '
+            Me.Label7.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.Label7.Location = New System.Drawing.Point(199, 10)
             Me.Label7.Name = "Label7"
-            Me.Label7.Size = New Global.System.Drawing.Size(48, 16)
+            Me.Label7.Size = New System.Drawing.Size(96, 21)
             Me.Label7.TabIndex = 50
             Me.Label7.Text = "Position"
-            Me.Label7.TextAlign = Global.System.Drawing.ContentAlignment.MiddleCenter
-            Me.tabpagDoor.Controls.Add(Me.gbTriggerNode)
-            Me.tabpagDoor.Controls.Add(Me.cmbxDoorLinkedToFlags)
-            Me.tabpagDoor.Controls.Add(Me.lblDoorLinkedTo)
-            Me.tabpagDoor.Controls.Add(Me.tbDoorLinkedTo)
-            Me.tabpagDoor.Controls.Add(Me.tbDoorLinkedToModule)
-            Me.tabpagDoor.Controls.Add(Me.tbDoorLinkedToTransitionDestin)
-            Me.tabpagDoor.Controls.Add(Me.lblDoorLinkedToFlags)
-            Me.tabpagDoor.Controls.Add(Me.lblDoorLinkedToModule)
-            Me.tabpagDoor.Controls.Add(Me.lblDoorLinkedToTransitionDestin)
-            Me.tabpagDoor.Controls.Add(Me.lblTransitionMsg)
-            Me.tabpagDoor.Location = New Global.System.Drawing.Point(4, 22)
-            Me.tabpagDoor.Name = "tabpagDoor"
-            Me.tabpagDoor.Size = New Global.System.Drawing.Size(472, 302)
-            Me.tabpagDoor.TabIndex = 0
-            Me.tabpagDoor.Text = "Door/Trigger Specific"
-            Me.gbTriggerNode.Controls.Add(Me.Label23)
-            Me.gbTriggerNode.Controls.Add(Me.tbTriggerNodeYPosition)
-            Me.gbTriggerNode.Controls.Add(Me.tbTriggerNodeXPosition)
-            Me.gbTriggerNode.Controls.Add(Me.Label22)
-            Me.gbTriggerNode.Controls.Add(Me.tbTriggerNodeZPosition)
-            Me.gbTriggerNode.Controls.Add(Me.Label21)
-            Me.gbTriggerNode.Location = New Global.System.Drawing.Point(16, 176)
-            Me.gbTriggerNode.Name = "gbTriggerNode"
-            Me.gbTriggerNode.Size = New Global.System.Drawing.Size(304, 120)
-            Me.gbTriggerNode.TabIndex = 9
-            Me.gbTriggerNode.TabStop = False
-            Me.gbTriggerNode.Text = "Trigger Node"
-            Me.gbTriggerNode.Visible = False
-            Me.Label23.Location = New Global.System.Drawing.Point(24, 88)
-            Me.Label23.Name = "Label23"
-            Me.Label23.Size = New Global.System.Drawing.Size(88, 16)
-            Me.Label23.TabIndex = 6
-            Me.Label23.Text = "Z Position"
-            Me.Label23.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbTriggerNodeYPosition.Location = New Global.System.Drawing.Point(136, 56)
-            Me.tbTriggerNodeYPosition.Name = "tbTriggerNodeYPosition"
-            Me.tbTriggerNodeYPosition.TabIndex = 4
-            Me.tbTriggerNodeYPosition.Text = ""
-            Me.tbTriggerNodeYPosition.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.tbTriggerNodeXPosition.Location = New Global.System.Drawing.Point(136, 24)
-            Me.tbTriggerNodeXPosition.Name = "tbTriggerNodeXPosition"
-            Me.tbTriggerNodeXPosition.TabIndex = 5
-            Me.tbTriggerNodeXPosition.Text = ""
-            Me.tbTriggerNodeXPosition.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.Label22.Location = New Global.System.Drawing.Point(24, 56)
-            Me.Label22.Name = "Label22"
-            Me.Label22.Size = New Global.System.Drawing.Size(88, 16)
-            Me.Label22.TabIndex = 7
-            Me.Label22.Text = "Y Position"
-            Me.Label22.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbTriggerNodeZPosition.Location = New Global.System.Drawing.Point(136, 88)
-            Me.tbTriggerNodeZPosition.Name = "tbTriggerNodeZPosition"
-            Me.tbTriggerNodeZPosition.TabIndex = 3
-            Me.tbTriggerNodeZPosition.Text = ""
-            Me.tbTriggerNodeZPosition.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.Label21.Location = New Global.System.Drawing.Point(24, 24)
-            Me.Label21.Name = "Label21"
-            Me.Label21.Size = New Global.System.Drawing.Size(88, 16)
-            Me.Label21.TabIndex = 8
-            Me.Label21.Text = "X Position"
-            Me.Label21.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.cmbxDoorLinkedToFlags.DropDownStyle = Global.System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxDoorLinkedToFlags.Items.AddRange(New Object() {"Does not link to anything", "Is an Area Transition and links to a Door", "Is an Area Transition and links to a Waypoint"})
-            Me.cmbxDoorLinkedToFlags.Location = New Global.System.Drawing.Point(152, 16)
-            Me.cmbxDoorLinkedToFlags.Name = "cmbxDoorLinkedToFlags"
-            Me.cmbxDoorLinkedToFlags.Size = New Global.System.Drawing.Size(272, 21)
-            Me.cmbxDoorLinkedToFlags.TabIndex = 2
-            Me.lblDoorLinkedTo.Location = New Global.System.Drawing.Point(40, 80)
-            Me.lblDoorLinkedTo.Name = "lblDoorLinkedTo"
-            Me.lblDoorLinkedTo.Size = New Global.System.Drawing.Size(100, 16)
-            Me.lblDoorLinkedTo.TabIndex = 1
-            Me.lblDoorLinkedTo.Text = "Linked To"
-            Me.lblDoorLinkedTo.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbDoorLinkedTo.Location = New Global.System.Drawing.Point(152, 80)
-            Me.tbDoorLinkedTo.Name = "tbDoorLinkedTo"
-            Me.tbDoorLinkedTo.Size = New Global.System.Drawing.Size(208, 20)
-            Me.tbDoorLinkedTo.TabIndex = 0
-            Me.tbDoorLinkedTo.Text = ""
-            Me.tbDoorLinkedToModule.Location = New Global.System.Drawing.Point(152, 48)
-            Me.tbDoorLinkedToModule.Name = "tbDoorLinkedToModule"
-            Me.tbDoorLinkedToModule.Size = New Global.System.Drawing.Size(208, 20)
-            Me.tbDoorLinkedToModule.TabIndex = 0
-            Me.tbDoorLinkedToModule.Text = ""
-            Me.tbDoorLinkedToTransitionDestin.Location = New Global.System.Drawing.Point(152, 112)
-            Me.tbDoorLinkedToTransitionDestin.Name = "tbDoorLinkedToTransitionDestin"
-            Me.tbDoorLinkedToTransitionDestin.Size = New Global.System.Drawing.Size(208, 20)
-            Me.tbDoorLinkedToTransitionDestin.TabIndex = 0
-            Me.tbDoorLinkedToTransitionDestin.Text = ""
-            Me.lblDoorLinkedToFlags.Location = New Global.System.Drawing.Point(40, 16)
-            Me.lblDoorLinkedToFlags.Name = "lblDoorLinkedToFlags"
-            Me.lblDoorLinkedToFlags.Size = New Global.System.Drawing.Size(100, 16)
-            Me.lblDoorLinkedToFlags.TabIndex = 1
-            Me.lblDoorLinkedToFlags.Text = "Linked To Flag"
-            Me.lblDoorLinkedToFlags.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.lblDoorLinkedToModule.Location = New Global.System.Drawing.Point(40, 48)
-            Me.lblDoorLinkedToModule.Name = "lblDoorLinkedToModule"
-            Me.lblDoorLinkedToModule.Size = New Global.System.Drawing.Size(100, 16)
-            Me.lblDoorLinkedToModule.TabIndex = 1
-            Me.lblDoorLinkedToModule.Text = "Linked To Module"
-            Me.lblDoorLinkedToModule.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.lblDoorLinkedToTransitionDestin.Location = New Global.System.Drawing.Point(40, 114)
-            Me.lblDoorLinkedToTransitionDestin.Name = "lblDoorLinkedToTransitionDestin"
-            Me.lblDoorLinkedToTransitionDestin.Size = New Global.System.Drawing.Size(120, 16)
-            Me.lblDoorLinkedToTransitionDestin.TabIndex = 1
-            Me.lblDoorLinkedToTransitionDestin.Text = "Transition Destination"
-            Me.lblDoorLinkedToTransitionDestin.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.lblTransitionMsg.Location = New Global.System.Drawing.Point(32, 144)
-            Me.lblTransitionMsg.Name = "lblTransitionMsg"
-            Me.lblTransitionMsg.Size = New Global.System.Drawing.Size(432, 16)
-            Me.lblTransitionMsg.TabIndex = 1
-            Me.lblTransitionMsg.Text = "Note: To enable the above fields, set the type to Transition in the Trigger editor."
-            Me.lblTransitionMsg.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.lblTransitionMsg.Visible = False
+            Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+            '
+            'tabpagCamera
+            '
+            Me.tabpagCamera.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tabpagCamera.Controls.Add(Me.Label29)
             Me.tabpagCamera.Controls.Add(Me.nudCamOrientationX)
             Me.tabpagCamera.Controls.Add(Me.btnShowQuaternion)
@@ -699,216 +1041,461 @@ Namespace kotor_tool
             Me.tabpagCamera.Controls.Add(Me.nudCamOrientationY)
             Me.tabpagCamera.Controls.Add(Me.nudCamOrientationZ)
             Me.tabpagCamera.Controls.Add(Me.Label14)
-            Me.tabpagCamera.Location = New Global.System.Drawing.Point(4, 22)
+            Me.tabpagCamera.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tabpagCamera.Location = New System.Drawing.Point(4, 22)
             Me.tabpagCamera.Name = "tabpagCamera"
-            Me.tabpagCamera.Size = New Global.System.Drawing.Size(472, 302)
+            Me.tabpagCamera.Size = New System.Drawing.Size(492, 255)
             Me.tabpagCamera.TabIndex = 2
             Me.tabpagCamera.Text = "Camera Specific"
-            Me.Label29.Location = New Global.System.Drawing.Point(256, 8)
+            '
+            'Label29
+            '
+            Me.Label29.ForeColor = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(186, Byte), Integer), CType(CType(198, Byte), Integer))
+            Me.Label29.Location = New System.Drawing.Point(256, 9)
             Me.Label29.Name = "Label29"
-            Me.Label29.Size = New Global.System.Drawing.Size(176, 40)
+            Me.Label29.Size = New System.Drawing.Size(176, 46)
             Me.Label29.TabIndex = 10
-            Me.Label29.Text = "(Use this value or the one below to set the camera's pitch but not both. Set unused one to 0)"
-            Me.nudCamOrientationX.Location = New Global.System.Drawing.Point(152, 168)
+            Me.Label29.Text = "(Use this value or the one below to set the camera's pitch but not both. Set unus" & _
+                "ed one to 0)"
+            '
+            'nudCamOrientationX
+            '
+            Me.nudCamOrientationX.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.nudCamOrientationX.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudCamOrientationX.Location = New System.Drawing.Point(152, 194)
             Me.nudCamOrientationX.Maximum = New Decimal(New Integer() {179, 0, 0, 0})
-            Me.nudCamOrientationX.Minimum = New Decimal(New Integer() {179, 0, 0, Integer.MinValue})
+            Me.nudCamOrientationX.Minimum = New Decimal(New Integer() {179, 0, 0, -2147483648})
             Me.nudCamOrientationX.Name = "nudCamOrientationX"
-            Me.nudCamOrientationX.Size = New Global.System.Drawing.Size(48, 20)
+            Me.nudCamOrientationX.Size = New System.Drawing.Size(48, 22)
             Me.nudCamOrientationX.TabIndex = 9
-            Me.nudCamOrientationX.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.btnShowQuaternion.FlatStyle = Global.System.Windows.Forms.FlatStyle.Flat
-            Me.btnShowQuaternion.ForeColor = Global.System.Drawing.SystemColors.Control
-            Me.btnShowQuaternion.Location = New Global.System.Drawing.Point(376, 168)
+            Me.nudCamOrientationX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'btnShowQuaternion
+            '
+            Me.btnShowQuaternion.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnShowQuaternion.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnShowQuaternion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnShowQuaternion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnShowQuaternion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnShowQuaternion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnShowQuaternion.Location = New System.Drawing.Point(376, 194)
             Me.btnShowQuaternion.Name = "btnShowQuaternion"
-            Me.btnShowQuaternion.Size = New Global.System.Drawing.Size(24, 23)
+            Me.btnShowQuaternion.Size = New System.Drawing.Size(24, 26)
             Me.btnShowQuaternion.TabIndex = 8
-            Me.Label1.Location = New Global.System.Drawing.Point(40, 16)
+            Me.btnShowQuaternion.UseVisualStyleBackColor = False
+            '
+            'Label1
+            '
+            Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label1.Location = New System.Drawing.Point(40, 18)
             Me.Label1.Name = "Label1"
-            Me.Label1.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label1.Size = New System.Drawing.Size(100, 19)
             Me.Label1.TabIndex = 3
             Me.Label1.Text = "Pitch"
-            Me.Label1.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbCamPitch.Location = New Global.System.Drawing.Point(152, 16)
+            Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbCamPitch
+            '
+            Me.tbCamPitch.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbCamPitch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbCamPitch.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbCamPitch.Location = New System.Drawing.Point(152, 18)
             Me.tbCamPitch.Name = "tbCamPitch"
-            Me.tbCamPitch.Size = New Global.System.Drawing.Size(64, 20)
+            Me.tbCamPitch.Size = New System.Drawing.Size(64, 22)
             Me.tbCamPitch.TabIndex = 0
-            Me.tbCamPitch.Text = ""
-            Me.tbCamHeight.Location = New Global.System.Drawing.Point(152, 48)
+            '
+            'tbCamHeight
+            '
+            Me.tbCamHeight.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbCamHeight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbCamHeight.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbCamHeight.Location = New System.Drawing.Point(152, 55)
             Me.tbCamHeight.Name = "tbCamHeight"
-            Me.tbCamHeight.Size = New Global.System.Drawing.Size(64, 20)
+            Me.tbCamHeight.Size = New System.Drawing.Size(64, 22)
             Me.tbCamHeight.TabIndex = 1
-            Me.tbCamHeight.Text = ""
-            Me.Label15.Location = New Global.System.Drawing.Point(40, 48)
+            '
+            'Label15
+            '
+            Me.Label15.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label15.Location = New System.Drawing.Point(40, 55)
             Me.Label15.Name = "Label15"
-            Me.Label15.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label15.Size = New System.Drawing.Size(100, 19)
             Me.Label15.TabIndex = 3
             Me.Label15.Text = "Height"
-            Me.Label15.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbCamMicRange.Location = New Global.System.Drawing.Point(152, 80)
+            Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbCamMicRange
+            '
+            Me.tbCamMicRange.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbCamMicRange.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbCamMicRange.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbCamMicRange.Location = New System.Drawing.Point(152, 92)
             Me.tbCamMicRange.Name = "tbCamMicRange"
-            Me.tbCamMicRange.Size = New Global.System.Drawing.Size(64, 20)
+            Me.tbCamMicRange.Size = New System.Drawing.Size(64, 22)
             Me.tbCamMicRange.TabIndex = 2
-            Me.tbCamMicRange.Text = ""
-            Me.Label16.Location = New Global.System.Drawing.Point(40, 80)
+            '
+            'Label16
+            '
+            Me.Label16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label16.Location = New System.Drawing.Point(40, 92)
             Me.Label16.Name = "Label16"
-            Me.Label16.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label16.Size = New System.Drawing.Size(100, 19)
             Me.Label16.TabIndex = 3
             Me.Label16.Text = "Mic Range"
-            Me.Label16.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label17.Location = New Global.System.Drawing.Point(40, 112)
+            Me.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label17
+            '
+            Me.Label17.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label17.Location = New System.Drawing.Point(40, 129)
             Me.Label17.Name = "Label17"
-            Me.Label17.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label17.Size = New System.Drawing.Size(100, 19)
             Me.Label17.TabIndex = 3
             Me.Label17.Text = "Field of View"
-            Me.Label17.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbCamFieldOfView.Location = New Global.System.Drawing.Point(152, 112)
+            Me.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbCamFieldOfView
+            '
+            Me.tbCamFieldOfView.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbCamFieldOfView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbCamFieldOfView.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbCamFieldOfView.Location = New System.Drawing.Point(152, 129)
             Me.tbCamFieldOfView.Name = "tbCamFieldOfView"
-            Me.tbCamFieldOfView.Size = New Global.System.Drawing.Size(64, 20)
+            Me.tbCamFieldOfView.Size = New System.Drawing.Size(64, 22)
             Me.tbCamFieldOfView.TabIndex = 3
-            Me.tbCamFieldOfView.Text = ""
-            Me.tbCamOrientationF1.Location = New Global.System.Drawing.Point(24, 224)
+            '
+            'tbCamOrientationF1
+            '
+            Me.tbCamOrientationF1.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbCamOrientationF1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbCamOrientationF1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbCamOrientationF1.Location = New System.Drawing.Point(24, 258)
             Me.tbCamOrientationF1.Name = "tbCamOrientationF1"
-            Me.tbCamOrientationF1.[ReadOnly] = True
-            Me.tbCamOrientationF1.Size = New Global.System.Drawing.Size(88, 20)
+            Me.tbCamOrientationF1.ReadOnly = True
+            Me.tbCamOrientationF1.Size = New System.Drawing.Size(88, 22)
             Me.tbCamOrientationF1.TabIndex = 4
-            Me.tbCamOrientationF1.Text = ""
             Me.tbCamOrientationF1.Visible = False
-            Me.tbCamOrientationF2.Location = New Global.System.Drawing.Point(136, 224)
+            '
+            'tbCamOrientationF2
+            '
+            Me.tbCamOrientationF2.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbCamOrientationF2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbCamOrientationF2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbCamOrientationF2.Location = New System.Drawing.Point(136, 258)
             Me.tbCamOrientationF2.Name = "tbCamOrientationF2"
-            Me.tbCamOrientationF2.[ReadOnly] = True
-            Me.tbCamOrientationF2.Size = New Global.System.Drawing.Size(88, 20)
+            Me.tbCamOrientationF2.ReadOnly = True
+            Me.tbCamOrientationF2.Size = New System.Drawing.Size(88, 22)
             Me.tbCamOrientationF2.TabIndex = 5
-            Me.tbCamOrientationF2.Text = ""
             Me.tbCamOrientationF2.Visible = False
-            Me.tbCamOrientationF4.Location = New Global.System.Drawing.Point(360, 224)
+            '
+            'tbCamOrientationF4
+            '
+            Me.tbCamOrientationF4.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbCamOrientationF4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbCamOrientationF4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbCamOrientationF4.Location = New System.Drawing.Point(360, 258)
             Me.tbCamOrientationF4.Name = "tbCamOrientationF4"
-            Me.tbCamOrientationF4.[ReadOnly] = True
-            Me.tbCamOrientationF4.Size = New Global.System.Drawing.Size(88, 20)
+            Me.tbCamOrientationF4.ReadOnly = True
+            Me.tbCamOrientationF4.Size = New System.Drawing.Size(88, 22)
             Me.tbCamOrientationF4.TabIndex = 7
-            Me.tbCamOrientationF4.Text = ""
             Me.tbCamOrientationF4.Visible = False
-            Me.tbCamOrientationF3.Location = New Global.System.Drawing.Point(248, 224)
+            '
+            'tbCamOrientationF3
+            '
+            Me.tbCamOrientationF3.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbCamOrientationF3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbCamOrientationF3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbCamOrientationF3.Location = New System.Drawing.Point(248, 258)
             Me.tbCamOrientationF3.Name = "tbCamOrientationF3"
-            Me.tbCamOrientationF3.[ReadOnly] = True
-            Me.tbCamOrientationF3.Size = New Global.System.Drawing.Size(88, 20)
+            Me.tbCamOrientationF3.ReadOnly = True
+            Me.tbCamOrientationF3.Size = New System.Drawing.Size(88, 22)
             Me.tbCamOrientationF3.TabIndex = 6
-            Me.tbCamOrientationF3.Text = ""
             Me.tbCamOrientationF3.Visible = False
-            Me.lblQuaternionW.Location = New Global.System.Drawing.Point(24, 200)
+            '
+            'lblQuaternionW
+            '
+            Me.lblQuaternionW.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.lblQuaternionW.Location = New System.Drawing.Point(24, 231)
             Me.lblQuaternionW.Name = "lblQuaternionW"
-            Me.lblQuaternionW.Size = New Global.System.Drawing.Size(40, 16)
+            Me.lblQuaternionW.Size = New System.Drawing.Size(40, 18)
             Me.lblQuaternionW.TabIndex = 3
             Me.lblQuaternionW.Text = "W"
-            Me.lblQuaternionW.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
+            Me.lblQuaternionW.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
             Me.lblQuaternionW.Visible = False
-            Me.Label18.Location = New Global.System.Drawing.Point(160, 144)
+            '
+            'Label18
+            '
+            Me.Label18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label18.Location = New System.Drawing.Point(160, 166)
             Me.Label18.Name = "Label18"
-            Me.Label18.Size = New Global.System.Drawing.Size(40, 16)
+            Me.Label18.Size = New System.Drawing.Size(40, 19)
             Me.Label18.TabIndex = 3
             Me.Label18.Text = "Pitch"
-            Me.Label18.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label19.Location = New Global.System.Drawing.Point(240, 144)
+            Me.Label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label19
+            '
+            Me.Label19.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label19.Location = New System.Drawing.Point(240, 166)
             Me.Label19.Name = "Label19"
-            Me.Label19.Size = New Global.System.Drawing.Size(40, 16)
+            Me.Label19.Size = New System.Drawing.Size(40, 19)
             Me.Label19.TabIndex = 3
             Me.Label19.Text = "Roll"
-            Me.Label19.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label20.Location = New Global.System.Drawing.Point(320, 144)
+            Me.Label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label20
+            '
+            Me.Label20.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label20.Location = New System.Drawing.Point(320, 166)
             Me.Label20.Name = "Label20"
-            Me.Label20.Size = New Global.System.Drawing.Size(40, 16)
+            Me.Label20.Size = New System.Drawing.Size(40, 19)
             Me.Label20.TabIndex = 3
             Me.Label20.Text = "Yaw"
-            Me.Label20.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbCamOrientationZ.Location = New Global.System.Drawing.Point(360, 264)
+            Me.Label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbCamOrientationZ
+            '
+            Me.tbCamOrientationZ.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbCamOrientationZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbCamOrientationZ.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbCamOrientationZ.Location = New System.Drawing.Point(360, 305)
             Me.tbCamOrientationZ.Name = "tbCamOrientationZ"
-            Me.tbCamOrientationZ.Size = New Global.System.Drawing.Size(88, 20)
+            Me.tbCamOrientationZ.Size = New System.Drawing.Size(88, 22)
             Me.tbCamOrientationZ.TabIndex = 7
-            Me.tbCamOrientationZ.Text = ""
-            Me.tbCamOrientationZ.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
+            Me.tbCamOrientationZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
             Me.tbCamOrientationZ.Visible = False
             Me.tbCamOrientationZ.WordWrap = False
-            Me.ErrorProvider1.SetIconAlignment(Me.tbCamOrientationX, Global.System.Windows.Forms.ErrorIconAlignment.MiddleLeft)
-            Me.tbCamOrientationX.Location = New Global.System.Drawing.Point(136, 264)
+            '
+            'tbCamOrientationX
+            '
+            Me.tbCamOrientationX.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbCamOrientationX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbCamOrientationX.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.ErrorProvider1.SetIconAlignment(Me.tbCamOrientationX, System.Windows.Forms.ErrorIconAlignment.MiddleLeft)
+            Me.tbCamOrientationX.Location = New System.Drawing.Point(136, 305)
             Me.tbCamOrientationX.Name = "tbCamOrientationX"
-            Me.tbCamOrientationX.Size = New Global.System.Drawing.Size(88, 20)
+            Me.tbCamOrientationX.Size = New System.Drawing.Size(88, 22)
             Me.tbCamOrientationX.TabIndex = 5
-            Me.tbCamOrientationX.Text = ""
-            Me.tbCamOrientationX.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
+            Me.tbCamOrientationX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
             Me.tbCamOrientationX.Visible = False
             Me.tbCamOrientationX.WordWrap = False
-            Me.tbCamOrientationY.Location = New Global.System.Drawing.Point(248, 264)
+            '
+            'tbCamOrientationY
+            '
+            Me.tbCamOrientationY.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbCamOrientationY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbCamOrientationY.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbCamOrientationY.Location = New System.Drawing.Point(248, 305)
             Me.tbCamOrientationY.Name = "tbCamOrientationY"
-            Me.tbCamOrientationY.Size = New Global.System.Drawing.Size(88, 20)
+            Me.tbCamOrientationY.Size = New System.Drawing.Size(88, 22)
             Me.tbCamOrientationY.TabIndex = 6
-            Me.tbCamOrientationY.Text = ""
-            Me.tbCamOrientationY.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
+            Me.tbCamOrientationY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
             Me.tbCamOrientationY.Visible = False
             Me.tbCamOrientationY.WordWrap = False
-            Me.nudCamOrientationY.Location = New Global.System.Drawing.Point(232, 168)
+            '
+            'nudCamOrientationY
+            '
+            Me.nudCamOrientationY.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.nudCamOrientationY.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudCamOrientationY.Location = New System.Drawing.Point(232, 194)
             Me.nudCamOrientationY.Maximum = New Decimal(New Integer() {179, 0, 0, 0})
-            Me.nudCamOrientationY.Minimum = New Decimal(New Integer() {179, 0, 0, Integer.MinValue})
+            Me.nudCamOrientationY.Minimum = New Decimal(New Integer() {179, 0, 0, -2147483648})
             Me.nudCamOrientationY.Name = "nudCamOrientationY"
-            Me.nudCamOrientationY.Size = New Global.System.Drawing.Size(48, 20)
+            Me.nudCamOrientationY.Size = New System.Drawing.Size(48, 22)
             Me.nudCamOrientationY.TabIndex = 9
-            Me.nudCamOrientationY.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.nudCamOrientationZ.Location = New Global.System.Drawing.Point(312, 168)
+            Me.nudCamOrientationY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'nudCamOrientationZ
+            '
+            Me.nudCamOrientationZ.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.nudCamOrientationZ.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudCamOrientationZ.Location = New System.Drawing.Point(312, 194)
             Me.nudCamOrientationZ.Maximum = New Decimal(New Integer() {179, 0, 0, 0})
-            Me.nudCamOrientationZ.Minimum = New Decimal(New Integer() {179, 0, 0, Integer.MinValue})
+            Me.nudCamOrientationZ.Minimum = New Decimal(New Integer() {179, 0, 0, -2147483648})
             Me.nudCamOrientationZ.Name = "nudCamOrientationZ"
-            Me.nudCamOrientationZ.Size = New Global.System.Drawing.Size(48, 20)
+            Me.nudCamOrientationZ.Size = New System.Drawing.Size(48, 22)
             Me.nudCamOrientationZ.TabIndex = 9
-            Me.nudCamOrientationZ.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.Label14.Location = New Global.System.Drawing.Point(40, 168)
+            Me.nudCamOrientationZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'Label14
+            '
+            Me.Label14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label14.Location = New System.Drawing.Point(40, 194)
             Me.Label14.Name = "Label14"
-            Me.Label14.Size = New Global.System.Drawing.Size(80, 16)
+            Me.Label14.Size = New System.Drawing.Size(80, 18)
             Me.Label14.TabIndex = 3
             Me.Label14.Text = "Camera Angle"
-            Me.Label14.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
+            Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'pnlFooter
+            '
+            Me.pnlFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.pnlFooter.Controls.Add(Me.lblFooterRule)
+            Me.pnlFooter.Controls.Add(Me.Button1)
+            Me.pnlFooter.Controls.Add(Me.Button2)
+            Me.pnlFooter.Controls.Add(Me.Button3)
+            Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
+            Me.pnlFooter.Location = New System.Drawing.Point(0, 430)
+            Me.pnlFooter.Name = "pnlFooter"
+            Me.pnlFooter.Size = New System.Drawing.Size(520, 62)
+            Me.pnlFooter.TabIndex = 2
+            '
+            'lblFooterRule
+            '
+            Me.lblFooterRule.BackColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.lblFooterRule.Dock = System.Windows.Forms.DockStyle.Top
+            Me.lblFooterRule.Location = New System.Drawing.Point(0, 0)
+            Me.lblFooterRule.Name = "lblFooterRule"
+            Me.lblFooterRule.Size = New System.Drawing.Size(520, 1)
+            Me.lblFooterRule.TabIndex = 0
+            '
+            'Button1
+            '
+            Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+            Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.Button1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.Button1.Location = New System.Drawing.Point(18, 18)
+            Me.Button1.Name = "Button1"
+            Me.Button1.Size = New System.Drawing.Size(75, 29)
+            Me.Button1.TabIndex = 5
+            Me.Button1.Text = "Button1"
+            Me.Button1.UseVisualStyleBackColor = False
+            Me.Button1.Visible = False
+            '
+            'Button2
+            '
+            Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.Button2.DialogResult = System.Windows.Forms.DialogResult.OK
+            Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.Button2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Button2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.Button2.Location = New System.Drawing.Point(326, 18)
+            Me.Button2.Name = "Button2"
+            Me.Button2.Size = New System.Drawing.Size(80, 29)
+            Me.Button2.TabIndex = 5
+            Me.Button2.Text = "OK"
+            Me.Button2.UseVisualStyleBackColor = False
+            '
+            'Button3
+            '
+            Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.Button3.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.Button3.DialogResult = System.Windows.Forms.DialogResult.Cancel
+            Me.Button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.Button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.Button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.Button3.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Button3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.Button3.Location = New System.Drawing.Point(416, 18)
+            Me.Button3.Name = "Button3"
+            Me.Button3.Size = New System.Drawing.Size(80, 29)
+            Me.Button3.TabIndex = 5
+            Me.Button3.Text = "Cancel"
+            Me.Button3.UseVisualStyleBackColor = False
+            '
+            'pnlHeader
+            '
+            Me.pnlHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.pnlHeader.Controls.Add(Me.lblTitle)
+            Me.pnlHeader.Controls.Add(Me.lblSubtitle)
+            Me.pnlHeader.Controls.Add(Me.lblHeaderRule)
+            Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
+            Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
+            Me.pnlHeader.Name = "pnlHeader"
+            Me.pnlHeader.Size = New System.Drawing.Size(520, 67)
+            Me.pnlHeader.TabIndex = 0
+            '
+            'lblTitle
+            '
+            Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.lblTitle.Location = New System.Drawing.Point(18, 12)
+            Me.lblTitle.Name = "lblTitle"
+            Me.lblTitle.Size = New System.Drawing.Size(360, 23)
+            Me.lblTitle.TabIndex = 0
+            Me.lblTitle.Text = "Module Item Editor"
+            Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'lblSubtitle
+            '
+            Me.lblSubtitle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.lblSubtitle.Location = New System.Drawing.Point(20, 37)
+            Me.lblSubtitle.Name = "lblSubtitle"
+            Me.lblSubtitle.Size = New System.Drawing.Size(440, 18)
+            Me.lblSubtitle.TabIndex = 1
+            Me.lblSubtitle.Text = "Restored KoTOR Tool module placement and transition properties."
+            Me.lblSubtitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'lblHeaderRule
+            '
+            Me.lblHeaderRule.BackColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.lblHeaderRule.Dock = System.Windows.Forms.DockStyle.Bottom
+            Me.lblHeaderRule.Location = New System.Drawing.Point(0, 65)
+            Me.lblHeaderRule.Name = "lblHeaderRule"
+            Me.lblHeaderRule.Size = New System.Drawing.Size(520, 2)
+            Me.lblHeaderRule.TabIndex = 2
+            '
+            'ErrorProvider1
+            '
             Me.ErrorProvider1.ContainerControl = Me
-            Me.AutoScaleBaseSize = New Global.System.Drawing.Size(5, 13)
-            Me.ClientSize = New Global.System.Drawing.Size(504, 389)
-            Me.Controls.Add(Me.tabctrl)
-            Me.Controls.Add(Me.Button1)
-            Me.Controls.Add(Me.Button2)
-            Me.Controls.Add(Me.Button3)
-            Me.Icon = CType(resources.GetObject("$this.Icon"), Global.System.Drawing.Icon)
+            '
+            'frmModuleItem_Base_Editor
+            '
+            Me.AcceptButton = Me.Button2
+            Me.AutoScaleBaseSize = New System.Drawing.Size(5, 15)
+            Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.CancelButton = Me.Button3
+            Me.ClientSize = New System.Drawing.Size(520, 492)
+            Me.Controls.Add(Me.pnlRoot)
+            Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
             Me.MaximizeBox = False
             Me.MinimizeBox = False
             Me.Name = "frmModuleItem_Base_Editor"
-            Me.StartPosition = Global.System.Windows.Forms.FormStartPosition.CenterParent
+            Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
             Me.Text = ""
-            CType(Me.nudXY, Global.System.ComponentModel.ISupportInitialize).EndInit()
+            Me.pnlRoot.ResumeLayout(False)
+            Me.pnlBody.ResumeLayout(False)
             Me.tabctrl.ResumeLayout(False)
             Me.tabpagGeneral.ResumeLayout(False)
+            Me.tabpagGeneral.PerformLayout()
+            CType(Me.pboxXY, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudXY, System.ComponentModel.ISupportInitialize).EndInit()
             Me.tabpagWaypoint.ResumeLayout(False)
-            Me.tabpagEncounter.ResumeLayout(False)
-            CType(Me.nudXYSpawnPointBearing, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudSpawnPointX, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudSpawnPointY, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudSpawnPointZ, Global.System.ComponentModel.ISupportInitialize).EndInit()
+            Me.tabpagWaypoint.PerformLayout()
             Me.tabpagDoor.ResumeLayout(False)
+            Me.tabpagDoor.PerformLayout()
             Me.gbTriggerNode.ResumeLayout(False)
+            Me.gbTriggerNode.PerformLayout()
+            Me.tabpagEncounter.ResumeLayout(False)
+            Me.tabpagEncounter.PerformLayout()
+            CType(Me.pboxXYSpawnPointBearing, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudXYSpawnPointBearing, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudSpawnPointX, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudSpawnPointY, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudSpawnPointZ, System.ComponentModel.ISupportInitialize).EndInit()
             Me.tabpagCamera.ResumeLayout(False)
-            CType(Me.nudCamOrientationX, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudCamOrientationY, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudCamOrientationZ, Global.System.ComponentModel.ISupportInitialize).EndInit()
-
-            ' -------------------------------------------------------------
-            ' Event bindings restored from decompiled synchronized
-            ' AccessedThroughProperty wrappers.
-            ' -------------------------------------------------------------
-            AddHandler Me.nudXY.ValueChanged, AddressOf Me.nudXY_ValueChanged
-            AddHandler Me.nudXY.KeyUp, AddressOf Me.nudXY_KeyUp
-            AddHandler Me.btnShowQuaternion.MouseUp, AddressOf Me.btnShowQuaternion_MouseUp
-            AddHandler Me.btnShowQuaternion.MouseDown, AddressOf Me.btnShowQuaternion_MouseDown
-            AddHandler Me.nudCamOrientationX.ValueChanged, AddressOf Me.nudCamOrientation_ValueChanged
-            AddHandler Me.nudCamOrientationY.ValueChanged, AddressOf Me.nudCamOrientation_ValueChanged
-            AddHandler Me.nudCamOrientationZ.ValueChanged, AddressOf Me.nudCamOrientation_ValueChanged
-            AddHandler Me.nudXYSpawnPointBearing.KeyUp, AddressOf Me.nudXYSpawnPointBearing_KeyUp
-            AddHandler Me.nudXYSpawnPointBearing.ValueChanged, AddressOf Me.nudXYSpawnPointBearing_ValueChanged
-            AddHandler Me.lbSpawnPoints.SelectedIndexChanged, AddressOf Me.lbSpawnPoints_SelectedIndexChanged
-            AddHandler Me.btnSetNameLang.Click, AddressOf Me.btnSetNameLang_Click
+            Me.tabpagCamera.PerformLayout()
+            CType(Me.nudCamOrientationX, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudCamOrientationY, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudCamOrientationZ, System.ComponentModel.ISupportInitialize).EndInit()
+            Me.pnlFooter.ResumeLayout(False)
+            Me.pnlHeader.ResumeLayout(False)
+            CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
             Me.ResumeLayout(False)
+
         End Sub
 
     End Class

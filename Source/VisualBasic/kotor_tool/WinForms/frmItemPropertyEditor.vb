@@ -112,7 +112,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000670 RID: 1648 RVA: 0x0024BFA4 File Offset: 0x0024AFA4
-        Private Sub cmbxPropertyName_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmbxPropertyName_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbxPropertyName.SelectedIndexChanged
             Dim indiceData As String = Me.itempropdef.GetIndiceData(Me.cmbxPropertyName.SelectedIndex, "subtyperesref")
             Dim indiceData2 As String = Me.itempropdef.GetIndiceData(Me.cmbxPropertyName.SelectedIndex, "costtableresref")
             Dim indiceData3 As String = Me.itempropdef.GetIndiceData(Me.cmbxPropertyName.SelectedIndex, "param1resref")
@@ -190,7 +190,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000671 RID: 1649 RVA: 0x0024C434 File Offset: 0x0024B434
-        Private Sub cmbxSubtype_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmbxSubtype_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbxSubtype.SelectedIndexChanged
             If Me.g_bCmbxPropertyHasParam1ResRef Then
                 Return
             End If
@@ -265,7 +265,7 @@ Namespace kotor_tool
         End Function
 
         ' Token: 0x06000673 RID: 1651 RVA: 0x0024C7E0 File Offset: 0x0024B7E0
-        Private Sub btnDebug_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnDebug_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnDebug.Click
             If Me.debug Then
                 Dim size As Size = New Size(520, 296)
                 Me.Size = size
@@ -286,17 +286,17 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000674 RID: 1652 RVA: 0x0024C898 File Offset: 0x0024B898
-        Private Sub cmbxCostValue_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmbxCostValue_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbxCostValue.SelectedIndexChanged
             Me.btnOK.Enabled = Me.ValidateForm()
         End Sub
 
         ' Token: 0x06000675 RID: 1653 RVA: 0x0024C8AC File Offset: 0x0024B8AC
-        Private Sub cmbxParam1Value_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmbxParam1Value_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbxParam1Value.SelectedIndexChanged
             Me.btnOK.Enabled = Me.ValidateForm()
         End Sub
 
         ' Token: 0x06000676 RID: 1654 RVA: 0x0024C8C0 File Offset: 0x0024B8C0
-        Private Sub cmbxParam2Value_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmbxParam2Value_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbxParam2Value.SelectedIndexChanged
             Me.btnOK.Enabled = Me.ValidateForm()
         End Sub
 

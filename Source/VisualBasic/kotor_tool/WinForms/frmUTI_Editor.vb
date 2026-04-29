@@ -732,7 +732,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060013EF RID: 5103 RVA: 0x002B5690 File Offset: 0x002B4690
-        Private Sub dgProperties_DoubleClick(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub dgProperties_DoubleClick(ByVal sender As Object, ByVal e As EventArgs) Handles dgProperties.DoubleClick
             Dim cursor As Cursor = cursor.Current
             Dim dataGrid As DataGrid = CType(sender, DataGrid)
             Dim hitTestInfo As DataGrid.HitTestInfo = dataGrid.HitTest(dataGrid.PointToClient(Control.MousePosition).X, dataGrid.PointToClient(Control.MousePosition).Y)
@@ -910,7 +910,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060013F2 RID: 5106 RVA: 0x002B6160 File Offset: 0x002B5160
-        Private Sub btnCancel_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnCancel_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnCancel.Click
             Me.Close()
         End Sub
 
@@ -930,7 +930,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060013F6 RID: 5110 RVA: 0x002B619C File Offset: 0x002B519C
-        Private Sub btnSave_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnSave_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSave.Click
             Me.SetGFFNodeValues()
             If Not Me.m_bSaveGameMode Then
                 Me.m_EditingFilePath = StringType.FromObject(frmMain.GetFilePath("save", Me.CurrentSettings.defaultSaveLocation, Path.GetFileNameWithoutExtension(Me.m_EditingFilePath) + ".uti", "", "", False, True))
@@ -945,7 +945,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060013F7 RID: 5111 RVA: 0x002B6234 File Offset: 0x002B5234
-        Private Sub btnDebug_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnDebug_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnDebug.Click
             Dim frmTextEditor As frmTextEditor = New frmTextEditor()
             frmTextEditor.Filename = Me.tbTag.Text
             frmTextEditor.Text = "Text Editor - " + frmTextEditor.Filename
@@ -956,7 +956,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060013F8 RID: 5112 RVA: 0x002B62A0 File Offset: 0x002B52A0
-        Private Sub btnLoadXML_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnLoadXML_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnLoadXML.Click
             Dim text As String = StringType.FromObject(frmMain.GetFilePath("load", Me.CurrentSettings.defaultImportLocation, "", "Load Properties (XML) file...", "xml", False, True))
             If StringType.StrCmp(text, "", False) = 0 Then
                 Return
@@ -973,7 +973,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060013F9 RID: 5113 RVA: 0x002B6354 File Offset: 0x002B5354
-        Private Sub btnSaveXML_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnSaveXML_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSaveXML.Click
             Dim text As String = StringType.FromObject(frmMain.GetFilePath("save", Me.CurrentSettings.defaultSaveLocation, Me.tbTemplateResRef.Text + ".xml", "Save Properties (XML) file...", "xml", False, True))
             If StringType.StrCmp(text, "", False) = 0 Then
                 Return
@@ -986,7 +986,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060013FA RID: 5114 RVA: 0x002B63E8 File Offset: 0x002B53E8
-        Private Sub btnSetUnidentDescLang_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnSetUnidentDescLang_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSetUnidentDescLang.Click
             Dim frmCExoLocStringLanguagePicker As frmCExoLocStringLanguagePicker = New frmCExoLocStringLanguagePicker(Me.UnidentDescLang)
             If frmCExoLocStringLanguagePicker.ShowDialog(Me) = DialogResult.OK Then
                 Me.UnidentDescLang = frmCExoLocStringLanguagePicker.LanguageID
@@ -994,7 +994,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060013FB RID: 5115 RVA: 0x002B6418 File Offset: 0x002B5418
-        Private Sub btnSetIdentDescLang_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnSetIdentDescLang_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSetIdentDescLang.Click
             Dim frmCExoLocStringLanguagePicker As frmCExoLocStringLanguagePicker = New frmCExoLocStringLanguagePicker(Me.IdentDescLang)
             If frmCExoLocStringLanguagePicker.ShowDialog(Me) = DialogResult.OK Then
                 Me.IdentDescLang = frmCExoLocStringLanguagePicker.LanguageID

@@ -1,14 +1,33 @@
+Option Strict Off
+Option Explicit On
+
 Namespace kotor_tool
-	' Token: 0x02000054 RID: 84
-	Public Partial Class frmMain
-		Inherits Global.System.Windows.Forms.Form
+
+    Partial Public Class frmMain
+        Inherits Global.System.Windows.Forms.Form
 
         ' -----------------------------------------------------------------
-        ' Designer fields restored from decompiled
-        ' AccessedThroughProperty wrappers.
-        ' Kept before InitializeComponent for VS2010 CodeDom safety.
+        ' frmMain.Designer.vb
+        '
+        ' Restored / facelifted main form for the KoTOR Tool Restoration.
+        '
+        ' Original Tool:
+        '   Fred Tetra's KotOR Tool
+        '
+        ' Restoration Project:
+        '   KoTOR Tool Restoration Project
+        '
+        ' Notes:
+        '   - VS2010 / .NET Framework 2.0 compatible.
+        '   - Original control names preserved where possible.
+        '   - Legacy ToolBar/ToolBarButton system replaced with a modern
+        '     themed Panel + Button toolbar for better dark-theme control.
+        '   - Theme colours are applied at runtime from Themes\DarkSaber.ini.
+        '   - Designer keeps fallback colours only for safe VS designer display.
         ' -----------------------------------------------------------------
+
         Private components As Global.System.ComponentModel.IContainer
+
         Friend WithEvents TreeView As Global.System.Windows.Forms.TreeView
         Friend WithEvents btnExtract As Global.System.Windows.Forms.Button
         Friend WithEvents MainMenu1 As Global.System.Windows.Forms.MainMenu
@@ -33,14 +52,8 @@ Namespace kotor_tool
         Friend WithEvents tvCMenu As Global.System.Windows.Forms.ContextMenu
         Friend WithEvents cmiExtractForModuleEditing As Global.System.Windows.Forms.MenuItem
         Friend WithEvents miConversationEditor As Global.System.Windows.Forms.MenuItem
-        Friend WithEvents ToolBar1 As Global.System.Windows.Forms.ToolBar
-        Friend WithEvents tbbtn2DAEditor As Global.System.Windows.Forms.ToolBarButton
-        Friend WithEvents tbbtnConversationEditor As Global.System.Windows.Forms.ToolBarButton
-        Friend WithEvents tbbtnTextEditor As Global.System.Windows.Forms.ToolBarButton
-        Friend WithEvents tbbtnERFBuilder As Global.System.Windows.Forms.ToolBarButton
         Friend WithEvents MenuItem4 As Global.System.Windows.Forms.MenuItem
         Friend WithEvents miCleanWorkingDir As Global.System.Windows.Forms.MenuItem
-        Friend WithEvents imglstToolBar As Global.System.Windows.Forms.ImageList
         Friend WithEvents miRefSearch As Global.System.Windows.Forms.MenuItem
         Friend WithEvents miFile As Global.System.Windows.Forms.MenuItem
         Friend WithEvents miRecentFiles As Global.System.Windows.Forms.MenuItem
@@ -64,23 +77,49 @@ Namespace kotor_tool
         Friend WithEvents Button1 As Global.System.Windows.Forms.Button
         Friend WithEvents btnExtractForModuleEditing As Global.System.Windows.Forms.Button
 
+        Friend WithEvents pnlRoot As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlMainArea As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlActionPanel As Global.System.Windows.Forms.Panel
+        Friend WithEvents lblActionHeader As Global.System.Windows.Forms.Label
+        Friend WithEvents lblMainSeparator As Global.System.Windows.Forms.Label
 
-		' Token: 0x0600067A RID: 1658 RVA: 0x0024CA38 File Offset: 0x0024BA38
-		Protected Overrides Sub Dispose(disposing As Boolean)
-            If disposing AndAlso Me.Components IsNot Nothing Then
-                Me.Components.Dispose()
+        Friend WithEvents pnlToolBar As Global.System.Windows.Forms.Panel
+        Friend WithEvents btnTool2DA As Global.System.Windows.Forms.Button
+        Friend WithEvents btnToolConversation As Global.System.Windows.Forms.Button
+        Friend WithEvents btnToolText As Global.System.Windows.Forms.Button
+        Friend WithEvents btnToolERF As Global.System.Windows.Forms.Button
+        Friend WithEvents ToolTip1 As Global.System.Windows.Forms.ToolTip
+
+        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+            If disposing AndAlso Me.components IsNot Nothing Then
+                Me.components.Dispose()
             End If
-			MyBase.Dispose(disposing)
-		End Sub
 
-		' Token: 0x060006E7 RID: 1767 RVA: 0x0024DCA0 File Offset: 0x0024CCA0
+            MyBase.Dispose(disposing)
+        End Sub
+
         <Global.System.Diagnostics.DebuggerStepThrough()> _
-  Private Sub InitializeComponent()
+        Private Sub InitializeComponent()
             Me.components = New System.ComponentModel.Container()
+            Me.pnlRoot = New System.Windows.Forms.Panel()
+            Me.pnlMainArea = New System.Windows.Forms.Panel()
             Me.TreeView = New System.Windows.Forms.TreeView()
+            Me.pnlActionPanel = New System.Windows.Forms.Panel()
+            Me.Button4 = New System.Windows.Forms.Button()
+            Me.btnCreateMapInfoBFD = New System.Windows.Forms.Button()
+            Me.Button1 = New System.Windows.Forms.Button()
             Me.btnHexViewer = New System.Windows.Forms.Button()
+            Me.btnExtractForModuleEditing = New System.Windows.Forms.Button()
             Me.btnExtract = New System.Windows.Forms.Button()
-            Me.MainMenu1 = New System.Windows.Forms.MainMenu()
+            Me.lblActionHeader = New System.Windows.Forms.Label()
+            Me.lblMainSeparator = New System.Windows.Forms.Label()
+            Me.pnlToolBar = New System.Windows.Forms.Panel()
+            Me.btnToolERF = New System.Windows.Forms.Button()
+            Me.btnToolText = New System.Windows.Forms.Button()
+            Me.btnToolConversation = New System.Windows.Forms.Button()
+            Me.btnTool2DA = New System.Windows.Forms.Button()
+            Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+            Me.MainMenu1 = New System.Windows.Forms.MainMenu(Me.components)
             Me.miFile = New System.Windows.Forms.MenuItem()
             Me.miManagePaths = New System.Windows.Forms.MenuItem()
             Me.miOpenGFFFile = New System.Windows.Forms.MenuItem()
@@ -121,51 +160,248 @@ Namespace kotor_tool
             Me.miAbout = New System.Windows.Forms.MenuItem()
             Me.tvCMenu = New System.Windows.Forms.ContextMenu()
             Me.cmiExtractForModuleEditing = New System.Windows.Forms.MenuItem()
-            Me.ToolBar1 = New System.Windows.Forms.ToolBar()
-            Me.tbbtn2DAEditor = New System.Windows.Forms.ToolBarButton()
-            Me.tbbtnConversationEditor = New System.Windows.Forms.ToolBarButton()
-            Me.tbbtnTextEditor = New System.Windows.Forms.ToolBarButton()
-            Me.tbbtnERFBuilder = New System.Windows.Forms.ToolBarButton()
-            Me.imglstToolBar = New System.Windows.Forms.ImageList()
-            Me.btnExtractForModuleEditing = New System.Windows.Forms.Button()
-            Me.Button4 = New System.Windows.Forms.Button()
-            Me.btnCreateMapInfoBFD = New System.Windows.Forms.Button()
-            Me.Button1 = New System.Windows.Forms.Button()
+            Me.pnlRoot.SuspendLayout()
+            Me.pnlMainArea.SuspendLayout()
+            Me.pnlActionPanel.SuspendLayout()
+            Me.pnlToolBar.SuspendLayout()
             Me.SuspendLayout()
+            '
+            'pnlRoot
+            '
+            Me.pnlRoot.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.pnlRoot.Controls.Add(Me.pnlMainArea)
+            Me.pnlRoot.Controls.Add(Me.lblMainSeparator)
+            Me.pnlRoot.Controls.Add(Me.pnlToolBar)
+            Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
+            Me.pnlRoot.Name = "pnlRoot"
+            Me.pnlRoot.Padding = New System.Windows.Forms.Padding(10)
+            Me.pnlRoot.Size = New System.Drawing.Size(560, 500)
+            Me.pnlRoot.TabIndex = 0
+            '
+            'pnlMainArea
+            '
+            Me.pnlMainArea.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.pnlMainArea.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.pnlMainArea.Controls.Add(Me.TreeView)
+            Me.pnlMainArea.Controls.Add(Me.pnlActionPanel)
+            Me.pnlMainArea.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.pnlMainArea.Location = New System.Drawing.Point(10, 48)
+            Me.pnlMainArea.Name = "pnlMainArea"
+            Me.pnlMainArea.Padding = New System.Windows.Forms.Padding(10)
+            Me.pnlMainArea.Size = New System.Drawing.Size(540, 442)
+            Me.pnlMainArea.TabIndex = 5
             '
             'TreeView
             '
-            Me.TreeView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                        Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TreeView.Location = New System.Drawing.Point(16, 40)
+            Me.TreeView.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
+            Me.TreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.TreeView.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TreeView.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.TreeView.HideSelection = False
+            Me.TreeView.Location = New System.Drawing.Point(10, 10)
             Me.TreeView.Name = "TreeView"
-            Me.TreeView.Size = New System.Drawing.Size(302, 400)
+            Me.TreeView.Size = New System.Drawing.Size(388, 420)
             Me.TreeView.TabIndex = 1
+            '
+            'pnlActionPanel
+            '
+            Me.pnlActionPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.pnlActionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.pnlActionPanel.Controls.Add(Me.Button4)
+            Me.pnlActionPanel.Controls.Add(Me.btnCreateMapInfoBFD)
+            Me.pnlActionPanel.Controls.Add(Me.Button1)
+            Me.pnlActionPanel.Controls.Add(Me.btnHexViewer)
+            Me.pnlActionPanel.Controls.Add(Me.btnExtractForModuleEditing)
+            Me.pnlActionPanel.Controls.Add(Me.btnExtract)
+            Me.pnlActionPanel.Controls.Add(Me.lblActionHeader)
+            Me.pnlActionPanel.Dock = System.Windows.Forms.DockStyle.Right
+            Me.pnlActionPanel.Location = New System.Drawing.Point(398, 10)
+            Me.pnlActionPanel.Name = "pnlActionPanel"
+            Me.pnlActionPanel.Padding = New System.Windows.Forms.Padding(10)
+            Me.pnlActionPanel.Size = New System.Drawing.Size(130, 420)
+            Me.pnlActionPanel.TabIndex = 6
+            '
+            'Button4
+            '
+            Me.Button4.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.Button4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.Button4.Location = New System.Drawing.Point(10, 238)
+            Me.Button4.Name = "Button4"
+            Me.Button4.Size = New System.Drawing.Size(108, 24)
+            Me.Button4.TabIndex = 7
+            Me.Button4.Text = "Parse NWScript"
+            Me.Button4.UseVisualStyleBackColor = False
+            Me.Button4.Visible = False
+            '
+            'btnCreateMapInfoBFD
+            '
+            Me.btnCreateMapInfoBFD.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnCreateMapInfoBFD.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnCreateMapInfoBFD.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnCreateMapInfoBFD.Location = New System.Drawing.Point(10, 298)
+            Me.btnCreateMapInfoBFD.Name = "btnCreateMapInfoBFD"
+            Me.btnCreateMapInfoBFD.Size = New System.Drawing.Size(108, 23)
+            Me.btnCreateMapInfoBFD.TabIndex = 9
+            Me.btnCreateMapInfoBFD.Text = "Create MapInfo"
+            Me.btnCreateMapInfoBFD.UseVisualStyleBackColor = False
+            Me.btnCreateMapInfoBFD.Visible = False
+            '
+            'Button1
+            '
+            Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.Button1.Location = New System.Drawing.Point(10, 268)
+            Me.Button1.Name = "Button1"
+            Me.Button1.Size = New System.Drawing.Size(108, 24)
+            Me.Button1.TabIndex = 8
+            Me.Button1.Text = "Test Getktsi"
+            Me.Button1.UseVisualStyleBackColor = False
+            Me.Button1.Visible = False
             '
             'btnHexViewer
             '
-            Me.btnHexViewer.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.btnHexViewer.BackColor = System.Drawing.SystemColors.Control
+            Me.btnHexViewer.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
             Me.btnHexViewer.Enabled = False
-            Me.btnHexViewer.Location = New System.Drawing.Point(324, 172)
+            Me.btnHexViewer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnHexViewer.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnHexViewer.Location = New System.Drawing.Point(10, 178)
             Me.btnHexViewer.Name = "btnHexViewer"
-            Me.btnHexViewer.Size = New System.Drawing.Size(110, 50)
+            Me.btnHexViewer.Size = New System.Drawing.Size(108, 50)
             Me.btnHexViewer.TabIndex = 0
             Me.btnHexViewer.Text = "Hex Viewer"
             Me.btnHexViewer.UseVisualStyleBackColor = False
             '
+            'btnExtractForModuleEditing
+            '
+            Me.btnExtractForModuleEditing.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnExtractForModuleEditing.Enabled = False
+            Me.btnExtractForModuleEditing.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnExtractForModuleEditing.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnExtractForModuleEditing.Location = New System.Drawing.Point(10, 106)
+            Me.btnExtractForModuleEditing.Name = "btnExtractForModuleEditing"
+            Me.btnExtractForModuleEditing.Size = New System.Drawing.Size(108, 64)
+            Me.btnExtractForModuleEditing.TabIndex = 5
+            Me.btnExtractForModuleEditing.Text = "Extract for Module Editing"
+            Me.btnExtractForModuleEditing.UseVisualStyleBackColor = False
+            '
             'btnExtract
             '
-            Me.btnExtract.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.btnExtract.BackColor = System.Drawing.SystemColors.Control
+            Me.btnExtract.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
             Me.btnExtract.Enabled = False
-            Me.btnExtract.Location = New System.Drawing.Point(324, 40)
+            Me.btnExtract.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnExtract.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnExtract.Location = New System.Drawing.Point(10, 42)
             Me.btnExtract.Name = "btnExtract"
-            Me.btnExtract.Size = New System.Drawing.Size(110, 56)
+            Me.btnExtract.Size = New System.Drawing.Size(108, 56)
             Me.btnExtract.TabIndex = 1
             Me.btnExtract.Text = "Extract"
             Me.btnExtract.UseVisualStyleBackColor = False
+            '
+            'lblActionHeader
+            '
+            Me.lblActionHeader.BackColor = System.Drawing.Color.Transparent
+            Me.lblActionHeader.Dock = System.Windows.Forms.DockStyle.Top
+            Me.lblActionHeader.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblActionHeader.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.lblActionHeader.Location = New System.Drawing.Point(10, 10)
+            Me.lblActionHeader.Name = "lblActionHeader"
+            Me.lblActionHeader.Size = New System.Drawing.Size(108, 22)
+            Me.lblActionHeader.TabIndex = 6
+            Me.lblActionHeader.Text = "RESOURCE TOOLS"
+            Me.lblActionHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+            '
+            'lblMainSeparator
+            '
+            Me.lblMainSeparator.BackColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.lblMainSeparator.Dock = System.Windows.Forms.DockStyle.Top
+            Me.lblMainSeparator.Location = New System.Drawing.Point(10, 46)
+            Me.lblMainSeparator.Name = "lblMainSeparator"
+            Me.lblMainSeparator.Size = New System.Drawing.Size(540, 2)
+            Me.lblMainSeparator.TabIndex = 10
+            '
+            'pnlToolBar
+            '
+            Me.pnlToolBar.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.pnlToolBar.Controls.Add(Me.btnToolERF)
+            Me.pnlToolBar.Controls.Add(Me.btnToolText)
+            Me.pnlToolBar.Controls.Add(Me.btnToolConversation)
+            Me.pnlToolBar.Controls.Add(Me.btnTool2DA)
+            Me.pnlToolBar.Dock = System.Windows.Forms.DockStyle.Top
+            Me.pnlToolBar.Location = New System.Drawing.Point(10, 10)
+            Me.pnlToolBar.Name = "pnlToolBar"
+            Me.pnlToolBar.Size = New System.Drawing.Size(540, 36)
+            Me.pnlToolBar.TabIndex = 4
+            '
+            'btnToolERF
+            '
+            Me.btnToolERF.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnToolERF.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnToolERF.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.btnToolERF.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnToolERF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+            Me.btnToolERF.Location = New System.Drawing.Point(336, 2)
+            Me.btnToolERF.Name = "btnToolERF"
+            Me.btnToolERF.Size = New System.Drawing.Size(106, 30)
+            Me.btnToolERF.TabIndex = 3
+            Me.btnToolERF.Text = "ERF Builder"
+            Me.btnToolERF.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+            Me.btnToolERF.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+            Me.ToolTip1.SetToolTip(Me.btnToolERF, "Open the ERF/MOD Builder")
+            Me.btnToolERF.UseVisualStyleBackColor = False
+            '
+            'btnToolText
+            '
+            Me.btnToolText.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnToolText.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnToolText.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.btnToolText.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnToolText.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+            Me.btnToolText.Location = New System.Drawing.Point(224, 2)
+            Me.btnToolText.Name = "btnToolText"
+            Me.btnToolText.Size = New System.Drawing.Size(106, 30)
+            Me.btnToolText.TabIndex = 2
+            Me.btnToolText.Text = "Text Editor"
+            Me.btnToolText.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+            Me.btnToolText.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+            Me.ToolTip1.SetToolTip(Me.btnToolText, "Open the Text Editor")
+            Me.btnToolText.UseVisualStyleBackColor = False
+            '
+            'btnToolConversation
+            '
+            Me.btnToolConversation.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnToolConversation.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnToolConversation.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.btnToolConversation.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnToolConversation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+            Me.btnToolConversation.Location = New System.Drawing.Point(112, 2)
+            Me.btnToolConversation.Name = "btnToolConversation"
+            Me.btnToolConversation.Size = New System.Drawing.Size(106, 30)
+            Me.btnToolConversation.TabIndex = 1
+            Me.btnToolConversation.Text = "Dialog Editor"
+            Me.btnToolConversation.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+            Me.btnToolConversation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+            Me.ToolTip1.SetToolTip(Me.btnToolConversation, "Open the Conversation Editor")
+            Me.btnToolConversation.UseVisualStyleBackColor = False
+            '
+            'btnTool2DA
+            '
+            Me.btnTool2DA.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnTool2DA.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnTool2DA.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.btnTool2DA.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnTool2DA.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+            Me.btnTool2DA.Location = New System.Drawing.Point(0, 2)
+            Me.btnTool2DA.Name = "btnTool2DA"
+            Me.btnTool2DA.Size = New System.Drawing.Size(106, 30)
+            Me.btnTool2DA.TabIndex = 0
+            Me.btnTool2DA.Text = "2DA Editor"
+            Me.btnTool2DA.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+            Me.btnTool2DA.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+            Me.ToolTip1.SetToolTip(Me.btnTool2DA, "Open the 2DA Editor")
+            Me.btnTool2DA.UseVisualStyleBackColor = False
             '
             'MainMenu1
             '
@@ -387,124 +623,25 @@ Namespace kotor_tool
             Me.cmiExtractForModuleEditing.Index = 0
             Me.cmiExtractForModuleEditing.Text = "Extract for Module editing..."
             '
-            'ToolBar1
-            '
-            Me.ToolBar1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-            Me.ToolBar1.Buttons.AddRange(New System.Windows.Forms.ToolBarButton() {Me.tbbtn2DAEditor, Me.tbbtnConversationEditor, Me.tbbtnTextEditor, Me.tbbtnERFBuilder})
-            Me.ToolBar1.ButtonSize = New System.Drawing.Size(20, 20)
-            Me.ToolBar1.DropDownArrows = True
-            Me.ToolBar1.ImageList = Me.imglstToolBar
-            Me.ToolBar1.Location = New System.Drawing.Point(0, 0)
-            Me.ToolBar1.Name = "ToolBar1"
-            Me.ToolBar1.ShowToolTips = True
-            Me.ToolBar1.Size = New System.Drawing.Size(438, 33)
-            Me.ToolBar1.TabIndex = 4
-            Me.ToolBar1.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right
-            '
-            'tbbtn2DAEditor
-            '
-            Me.tbbtn2DAEditor.ImageIndex = 0
-            Me.tbbtn2DAEditor.Name = "tbbtn2DAEditor"
-            Me.tbbtn2DAEditor.Text = "2DA"
-            Me.tbbtn2DAEditor.ToolTipText = "Open the 2DA Editor"
-            '
-            'tbbtnConversationEditor
-            '
-            Me.tbbtnConversationEditor.ImageIndex = 1
-            Me.tbbtnConversationEditor.Name = "tbbtnConversationEditor"
-            Me.tbbtnConversationEditor.Text = "CNV"
-            Me.tbbtnConversationEditor.ToolTipText = "Open the Conversation Editor"
-            '
-            'tbbtnTextEditor
-            '
-            Me.tbbtnTextEditor.ImageIndex = 2
-            Me.tbbtnTextEditor.Name = "tbbtnTextEditor"
-            Me.tbbtnTextEditor.Text = "TXT"
-            Me.tbbtnTextEditor.ToolTipText = "Open the Text Editor"
-            '
-            'tbbtnERFBuilder
-            '
-            Me.tbbtnERFBuilder.ImageIndex = 3
-            Me.tbbtnERFBuilder.Name = "tbbtnERFBuilder"
-            Me.tbbtnERFBuilder.Text = "ERF"
-            Me.tbbtnERFBuilder.ToolTipText = "Open the ERF File Builder"
-            '
-            'imglstToolBar
-            '
-            Me.imglstToolBar.ColorDepth = System.Windows.Forms.ColorDepth.Depth16Bit
-            Me.imglstToolBar.ImageSize = New System.Drawing.Size(20, 20)
-            Me.imglstToolBar.TransparentColor = System.Drawing.Color.Transparent
-            '
-            'btnExtractForModuleEditing
-            '
-            Me.btnExtractForModuleEditing.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.btnExtractForModuleEditing.BackColor = System.Drawing.SystemColors.Control
-            Me.btnExtractForModuleEditing.Enabled = False
-            Me.btnExtractForModuleEditing.Location = New System.Drawing.Point(324, 102)
-            Me.btnExtractForModuleEditing.Name = "btnExtractForModuleEditing"
-            Me.btnExtractForModuleEditing.Size = New System.Drawing.Size(110, 64)
-            Me.btnExtractForModuleEditing.TabIndex = 5
-            Me.btnExtractForModuleEditing.Text = "Extract for Module Editing"
-            Me.btnExtractForModuleEditing.UseVisualStyleBackColor = False
-            '
-            'Button4
-            '
-            Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.Button4.BackColor = System.Drawing.SystemColors.Control
-            Me.Button4.Location = New System.Drawing.Point(324, 228)
-            Me.Button4.Name = "Button4"
-            Me.Button4.Size = New System.Drawing.Size(110, 24)
-            Me.Button4.TabIndex = 5
-            Me.Button4.Text = "Parse NWScript"
-            Me.Button4.UseVisualStyleBackColor = False
-            Me.Button4.Visible = False
-            '
-            'btnCreateMapInfoBFD
-            '
-            Me.btnCreateMapInfoBFD.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.btnCreateMapInfoBFD.BackColor = System.Drawing.SystemColors.Control
-            Me.btnCreateMapInfoBFD.Location = New System.Drawing.Point(324, 288)
-            Me.btnCreateMapInfoBFD.Name = "btnCreateMapInfoBFD"
-            Me.btnCreateMapInfoBFD.Size = New System.Drawing.Size(110, 23)
-            Me.btnCreateMapInfoBFD.TabIndex = 5
-            Me.btnCreateMapInfoBFD.Text = "Create MapInfo"
-            Me.btnCreateMapInfoBFD.UseVisualStyleBackColor = False
-            Me.btnCreateMapInfoBFD.Visible = False
-            '
-            'Button1
-            '
-            Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.Button1.BackColor = System.Drawing.SystemColors.Control
-            Me.Button1.Location = New System.Drawing.Point(324, 258)
-            Me.Button1.Name = "Button1"
-            Me.Button1.Size = New System.Drawing.Size(110, 24)
-            Me.Button1.TabIndex = 5
-            Me.Button1.Text = "Test Getktsi"
-            Me.Button1.UseVisualStyleBackColor = False
-            Me.Button1.Visible = False
-            '
             'frmMain
             '
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-            Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-            Me.ClientSize = New System.Drawing.Size(438, 465)
-            Me.Controls.Add(Me.Button4)
-            Me.Controls.Add(Me.btnExtractForModuleEditing)
-            Me.Controls.Add(Me.ToolBar1)
-            Me.Controls.Add(Me.TreeView)
-            Me.Controls.Add(Me.btnHexViewer)
-            Me.Controls.Add(Me.btnExtract)
-            Me.Controls.Add(Me.btnCreateMapInfoBFD)
-            Me.Controls.Add(Me.Button1)
+            Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.ClientSize = New System.Drawing.Size(560, 500)
+            Me.Controls.Add(Me.pnlRoot)
             Me.Menu = Me.MainMenu1
-            Me.MinimumSize = New System.Drawing.Size(304, 352)
+            Me.MinimumSize = New System.Drawing.Size(430, 380)
             Me.Name = "frmMain"
             Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show
             Me.Text = "Kotor Tool"
+            Me.pnlRoot.ResumeLayout(False)
+            Me.pnlMainArea.ResumeLayout(False)
+            Me.pnlActionPanel.ResumeLayout(False)
+            Me.pnlToolBar.ResumeLayout(False)
             Me.ResumeLayout(False)
-            Me.PerformLayout()
 
         End Sub
 
-	End Class
+    End Class
+
 End Namespace

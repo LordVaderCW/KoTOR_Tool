@@ -32,8 +32,101 @@ Namespace kotor_tool
 			Me.cmiInsertCopiedRow = New MenuItem("Insert Copied Row")
 			Me.cmiRenumberRowLabelColumn = New MenuItem("Renumber Row Labels")
 			Me.cmiShowStrings = New MenuItem("Show Strings for Refs")
-			Me.InitializeComponent()
+            Me.InitializeComponent()
+            Me.LoadAndApplyTheme()
 		End Sub
+
+
+        Private _theme As KotorTheme
+
+        Private Sub ApplyApplicationIcon()
+            Try
+                Me.Icon = My.Resources.koTOR_icn
+            Catch ex As System.Exception
+                Console.WriteLine("2DA Editor icon could not be applied: " & ex.Message)
+            End Try
+        End Sub
+
+        Private Sub LoadAndApplyTheme()
+            Try
+                _theme = KotorThemeManager.LoadTheme("DarkSaber")
+            Catch
+                _theme = KotorTheme.CreateDefault()
+            End Try
+
+            Me.Apply2DATheme()
+        End Sub
+
+        Private Sub Apply2DATheme()
+            If _theme Is Nothing Then
+                _theme = KotorTheme.CreateDefault()
+            End If
+
+            Me.BackColor = _theme.WindowBack
+
+            If Me.pnlRoot IsNot Nothing Then
+                Me.pnlRoot.BackColor = _theme.PanelRoot
+            End If
+
+            If Me.pnlHeader IsNot Nothing Then
+                Me.pnlHeader.BackColor = _theme.PanelHeader
+            End If
+
+            If Me.pnlGridHost IsNot Nothing Then
+                Me.pnlGridHost.BackColor = _theme.PanelBody
+            End If
+
+            If Me.lblBottomSeparator IsNot Nothing Then
+                Me.lblBottomSeparator.BackColor = _theme.AccentGold
+            End If
+
+            If Me.lblTitle IsNot Nothing Then
+                Me.lblTitle.ForeColor = _theme.AccentGoldLight
+                Me.lblTitle.Font = New Font(_theme.BodyFontName, 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+            End If
+
+            If Me.lblSubTitle IsNot Nothing Then
+                Me.lblSubTitle.ForeColor = _theme.TextSecondary
+                Me.lblSubTitle.Font = _theme.CreateBodyFont()
+            End If
+
+            Me.ApplyDataGridTheme()
+        End Sub
+
+        Private Sub ApplyDataGridTheme()
+            If Me.dg2DA Is Nothing Then
+                Return
+            End If
+
+            Me.dg2DA.BackgroundColor = _theme.LogoBack
+            Me.dg2DA.BackColor = _theme.LogoBack
+            Me.dg2DA.ForeColor = _theme.TextPrimary
+
+            Me.dg2DA.CaptionBackColor = _theme.PanelHeader
+            Me.dg2DA.CaptionForeColor = _theme.AccentGoldLight
+            Me.dg2DA.CaptionFont = New Font(_theme.BodyFontName, 9.0F, FontStyle.Bold, GraphicsUnit.Point)
+
+            Me.dg2DA.HeaderBackColor = _theme.ControlDark
+            Me.dg2DA.HeaderForeColor = _theme.TextPrimary
+
+            Me.dg2DA.GridLineColor = _theme.BorderDark
+            Me.dg2DA.LinkColor = _theme.AccentGoldLight
+
+            Me.dg2DA.ParentRowsBackColor = _theme.PanelRoot
+            Me.dg2DA.ParentRowsForeColor = _theme.TextSecondary
+
+            Me.dg2DA.SelectionBackColor = _theme.ControlDown
+            Me.dg2DA.SelectionForeColor = _theme.TextPrimary
+
+            Me.dg2DA.FlatMode = True
+
+            Try
+                Me.dg2DA.Font = _theme.CreateBodyFont()
+            Catch
+                Me.dg2DA.Font = New Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point)
+            End Try
+        End Sub
+
 
         ' Token: 0x17000041 RID: 65
         ' (get) Token: 0x06000185 RID: 389 RVA: 0x002265EC File Offset: 0x002255EC
@@ -299,7 +392,8 @@ Namespace kotor_tool
             Me.dg2DA.TableStyles.Clear()
             Me.dg2DA.SetDataBinding(Me.DView, Nothing)
             Me.dg2DA.CaptionText = Me.fname
-            Me.dg2DA.CaptionFont = New Font("Microsoft Sans Serif", 9.0F)
+            Me.dg2DA.CaptionFont = New Font("Segoe UI", 9.0F, FontStyle.Bold, GraphicsUnit.Point)
+            Me.ApplyDataGridTheme()
             Me.CreateTableStyle()
             Me.AutoSizeColumns()
             AddHandler Me.dt.ColumnChanged, AddressOf Me.dt_ColumnChanged
@@ -567,27 +661,51 @@ Namespace kotor_tool
             Me.dg2DA.TableStyles.Clear()
             Me.dg2DA.SetDataBinding(Me.DView, Nothing)
             Me.dg2DA.CaptionText = Me.dt.TableName
-            Me.dg2DA.CaptionFont = New Font("Microsoft Sans Serif", 9.0F)
+            Me.dg2DA.CaptionFont = New Font("Segoe UI", 9.0F, FontStyle.Bold, GraphicsUnit.Point)
+            Me.ApplyDataGridTheme()
             Me.CreateTableStyle()
             Me.AutoSizeColumns()
             dataSet.Tables.Remove(Me.dt)
         End Sub
 
         ' Token: 0x0600019E RID: 414 RVA: 0x00227284 File Offset: 0x00226284
-        Private Sub CreateTableStyle()
+Private Sub CreateTableStyle()
             Dim dataGridTableStyle As DataGridTableStyle = New DataGridTableStyle()
+
             Me.dg2DA.TableStyles.Clear()
-            dataGridTableStyle.AlternatingBackColor = Color.FromArgb(255, 240, 240, 240)
+
+            If _theme Is Nothing Then
+                _theme = KotorTheme.CreateDefault()
+            End If
+
             dataGridTableStyle.MappingName = Me.fname
+            dataGridTableStyle.BackColor = _theme.LogoBack
+            dataGridTableStyle.ForeColor = _theme.TextPrimary
+            dataGridTableStyle.GridLineColor = _theme.BorderDark
+            dataGridTableStyle.HeaderBackColor = _theme.ControlDark
+            dataGridTableStyle.HeaderForeColor = _theme.TextPrimary
+            dataGridTableStyle.SelectionBackColor = _theme.ControlDown
+            dataGridTableStyle.SelectionForeColor = _theme.TextPrimary
+            dataGridTableStyle.AlternatingBackColor = _theme.PanelBody
+            dataGridTableStyle.RowHeaderWidth = 42
+
             Dim num As Integer = 0
             Dim num2 As Integer = Me.dt.Columns.Count - 1
+
             For i As Integer = num To num2
                 Dim dataGridTextBoxColumn As DataGridTextBoxColumn = New DataGridTextBoxColumn()
+
                 dataGridTextBoxColumn.MappingName = Me.dt.Columns(i).Caption
                 dataGridTextBoxColumn.HeaderText = Me.dt.Columns(i).Caption
                 dataGridTextBoxColumn.NullText = ""
+
+                dataGridTextBoxColumn.TextBox.BackColor = _theme.LogoBack
+                dataGridTextBoxColumn.TextBox.ForeColor = _theme.TextPrimary
+                dataGridTextBoxColumn.TextBox.BorderStyle = BorderStyle.None
+
                 dataGridTableStyle.GridColumnStyles.Add(dataGridTextBoxColumn)
             Next
+
             Me.dg2DA.TableStyles.Add(dataGridTableStyle)
         End Sub
 

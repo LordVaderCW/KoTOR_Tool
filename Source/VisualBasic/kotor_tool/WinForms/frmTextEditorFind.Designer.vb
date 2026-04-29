@@ -1,14 +1,23 @@
-Namespace kotor_tool
-	' Token: 0x02000079 RID: 121
-	Public Partial Class frmTextEditorFind
-		Inherits Global.System.Windows.Forms.Form
+Option Strict Off
+Option Explicit On
 
-        ' -----------------------------------------------------------------
-        ' Designer fields restored from decompiled
-        ' AccessedThroughProperty wrappers.
-        ' Kept before InitializeComponent for VS2010 CodeDom safety.
-        ' -----------------------------------------------------------------
+Namespace kotor_tool
+
+    <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+    Partial Public Class frmTextEditorFind
+        Inherits Global.System.Windows.Forms.Form
+
         Private components As Global.System.ComponentModel.IContainer
+
+        Friend WithEvents pnlRoot As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlHeader As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlBody As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlFooter As Global.System.Windows.Forms.Panel
+        Friend WithEvents lblTitle As Global.System.Windows.Forms.Label
+        Friend WithEvents lblSubtitle As Global.System.Windows.Forms.Label
+        Friend WithEvents lblHeaderSeparator As Global.System.Windows.Forms.Label
+        Friend WithEvents lblFooterSeparator As Global.System.Windows.Forms.Label
+
         Friend WithEvents tbFindText As Global.System.Windows.Forms.TextBox
         Friend WithEvents btnFind As Global.System.Windows.Forms.Button
         Friend WithEvents Label1 As Global.System.Windows.Forms.Label
@@ -17,81 +26,252 @@ Namespace kotor_tool
         Friend WithEvents chkbMatchWholeWord As Global.System.Windows.Forms.CheckBox
         Friend WithEvents chkbSearchUp As Global.System.Windows.Forms.CheckBox
 
+        <Global.System.Diagnostics.DebuggerNonUserCode()> _
+        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+            If disposing AndAlso Me.components IsNot Nothing Then
+                Me.components.Dispose()
+            End If
 
-		' Token: 0x060010D1 RID: 4305 RVA: 0x0029DC90 File Offset: 0x0029CC90
-		Protected Overrides Sub Dispose(disposing As Boolean)
-			If disposing AndAlso Me.components IsNot Nothing Then
-				Me.components.Dispose()
-			End If
-			MyBase.Dispose(disposing)
-		End Sub
-
-		' Token: 0x060010E0 RID: 4320 RVA: 0x0029DE00 File Offset: 0x0029CE00
-        <Global.System.Diagnostics.DebuggerStepThrough()> _
-  Private Sub InitializeComponent()
-            Me.tbFindText = New Global.System.Windows.Forms.TextBox()
-            Me.btnFind = New Global.System.Windows.Forms.Button()
-            Me.Label1 = New Global.System.Windows.Forms.Label()
-            Me.btnCancel = New Global.System.Windows.Forms.Button()
-            Me.chkbMatchCase = New Global.System.Windows.Forms.CheckBox()
-            Me.chkbMatchWholeWord = New Global.System.Windows.Forms.CheckBox()
-            Me.chkbSearchUp = New Global.System.Windows.Forms.CheckBox()
-            Me.SuspendLayout()
-            Me.tbFindText.Location = New Global.System.Drawing.Point(96, 16)
-            Me.tbFindText.Name = "tbFindText"
-            Me.tbFindText.Size = New Global.System.Drawing.Size(280, 20)
-            Me.tbFindText.TabIndex = 0
-            Me.tbFindText.Text = ""
-            Me.btnFind.DialogResult = Global.System.Windows.Forms.DialogResult.OK
-            Me.btnFind.Location = New Global.System.Drawing.Point(408, 16)
-            Me.btnFind.Name = "btnFind"
-            Me.btnFind.TabIndex = 1
-            Me.btnFind.Text = "Find"
-            Me.Label1.Location = New Global.System.Drawing.Point(16, 16)
-            Me.Label1.Name = "Label1"
-            Me.Label1.Size = New Global.System.Drawing.Size(56, 16)
-            Me.Label1.TabIndex = 2
-            Me.Label1.Text = "Find what:"
-            Me.btnCancel.DialogResult = Global.System.Windows.Forms.DialogResult.Cancel
-            Me.btnCancel.Location = New Global.System.Drawing.Point(408, 56)
-            Me.btnCancel.Name = "btnCancel"
-            Me.btnCancel.TabIndex = 1
-            Me.btnCancel.Text = "Close"
-            Me.chkbMatchCase.Location = New Global.System.Drawing.Point(24, 41)
-            Me.chkbMatchCase.Name = "chkbMatchCase"
-            Me.chkbMatchCase.Size = New Global.System.Drawing.Size(104, 16)
-            Me.chkbMatchCase.TabIndex = 3
-            Me.chkbMatchCase.Text = "Match case"
-            Me.chkbMatchWholeWord.Location = New Global.System.Drawing.Point(24, 61)
-            Me.chkbMatchWholeWord.Name = "chkbMatchWholeWord"
-            Me.chkbMatchWholeWord.Size = New Global.System.Drawing.Size(136, 16)
-            Me.chkbMatchWholeWord.TabIndex = 3
-            Me.chkbMatchWholeWord.Text = "Match whole word"
-            Me.chkbSearchUp.Location = New Global.System.Drawing.Point(24, 81)
-            Me.chkbSearchUp.Name = "chkbSearchUp"
-            Me.chkbSearchUp.Size = New Global.System.Drawing.Size(104, 16)
-            Me.chkbSearchUp.TabIndex = 3
-            Me.chkbSearchUp.Text = "Search up"
-            Me.AcceptButton = Me.btnFind
-            Me.AutoScaleBaseSize = New Global.System.Drawing.Size(5, 13)
-            Me.CancelButton = Me.btnCancel
-            Me.ClientSize = New Global.System.Drawing.Size(496, 109)
-            Me.ControlBox = False
-            Me.Controls.Add(Me.chkbMatchCase)
-            Me.Controls.Add(Me.Label1)
-            Me.Controls.Add(Me.btnFind)
-            Me.Controls.Add(Me.tbFindText)
-            Me.Controls.Add(Me.btnCancel)
-            Me.Controls.Add(Me.chkbMatchWholeWord)
-            Me.Controls.Add(Me.chkbSearchUp)
-            Me.MaximumSize = New Global.System.Drawing.Size(504, 136)
-            Me.MinimumSize = New Global.System.Drawing.Size(504, 136)
-            Me.Name = "frmTextEditorFind"
-            Me.SizeGripStyle = Global.System.Windows.Forms.SizeGripStyle.Hide
-            Me.StartPosition = Global.System.Windows.Forms.FormStartPosition.CenterParent
-            Me.Text = "Find"
-            Me.ResumeLayout(False)
+            MyBase.Dispose(disposing)
         End Sub
 
-	End Class
+        <Global.System.Diagnostics.DebuggerStepThrough()> _
+        Private Sub InitializeComponent()
+            Me.pnlRoot = New System.Windows.Forms.Panel()
+            Me.pnlBody = New System.Windows.Forms.Panel()
+            Me.chkbSearchUp = New System.Windows.Forms.CheckBox()
+            Me.chkbMatchWholeWord = New System.Windows.Forms.CheckBox()
+            Me.chkbMatchCase = New System.Windows.Forms.CheckBox()
+            Me.tbFindText = New System.Windows.Forms.TextBox()
+            Me.Label1 = New System.Windows.Forms.Label()
+            Me.pnlFooter = New System.Windows.Forms.Panel()
+            Me.btnCancel = New System.Windows.Forms.Button()
+            Me.btnFind = New System.Windows.Forms.Button()
+            Me.lblFooterSeparator = New System.Windows.Forms.Label()
+            Me.pnlHeader = New System.Windows.Forms.Panel()
+            Me.lblSubtitle = New System.Windows.Forms.Label()
+            Me.lblTitle = New System.Windows.Forms.Label()
+            Me.lblHeaderSeparator = New System.Windows.Forms.Label()
+            Me.pnlRoot.SuspendLayout()
+            Me.pnlBody.SuspendLayout()
+            Me.pnlFooter.SuspendLayout()
+            Me.pnlHeader.SuspendLayout()
+            Me.SuspendLayout()
+            '
+            'pnlRoot
+            '
+            Me.pnlRoot.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.pnlRoot.Controls.Add(Me.pnlBody)
+            Me.pnlRoot.Controls.Add(Me.pnlFooter)
+            Me.pnlRoot.Controls.Add(Me.pnlHeader)
+            Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
+            Me.pnlRoot.Name = "pnlRoot"
+            Me.pnlRoot.Size = New System.Drawing.Size(512, 230)
+            Me.pnlRoot.TabIndex = 0
+            '
+            'pnlBody
+            '
+            Me.pnlBody.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.pnlBody.Controls.Add(Me.chkbSearchUp)
+            Me.pnlBody.Controls.Add(Me.chkbMatchWholeWord)
+            Me.pnlBody.Controls.Add(Me.chkbMatchCase)
+            Me.pnlBody.Controls.Add(Me.tbFindText)
+            Me.pnlBody.Controls.Add(Me.Label1)
+            Me.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.pnlBody.Location = New System.Drawing.Point(0, 76)
+            Me.pnlBody.Name = "pnlBody"
+            Me.pnlBody.Padding = New System.Windows.Forms.Padding(26, 20, 26, 18)
+            Me.pnlBody.Size = New System.Drawing.Size(512, 92)
+            Me.pnlBody.TabIndex = 1
+            '
+            'chkbSearchUp
+            '
+            Me.chkbSearchUp.BackColor = System.Drawing.Color.Transparent
+            Me.chkbSearchUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.chkbSearchUp.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.chkbSearchUp.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.chkbSearchUp.Location = New System.Drawing.Point(324, 62)
+            Me.chkbSearchUp.Name = "chkbSearchUp"
+            Me.chkbSearchUp.Size = New System.Drawing.Size(104, 18)
+            Me.chkbSearchUp.TabIndex = 4
+            Me.chkbSearchUp.Text = "Search up"
+            Me.chkbSearchUp.UseVisualStyleBackColor = False
+            '
+            'chkbMatchWholeWord
+            '
+            Me.chkbMatchWholeWord.BackColor = System.Drawing.Color.Transparent
+            Me.chkbMatchWholeWord.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.chkbMatchWholeWord.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.chkbMatchWholeWord.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.chkbMatchWholeWord.Location = New System.Drawing.Point(162, 62)
+            Me.chkbMatchWholeWord.Name = "chkbMatchWholeWord"
+            Me.chkbMatchWholeWord.Size = New System.Drawing.Size(142, 18)
+            Me.chkbMatchWholeWord.TabIndex = 3
+            Me.chkbMatchWholeWord.Text = "Match whole word"
+            Me.chkbMatchWholeWord.UseVisualStyleBackColor = False
+            '
+            'chkbMatchCase
+            '
+            Me.chkbMatchCase.BackColor = System.Drawing.Color.Transparent
+            Me.chkbMatchCase.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.chkbMatchCase.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.chkbMatchCase.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.chkbMatchCase.Location = New System.Drawing.Point(72, 62)
+            Me.chkbMatchCase.Name = "chkbMatchCase"
+            Me.chkbMatchCase.Size = New System.Drawing.Size(96, 18)
+            Me.chkbMatchCase.TabIndex = 2
+            Me.chkbMatchCase.Text = "Match case"
+            Me.chkbMatchCase.UseVisualStyleBackColor = False
+            '
+            'tbFindText
+            '
+            Me.tbFindText.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.tbFindText.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.tbFindText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbFindText.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.tbFindText.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbFindText.Location = New System.Drawing.Point(100, 24)
+            Me.tbFindText.Name = "tbFindText"
+            Me.tbFindText.Size = New System.Drawing.Size(380, 22)
+            Me.tbFindText.TabIndex = 1
+            '
+            'Label1
+            '
+            Me.Label1.BackColor = System.Drawing.Color.Transparent
+            Me.Label1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.Label1.Location = New System.Drawing.Point(28, 27)
+            Me.Label1.Name = "Label1"
+            Me.Label1.Size = New System.Drawing.Size(72, 18)
+            Me.Label1.TabIndex = 0
+            Me.Label1.Text = "Find what:"
+            '
+            'pnlFooter
+            '
+            Me.pnlFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.pnlFooter.Controls.Add(Me.btnCancel)
+            Me.pnlFooter.Controls.Add(Me.btnFind)
+            Me.pnlFooter.Controls.Add(Me.lblFooterSeparator)
+            Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
+            Me.pnlFooter.Location = New System.Drawing.Point(0, 168)
+            Me.pnlFooter.Name = "pnlFooter"
+            Me.pnlFooter.Size = New System.Drawing.Size(512, 62)
+            Me.pnlFooter.TabIndex = 2
+            '
+            'btnCancel
+            '
+            Me.btnCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.btnCancel.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+            Me.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnCancel.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.btnCancel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnCancel.Location = New System.Drawing.Point(404, 20)
+            Me.btnCancel.Name = "btnCancel"
+            Me.btnCancel.Size = New System.Drawing.Size(76, 26)
+            Me.btnCancel.TabIndex = 1
+            Me.btnCancel.Text = "Close"
+            Me.btnCancel.UseVisualStyleBackColor = False
+            '
+            'btnFind
+            '
+            Me.btnFind.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.btnFind.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnFind.DialogResult = System.Windows.Forms.DialogResult.OK
+            Me.btnFind.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnFind.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnFind.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnFind.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.btnFind.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnFind.Location = New System.Drawing.Point(320, 20)
+            Me.btnFind.Name = "btnFind"
+            Me.btnFind.Size = New System.Drawing.Size(76, 26)
+            Me.btnFind.TabIndex = 0
+            Me.btnFind.Text = "Find"
+            Me.btnFind.UseVisualStyleBackColor = False
+            '
+            'lblFooterSeparator
+            '
+            Me.lblFooterSeparator.BackColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.lblFooterSeparator.Dock = System.Windows.Forms.DockStyle.Top
+            Me.lblFooterSeparator.Location = New System.Drawing.Point(0, 0)
+            Me.lblFooterSeparator.Name = "lblFooterSeparator"
+            Me.lblFooterSeparator.Size = New System.Drawing.Size(512, 1)
+            Me.lblFooterSeparator.TabIndex = 2
+            '
+            'pnlHeader
+            '
+            Me.pnlHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.pnlHeader.Controls.Add(Me.lblSubtitle)
+            Me.pnlHeader.Controls.Add(Me.lblTitle)
+            Me.pnlHeader.Controls.Add(Me.lblHeaderSeparator)
+            Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
+            Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
+            Me.pnlHeader.Name = "pnlHeader"
+            Me.pnlHeader.Size = New System.Drawing.Size(512, 76)
+            Me.pnlHeader.TabIndex = 0
+            '
+            'lblSubtitle
+            '
+            Me.lblSubtitle.BackColor = System.Drawing.Color.Transparent
+            Me.lblSubtitle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(186, Byte), Integer), CType(CType(198, Byte), Integer))
+            Me.lblSubtitle.Location = New System.Drawing.Point(24, 42)
+            Me.lblSubtitle.Name = "lblSubtitle"
+            Me.lblSubtitle.Size = New System.Drawing.Size(464, 18)
+            Me.lblSubtitle.TabIndex = 1
+            Me.lblSubtitle.Text = "Search within the active text editor document."
+            '
+            'lblTitle
+            '
+            Me.lblTitle.BackColor = System.Drawing.Color.Transparent
+            Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.lblTitle.Location = New System.Drawing.Point(22, 15)
+            Me.lblTitle.Name = "lblTitle"
+            Me.lblTitle.Size = New System.Drawing.Size(464, 24)
+            Me.lblTitle.TabIndex = 0
+            Me.lblTitle.Text = "Find"
+            '
+            'lblHeaderSeparator
+            '
+            Me.lblHeaderSeparator.BackColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.lblHeaderSeparator.Dock = System.Windows.Forms.DockStyle.Bottom
+            Me.lblHeaderSeparator.Location = New System.Drawing.Point(0, 74)
+            Me.lblHeaderSeparator.Name = "lblHeaderSeparator"
+            Me.lblHeaderSeparator.Size = New System.Drawing.Size(512, 2)
+            Me.lblHeaderSeparator.TabIndex = 2
+            '
+            'frmTextEditorFind
+            '
+            Me.AcceptButton = Me.btnFind
+            Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
+            Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.CancelButton = Me.btnCancel
+            Me.ClientSize = New System.Drawing.Size(512, 230)
+            Me.ControlBox = False
+            Me.Controls.Add(Me.pnlRoot)
+            Me.MaximumSize = New System.Drawing.Size(528, 269)
+            Me.MinimumSize = New System.Drawing.Size(528, 269)
+            Me.Name = "frmTextEditorFind"
+            Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
+            Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+            Me.Text = "Find"
+            Me.pnlRoot.ResumeLayout(False)
+            Me.pnlBody.ResumeLayout(False)
+            Me.pnlBody.PerformLayout()
+            Me.pnlFooter.ResumeLayout(False)
+            Me.pnlHeader.ResumeLayout(False)
+            Me.ResumeLayout(False)
+
+        End Sub
+
+    End Class
+
 End Namespace

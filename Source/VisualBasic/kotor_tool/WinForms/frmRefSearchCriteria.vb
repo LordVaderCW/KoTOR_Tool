@@ -19,7 +19,7 @@ Namespace kotor_tool
 		End Sub
 
         ' Token: 0x06000E96 RID: 3734 RVA: 0x0028F5DC File Offset: 0x0028E5DC
-        Private Sub btnOK_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnOK_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnOK.Click
             Me.htFileTypes = New Hashtable()
             If StringType.StrCmp(Me.tbSearchString.Text, "", False) = 0 Then
                 Interaction.MsgBox("Please enter a search string", MsgBoxStyle.Critical, Nothing)
@@ -59,7 +59,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000E97 RID: 3735 RVA: 0x0028F76C File Offset: 0x0028E76C
-        Private Sub btnSetAll_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnSetAll_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSetAll.Click
             Try
                 For Each obj As Object In Me.gboxGFF.Controls
                     Dim control As Control = CType(obj, Control)
@@ -89,7 +89,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000E98 RID: 3736 RVA: 0x0028F85C File Offset: 0x0028E85C
-        Private Sub btnClearAll_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnClearAll_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnClearAll.Click
             Try
                 For Each obj As Object In Me.gboxGFF.Controls
                     Dim control As Control = CType(obj, Control)
@@ -119,24 +119,24 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000E99 RID: 3737 RVA: 0x0028F94C File Offset: 0x0028E94C
-        Private Sub chkbTemplates_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub chkbTemplates_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles chkbTemplates.CheckedChanged
             Me.gboxGFF.Enabled = Me.chkbTemplates.Checked Or Me.chkbRIMs.Checked Or Me.chkbAllBifs.Checked
             Me.gboxScript.Enabled = Me.chkbTemplates.Checked Or Me.chkbRIMs.Checked Or Me.chkbScripts.Checked Or Me.chkbAllBifs.Checked
         End Sub
 
         ' Token: 0x06000E9A RID: 3738 RVA: 0x0028F9C4 File Offset: 0x0028E9C4
-        Private Sub chkbRIMs_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub chkbRIMs_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles chkbRIMs.CheckedChanged
             Me.gboxGFF.Enabled = Me.chkbTemplates.Checked Or Me.chkbRIMs.Checked Or Me.chkbAllBifs.Checked
             Me.gboxScript.Enabled = Me.chkbTemplates.Checked Or Me.chkbRIMs.Checked Or Me.chkbScripts.Checked Or Me.chkbAllBifs.Checked
         End Sub
 
         ' Token: 0x06000E9B RID: 3739 RVA: 0x0028FA3C File Offset: 0x0028EA3C
-        Private Sub chkbScripts_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub chkbScripts_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles chkbScripts.CheckedChanged
             Me.gboxScript.Enabled = Me.chkbTemplates.Checked Or Me.chkbRIMs.Checked Or Me.chkbScripts.Checked Or Me.chkbAllBifs.Checked
         End Sub
 
         ' Token: 0x06000E9C RID: 3740 RVA: 0x0028FA78 File Offset: 0x0028EA78
-        Private Sub chkbAllBifs_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub chkbAllBifs_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles chkbAllBifs.CheckedChanged
             If Me.chkbAllBifs.Checked Then
                 Me.chkbScripts.Checked = Me.chkbAllBifs.Checked
                 Me.chkbTemplates.Checked = Me.chkbScripts.Checked
@@ -154,7 +154,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000E9E RID: 3742 RVA: 0x0028FBCC File Offset: 0x0028EBCC
-        Private Sub rbSearch_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub rbSearch_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles rbSearchKotor2.CheckedChanged, rbSearchKotor1.CheckedChanged
             If Me.rbSearchKotor1.Checked Or Me.rbSearchKotor2.Checked Then
                 Me.gboxCaseSens.Enabled = True
                 Me.gboxSearchString.Enabled = True
@@ -162,7 +162,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000E9F RID: 3743 RVA: 0x0028FC00 File Offset: 0x0028EC00
-        Private Sub tbSearchString_TextChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tbSearchString_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles tbSearchString.TextChanged
             Dim flag As Boolean = Me.tbSearchString.Text.Length > 0
             Me.gboxFileTypes.Enabled = flag
             Me.gboxArchiveTypes.Enabled = flag

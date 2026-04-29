@@ -45,7 +45,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060005EA RID: 1514 RVA: 0x00247B28 File Offset: 0x00246B28
-        Private Sub TreeView_ItemDrag(ByVal sender As Object, ByVal e As ItemDragEventArgs)
+        Private Sub TreeView_ItemDrag(ByVal sender As Object, ByVal e As ItemDragEventArgs) Handles TreeView.ItemDrag
             Dim treeNode As TreeNode = CType(e.Item, TreeNode)
             Dim text As String = treeNode.Text
             If ObjectType.ObjTst(treeNode.Tag, "", False) <> 0 Then
@@ -55,84 +55,84 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060005EB RID: 1515 RVA: 0x00247B84 File Offset: 0x00246B84
-        Private Sub pnlImplant_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs)
+        Private Sub pnlImplant_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs) Handles pnlImplant.DragEnter
             If e.Data.GetDataPresent(DataFormats.Text) Then
                 e.Effect = Me.ShowDragEnterPermission(e, "0x00200")
             End If
         End Sub
 
         ' Token: 0x060005EC RID: 1516 RVA: 0x00247BAC File Offset: 0x00246BAC
-        Private Sub pnlHead_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs)
+        Private Sub pnlHead_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs) Handles pnlHead.DragEnter
             If e.Data.GetDataPresent(DataFormats.Text) Then
                 e.Effect = Me.ShowDragEnterPermission(e, "0x00001")
             End If
         End Sub
 
         ' Token: 0x060005ED RID: 1517 RVA: 0x00247BD4 File Offset: 0x00246BD4
-        Private Sub pnlHands_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs)
+        Private Sub pnlHands_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs) Handles pnlHands.DragEnter
             If e.Data.GetDataPresent(DataFormats.Text) Then
                 e.Effect = Me.ShowDragEnterPermission(e, "0x00008")
             End If
         End Sub
 
         ' Token: 0x060005EE RID: 1518 RVA: 0x00247BFC File Offset: 0x00246BFC
-        Private Sub pnlLArm_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs)
+        Private Sub pnlLArm_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs) Handles pnlLArm.DragEnter
             If e.Data.GetDataPresent(DataFormats.Text) Then
                 e.Effect = Me.ShowDragEnterPermission(e, "0x00100,0x00180")
             End If
         End Sub
 
         ' Token: 0x060005EF RID: 1519 RVA: 0x00247C24 File Offset: 0x00246C24
-        Private Sub pnlArmor_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs)
+        Private Sub pnlArmor_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs) Handles pnlArmor.DragEnter
             If e.Data.GetDataPresent(DataFormats.Text) Then
                 e.Effect = Me.ShowDragEnterPermission(e, "0x00002")
             End If
         End Sub
 
         ' Token: 0x060005F0 RID: 1520 RVA: 0x00247C4C File Offset: 0x00246C4C
-        Private Sub pnlRArm_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs)
+        Private Sub pnlRArm_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs) Handles pnlRArm.DragEnter
             If e.Data.GetDataPresent(DataFormats.Text) Then
                 e.Effect = Me.ShowDragEnterPermission(e, "0x00080,0x00180")
             End If
         End Sub
 
         ' Token: 0x060005F1 RID: 1521 RVA: 0x00247C74 File Offset: 0x00246C74
-        Private Sub pnlLWeapon_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs)
+        Private Sub pnlLWeapon_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs) Handles pnlLWeapon.DragEnter
             If e.Data.GetDataPresent(DataFormats.Text) Then
                 e.Effect = Me.ShowDragEnterPermission(e, "0x00020,0x00030,0x1C030")
             End If
         End Sub
 
         ' Token: 0x060005F2 RID: 1522 RVA: 0x00247C9C File Offset: 0x00246C9C
-        Private Sub pnlBelt_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs)
+        Private Sub pnlBelt_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs) Handles pnlBelt.DragEnter
             If e.Data.GetDataPresent(DataFormats.Text) Then
                 e.Effect = Me.ShowDragEnterPermission(e, "0x00400,0x20000")
             End If
         End Sub
 
         ' Token: 0x060005F3 RID: 1523 RVA: 0x00247CC4 File Offset: 0x00246CC4
-        Private Sub pnlRWeapon_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs)
+        Private Sub pnlRWeapon_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs) Handles pnlRWeapon.DragEnter
             If e.Data.GetDataPresent(DataFormats.Text) Then
                 e.Effect = Me.ShowDragEnterPermission(e, "0x00010,0x00030,0x1C030")
             End If
         End Sub
 
         ' Token: 0x060005F4 RID: 1524 RVA: 0x00247CEC File Offset: 0x00246CEC
-        Private Sub pnlCreatureHide_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs)
+        Private Sub pnlCreatureHide_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs) Handles pnlCreatureHide.DragEnter
             If e.Data.GetDataPresent(DataFormats.Text) Then
                 e.Effect = Me.ShowDragEnterPermission(e, "0x20000")
             End If
         End Sub
 
         ' Token: 0x060005F5 RID: 1525 RVA: 0x00247D14 File Offset: 0x00246D14
-        Private Sub pnlCreatureItem_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs)
+        Private Sub pnlCreatureItem_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs) Handles pnlCreatureItem3.DragEnter, pnlCreatureItem2.DragEnter, pnlCreatureItem1.DragEnter
             If e.Data.GetDataPresent(DataFormats.Text) Then
                 e.Effect = Me.ShowDragEnterPermission(e, "0x1C030")
             End If
         End Sub
 
         ' Token: 0x060005F6 RID: 1526 RVA: 0x00247D3C File Offset: 0x00246D3C
-        Private Sub dgPackItems_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs)
+        Private Sub dgPackItems_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs) Handles dgPackItems.DragEnter
             If e.Data.GetDataPresent(DataFormats.Text) Then
                 e.Effect = DragDropEffects.Copy
             End If
@@ -152,21 +152,21 @@ Namespace kotor_tool
         End Function
 
         ' Token: 0x060005F8 RID: 1528 RVA: 0x00247DC4 File Offset: 0x00246DC4
-        Private Sub pnlTrash_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs)
+        Private Sub pnlTrash_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs) Handles pnlTrash.DragEnter
             If (e.Data.GetFormats().Length = 1) And e.Data.GetFormats()(0).ToString().EndsWith("InventoryPanel") Then
                 e.Effect = DragDropEffects.Move
             End If
         End Sub
 
         ' Token: 0x060005F9 RID: 1529 RVA: 0x00247E0C File Offset: 0x00246E0C
-        Private Sub pnl_DragDrop(ByVal sender As Object, ByVal e As DragEventArgs)
+        Private Sub pnl_DragDrop(ByVal sender As Object, ByVal e As DragEventArgs) Handles pnlRWeapon.DragDrop, pnlRArm.DragDrop, pnlLWeapon.DragDrop, pnlLArm.DragDrop, pnlImplant.DragDrop, pnlHead.DragDrop, pnlHands.DragDrop, pnlCreatureItem3.DragDrop, pnlCreatureItem2.DragDrop, pnlCreatureItem1.DragDrop, pnlCreatureHide.DragDrop, pnlBelt.DragDrop, pnlArmor.DragDrop
             If e.Data.GetDataPresent(DataFormats.Text) Then
                 Me.ManageEqInventory(StringType.FromObject(e.Data.GetData(GetType(String))), CType(sender, InventoryPanel), True)
             End If
         End Sub
 
         ' Token: 0x060005FA RID: 1530 RVA: 0x00247E48 File Offset: 0x00246E48
-        Private Sub dgPackItems_DragDrop(ByVal sender As Object, ByVal e As DragEventArgs)
+        Private Sub dgPackItems_DragDrop(ByVal sender As Object, ByVal e As DragEventArgs) Handles dgPackItems.DragDrop
             If e.Data.GetDataPresent(DataFormats.Text) Then
                 Dim array As String() = Strings.Split(StringType.FromObject(e.Data.GetData(GetType(String))), "|", -1, CompareMethod.Binary)
                 Me.InsertToGridOrIncrement(array(0), array(1), 1, True)
@@ -174,7 +174,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060005FB RID: 1531 RVA: 0x00247E9C File Offset: 0x00246E9C
-        Private Sub pnlTrash_DragDrop(ByVal sender As Object, ByVal e As DragEventArgs)
+        Private Sub pnlTrash_DragDrop(ByVal sender As Object, ByVal e As DragEventArgs) Handles pnlTrash.DragDrop
             If (e.Data.GetFormats().Length = 1) And e.Data.GetFormats()(0).ToString().EndsWith("InventoryPanel") Then
                 Dim inventoryPanel As InventoryPanel = CType(e.Data.GetData("kotor_tool.InventoryPanel"), InventoryPanel)
                 Me.ToolTip1.SetToolTip(inventoryPanel, "(empty)")
@@ -289,7 +289,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000601 RID: 1537 RVA: 0x00248310 File Offset: 0x00247310
-        Private Sub TreeView1_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs)
+        Private Sub TreeView1_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles TreeView.MouseDown
             Dim treeView As TreeView = Me.TreeView
             Dim treeView2 As TreeView = Me.TreeView
             Dim point As Point = New Point(e.X, e.Y)
@@ -848,12 +848,12 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000615 RID: 1557 RVA: 0x00249DD8 File Offset: 0x00248DD8
-        Private Sub pnlEquipped_DoubleClick(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub pnlEquipped_DoubleClick(ByVal sender As Object, ByVal e As EventArgs) Handles pnlRWeapon.DoubleClick, pnlRArm.DoubleClick, pnlLWeapon.DoubleClick, pnlLArm.DoubleClick, pnlImplant.DoubleClick, pnlHead.DoubleClick, pnlHands.DoubleClick, pnlBelt.DoubleClick, pnlArmor.DoubleClick
             Me.AskForNewCustomResRef(CType(sender, InventoryPanel))
         End Sub
 
         ' Token: 0x06000616 RID: 1558 RVA: 0x00249DE8 File Offset: 0x00248DE8
-        Private Sub pnl_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs)
+        Private Sub pnl_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles pnlRWeapon.MouseDown, pnlRArm.MouseDown, pnlLWeapon.MouseDown, pnlLArm.MouseDown, pnlImplant.MouseDown, pnlHead.MouseDown, pnlHands.MouseDown, pnlCreatureItem3.MouseDown, pnlCreatureItem2.MouseDown, pnlCreatureItem1.MouseDown, pnlCreatureHide.MouseDown, pnlBelt.MouseDown, pnlArmor.MouseDown
             Dim inventoryPanel As InventoryPanel = CType(sender, InventoryPanel)
             If Control.MouseButtons = MouseButtons.Right Then
                 If Not inventoryPanel.IsEmpty Then
@@ -877,7 +877,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000618 RID: 1560 RVA: 0x00249EF4 File Offset: 0x00248EF4
-        Private Sub dgPackItems_CurrentCellChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub dgPackItems_CurrentCellChanged(ByVal sender As Object, ByVal e As EventArgs) Handles dgPackItems.CurrentCellChanged
             Try
                 For Each obj As Object In Me.dt.Rows
                     Dim dataRow As DataRow = CType(obj, DataRow)
@@ -914,19 +914,19 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000619 RID: 1561 RVA: 0x00249FD0 File Offset: 0x00248FD0
-        Private Sub cmiDropable_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmiDropable_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiDropable.Click
             Dim inventoryPanel As InventoryPanel = CType(LateBinding.LateGet(LateBinding.LateGet(sender, Nothing, "parent", New Object(-1) {}, Nothing, Nothing), Nothing, "sourcecontrol", New Object(-1) {}, Nothing, Nothing), InventoryPanel)
             inventoryPanel.Dropable = Not inventoryPanel.Dropable
         End Sub
 
         ' Token: 0x0600061A RID: 1562 RVA: 0x0024A01C File Offset: 0x0024901C
-        Private Sub btnExpandAll_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnExpandAll_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnExpandAll.Click
             Me.TreeView.ExpandAll()
             Me.TreeView.SelectedNode = Me.TreeView.Nodes(0)
         End Sub
 
         ' Token: 0x0600061B RID: 1563 RVA: 0x0024A048 File Offset: 0x00249048
-        Private Sub btnCollapseAll_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnCollapseAll_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnCollapseAll.Click
             Me.TreeView.CollapseAll()
         End Sub
 

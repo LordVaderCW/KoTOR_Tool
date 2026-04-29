@@ -16,22 +16,97 @@ Namespace kotor_tool
 
 		' Token: 0x060001D5 RID: 469 RVA: 0x00228F04 File Offset: 0x00227F04
 		Public Sub New()
-			AddHandler MyBase.Load, AddressOf Me.frmAppearanceWizard_Load
-			Me.InitializeComponent()
+            AddHandler MyBase.Load, AddressOf Me.frmAppearanceWizard_Load
+            Me.TabPage1.UseVisualStyleBackColor = False
+            Me.TabPage2.UseVisualStyleBackColor = False
+
+            Me.btnOK.FlatStyle = Global.System.Windows.Forms.FlatStyle.Flat
+            Me.btnCancel.FlatStyle = Global.System.Windows.Forms.FlatStyle.Flat
+            Me.Button1.FlatStyle = Global.System.Windows.Forms.FlatStyle.Flat
+            Me.InitializeComponent()
+
 		End Sub
 
         ' Token: 0x0600025C RID: 604 RVA: 0x0022BE9C File Offset: 0x0022AE9C
         Private Sub frmAppearanceWizard_Load(ByVal sender As Object, ByVal e As EventArgs)
+            Me.ApplyKotorTheme()
+
             Me.cmbxEnvMap.SelectedIndex = 0
             Me.cmbxGender.SelectedIndex = 0
             Me.cmbxModelNaming.SelectedIndex = 0
             Me.cmbxModelType.SelectedIndex = 0
             Me.cmbxMovementRate.SelectedIndex = 4
             Me.cmbxSizes.SelectedIndex = 1
+
             Me.tbHitRadius.Text = "0.25"
             Me.tbPerspace.Text = "0.35"
             Me.tbCreperspace.Text = "0.4"
             Me.tbprefatkdist.Text = "0.5"
+        End Sub
+
+        Private Sub ApplyKotorTheme()
+            Dim theme As KotorTheme = KotorThemeManager.LoadTheme("DarkSaber")
+
+            Me.BackColor = theme.WindowBack
+            Me.ForeColor = theme.TextPrimary
+            Me.Font = theme.CreateBodyFont()
+
+            ApplyThemeToControl(Me, theme)
+        End Sub
+
+        Private Sub ApplyThemeToControl(ByVal parentControl As Control, ByVal theme As KotorTheme)
+            If parentControl Is Nothing Then
+                Return
+            End If
+
+            For Each childControl As Control In parentControl.Controls
+
+                If TypeOf childControl Is TabControl Then
+                    childControl.BackColor = theme.PanelRoot
+                    childControl.ForeColor = theme.TextPrimary
+                    childControl.Font = theme.CreateBodyFont()
+
+                ElseIf TypeOf childControl Is TabPage Then
+                    childControl.BackColor = theme.PanelBody
+                    childControl.ForeColor = theme.TextPrimary
+                    childControl.Font = theme.CreateBodyFont()
+
+                ElseIf TypeOf childControl Is Label Then
+                    childControl.BackColor = Color.Transparent
+                    childControl.ForeColor = theme.TextSecondary
+                    childControl.Font = theme.CreateBodyFont()
+
+                ElseIf TypeOf childControl Is TextBox Then
+                    childControl.BackColor = theme.ControlDark
+                    childControl.ForeColor = theme.TextPrimary
+                    childControl.Font = theme.CreateMonoFont()
+
+                ElseIf TypeOf childControl Is ComboBox Then
+                    childControl.BackColor = theme.ControlDark
+                    childControl.ForeColor = theme.TextPrimary
+                    childControl.Font = theme.CreateBodyFont()
+
+                ElseIf TypeOf childControl Is Button Then
+                    Dim buttonControl As Button = CType(childControl, Button)
+
+                    buttonControl.BackColor = theme.ControlDark
+                    buttonControl.ForeColor = theme.TextPrimary
+                    buttonControl.FlatStyle = FlatStyle.Flat
+                    buttonControl.FlatAppearance.BorderColor = theme.BorderDark
+                    buttonControl.FlatAppearance.MouseOverBackColor = theme.ControlHover
+                    buttonControl.FlatAppearance.MouseDownBackColor = theme.ControlDown
+                    buttonControl.Font = theme.CreateBodyFont()
+
+                ElseIf TypeOf childControl Is CheckBox Then
+                    childControl.BackColor = theme.PanelBody
+                    childControl.ForeColor = theme.TextSecondary
+                    childControl.Font = theme.CreateBodyFont()
+                End If
+
+                If childControl.HasChildren Then
+                    ApplyThemeToControl(childControl, theme)
+                End If
+            Next
         End Sub
 
         ' Token: 0x0600025D RID: 605 RVA: 0x0022BF34 File Offset: 0x0022AF34
@@ -229,7 +304,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000265 RID: 613 RVA: 0x0022C884 File Offset: 0x0022B884
-        Private Sub TabControl1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub TabControl1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TabControl1.SelectedIndexChanged
             If StringType.StrCmp(Strings.Trim(Me.tbBaseModelName.Text), "", False) <> 0 Then
                 If Me.cmbxModelNaming.SelectedIndex = 1 Then
                     Me.GenerateModelStrings(1)
@@ -240,12 +315,12 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000266 RID: 614 RVA: 0x0022C8C4 File Offset: 0x0022B8C4
-        Private Sub cmbxModelNaming_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmbxModelNaming_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbxModelNaming.SelectedIndexChanged
             Me.chkbAutoCreateSeqEntries.Visible = Me.cmbxModelNaming.SelectedIndex = 1
         End Sub
 
         ' Token: 0x06000267 RID: 615 RVA: 0x0022C8E0 File Offset: 0x0022B8E0
-        Private Sub chkbAutoCreateSeqEntires_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub chkbAutoCreateSeqEntires_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles chkbAutoCreateSeqEntries.CheckedChanged
             Dim checked As Boolean = Me.chkbAutoCreateSeqEntries.Checked
             Me.tbMa.[ReadOnly] = checked
             Me.tbTa.[ReadOnly] = checked

@@ -169,8 +169,8 @@ Namespace kotor_tool
             Me.lblOriginalCredit.Name = "lblOriginalCredit"
             Me.lblOriginalCredit.Size = New System.Drawing.Size(422, 32)
             Me.lblOriginalCredit.TabIndex = 10
-            Me.lblOriginalCredit.Text = "This restored build honours Fred Tetra's original KotOR Tool and the community tha" & _
-                "t kept it alive."
+            Me.lblOriginalCredit.Text = "This restored build honours Fred Tetra's original KotOR Tool and the community th" & _
+                "at kept it alive."
             Me.lblOriginalCredit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
             '
             'Label3
@@ -280,10 +280,11 @@ Namespace kotor_tool
             '
             Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
             Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.PictureBox1.Image = Global.My.Resources.Resources.koTOR_icon
             Me.PictureBox1.Location = New System.Drawing.Point(22, 20)
             Me.PictureBox1.Name = "PictureBox1"
             Me.PictureBox1.Size = New System.Drawing.Size(64, 64)
-            Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+            Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
             Me.PictureBox1.TabIndex = 4
             Me.PictureBox1.TabStop = False
             '

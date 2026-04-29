@@ -213,7 +213,7 @@ Namespace kotor_tool
         'End Sub
 
         ' Token: 0x06001028 RID: 4136 RVA: 0x0029A184 File Offset: 0x00299184
-        Private Sub miNew_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miNew_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miNew.Click
             Dim kotorVersionIndex As Integer = Me.KotorVersion()
 
             If kotorVersionIndex > -1 Then
@@ -231,54 +231,54 @@ Namespace kotor_tool
         End Sub
 
 		' Token: 0x06001029 RID: 4137 RVA: 0x0029A1D4 File Offset: 0x002991D4
-		Private Sub miOpen_Click(sender As Object, e As EventArgs)
-			Dim text As String = StringType.FromObject(frmMain.GetFilePath("load", Me.CurrentSettings.defaultSaveLocation, "", "Load SSF file...", "ssf", False, True))
-			If StringType.StrCmp(text, "", False) = 0 Then
-				Return
-			End If
-			Me.LoadDialogTlk(True)
-			If Me.g_dialogtlk IsNot Nothing Then
-				Me._SSF = New clsSSF(New FileStream(text, FileMode.Open), Me.g_dialogtlk)
-				Me.ParseSSF()
-				Me.SetFormName(text)
-				Me.EnableControls()
-			Else
-				Interaction.MsgBox("Dialog.Tlk not loaded; opening of file aborted!", MsgBoxStyle.Exclamation, Nothing)
-			End If
-		End Sub
+        Private Sub miOpen_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpen.Click
+            Dim text As String = StringType.FromObject(frmMain.GetFilePath("load", Me.CurrentSettings.defaultSaveLocation, "", "Load SSF file...", "ssf", False, True))
+            If StringType.StrCmp(text, "", False) = 0 Then
+                Return
+            End If
+            Me.LoadDialogTlk(True)
+            If Me.g_dialogtlk IsNot Nothing Then
+                Me._SSF = New clsSSF(New FileStream(text, FileMode.Open), Me.g_dialogtlk)
+                Me.ParseSSF()
+                Me.SetFormName(text)
+                Me.EnableControls()
+            Else
+                Interaction.MsgBox("Dialog.Tlk not loaded; opening of file aborted!", MsgBoxStyle.Exclamation, Nothing)
+            End If
+        End Sub
 
 		' Token: 0x0600102A RID: 4138 RVA: 0x0029A268 File Offset: 0x00299268
-		Private Sub miSave_Click(sender As Object, e As EventArgs)
-			If StringType.StrCmp(Me.g_filepath, "", False) <> 0 Then
-				Me._SSF.WriteFile(Me.g_filepath)
-			Else
-				Me.miSaveAs_Click(RuntimeHelpers.GetObjectValue(sender), e)
-			End If
-		End Sub
+        Private Sub miSave_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miSave.Click
+            If StringType.StrCmp(Me.g_filepath, "", False) <> 0 Then
+                Me._SSF.WriteFile(Me.g_filepath)
+            Else
+                Me.miSaveAs_Click(RuntimeHelpers.GetObjectValue(sender), e)
+            End If
+        End Sub
 
 		' Token: 0x0600102B RID: 4139 RVA: 0x0029A2A0 File Offset: 0x002992A0
-		Private Sub miSaveAs_Click(sender As Object, e As EventArgs)
-			Dim text As String = StringType.FromObject(frmMain.GetFilePath("save", Me.CurrentSettings.defaultSaveLocation, "", "Save SSF file as...", "ssf", False, True))
-			If StringType.StrCmp(text, "", False) <> 0 Then
-				Me._SSF.WriteFile(text)
-				Me.g_filepath = text
-			End If
-		End Sub
+        Private Sub miSaveAs_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miSaveAs.Click
+            Dim text As String = StringType.FromObject(frmMain.GetFilePath("save", Me.CurrentSettings.defaultSaveLocation, "", "Save SSF file as...", "ssf", False, True))
+            If StringType.StrCmp(text, "", False) <> 0 Then
+                Me._SSF.WriteFile(text)
+                Me.g_filepath = text
+            End If
+        End Sub
 
 		' Token: 0x0600102C RID: 4140 RVA: 0x0029A2FC File Offset: 0x002992FC
-		Private Sub miQuit_Click(sender As Object, e As EventArgs)
-			Me.Close()
-		End Sub
+        Private Sub miQuit_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miQuit.Click
+            Me.Close()
+        End Sub
 
 		' Token: 0x0600102D RID: 4141 RVA: 0x0029A304 File Offset: 0x00299304
-		Private Sub UseDialogTlk_Click(sender As Object, e As EventArgs)
-			Me.miUseK1DialogTlk.Checked = False
-			Me.miUseK2DialogTlk.Checked = False
-			Me.miUseExtDialogTlk.Checked = False
-			Me.miAskDialogTlk.Checked = False
-			CType(sender, MenuItem).Checked = True
-			Me.LoadDialogTlk(False)
-		End Sub
+        Private Sub UseDialogTlk_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miUseK2DialogTlk.Click, miUseK1DialogTlk.Click, miUseExtDialogTlk.Click, miAskDialogTlk.Click
+            Me.miUseK1DialogTlk.Checked = False
+            Me.miUseK2DialogTlk.Checked = False
+            Me.miUseExtDialogTlk.Checked = False
+            Me.miAskDialogTlk.Checked = False
+            CType(sender, MenuItem).Checked = True
+            Me.LoadDialogTlk(False)
+        End Sub
 
         '' Token: 0x0600102E RID: 4142 RVA: 0x0029A354 File Offset: 0x00299354
         'Private Sub nud_ValueChanged(sender As Object, e As EventArgs)

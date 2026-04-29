@@ -17,7 +17,7 @@ Namespace kotor_tool
 		End Sub
 
         ' Token: 0x06000F18 RID: 3864 RVA: 0x002929C4 File Offset: 0x002919C4
-        Private Sub rb_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub rb_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles rbKotor2.CheckedChanged, rbKotor1.CheckedChanged
             Me.btnOK.Enabled = True
         End Sub
 

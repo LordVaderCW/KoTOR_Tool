@@ -1817,939 +1817,939 @@ Namespace kotor_tool
 		End Sub
 
 		' Token: 0x060008B5 RID: 2229 RVA: 0x0026770C File Offset: 0x0026670C
-		Private Sub pbox_MouseDown(sender As Object, e As MouseEventArgs)
-			If e.Button = MouseButtons.Left OrElse e.Button = MouseButtons.Right Then
-				Dim obj As Object = CType(sender, PictureBox)
-				Dim modItem As ModItem = Me.FindModItem(CType(sender, PictureBox))
-				Dim obj2 As Object = obj
-				Dim type As Type = Nothing
-				Dim text As String = "PointToClient"
-				Dim array As Object() = New Object(0) {}
-				Dim array2 As Object() = array
-				Dim num As Integer = 0
-				Dim obj3 As Object = obj
-				array2(num) = RuntimeHelpers.GetObjectValue(LateBinding.LateGet(obj3, Nothing, "MousePosition", New Object(-1) {}, Nothing, Nothing))
-				Dim array3 As Object() = array
-				Dim array4 As Object() = array3
-				Dim array5 As String() = Nothing
-				Dim array6 As Boolean() = New Boolean() { True }
-				Dim obj4 As Object = LateBinding.LateGet(obj2, type, text, array4, array5, array6)
-				If array6(0) Then
-					LateBinding.LateSetComplex(obj3, Nothing, "MousePosition", New Object() { RuntimeHelpers.GetObjectValue(array3(0)) }, Nothing, True, False)
-				End If
-				Dim point As Point = CType((If(obj4, Activator.CreateInstance(GetType(Point)))), Point)
-				Dim num2 As Integer = point.X
-				Dim num3 As Integer = point.Y
-				Me.tbMouseX.Text = StringType.FromInteger(num2)
-				Me.tbMouseY.Text = StringType.FromInteger(num3)
-				Dim point2 As Point = New Point(num2, num3)
-				Me.gLastMousePos = point2
-				point2 = New Point(num2, num3)
-				Me.g_LastMouseDownPos = point2
-				If modItem IsNot Nothing Then
-					Me.CurrentModItem = modItem
-					Me.IndicatedModItem = modItem
-					If e.Button = MouseButtons.Left Then
-						If modItem.ItemType = 2032 Then
-							If modItem.FileName.StartsWith("g_t_") Then
-								Me.tbHelp.Text = "Move the mouse to reposition this trap. The trap is not redrawn while dragging. Right-click for the pop-up menu."
-							Else
-								Me.tbHelp.Text = "Move the mouse to reposition this node of the trigger. Hold down the shift key to move the whole trigger region. The trigger is not redrawn while dragging. Right-click for the pop-up menu."
-							End If
-						Else
-							Me.tbHelp.Text = "Move the mouse to reposition this item. Right-click for the pop-up menu."
-						End If
-						Me.sbarpnlDesc.Text = modItem.ResRef
-						Me.CurrentModItemBmp = New Bitmap(3, 3)
-						Dim graphics As Graphics = Graphics.FromImage(Me.CurrentModItemBmp)
-						Dim rectangle As Rectangle = New Rectangle(modItem.ScreenX - 1, modItem.ScreenY - 1, 3, 3)
-						Dim rectangle2 As Rectangle = New Rectangle(0, 0, 3, 3)
-						graphics.DrawImage(Me.bmp, rectangle2, rectangle, GraphicsUnit.Pixel)
-					End If
-					If e.Button = MouseButtons.Right AndAlso modItem.ItemType <> 5000 Then
-						Me.cmMapSurfaceItems.MenuItems(Me.cmMapSurfaceItems.MenuItems.IndexOf(Me.cmiEditGFFFile)).Visible = modItem.ItemType <> 6 AndAlso modItem.ItemType <> 12040
-						Me.cmMapSurfaceItems.MenuItems(Me.cmMapSurfaceItems.MenuItems.IndexOf(Me.cmiProperties)).Visible = modItem.ItemType <> 12040
-						Me.cmMapSurfaceItems.MenuItems(Me.cmMapSurfaceItems.MenuItems.IndexOf(Me.cmiAddNewSpawnPoint)).Visible = modItem.ItemType = 2040
-						Me.IndicatedModItem = Nothing
-						Dim cmMapSurfaceItems As ContextMenu = Me.cmMapSurfaceItems
-						Dim control As Control = CType(obj, Control)
-						point2 = New Point(num2, num3)
-						cmMapSurfaceItems.Show(control, point2)
-						Me.LeftMouseClickActive = False
-					Else
-						Me.LeftMouseClickActive = True
-					End If
-				Else
-					If Not Me.g_IsDrawingRegion AndAlso e.Button = MouseButtons.Right Then
-						Dim cmPbox As ContextMenu = Me.cmPbox
-						Dim control2 As Control = CType(obj, Control)
-						point2 = New Point(num2, num3)
-						cmPbox.Show(control2, point2)
-						Me.LeftMouseClickActive = False
-					End If
-					Me.tbHelp.Text = "Left-click to select, right-click for pop-up menu, middle-click to pan"
-				End If
-				Me.LoadBackground()
-				Me.Draw()
-			ElseIf e.Button = MouseButtons.Middle Then
-				Me.tbHelp.Text = "Press Shift key for 2x pan, Control for 10x pan"
-				Dim point As Point = Me.Panel1.PointToClient(Control.MousePosition)
-				Dim num2 As Integer = point.X
-				Dim num3 As Integer = point.Y
-				Dim point2 As Point = New Point(num2, num3)
-				Me.gLastMousePos = point2
-			End If
-		End Sub
+        Private Sub pbox_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles pbox.MouseDown
+            If e.Button = MouseButtons.Left OrElse e.Button = MouseButtons.Right Then
+                Dim obj As Object = CType(sender, PictureBox)
+                Dim modItem As ModItem = Me.FindModItem(CType(sender, PictureBox))
+                Dim obj2 As Object = obj
+                Dim type As Type = Nothing
+                Dim text As String = "PointToClient"
+                Dim array As Object() = New Object(0) {}
+                Dim array2 As Object() = array
+                Dim num As Integer = 0
+                Dim obj3 As Object = obj
+                array2(num) = RuntimeHelpers.GetObjectValue(LateBinding.LateGet(obj3, Nothing, "MousePosition", New Object(-1) {}, Nothing, Nothing))
+                Dim array3 As Object() = array
+                Dim array4 As Object() = array3
+                Dim array5 As String() = Nothing
+                Dim array6 As Boolean() = New Boolean() {True}
+                Dim obj4 As Object = LateBinding.LateGet(obj2, type, text, array4, array5, array6)
+                If array6(0) Then
+                    LateBinding.LateSetComplex(obj3, Nothing, "MousePosition", New Object() {RuntimeHelpers.GetObjectValue(array3(0))}, Nothing, True, False)
+                End If
+                Dim point As Point = CType((If(obj4, Activator.CreateInstance(GetType(Point)))), Point)
+                Dim num2 As Integer = point.X
+                Dim num3 As Integer = point.Y
+                Me.tbMouseX.Text = StringType.FromInteger(num2)
+                Me.tbMouseY.Text = StringType.FromInteger(num3)
+                Dim point2 As Point = New Point(num2, num3)
+                Me.gLastMousePos = point2
+                point2 = New Point(num2, num3)
+                Me.g_LastMouseDownPos = point2
+                If modItem IsNot Nothing Then
+                    Me.CurrentModItem = modItem
+                    Me.IndicatedModItem = modItem
+                    If e.Button = MouseButtons.Left Then
+                        If modItem.ItemType = 2032 Then
+                            If modItem.FileName.StartsWith("g_t_") Then
+                                Me.tbHelp.Text = "Move the mouse to reposition this trap. The trap is not redrawn while dragging. Right-click for the pop-up menu."
+                            Else
+                                Me.tbHelp.Text = "Move the mouse to reposition this node of the trigger. Hold down the shift key to move the whole trigger region. The trigger is not redrawn while dragging. Right-click for the pop-up menu."
+                            End If
+                        Else
+                            Me.tbHelp.Text = "Move the mouse to reposition this item. Right-click for the pop-up menu."
+                        End If
+                        Me.sbarpnlDesc.Text = modItem.ResRef
+                        Me.CurrentModItemBmp = New Bitmap(3, 3)
+                        Dim graphics As Graphics = graphics.FromImage(Me.CurrentModItemBmp)
+                        Dim rectangle As Rectangle = New Rectangle(modItem.ScreenX - 1, modItem.ScreenY - 1, 3, 3)
+                        Dim rectangle2 As Rectangle = New Rectangle(0, 0, 3, 3)
+                        graphics.DrawImage(Me.bmp, rectangle2, rectangle, GraphicsUnit.Pixel)
+                    End If
+                    If e.Button = MouseButtons.Right AndAlso modItem.ItemType <> 5000 Then
+                        Me.cmMapSurfaceItems.MenuItems(Me.cmMapSurfaceItems.MenuItems.IndexOf(Me.cmiEditGFFFile)).Visible = modItem.ItemType <> 6 AndAlso modItem.ItemType <> 12040
+                        Me.cmMapSurfaceItems.MenuItems(Me.cmMapSurfaceItems.MenuItems.IndexOf(Me.cmiProperties)).Visible = modItem.ItemType <> 12040
+                        Me.cmMapSurfaceItems.MenuItems(Me.cmMapSurfaceItems.MenuItems.IndexOf(Me.cmiAddNewSpawnPoint)).Visible = modItem.ItemType = 2040
+                        Me.IndicatedModItem = Nothing
+                        Dim cmMapSurfaceItems As ContextMenu = Me.cmMapSurfaceItems
+                        Dim control As Control = CType(obj, Control)
+                        point2 = New Point(num2, num3)
+                        cmMapSurfaceItems.Show(control, point2)
+                        Me.LeftMouseClickActive = False
+                    Else
+                        Me.LeftMouseClickActive = True
+                    End If
+                Else
+                    If Not Me.g_IsDrawingRegion AndAlso e.Button = MouseButtons.Right Then
+                        Dim cmPbox As ContextMenu = Me.cmPbox
+                        Dim control2 As Control = CType(obj, Control)
+                        point2 = New Point(num2, num3)
+                        cmPbox.Show(control2, point2)
+                        Me.LeftMouseClickActive = False
+                    End If
+                    Me.tbHelp.Text = "Left-click to select, right-click for pop-up menu, middle-click to pan"
+                End If
+                Me.LoadBackground()
+                Me.Draw()
+            ElseIf e.Button = MouseButtons.Middle Then
+                Me.tbHelp.Text = "Press Shift key for 2x pan, Control for 10x pan"
+                Dim point As Point = Me.Panel1.PointToClient(Control.MousePosition)
+                Dim num2 As Integer = point.X
+                Dim num3 As Integer = point.Y
+                Dim point2 As Point = New Point(num2, num3)
+                Me.gLastMousePos = point2
+            End If
+        End Sub
 
 		' Token: 0x060008B6 RID: 2230 RVA: 0x00267AD4 File Offset: 0x00266AD4
-		Private Sub pbox_MouseMove(sender As Object, e As MouseEventArgs)
-			Dim pictureBox As PictureBox = CType(sender, PictureBox)
-			Dim num As Integer = pictureBox.PointToClient(Control.MousePosition).X
-			Dim point As Point = pictureBox.PointToClient(Control.MousePosition)
-			Dim num2 As Integer = point.Y
-			Me.sbarpnlLocX.Text = "X: " + StringType.FromSingle(Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(num), Me.nudXoff.Value), Me.nudXmul.Value)))
-			Me.sbarpnlLocY.Text = "Y: " + StringType.FromSingle(Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(num2)), Me.nudYoff.Value), Me.nudYmul.Value)))
-			If e.Button = MouseButtons.None Then
-				If Me.g_IsDrawingRegion Then
-					Me.tbHelp.Text = "Left click to set next point or Right click to auto-close region"
-					Dim graphics As Graphics
-					Dim rectangle As Rectangle
-					Dim rectangle2 As Rectangle
-					Dim rectangle3 As Rectangle
-					If Me.backbuffer IsNot Nothing Then
-						graphics = Graphics.FromImage(Me.bmp)
-						rectangle = New Rectangle(0, 0, Me.backbuffer.Width, Me.backbuffer.Height)
-						rectangle2 = rectangle
-						rectangle = New Rectangle(Me.gLastBackBufferOrigin.X, Me.gLastBackBufferOrigin.Y, Me.backbuffer.Width, Me.backbuffer.Height)
-						rectangle3 = rectangle
-						rectangle3 = Me.NormalizeRectangle(rectangle3)
-						graphics.DrawImage(Me.backbuffer, rectangle3, rectangle2, GraphicsUnit.Pixel)
-					End If
-					If Me.g_RegionPointList.Count > 1 Then
-						Me.DrawRegionPoints(Graphics.FromImage(Me.bmp), Me.g_RegionPointList, Me.gCurrentRegionDrawingColor, False)
-					End If
-					rectangle = New Rectangle(Me.gCurrentRegionSegmentOrigin.X, Me.gCurrentRegionSegmentOrigin.Y, num - Me.gCurrentRegionSegmentOrigin.X, num2 - Me.gCurrentRegionSegmentOrigin.Y)
-					rectangle2 = rectangle
-					rectangle2 = Me.NormalizeRectangle(rectangle2)
-					rectangle2.Width += 1
-					rectangle2.Height += 1
-					Me.backbuffer = New Bitmap(rectangle2.Width, rectangle2.Height)
-					graphics = Graphics.FromImage(Me.backbuffer)
-					rectangle = New Rectangle(0, 0, rectangle2.Width, rectangle2.Height)
-					rectangle3 = rectangle
-					graphics.DrawImage(Me.bmp, rectangle3, rectangle2, GraphicsUnit.Pixel)
-					graphics = Graphics.FromImage(Me.bmp)
-					graphics.DrawLine(New Pen(Me.gCurrentRegionDrawingColor, 1F), Me.gCurrentRegionSegmentOrigin.X, Me.gCurrentRegionSegmentOrigin.Y, num, num2)
-					Dim graphics2 As Graphics = graphics
-					Dim pen As Pen = New Pen(Me.gCurrentRegionDrawingColor, 1F)
-					rectangle = New Rectangle(Me.gCurrentRegionSegmentOrigin.X - 1, Me.gCurrentRegionSegmentOrigin.Y - 1, 2, 2)
-					graphics2.DrawRectangle(pen, rectangle)
-					Me.pbox.Refresh()
-					Me.gLastBackBufferOrigin = rectangle2.Location
-					point = New Point(num, num2)
-					Me.gLastMousePos = point
-				End If
-			ElseIf e.Button = MouseButtons.Left Then
-				If(Me.CurrentModItem IsNot Nothing) And Me.LeftMouseClickActive Then
-					Dim num3 As Long = DateAndTime.Now.Ticks
-					Cursor.Current = Cursors.Cross
-					Dim rectangle As Rectangle
-					Dim graphics3 As Graphics
-					Dim rectangle4 As Rectangle
-					Dim rectangle5 As Rectangle
-					If Me.backbuffer IsNot Nothing Then
-						graphics3 = Graphics.FromImage(Me.bmp)
-						rectangle = New Rectangle(0, 0, 3, 3)
-						rectangle4 = rectangle
-						rectangle = New Rectangle(Me.gLastMousePos.X - 1, Me.gLastMousePos.Y - 1, 3, 3)
-						rectangle5 = rectangle
-						graphics3.DrawImage(Me.backbuffer, rectangle5, rectangle4, GraphicsUnit.Pixel)
-					End If
-					Dim timeSpan As TimeSpan = New TimeSpan(DateAndTime.Now.Ticks - num3)
-					Dim timeSpan2 As TimeSpan = timeSpan
-					num3 = DateAndTime.Now.Ticks
-					Console.WriteLine("Move Drawing Time 1: " + StringType.FromInteger(timeSpan2.Milliseconds))
-					point = New Point(num, num2)
-					Me.gLastMousePos = point
-					Me.backbuffer = New Bitmap(3, 3)
-					graphics3 = Graphics.FromImage(Me.backbuffer)
-					rectangle = New Rectangle(num - 1, num2 - 1, 3, 3)
-					rectangle4 = rectangle
-					rectangle = New Rectangle(0, 0, 3, 3)
-					rectangle5 = rectangle
-					num3 = DateAndTime.Now.Ticks
-					graphics3.DrawImage(Me.bmp, rectangle5, rectangle4, GraphicsUnit.Pixel)
-					timeSpan = New TimeSpan(DateAndTime.Now.Ticks - num3)
-					timeSpan2 = timeSpan
-					Console.WriteLine("Move Drawing Time 2e: " + StringType.FromInteger(timeSpan2.Milliseconds))
-					num3 = DateAndTime.Now.Ticks
-					graphics3 = Graphics.FromImage(Me.bmp)
-					rectangle = New Rectangle(0, 0, 3, 3)
-					rectangle4 = rectangle
-					rectangle = New Rectangle(num - 1, num2 - 1, 3, 3)
-					rectangle5 = rectangle
-					graphics3.DrawImage(Me.CurrentModItemBmp, rectangle5, rectangle4, GraphicsUnit.Pixel)
-					timeSpan = New TimeSpan(DateAndTime.Now.Ticks - num3)
-					timeSpan2 = timeSpan
-					Console.WriteLine(String.Concat(New String() { "Move Drawing Time 3: ", StringType.FromInteger(timeSpan2.Milliseconds), " T: ", StringType.FromLong(num3), " x: ", StringType.FromInteger(num), " Y: ", StringType.FromInteger(num2) }))
-					Me.pbox.Refresh()
-				End If
-			ElseIf e.Button = MouseButtons.Middle Then
-				Dim panel As Panel = Me.Panel1
-				num = panel.PointToClient(Control.MousePosition).X
-				num2 = panel.PointToClient(Control.MousePosition).Y
-				Dim num4 As Integer = num - Me.gLastMousePos.X
-				Dim num5 As Integer = num2 - Me.gLastMousePos.Y
-				If Control.ModifierKeys = Keys.Shift Then
-					num4 *= 2
-					num5 *= 2
-				End If
-				If Control.ModifierKeys = Keys.Control Then
-					num4 *= 10
-					num5 *= 10
-				End If
-				Dim autoScrollPosition2 As Point
-				If num4 <> 0 OrElse num5 <> 0 Then
-					Dim autoScrollPosition As Point = Me.Panel1.AutoScrollPosition
-					Dim num6 As Integer = 0
-					Dim num7 As Integer = 0
-					point = Me.Panel1.AutoScrollPosition
-					autoScrollPosition2 = New Point(num6 - (num7 - point.X - num4), 0 - (0 - Me.Panel1.AutoScrollPosition.Y - num5))
-					If autoScrollPosition <> autoScrollPosition2 Then
-						Dim panel2 As ScrollableControl = Me.Panel1
-						Dim num8 As Integer = 0
-						autoScrollPosition2 = Me.Panel1.AutoScrollPosition
-						point = New Point(num8 - autoScrollPosition2.X - num4, 0 - Me.Panel1.AutoScrollPosition.Y - num5)
-						panel2.AutoScrollPosition = point
-					End If
-				End If
-				autoScrollPosition2 = New Point(num, num2)
-				Me.gLastMousePos = autoScrollPosition2
-			End If
-		End Sub
+        Private Sub pbox_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles pbox.MouseMove
+            Dim pictureBox As PictureBox = CType(sender, PictureBox)
+            Dim num As Integer = pictureBox.PointToClient(Control.MousePosition).X
+            Dim point As Point = pictureBox.PointToClient(Control.MousePosition)
+            Dim num2 As Integer = point.Y
+            Me.sbarpnlLocX.Text = "X: " + StringType.FromSingle(Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(num), Me.nudXoff.Value), Me.nudXmul.Value)))
+            Me.sbarpnlLocY.Text = "Y: " + StringType.FromSingle(Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(num2)), Me.nudYoff.Value), Me.nudYmul.Value)))
+            If e.Button = MouseButtons.None Then
+                If Me.g_IsDrawingRegion Then
+                    Me.tbHelp.Text = "Left click to set next point or Right click to auto-close region"
+                    Dim graphics As Graphics
+                    Dim rectangle As Rectangle
+                    Dim rectangle2 As Rectangle
+                    Dim rectangle3 As Rectangle
+                    If Me.backbuffer IsNot Nothing Then
+                        graphics = graphics.FromImage(Me.bmp)
+                        rectangle = New Rectangle(0, 0, Me.backbuffer.Width, Me.backbuffer.Height)
+                        rectangle2 = rectangle
+                        rectangle = New Rectangle(Me.gLastBackBufferOrigin.X, Me.gLastBackBufferOrigin.Y, Me.backbuffer.Width, Me.backbuffer.Height)
+                        rectangle3 = rectangle
+                        rectangle3 = Me.NormalizeRectangle(rectangle3)
+                        graphics.DrawImage(Me.backbuffer, rectangle3, rectangle2, GraphicsUnit.Pixel)
+                    End If
+                    If Me.g_RegionPointList.Count > 1 Then
+                        Me.DrawRegionPoints(graphics.FromImage(Me.bmp), Me.g_RegionPointList, Me.gCurrentRegionDrawingColor, False)
+                    End If
+                    rectangle = New Rectangle(Me.gCurrentRegionSegmentOrigin.X, Me.gCurrentRegionSegmentOrigin.Y, num - Me.gCurrentRegionSegmentOrigin.X, num2 - Me.gCurrentRegionSegmentOrigin.Y)
+                    rectangle2 = rectangle
+                    rectangle2 = Me.NormalizeRectangle(rectangle2)
+                    rectangle2.Width += 1
+                    rectangle2.Height += 1
+                    Me.backbuffer = New Bitmap(rectangle2.Width, rectangle2.Height)
+                    graphics = graphics.FromImage(Me.backbuffer)
+                    rectangle = New Rectangle(0, 0, rectangle2.Width, rectangle2.Height)
+                    rectangle3 = rectangle
+                    graphics.DrawImage(Me.bmp, rectangle3, rectangle2, GraphicsUnit.Pixel)
+                    graphics = graphics.FromImage(Me.bmp)
+                    graphics.DrawLine(New Pen(Me.gCurrentRegionDrawingColor, 1.0F), Me.gCurrentRegionSegmentOrigin.X, Me.gCurrentRegionSegmentOrigin.Y, num, num2)
+                    Dim graphics2 As Graphics = graphics
+                    Dim pen As Pen = New Pen(Me.gCurrentRegionDrawingColor, 1.0F)
+                    rectangle = New Rectangle(Me.gCurrentRegionSegmentOrigin.X - 1, Me.gCurrentRegionSegmentOrigin.Y - 1, 2, 2)
+                    graphics2.DrawRectangle(pen, rectangle)
+                    Me.pbox.Refresh()
+                    Me.gLastBackBufferOrigin = rectangle2.Location
+                    point = New Point(num, num2)
+                    Me.gLastMousePos = point
+                End If
+            ElseIf e.Button = MouseButtons.Left Then
+                If (Me.CurrentModItem IsNot Nothing) And Me.LeftMouseClickActive Then
+                    Dim num3 As Long = DateAndTime.Now.Ticks
+                    Cursor.Current = Cursors.Cross
+                    Dim rectangle As Rectangle
+                    Dim graphics3 As Graphics
+                    Dim rectangle4 As Rectangle
+                    Dim rectangle5 As Rectangle
+                    If Me.backbuffer IsNot Nothing Then
+                        graphics3 = Graphics.FromImage(Me.bmp)
+                        rectangle = New Rectangle(0, 0, 3, 3)
+                        rectangle4 = rectangle
+                        rectangle = New Rectangle(Me.gLastMousePos.X - 1, Me.gLastMousePos.Y - 1, 3, 3)
+                        rectangle5 = rectangle
+                        graphics3.DrawImage(Me.backbuffer, rectangle5, rectangle4, GraphicsUnit.Pixel)
+                    End If
+                    Dim timeSpan As TimeSpan = New TimeSpan(DateAndTime.Now.Ticks - num3)
+                    Dim timeSpan2 As TimeSpan = timeSpan
+                    num3 = DateAndTime.Now.Ticks
+                    Console.WriteLine("Move Drawing Time 1: " + StringType.FromInteger(timeSpan2.Milliseconds))
+                    point = New Point(num, num2)
+                    Me.gLastMousePos = point
+                    Me.backbuffer = New Bitmap(3, 3)
+                    graphics3 = Graphics.FromImage(Me.backbuffer)
+                    rectangle = New Rectangle(num - 1, num2 - 1, 3, 3)
+                    rectangle4 = rectangle
+                    rectangle = New Rectangle(0, 0, 3, 3)
+                    rectangle5 = rectangle
+                    num3 = DateAndTime.Now.Ticks
+                    graphics3.DrawImage(Me.bmp, rectangle5, rectangle4, GraphicsUnit.Pixel)
+                    timeSpan = New TimeSpan(DateAndTime.Now.Ticks - num3)
+                    timeSpan2 = timeSpan
+                    Console.WriteLine("Move Drawing Time 2e: " + StringType.FromInteger(timeSpan2.Milliseconds))
+                    num3 = DateAndTime.Now.Ticks
+                    graphics3 = Graphics.FromImage(Me.bmp)
+                    rectangle = New Rectangle(0, 0, 3, 3)
+                    rectangle4 = rectangle
+                    rectangle = New Rectangle(num - 1, num2 - 1, 3, 3)
+                    rectangle5 = rectangle
+                    graphics3.DrawImage(Me.CurrentModItemBmp, rectangle5, rectangle4, GraphicsUnit.Pixel)
+                    timeSpan = New TimeSpan(DateAndTime.Now.Ticks - num3)
+                    timeSpan2 = timeSpan
+                    Console.WriteLine(String.Concat(New String() {"Move Drawing Time 3: ", StringType.FromInteger(timeSpan2.Milliseconds), " T: ", StringType.FromLong(num3), " x: ", StringType.FromInteger(num), " Y: ", StringType.FromInteger(num2)}))
+                    Me.pbox.Refresh()
+                End If
+            ElseIf e.Button = MouseButtons.Middle Then
+                Dim panel As Panel = Me.Panel1
+                num = panel.PointToClient(Control.MousePosition).X
+                num2 = panel.PointToClient(Control.MousePosition).Y
+                Dim num4 As Integer = num - Me.gLastMousePos.X
+                Dim num5 As Integer = num2 - Me.gLastMousePos.Y
+                If Control.ModifierKeys = Keys.Shift Then
+                    num4 *= 2
+                    num5 *= 2
+                End If
+                If Control.ModifierKeys = Keys.Control Then
+                    num4 *= 10
+                    num5 *= 10
+                End If
+                Dim autoScrollPosition2 As Point
+                If num4 <> 0 OrElse num5 <> 0 Then
+                    Dim autoScrollPosition As Point = Me.Panel1.AutoScrollPosition
+                    Dim num6 As Integer = 0
+                    Dim num7 As Integer = 0
+                    point = Me.Panel1.AutoScrollPosition
+                    autoScrollPosition2 = New Point(num6 - (num7 - point.X - num4), 0 - (0 - Me.Panel1.AutoScrollPosition.Y - num5))
+                    If autoScrollPosition <> autoScrollPosition2 Then
+                        Dim panel2 As ScrollableControl = Me.Panel1
+                        Dim num8 As Integer = 0
+                        autoScrollPosition2 = Me.Panel1.AutoScrollPosition
+                        point = New Point(num8 - autoScrollPosition2.X - num4, 0 - Me.Panel1.AutoScrollPosition.Y - num5)
+                        panel2.AutoScrollPosition = point
+                    End If
+                End If
+                autoScrollPosition2 = New Point(num, num2)
+                Me.gLastMousePos = autoScrollPosition2
+            End If
+        End Sub
 
 		' Token: 0x060008B7 RID: 2231 RVA: 0x002681A4 File Offset: 0x002671A4
-		Private Sub pbox_MouseUp(sender As Object, e As MouseEventArgs)
-			If(Me.CurrentModItem IsNot Nothing) And Not Me.gLastMousePos.IsEmpty Then
-				If e.Button = MouseButtons.Left Then
-					Dim num As Integer = Me.pbox.PointToClient(Control.MousePosition).X
-					Dim num2 As Integer = Me.pbox.PointToClient(Control.MousePosition).Y
-					If num = Me.g_LastMouseDownPos.X AndAlso num2 = Me.g_LastMouseDownPos.Y Then
-						Return
-					End If
-					If Me.CurrentModItem.ItemType <> 2032 AndAlso Me.CurrentModItem.ItemType <> 2040 AndAlso Me.CurrentModItem.ItemType <> 6 AndAlso Me.CurrentModItem.ItemType <> 5000 Then
-						Me.GITfile.SetNodeValue(Me.CurrentModItem.Path + "." + Me.CurrentModItem.XPosAccessor, Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(num), Me.nudXoff.Value), Me.nudXmul.Value)))
-						Me.GITfile.SetNodeValue(Me.CurrentModItem.Path + "." + Me.CurrentModItem.YPosAccessor, Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(num2)), Me.nudYoff.Value), Me.nudYmul.Value)))
-					ElseIf Me.CurrentModItem.ItemType = 2032 OrElse Me.CurrentModItem.ItemType = 2040 Then
-						' The following expression was wrapped in a checked-statement
-						num -= Me.CurrentModItem.ScreenX
-						num2 = Me.invy(num2) - Me.CurrentModItem.ScreenY
-						If(Control.ModifierKeys And Keys.Shift) > Keys.None OrElse Me.CurrentModItem.FileName.StartsWith("g_t_") Then
-							Dim num3 As Single = SingleType.FromObject(Me.GITfile.GetNodeValue(Me.CurrentModItem.Path + ".XPosition"))
-							Dim num4 As Single = SingleType.FromObject(Me.GITfile.GetNodeValue(Me.CurrentModItem.Path + ".YPosition"))
-							If(Not Control.ModifierKeys And Keys.Alt) > Keys.None Then
-								' The following expression was wrapped in a checked-expression
-								Me.GITfile.SetNodeValue(Me.CurrentModItem.Path + ".XPosition", num3 + Convert.ToSingle(Decimal.Divide(New Decimal(Me.pbox.PointToClient(Control.MousePosition).X - Me.g_LastMouseDownPos.X), Me.nudXmul.Value)))
-							End If
-							If(Not Control.ModifierKeys And Keys.Control) > Keys.None Then
-								' The following expression was wrapped in a checked-expression
-								Me.GITfile.SetNodeValue(Me.CurrentModItem.Path + ".YPosition", num4 - Convert.ToSingle(Decimal.Divide(New Decimal(Me.pbox.PointToClient(Control.MousePosition).Y - Me.g_LastMouseDownPos.Y), Me.nudYmul.Value)))
-							End If
-						Else
-							Me.tbHelp.Text = ""
-							Dim num3 As Single = Convert.ToSingle(Decimal.Divide(New Decimal(num), Me.nudXmul.Value))
-							Dim num4 As Single = Convert.ToSingle(Decimal.Divide(New Decimal(num2), Me.nudYmul.Value))
-							Dim num5 As Single = SingleType.FromObject(Me.GITfile.GetNodeValue(Me.CurrentModItem.Path + "." + Me.CurrentModItem.XPosAccessor))
-							Dim num6 As Single = SingleType.FromObject(Me.GITfile.GetNodeValue(Me.CurrentModItem.Path + "." + Me.CurrentModItem.YPosAccessor))
-							Me.GITfile.SetNodeValue(Me.CurrentModItem.Path + "." + Me.CurrentModItem.XPosAccessor, num3)
-							Me.GITfile.SetNodeValue(Me.CurrentModItem.Path + "." + Me.CurrentModItem.YPosAccessor, num4)
-						End If
-					ElseIf Me.CurrentModItem.ItemType = 6 Then
-						Dim gfftype As GFFType17 = New GFFType17()
-						gfftype.f1 = Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(num), Me.nudXoff.Value), Me.nudXmul.Value))
-						gfftype.f2 = Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(num2)), Me.nudYoff.Value), Me.nudYmul.Value))
-						Me.GITfile.SetNodeValue(Me.CurrentModItem.Path + ".Position", gfftype)
-					ElseIf Me.CurrentModItem.ItemType = 5000 Then
-						Me.IFOfile.SetNodeValue("Mod_Entry_X", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(num), Me.nudXoff.Value), Me.nudXmul.Value)))
-						Me.IFOfile.SetNodeValue("Mod_Entry_Y", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(num2)), Me.nudYoff.Value), Me.nudYmul.Value)))
-					End If
-					Me.LoadBackground()
-					Me.Draw()
-					Me.CurrentModItem = Nothing
-					Me.CurrentModItemBmp = Nothing
-					Me.backbuffer = Nothing
-					Cursor.Current = Cursors.[Default]
-					Me.LeftMouseClickActive = False
-					Me.gLastMousePos = CType((If(Nothing, Activator.CreateInstance(GetType(Point)))), Point)
-				End If
-			Else
-				If Me.g_IsDrawingRegion Then
-					If e.Button = MouseButtons.Left Then
-						Dim x As Integer = Me.pbox.PointToClient(Control.MousePosition).X
-						Dim point As Point = Me.pbox.PointToClient(Control.MousePosition)
-						Dim y As Integer = point.Y
-						point = New Point(x, y)
-						Me.gLastMousePos = point
-						Me.gCurrentRegionSegmentOrigin = Me.gLastMousePos
-						If Me.Near(x, y, RuntimeHelpers.GetObjectValue(LateBinding.LateGet(Me.g_RegionPointList(0), Nothing, "X", New Object(-1) {}, Nothing, Nothing)), RuntimeHelpers.GetObjectValue(LateBinding.LateGet(Me.g_RegionPointList(0), Nothing, "Y", New Object(-1) {}, Nothing, Nothing))) Then
-							Me.g_IsDrawingRegion = False
-							If Me.gCurrentModItemType = 2032 Then
-								Me.CreateTrigger(Me.g_RegionResRef, Me.g_RegionPointList)
-							ElseIf Me.gCurrentModItemType = 2040 Then
-								Me.CreateEncounter(Me.g_RegionResRef, Me.g_RegionPointList)
-							End If
-							Me.LoadBackground()
-							Me.Draw()
-							Me.BuildModuleTreeView()
-						Else
-							Dim arrayList As ArrayList = Me.g_RegionPointList
-							point = New Point(x, y)
-							arrayList.Add(point)
-						End If
-					ElseIf e.Button = MouseButtons.Right Then
-						Me.tbHelp.Text = ""
-						Me.g_IsDrawingRegion = False
-						If Me.gCurrentModItemType = 2032 Then
-							Me.CreateTrigger(Me.g_RegionResRef, Me.g_RegionPointList)
-						ElseIf Me.gCurrentModItemType = 2040 Then
-							Me.CreateEncounter(Me.g_RegionResRef, Me.g_RegionPointList)
-						End If
-						Me.gCurrentModItemType = -1
-						Me.LoadBackground()
-						Me.Draw()
-						Me.BuildModuleTreeView()
-					End If
-				End If
-				Me.tbHelp.Text = ""
-				Me.sbarpnlDesc.Text = ""
-				Me.sbarpnlAddlInfo.Text = ""
-			End If
-		End Sub
+        Private Sub pbox_MouseUp(ByVal sender As Object, ByVal e As MouseEventArgs) Handles pbox.MouseUp
+            If (Me.CurrentModItem IsNot Nothing) And Not Me.gLastMousePos.IsEmpty Then
+                If e.Button = MouseButtons.Left Then
+                    Dim num As Integer = Me.pbox.PointToClient(Control.MousePosition).X
+                    Dim num2 As Integer = Me.pbox.PointToClient(Control.MousePosition).Y
+                    If num = Me.g_LastMouseDownPos.X AndAlso num2 = Me.g_LastMouseDownPos.Y Then
+                        Return
+                    End If
+                    If Me.CurrentModItem.ItemType <> 2032 AndAlso Me.CurrentModItem.ItemType <> 2040 AndAlso Me.CurrentModItem.ItemType <> 6 AndAlso Me.CurrentModItem.ItemType <> 5000 Then
+                        Me.GITfile.SetNodeValue(Me.CurrentModItem.Path + "." + Me.CurrentModItem.XPosAccessor, Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(num), Me.nudXoff.Value), Me.nudXmul.Value)))
+                        Me.GITfile.SetNodeValue(Me.CurrentModItem.Path + "." + Me.CurrentModItem.YPosAccessor, Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(num2)), Me.nudYoff.Value), Me.nudYmul.Value)))
+                    ElseIf Me.CurrentModItem.ItemType = 2032 OrElse Me.CurrentModItem.ItemType = 2040 Then
+                        ' The following expression was wrapped in a checked-statement
+                        num -= Me.CurrentModItem.ScreenX
+                        num2 = Me.invy(num2) - Me.CurrentModItem.ScreenY
+                        If (Control.ModifierKeys And Keys.Shift) > Keys.None OrElse Me.CurrentModItem.FileName.StartsWith("g_t_") Then
+                            Dim num3 As Single = SingleType.FromObject(Me.GITfile.GetNodeValue(Me.CurrentModItem.Path + ".XPosition"))
+                            Dim num4 As Single = SingleType.FromObject(Me.GITfile.GetNodeValue(Me.CurrentModItem.Path + ".YPosition"))
+                            If (Not Control.ModifierKeys And Keys.Alt) > Keys.None Then
+                                ' The following expression was wrapped in a checked-expression
+                                Me.GITfile.SetNodeValue(Me.CurrentModItem.Path + ".XPosition", num3 + Convert.ToSingle(Decimal.Divide(New Decimal(Me.pbox.PointToClient(Control.MousePosition).X - Me.g_LastMouseDownPos.X), Me.nudXmul.Value)))
+                            End If
+                            If (Not Control.ModifierKeys And Keys.Control) > Keys.None Then
+                                ' The following expression was wrapped in a checked-expression
+                                Me.GITfile.SetNodeValue(Me.CurrentModItem.Path + ".YPosition", num4 - Convert.ToSingle(Decimal.Divide(New Decimal(Me.pbox.PointToClient(Control.MousePosition).Y - Me.g_LastMouseDownPos.Y), Me.nudYmul.Value)))
+                            End If
+                        Else
+                            Me.tbHelp.Text = ""
+                            Dim num3 As Single = Convert.ToSingle(Decimal.Divide(New Decimal(num), Me.nudXmul.Value))
+                            Dim num4 As Single = Convert.ToSingle(Decimal.Divide(New Decimal(num2), Me.nudYmul.Value))
+                            Dim num5 As Single = SingleType.FromObject(Me.GITfile.GetNodeValue(Me.CurrentModItem.Path + "." + Me.CurrentModItem.XPosAccessor))
+                            Dim num6 As Single = SingleType.FromObject(Me.GITfile.GetNodeValue(Me.CurrentModItem.Path + "." + Me.CurrentModItem.YPosAccessor))
+                            Me.GITfile.SetNodeValue(Me.CurrentModItem.Path + "." + Me.CurrentModItem.XPosAccessor, num3)
+                            Me.GITfile.SetNodeValue(Me.CurrentModItem.Path + "." + Me.CurrentModItem.YPosAccessor, num4)
+                        End If
+                    ElseIf Me.CurrentModItem.ItemType = 6 Then
+                        Dim gfftype As GFFType17 = New GFFType17()
+                        gfftype.f1 = Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(num), Me.nudXoff.Value), Me.nudXmul.Value))
+                        gfftype.f2 = Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(num2)), Me.nudYoff.Value), Me.nudYmul.Value))
+                        Me.GITfile.SetNodeValue(Me.CurrentModItem.Path + ".Position", gfftype)
+                    ElseIf Me.CurrentModItem.ItemType = 5000 Then
+                        Me.IFOfile.SetNodeValue("Mod_Entry_X", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(num), Me.nudXoff.Value), Me.nudXmul.Value)))
+                        Me.IFOfile.SetNodeValue("Mod_Entry_Y", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(num2)), Me.nudYoff.Value), Me.nudYmul.Value)))
+                    End If
+                    Me.LoadBackground()
+                    Me.Draw()
+                    Me.CurrentModItem = Nothing
+                    Me.CurrentModItemBmp = Nothing
+                    Me.backbuffer = Nothing
+                    Cursor.Current = Cursors.[Default]
+                    Me.LeftMouseClickActive = False
+                    Me.gLastMousePos = CType((If(Nothing, Activator.CreateInstance(GetType(Point)))), Point)
+                End If
+            Else
+                If Me.g_IsDrawingRegion Then
+                    If e.Button = MouseButtons.Left Then
+                        Dim x As Integer = Me.pbox.PointToClient(Control.MousePosition).X
+                        Dim point As Point = Me.pbox.PointToClient(Control.MousePosition)
+                        Dim y As Integer = point.Y
+                        point = New Point(x, y)
+                        Me.gLastMousePos = point
+                        Me.gCurrentRegionSegmentOrigin = Me.gLastMousePos
+                        If Me.Near(x, y, RuntimeHelpers.GetObjectValue(LateBinding.LateGet(Me.g_RegionPointList(0), Nothing, "X", New Object(-1) {}, Nothing, Nothing)), RuntimeHelpers.GetObjectValue(LateBinding.LateGet(Me.g_RegionPointList(0), Nothing, "Y", New Object(-1) {}, Nothing, Nothing))) Then
+                            Me.g_IsDrawingRegion = False
+                            If Me.gCurrentModItemType = 2032 Then
+                                Me.CreateTrigger(Me.g_RegionResRef, Me.g_RegionPointList)
+                            ElseIf Me.gCurrentModItemType = 2040 Then
+                                Me.CreateEncounter(Me.g_RegionResRef, Me.g_RegionPointList)
+                            End If
+                            Me.LoadBackground()
+                            Me.Draw()
+                            Me.BuildModuleTreeView()
+                        Else
+                            Dim arrayList As ArrayList = Me.g_RegionPointList
+                            point = New Point(x, y)
+                            arrayList.Add(point)
+                        End If
+                    ElseIf e.Button = MouseButtons.Right Then
+                        Me.tbHelp.Text = ""
+                        Me.g_IsDrawingRegion = False
+                        If Me.gCurrentModItemType = 2032 Then
+                            Me.CreateTrigger(Me.g_RegionResRef, Me.g_RegionPointList)
+                        ElseIf Me.gCurrentModItemType = 2040 Then
+                            Me.CreateEncounter(Me.g_RegionResRef, Me.g_RegionPointList)
+                        End If
+                        Me.gCurrentModItemType = -1
+                        Me.LoadBackground()
+                        Me.Draw()
+                        Me.BuildModuleTreeView()
+                    End If
+                End If
+                Me.tbHelp.Text = ""
+                Me.sbarpnlDesc.Text = ""
+                Me.sbarpnlAddlInfo.Text = ""
+            End If
+        End Sub
 
 		' Token: 0x060008B8 RID: 2232 RVA: 0x002689A4 File Offset: 0x002679A4
-		Private Sub pbox_MouseLeave(sender As Object, e As EventArgs)
-			Me.sbarpnlLocX.Text = ""
-			Me.sbarpnlLocY.Text = ""
-		End Sub
+        Private Sub pbox_MouseLeave(ByVal sender As Object, ByVal e As EventArgs) Handles pbox.MouseLeave
+            Me.sbarpnlLocX.Text = ""
+            Me.sbarpnlLocY.Text = ""
+        End Sub
 
 		' Token: 0x060008B9 RID: 2233 RVA: 0x002689C8 File Offset: 0x002679C8
-		Private Sub nudMulOff_ValueChanged(sender As Object, e As EventArgs)
-			If Me.CanFocus And Me.chkbUseFactors.Checked Then
-				Me.LoadBackground()
-				Me.Draw()
-			End If
-		End Sub
+        Private Sub nudMulOff_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles nudYoff.ValueChanged, nudYmul.ValueChanged, nudXoff.ValueChanged, nudXmul.ValueChanged
+            If Me.CanFocus And Me.chkbUseFactors.Checked Then
+                Me.LoadBackground()
+                Me.Draw()
+            End If
+        End Sub
 
 		' Token: 0x060008BA RID: 2234 RVA: 0x002689EC File Offset: 0x002679EC
-		Private Sub tvPalette_ItemDrag(sender As Object, e As ItemDragEventArgs)
-			Dim treeNode As TreeNode = CType(e.Item, TreeNode)
-			Dim text As String = treeNode.Text
-			If treeNode.Tag IsNot Nothing AndAlso ObjectType.ObjTst(treeNode.Tag, "", False) <> 0 Then
-				Me.DoDragDrop(RuntimeHelpers.GetObjectValue(treeNode.Tag), DragDropEffects.Copy Or DragDropEffects.Move)
-			End If
-		End Sub
+        Private Sub tvPalette_ItemDrag(ByVal sender As Object, ByVal e As ItemDragEventArgs) Handles tvPalette.ItemDrag
+            Dim treeNode As TreeNode = CType(e.Item, TreeNode)
+            Dim text As String = treeNode.Text
+            If treeNode.Tag IsNot Nothing AndAlso ObjectType.ObjTst(treeNode.Tag, "", False) <> 0 Then
+                Me.DoDragDrop(RuntimeHelpers.GetObjectValue(treeNode.Tag), DragDropEffects.Copy Or DragDropEffects.Move)
+            End If
+        End Sub
 
 		' Token: 0x060008BB RID: 2235 RVA: 0x00268A3C File Offset: 0x00267A3C
-		Private Sub tvUserPalette_ItemDrag(sender As Object, e As ItemDragEventArgs)
-			Dim treeNode As TreeNode = CType(e.Item, TreeNode)
-			Dim text As String = treeNode.Text
-			If treeNode.Tag IsNot Nothing AndAlso ObjectType.ObjTst(treeNode.Tag, "", False) <> 0 Then
-				Me.DoDragDrop(RuntimeHelpers.GetObjectValue(treeNode.Tag), DragDropEffects.Copy Or DragDropEffects.Move)
-			End If
-		End Sub
+        Private Sub tvUserPalette_ItemDrag(ByVal sender As Object, ByVal e As ItemDragEventArgs) Handles tvUserPalette.ItemDrag
+            Dim treeNode As TreeNode = CType(e.Item, TreeNode)
+            Dim text As String = treeNode.Text
+            If treeNode.Tag IsNot Nothing AndAlso ObjectType.ObjTst(treeNode.Tag, "", False) <> 0 Then
+                Me.DoDragDrop(RuntimeHelpers.GetObjectValue(treeNode.Tag), DragDropEffects.Copy Or DragDropEffects.Move)
+            End If
+        End Sub
 
 		' Token: 0x060008BC RID: 2236 RVA: 0x00268A8C File Offset: 0x00267A8C
-		Private Sub tvModule_MouseDown(sender As Object, e As MouseEventArgs)
-			Dim point As Point = New Point(e.X, e.Y)
-			Dim point2 As Point = point
-			Me.LastClickedTvModuleNode = CType(Me.tvModule.GetNodeAt(point2), ModItemTvNode)
-		End Sub
+        Private Sub tvModule_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles tvModule.MouseDown
+            Dim point As Point = New Point(e.X, e.Y)
+            Dim point2 As Point = point
+            Me.LastClickedTvModuleNode = CType(Me.tvModule.GetNodeAt(point2), ModItemTvNode)
+        End Sub
 
 		' Token: 0x060008BD RID: 2237 RVA: 0x00268AC8 File Offset: 0x00267AC8
-		Private Sub tvModule_MouseUp(sender As Object, e As MouseEventArgs)
-			Dim point As Point = New Point(e.X, e.Y)
-			Dim point2 As Point = point
-			Dim lastClickedTvModuleNode As ModItemTvNode = Me.LastClickedTvModuleNode
-			If lastClickedTvModuleNode IsNot Nothing Then
-				Me.CurrentContextMenuTvModuleNode = lastClickedTvModuleNode
-			End If
-			If e.Button = MouseButtons.Right Then
-				If lastClickedTvModuleNode IsNot Nothing Then
-					Dim tag As Object = lastClickedTvModuleNode.Tag
-					If ObjectType.ObjTst(tag, "ItemParent", False) <> 0 AndAlso ObjectType.ObjTst(tag, "Item", False) = 0 Then
-						Me.tvModuleContextMenuItem.MenuItems(Me.tvModuleContextMenuItem.MenuItems.IndexOf(Me.cmiTvModuleItemEdit)).Visible = lastClickedTvModuleNode.ItemType <> 6
-						Me.tvModuleContextMenuItem.Show(Me.tvModule, point2)
-					End If
-					Me.tvModule.SelectedNode = Me.CurrentContextMenuTvModuleNode
-				End If
-			ElseIf e.Button = MouseButtons.Left Then
-				Me.tbHelp.Text = "Click an item to see it's location in the module, or right-click it to access the pop-up menu."
-				If lastClickedTvModuleNode IsNot Nothing Then
-					If e.X < lastClickedTvModuleNode.Bounds.Left Then
-						Return
-					End If
-					Me.LeftMouseClickActive = False
-					Dim tag2 As Object = lastClickedTvModuleNode.Tag
-					If ObjectType.ObjTst(tag2, "Item", False) = 0 Then
-						Me.IndicatedModItem = Me.GetTreeNodesModItem(lastClickedTvModuleNode)
-						Me.LoadBackground()
-						Me.Draw()
-					End If
-				End If
-			End If
-		End Sub
+        Private Sub tvModule_MouseUp(ByVal sender As Object, ByVal e As MouseEventArgs) Handles tvModule.MouseUp
+            Dim point As Point = New Point(e.X, e.Y)
+            Dim point2 As Point = point
+            Dim lastClickedTvModuleNode As ModItemTvNode = Me.LastClickedTvModuleNode
+            If lastClickedTvModuleNode IsNot Nothing Then
+                Me.CurrentContextMenuTvModuleNode = lastClickedTvModuleNode
+            End If
+            If e.Button = MouseButtons.Right Then
+                If lastClickedTvModuleNode IsNot Nothing Then
+                    Dim tag As Object = lastClickedTvModuleNode.Tag
+                    If ObjectType.ObjTst(tag, "ItemParent", False) <> 0 AndAlso ObjectType.ObjTst(tag, "Item", False) = 0 Then
+                        Me.tvModuleContextMenuItem.MenuItems(Me.tvModuleContextMenuItem.MenuItems.IndexOf(Me.cmiTvModuleItemEdit)).Visible = lastClickedTvModuleNode.ItemType <> 6
+                        Me.tvModuleContextMenuItem.Show(Me.tvModule, point2)
+                    End If
+                    Me.tvModule.SelectedNode = Me.CurrentContextMenuTvModuleNode
+                End If
+            ElseIf e.Button = MouseButtons.Left Then
+                Me.tbHelp.Text = "Click an item to see it's location in the module, or right-click it to access the pop-up menu."
+                If lastClickedTvModuleNode IsNot Nothing Then
+                    If e.X < lastClickedTvModuleNode.Bounds.Left Then
+                        Return
+                    End If
+                    Me.LeftMouseClickActive = False
+                    Dim tag2 As Object = lastClickedTvModuleNode.Tag
+                    If ObjectType.ObjTst(tag2, "Item", False) = 0 Then
+                        Me.IndicatedModItem = Me.GetTreeNodesModItem(lastClickedTvModuleNode)
+                        Me.LoadBackground()
+                        Me.Draw()
+                    End If
+                End If
+            End If
+        End Sub
 
 		' Token: 0x060008BE RID: 2238 RVA: 0x00268C04 File Offset: 0x00267C04
-		Private Sub tvModule_KeyUp(sender As Object, e As KeyEventArgs)
-			If Me.tvModule.SelectedNode Is Nothing Then
-				Return
-			End If
-			Dim tag As Object = Me.tvModule.SelectedNode.Tag
-			If ObjectType.ObjTst(tag, "Item", False) = 0 Then
-				Me.IndicatedModItem = Me.GetTreeNodesModItem(CType(Me.tvModule.SelectedNode, ModItemTvNode))
-				Me.LoadBackground()
-				Me.Draw()
-			End If
-		End Sub
+        Private Sub tvModule_KeyUp(ByVal sender As Object, ByVal e As KeyEventArgs) Handles tvModule.KeyUp
+            If Me.tvModule.SelectedNode Is Nothing Then
+                Return
+            End If
+            Dim tag As Object = Me.tvModule.SelectedNode.Tag
+            If ObjectType.ObjTst(tag, "Item", False) = 0 Then
+                Me.IndicatedModItem = Me.GetTreeNodesModItem(CType(Me.tvModule.SelectedNode, ModItemTvNode))
+                Me.LoadBackground()
+                Me.Draw()
+            End If
+        End Sub
 
 		' Token: 0x060008BF RID: 2239 RVA: 0x00268C68 File Offset: 0x00267C68
-		Private Sub tvModule_BeforeExpand(sender As Object, e As TreeViewCancelEventArgs)
-			Dim modItemTvNode As ModItemTvNode = CType(e.Node, ModItemTvNode)
-			If Not Me.g_tvModule_TreeOpenPaths.Contains(modItemTvNode.FullPath) Then
-				Me.g_tvModule_TreeOpenPaths.Add(modItemTvNode.FullPath)
-			End If
-			Me.AddNodeChildrenToTreePaths(modItemTvNode, Me.g_tvModule_TreeOpenPaths)
-		End Sub
+        Private Sub tvModule_BeforeExpand(ByVal sender As Object, ByVal e As TreeViewCancelEventArgs) Handles tvModule.BeforeExpand
+            Dim modItemTvNode As ModItemTvNode = CType(e.Node, ModItemTvNode)
+            If Not Me.g_tvModule_TreeOpenPaths.Contains(modItemTvNode.FullPath) Then
+                Me.g_tvModule_TreeOpenPaths.Add(modItemTvNode.FullPath)
+            End If
+            Me.AddNodeChildrenToTreePaths(modItemTvNode, Me.g_tvModule_TreeOpenPaths)
+        End Sub
 
 		' Token: 0x060008C0 RID: 2240 RVA: 0x00268CB4 File Offset: 0x00267CB4
-		Private Sub tvModule_BeforeCollapse(sender As Object, e As TreeViewCancelEventArgs)
-			Dim modItemTvNode As ModItemTvNode = CType(e.Node, ModItemTvNode)
-			For i As Integer = Me.g_tvModule_TreeOpenPaths.Count - 1 To 0 Step -1
-				If BooleanType.FromObject(If((BooleanType.FromObject(LateBinding.LateGet(Me.g_tvModule_TreeOpenPaths(i), Nothing, "StartsWith", New Object() { modItemTvNode.FullPath + "\" }, Nothing, Nothing)) OrElse BooleanType.FromObject(ObjectType.ObjTst(Me.g_tvModule_TreeOpenPaths(i), modItemTvNode.FullPath, False) = 0)), True, False)) Then
-					Me.g_tvModule_TreeOpenPaths.RemoveAt(i)
-				End If
-			Next
-		End Sub
+        Private Sub tvModule_BeforeCollapse(ByVal sender As Object, ByVal e As TreeViewCancelEventArgs) Handles tvModule.BeforeCollapse
+            Dim modItemTvNode As ModItemTvNode = CType(e.Node, ModItemTvNode)
+            For i As Integer = Me.g_tvModule_TreeOpenPaths.Count - 1 To 0 Step -1
+                If BooleanType.FromObject(If((BooleanType.FromObject(LateBinding.LateGet(Me.g_tvModule_TreeOpenPaths(i), Nothing, "StartsWith", New Object() {modItemTvNode.FullPath + "\"}, Nothing, Nothing)) OrElse BooleanType.FromObject(ObjectType.ObjTst(Me.g_tvModule_TreeOpenPaths(i), modItemTvNode.FullPath, False) = 0)), True, False)) Then
+                    Me.g_tvModule_TreeOpenPaths.RemoveAt(i)
+                End If
+            Next
+        End Sub
 
 		' Token: 0x060008C1 RID: 2241 RVA: 0x00268D70 File Offset: 0x00267D70
-		Private Sub cmiProperties_Click(sender As Object, e As EventArgs)
-			Me.EditItemProperties(Me.CurrentModItem)
-			Me.CurrentModItem = Nothing
-			Me.LoadBackground()
-			Me.Draw()
-		End Sub
+        Private Sub cmiProperties_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiProperties.Click
+            Me.EditItemProperties(Me.CurrentModItem)
+            Me.CurrentModItem = Nothing
+            Me.LoadBackground()
+            Me.Draw()
+        End Sub
 
 		' Token: 0x060008C2 RID: 2242 RVA: 0x00268D94 File Offset: 0x00267D94
-		Private Sub cmiEdit_Click(sender As Object, e As EventArgs)
-			Me.EditItem(Me.CurrentModItem)
-			Me.CurrentModItem = Nothing
-		End Sub
+        Private Sub cmiEdit_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiEditGFFFile.Click
+            Me.EditItem(Me.CurrentModItem)
+            Me.CurrentModItem = Nothing
+        End Sub
 
 		' Token: 0x060008C3 RID: 2243 RVA: 0x00268DAC File Offset: 0x00267DAC
-		Private Sub cmiDelete_Click(sender As Object, e As EventArgs)
-			If Not Me.bConfirmDeletes OrElse Interaction.MsgBox("Are you sure you want to delete this?", MsgBoxStyle.OkCancel, "Delete Item") = MsgBoxResult.Ok Then
-				Me.DeleteModuleItem(Me.CurrentModItem)
-				Me.CurrentModItem = Nothing
-			End If
-		End Sub
+        Private Sub cmiDelete_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiDelete.Click
+            If Not Me.bConfirmDeletes OrElse Interaction.MsgBox("Are you sure you want to delete this?", MsgBoxStyle.OkCancel, "Delete Item") = MsgBoxResult.Ok Then
+                Me.DeleteModuleItem(Me.CurrentModItem)
+                Me.CurrentModItem = Nothing
+            End If
+        End Sub
 
 		' Token: 0x060008C4 RID: 2244 RVA: 0x00268DDC File Offset: 0x00267DDC
-		Private Sub cmiAddNewSpawnPoint_Click(sender As Object, e As EventArgs)
-			Dim currentModItem As ModItem = Me.CurrentModItem
-			If Not Me.GITfile.VerifyNodeExists(currentModItem.Path + ".SpawnPointList") Then
-				Me.GITfile.CreateList(currentModItem.Path, "SpawnPointList")
-			End If
-			Dim listItemCount As Integer = Me.GITfile.GetListItemCount(currentModItem.Path + ".SpawnPointList")
-			Dim gff_Struct As GFF_Struct = New GFF_Struct(4, 2)
-			gff_Struct.fields(0) = New GFF_Field(GFFField.GFF_float, "X", currentModItem.Parent.X + 2F + CSng(listItemCount))
-			gff_Struct.fields(1) = New GFF_Field(GFFField.GFF_float, "Y", currentModItem.Parent.Y + 2F)
-			gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_float, "Z", 0.0)
-			gff_Struct.fields(3) = New GFF_Field(GFFField.GFF_float, "Orientation", 0.0)
-			Me.GITfile.AddListElement(currentModItem.Path + ".SpawnPointList", gff_Struct)
-			Me.LoadBackground()
-			Me.Draw()
-			Me.BuildModuleTreeView()
-		End Sub
+        Private Sub cmiAddNewSpawnPoint_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiAddNewSpawnPoint.Click
+            Dim currentModItem As ModItem = Me.CurrentModItem
+            If Not Me.GITfile.VerifyNodeExists(currentModItem.Path + ".SpawnPointList") Then
+                Me.GITfile.CreateList(currentModItem.Path, "SpawnPointList")
+            End If
+            Dim listItemCount As Integer = Me.GITfile.GetListItemCount(currentModItem.Path + ".SpawnPointList")
+            Dim gff_Struct As GFF_Struct = New GFF_Struct(4, 2)
+            gff_Struct.fields(0) = New GFF_Field(GFFField.GFF_float, "X", currentModItem.Parent.X + 2.0F + CSng(listItemCount))
+            gff_Struct.fields(1) = New GFF_Field(GFFField.GFF_float, "Y", currentModItem.Parent.Y + 2.0F)
+            gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_float, "Z", 0.0)
+            gff_Struct.fields(3) = New GFF_Field(GFFField.GFF_float, "Orientation", 0.0)
+            Me.GITfile.AddListElement(currentModItem.Path + ".SpawnPointList", gff_Struct)
+            Me.LoadBackground()
+            Me.Draw()
+            Me.BuildModuleTreeView()
+        End Sub
 
 		' Token: 0x060008C5 RID: 2245 RVA: 0x00268F0C File Offset: 0x00267F0C
-		Private Sub cmiTvModuleItemProperties_Click(sender As Object, e As EventArgs)
-			Dim currentContextMenuTvModuleNode As ModItemTvNode = Me.CurrentContextMenuTvModuleNode
-			Dim pen As Pen = New Pen(Color.Orange, 1F)
-			pen.EndCap = LineCap.ArrowAnchor
-			Dim treeNodesModItem As ModItem = Me.GetTreeNodesModItem(currentContextMenuTvModuleNode)
-			Dim panel As ScrollableControl = Me.Panel1
-			Dim point As Point = New Point(CInt(Math.Round(CDbl(treeNodesModItem.ScreenX) - CDbl(Me.Panel1.Size.Width) / 2.0)), CInt(Math.Round(CDbl(treeNodesModItem.ScreenY) - CDbl(Me.Panel1.Size.Height) / 2.0)))
-			panel.AutoScrollPosition = point
-			If Me.bShowLocatorRay Then
-				Graphics.FromImage(Me.pbox.Image).DrawLine(pen, 0, 0, treeNodesModItem.ScreenX - 3, treeNodesModItem.ScreenY - 3)
-			End If
-			Me.pbox.Update()
-			Me.EditItemProperties(treeNodesModItem)
-			Me.LoadBackground()
-			Me.Draw()
-		End Sub
+        Private Sub cmiTvModuleItemProperties_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiTvModuleItemProperties.Click
+            Dim currentContextMenuTvModuleNode As ModItemTvNode = Me.CurrentContextMenuTvModuleNode
+            Dim pen As Pen = New Pen(Color.Orange, 1.0F)
+            pen.EndCap = LineCap.ArrowAnchor
+            Dim treeNodesModItem As ModItem = Me.GetTreeNodesModItem(currentContextMenuTvModuleNode)
+            Dim panel As ScrollableControl = Me.Panel1
+            Dim point As Point = New Point(CInt(Math.Round(CDbl(treeNodesModItem.ScreenX) - CDbl(Me.Panel1.Size.Width) / 2.0)), CInt(Math.Round(CDbl(treeNodesModItem.ScreenY) - CDbl(Me.Panel1.Size.Height) / 2.0)))
+            panel.AutoScrollPosition = point
+            If Me.bShowLocatorRay Then
+                Graphics.FromImage(Me.pbox.Image).DrawLine(pen, 0, 0, treeNodesModItem.ScreenX - 3, treeNodesModItem.ScreenY - 3)
+            End If
+            Me.pbox.Update()
+            Me.EditItemProperties(treeNodesModItem)
+            Me.LoadBackground()
+            Me.Draw()
+        End Sub
 
 		' Token: 0x060008C6 RID: 2246 RVA: 0x00268FFC File Offset: 0x00267FFC
-		Private Sub cmiTvModuleItemEdit_Click(sender As Object, e As EventArgs)
-			Dim currentContextMenuTvModuleNode As ModItemTvNode = Me.CurrentContextMenuTvModuleNode
-			Dim pen As Pen = New Pen(Color.Orange, 1F)
-			pen.EndCap = LineCap.ArrowAnchor
-			Dim treeNodesModItem As ModItem = Me.GetTreeNodesModItem(currentContextMenuTvModuleNode)
-			Dim panel As ScrollableControl = Me.Panel1
-			Dim point As Point = New Point(CInt(Math.Round(CDbl(treeNodesModItem.ScreenX) - CDbl(Me.Panel1.Size.Width) / 2.0)), CInt(Math.Round(CDbl(treeNodesModItem.ScreenY) - CDbl(Me.Panel1.Size.Height) / 2.0)))
-			panel.AutoScrollPosition = point
-			If Me.bShowLocatorRay Then
-				Graphics.FromImage(Me.pbox.Image).DrawLine(pen, 0, 0, treeNodesModItem.ScreenX - 3, treeNodesModItem.ScreenY - 3)
-			End If
-			Me.pbox.Update()
-			Me.EditItem(treeNodesModItem)
-			Me.LoadBackground()
-			Me.Draw()
-		End Sub
+        Private Sub cmiTvModuleItemEdit_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiTvModuleItemEdit.Click
+            Dim currentContextMenuTvModuleNode As ModItemTvNode = Me.CurrentContextMenuTvModuleNode
+            Dim pen As Pen = New Pen(Color.Orange, 1.0F)
+            pen.EndCap = LineCap.ArrowAnchor
+            Dim treeNodesModItem As ModItem = Me.GetTreeNodesModItem(currentContextMenuTvModuleNode)
+            Dim panel As ScrollableControl = Me.Panel1
+            Dim point As Point = New Point(CInt(Math.Round(CDbl(treeNodesModItem.ScreenX) - CDbl(Me.Panel1.Size.Width) / 2.0)), CInt(Math.Round(CDbl(treeNodesModItem.ScreenY) - CDbl(Me.Panel1.Size.Height) / 2.0)))
+            panel.AutoScrollPosition = point
+            If Me.bShowLocatorRay Then
+                Graphics.FromImage(Me.pbox.Image).DrawLine(pen, 0, 0, treeNodesModItem.ScreenX - 3, treeNodesModItem.ScreenY - 3)
+            End If
+            Me.pbox.Update()
+            Me.EditItem(treeNodesModItem)
+            Me.LoadBackground()
+            Me.Draw()
+        End Sub
 
 		' Token: 0x060008C7 RID: 2247 RVA: 0x002690EC File Offset: 0x002680EC
-		Private Sub cmiTvModuleItemDelete_Click(sender As Object, e As EventArgs)
-			If Not Me.bConfirmDeletes OrElse Interaction.MsgBox("Are you sure you want to delete this?", MsgBoxStyle.OkCancel, "Delete Item") = MsgBoxResult.Ok Then
-				Dim currentContextMenuTvModuleNode As ModItemTvNode = Me.CurrentContextMenuTvModuleNode
-				Dim fullPath As String = currentContextMenuTvModuleNode.Parent.FullPath
-				Dim treeNodesModItem As ModItem = Me.GetTreeNodesModItem(currentContextMenuTvModuleNode)
-				Me.DeleteModuleItem(treeNodesModItem)
-				Me.CurrentModItem = Nothing
-				frmMain.OpenTreeViewToPath(fullPath, Me.tvModule.Nodes(0), 0, True)
-			End If
-		End Sub
+        Private Sub cmiTvModuleItemDelete_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiTvModuleItemDelete.Click
+            If Not Me.bConfirmDeletes OrElse Interaction.MsgBox("Are you sure you want to delete this?", MsgBoxStyle.OkCancel, "Delete Item") = MsgBoxResult.Ok Then
+                Dim currentContextMenuTvModuleNode As ModItemTvNode = Me.CurrentContextMenuTvModuleNode
+                Dim fullPath As String = currentContextMenuTvModuleNode.Parent.FullPath
+                Dim treeNodesModItem As ModItem = Me.GetTreeNodesModItem(currentContextMenuTvModuleNode)
+                Me.DeleteModuleItem(treeNodesModItem)
+                Me.CurrentModItem = Nothing
+                frmMain.OpenTreeViewToPath(fullPath, Me.tvModule.Nodes(0), 0, True)
+            End If
+        End Sub
 
 		' Token: 0x060008C8 RID: 2248 RVA: 0x00269158 File Offset: 0x00268158
-		Private Sub cmiCreateCameraHere_Click(sender As Object, e As EventArgs)
-			Dim num As Single = Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.g_LastMouseDownPos.X), Me.nudXoff.Value), Me.nudXmul.Value))
-			Dim num2 As Single = Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(Me.g_LastMouseDownPos.Y)), Me.nudYoff.Value), Me.nudYmul.Value))
-			If Not Me.GITfile.VerifyNodeExists("CameraList") Then
-				Me.GITfile.CreateList("", "CameraList")
-			End If
-			Dim listItemCount As Integer = Me.GITfile.GetListItemCount("CameraList")
-			Dim num3 As Integer = -1
-			If listItemCount = 0 Then
-				num3 = 1
-			Else
-				Dim num4 As Integer = 0
-				Dim num5 As Integer = listItemCount - 1
-				For i As Integer = num4 To num5
-					Dim num6 As Integer = IntegerType.FromObject(Me.GITfile.GetNodeValue("CameraList(" + StringType.FromInteger(i) + ").CameraID"))
-					If num6 > num3 Then
-						num3 = num6
-					End If
-				Next
-				num3 += 1
-			End If
-			Dim gff_Struct As GFF_Struct = New GFF_Struct()
-			gff_Struct.type = 14
-			gff_Struct.fieldCount = 8
-			gff_Struct.fields = New GFF_Field(7) {}
-			gff_Struct.fields(0) = New GFF_Field(GFFField.GFF_int, "CameraID", num3)
-			gff_Struct.fields(1) = New GFF_Field(GFFField.GFF_Type17, "Position", New GFFType17(num, num2, 0F))
-			gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_float, "Pitch", 0)
-			gff_Struct.fields(3) = New GFF_Field(GFFField.GFF_float, "MicRange", 0)
-			gff_Struct.fields(4) = New GFF_Field(GFFField.GFF_Type16, "Orientation", New GFFType16(1F, 0F, 0F, 0F))
-			gff_Struct.fields(5) = New GFF_Field(GFFField.GFF_float, "Height", 2)
-			gff_Struct.fields(6) = New GFF_Field(GFFField.GFF_float, "FieldOfView", 55)
-			gff_Struct.fields(7) = New GFF_Field(GFFField.GFF_Type17, "EAOrientation", New GFFType17(0F, 0F, 0F))
-			Me.GITfile.AddListElement("CameraList", gff_Struct)
-			Me.LoadBackground()
-			Me.Draw()
-			Me.BuildModuleTreeView()
-		End Sub
+        Private Sub cmiCreateCameraHere_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiCreateCameraHere.Click
+            Dim num As Single = Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.g_LastMouseDownPos.X), Me.nudXoff.Value), Me.nudXmul.Value))
+            Dim num2 As Single = Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(Me.g_LastMouseDownPos.Y)), Me.nudYoff.Value), Me.nudYmul.Value))
+            If Not Me.GITfile.VerifyNodeExists("CameraList") Then
+                Me.GITfile.CreateList("", "CameraList")
+            End If
+            Dim listItemCount As Integer = Me.GITfile.GetListItemCount("CameraList")
+            Dim num3 As Integer = -1
+            If listItemCount = 0 Then
+                num3 = 1
+            Else
+                Dim num4 As Integer = 0
+                Dim num5 As Integer = listItemCount - 1
+                For i As Integer = num4 To num5
+                    Dim num6 As Integer = IntegerType.FromObject(Me.GITfile.GetNodeValue("CameraList(" + StringType.FromInteger(i) + ").CameraID"))
+                    If num6 > num3 Then
+                        num3 = num6
+                    End If
+                Next
+                num3 += 1
+            End If
+            Dim gff_Struct As GFF_Struct = New GFF_Struct()
+            gff_Struct.type = 14
+            gff_Struct.fieldCount = 8
+            gff_Struct.fields = New GFF_Field(7) {}
+            gff_Struct.fields(0) = New GFF_Field(GFFField.GFF_int, "CameraID", num3)
+            gff_Struct.fields(1) = New GFF_Field(GFFField.GFF_Type17, "Position", New GFFType17(num, num2, 0.0F))
+            gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_float, "Pitch", 0)
+            gff_Struct.fields(3) = New GFF_Field(GFFField.GFF_float, "MicRange", 0)
+            gff_Struct.fields(4) = New GFF_Field(GFFField.GFF_Type16, "Orientation", New GFFType16(1.0F, 0.0F, 0.0F, 0.0F))
+            gff_Struct.fields(5) = New GFF_Field(GFFField.GFF_float, "Height", 2)
+            gff_Struct.fields(6) = New GFF_Field(GFFField.GFF_float, "FieldOfView", 55)
+            gff_Struct.fields(7) = New GFF_Field(GFFField.GFF_Type17, "EAOrientation", New GFFType17(0.0F, 0.0F, 0.0F))
+            Me.GITfile.AddListElement("CameraList", gff_Struct)
+            Me.LoadBackground()
+            Me.Draw()
+            Me.BuildModuleTreeView()
+        End Sub
 
 		' Token: 0x060008C9 RID: 2249 RVA: 0x0026939C File Offset: 0x0026839C
-		Private Sub cmiSetModuleStartPoint_Click(sender As Object, e As EventArgs)
-			Dim num As Single = Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.g_LastMouseDownPos.X), Me.nudXoff.Value), Me.nudXmul.Value))
-			Dim num2 As Single = Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(Me.g_LastMouseDownPos.Y)), Me.nudYoff.Value), Me.nudYmul.Value))
-			Me.IFOfile.SetNodeValue("Mod_Entry_X", num)
-			Me.IFOfile.SetNodeValue("Mod_Entry_Y", num2)
-			Me.LoadBackground()
-			Me.Draw()
-		End Sub
+        Private Sub cmiSetModuleStartPoint_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiSetModuleStartPoint.Click
+            Dim num As Single = Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.g_LastMouseDownPos.X), Me.nudXoff.Value), Me.nudXmul.Value))
+            Dim num2 As Single = Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(Me.g_LastMouseDownPos.Y)), Me.nudYoff.Value), Me.nudYmul.Value))
+            Me.IFOfile.SetNodeValue("Mod_Entry_X", num)
+            Me.IFOfile.SetNodeValue("Mod_Entry_Y", num2)
+            Me.LoadBackground()
+            Me.Draw()
+        End Sub
 
 		' Token: 0x060008CA RID: 2250 RVA: 0x00269454 File Offset: 0x00268454
-		Private Sub cmiModuleProperties_Click(sender As Object, e As EventArgs)
-			Me.miModuleProperties_Click(Nothing, Nothing)
-		End Sub
+        Private Sub cmiModuleProperties_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiModuleProperties.Click
+            Me.miModuleProperties_Click(Nothing, Nothing)
+        End Sub
 
 		' Token: 0x060008CB RID: 2251 RVA: 0x00269460 File Offset: 0x00268460
-		Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs)
-			If CType(sender, TabControl).SelectedTab Is Me.tabpagUserPalette Then
-				Me.tbHelp.Text = "Place files in your project's UserPalette folder to make them available here."
-			Else
-				Me.tbHelp.Text = "Click an item type button on the palette above to see the available standard items you can place in the module."
-			End If
-		End Sub
+        Private Sub TabControl1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles tabctrlPalette.SelectedIndexChanged
+            If CType(sender, TabControl).SelectedTab Is Me.tabpagUserPalette Then
+                Me.tbHelp.Text = "Place files in your project's UserPalette folder to make them available here."
+            Else
+                Me.tbHelp.Text = "Click an item type button on the palette above to see the available standard items you can place in the module."
+            End If
+        End Sub
 
 		' Token: 0x060008CC RID: 2252 RVA: 0x00269498 File Offset: 0x00268498
 		Private Sub btnSave_Click(sender As Object, e As EventArgs)
 		End Sub
 
 		' Token: 0x060008CD RID: 2253 RVA: 0x0026949C File Offset: 0x0026849C
-		Private Sub btnTest_Click(sender As Object, e As EventArgs)
-		End Sub
+        Private Sub btnTest_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnTest.Click
+        End Sub
 
 		' Token: 0x060008CE RID: 2254 RVA: 0x002694A0 File Offset: 0x002684A0
-		Private Sub btnClean_Click(sender As Object, e As EventArgs)
-			Me.GITfile.ClearListElements("Creature List")
-			Me.GITfile.ClearListElements("Placeable List")
-			Me.GITfile.ClearListElements("Door List")
-			Me.GITfile.ClearListElements("SoundList")
-			Me.GITfile.ClearListElements("WaypointList")
-			Me.GITfile.ClearListElements("TriggerList")
-			Dim num As Integer = 8
-			Do
-				Me.GITfile.DeleteListElement("CameraList", num)
-				num += -1
-			Loop While num >= 1
-		End Sub
+        Private Sub btnClean_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnClean.Click
+            Me.GITfile.ClearListElements("Creature List")
+            Me.GITfile.ClearListElements("Placeable List")
+            Me.GITfile.ClearListElements("Door List")
+            Me.GITfile.ClearListElements("SoundList")
+            Me.GITfile.ClearListElements("WaypointList")
+            Me.GITfile.ClearListElements("TriggerList")
+            Dim num As Integer = 8
+            Do
+                Me.GITfile.DeleteListElement("CameraList", num)
+                num += -1
+            Loop While num >= 1
+        End Sub
 
 		' Token: 0x060008CF RID: 2255 RVA: 0x00269528 File Offset: 0x00268528
-		Private Sub btnPalCreature_Click(sender As Object, e As EventArgs)
-			Me.g_CurrentPaletteModItemType = 2027
-			Me.BuildPaletteTreeView("creaturepalstd")
-			Me.tbHelp.Text = "Drag the desired creature onto the map"
-		End Sub
+        Private Sub btnPalCreature_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnPalCreature.Click
+            Me.g_CurrentPaletteModItemType = 2027
+            Me.BuildPaletteTreeView("creaturepalstd")
+            Me.tbHelp.Text = "Drag the desired creature onto the map"
+        End Sub
 
 		' Token: 0x060008D0 RID: 2256 RVA: 0x00269550 File Offset: 0x00268550
-		Private Sub btnPalDoor_Click(sender As Object, e As EventArgs)
-			Me.g_CurrentPaletteModItemType = 2042
-			Me.BuildPaletteTreeView("doorpalstd")
-			Me.tbHelp.Text = "Drag the desired door onto the map"
-		End Sub
+        Private Sub btnPalDoor_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnPalDoor.Click
+            Me.g_CurrentPaletteModItemType = 2042
+            Me.BuildPaletteTreeView("doorpalstd")
+            Me.tbHelp.Text = "Drag the desired door onto the map"
+        End Sub
 
 		' Token: 0x060008D1 RID: 2257 RVA: 0x00269578 File Offset: 0x00268578
-		Private Sub btnPalEncounter_Click(sender As Object, e As EventArgs)
-			Me.g_CurrentPaletteModItemType = 2040
-			Me.BuildPaletteTreeView("encounterpalstd")
-			Me.tbHelp.Text = "Encounters are not yet supported"
-		End Sub
+        Private Sub btnPalEncounter_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnPalEncounter.Click
+            Me.g_CurrentPaletteModItemType = 2040
+            Me.BuildPaletteTreeView("encounterpalstd")
+            Me.tbHelp.Text = "Encounters are not yet supported"
+        End Sub
 
 		' Token: 0x060008D2 RID: 2258 RVA: 0x002695A0 File Offset: 0x002685A0
-		Private Sub btnPalItem_Click(sender As Object, e As EventArgs)
-			Me.g_CurrentPaletteModItemType = 2025
-			Me.BuildPaletteTreeView("itempalstd")
-		End Sub
+        Private Sub btnPalItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnPalItem.Click
+            Me.g_CurrentPaletteModItemType = 2025
+            Me.BuildPaletteTreeView("itempalstd")
+        End Sub
 
 		' Token: 0x060008D3 RID: 2259 RVA: 0x002695B8 File Offset: 0x002685B8
-		Private Sub btnPalMerchant_Click(sender As Object, e As EventArgs)
-			Me.g_CurrentPaletteModItemType = 2051
-			Me.tbHelp.Text = "Drag the desired merchant onto the map"
-			Me.BuildPaletteTreeView("storepal")
-		End Sub
+        Private Sub btnPalMerchant_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnPalMerchant.Click
+            Me.g_CurrentPaletteModItemType = 2051
+            Me.tbHelp.Text = "Drag the desired merchant onto the map"
+            Me.BuildPaletteTreeView("storepal")
+        End Sub
 
 		' Token: 0x060008D4 RID: 2260 RVA: 0x002695E0 File Offset: 0x002685E0
-		Private Sub btnPalPlaceable_Click(sender As Object, e As EventArgs)
-			Me.g_CurrentPaletteModItemType = 2044
-			Me.BuildPaletteTreeView("placeablepalstd")
-			Me.tbHelp.Text = "Drag the desired placeable onto the map"
-		End Sub
+        Private Sub btnPalPlaceable_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnPalPlaceable.Click
+            Me.g_CurrentPaletteModItemType = 2044
+            Me.BuildPaletteTreeView("placeablepalstd")
+            Me.tbHelp.Text = "Drag the desired placeable onto the map"
+        End Sub
 
 		' Token: 0x060008D5 RID: 2261 RVA: 0x00269608 File Offset: 0x00268608
-		Private Sub btnPalSound_Click(sender As Object, e As EventArgs)
-			Me.g_CurrentPaletteModItemType = 2035
-			Me.BuildPaletteTreeView("soundpal")
-			Me.tbHelp.Text = "Drag the desired sound onto the map"
-		End Sub
+        Private Sub btnPalSound_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnPalSound.Click
+            Me.g_CurrentPaletteModItemType = 2035
+            Me.BuildPaletteTreeView("soundpal")
+            Me.tbHelp.Text = "Drag the desired sound onto the map"
+        End Sub
 
 		' Token: 0x060008D6 RID: 2262 RVA: 0x00269630 File Offset: 0x00268630
-		Private Sub btnPalTrigger_Click(sender As Object, e As EventArgs)
-			Me.g_CurrentPaletteModItemType = 2032
-			Me.BuildPaletteTreeView("triggerpalstd")
-			Me.tbHelp.Text = "Drag the desired trigger type onto the map"
-		End Sub
+        Private Sub btnPalTrigger_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnPalTrigger.Click
+            Me.g_CurrentPaletteModItemType = 2032
+            Me.BuildPaletteTreeView("triggerpalstd")
+            Me.tbHelp.Text = "Drag the desired trigger type onto the map"
+        End Sub
 
 		' Token: 0x060008D7 RID: 2263 RVA: 0x00269658 File Offset: 0x00268658
-		Private Sub btnPalWaypoint_Click(sender As Object, e As EventArgs)
-			Me.g_CurrentPaletteModItemType = 2058
-			Me.BuildPaletteTreeView("waypointpalstd")
-			Me.tbHelp.Text = "Drag the desired waypoint onto the map"
-		End Sub
+        Private Sub btnPalWaypoint_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnPalWaypoint.Click
+            Me.g_CurrentPaletteModItemType = 2058
+            Me.BuildPaletteTreeView("waypointpalstd")
+            Me.tbHelp.Text = "Drag the desired waypoint onto the map"
+        End Sub
 
 		' Token: 0x060008D8 RID: 2264 RVA: 0x00269680 File Offset: 0x00268680
-		Private Sub btnLogFactors_Click(sender As Object, e As EventArgs)
-			Dim stringBuilder As StringBuilder = New StringBuilder()
-			Dim stringWriter As StringWriter = New StringWriter(stringBuilder)
-			Dim frmErrorMessageWithCopyableText As frmErrorMessageWithCopyableText = New frmErrorMessageWithCopyableText()
-			stringWriter.WriteLine("mie = New MapInfo.Map")
-			stringWriter.WriteLine("mie.MapName = """ + Me.g_MapName + """")
-			stringWriter.WriteLine("mie.MapAssembler = ""Fred Tetra""")
-			stringWriter.WriteLine("mie.MapCalibrator = ""Fred Tetra""")
-			stringWriter.WriteLine("mie.ModuleName = ""Harbinger""")
-			If Me.miUseSmallMap.Checked Then
-				stringWriter.WriteLine("mie.S = True")
-				stringWriter.WriteLine("mie.SXMul = " + StringType.FromDecimal(Me.nudXmul.Value))
-				stringWriter.WriteLine("mie.SYMul = " + StringType.FromDecimal(Me.nudYmul.Value))
-				stringWriter.WriteLine("mie.SXOff = " + StringType.FromDecimal(Me.nudXoff.Value))
-				stringWriter.WriteLine("mie.SYOff = " + StringType.FromDecimal(Me.nudYoff.Value))
-			Else
-				stringWriter.WriteLine("mie.L = True")
-				stringWriter.WriteLine("mie.LXMul = " + StringType.FromDecimal(Me.nudXmul.Value))
-				stringWriter.WriteLine("mie.LYMul = " + StringType.FromDecimal(Me.nudYmul.Value))
-				stringWriter.WriteLine("mie.LXOff = " + StringType.FromDecimal(Me.nudXoff.Value))
-				stringWriter.WriteLine("mie.LYOff = " + StringType.FromDecimal(Me.nudYoff.Value))
-			End If
-			stringWriter.WriteLine("mi.MapList.Add(mie)")
-			frmErrorMessageWithCopyableText.tbMsg.Text = stringWriter.ToString()
-			frmErrorMessageWithCopyableText.ShowDialog(Me)
-		End Sub
+        Private Sub btnLogFactors_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnLogFactors.Click
+            Dim stringBuilder As StringBuilder = New StringBuilder()
+            Dim stringWriter As StringWriter = New StringWriter(stringBuilder)
+            Dim frmErrorMessageWithCopyableText As frmErrorMessageWithCopyableText = New frmErrorMessageWithCopyableText()
+            stringWriter.WriteLine("mie = New MapInfo.Map")
+            stringWriter.WriteLine("mie.MapName = """ + Me.g_MapName + """")
+            stringWriter.WriteLine("mie.MapAssembler = ""Fred Tetra""")
+            stringWriter.WriteLine("mie.MapCalibrator = ""Fred Tetra""")
+            stringWriter.WriteLine("mie.ModuleName = ""Harbinger""")
+            If Me.miUseSmallMap.Checked Then
+                stringWriter.WriteLine("mie.S = True")
+                stringWriter.WriteLine("mie.SXMul = " + StringType.FromDecimal(Me.nudXmul.Value))
+                stringWriter.WriteLine("mie.SYMul = " + StringType.FromDecimal(Me.nudYmul.Value))
+                stringWriter.WriteLine("mie.SXOff = " + StringType.FromDecimal(Me.nudXoff.Value))
+                stringWriter.WriteLine("mie.SYOff = " + StringType.FromDecimal(Me.nudYoff.Value))
+            Else
+                stringWriter.WriteLine("mie.L = True")
+                stringWriter.WriteLine("mie.LXMul = " + StringType.FromDecimal(Me.nudXmul.Value))
+                stringWriter.WriteLine("mie.LYMul = " + StringType.FromDecimal(Me.nudYmul.Value))
+                stringWriter.WriteLine("mie.LXOff = " + StringType.FromDecimal(Me.nudXoff.Value))
+                stringWriter.WriteLine("mie.LYOff = " + StringType.FromDecimal(Me.nudYoff.Value))
+            End If
+            stringWriter.WriteLine("mi.MapList.Add(mie)")
+            frmErrorMessageWithCopyableText.tbMsg.Text = stringWriter.ToString()
+            frmErrorMessageWithCopyableText.ShowDialog(Me)
+        End Sub
 
 		' Token: 0x060008D9 RID: 2265 RVA: 0x00269838 File Offset: 0x00268838
-		Private Sub btnDebug_Click(sender As Object, e As EventArgs)
-			Dim frmTextEditor As frmTextEditor = New frmTextEditor()
-			frmTextEditor.Filename = Me.g_MapName + ".git"
-			frmTextEditor.Text = "Text Editor - " + frmTextEditor.Filename
-			frmTextEditor.RTFMode = True
-			frmTextEditor.tbGeneric.Rtf = Me.GITfile.ToString()
-			frmTextEditor.tbGeneric.SelectionLength = 0
-			frmTextEditor.Show()
-		End Sub
+        Private Sub btnDebug_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnDebug.Click
+            Dim frmTextEditor As frmTextEditor = New frmTextEditor()
+            frmTextEditor.Filename = Me.g_MapName + ".git"
+            frmTextEditor.Text = "Text Editor - " + frmTextEditor.Filename
+            frmTextEditor.RTFMode = True
+            frmTextEditor.tbGeneric.Rtf = Me.GITfile.ToString()
+            frmTextEditor.tbGeneric.SelectionLength = 0
+            frmTextEditor.Show()
+        End Sub
 
 		' Token: 0x060008DA RID: 2266 RVA: 0x002698A8 File Offset: 0x002688A8
-		Private Sub btnTweakUp_Click(sender As Object, e As EventArgs)
-			If Me.IndicatedModItem IsNot Nothing Then
-				Me.GITfile.SetNodeValue(Me.IndicatedModItem.YPosPath, ObjectType.AddObj(Me.GITfile.GetNodeValue(Me.IndicatedModItem.YPosPath), 0.01))
-				Me.UpdateAfterTweakBtn()
-			End If
-		End Sub
+        Private Sub btnTweakUp_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnTweakUp.Click
+            If Me.IndicatedModItem IsNot Nothing Then
+                Me.GITfile.SetNodeValue(Me.IndicatedModItem.YPosPath, ObjectType.AddObj(Me.GITfile.GetNodeValue(Me.IndicatedModItem.YPosPath), 0.01))
+                Me.UpdateAfterTweakBtn()
+            End If
+        End Sub
 
 		' Token: 0x060008DB RID: 2267 RVA: 0x00269904 File Offset: 0x00268904
-		Private Sub btnTweakDown_Click(sender As Object, e As EventArgs)
-			If Me.IndicatedModItem IsNot Nothing Then
-				Me.GITfile.SetNodeValue(Me.IndicatedModItem.YPosPath, ObjectType.SubObj(Me.GITfile.GetNodeValue(Me.IndicatedModItem.YPosPath), 0.01))
-				Me.UpdateAfterTweakBtn()
-			End If
-		End Sub
+        Private Sub btnTweakDown_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnTweakDown.Click
+            If Me.IndicatedModItem IsNot Nothing Then
+                Me.GITfile.SetNodeValue(Me.IndicatedModItem.YPosPath, ObjectType.SubObj(Me.GITfile.GetNodeValue(Me.IndicatedModItem.YPosPath), 0.01))
+                Me.UpdateAfterTweakBtn()
+            End If
+        End Sub
 
 		' Token: 0x060008DC RID: 2268 RVA: 0x00269960 File Offset: 0x00268960
-		Private Sub btnTweakLeft_Click(sender As Object, e As EventArgs)
-			If Me.IndicatedModItem IsNot Nothing Then
-				Me.GITfile.SetNodeValue(Me.IndicatedModItem.XPosPath, ObjectType.SubObj(Me.GITfile.GetNodeValue(Me.IndicatedModItem.XPosPath), 0.01))
-				Me.UpdateAfterTweakBtn()
-			End If
-		End Sub
+        Private Sub btnTweakLeft_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnTweakLeft.Click
+            If Me.IndicatedModItem IsNot Nothing Then
+                Me.GITfile.SetNodeValue(Me.IndicatedModItem.XPosPath, ObjectType.SubObj(Me.GITfile.GetNodeValue(Me.IndicatedModItem.XPosPath), 0.01))
+                Me.UpdateAfterTweakBtn()
+            End If
+        End Sub
 
 		' Token: 0x060008DD RID: 2269 RVA: 0x002699BC File Offset: 0x002689BC
-		Private Sub btnTweakRight_Click(sender As Object, e As EventArgs)
-			If Me.IndicatedModItem IsNot Nothing Then
-				Me.GITfile.SetNodeValue(Me.IndicatedModItem.XPosPath, ObjectType.AddObj(Me.GITfile.GetNodeValue(Me.IndicatedModItem.XPosPath), 0.01))
-				Me.UpdateAfterTweakBtn()
-			End If
-		End Sub
+        Private Sub btnTweakRight_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnTweakRight.Click
+            If Me.IndicatedModItem IsNot Nothing Then
+                Me.GITfile.SetNodeValue(Me.IndicatedModItem.XPosPath, ObjectType.AddObj(Me.GITfile.GetNodeValue(Me.IndicatedModItem.XPosPath), 0.01))
+                Me.UpdateAfterTweakBtn()
+            End If
+        End Sub
 
 		' Token: 0x060008DE RID: 2270 RVA: 0x00269A18 File Offset: 0x00268A18
-		Private Sub Panel1_DragDrop(sender As Object, e As DragEventArgs)
-			Dim array As Object() = New Object(3) {}
-			Dim point As Point = New Point(e.X, e.Y)
-			Dim x As Integer = Me.pbox.PointToClient(point).X
-			Dim point2 As Point = Me.pbox.PointToClient(point)
-			Dim y As Integer = point2.Y
-			If e.Data.GetDataPresent(DataFormats.Text) Then
-				array = Strings.Split(StringType.FromObject(e.Data.GetData(GetType(String))), "|", -1, CompareMethod.Binary)
-				Dim num As Integer = Convert.ToInt32(Strings.Replace(StringType.FromObject(array(0)), "itemtype=", "", 1, -1, CompareMethod.Binary))
-				Me.gCurrentModItemType = num
-				Dim gff_Struct As GFF_Struct = New GFF_Struct()
-				Dim text As String
-				If num <> 6 Then
-					text = Strings.Replace(StringType.FromObject(array(2)), "resref=", "", 1, -1, CompareMethod.Binary)
-					Dim text2 As String = text + "." + frmMain.GetRsrcTypeForID(num)
-					If array.Length = 4 AndAlso (ObjectType.ObjTst(array(3), "up", False) = 0 OrElse ObjectType.ObjTst(array(3), "gt", False) = 0) Then
-						Dim frmInstanceOrRefPrompt As frmInstanceOrRefPrompt = New frmInstanceOrRefPrompt()
-						frmInstanceOrRefPrompt.ShowDialog(Me)
-						Dim dialogResult As DialogResult = frmInstanceOrRefPrompt.DialogResult
-						If dialogResult = DialogResult.Cancel Then
-							Return
-						End If
-						Dim frmPromptForString As frmPromptForString = New frmPromptForString("Create new instance", "Enter name for new instance (16 character max)", text)
-						If StringType.StrCmp(frmInstanceOrRefPrompt.ItemClass, "instance", False) = 0 Then
-							frmPromptForString.tbValue.MaxLength = 16
-							Dim text3 As String
-							Do
-								frmPromptForString.ShowDialog(Me)
-								If Me.FileExistsInProject(frmPromptForString.tbValue.Text.Trim() + "." + frmMain.GetRsrcTypeForID(num)) Then
-									text3 = "A file with that name already exists. Please choose another."
-								ElseIf StringType.StrCmp(text, frmPromptForString.tbValue.Text.Trim(), False) = 0 Then
-									text3 = "You cannot use the name of the template. Please choose another."
-								Else
-									text3 = ""
-								End If
-								If StringType.StrCmp(text3, "", False) <> 0 Then
-									Interaction.MsgBox(text3, MsgBoxStyle.Exclamation, "Name error")
-								End If
-							Loop While StringType.StrCmp(text3, "", False) <> 0 OrElse frmPromptForString.DialogResult = DialogResult.Cancel
-							If frmPromptForString.DialogResult = DialogResult.Cancel Then
-								Return
-							End If
-							Dim text4 As String
-							If ObjectType.ObjTst(array(3), "up", False) = 0 Then
-								text4 = Me.g_ProjectPath + "\userpalette\" + text2
-							ElseIf ObjectType.ObjTst(array(3), "gt", False) = 0 Then
-								' The following expression was wrapped in a checked-expression
-								text4 = String.Concat(New String() { frmMain.gRootPath, "\Global Templates\k", StringType.FromInteger(Me.KotorVersionIndex + 1), "\", text2 })
-							End If
-							File.Copy(text4, String.Concat(New String() { Me.g_ProjectPath, "\", frmPromptForString.tbValue.Text.Trim(), ".", frmMain.GetRsrcTypeForID(num) }))
-							text = frmPromptForString.tbValue.Text.Trim()
-						End If
-					End If
-				End If
-				Select Case num
-					Case 2027
-						gff_Struct.type = 4
-						gff_Struct.fieldCount = 6
-						gff_Struct.fields = New GFF_Field(5) {}
-						gff_Struct.fields(0) = New GFF_Field(GFFField.GFF_float, "XPosition", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(x), Me.nudXoff.Value), Me.nudXmul.Value)))
-						gff_Struct.fields(1) = New GFF_Field(GFFField.GFF_float, "YPosition", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(y)), Me.nudYoff.Value), Me.nudYmul.Value)))
-						gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_float, "ZPosition", 0F)
-						gff_Struct.fields(3) = New GFF_Field(GFFField.GFF_float, "XOrientation", 1F)
-						gff_Struct.fields(4) = New GFF_Field(GFFField.GFF_float, "YOrientation", 0F)
-						Dim text5 As String
-						gff_Struct.fields(5) = New GFF_Field(GFFField.GFF_CResRef, "TemplateResRef", text + text5)
-						Me.GITfile.AddListElement("Creature List", gff_Struct)
-						Me.gModuleEditorSettings.FilterShowCreatures = True
-					Case 2032
-						If text.StartsWith("g_t_") Then
-							Dim text6 As String = text
-							point2 = New Point(x, y)
-							Me.CreateTrap(text6, point2)
-						Else
-							Me.gCurrentRegionDrawingColor = Color.Orange
-							point2 = New Point(x, y)
-							Me.gLastMousePos = point2
-							Me.gCurrentRegionSegmentOrigin = Me.gLastMousePos
-							If Not Me.g_IsDrawingRegion Then
-								Dim text5 As String
-								Me.g_RegionResRef = text + text5
-								Me.g_IsDrawingRegion = True
-								Me.backbuffer = Nothing
-								Me.g_RegionPointList = New ArrayList()
-								Dim arrayList As ArrayList = Me.g_RegionPointList
-								point2 = New Point(x, y)
-								arrayList.Add(point2)
-							Else
-								Interaction.MsgBox("Currently Drawing a Region", MsgBoxStyle.Exclamation, Nothing)
-							End If
-							Me.gModuleEditorSettings.FilterShowTriggers = True
-						End If
-					Case 2035
-						gff_Struct = New GFF_Struct(5, 6)
-						gff_Struct.fields(0) = New GFF_Field(GFFField.GFF_CResRef, "TemplateResRef", text)
-						gff_Struct.fields(1) = New GFF_Field(GFFField.GFF_dword, "GeneratedType", 0)
-						gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_float, "XPosition", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(x), Me.nudXoff.Value), Me.nudXmul.Value)))
-						gff_Struct.fields(3) = New GFF_Field(GFFField.GFF_float, "YPosition", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(y)), Me.nudYoff.Value), Me.nudYmul.Value)))
-						gff_Struct.fields(4) = New GFF_Field(GFFField.GFF_float, "ZPosition", 0F)
-						Me.GITfile.AddListElement("SoundList", gff_Struct)
-						Me.gModuleEditorSettings.FilterShowSounds = True
-					Case 2040
-						Me.gCurrentRegionDrawingColor = Color.Green
-						point2 = New Point(x, y)
-						Me.gLastMousePos = point2
-						Me.gCurrentRegionSegmentOrigin = Me.gLastMousePos
-						If Not Me.g_IsDrawingRegion Then
-							Dim text5 As String
-							Me.g_RegionResRef = text + text5
-							Me.g_IsDrawingRegion = True
-							Me.backbuffer = Nothing
-							Me.g_RegionPointList = New ArrayList()
-							Dim arrayList2 As ArrayList = Me.g_RegionPointList
-							point2 = New Point(x, y)
-							arrayList2.Add(point2)
-						Else
-							Interaction.MsgBox("Currently Drawing a Region", MsgBoxStyle.Exclamation, Nothing)
-						End If
-						Me.gModuleEditorSettings.FilterShowEncounters = True
-					Case 2042
-						gff_Struct.type = 8
-						gff_Struct.fieldCount = 12
-						gff_Struct.fields = New GFF_Field(11) {}
-						Dim text5 As String
-						gff_Struct.fields(0) = New GFF_Field(GFFField.GFF_CResRef, "TemplateResRef", text + text5)
-						gff_Struct.fields(1) = New GFF_Field(GFFField.GFF_CExoString, "Tag", "empty")
-						gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_CResRef, "LinkedToModule", "empty")
-						gff_Struct.fields(3) = New GFF_Field(GFFField.GFF_CExoString, "LinkedTo", "empty")
-						gff_Struct.fields(4) = New GFF_Field(GFFField.GFF_byte, "LinkedToFlags", 0)
-						Dim gffexoLocString As GFFExoLocString = New GFFExoLocString("none", 0)
-						gff_Struct.fields(5) = New GFF_Field(GFFField.GFF_CExoLocString, "TransitionDestin", gffexoLocString)
-						gff_Struct.fields(6) = New GFF_Field(GFFField.GFF_float, "X", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(x), Me.nudXoff.Value), Me.nudXmul.Value)))
-						gff_Struct.fields(7) = New GFF_Field(GFFField.GFF_float, "Y", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(y)), Me.nudYoff.Value), Me.nudYmul.Value)))
-						gff_Struct.fields(8) = New GFF_Field(GFFField.GFF_float, "Z", 0F)
-						gff_Struct.fields(9) = New GFF_Field(GFFField.GFF_float, "Bearing", 0F)
-						gff_Struct.fields(10) = New GFF_Field(GFFField.GFF_byte, "UseTweakColor", 0)
-						gff_Struct.fields(11) = New GFF_Field(GFFField.GFF_dword, "TweakColor", 16777215)
-						Me.GITfile.AddListElement("Door List", gff_Struct)
-						Me.gModuleEditorSettings.FilterShowDoors = True
-					Case 2044
-						gff_Struct = New GFF_Struct(5, 9)
-						gff_Struct.fields(0) = New GFF_Field(GFFField.GFF_float, "X", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(x), Me.nudXoff.Value), Me.nudXmul.Value)))
-						gff_Struct.fields(1) = New GFF_Field(GFFField.GFF_float, "Y", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(y)), Me.nudYoff.Value), Me.nudYmul.Value)))
-						gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_float, "Z", 0F)
-						gff_Struct.fields(3) = New GFF_Field(GFFField.GFF_float, "Bearing", 0F)
-						Dim text5 As String
-						gff_Struct.fields(4) = New GFF_Field(GFFField.GFF_CResRef, "TemplateResRef", text + text5)
-						Me.GITfile.AddListElement("Placeable List", gff_Struct)
-						Me.gModuleEditorSettings.FilterShowPlaceables = True
-					Case 2051
-						gff_Struct = New GFF_Struct(6, 11)
-						gff_Struct.fields(0) = New GFF_Field(GFFField.GFF_float, "XPosition", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(x), Me.nudXoff.Value), Me.nudXmul.Value)))
-						gff_Struct.fields(1) = New GFF_Field(GFFField.GFF_float, "YPosition", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(y)), Me.nudYoff.Value), Me.nudYmul.Value)))
-						gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_float, "ZPosition", 0F)
-						gff_Struct.fields(3) = New GFF_Field(GFFField.GFF_float, "XOrientation", 1F)
-						gff_Struct.fields(4) = New GFF_Field(GFFField.GFF_float, "YOrientation", 0F)
-						gff_Struct.fields(5) = New GFF_Field(GFFField.GFF_CResRef, "ResRef", text)
-						Me.GITfile.AddListElement("StoreList", gff_Struct)
-						Me.gModuleEditorSettings.FilterShowMerchants = True
-					Case 2058
-						Dim templateBifResourceData As Byte() = frmMain.GetTemplateBifResourceData(Me.KotorVersionIndex, text, num)
-						Dim clsGFF As clsGFF = New clsGFF(templateBifResourceData, Me.KotorVersionIndex, False)
-						Dim cexoLocStringNodeValue As String = clsGFF.GetCExoLocStringNodeValue("LocalizedName")
-						gff_Struct = New GFF_Struct(14, 5)
-						gff_Struct.fields(0) = New GFF_Field(GFFField.GFF_CResRef, "TemplateResRef", RuntimeHelpers.GetObjectValue(clsGFF.GetNodeValue("TemplateResRef")))
-						gff_Struct.fields(1) = New GFF_Field(GFFField.GFF_CExoString, "LinkedTo", RuntimeHelpers.GetObjectValue(clsGFF.GetNodeValue("LinkedTo")))
-						gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_CExoString, "Tag", RuntimeHelpers.GetObjectValue(clsGFF.GetNodeValue("Tag")))
-						gff_Struct.fields(3) = New GFF_Field(GFFField.GFF_byte, "HasMapNote", RuntimeHelpers.GetObjectValue(clsGFF.GetNodeValue("HasMapNote")))
-						gff_Struct.fields(4) = New GFF_Field(GFFField.GFF_byte, "MapNoteEnabled", RuntimeHelpers.GetObjectValue(clsGFF.GetNodeValue("MapNoteEnabled")))
-						gff_Struct.fields(5) = New GFF_Field(GFFField.GFF_CExoLocString, "LocalizedName", New GFFExoLocString(clsGFF.GetCExoLocStringNodeValue("LocalizedName"), 0))
-						gff_Struct.fields(6) = New GFF_Field(GFFField.GFF_CExoLocString, "Description", New GFFExoLocString(clsGFF.GetCExoLocStringNodeValue("Description"), 0))
-						gff_Struct.fields(7) = New GFF_Field(GFFField.GFF_CExoLocString, "MapNote", New GFFExoLocString(clsGFF.GetCExoLocStringNodeValue("MapNote"), 0))
-						gff_Struct.fields(8) = New GFF_Field(GFFField.GFF_CExoString, "Comment", RuntimeHelpers.GetObjectValue(clsGFF.GetNodeValue("Comment")))
-						gff_Struct.fields(9) = New GFF_Field(GFFField.GFF_float, "XPosition", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(x), Me.nudXoff.Value), Me.nudXmul.Value)))
-						gff_Struct.fields(10) = New GFF_Field(GFFField.GFF_float, "YPosition", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(y)), Me.nudYoff.Value), Me.nudYmul.Value)))
-						gff_Struct.fields(11) = New GFF_Field(GFFField.GFF_float, "ZPosition", 0F)
-						gff_Struct.fields(12) = New GFF_Field(GFFField.GFF_float, "XOrientation", 1F)
-						gff_Struct.fields(13) = New GFF_Field(GFFField.GFF_float, "YOrientation", 0F)
-						Me.GITfile.AddListElement("WaypointList", gff_Struct)
-						Me.gModuleEditorSettings.FilterShowWaypoints = True
-				End Select
-				Me.LoadBackground()
-				Me.Draw()
-				Me.BuildModuleTreeView()
-				Me.UpdateVisibilityBtnsWithSettings()
-			End If
-		End Sub
+        Private Sub Panel1_DragDrop(ByVal sender As Object, ByVal e As DragEventArgs) Handles Panel1.DragDrop
+            Dim array As Object() = New Object(3) {}
+            Dim point As Point = New Point(e.X, e.Y)
+            Dim x As Integer = Me.pbox.PointToClient(point).X
+            Dim point2 As Point = Me.pbox.PointToClient(point)
+            Dim y As Integer = point2.Y
+            If e.Data.GetDataPresent(DataFormats.Text) Then
+                array = Strings.Split(StringType.FromObject(e.Data.GetData(GetType(String))), "|", -1, CompareMethod.Binary)
+                Dim num As Integer = Convert.ToInt32(Strings.Replace(StringType.FromObject(array(0)), "itemtype=", "", 1, -1, CompareMethod.Binary))
+                Me.gCurrentModItemType = num
+                Dim gff_Struct As GFF_Struct = New GFF_Struct()
+                Dim text As String
+                If num <> 6 Then
+                    text = Strings.Replace(StringType.FromObject(array(2)), "resref=", "", 1, -1, CompareMethod.Binary)
+                    Dim text2 As String = text + "." + frmMain.GetRsrcTypeForID(num)
+                    If array.Length = 4 AndAlso (ObjectType.ObjTst(array(3), "up", False) = 0 OrElse ObjectType.ObjTst(array(3), "gt", False) = 0) Then
+                        Dim frmInstanceOrRefPrompt As frmInstanceOrRefPrompt = New frmInstanceOrRefPrompt()
+                        frmInstanceOrRefPrompt.ShowDialog(Me)
+                        Dim dialogResult As DialogResult = frmInstanceOrRefPrompt.DialogResult
+                        If dialogResult = dialogResult.Cancel Then
+                            Return
+                        End If
+                        Dim frmPromptForString As frmPromptForString = New frmPromptForString("Create new instance", "Enter name for new instance (16 character max)", text)
+                        If StringType.StrCmp(frmInstanceOrRefPrompt.ItemClass, "instance", False) = 0 Then
+                            frmPromptForString.tbValue.MaxLength = 16
+                            Dim text3 As String
+                            Do
+                                frmPromptForString.ShowDialog(Me)
+                                If Me.FileExistsInProject(frmPromptForString.tbValue.Text.Trim() + "." + frmMain.GetRsrcTypeForID(num)) Then
+                                    text3 = "A file with that name already exists. Please choose another."
+                                ElseIf StringType.StrCmp(text, frmPromptForString.tbValue.Text.Trim(), False) = 0 Then
+                                    text3 = "You cannot use the name of the template. Please choose another."
+                                Else
+                                    text3 = ""
+                                End If
+                                If StringType.StrCmp(text3, "", False) <> 0 Then
+                                    Interaction.MsgBox(text3, MsgBoxStyle.Exclamation, "Name error")
+                                End If
+                            Loop While StringType.StrCmp(text3, "", False) <> 0 OrElse frmPromptForString.DialogResult = dialogResult.Cancel
+                            If frmPromptForString.DialogResult = dialogResult.Cancel Then
+                                Return
+                            End If
+                            Dim text4 As String
+                            If ObjectType.ObjTst(array(3), "up", False) = 0 Then
+                                text4 = Me.g_ProjectPath + "\userpalette\" + text2
+                            ElseIf ObjectType.ObjTst(array(3), "gt", False) = 0 Then
+                                ' The following expression was wrapped in a checked-expression
+                                text4 = String.Concat(New String() {frmMain.gRootPath, "\Global Templates\k", StringType.FromInteger(Me.KotorVersionIndex + 1), "\", text2})
+                            End If
+                            File.Copy(text4, String.Concat(New String() {Me.g_ProjectPath, "\", frmPromptForString.tbValue.Text.Trim(), ".", frmMain.GetRsrcTypeForID(num)}))
+                            text = frmPromptForString.tbValue.Text.Trim()
+                        End If
+                    End If
+                End If
+                Select Case num
+                    Case 2027
+                        gff_Struct.type = 4
+                        gff_Struct.fieldCount = 6
+                        gff_Struct.fields = New GFF_Field(5) {}
+                        gff_Struct.fields(0) = New GFF_Field(GFFField.GFF_float, "XPosition", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(x), Me.nudXoff.Value), Me.nudXmul.Value)))
+                        gff_Struct.fields(1) = New GFF_Field(GFFField.GFF_float, "YPosition", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(y)), Me.nudYoff.Value), Me.nudYmul.Value)))
+                        gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_float, "ZPosition", 0.0F)
+                        gff_Struct.fields(3) = New GFF_Field(GFFField.GFF_float, "XOrientation", 1.0F)
+                        gff_Struct.fields(4) = New GFF_Field(GFFField.GFF_float, "YOrientation", 0.0F)
+                        Dim text5 As String
+                        gff_Struct.fields(5) = New GFF_Field(GFFField.GFF_CResRef, "TemplateResRef", text + text5)
+                        Me.GITfile.AddListElement("Creature List", gff_Struct)
+                        Me.gModuleEditorSettings.FilterShowCreatures = True
+                    Case 2032
+                        If text.StartsWith("g_t_") Then
+                            Dim text6 As String = text
+                            point2 = New Point(x, y)
+                            Me.CreateTrap(text6, point2)
+                        Else
+                            Me.gCurrentRegionDrawingColor = Color.Orange
+                            point2 = New Point(x, y)
+                            Me.gLastMousePos = point2
+                            Me.gCurrentRegionSegmentOrigin = Me.gLastMousePos
+                            If Not Me.g_IsDrawingRegion Then
+                                Dim text5 As String
+                                Me.g_RegionResRef = text + text5
+                                Me.g_IsDrawingRegion = True
+                                Me.backbuffer = Nothing
+                                Me.g_RegionPointList = New ArrayList()
+                                Dim arrayList As ArrayList = Me.g_RegionPointList
+                                point2 = New Point(x, y)
+                                arrayList.Add(point2)
+                            Else
+                                Interaction.MsgBox("Currently Drawing a Region", MsgBoxStyle.Exclamation, Nothing)
+                            End If
+                            Me.gModuleEditorSettings.FilterShowTriggers = True
+                        End If
+                    Case 2035
+                        gff_Struct = New GFF_Struct(5, 6)
+                        gff_Struct.fields(0) = New GFF_Field(GFFField.GFF_CResRef, "TemplateResRef", text)
+                        gff_Struct.fields(1) = New GFF_Field(GFFField.GFF_dword, "GeneratedType", 0)
+                        gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_float, "XPosition", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(x), Me.nudXoff.Value), Me.nudXmul.Value)))
+                        gff_Struct.fields(3) = New GFF_Field(GFFField.GFF_float, "YPosition", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(y)), Me.nudYoff.Value), Me.nudYmul.Value)))
+                        gff_Struct.fields(4) = New GFF_Field(GFFField.GFF_float, "ZPosition", 0.0F)
+                        Me.GITfile.AddListElement("SoundList", gff_Struct)
+                        Me.gModuleEditorSettings.FilterShowSounds = True
+                    Case 2040
+                        Me.gCurrentRegionDrawingColor = Color.Green
+                        point2 = New Point(x, y)
+                        Me.gLastMousePos = point2
+                        Me.gCurrentRegionSegmentOrigin = Me.gLastMousePos
+                        If Not Me.g_IsDrawingRegion Then
+                            Dim text5 As String
+                            Me.g_RegionResRef = text + text5
+                            Me.g_IsDrawingRegion = True
+                            Me.backbuffer = Nothing
+                            Me.g_RegionPointList = New ArrayList()
+                            Dim arrayList2 As ArrayList = Me.g_RegionPointList
+                            point2 = New Point(x, y)
+                            arrayList2.Add(point2)
+                        Else
+                            Interaction.MsgBox("Currently Drawing a Region", MsgBoxStyle.Exclamation, Nothing)
+                        End If
+                        Me.gModuleEditorSettings.FilterShowEncounters = True
+                    Case 2042
+                        gff_Struct.type = 8
+                        gff_Struct.fieldCount = 12
+                        gff_Struct.fields = New GFF_Field(11) {}
+                        Dim text5 As String
+                        gff_Struct.fields(0) = New GFF_Field(GFFField.GFF_CResRef, "TemplateResRef", text + text5)
+                        gff_Struct.fields(1) = New GFF_Field(GFFField.GFF_CExoString, "Tag", "empty")
+                        gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_CResRef, "LinkedToModule", "empty")
+                        gff_Struct.fields(3) = New GFF_Field(GFFField.GFF_CExoString, "LinkedTo", "empty")
+                        gff_Struct.fields(4) = New GFF_Field(GFFField.GFF_byte, "LinkedToFlags", 0)
+                        Dim gffexoLocString As GFFExoLocString = New GFFExoLocString("none", 0)
+                        gff_Struct.fields(5) = New GFF_Field(GFFField.GFF_CExoLocString, "TransitionDestin", gffexoLocString)
+                        gff_Struct.fields(6) = New GFF_Field(GFFField.GFF_float, "X", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(x), Me.nudXoff.Value), Me.nudXmul.Value)))
+                        gff_Struct.fields(7) = New GFF_Field(GFFField.GFF_float, "Y", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(y)), Me.nudYoff.Value), Me.nudYmul.Value)))
+                        gff_Struct.fields(8) = New GFF_Field(GFFField.GFF_float, "Z", 0.0F)
+                        gff_Struct.fields(9) = New GFF_Field(GFFField.GFF_float, "Bearing", 0.0F)
+                        gff_Struct.fields(10) = New GFF_Field(GFFField.GFF_byte, "UseTweakColor", 0)
+                        gff_Struct.fields(11) = New GFF_Field(GFFField.GFF_dword, "TweakColor", 16777215)
+                        Me.GITfile.AddListElement("Door List", gff_Struct)
+                        Me.gModuleEditorSettings.FilterShowDoors = True
+                    Case 2044
+                        gff_Struct = New GFF_Struct(5, 9)
+                        gff_Struct.fields(0) = New GFF_Field(GFFField.GFF_float, "X", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(x), Me.nudXoff.Value), Me.nudXmul.Value)))
+                        gff_Struct.fields(1) = New GFF_Field(GFFField.GFF_float, "Y", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(y)), Me.nudYoff.Value), Me.nudYmul.Value)))
+                        gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_float, "Z", 0.0F)
+                        gff_Struct.fields(3) = New GFF_Field(GFFField.GFF_float, "Bearing", 0.0F)
+                        Dim text5 As String
+                        gff_Struct.fields(4) = New GFF_Field(GFFField.GFF_CResRef, "TemplateResRef", text + text5)
+                        Me.GITfile.AddListElement("Placeable List", gff_Struct)
+                        Me.gModuleEditorSettings.FilterShowPlaceables = True
+                    Case 2051
+                        gff_Struct = New GFF_Struct(6, 11)
+                        gff_Struct.fields(0) = New GFF_Field(GFFField.GFF_float, "XPosition", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(x), Me.nudXoff.Value), Me.nudXmul.Value)))
+                        gff_Struct.fields(1) = New GFF_Field(GFFField.GFF_float, "YPosition", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(y)), Me.nudYoff.Value), Me.nudYmul.Value)))
+                        gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_float, "ZPosition", 0.0F)
+                        gff_Struct.fields(3) = New GFF_Field(GFFField.GFF_float, "XOrientation", 1.0F)
+                        gff_Struct.fields(4) = New GFF_Field(GFFField.GFF_float, "YOrientation", 0.0F)
+                        gff_Struct.fields(5) = New GFF_Field(GFFField.GFF_CResRef, "ResRef", text)
+                        Me.GITfile.AddListElement("StoreList", gff_Struct)
+                        Me.gModuleEditorSettings.FilterShowMerchants = True
+                    Case 2058
+                        Dim templateBifResourceData As Byte() = frmMain.GetTemplateBifResourceData(Me.KotorVersionIndex, text, num)
+                        Dim clsGFF As clsGFF = New clsGFF(templateBifResourceData, Me.KotorVersionIndex, False)
+                        Dim cexoLocStringNodeValue As String = clsGFF.GetCExoLocStringNodeValue("LocalizedName")
+                        gff_Struct = New GFF_Struct(14, 5)
+                        gff_Struct.fields(0) = New GFF_Field(GFFField.GFF_CResRef, "TemplateResRef", RuntimeHelpers.GetObjectValue(clsGFF.GetNodeValue("TemplateResRef")))
+                        gff_Struct.fields(1) = New GFF_Field(GFFField.GFF_CExoString, "LinkedTo", RuntimeHelpers.GetObjectValue(clsGFF.GetNodeValue("LinkedTo")))
+                        gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_CExoString, "Tag", RuntimeHelpers.GetObjectValue(clsGFF.GetNodeValue("Tag")))
+                        gff_Struct.fields(3) = New GFF_Field(GFFField.GFF_byte, "HasMapNote", RuntimeHelpers.GetObjectValue(clsGFF.GetNodeValue("HasMapNote")))
+                        gff_Struct.fields(4) = New GFF_Field(GFFField.GFF_byte, "MapNoteEnabled", RuntimeHelpers.GetObjectValue(clsGFF.GetNodeValue("MapNoteEnabled")))
+                        gff_Struct.fields(5) = New GFF_Field(GFFField.GFF_CExoLocString, "LocalizedName", New GFFExoLocString(clsGFF.GetCExoLocStringNodeValue("LocalizedName"), 0))
+                        gff_Struct.fields(6) = New GFF_Field(GFFField.GFF_CExoLocString, "Description", New GFFExoLocString(clsGFF.GetCExoLocStringNodeValue("Description"), 0))
+                        gff_Struct.fields(7) = New GFF_Field(GFFField.GFF_CExoLocString, "MapNote", New GFFExoLocString(clsGFF.GetCExoLocStringNodeValue("MapNote"), 0))
+                        gff_Struct.fields(8) = New GFF_Field(GFFField.GFF_CExoString, "Comment", RuntimeHelpers.GetObjectValue(clsGFF.GetNodeValue("Comment")))
+                        gff_Struct.fields(9) = New GFF_Field(GFFField.GFF_float, "XPosition", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(x), Me.nudXoff.Value), Me.nudXmul.Value)))
+                        gff_Struct.fields(10) = New GFF_Field(GFFField.GFF_float, "YPosition", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(y)), Me.nudYoff.Value), Me.nudYmul.Value)))
+                        gff_Struct.fields(11) = New GFF_Field(GFFField.GFF_float, "ZPosition", 0.0F)
+                        gff_Struct.fields(12) = New GFF_Field(GFFField.GFF_float, "XOrientation", 1.0F)
+                        gff_Struct.fields(13) = New GFF_Field(GFFField.GFF_float, "YOrientation", 0.0F)
+                        Me.GITfile.AddListElement("WaypointList", gff_Struct)
+                        Me.gModuleEditorSettings.FilterShowWaypoints = True
+                End Select
+                Me.LoadBackground()
+                Me.Draw()
+                Me.BuildModuleTreeView()
+                Me.UpdateVisibilityBtnsWithSettings()
+            End If
+        End Sub
 
 		' Token: 0x060008DF RID: 2271 RVA: 0x0026A854 File Offset: 0x00269854
-		Private Sub Panel1_DragEnter(sender As Object, e As DragEventArgs)
-			If e.Data.GetDataPresent(DataFormats.Text) Then
-				e.Effect = DragDropEffects.Copy
-			End If
-		End Sub
+        Private Sub Panel1_DragEnter(ByVal sender As Object, ByVal e As DragEventArgs) Handles Panel1.DragEnter
+            If e.Data.GetDataPresent(DataFormats.Text) Then
+                e.Effect = DragDropEffects.Copy
+            End If
+        End Sub
 
 		' Token: 0x060008E0 RID: 2272 RVA: 0x0026A870 File Offset: 0x00269870
-		Private Sub chkbShowResRefs_CheckedChanged(sender As Object, e As EventArgs)
-			Me.g_ShowPaletteResRefs = CType(sender, CheckBox).Checked
-			If StringType.StrCmp(Me.g_CurrentPaletteName, "", False) <> 0 Then
-				Me.BuildPaletteTreeView(Me.g_CurrentPaletteName)
-			End If
-		End Sub
+        Private Sub chkbShowResRefs_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles chkbShowResRefs.CheckedChanged
+            Me.g_ShowPaletteResRefs = CType(sender, CheckBox).Checked
+            If StringType.StrCmp(Me.g_CurrentPaletteName, "", False) <> 0 Then
+                Me.BuildPaletteTreeView(Me.g_CurrentPaletteName)
+            End If
+        End Sub
 
 		' Token: 0x060008E1 RID: 2273 RVA: 0x0026A8A4 File Offset: 0x002698A4
-		Private Sub chkbShowNames_CheckedChanged(sender As Object, e As EventArgs)
-			Me.g_ShowPaletteNames = CType(sender, CheckBox).Checked
-			If StringType.StrCmp(Me.g_CurrentPaletteName, "", False) <> 0 Then
-				Me.BuildPaletteTreeView(Me.g_CurrentPaletteName)
-			End If
-		End Sub
+        Private Sub chkbShowNames_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles chkbShowNames.CheckedChanged
+            Me.g_ShowPaletteNames = CType(sender, CheckBox).Checked
+            If StringType.StrCmp(Me.g_CurrentPaletteName, "", False) <> 0 Then
+                Me.BuildPaletteTreeView(Me.g_CurrentPaletteName)
+            End If
+        End Sub
 
 		' Token: 0x060008E2 RID: 2274 RVA: 0x0026A8D8 File Offset: 0x002698D8
 		Private Sub chkbShowTags_CheckedChanged(sender As Object, e As EventArgs)
@@ -2761,126 +2761,126 @@ Namespace kotor_tool
 		End Sub
 
 		' Token: 0x060008E3 RID: 2275 RVA: 0x0026A914 File Offset: 0x00269914
-		Private Sub miOpenProject_Click(sender As Object, e As EventArgs)
-			Dim text As String = Me.BrowseForModuleEditorProjectFolder()
-			If StringType.StrCmp(text, "", False) = 0 Then
-				Return
-			End If
-			Me.bModuleLoadedOK = Me.Setup(text)
-			If Not Me.bModuleLoadedOK Then
-				Me.EnableControls(False)
-				Me.lbScripts.Items.Clear()
-				Me.Text = "Module Editor"
-				Return
-			End If
-			Me.Draw()
-			Me.BuildModuleTreeView()
-		End Sub
+        Private Sub miOpenProject_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpenProject.Click
+            Dim text As String = Me.BrowseForModuleEditorProjectFolder()
+            If StringType.StrCmp(text, "", False) = 0 Then
+                Return
+            End If
+            Me.bModuleLoadedOK = Me.Setup(text)
+            If Not Me.bModuleLoadedOK Then
+                Me.EnableControls(False)
+                Me.lbScripts.Items.Clear()
+                Me.Text = "Module Editor"
+                Return
+            End If
+            Me.Draw()
+            Me.BuildModuleTreeView()
+        End Sub
 
 		' Token: 0x060008E4 RID: 2276 RVA: 0x0026A97C File Offset: 0x0026997C
-		Private Sub miShowHideModuleElements_Click(sender As Object, e As EventArgs)
-			' The following expression was wrapped in a checked-statement
-			If Me.bModElementsVisible Then
-				Me.pnlModElements.Visible = False
-				Dim panel As Panel = Me.Panel1
-				panel.Width += 194
-				panel = Me.Panel1
-				panel.Left -= 194
-				Me.bModElementsVisible = False
-				Me.miShowHideModuleElements.Checked = False
-			Else
-				Me.pnlModElements.Visible = True
-				Dim panel As Panel = Me.Panel1
-				panel.Width -= 194
-				panel = Me.Panel1
-				panel.Left += 194
-				Me.bModElementsVisible = True
-				Me.miShowHideModuleElements.Checked = True
-			End If
-		End Sub
+        Private Sub miShowHideModuleElements_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miShowHideModuleElements.Click
+            ' The following expression was wrapped in a checked-statement
+            If Me.bModElementsVisible Then
+                Me.pnlModElements.Visible = False
+                Dim panel As Panel = Me.Panel1
+                panel.Width += 194
+                panel = Me.Panel1
+                panel.Left -= 194
+                Me.bModElementsVisible = False
+                Me.miShowHideModuleElements.Checked = False
+            Else
+                Me.pnlModElements.Visible = True
+                Dim panel As Panel = Me.Panel1
+                panel.Width -= 194
+                panel = Me.Panel1
+                panel.Left += 194
+                Me.bModElementsVisible = True
+                Me.miShowHideModuleElements.Checked = True
+            End If
+        End Sub
 
 		' Token: 0x060008E5 RID: 2277 RVA: 0x0026AA38 File Offset: 0x00269A38
-		Private Sub miShowHidePalette_Click(sender As Object, e As EventArgs)
-			' The following expression was wrapped in a checked-statement
-			If Me.bPaletteVisible Then
-				Me.pnlPalette.Visible = False
-				Dim panel As Panel = Me.Panel1
-				panel.Width += 240
-				Me.bPaletteVisible = False
-				Me.miShowHidePalette.Checked = False
-			Else
-				Me.pnlPalette.Visible = True
-				Dim panel As Panel = Me.Panel1
-				panel.Width -= 240
-				Me.bPaletteVisible = True
-				Me.miShowHidePalette.Checked = True
-			End If
-		End Sub
+        Private Sub miShowHidePalette_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miShowHidePalette.Click
+            ' The following expression was wrapped in a checked-statement
+            If Me.bPaletteVisible Then
+                Me.pnlPalette.Visible = False
+                Dim panel As Panel = Me.Panel1
+                panel.Width += 240
+                Me.bPaletteVisible = False
+                Me.miShowHidePalette.Checked = False
+            Else
+                Me.pnlPalette.Visible = True
+                Dim panel As Panel = Me.Panel1
+                panel.Width -= 240
+                Me.bPaletteVisible = True
+                Me.miShowHidePalette.Checked = True
+            End If
+        End Sub
 
 		' Token: 0x060008E6 RID: 2278 RVA: 0x0026AAC0 File Offset: 0x00269AC0
-		Private Sub miSave_Click(sender As Object, e As EventArgs)
-			Me.GITfile.WriteFile(Path.Combine(Me.g_ProjectPath, Me.g_MapName + ".git"), "GIT")
-			Me.AREfile.WriteFile(Path.Combine(Me.g_ProjectPath, Me.g_MapName + ".are"), "ARE")
-			Me.IFOfile.WriteFile(Path.Combine(Me.g_ProjectPath, "Module.ifo"), "IFO")
-		End Sub
+        Private Sub miSave_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miSave.Click
+            Me.GITfile.WriteFile(Path.Combine(Me.g_ProjectPath, Me.g_MapName + ".git"), "GIT")
+            Me.AREfile.WriteFile(Path.Combine(Me.g_ProjectPath, Me.g_MapName + ".are"), "ARE")
+            Me.IFOfile.WriteFile(Path.Combine(Me.g_ProjectPath, "Module.ifo"), "IFO")
+        End Sub
 
 		' Token: 0x060008E7 RID: 2279 RVA: 0x0026AB44 File Offset: 0x00269B44
-		Private Sub miClose_Click(sender As Object, e As EventArgs)
-			Me.Close()
-		End Sub
+        Private Sub miClose_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miClose.Click
+            Me.Close()
+        End Sub
 
 		' Token: 0x060008E8 RID: 2280 RVA: 0x0026AB4C File Offset: 0x00269B4C
-		Private Sub miShowModulePaths_Click(sender As Object, e As EventArgs)
-			Dim fileStream As FileStream = New FileStream(Me.g_ProjectPath + "\" + Me.g_MapName + ".pth", FileMode.Open)
-			Dim clsGFF As clsGFF = New clsGFF(fileStream, Me.KotorVersionIndex, True)
-			Dim num As Integer = 0
-			Dim num2 As Integer = clsGFF.GetListItemCount("Path_Points") - 1
-			For i As Integer = num To num2
-				Dim num3 As Integer = Convert.ToInt32(RuntimeHelpers.GetObjectValue(clsGFF.GetNodeValue("Path_Points(" + StringType.FromInteger(i) + ").First_Conection")))
-				Dim num4 As Double = DoubleType.FromObject(clsGFF.GetNodeValue("Path_Points(" + StringType.FromInteger(i) + ").X"))
-				Dim num5 As Double = DoubleType.FromObject(clsGFF.GetNodeValue("Path_Points(" + StringType.FromInteger(i) + ").Y"))
-				Dim num6 As Integer = 1
-				Dim num7 As Integer = Convert.ToInt32(RuntimeHelpers.GetObjectValue(clsGFF.GetNodeValue("Path_Points(" + StringType.FromInteger(i) + ").Conections")))
-				For j As Integer = num6 To num7
-					Dim num8 As Integer = Convert.ToInt32(RuntimeHelpers.GetObjectValue(clsGFF.GetNodeValue("Path_Conections(" + StringType.FromInteger(num3) + ").Destination")))
-					Dim num9 As Double = DoubleType.FromObject(clsGFF.GetNodeValue("Path_Points(" + StringType.FromInteger(num8) + ").X"))
-					Dim num10 As Double = DoubleType.FromObject(clsGFF.GetNodeValue("Path_Points(" + StringType.FromInteger(num8) + ").Y"))
-					Dim num11 As Integer = Convert.ToInt32(Decimal.Subtract(New Decimal(CInt(Math.Round(Convert.ToDouble(Me.nudXmul.Value) * num4))), Me.nudXoff.Value))
-					Dim num12 As Integer = Me.invy(Convert.ToInt32(Decimal.Subtract(New Decimal(CInt(Math.Round(Convert.ToDouble(Me.nudYmul.Value) * num5))), Me.nudYoff.Value)))
-					Me.Draw3x3Box(Me.bmp, num11, num12, Color.Fuchsia)
-					Dim num13 As Integer = Convert.ToInt32(Decimal.Subtract(New Decimal(CInt(Math.Round(Convert.ToDouble(Me.nudXmul.Value) * num9))), Me.nudXoff.Value))
-					Dim num14 As Integer = Me.invy(Convert.ToInt32(Decimal.Subtract(New Decimal(CInt(Math.Round(Convert.ToDouble(Me.nudYmul.Value) * num10))), Me.nudYoff.Value)))
-					Me.Draw3x3Box(Me.bmp, num13, num14, Color.Fuchsia)
-					Graphics.FromImage(Me.bmp).DrawLine(New Pen(Color.Orange, 1F), num11, num12, num13, num14)
-					num4 = num9
-					num5 = num10
-					num3 += 1
-				Next
-			Next
-			Me.Draw()
-		End Sub
+        Private Sub miShowModulePaths_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miShowModulePaths.Click
+            Dim fileStream As FileStream = New FileStream(Me.g_ProjectPath + "\" + Me.g_MapName + ".pth", FileMode.Open)
+            Dim clsGFF As clsGFF = New clsGFF(fileStream, Me.KotorVersionIndex, True)
+            Dim num As Integer = 0
+            Dim num2 As Integer = clsGFF.GetListItemCount("Path_Points") - 1
+            For i As Integer = num To num2
+                Dim num3 As Integer = Convert.ToInt32(RuntimeHelpers.GetObjectValue(clsGFF.GetNodeValue("Path_Points(" + StringType.FromInteger(i) + ").First_Conection")))
+                Dim num4 As Double = DoubleType.FromObject(clsGFF.GetNodeValue("Path_Points(" + StringType.FromInteger(i) + ").X"))
+                Dim num5 As Double = DoubleType.FromObject(clsGFF.GetNodeValue("Path_Points(" + StringType.FromInteger(i) + ").Y"))
+                Dim num6 As Integer = 1
+                Dim num7 As Integer = Convert.ToInt32(RuntimeHelpers.GetObjectValue(clsGFF.GetNodeValue("Path_Points(" + StringType.FromInteger(i) + ").Conections")))
+                For j As Integer = num6 To num7
+                    Dim num8 As Integer = Convert.ToInt32(RuntimeHelpers.GetObjectValue(clsGFF.GetNodeValue("Path_Conections(" + StringType.FromInteger(num3) + ").Destination")))
+                    Dim num9 As Double = DoubleType.FromObject(clsGFF.GetNodeValue("Path_Points(" + StringType.FromInteger(num8) + ").X"))
+                    Dim num10 As Double = DoubleType.FromObject(clsGFF.GetNodeValue("Path_Points(" + StringType.FromInteger(num8) + ").Y"))
+                    Dim num11 As Integer = Convert.ToInt32(Decimal.Subtract(New Decimal(CInt(Math.Round(Convert.ToDouble(Me.nudXmul.Value) * num4))), Me.nudXoff.Value))
+                    Dim num12 As Integer = Me.invy(Convert.ToInt32(Decimal.Subtract(New Decimal(CInt(Math.Round(Convert.ToDouble(Me.nudYmul.Value) * num5))), Me.nudYoff.Value)))
+                    Me.Draw3x3Box(Me.bmp, num11, num12, Color.Fuchsia)
+                    Dim num13 As Integer = Convert.ToInt32(Decimal.Subtract(New Decimal(CInt(Math.Round(Convert.ToDouble(Me.nudXmul.Value) * num9))), Me.nudXoff.Value))
+                    Dim num14 As Integer = Me.invy(Convert.ToInt32(Decimal.Subtract(New Decimal(CInt(Math.Round(Convert.ToDouble(Me.nudYmul.Value) * num10))), Me.nudYoff.Value)))
+                    Me.Draw3x3Box(Me.bmp, num13, num14, Color.Fuchsia)
+                    Graphics.FromImage(Me.bmp).DrawLine(New Pen(Color.Orange, 1.0F), num11, num12, num13, num14)
+                    num4 = num9
+                    num5 = num10
+                    num3 += 1
+                Next
+            Next
+            Me.Draw()
+        End Sub
 
 		' Token: 0x060008E9 RID: 2281 RVA: 0x0026AE0C File Offset: 0x00269E0C
-		Private Sub miOptions_Click(sender As Object, e As EventArgs)
-			Dim frmModuleEditorOptions As frmModuleEditorOptions = New frmModuleEditorOptions()
-			Dim settings As Options = UserSettings.GetSettings()
-			frmModuleEditorOptions.ModuleElementIndicatorSize = Me.dModuleElementIndicatorSize
-			frmModuleEditorOptions.ConfirmDeletes = Me.bConfirmDeletes
-			frmModuleEditorOptions.ShowLocatorRay = Me.bShowLocatorRay
-			frmModuleEditorOptions.ModuleExportPath = Me.gModuleEditorSettings.ModuleEditorModOutputPath
-			frmModuleEditorOptions.ShowDialog(Me)
-			If frmModuleEditorOptions.DialogResult = DialogResult.OK Then
-				Me.dModuleElementIndicatorSize = frmModuleEditorOptions.ModuleElementIndicatorSize
-				Me.bConfirmDeletes = frmModuleEditorOptions.ConfirmDeletes
-				Me.bShowLocatorRay = frmModuleEditorOptions.ShowLocatorRay
-				settings.bModuleEditorShowLocatorRay = Me.bShowLocatorRay
-				settings.bModuleEditorConfirmDeletes = Me.bConfirmDeletes
-				settings.ModuleEditorModuleElementIndicatorSize = Me.dModuleElementIndicatorSize
-				Me.gModuleEditorSettings.ModuleEditorModOutputPath = frmModuleEditorOptions.ModuleExportPath
-				UserSettings.SaveSettings(settings)
-				ModuleEditorProjectSettings.SaveSettings(Me.gModuleEditorSettings, Me.g_ProjectPath)
-			End If
-		End Sub
+        Private Sub miOptions_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOptions.Click
+            Dim frmModuleEditorOptions As frmModuleEditorOptions = New frmModuleEditorOptions()
+            Dim settings As Options = UserSettings.GetSettings()
+            frmModuleEditorOptions.ModuleElementIndicatorSize = Me.dModuleElementIndicatorSize
+            frmModuleEditorOptions.ConfirmDeletes = Me.bConfirmDeletes
+            frmModuleEditorOptions.ShowLocatorRay = Me.bShowLocatorRay
+            frmModuleEditorOptions.ModuleExportPath = Me.gModuleEditorSettings.ModuleEditorModOutputPath
+            frmModuleEditorOptions.ShowDialog(Me)
+            If frmModuleEditorOptions.DialogResult = DialogResult.OK Then
+                Me.dModuleElementIndicatorSize = frmModuleEditorOptions.ModuleElementIndicatorSize
+                Me.bConfirmDeletes = frmModuleEditorOptions.ConfirmDeletes
+                Me.bShowLocatorRay = frmModuleEditorOptions.ShowLocatorRay
+                settings.bModuleEditorShowLocatorRay = Me.bShowLocatorRay
+                settings.bModuleEditorConfirmDeletes = Me.bConfirmDeletes
+                settings.ModuleEditorModuleElementIndicatorSize = Me.dModuleElementIndicatorSize
+                Me.gModuleEditorSettings.ModuleEditorModOutputPath = frmModuleEditorOptions.ModuleExportPath
+                UserSettings.SaveSettings(settings)
+                ModuleEditorProjectSettings.SaveSettings(Me.gModuleEditorSettings, Me.g_ProjectPath)
+            End If
+        End Sub
 
 		' Token: 0x060008EA RID: 2282 RVA: 0x0026AEDC File Offset: 0x00269EDC
         'Private Sub miExploreModuleFolder_Click(sender As Object, e As EventArgs)
@@ -2888,7 +2888,7 @@ Namespace kotor_tool
         'End Sub
 
         ' Token: 0x060008EA RID: 2282 RVA: 0x0026AEDC File Offset: 0x00269EDC
-        Private Sub miExploreModuleFolder_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miExploreModuleFolder_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miExploreModuleFolder.Click
             Dim psi As ProcessStartInfo = New ProcessStartInfo()
             psi.FileName = "explorer.exe"
             psi.Arguments = """" & Me.g_ProjectPath & """"
@@ -2900,107 +2900,107 @@ Namespace kotor_tool
         End Sub
 
 		' Token: 0x060008EB RID: 2283 RVA: 0x0026AF18 File Offset: 0x00269F18
-		Private Sub miBuildModFile_Click(sender As Object, e As EventArgs)
-			Me.BuildModFile()
-		End Sub
+        Private Sub miBuildModFile_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miBuildModFile.Click
+            Me.BuildModFile()
+        End Sub
 
 		' Token: 0x060008EC RID: 2284 RVA: 0x0026AF20 File Offset: 0x00269F20
-		Private Sub miShowGffDump_Click(sender As Object, e As EventArgs)
-			Dim frmTextEditor As frmTextEditor = New frmTextEditor()
-			frmTextEditor.Filename = Me.g_MapName
-			frmTextEditor.Text = "Text Editor - " + frmTextEditor.Filename
-			If sender Is Me.miShowAreDump Then
-				frmTextEditor.tbGeneric.Rtf = New clsGFF(Me.g_ProjectPath + "\" + Me.g_MapName + ".are", Me.KotorVersionIndex, True).ToString()
-				Dim frmTextEditor2 As frmTextEditor = frmTextEditor
-				frmTextEditor2.Text += ".are"
-			ElseIf sender Is Me.miShowGitDump Then
-				frmTextEditor.tbGeneric.Rtf = New clsGFF(Me.g_ProjectPath + "\" + Me.g_MapName + ".git", Me.KotorVersionIndex, True).ToString()
-				Dim frmTextEditor2 As frmTextEditor = frmTextEditor
-				frmTextEditor2.Text += ".git"
-			Else
-				frmTextEditor.tbGeneric.Rtf = New clsGFF(Me.g_ProjectPath + "\module.ifo", Me.KotorVersionIndex, True).ToString()
-				Dim frmTextEditor2 As frmTextEditor = frmTextEditor
-				frmTextEditor2.Text += ".ifo"
-			End If
-			frmTextEditor.RTFMode = True
-			frmTextEditor.tbGeneric.SelectionLength = 0
-			frmTextEditor.Show()
-		End Sub
+        Private Sub miShowGffDump_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miShowIfoDump.Click, miShowGitDump.Click, miShowAreDump.Click
+            Dim frmTextEditor As frmTextEditor = New frmTextEditor()
+            frmTextEditor.Filename = Me.g_MapName
+            frmTextEditor.Text = "Text Editor - " + frmTextEditor.Filename
+            If sender Is Me.miShowAreDump Then
+                frmTextEditor.tbGeneric.Rtf = New clsGFF(Me.g_ProjectPath + "\" + Me.g_MapName + ".are", Me.KotorVersionIndex, True).ToString()
+                Dim frmTextEditor2 As frmTextEditor = frmTextEditor
+                frmTextEditor2.Text += ".are"
+            ElseIf sender Is Me.miShowGitDump Then
+                frmTextEditor.tbGeneric.Rtf = New clsGFF(Me.g_ProjectPath + "\" + Me.g_MapName + ".git", Me.KotorVersionIndex, True).ToString()
+                Dim frmTextEditor2 As frmTextEditor = frmTextEditor
+                frmTextEditor2.Text += ".git"
+            Else
+                frmTextEditor.tbGeneric.Rtf = New clsGFF(Me.g_ProjectPath + "\module.ifo", Me.KotorVersionIndex, True).ToString()
+                Dim frmTextEditor2 As frmTextEditor = frmTextEditor
+                frmTextEditor2.Text += ".ifo"
+            End If
+            frmTextEditor.RTFMode = True
+            frmTextEditor.tbGeneric.SelectionLength = 0
+            frmTextEditor.Show()
+        End Sub
 
 		' Token: 0x060008ED RID: 2285 RVA: 0x0026B06C File Offset: 0x0026A06C
-		Private Sub miModuleProperties_Click(sender As Object, e As EventArgs)
-			Dim frmModuleIfo_AreaEditor As frmModuleIfo_AreaEditor = New frmModuleIfo_AreaEditor(Me.AREfile, Me.IFOfile, Me.GITfile, Me.KotorVersionIndex)
-			If frmModuleIfo_AreaEditor.ShowDialog(Me) = DialogResult.OK Then
-				frmModuleIfo_AreaEditor.UpdateFiles()
-				If frmModuleIfo_AreaEditor.ModEntryChanged Then
-					Me.LoadBackground()
-					Me.Draw()
-				End If
-			End If
-		End Sub
+        Private Sub miModuleProperties_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miModuleProperties.Click
+            Dim frmModuleIfo_AreaEditor As frmModuleIfo_AreaEditor = New frmModuleIfo_AreaEditor(Me.AREfile, Me.IFOfile, Me.GITfile, Me.KotorVersionIndex)
+            If frmModuleIfo_AreaEditor.ShowDialog(Me) = DialogResult.OK Then
+                frmModuleIfo_AreaEditor.UpdateFiles()
+                If frmModuleIfo_AreaEditor.ModEntryChanged Then
+                    Me.LoadBackground()
+                    Me.Draw()
+                End If
+            End If
+        End Sub
 
 		' Token: 0x060008EE RID: 2286 RVA: 0x0026B0BC File Offset: 0x0026A0BC
-		Private Sub miUseSmallMap_Click(sender As Object, e As EventArgs)
-			Me.gModuleEditorSettings.MapSize = "small"
-			ModuleEditorProjectSettings.SaveSettings(Me.gModuleEditorSettings, Me.g_ProjectPath)
-			Me.miSave_Click(Nothing, Nothing)
-			Me.Setup(Me.g_ProjectPath)
-			Me.Draw()
-			Me.BuildModuleTreeView()
-		End Sub
+        Private Sub miUseSmallMap_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miUseSmallMap.Click
+            Me.gModuleEditorSettings.MapSize = "small"
+            ModuleEditorProjectSettings.SaveSettings(Me.gModuleEditorSettings, Me.g_ProjectPath)
+            Me.miSave_Click(Nothing, Nothing)
+            Me.Setup(Me.g_ProjectPath)
+            Me.Draw()
+            Me.BuildModuleTreeView()
+        End Sub
 
 		' Token: 0x060008EF RID: 2287 RVA: 0x0026B10C File Offset: 0x0026A10C
-		Private Sub miUseLargeMap_Click(sender As Object, e As EventArgs)
-			Me.gModuleEditorSettings.MapSize = "large"
-			ModuleEditorProjectSettings.SaveSettings(Me.gModuleEditorSettings, Me.g_ProjectPath)
-			Me.miSave_Click(Nothing, Nothing)
-			Me.Setup(Me.g_ProjectPath)
-			Me.Draw()
-			Me.BuildModuleTreeView()
-		End Sub
+        Private Sub miUseLargeMap_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miUseLargeMap.Click
+            Me.gModuleEditorSettings.MapSize = "large"
+            ModuleEditorProjectSettings.SaveSettings(Me.gModuleEditorSettings, Me.g_ProjectPath)
+            Me.miSave_Click(Nothing, Nothing)
+            Me.Setup(Me.g_ProjectPath)
+            Me.Draw()
+            Me.BuildModuleTreeView()
+        End Sub
 
 		' Token: 0x060008F0 RID: 2288 RVA: 0x0026B15C File Offset: 0x0026A15C
-		Private Sub miUseAltSmallMap_Click(sender As Object, e As EventArgs)
-			Me.gModuleEditorSettings.MapSize = "altsmall"
-			ModuleEditorProjectSettings.SaveSettings(Me.gModuleEditorSettings, Me.g_ProjectPath)
-			Me.miSave_Click(Nothing, Nothing)
-			Me.Setup(Me.g_ProjectPath)
-			Me.Draw()
-			Me.BuildModuleTreeView()
-		End Sub
+        Private Sub miUseAltSmallMap_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miUseAltSmallMap.Click
+            Me.gModuleEditorSettings.MapSize = "altsmall"
+            ModuleEditorProjectSettings.SaveSettings(Me.gModuleEditorSettings, Me.g_ProjectPath)
+            Me.miSave_Click(Nothing, Nothing)
+            Me.Setup(Me.g_ProjectPath)
+            Me.Draw()
+            Me.BuildModuleTreeView()
+        End Sub
 
 		' Token: 0x060008F1 RID: 2289 RVA: 0x0026B1AC File Offset: 0x0026A1AC
-		Private Sub miShowItemLabels_Click(sender As Object, e As EventArgs)
-			Me.gModuleEditorSettings.ShowItemLabels = Not Me.gModuleEditorSettings.ShowItemLabels
-			Me.miShowItemLabels.Checked = Me.gModuleEditorSettings.ShowItemLabels
-			Me.LoadBackground()
-			Me.Draw()
-		End Sub
+        Private Sub miShowItemLabels_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miShowItemLabels.Click
+            Me.gModuleEditorSettings.ShowItemLabels = Not Me.gModuleEditorSettings.ShowItemLabels
+            Me.miShowItemLabels.Checked = Me.gModuleEditorSettings.ShowItemLabels
+            Me.LoadBackground()
+            Me.Draw()
+        End Sub
 
 		' Token: 0x060008F2 RID: 2290 RVA: 0x0026B1EC File Offset: 0x0026A1EC
-		Private Sub miShowModuleEntryPoint_Click(sender As Object, e As EventArgs)
-			Dim num As Single = SingleType.FromObject(Me.IFOfile.GetNodeValue("Mod_Entry_X"))
-			Dim num2 As Single = SingleType.FromObject(Me.IFOfile.GetNodeValue("Mod_Entry_Y"))
-			Dim num3 As Integer = Convert.ToInt32(Decimal.Subtract(New Decimal(CInt(Math.Round(CDbl((Convert.ToSingle(Me.nudXmul.Value) * num))))), Me.nudXoff.Value))
-			Dim num4 As Integer = Me.invy(Convert.ToInt32(Decimal.Subtract(New Decimal(CInt(Math.Round(CDbl((Convert.ToSingle(Me.nudYmul.Value) * num2))))), Me.nudYoff.Value)))
-			Me.IndicateModItem(Graphics.FromImage(Me.bmp), num3, num4)
-		End Sub
+        Private Sub miShowModuleEntryPoint_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miShowModuleEntryPoint.Click
+            Dim num As Single = SingleType.FromObject(Me.IFOfile.GetNodeValue("Mod_Entry_X"))
+            Dim num2 As Single = SingleType.FromObject(Me.IFOfile.GetNodeValue("Mod_Entry_Y"))
+            Dim num3 As Integer = Convert.ToInt32(Decimal.Subtract(New Decimal(CInt(Math.Round(CDbl((Convert.ToSingle(Me.nudXmul.Value) * num))))), Me.nudXoff.Value))
+            Dim num4 As Integer = Me.invy(Convert.ToInt32(Decimal.Subtract(New Decimal(CInt(Math.Round(CDbl((Convert.ToSingle(Me.nudYmul.Value) * num2))))), Me.nudYoff.Value)))
+            Me.IndicateModItem(Graphics.FromImage(Me.bmp), num3, num4)
+        End Sub
 
 		' Token: 0x060008F3 RID: 2291 RVA: 0x0026B2A8 File Offset: 0x0026A2A8
-		Private Sub ToolBarModElementsFilter_ButtonClick(sender As Object, e As ToolBarButtonClickEventArgs)
-			Me.gModuleEditorSettings.FilterShowCreatures = Me.tbarbtnCreature.Pushed
-			Me.gModuleEditorSettings.FilterShowDoors = Me.tbarbtnDoor.Pushed
-			Me.gModuleEditorSettings.FilterShowEncounters = Me.tbarbtnEncounter.Pushed
-			Me.gModuleEditorSettings.FilterShowMerchants = Me.tbarbtnMerchant.Pushed
-			Me.gModuleEditorSettings.FilterShowPlaceables = Me.tbarbtnPlaceable.Pushed
-			Me.gModuleEditorSettings.FilterShowSounds = Me.tbarbtnSound.Pushed
-			Me.gModuleEditorSettings.FilterShowTriggers = Me.tbarbtnTrigger.Pushed
-			Me.gModuleEditorSettings.FilterShowWaypoints = Me.tbarbtnWaypoint.Pushed
-			ModuleEditorProjectSettings.SaveSettings(Me.gModuleEditorSettings, Me.g_ProjectPath)
-			Me.LoadBackground()
-			Me.Draw()
-			Me.BuildModuleTreeView()
-		End Sub
+        Private Sub ToolBarModElementsFilter_ButtonClick(ByVal sender As Object, ByVal e As ToolBarButtonClickEventArgs) Handles ToolBarModElementsFilter.ButtonClick
+            Me.gModuleEditorSettings.FilterShowCreatures = Me.tbarbtnCreature.Pushed
+            Me.gModuleEditorSettings.FilterShowDoors = Me.tbarbtnDoor.Pushed
+            Me.gModuleEditorSettings.FilterShowEncounters = Me.tbarbtnEncounter.Pushed
+            Me.gModuleEditorSettings.FilterShowMerchants = Me.tbarbtnMerchant.Pushed
+            Me.gModuleEditorSettings.FilterShowPlaceables = Me.tbarbtnPlaceable.Pushed
+            Me.gModuleEditorSettings.FilterShowSounds = Me.tbarbtnSound.Pushed
+            Me.gModuleEditorSettings.FilterShowTriggers = Me.tbarbtnTrigger.Pushed
+            Me.gModuleEditorSettings.FilterShowWaypoints = Me.tbarbtnWaypoint.Pushed
+            ModuleEditorProjectSettings.SaveSettings(Me.gModuleEditorSettings, Me.g_ProjectPath)
+            Me.LoadBackground()
+            Me.Draw()
+            Me.BuildModuleTreeView()
+        End Sub
 
 		' Token: 0x060008F4 RID: 2292 RVA: 0x0026B388 File Offset: 0x0026A388
 		Public Sub BuildModuleTreeView()
@@ -3467,7 +3467,7 @@ Namespace kotor_tool
         'End Sub
 
         ' Token: 0x06000901 RID: 2305 RVA: 0x0026C7FC File Offset: 0x0026B7FC
-        Private Sub lbScripts_DoubleClick(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub lbScripts_DoubleClick(ByVal sender As Object, ByVal e As EventArgs) Handles lbScripts.DoubleClick
             If Me.lbScripts.SelectedIndex = -1 Then
                 Return
             End If
@@ -3493,92 +3493,92 @@ Namespace kotor_tool
 		End Sub
 
 		' Token: 0x06000903 RID: 2307 RVA: 0x0026C924 File Offset: 0x0026B924
-		Private Sub lbDialogs_DoubleClick(sender As Object, e As EventArgs)
-			Dim cursor As Cursor = Cursor.Current
-			Cursor.Current = Cursors.WaitCursor
-			Dim frmDialogEditor As frmDialogEditor = New frmDialogEditor(Me.g_ProjectPath + "\" + Me.lbDialogs.SelectedItem.ToString() + ".dlg", Me.KotorVersionIndex)
-			frmDialogEditor.Show()
-			Cursor.Current = cursor
-		End Sub
+        Private Sub lbDialogs_DoubleClick(ByVal sender As Object, ByVal e As EventArgs) Handles lbDialogs.DoubleClick
+            Dim cursor As Cursor = cursor.Current
+            cursor.Current = Cursors.WaitCursor
+            Dim frmDialogEditor As frmDialogEditor = New frmDialogEditor(Me.g_ProjectPath + "\" + Me.lbDialogs.SelectedItem.ToString() + ".dlg", Me.KotorVersionIndex)
+            frmDialogEditor.Show()
+            cursor.Current = cursor
+        End Sub
 
 		' Token: 0x06000904 RID: 2308 RVA: 0x0026C980 File Offset: 0x0026B980
-		Private Sub chkbFine_CheckedChanged(sender As Object, e As EventArgs)
-			If Me.chkbFine.Checked Then
-				Me.nudXmul.DecimalPlaces = 4
-				Me.nudYmul.DecimalPlaces = 4
-			Else
-				Me.nudXmul.DecimalPlaces = 2
-				Me.nudYmul.DecimalPlaces = 2
-			End If
-		End Sub
+        Private Sub chkbFine_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles chkbFine.CheckedChanged
+            If Me.chkbFine.Checked Then
+                Me.nudXmul.DecimalPlaces = 4
+                Me.nudYmul.DecimalPlaces = 4
+            Else
+                Me.nudXmul.DecimalPlaces = 2
+                Me.nudYmul.DecimalPlaces = 2
+            End If
+        End Sub
 
 		' Token: 0x06000905 RID: 2309 RVA: 0x0026C9CC File Offset: 0x0026B9CC
-		Private Sub btnAssignPt1_Click(sender As Object, e As EventArgs)
-			Dim point As Point = New Point(Convert.ToInt32(Me.tbMouseX.Text), Convert.ToInt32(Me.tbMouseY.Text))
-			Me.MapCalibratePt1 = point
-			If Not Me.MapCalibratePt2.IsEmpty Then
-				Me.btnCalcCalibrationVals.Enabled = True
-			End If
-		End Sub
+        Private Sub btnAssignPt1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnAssignPt1.Click
+            Dim point As Point = New Point(Convert.ToInt32(Me.tbMouseX.Text), Convert.ToInt32(Me.tbMouseY.Text))
+            Me.MapCalibratePt1 = point
+            If Not Me.MapCalibratePt2.IsEmpty Then
+                Me.btnCalcCalibrationVals.Enabled = True
+            End If
+        End Sub
 
 		' Token: 0x06000906 RID: 2310 RVA: 0x0026CA20 File Offset: 0x0026BA20
-		Private Sub btnAssignPt2_Click(sender As Object, e As EventArgs)
-			Dim point As Point = New Point(Convert.ToInt32(Me.tbMouseX.Text), Convert.ToInt32(Me.tbMouseY.Text))
-			Me.MapCalibratePt2 = point
-			If Not Me.MapCalibratePt1.IsEmpty Then
-				Me.btnCalcCalibrationVals.Enabled = True
-			End If
-		End Sub
+        Private Sub btnAssignPt2_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnAssignPt2.Click
+            Dim point As Point = New Point(Convert.ToInt32(Me.tbMouseX.Text), Convert.ToInt32(Me.tbMouseY.Text))
+            Me.MapCalibratePt2 = point
+            If Not Me.MapCalibratePt1.IsEmpty Then
+                Me.btnCalcCalibrationVals.Enabled = True
+            End If
+        End Sub
 
 		' Token: 0x06000907 RID: 2311 RVA: 0x0026CA74 File Offset: 0x0026BA74
-		Private Sub btnCalcCalibrationVals_Click(sender As Object, e As EventArgs)
-			Me.chkbUseFactors.Checked = False
-			Me.nudXmul.Value = New Decimal(CSng((Me.MapCalibratePt2.X - Me.MapCalibratePt1.X)) / (Convert.ToSingle(Me.tb3dsMaxPt2X.Text) - Convert.ToSingle(Me.tb3dsMaxPt1X.Text)))
-			Me.nudXoff.Value = New Decimal(-(CSng(Me.MapCalibratePt1.X) - Convert.ToSingle(Me.nudXmul.Value) * Convert.ToSingle(Me.tb3dsMaxPt1X.Text)))
-			Me.nudYmul.Value = New Decimal(CSng((0 - (Me.MapCalibratePt2.Y - Me.MapCalibratePt1.Y))) / (Convert.ToSingle(Me.tb3dsMaxPt2Y.Text) - Convert.ToSingle(Me.tb3dsMaxPt1Y.Text)))
-			Me.nudYoff.Value = New Decimal(-(CSng(Me.g_imageYsize) - (CSng(Me.MapCalibratePt1.Y) + Convert.ToSingle(Me.nudYmul.Value) * Convert.ToSingle(Me.tb3dsMaxPt1Y.Text))))
-			Me.chkbUseFactors.Checked = True
-			Me.LoadBackground()
-			Me.Draw()
-		End Sub
+        Private Sub btnCalcCalibrationVals_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnCalcCalibrationVals.Click
+            Me.chkbUseFactors.Checked = False
+            Me.nudXmul.Value = New Decimal(CSng((Me.MapCalibratePt2.X - Me.MapCalibratePt1.X)) / (Convert.ToSingle(Me.tb3dsMaxPt2X.Text) - Convert.ToSingle(Me.tb3dsMaxPt1X.Text)))
+            Me.nudXoff.Value = New Decimal(-(CSng(Me.MapCalibratePt1.X) - Convert.ToSingle(Me.nudXmul.Value) * Convert.ToSingle(Me.tb3dsMaxPt1X.Text)))
+            Me.nudYmul.Value = New Decimal(CSng((0 - (Me.MapCalibratePt2.Y - Me.MapCalibratePt1.Y))) / (Convert.ToSingle(Me.tb3dsMaxPt2Y.Text) - Convert.ToSingle(Me.tb3dsMaxPt1Y.Text)))
+            Me.nudYoff.Value = New Decimal(-(CSng(Me.g_imageYsize) - (CSng(Me.MapCalibratePt1.Y) + Convert.ToSingle(Me.nudYmul.Value) * Convert.ToSingle(Me.tb3dsMaxPt1Y.Text))))
+            Me.chkbUseFactors.Checked = True
+            Me.LoadBackground()
+            Me.Draw()
+        End Sub
 
 		' Token: 0x06000908 RID: 2312 RVA: 0x0026CBC4 File Offset: 0x0026BBC4
-		Private Sub btnCalToolsToggle_MouseDown(sender As Object, e As MouseEventArgs)
-			If(Control.ModifierKeys And (Keys.Shift Or Keys.Control Or Keys.Alt)) > Keys.None AndAlso (Control.MouseButtons And MouseButtons.XButton2) > MouseButtons.None Then
-				Me.CalibrationToolsVis = Not Me.CalibrationToolsVis
-				Me.nudXmul.Visible = Me.CalibrationToolsVis
-				Me.nudYmul.Visible = Me.CalibrationToolsVis
-				Me.nudXoff.Visible = Me.CalibrationToolsVis
-				Me.nudYoff.Visible = Me.CalibrationToolsVis
-				Me.chkbUseFactors.Visible = Me.CalibrationToolsVis
-				Me.btnLogFactors.Visible = Me.CalibrationToolsVis
-				Me.btnAssignPt1.Visible = Me.CalibrationToolsVis
-				Me.btnAssignPt2.Visible = Me.CalibrationToolsVis
-				Me.btnAssignPt2.Visible = Me.CalibrationToolsVis
-				Me.btnCalcCalibrationVals.Visible = Me.CalibrationToolsVis
-				Me.tbMouseX.Visible = Me.CalibrationToolsVis
-				Me.tbMouseY.Visible = Me.CalibrationToolsVis
-				Me.tb3dsMaxPt1X.Visible = Me.CalibrationToolsVis
-				Me.tb3dsMaxPt2X.Visible = Me.CalibrationToolsVis
-				Me.tb3dsMaxPt1Y.Visible = Me.CalibrationToolsVis
-				Me.tb3dsMaxPt2Y.Visible = Me.CalibrationToolsVis
-			End If
-		End Sub
+        Private Sub btnCalToolsToggle_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles btnCalToolsToggle.MouseDown
+            If (Control.ModifierKeys And (Keys.Shift Or Keys.Control Or Keys.Alt)) > Keys.None AndAlso (Control.MouseButtons And MouseButtons.XButton2) > MouseButtons.None Then
+                Me.CalibrationToolsVis = Not Me.CalibrationToolsVis
+                Me.nudXmul.Visible = Me.CalibrationToolsVis
+                Me.nudYmul.Visible = Me.CalibrationToolsVis
+                Me.nudXoff.Visible = Me.CalibrationToolsVis
+                Me.nudYoff.Visible = Me.CalibrationToolsVis
+                Me.chkbUseFactors.Visible = Me.CalibrationToolsVis
+                Me.btnLogFactors.Visible = Me.CalibrationToolsVis
+                Me.btnAssignPt1.Visible = Me.CalibrationToolsVis
+                Me.btnAssignPt2.Visible = Me.CalibrationToolsVis
+                Me.btnAssignPt2.Visible = Me.CalibrationToolsVis
+                Me.btnCalcCalibrationVals.Visible = Me.CalibrationToolsVis
+                Me.tbMouseX.Visible = Me.CalibrationToolsVis
+                Me.tbMouseY.Visible = Me.CalibrationToolsVis
+                Me.tb3dsMaxPt1X.Visible = Me.CalibrationToolsVis
+                Me.tb3dsMaxPt2X.Visible = Me.CalibrationToolsVis
+                Me.tb3dsMaxPt1Y.Visible = Me.CalibrationToolsVis
+                Me.tb3dsMaxPt2Y.Visible = Me.CalibrationToolsVis
+            End If
+        End Sub
 
 		' Token: 0x06000909 RID: 2313 RVA: 0x0026CD18 File Offset: 0x0026BD18
-		Private Sub miFont_Click(sender As Object, e As EventArgs)
-			Dim fontDialog As FontDialog = New FontDialog()
-			fontDialog.ShowColor = True
-			fontDialog.Font = Me.labelFont
-			fontDialog.Color = Me.labelBrush.Color
-			fontDialog.ShowApply = False
-			If fontDialog.ShowDialog() = DialogResult.OK Then
-				Me.labelFont = fontDialog.Font
-				Me.labelBrush.Color = fontDialog.Color
-				Me.LoadBackground()
-				Me.Draw()
-			End If
-		End Sub
+        Private Sub miFont_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miFont.Click
+            Dim fontDialog As FontDialog = New FontDialog()
+            fontDialog.ShowColor = True
+            fontDialog.Font = Me.labelFont
+            fontDialog.Color = Me.labelBrush.Color
+            fontDialog.ShowApply = False
+            If fontDialog.ShowDialog() = DialogResult.OK Then
+                Me.labelFont = fontDialog.Font
+                Me.labelBrush.Color = fontDialog.Color
+                Me.LoadBackground()
+                Me.Draw()
+            End If
+        End Sub
 
 		' Token: 0x0600090A RID: 2314 RVA: 0x0026CD88 File Offset: 0x0026BD88
 		Private Function IsFileInTrash(filename As String) As Boolean
