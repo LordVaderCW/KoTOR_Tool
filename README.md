@@ -28,7 +28,7 @@ This repository contains a restored and repaired source-code build of **Fred Tet
 
 The purpose of this project is to preserve, restore, and modernise the original KoTOR Tool so that it can continue serving the *Knights of the Old Republic* modding community on newer Windows systems.
 
-This is **not** a rewrite from scratch. It is a restoration project focused on preserving the original tool's behaviour while repairing broken decompiler output, restoring missing resources, improving portability, and preparing the codebase for future long-term maintenance.
+This is **not** a rewrite from scratch. It is a restoration project focused on preserving the original tool's behaviour while repairing broken decompiler output, restoring missing resources, improving portability, and preparing the codebase for future long-term maintenance. IT MIGHT NOT WORK AS INTENDED. RAISE ISSUES USING THE STANDARD METHODS. 
 
 ---
 
