@@ -3,8 +3,8 @@ Rebuild and Rebirth of the KoTOR Tool originally developed by Fred Tetra back 20
 
 # Kotor Tool Restoration Project
 
-**Version:** v1.0.23  
-**Patch Date:** 27.04.26  
+**Version:** v1.0.3.3  
+**Patch Date:** 29.04.26  
 **Project Status:** Restored source build confirmed  
 **Target IDE:** Visual Studio 2010  
 **Target Framework:** .NET Framework 2.0  
@@ -24,6 +24,16 @@ This is not a rewrite from scratch. It is a restoration project focused on prese
 ---
 
 ## Current Release
+
+### v1.0.3.3 — GUI Overhaul Patch
+
+Improved User Interface, This is not fully done yet. 
+Will continue to update this. but major UI changes. check the forum page to see what changes have been made visually. 
+
+
+---
+
+## Previous Release
 
 ### v1.0.23 — First Restoration Patch
 
