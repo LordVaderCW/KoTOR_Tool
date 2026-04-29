@@ -14,7 +14,7 @@ Rebuild and rebirth of the original **KoTOR Tool**, originally developed by Fred
 
 **Target IDE:** Visual Studio 2010
 
-**Target Framework:** .NET Framework 2.0
+**Target Framework:** .NET Framework 4.0
 
 **Platform:** x86
 
@@ -151,7 +151,7 @@ Recommended environment:
 
 ```text
 Visual Studio 2010
-.NET Framework 2.0 Targeting Pack
+.NET Framework 4.0 Targeting Pack
 Windows x86 build target
 ```
 
