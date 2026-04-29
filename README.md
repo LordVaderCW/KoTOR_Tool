@@ -167,7 +167,7 @@ Project configuration:
 
 ```text
 OutputType: WinExe
-TargetFrameworkVersion: v2.0
+TargetFrameworkVersion: v4.0
 PlatformTarget: x86
 StartupObject: kotor_tool.KT_Launch
 ```
