@@ -34,11 +34,11 @@ This release focused heavily on structural restoration, WinForms designer recove
 
 >### Core Restoration Work
 >
->-- Successfully reverse engineered major portions of the original KoTOR Tool back into editable Visual Studio 2010 source form.
->-- Restored large sections of legacy VB.NET WinForms Designer files from decompiled output.
->-- Rebuilt damaged partial classes and corrected missing Designer field declarations.
->-- Preserved original source compatibility by retaining legacy control names, inherited base classes, and existing form behaviour.
->-- Maintained strict VS2010 / .NET Framework 2.0 compatibility across restored forms.
+> -Successfully reverse engineered major portions of the original KoTOR Tool back into editable Visual Studio 2010 source form.
+> -Restored large sections of legacy VB.NET WinForms Designer files from decompiled output.
+> -Rebuilt damaged partial classes and corrected missing Designer field declarations.
+> -Preserved original source compatibility by retaining legacy control names, inherited base classes, and existing form behaviour.
+> -Maintained strict VS2010 / .NET Framework 2.0 compatibility across restored forms.
 >
 
 -- Established the new “DarkSaber” restoration theme as the standard visual language for the tool.
@@ -47,15 +47,15 @@ This release focused heavily on structural restoration, WinForms designer recove
 
 >Completed major Designer-only restorations for multiple legacy forms including:
 >
->frmAbout
->frmAppearanceWizard
->frmDialogEditor
->frmGlobalVar_Editor
->frmModule_Editor
->frmPackageTypeSelector
->frmSSFEditor
->frmUTM_Editor
->frmPathManager
+> -frmAbout
+> -frmAppearanceWizard
+> -frmDialogEditor
+> -frmGlobalVar_Editor
+> -frmModule_Editor
+> -frmPackageTypeSelector
+> -frmSSFEditor
+> -frmUTM_Editor
+> -frmPathManager
 >etc..
 > 
 
