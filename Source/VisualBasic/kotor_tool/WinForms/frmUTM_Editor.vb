@@ -17,8 +17,18 @@ Namespace kotor_tool
 		Public Sub New()
 			AddHandler MyBase.Load, AddressOf Me.frmUTM_Editor_Load
 			AddHandler MyBase.Closing, AddressOf Me.frmUTM_Editor_Closing
-			Me.m_bSaveGameMode = False
-			Me.InitializeComponent()
+            Me.m_bSaveGameMode = False
+            ' -------------------------------------------------------------
+            ' Event bindings restored from decompiled synchronized
+            ' AccessedThroughProperty wrappers.
+            ' -------------------------------------------------------------
+            AddHandler Me.btnSave.Click, AddressOf Me.btnSave_Click
+            AddHandler Me.btnCancel.Click, AddressOf Me.btnCancel_Click
+            AddHandler Me.btnInventory.Click, AddressOf Me.btnInventory_Click
+            AddHandler Me.btnSetNameLang.Click, AddressOf Me.btnSetNameLang_Click
+            AddHandler Me.btnDebug.Click, AddressOf Me.btnDebug_Click
+            AddHandler Me.btnEditOnOpenStore.Click, AddressOf Me.btnEditScript_Click
+            Me.InitializeComponent()
 		End Sub
 
         ' Token: 0x06001433 RID: 5171 RVA: 0x002B79EC File Offset: 0x002B69EC
