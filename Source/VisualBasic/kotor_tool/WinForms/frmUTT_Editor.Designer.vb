@@ -209,8 +209,8 @@ Namespace kotor_tool
             'TabControl1
             '
             Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                        Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.TabControl1.Controls.Add(Me.TabPageBasic)
             Me.TabControl1.Controls.Add(Me.TabPageScripts)
             Me.TabControl1.Controls.Add(Me.TabPageTrap)
@@ -722,7 +722,6 @@ Namespace kotor_tool
             '
             'chkbAutoRemoveKey
             '
-            Me.chkbAutoRemoveKey.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbAutoRemoveKey.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbAutoRemoveKey.Location = New System.Drawing.Point(232, 320)
             Me.chkbAutoRemoveKey.Name = "chkbAutoRemoveKey"
@@ -741,7 +740,6 @@ Namespace kotor_tool
             '
             'chkbTrapDisarmable
             '
-            Me.chkbTrapDisarmable.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbTrapDisarmable.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbTrapDisarmable.Location = New System.Drawing.Point(192, 98)
             Me.chkbTrapDisarmable.Name = "chkbTrapDisarmable"
@@ -750,7 +748,6 @@ Namespace kotor_tool
             '
             'chkbTrapDetectable
             '
-            Me.chkbTrapDetectable.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbTrapDetectable.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbTrapDetectable.Location = New System.Drawing.Point(192, 24)
             Me.chkbTrapDetectable.Name = "chkbTrapDetectable"
@@ -894,7 +891,6 @@ Namespace kotor_tool
             '
             'chkbTrapFlag
             '
-            Me.chkbTrapFlag.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbTrapFlag.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbTrapFlag.Location = New System.Drawing.Point(192, 175)
             Me.chkbTrapFlag.Name = "chkbTrapFlag"
@@ -903,7 +899,6 @@ Namespace kotor_tool
             '
             'chkbTrapOneShot
             '
-            Me.chkbTrapOneShot.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbTrapOneShot.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbTrapOneShot.Location = New System.Drawing.Point(192, 212)
             Me.chkbTrapOneShot.Name = "chkbTrapOneShot"
@@ -1053,8 +1048,6 @@ Namespace kotor_tool
             Me.CancelButton = Me.btnCancel
             Me.ClientSize = New System.Drawing.Size(504, 551)
             Me.Controls.Add(Me.pnlRoot)
-            Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.MinimumSize = New System.Drawing.Size(512, 550)
             Me.Name = "frmUTT_Editor"
             Me.Text = "Trigger Editor - KotOR "

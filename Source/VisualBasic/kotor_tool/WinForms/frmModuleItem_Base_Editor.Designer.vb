@@ -258,7 +258,7 @@ Namespace kotor_tool
             Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
             Me.pnlRoot.Name = "pnlRoot"
-            Me.pnlRoot.Size = New System.Drawing.Size(520, 492)
+            Me.pnlRoot.Size = New System.Drawing.Size(520, 561)
             Me.pnlRoot.TabIndex = 0
             '
             'pnlBody
@@ -269,7 +269,7 @@ Namespace kotor_tool
             Me.pnlBody.Location = New System.Drawing.Point(0, 67)
             Me.pnlBody.Name = "pnlBody"
             Me.pnlBody.Padding = New System.Windows.Forms.Padding(10)
-            Me.pnlBody.Size = New System.Drawing.Size(520, 363)
+            Me.pnlBody.Size = New System.Drawing.Size(520, 432)
             Me.pnlBody.TabIndex = 1
             '
             'tabctrl
@@ -284,7 +284,7 @@ Namespace kotor_tool
             Me.tabctrl.Location = New System.Drawing.Point(10, 10)
             Me.tabctrl.Name = "tabctrl"
             Me.tabctrl.SelectedIndex = 0
-            Me.tabctrl.Size = New System.Drawing.Size(500, 343)
+            Me.tabctrl.Size = New System.Drawing.Size(500, 412)
             Me.tabctrl.TabIndex = 6
             '
             'tabpagGeneral
@@ -306,7 +306,7 @@ Namespace kotor_tool
             Me.tabpagGeneral.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabpagGeneral.Location = New System.Drawing.Point(4, 22)
             Me.tabpagGeneral.Name = "tabpagGeneral"
-            Me.tabpagGeneral.Size = New System.Drawing.Size(492, 255)
+            Me.tabpagGeneral.Size = New System.Drawing.Size(492, 386)
             Me.tabpagGeneral.TabIndex = 1
             Me.tabpagGeneral.Text = "General"
             '
@@ -470,7 +470,7 @@ Namespace kotor_tool
             Me.tabpagWaypoint.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabpagWaypoint.Location = New System.Drawing.Point(4, 22)
             Me.tabpagWaypoint.Name = "tabpagWaypoint"
-            Me.tabpagWaypoint.Size = New System.Drawing.Size(492, 255)
+            Me.tabpagWaypoint.Size = New System.Drawing.Size(492, 386)
             Me.tabpagWaypoint.TabIndex = 3
             Me.tabpagWaypoint.Text = "Waypoint Specific"
             '
@@ -484,7 +484,7 @@ Namespace kotor_tool
             Me.btnSetNameLang.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnSetNameLang.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.btnSetNameLang.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnSetNameLang.Location = New System.Drawing.Point(390, 148)
+            Me.btnSetNameLang.Location = New System.Drawing.Point(390, 279)
             Me.btnSetNameLang.Name = "btnSetNameLang"
             Me.btnSetNameLang.Size = New System.Drawing.Size(96, 29)
             Me.btnSetNameLang.TabIndex = 10
@@ -609,7 +609,7 @@ Namespace kotor_tool
             Me.tabpagDoor.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabpagDoor.Location = New System.Drawing.Point(4, 22)
             Me.tabpagDoor.Name = "tabpagDoor"
-            Me.tabpagDoor.Size = New System.Drawing.Size(492, 317)
+            Me.tabpagDoor.Size = New System.Drawing.Size(492, 386)
             Me.tabpagDoor.TabIndex = 0
             Me.tabpagDoor.Text = "Door/Trigger Specific"
             '
@@ -782,8 +782,8 @@ Namespace kotor_tool
             Me.lblTransitionMsg.Name = "lblTransitionMsg"
             Me.lblTransitionMsg.Size = New System.Drawing.Size(432, 19)
             Me.lblTransitionMsg.TabIndex = 1
-            Me.lblTransitionMsg.Text = "Note: To enable the above fields, set the type to Transition in the Trigger edito" & _
-                "r."
+            Me.lblTransitionMsg.Text = "Note: To enable the above fields, set the type to Transition in the Trigger edito" &
+    "r."
             Me.lblTransitionMsg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
             Me.lblTransitionMsg.Visible = False
             '
@@ -810,7 +810,7 @@ Namespace kotor_tool
             Me.tabpagEncounter.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabpagEncounter.Location = New System.Drawing.Point(4, 22)
             Me.tabpagEncounter.Name = "tabpagEncounter"
-            Me.tabpagEncounter.Size = New System.Drawing.Size(492, 317)
+            Me.tabpagEncounter.Size = New System.Drawing.Size(492, 386)
             Me.tabpagEncounter.TabIndex = 5
             Me.tabpagEncounter.Text = "Encounter Specific"
             '
@@ -1044,7 +1044,7 @@ Namespace kotor_tool
             Me.tabpagCamera.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabpagCamera.Location = New System.Drawing.Point(4, 22)
             Me.tabpagCamera.Name = "tabpagCamera"
-            Me.tabpagCamera.Size = New System.Drawing.Size(492, 255)
+            Me.tabpagCamera.Size = New System.Drawing.Size(492, 386)
             Me.tabpagCamera.TabIndex = 2
             Me.tabpagCamera.Text = "Camera Specific"
             '
@@ -1055,8 +1055,8 @@ Namespace kotor_tool
             Me.Label29.Name = "Label29"
             Me.Label29.Size = New System.Drawing.Size(176, 46)
             Me.Label29.TabIndex = 10
-            Me.Label29.Text = "(Use this value or the one below to set the camera's pitch but not both. Set unus" & _
-                "ed one to 0)"
+            Me.Label29.Text = "(Use this value or the one below to set the camera's pitch but not both. Set unus" &
+    "ed one to 0)"
             '
             'nudCamOrientationX
             '
@@ -1335,7 +1335,7 @@ Namespace kotor_tool
             Me.pnlFooter.Controls.Add(Me.Button2)
             Me.pnlFooter.Controls.Add(Me.Button3)
             Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.pnlFooter.Location = New System.Drawing.Point(0, 430)
+            Me.pnlFooter.Location = New System.Drawing.Point(0, 499)
             Me.pnlFooter.Name = "pnlFooter"
             Me.pnlFooter.Size = New System.Drawing.Size(520, 62)
             Me.pnlFooter.TabIndex = 2
@@ -1456,16 +1456,13 @@ Namespace kotor_tool
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 15)
             Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.CancelButton = Me.Button3
-            Me.ClientSize = New System.Drawing.Size(520, 492)
+            Me.ClientSize = New System.Drawing.Size(520, 561)
             Me.Controls.Add(Me.pnlRoot)
-            Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
             Me.MaximizeBox = False
             Me.MinimizeBox = False
             Me.Name = "frmModuleItem_Base_Editor"
-            Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-            Me.Text = ""
+            Me.Text = "Module Item Editor"
             Me.pnlRoot.ResumeLayout(False)
             Me.pnlBody.ResumeLayout(False)
             Me.tabctrl.ResumeLayout(False)
@@ -1494,7 +1491,32 @@ Namespace kotor_tool
             Me.pnlFooter.ResumeLayout(False)
             Me.pnlHeader.ResumeLayout(False)
             CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
+
+
+
+
+            ' -------------------------------------------------------------
+            ' Event bindings restored from decompiled synchronized
+            ' AccessedThroughProperty wrappers.
+            ' -------------------------------------------------------------
+            AddHandler Me.nudXY.ValueChanged, AddressOf Me.nudXY_ValueChanged
+            AddHandler Me.nudXY.KeyUp, AddressOf Me.nudXY_KeyUp
+            AddHandler Me.btnShowQuaternion.MouseUp, AddressOf Me.btnShowQuaternion_MouseUp
+            AddHandler Me.btnShowQuaternion.MouseDown, AddressOf Me.btnShowQuaternion_MouseDown
+            AddHandler Me.nudCamOrientationX.ValueChanged, AddressOf Me.nudCamOrientation_ValueChanged
+            AddHandler Me.nudCamOrientationY.ValueChanged, AddressOf Me.nudCamOrientation_ValueChanged
+            AddHandler Me.nudCamOrientationZ.ValueChanged, AddressOf Me.nudCamOrientation_ValueChanged
+            AddHandler Me.nudXYSpawnPointBearing.KeyUp, AddressOf Me.nudXYSpawnPointBearing_KeyUp
+            AddHandler Me.nudXYSpawnPointBearing.ValueChanged, AddressOf Me.nudXYSpawnPointBearing_ValueChanged
+            AddHandler Me.lbSpawnPoints.SelectedIndexChanged, AddressOf Me.lbSpawnPoints_SelectedIndexChanged
+            AddHandler Me.btnSetNameLang.Click, AddressOf Me.btnSetNameLang_Click
+
+
             Me.ResumeLayout(False)
+
+
+
+
 
         End Sub
 

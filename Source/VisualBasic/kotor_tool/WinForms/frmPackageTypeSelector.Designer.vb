@@ -93,9 +93,9 @@ Namespace kotor_tool
             Me.Label1.BackColor = System.Drawing.Color.Transparent
             Me.Label1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label1.Location = New System.Drawing.Point(44, 20)
+            Me.Label1.Location = New System.Drawing.Point(26, 20)
             Me.Label1.Name = "Label1"
-            Me.Label1.Size = New System.Drawing.Size(276, 26)
+            Me.Label1.Size = New System.Drawing.Size(308, 26)
             Me.Label1.TabIndex = 0
             Me.Label1.Text = "Select the type for this Package"
             Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter

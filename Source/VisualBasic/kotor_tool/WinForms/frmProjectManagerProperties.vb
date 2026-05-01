@@ -53,28 +53,28 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000E2C RID: 3628 RVA: 0x0028CDBC File Offset: 0x0028BDBC
-        Private Sub btnSelectProject_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnSelectProject_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSelectProject.Click
             Dim tbProjectPath As TextBox = Me.tbProjectPath
             Me.BrowseForFile(tbProjectPath)
             Me.tbProjectPath = tbProjectPath
         End Sub
 
         ' Token: 0x06000E2D RID: 3629 RVA: 0x0028CDE0 File Offset: 0x0028BDE0
-        Private Sub btnKotorPath_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnKotorPath_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnKotorPath.Click
             Dim tbDebugPath As TextBox = Me.tbDebugPath
             Me.BrowseForFolder(tbDebugPath)
             Me.tbDebugPath = tbDebugPath
         End Sub
 
         ' Token: 0x06000E2E RID: 3630 RVA: 0x0028CE04 File Offset: 0x0028BE04
-        Private Sub btnReleasePath_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnReleasePath_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnReleasePath.Click
             Dim tbReleasePath As TextBox = Me.tbReleasePath
             Me.BrowseForFolder(tbReleasePath)
             Me.tbReleasePath = tbReleasePath
         End Sub
 
         ' Token: 0x06000E2F RID: 3631 RVA: 0x0028CE28 File Offset: 0x0028BE28
-        Private Sub btnOK_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnOK_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnOK.Click
             If StringType.StrCmp(Me.tbProjectName.Text.Trim(), "", False) = 0 Then
                 Interaction.MsgBox("Project name not specified" & vbLf & "Please check your selection", MsgBoxStyle.Critical, Nothing)
                 Return

@@ -38,7 +38,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DC3 RID: 3523 RVA: 0x002884D8 File Offset: 0x002874D8
-        Private Sub TreeView_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs)
+        Private Sub TreeView_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles TreeView.MouseDown
             Dim point As Point = New Point(e.X, e.Y)
             Dim point2 As Point = point
             Me.LastClickedTVNode = Me.TreeView.GetNodeAt(point2)
@@ -85,7 +85,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DC4 RID: 3524 RVA: 0x00288928 File Offset: 0x00287928
-        Private Sub TreeView_DoubleClick(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub TreeView_DoubleClick(ByVal sender As Object, ByVal e As EventArgs) Handles TreeView.DoubleClick
             Dim projectFileItemTreeNode As ProjectFileItemTreeNode = CType(Me.TreeView.SelectedNode, ProjectFileItemTreeNode)
             If ObjectType.ObjTst(projectFileItemTreeNode.Tag, "overridechild", False) = 0 OrElse ObjectType.ObjTst(projectFileItemTreeNode.Tag, "modulechild", False) = 0 OrElse ObjectType.ObjTst(projectFileItemTreeNode.Tag, "streamwavesfilechild", False) = 0 OrElse ObjectType.ObjTst(projectFileItemTreeNode.Tag, "streamwavesmodulechild", False) = 0 Then
                 Dim text As String = Path.GetExtension(projectFileItemTreeNode.FilePath).ToLower()
@@ -128,7 +128,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DC5 RID: 3525 RVA: 0x00288BA0 File Offset: 0x00287BA0
-        Private Sub TreeView_DragDrop(ByVal sender As Object, ByVal e As DragEventArgs)
+        Private Sub TreeView_DragDrop(ByVal sender As Object, ByVal e As DragEventArgs) Handles TreeView.DragDrop
             Dim treeView As TreeView = Me.TreeView
             Dim treeView2 As Control = Me.TreeView
             Dim point As Point = New Point(e.X, e.Y)
@@ -198,7 +198,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DC6 RID: 3526 RVA: 0x00288F1C File Offset: 0x00287F1C
-        Private Sub TreeView_DragOver(ByVal sender As Object, ByVal e As DragEventArgs)
+        Private Sub TreeView_DragOver(ByVal sender As Object, ByVal e As DragEventArgs) Handles TreeView.DragOver
             If e.Data.GetDataPresent(DataFormats.FileDrop) Then
                 Dim treeView As TreeView = Me.TreeView
                 Dim treeView2 As Control = Me.TreeView
@@ -217,12 +217,12 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DC7 RID: 3527 RVA: 0x00289048 File Offset: 0x00288048
-        Private Sub tvcmiProperties_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiProperties_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiProperties.Click
             Me.EditProjectProperties()
         End Sub
 
         ' Token: 0x06000DC8 RID: 3528 RVA: 0x00289050 File Offset: 0x00288050
-        Private Sub tvcmiOverrideRoot_Add_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiOverrideRoot_Add_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiOverrideRoot_Add.Click
             Dim fullPath As String = Me.LastClickedTVNode.FullPath
             Dim objectValue As Object = RuntimeHelpers.GetObjectValue(frmMain.GetFilePath("load", Me.InitialBrowsePath, "*.*", "Select the files to add to the Override folder", "all", True, True))
             If objectValue.[GetType]() Is GetType(String) Then
@@ -243,7 +243,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DC9 RID: 3529 RVA: 0x0028911C File Offset: 0x0028811C
-        Private Sub tvcmiOverrideChild_Exclude_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiOverrideChild_Exclude_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiOverrideChild_Exclude.Click
             Dim fullPath As String = Me.LastClickedTVNode.FullPath
             Dim filePath As String = CType(Me.LastClickedTVNode, ProjectFileItemTreeNode).FilePath
             Me.Project.RemoveOverrideFile(filePath)
@@ -253,7 +253,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DCA RID: 3530 RVA: 0x00289180 File Offset: 0x00288180
-        Private Sub tvcmiOverrideRoot_RemoveAll_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiOverrideRoot_RemoveAll_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiOverrideRoot_RemoveAll.Click
             If Interaction.MsgBox("Are you sure you want to exclude all of the files from Override?" & vbLf & "(No files will be deleted from disk)", MsgBoxStyle.OkCancel Or MsgBoxStyle.DefaultButton2, "Warning") = MsgBoxResult.Ok Then
                 Me.Project.RemoveAllOverrideFiles()
                 Me.ProjectMgr.SaveProject()
@@ -262,7 +262,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DCB RID: 3531 RVA: 0x002891B8 File Offset: 0x002881B8
-        Private Sub tvcmiModulesRoot_Add_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiModulesRoot_Add_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiModulesRoot_Add.Click
             Dim fullPath As String = Me.LastClickedTVNode.FullPath
             Dim frmPromptForString As frmPromptForString = New frmPromptForString()
             frmPromptForString.lblMsg.Text = "Enter name for new module"
@@ -275,7 +275,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DCC RID: 3532 RVA: 0x0028923C File Offset: 0x0028823C
-        Private Sub tvcmModulesRoot_RemoveAllModules_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmModulesRoot_RemoveAllModules_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiModulesRoot_RemoveAllModules.Click
             If Interaction.MsgBox("Are you sure you want to remove all of the Packages from the Project?" & vbLf & "(No files will be deleted from disk)", MsgBoxStyle.OkCancel Or MsgBoxStyle.DefaultButton2, "Warning") = MsgBoxResult.Ok Then
                 Me.ProjectMgr.SaveProject()
                 Me.Project.RemoveAllModules()
@@ -284,7 +284,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DCD RID: 3533 RVA: 0x00289274 File Offset: 0x00288274
-        Private Sub tvcmiModulesParent_RemoveSelf_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiModulesParent_RemoveSelf_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiModulesParent_RemoveSelf.Click
             If Interaction.MsgBox(String.Concat(New String() {"Are you sure you want to remove the module '", Me.LastClickedTVNode.Text, "'?", vbLf, "(No files will be deleted from disk)"}), MsgBoxStyle.OkCancel Or MsgBoxStyle.DefaultButton2, "Warning") = MsgBoxResult.Ok Then
                 Me.Project.RemoveModule(Me.LastClickedTVNode.Text.Trim())
                 Me.ProjectMgr.SaveProject()
@@ -293,7 +293,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DCE RID: 3534 RVA: 0x002892FC File Offset: 0x002882FC
-        Private Sub tvcmiModulesParent_Add_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiModulesParent_Add_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiModulesParent_Add.Click
             Dim objectValue As Object = RuntimeHelpers.GetObjectValue(frmMain.GetFilePath("load", Me.InitialBrowsePath, "*.*", "Select the files to add to the Module", "all", True, True))
             Dim fullPath As String = Me.LastClickedTVNode.FullPath
             If objectValue.[GetType]() Is GetType(String) Then
@@ -316,7 +316,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DCF RID: 3535 RVA: 0x00289424 File Offset: 0x00288424
-        Private Sub tvcmiModulesParent_RenameSelf_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiModulesParent_RenameSelf_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiModulesParent_RenameSelf.Click
             Dim frmPromptForString As frmPromptForString = New frmPromptForString()
             frmPromptForString.lblMsg.Text = "Enter new name for package"
             frmPromptForString.tbValue.Text = Me.LastClickedTVNode.Text
@@ -327,7 +327,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DD0 RID: 3536 RVA: 0x002894C4 File Offset: 0x002884C4
-        Private Sub tvcmiModulesParent_RemoveAll_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiModulesParent_RemoveAll_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiModulesParent_RemoveAll.Click
             If Interaction.MsgBox(String.Concat(New String() {"Are you sure you want to exclude all of the files from '", Me.LastClickedTVNode.Text, "'?", vbLf, "(No files will be deleted from disk)"}), MsgBoxStyle.OkCancel Or MsgBoxStyle.DefaultButton3, "Warning") = MsgBoxResult.Ok Then
                 Me.Project.RemoveAllModuleFiles(Me.LastClickedTVNode.Text)
                 Me.ProjectMgr.SaveProject()
@@ -336,7 +336,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DD1 RID: 3537 RVA: 0x00289548 File Offset: 0x00288548
-        Private Sub tvcmiModulesParent_Properties_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiModulesParent_Properties_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiModulesParent_Properties.Click
             Dim frmPackageTypeSelector As frmPackageTypeSelector = New frmPackageTypeSelector(CType(Me.Project.Modules(Me.Project.GetModuleIndex(Me.LastClickedTVNode.Text)), ModuleFileEntry).PackageType)
             If frmPackageTypeSelector.ShowDialog(Me) = DialogResult.OK Then
                 CType(Me.Project.Modules(Me.Project.GetModuleIndex(Me.LastClickedTVNode.Text)), ModuleFileEntry).PackageType = frmPackageTypeSelector.PackageType
@@ -344,7 +344,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DD2 RID: 3538 RVA: 0x002895CC File Offset: 0x002885CC
-        Private Sub tvcmiModulesChild_Exclude_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiModulesChild_Exclude_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiModulesChild_Exclude.Click
             Dim fullPath As String = Me.LastClickedTVNode.FullPath
             Dim text As String = Me.LastClickedTVNode.Parent.Text
             Dim filePath As String = CType(Me.LastClickedTVNode, ProjectFileItemTreeNode).FilePath
@@ -355,7 +355,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DD3 RID: 3539 RVA: 0x00289640 File Offset: 0x00288640
-        Private Sub tvcmiLipsModulesRoot_Add_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiLipsModulesRoot_Add_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiLipsModulesRoot_Add.Click
             Dim fullPath As String = Me.LastClickedTVNode.FullPath
             Dim frmPromptForString As frmPromptForString = New frmPromptForString()
             frmPromptForString.lblMsg.Text = "Enter name for new module"
@@ -368,7 +368,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DD4 RID: 3540 RVA: 0x002896C4 File Offset: 0x002886C4
-        Private Sub tvcmLipsModulesRoot_RemoveAllModules_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmLipsModulesRoot_RemoveAllModules_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiLipsModulesRoot_RemoveAllModules.Click
             If Interaction.MsgBox("Are you sure you want to remove all of the Modules from the Project?" & vbLf & "(No files will be deleted from disk)", MsgBoxStyle.OkCancel Or MsgBoxStyle.DefaultButton2, "Warning") = MsgBoxResult.Ok Then
                 Me.Project.RemoveAllLipsModules()
                 Me.ProjectMgr.SaveProject()
@@ -377,7 +377,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DD5 RID: 3541 RVA: 0x002896FC File Offset: 0x002886FC
-        Private Sub tvcmiLipsModulesParent_RemoveSelf_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiLipsModulesParent_RemoveSelf_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiLipsModulesParent_RemoveSelf.Click
             If Interaction.MsgBox(String.Concat(New String() {"Are you sure you want to remove the module '", Me.LastClickedTVNode.Text, "'?", vbLf, "(No files will be deleted from disk)"}), MsgBoxStyle.OkCancel Or MsgBoxStyle.DefaultButton2, "Warning") = MsgBoxResult.Ok Then
                 Me.Project.RemoveLipsModule(Me.LastClickedTVNode.Text.Trim())
                 Me.ProjectMgr.SaveProject()
@@ -386,7 +386,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DD6 RID: 3542 RVA: 0x00289784 File Offset: 0x00288784
-        Private Sub tvcmiLipsModulesParent_Add_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiLipsModulesParent_Add_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiLipsModulesParent_Add.Click
             Dim objectValue As Object = RuntimeHelpers.GetObjectValue(frmMain.GetFilePath("load", Me.InitialBrowsePath, "*.*", "Select the files to add to the Module", "all", True, True))
             Dim fullPath As String = Me.LastClickedTVNode.FullPath
             If objectValue.[GetType]() Is GetType(String) Then
@@ -409,7 +409,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DD7 RID: 3543 RVA: 0x002898AC File Offset: 0x002888AC
-        Private Sub tvcmiLipsModulesParent_RenameSelf_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiLipsModulesParent_RenameSelf_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiLipsModulesParent_RenameSelf.Click
             Dim frmPromptForString As frmPromptForString = New frmPromptForString()
             frmPromptForString.lblMsg.Text = "Enter new name for module"
             frmPromptForString.tbValue.Text = Me.LastClickedTVNode.Text
@@ -420,7 +420,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DD8 RID: 3544 RVA: 0x0028994C File Offset: 0x0028894C
-        Private Sub tvcmiLipsModulesParent_RemoveAll_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiLipsModulesParent_RemoveAll_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiLipsModulesParent_RemoveAll.Click
             If Interaction.MsgBox(String.Concat(New String() {"Are you sure you want to exclude all of the files from '", Me.LastClickedTVNode.Text, "'?", vbLf, "(No files will be deleted from disk)"}), MsgBoxStyle.OkCancel Or MsgBoxStyle.DefaultButton3, "Warning") = MsgBoxResult.Ok Then
                 Me.Project.RemoveAllLipsModuleFiles(Me.LastClickedTVNode.Text)
                 Me.ProjectMgr.SaveProject()
@@ -429,7 +429,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DD9 RID: 3545 RVA: 0x002899D0 File Offset: 0x002889D0
-        Private Sub tvcmiLipsModulesChild_Exclude_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiLipsModulesChild_Exclude_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiLipsModulesChild_Exclude.Click
             Dim fullPath As String = Me.LastClickedTVNode.FullPath
             Dim text As String = Me.LastClickedTVNode.Parent.Text
             Dim filePath As String = CType(Me.LastClickedTVNode, ProjectFileItemTreeNode).FilePath
@@ -440,7 +440,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DDA RID: 3546 RVA: 0x00289A44 File Offset: 0x00288A44
-        Private Sub tvcmiStreamWavesRoot_AddFile_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiStreamWavesRoot_AddFile_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiStreamWavesRoot_AddFile.Click
             Dim fullPath As String = Me.LastClickedTVNode.FullPath
             Dim objectValue As Object = RuntimeHelpers.GetObjectValue(frmMain.GetFilePath("load", Me.InitialBrowsePath, "*.*", "Select the files to add to the Override folder", "all", True, True))
             If objectValue.[GetType]() Is GetType(String) Then
@@ -461,7 +461,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DDB RID: 3547 RVA: 0x00289B10 File Offset: 0x00288B10
-        Private Sub tvcmiStreamWavesRoot_AddModule_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiStreamWavesRoot_AddModule_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiStreamWavesRoot_AddModule.Click
             Dim fullPath As String = Me.LastClickedTVNode.FullPath
             Dim frmPromptForString As frmPromptForString = New frmPromptForString()
             frmPromptForString.lblMsg.Text = "Enter name for new module"
@@ -474,7 +474,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DDC RID: 3548 RVA: 0x00289B94 File Offset: 0x00288B94
-        Private Sub tvcmiStreamWavesRoot_RemoveAllFiles_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiStreamWavesRoot_RemoveAllFiles_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiStreamWavesRoot_RemoveAllFiles.Click
             If Interaction.MsgBox("Are you sure you want to exclude all of the files?" & vbLf & "(No files will be deleted from disk)", MsgBoxStyle.OkCancel Or MsgBoxStyle.DefaultButton3, "Warning") = MsgBoxResult.Ok Then
                 Me.Project.RemoveAllStreamWavesFiles()
                 Me.ProjectMgr.SaveProject()
@@ -483,7 +483,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DDD RID: 3549 RVA: 0x00289BCC File Offset: 0x00288BCC
-        Private Sub tvcmiStreamWavesRoot_RemoveAllModules_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiStreamWavesRoot_RemoveAllModules_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiStreamWavesRoot_RemoveAllModules.Click
             If Interaction.MsgBox("Are you sure you want to remove all of the StreamWaves Modules from the Project?" & vbLf & "(No files will be deleted from disk)", MsgBoxStyle.OkCancel Or MsgBoxStyle.DefaultButton2, "Warning") = MsgBoxResult.Ok Then
                 Me.Project.RemoveAllStreamWavesModules()
                 Me.ProjectMgr.SaveProject()
@@ -492,7 +492,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DDE RID: 3550 RVA: 0x00289C04 File Offset: 0x00288C04
-        Private Sub tvcmiStreamWavesRoot_RemoveEverything_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiStreamWavesRoot_RemoveEverything_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiStreamWavesRoot_RemoveEverything.Click
             If Interaction.MsgBox("Are you sure you want to remove everything (StreamWaves Modules and files) from the Project?" & vbLf & "(No files will be deleted from disk)", MsgBoxStyle.OkCancel Or MsgBoxStyle.DefaultButton2, "Warning") = MsgBoxResult.Ok Then
                 Me.Project.RemoveAllStreamWavesModules()
                 Me.Project.RemoveAllStreamWavesFiles()
@@ -502,7 +502,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DDF RID: 3551 RVA: 0x00289C44 File Offset: 0x00288C44
-        Private Sub tvcmiStreamWavesModuleParent_AddFiles_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiStreamWavesModuleParent_AddFiles_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiStreamWavesModuleParent_AddFiles.Click
             Dim objectValue As Object = RuntimeHelpers.GetObjectValue(frmMain.GetFilePath("load", Me.InitialBrowsePath, "*.*", "Select the files to add to the Module", "all", True, True))
             Dim fullPath As String = Me.LastClickedTVNode.FullPath
             If objectValue.[GetType]() Is GetType(String) Then
@@ -525,7 +525,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DE0 RID: 3552 RVA: 0x00289D6C File Offset: 0x00288D6C
-        Private Sub tvcmiStreamWavesModuleParent_ExcludeAllFiles_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiStreamWavesModuleParent_ExcludeAllFiles_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiStreamWavesModuleParent_ExcludeAllFiles.Click
             If Interaction.MsgBox(String.Concat(New String() {"Are you sure you want to exclude all of the files from '", Me.LastClickedTVNode.Text, "'?", vbLf, "(No files will be deleted from disk)"}), MsgBoxStyle.OkCancel Or MsgBoxStyle.DefaultButton3, "Warning") = MsgBoxResult.Ok Then
                 Me.Project.RemoveAllStreamWavesModuleFiles(Me.LastClickedTVNode.Text)
                 Me.ProjectMgr.SaveProject()
@@ -534,7 +534,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DE1 RID: 3553 RVA: 0x00289DF0 File Offset: 0x00288DF0
-        Private Sub tvcmiStreamWavesModuleParent_RenameSelf_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiStreamWavesModuleParent_RenameSelf_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiStreamWavesModuleParent_RenameSelf.Click
             Dim frmPromptForString As frmPromptForString = New frmPromptForString()
             frmPromptForString.lblMsg.Text = "Enter new name for module"
             frmPromptForString.tbValue.Text = Me.LastClickedTVNode.Text
@@ -545,7 +545,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DE2 RID: 3554 RVA: 0x00289E90 File Offset: 0x00288E90
-        Private Sub tvcmiStreamWavesModulesParent_RemoveSelf_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiStreamWavesModulesParent_RemoveSelf_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiStreamWavesModulesParent_RemoveSelf.Click
             If Interaction.MsgBox(String.Concat(New String() {"Are you sure you want to remove the module '", Me.LastClickedTVNode.Text, "'?", vbLf, "(No files will be deleted from disk)"}), MsgBoxStyle.OkCancel Or MsgBoxStyle.DefaultButton2, "Warning") = MsgBoxResult.Ok Then
                 Me.Project.RemoveStreamWavesModule(Me.LastClickedTVNode.Text.Trim())
                 Me.ProjectMgr.SaveProject()
@@ -554,7 +554,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DE3 RID: 3555 RVA: 0x00289F18 File Offset: 0x00288F18
-        Private Sub tvcmiStreamWavesModulesChild_ExcludeSelf_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiStreamWavesModulesChild_ExcludeSelf_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiStreamWavesModulesChild_ExcludeSelf.Click
             Dim fullPath As String = Me.LastClickedTVNode.FullPath
             Dim text As String = Me.LastClickedTVNode.Parent.Text
             Dim filePath As String = CType(Me.LastClickedTVNode, ProjectFileItemTreeNode).FilePath
@@ -565,7 +565,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DE4 RID: 3556 RVA: 0x00289F8C File Offset: 0x00288F8C
-        Private Sub tvcmiStreamWavesFileChild_ExcludeSelf_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tvcmiStreamWavesFileChild_ExcludeSelf_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tvcmiStreamWavesFileChild_ExcludeSelf.Click
             Dim fullPath As String = Me.LastClickedTVNode.FullPath
             Dim text As String = Me.LastClickedTVNode.Parent.Text
             Dim filePath As String = CType(Me.LastClickedTVNode, ProjectFileItemTreeNode).FilePath
@@ -576,7 +576,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DE5 RID: 3557 RVA: 0x0028A000 File Offset: 0x00289000
-        Private Sub miNewPoject_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miNewPoject_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miNewPoject.Click
             Me.AskIfSaveProject()
             Dim frmProjectManagerProperties As frmProjectManagerProperties = New frmProjectManagerProperties()
             If frmProjectManagerProperties.ShowDialog(Me) = DialogResult.OK Then
@@ -608,7 +608,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DE6 RID: 3558 RVA: 0x0028A178 File Offset: 0x00289178
-        Private Sub miOpenProject_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOpenProject_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpenProject.Click
             Me.AskIfSaveProject()
             Dim text As String = Me.BrowseForProjectFile()
             If File.Exists(text) Then
@@ -634,19 +634,19 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DE7 RID: 3559 RVA: 0x0028A270 File Offset: 0x00289270
-        Private Sub miSaveProject_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miSaveProject_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miSaveProject.Click
             If Me.Project IsNot Nothing Then
                 Me.ProjectMgr.SaveProject()
             End If
         End Sub
 
         ' Token: 0x06000DE8 RID: 3560 RVA: 0x0028A288 File Offset: 0x00289288
-        Private Sub miProjectProperties_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miProjectProperties_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miProjectProperties.Click
             Me.EditProjectProperties()
         End Sub
 
         ' Token: 0x06000DE9 RID: 3561 RVA: 0x0028A290 File Offset: 0x00289290
-        Private Sub miExploreDebugFolder_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miExploreDebugFolder_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miExploreDebugFolder.Click
             'New Process() With { .StartInfo = { .FileName = "explorer.exe ", .Arguments = Me.Project.DebugFilePath } }.Start()
             Dim process As Process = New Process()
             process.StartInfo.FileName = "explorer.exe"
@@ -655,7 +655,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DEA RID: 3562 RVA: 0x0028A2D0 File Offset: 0x002892D0
-        Private Sub miExploreReleaseFolder_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miExploreReleaseFolder_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miExploreReleaseFolder.Click
             'New Process() With { .StartInfo = { .FileName = "explorer.exe ", .Arguments = Me.Project.ReleaseFilePath } }.Start()
             Dim process As Process = New Process()
             process.StartInfo.FileName = "explorer.exe"
@@ -664,21 +664,21 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DEB RID: 3563 RVA: 0x0028A310 File Offset: 0x00289310
-        Private Sub miDebug_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miDebug_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miDebug.Click
             Me.miDebug.Checked = True
             Me.miRelease.Checked = False
             Me.BuildMode = "debug"
         End Sub
 
         ' Token: 0x06000DEC RID: 3564 RVA: 0x0028A338 File Offset: 0x00289338
-        Private Sub miRelease_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miRelease_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miRelease.Click
             Me.miDebug.Checked = False
             Me.miRelease.Checked = True
             Me.BuildMode = "build"
         End Sub
 
         ' Token: 0x06000DED RID: 3565 RVA: 0x0028A360 File Offset: 0x00289360
-        Private Sub miBuildProject_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miBuildProject_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miBuildProject.Click
             Dim frmProgressMeter As frmProgressMeter = New frmProgressMeter()
             Dim utilWindowRelativePositioner As utilWindowRelativePositioner = New utilWindowRelativePositioner(Me, frmProgressMeter)
             Me.WorkingPath = Path.Combine(Me.Project.DebugFilePath, "working")
@@ -852,17 +852,17 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DEE RID: 3566 RVA: 0x0028AD3C File Offset: 0x00289D3C
-        Private Sub miQuit_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miQuit_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miQuit.Click
             Me.Close()
         End Sub
 
         ' Token: 0x06000DEF RID: 3567 RVA: 0x0028AD44 File Offset: 0x00289D44
-        Private Sub miCleanDebugPrjFilesOnly_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miCleanDebugPrjFilesOnly_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miCleanDebugPrjFilesOnly.Click
             Me.CleanProjectFilesFromDir(Me.Project.DebugFilePath)
         End Sub
 
         ' Token: 0x06000DF0 RID: 3568 RVA: 0x0028AD58 File Offset: 0x00289D58
-        Private Sub miCleanReleasePrjFilesOnly_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miCleanReleasePrjFilesOnly_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miCleanReleasePrjFilesOnly.Click
             Me.CleanProjectFilesFromDir(Me.Project.ReleaseFilePath)
         End Sub
 
@@ -1245,7 +1245,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DFB RID: 3579 RVA: 0x0028BF24 File Offset: 0x0028AF24
-        Private Sub TreeView_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs)
+        Private Sub TreeView_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles TreeView.MouseMove
             Dim point As Point = Me.TreeView.PointToClient(Control.MousePosition)
             Dim projectFileItemTreeNode As ProjectFileItemTreeNode = CType(Me.TreeView.GetNodeAt(point), ProjectFileItemTreeNode)
             If projectFileItemTreeNode IsNot Nothing Then
@@ -1254,7 +1254,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000DFC RID: 3580 RVA: 0x0028BF68 File Offset: 0x0028AF68
-        Private Sub TreeView_MouseLeave(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub TreeView_MouseLeave(ByVal sender As Object, ByVal e As EventArgs) Handles TreeView.MouseLeave
             Me.lblStatus.Text = ""
         End Sub
 

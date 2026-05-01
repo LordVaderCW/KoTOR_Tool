@@ -22,7 +22,7 @@ Namespace kotor_tool
 		End Sub
 
         ' Token: 0x06000EF7 RID: 3831 RVA: 0x00291DE0 File Offset: 0x00290DE0
-        Private Sub btnPlaySound_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnPlaySound_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnPlaySound.Click
             If CType(Me.Owner, frmUTS_Editor).PlaySound(StringType.FromObject(ObjectType.StrCatObj(Me.lbSounds.SelectedItem, ".wav"))) Then
                 Me.btnPlaySound.Enabled = False
                 Me.btnStopSound.Enabled = True
@@ -30,7 +30,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000EF8 RID: 3832 RVA: 0x00291E34 File Offset: 0x00290E34
-        Private Sub lbSounds_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub lbSounds_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles lbSounds.SelectedIndexChanged
             Me.btnPlaySound.Enabled = Not CType(Me.Owner, frmUTS_Editor).IsSoundPlaying() AndAlso Me.lbSounds.SelectedIndices.Count > 0
         End Sub
 
@@ -69,12 +69,12 @@ Namespace kotor_tool
         End Property
 
         ' Token: 0x06000EFE RID: 3838 RVA: 0x00291ECC File Offset: 0x00290ECC
-        Private Sub tbFilter_TextChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tbFilter_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles tbFilter.TextChanged
             Me.AddSoundFileHashesToLB()
         End Sub
 
         ' Token: 0x06000EFF RID: 3839 RVA: 0x00291ED4 File Offset: 0x00290ED4
-        Private Sub cmbxFilter_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmbxFilter_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbxFilter.SelectedIndexChanged
             Me.AddSoundFileHashesToLB()
         End Sub
 
@@ -109,7 +109,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000F01 RID: 3841 RVA: 0x00292170 File Offset: 0x00291170
-        Private Sub LookForSoundsChkBxsChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub LookForSoundsChkBxsChanged(ByVal sender As Object, ByVal e As EventArgs) Handles chkbLookStreamSounds.CheckedChanged, chkbLookSoundsBif.CheckedChanged
             Me.AddSoundFileHashesToLB()
         End Sub
 
@@ -144,7 +144,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000F04 RID: 3844 RVA: 0x002923B4 File Offset: 0x002913B4
-        Private Sub btnStopSound_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnStopSound_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnStopSound.Click
             CType(Me.Owner, frmUTS_Editor).StopSound()
             Me.OwnerStoppedPlaying()
         End Sub

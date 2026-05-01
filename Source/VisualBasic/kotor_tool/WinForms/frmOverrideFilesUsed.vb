@@ -21,7 +21,7 @@ Namespace kotor_tool
 		End Sub
 
         ' Token: 0x06000CBD RID: 3261 RVA: 0x002834EC File Offset: 0x002824EC
-        Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button1.Click
             Me.Close()
         End Sub
 

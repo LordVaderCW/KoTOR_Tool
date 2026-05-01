@@ -22,11 +22,11 @@ Namespace kotor_tool
 		End Sub
 
         ' Token: 0x06000EAC RID: 3756 RVA: 0x002900A4 File Offset: 0x0028F0A4
-        Private Sub lbMatches_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub lbMatches_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles lbMatches.SelectedIndexChanged
         End Sub
 
         ' Token: 0x06000EAD RID: 3757 RVA: 0x002900A8 File Offset: 0x0028F0A8
-        Private Sub lbMatches_DoubleClick(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub lbMatches_DoubleClick(ByVal sender As Object, ByVal e As EventArgs) Handles lbMatches.DoubleClick
             If Me.lbMatches.SelectedIndex = -1 Then
                 Return
             End If
@@ -34,7 +34,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000EAE RID: 3758 RVA: 0x002900D8 File Offset: 0x0028F0D8
-        Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button1.Click
             Me.Close()
         End Sub
 

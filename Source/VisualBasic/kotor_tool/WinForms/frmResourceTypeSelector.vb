@@ -52,11 +52,11 @@ Namespace kotor_tool
 
 #Region "Button Events"
 
-        Private Sub btnSelectAll_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnSelectAll_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSelectAll.Click
             Me.SetCheckboxesState(True)
         End Sub
 
-        Private Sub btnClear_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnClear_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnClear.Click
             Me.SetCheckboxesState(False)
         End Sub
 

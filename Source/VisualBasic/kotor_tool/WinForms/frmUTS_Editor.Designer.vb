@@ -310,7 +310,7 @@ Namespace kotor_tool
             Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
             Me.pnlRoot.Name = "pnlRoot"
-            Me.pnlRoot.Size = New System.Drawing.Size(560, 678)
+            Me.pnlRoot.Size = New System.Drawing.Size(560, 712)
             Me.pnlRoot.TabIndex = 0
             '
             'pnlBody
@@ -322,7 +322,7 @@ Namespace kotor_tool
             Me.pnlBody.Location = New System.Drawing.Point(0, 67)
             Me.pnlBody.Name = "pnlBody"
             Me.pnlBody.Padding = New System.Windows.Forms.Padding(16, 10, 16, 10)
-            Me.pnlBody.Size = New System.Drawing.Size(560, 549)
+            Me.pnlBody.Size = New System.Drawing.Size(560, 583)
             Me.pnlBody.TabIndex = 1
             '
             'TabControl1
@@ -334,7 +334,7 @@ Namespace kotor_tool
             Me.TabControl1.Location = New System.Drawing.Point(16, 10)
             Me.TabControl1.Name = "TabControl1"
             Me.TabControl1.SelectedIndex = 0
-            Me.TabControl1.Size = New System.Drawing.Size(528, 529)
+            Me.TabControl1.Size = New System.Drawing.Size(528, 563)
             Me.TabControl1.TabIndex = 0
             '
             'tabpagBasic
@@ -838,7 +838,7 @@ Namespace kotor_tool
             Me.tabpagAdvanced.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabpagAdvanced.Location = New System.Drawing.Point(4, 22)
             Me.tabpagAdvanced.Name = "tabpagAdvanced"
-            Me.tabpagAdvanced.Size = New System.Drawing.Size(520, 503)
+            Me.tabpagAdvanced.Size = New System.Drawing.Size(520, 537)
             Me.tabpagAdvanced.TabIndex = 2
             Me.tabpagAdvanced.Text = "Advanced"
             '
@@ -850,7 +850,7 @@ Namespace kotor_tool
             Me.pnlVolPitch.Controls.Add(Me.Label7)
             Me.pnlVolPitch.Controls.Add(Me.trkbarPitchVrtn)
             Me.pnlVolPitch.Controls.Add(Me.tbVolumeVrtn)
-            Me.pnlVolPitch.Location = New System.Drawing.Point(8, 378)
+            Me.pnlVolPitch.Location = New System.Drawing.Point(8, 427)
             Me.pnlVolPitch.Name = "pnlVolPitch"
             Me.pnlVolPitch.Size = New System.Drawing.Size(504, 101)
             Me.pnlVolPitch.TabIndex = 25
@@ -925,7 +925,7 @@ Namespace kotor_tool
             Me.GroupBox4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.GroupBox4.Location = New System.Drawing.Point(8, 55)
             Me.GroupBox4.Name = "GroupBox4"
-            Me.GroupBox4.Size = New System.Drawing.Size(504, 176)
+            Me.GroupBox4.Size = New System.Drawing.Size(504, 225)
             Me.GroupBox4.TabIndex = 1
             Me.GroupBox4.TabStop = False
             Me.GroupBox4.Text = "When to play"
@@ -1010,7 +1010,7 @@ Namespace kotor_tool
             Me.pnlHours.Controls.Add(Me.Label19)
             Me.pnlHours.Location = New System.Drawing.Point(40, 92)
             Me.pnlHours.Name = "pnlHours"
-            Me.pnlHours.Size = New System.Drawing.Size(352, 74)
+            Me.pnlHours.Size = New System.Drawing.Size(352, 92)
             Me.pnlHours.TabIndex = 4
             '
             'chkb3a
@@ -1371,7 +1371,7 @@ Namespace kotor_tool
             Me.GroupBox6.Controls.Add(Me.rbSequential)
             Me.GroupBox6.Controls.Add(Me.rbRandom)
             Me.GroupBox6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.GroupBox6.Location = New System.Drawing.Point(278, 237)
+            Me.GroupBox6.Location = New System.Drawing.Point(278, 286)
             Me.GroupBox6.Name = "GroupBox6"
             Me.GroupBox6.Size = New System.Drawing.Size(234, 65)
             Me.GroupBox6.TabIndex = 2
@@ -1405,7 +1405,7 @@ Namespace kotor_tool
             Me.gbInterval.Controls.Add(Me.nudInterval)
             Me.gbInterval.Controls.Add(Me.nudIntervalVrtn)
             Me.gbInterval.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.gbInterval.Location = New System.Drawing.Point(8, 308)
+            Me.gbInterval.Location = New System.Drawing.Point(8, 357)
             Me.gbInterval.Name = "gbInterval"
             Me.gbInterval.Size = New System.Drawing.Size(504, 64)
             Me.gbInterval.TabIndex = 1
@@ -1457,7 +1457,7 @@ Namespace kotor_tool
             Me.GroupBox5.Controls.Add(Me.rbRepeating)
             Me.GroupBox5.Controls.Add(Me.rbLooping)
             Me.GroupBox5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.GroupBox5.Location = New System.Drawing.Point(8, 237)
+            Me.GroupBox5.Location = New System.Drawing.Point(8, 286)
             Me.GroupBox5.Name = "GroupBox5"
             Me.GroupBox5.Size = New System.Drawing.Size(265, 65)
             Me.GroupBox5.TabIndex = 2
@@ -1500,7 +1500,7 @@ Namespace kotor_tool
             Me.btnDebug.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
             Me.btnDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnDebug.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnDebug.Location = New System.Drawing.Point(0, -7)
+            Me.btnDebug.Location = New System.Drawing.Point(0, 27)
             Me.btnDebug.Name = "btnDebug"
             Me.btnDebug.Size = New System.Drawing.Size(8, 9)
             Me.btnDebug.TabIndex = 19
@@ -1514,7 +1514,7 @@ Namespace kotor_tool
             Me.pnlFooter.Controls.Add(Me.btnSave)
             Me.pnlFooter.Controls.Add(Me.btnCancel)
             Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.pnlFooter.Location = New System.Drawing.Point(0, 616)
+            Me.pnlFooter.Location = New System.Drawing.Point(0, 650)
             Me.pnlFooter.Name = "pnlFooter"
             Me.pnlFooter.Size = New System.Drawing.Size(560, 62)
             Me.pnlFooter.TabIndex = 2
@@ -1614,10 +1614,8 @@ Namespace kotor_tool
             '
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 15)
             Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
-            Me.ClientSize = New System.Drawing.Size(560, 678)
+            Me.ClientSize = New System.Drawing.Size(560, 712)
             Me.Controls.Add(Me.pnlRoot)
-            Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.MinimumSize = New System.Drawing.Size(568, 717)
             Me.Name = "frmUTS_Editor"
             Me.Text = "Sound Editor"

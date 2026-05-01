@@ -87,7 +87,6 @@ Namespace kotor_tool
             Me.chkbRecordSelection.BackColor = System.Drawing.Color.Transparent
             Me.chkbRecordSelection.Checked = True
             Me.chkbRecordSelection.CheckState = System.Windows.Forms.CheckState.Checked
-            Me.chkbRecordSelection.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbRecordSelection.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbRecordSelection.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbRecordSelection.Location = New System.Drawing.Point(51, 69)
@@ -101,7 +100,6 @@ Namespace kotor_tool
             'rbKotor2
             '
             Me.rbKotor2.BackColor = System.Drawing.Color.Transparent
-            Me.rbKotor2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.rbKotor2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.rbKotor2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.rbKotor2.Location = New System.Drawing.Point(240, 41)
@@ -114,7 +112,6 @@ Namespace kotor_tool
             'rbKotor1
             '
             Me.rbKotor1.BackColor = System.Drawing.Color.Transparent
-            Me.rbKotor1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.rbKotor1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.rbKotor1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.rbKotor1.Location = New System.Drawing.Point(51, 41)
