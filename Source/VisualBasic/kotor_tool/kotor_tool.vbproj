@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="Build">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -162,6 +162,9 @@
     <Compile Include="Classes\DLGConvListNode.vb" />
     <Compile Include="Classes\ERFKeyEntry.vb" />
     <Compile Include="Classes\ERFLocalizedString.vb" />
+    <Compile Include="CustomControls\CustomTabControl.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -640,6 +643,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmModuleIfo_AreaEditor.resx">
       <DependentUpon>frmModuleIfo_AreaEditor.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmModuleItem_Base_Editor.resx">
       <DependentUpon>frmModuleItem_Base_Editor.vb</DependentUpon>
@@ -652,8 +656,9 @@
     <EmbeddedResource Include="WinForms\frmOptions.resources">
       <LogicalName>kotor_tool.frmOptions.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmOverrideFilesUsed.resources">
-      <LogicalName>kotor_tool.frmOverrideFilesUsed.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmOverrideFilesUsed.resx">
+      <DependentUpon>frmOverrideFilesUsed.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmPackageTypeSelector.resx">
       <DependentUpon>frmPackageTypeSelector.vb</DependentUpon>
@@ -670,11 +675,13 @@
       <DependentUpon>frmProgressMeter.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmProjectManager.resources">
-      <LogicalName>kotor_tool.frmProjectManager.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmProjectManager.resx">
+      <DependentUpon>frmProjectManager.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmProjectManagerProperties.resources">
-      <LogicalName>kotor_tool.frmProjectManagerProperties.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmProjectManagerProperties.resx">
+      <DependentUpon>frmProjectManagerProperties.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmPromptForString.resources">
       <LogicalName>kotor_tool.frmPromptForString.resources</LogicalName>
@@ -686,14 +693,17 @@
       <DependentUpon>frmRefSearchCriteria.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmRefSearchResults.resources">
-      <LogicalName>kotor_tool.frmRefSearchResults.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmRefSearchResults.resx">
+      <DependentUpon>frmRefSearchResults.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmResourceTypeSelector.resources">
-      <LogicalName>kotor_tool.frmResourceTypeSelector.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmResourceTypeSelector.resx">
+      <DependentUpon>frmResourceTypeSelector.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmSoundChooser.resources">
-      <LogicalName>kotor_tool.frmSoundChooser.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmSoundChooser.resx">
+      <DependentUpon>frmSoundChooser.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmSpecifyKotorVersion.resx">
       <DependentUpon>frmSpecifyKotorVersion.vb</DependentUpon>
@@ -716,8 +726,9 @@
     <EmbeddedResource Include="WinForms\frmUserRegistration.resources">
       <LogicalName>kotor_tool.frmUserRegistration.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmUTC_Editor.resources">
-      <LogicalName>kotor_tool.frmUTC_Editor.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmUTC_Editor.resx">
+      <DependentUpon>frmUTC_Editor.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmUTD_Editor.resx">
       <DependentUpon>frmUTD_Editor.vb</DependentUpon>
@@ -727,11 +738,13 @@
       <DependentUpon>frmUTI_Editor.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmUTM_Editor.resources">
-      <LogicalName>kotor_tool.frmUTM_Editor.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmUTM_Editor.resx">
+      <DependentUpon>frmUTM_Editor.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmUTP_Editor.resources">
-      <LogicalName>kotor_tool.frmUTP_Editor.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmUTP_Editor.resx">
+      <DependentUpon>frmUTP_Editor.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmUTS_Editor.resx">
       <DependentUpon>frmUTS_Editor.vb</DependentUpon>

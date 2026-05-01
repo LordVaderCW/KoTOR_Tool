@@ -140,144 +140,149 @@ Namespace kotor_tool
 		' Token: 0x0600152D RID: 5421 RVA: 0x002B9BB0 File Offset: 0x002B8BB0
         <Global.System.Diagnostics.DebuggerStepThrough()> _
   Private Sub InitializeComponent()
-            Me.TabControl1 = New Global.System.Windows.Forms.TabControl()
-            Me.TabPageBasic = New Global.System.Windows.Forms.TabPage()
-            Me.Label19 = New Global.System.Windows.Forms.Label()
-            Me.cmbxAppearance = New Global.System.Windows.Forms.ComboBox()
-            Me.btnSetNameLang = New Global.System.Windows.Forms.Button()
-            Me.Label5 = New Global.System.Windows.Forms.Label()
-            Me.nudWill = New Global.System.Windows.Forms.NumericUpDown()
-            Me.nudFort = New Global.System.Windows.Forms.NumericUpDown()
-            Me.nudHP = New Global.System.Windows.Forms.NumericUpDown()
-            Me.lblTextureVariation = New Global.System.Windows.Forms.Label()
-            Me.Label8 = New Global.System.Windows.Forms.Label()
-            Me.nudHardness = New Global.System.Windows.Forms.NumericUpDown()
-            Me.nudRef = New Global.System.Windows.Forms.NumericUpDown()
-            Me.Label12 = New Global.System.Windows.Forms.Label()
-            Me.lblBodyVariation = New Global.System.Windows.Forms.Label()
-            Me.chkbPlotItem = New Global.System.Windows.Forms.CheckBox()
-            Me.tbTag = New Global.System.Windows.Forms.TextBox()
-            Me.tbName = New Global.System.Windows.Forms.TextBox()
-            Me.Label1 = New Global.System.Windows.Forms.Label()
-            Me.Label2 = New Global.System.Windows.Forms.Label()
-            Me.chkbStatic = New Global.System.Windows.Forms.CheckBox()
-            Me.chkbMin1HP = New Global.System.Windows.Forms.CheckBox()
-            Me.TabPageLock = New Global.System.Windows.Forms.TabPage()
-            Me.tbKeyName = New Global.System.Windows.Forms.TextBox()
-            Me.lblKeyTag = New Global.System.Windows.Forms.Label()
-            Me.nudCloseLockDC = New Global.System.Windows.Forms.NumericUpDown()
-            Me.lblCloseLockDC = New Global.System.Windows.Forms.Label()
-            Me.nudOpenLockDC = New Global.System.Windows.Forms.NumericUpDown()
-            Me.lblOpenLockDC = New Global.System.Windows.Forms.Label()
-            Me.chkbLockable = New Global.System.Windows.Forms.CheckBox()
-            Me.chkbLocked = New Global.System.Windows.Forms.CheckBox()
-            Me.chkbKeyRequired = New Global.System.Windows.Forms.CheckBox()
-            Me.chkbAutoRemoveKey = New Global.System.Windows.Forms.CheckBox()
-            Me.TabPageAdvanced = New Global.System.Windows.Forms.TabPage()
-            Me.chkbPartyInteract = New Global.System.Windows.Forms.CheckBox()
-            Me.chkbHasInventory = New Global.System.Windows.Forms.CheckBox()
-            Me.Label20 = New Global.System.Windows.Forms.Label()
-            Me.tbType = New Global.System.Windows.Forms.TextBox()
-            Me.chkbInterruptable = New Global.System.Windows.Forms.CheckBox()
-            Me.tbConversation = New Global.System.Windows.Forms.TextBox()
-            Me.tbFaction = New Global.System.Windows.Forms.TextBox()
-            Me.tbTemplateResRef = New Global.System.Windows.Forms.TextBox()
-            Me.Label10 = New Global.System.Windows.Forms.Label()
-            Me.Label11 = New Global.System.Windows.Forms.Label()
-            Me.Label13 = New Global.System.Windows.Forms.Label()
-            Me.Label14 = New Global.System.Windows.Forms.Label()
-            Me.tbAnimationState = New Global.System.Windows.Forms.TextBox()
-            Me.chkbUsable = New Global.System.Windows.Forms.CheckBox()
-            Me.TabPageScripts = New Global.System.Windows.Forms.TabPage()
-            Me.tbOnUsed = New Global.System.Windows.Forms.TextBox()
-            Me.Label18 = New Global.System.Windows.Forms.Label()
-            Me.Label34 = New Global.System.Windows.Forms.Label()
-            Me.tbOnDeath = New Global.System.Windows.Forms.TextBox()
-            Me.Label33 = New Global.System.Windows.Forms.Label()
-            Me.tbOnDamaged = New Global.System.Windows.Forms.TextBox()
-            Me.Label32 = New Global.System.Windows.Forms.Label()
-            Me.tbOnClosed = New Global.System.Windows.Forms.TextBox()
-            Me.Label35 = New Global.System.Windows.Forms.Label()
-            Me.tbOnDisarm = New Global.System.Windows.Forms.TextBox()
-            Me.tbOnHeartbeat = New Global.System.Windows.Forms.TextBox()
-            Me.Label36 = New Global.System.Windows.Forms.Label()
-            Me.Label37 = New Global.System.Windows.Forms.Label()
-            Me.tbOnLock = New Global.System.Windows.Forms.TextBox()
-            Me.tbOnMeleeAttacked = New Global.System.Windows.Forms.TextBox()
-            Me.Label38 = New Global.System.Windows.Forms.Label()
-            Me.tbOnOpen = New Global.System.Windows.Forms.TextBox()
-            Me.Label39 = New Global.System.Windows.Forms.Label()
-            Me.Label40 = New Global.System.Windows.Forms.Label()
-            Me.tbOnSpellCastAt = New Global.System.Windows.Forms.TextBox()
-            Me.Label41 = New Global.System.Windows.Forms.Label()
-            Me.tbOnTrapTriggered = New Global.System.Windows.Forms.TextBox()
-            Me.tbOnUnlock = New Global.System.Windows.Forms.TextBox()
-            Me.Label42 = New Global.System.Windows.Forms.Label()
-            Me.tbOnUserDefined = New Global.System.Windows.Forms.TextBox()
-            Me.Label43 = New Global.System.Windows.Forms.Label()
-            Me.Label21 = New Global.System.Windows.Forms.Label()
-            Me.tbOnEndDialogue = New Global.System.Windows.Forms.TextBox()
-            Me.tbOnInvDisturbed = New Global.System.Windows.Forms.TextBox()
-            Me.Label22 = New Global.System.Windows.Forms.Label()
-            Me.TabPageDescription = New Global.System.Windows.Forms.TabPage()
-            Me.btnSetDescriptionLang = New Global.System.Windows.Forms.Button()
-            Me.tbDescription = New Global.System.Windows.Forms.TextBox()
-            Me.TabPageComments = New Global.System.Windows.Forms.TabPage()
-            Me.tbComment = New Global.System.Windows.Forms.TextBox()
-            Me.TabPageTrap = New Global.System.Windows.Forms.TabPage()
-            Me.chkbTrapDisarmable = New Global.System.Windows.Forms.CheckBox()
-            Me.chkbTrapDetectable = New Global.System.Windows.Forms.CheckBox()
-            Me.Label6 = New Global.System.Windows.Forms.Label()
-            Me.Label3 = New Global.System.Windows.Forms.Label()
-            Me.nudDisarmDC = New Global.System.Windows.Forms.NumericUpDown()
-            Me.Label4 = New Global.System.Windows.Forms.Label()
-            Me.Label15 = New Global.System.Windows.Forms.Label()
-            Me.nudTrapDetectDC = New Global.System.Windows.Forms.NumericUpDown()
-            Me.Label16 = New Global.System.Windows.Forms.Label()
-            Me.lblTrapDetectable = New Global.System.Windows.Forms.Label()
-            Me.nudTrapType = New Global.System.Windows.Forms.NumericUpDown()
-            Me.Label17 = New Global.System.Windows.Forms.Label()
-            Me.chkbTrapFlag = New Global.System.Windows.Forms.CheckBox()
-            Me.chkbTrapOneShot = New Global.System.Windows.Forms.CheckBox()
-            Me.btnSave = New Global.System.Windows.Forms.Button()
-            Me.btnCancel = New Global.System.Windows.Forms.Button()
-            Me.btnInventory = New Global.System.Windows.Forms.Button()
-            Me.btnDebug = New Global.System.Windows.Forms.Button()
-            Me.btnEditOnClosed = New Global.System.Windows.Forms.Button()
-            Me.btnEditOnDamaged = New Global.System.Windows.Forms.Button()
-            Me.btnEditOnDeath = New Global.System.Windows.Forms.Button()
-            Me.btnEditOnDisarm = New Global.System.Windows.Forms.Button()
-            Me.btnEditOnHeartbeat = New Global.System.Windows.Forms.Button()
-            Me.btnEditOnLock = New Global.System.Windows.Forms.Button()
-            Me.btnEditOnMeleeAttacked = New Global.System.Windows.Forms.Button()
-            Me.btnEditOnOpen = New Global.System.Windows.Forms.Button()
-            Me.btnEditOnSpellCastAt = New Global.System.Windows.Forms.Button()
-            Me.btnEditOnTrapTriggered = New Global.System.Windows.Forms.Button()
-            Me.btnEditOnUserDefined = New Global.System.Windows.Forms.Button()
-            Me.btnEditOnUnlock = New Global.System.Windows.Forms.Button()
-            Me.btnEditOnUsed = New Global.System.Windows.Forms.Button()
-            Me.btnEditOnInvDisturbed = New Global.System.Windows.Forms.Button()
-            Me.btnEditOnEndDialogue = New Global.System.Windows.Forms.Button()
+            Me.TabControl1 = New System.Windows.Forms.TabControl()
+            Me.TabPageBasic = New System.Windows.Forms.TabPage()
+            Me.Label19 = New System.Windows.Forms.Label()
+            Me.cmbxAppearance = New System.Windows.Forms.ComboBox()
+            Me.btnSetNameLang = New System.Windows.Forms.Button()
+            Me.Label5 = New System.Windows.Forms.Label()
+            Me.nudWill = New System.Windows.Forms.NumericUpDown()
+            Me.nudFort = New System.Windows.Forms.NumericUpDown()
+            Me.nudHP = New System.Windows.Forms.NumericUpDown()
+            Me.lblTextureVariation = New System.Windows.Forms.Label()
+            Me.Label8 = New System.Windows.Forms.Label()
+            Me.nudHardness = New System.Windows.Forms.NumericUpDown()
+            Me.nudRef = New System.Windows.Forms.NumericUpDown()
+            Me.Label12 = New System.Windows.Forms.Label()
+            Me.lblBodyVariation = New System.Windows.Forms.Label()
+            Me.chkbPlotItem = New System.Windows.Forms.CheckBox()
+            Me.tbTag = New System.Windows.Forms.TextBox()
+            Me.tbName = New System.Windows.Forms.TextBox()
+            Me.Label1 = New System.Windows.Forms.Label()
+            Me.Label2 = New System.Windows.Forms.Label()
+            Me.chkbStatic = New System.Windows.Forms.CheckBox()
+            Me.chkbMin1HP = New System.Windows.Forms.CheckBox()
+            Me.TabPageLock = New System.Windows.Forms.TabPage()
+            Me.tbKeyName = New System.Windows.Forms.TextBox()
+            Me.lblKeyTag = New System.Windows.Forms.Label()
+            Me.nudCloseLockDC = New System.Windows.Forms.NumericUpDown()
+            Me.lblCloseLockDC = New System.Windows.Forms.Label()
+            Me.nudOpenLockDC = New System.Windows.Forms.NumericUpDown()
+            Me.lblOpenLockDC = New System.Windows.Forms.Label()
+            Me.chkbLockable = New System.Windows.Forms.CheckBox()
+            Me.chkbLocked = New System.Windows.Forms.CheckBox()
+            Me.chkbKeyRequired = New System.Windows.Forms.CheckBox()
+            Me.chkbAutoRemoveKey = New System.Windows.Forms.CheckBox()
+            Me.TabPageAdvanced = New System.Windows.Forms.TabPage()
+            Me.chkbPartyInteract = New System.Windows.Forms.CheckBox()
+            Me.chkbHasInventory = New System.Windows.Forms.CheckBox()
+            Me.Label20 = New System.Windows.Forms.Label()
+            Me.tbType = New System.Windows.Forms.TextBox()
+            Me.chkbInterruptable = New System.Windows.Forms.CheckBox()
+            Me.tbConversation = New System.Windows.Forms.TextBox()
+            Me.tbFaction = New System.Windows.Forms.TextBox()
+            Me.tbTemplateResRef = New System.Windows.Forms.TextBox()
+            Me.Label10 = New System.Windows.Forms.Label()
+            Me.Label11 = New System.Windows.Forms.Label()
+            Me.Label13 = New System.Windows.Forms.Label()
+            Me.Label14 = New System.Windows.Forms.Label()
+            Me.tbAnimationState = New System.Windows.Forms.TextBox()
+            Me.chkbUsable = New System.Windows.Forms.CheckBox()
+            Me.TabPageScripts = New System.Windows.Forms.TabPage()
+            Me.btnEditOnUserDefined = New System.Windows.Forms.Button()
+            Me.btnEditOnUnlock = New System.Windows.Forms.Button()
+            Me.btnEditOnSpellCastAt = New System.Windows.Forms.Button()
+            Me.btnEditOnTrapTriggered = New System.Windows.Forms.Button()
+            Me.btnEditOnMeleeAttacked = New System.Windows.Forms.Button()
+            Me.btnEditOnOpen = New System.Windows.Forms.Button()
+            Me.btnEditOnLock = New System.Windows.Forms.Button()
+            Me.btnEditOnHeartbeat = New System.Windows.Forms.Button()
+            Me.btnEditOnDeath = New System.Windows.Forms.Button()
+            Me.btnEditOnDisarm = New System.Windows.Forms.Button()
+            Me.btnEditOnDamaged = New System.Windows.Forms.Button()
+            Me.btnEditOnClosed = New System.Windows.Forms.Button()
+            Me.tbOnUsed = New System.Windows.Forms.TextBox()
+            Me.Label18 = New System.Windows.Forms.Label()
+            Me.Label34 = New System.Windows.Forms.Label()
+            Me.tbOnDeath = New System.Windows.Forms.TextBox()
+            Me.Label33 = New System.Windows.Forms.Label()
+            Me.tbOnDamaged = New System.Windows.Forms.TextBox()
+            Me.Label32 = New System.Windows.Forms.Label()
+            Me.tbOnClosed = New System.Windows.Forms.TextBox()
+            Me.Label35 = New System.Windows.Forms.Label()
+            Me.tbOnDisarm = New System.Windows.Forms.TextBox()
+            Me.tbOnHeartbeat = New System.Windows.Forms.TextBox()
+            Me.Label36 = New System.Windows.Forms.Label()
+            Me.Label37 = New System.Windows.Forms.Label()
+            Me.tbOnLock = New System.Windows.Forms.TextBox()
+            Me.tbOnMeleeAttacked = New System.Windows.Forms.TextBox()
+            Me.Label38 = New System.Windows.Forms.Label()
+            Me.tbOnOpen = New System.Windows.Forms.TextBox()
+            Me.Label39 = New System.Windows.Forms.Label()
+            Me.Label40 = New System.Windows.Forms.Label()
+            Me.tbOnSpellCastAt = New System.Windows.Forms.TextBox()
+            Me.Label41 = New System.Windows.Forms.Label()
+            Me.tbOnTrapTriggered = New System.Windows.Forms.TextBox()
+            Me.tbOnUnlock = New System.Windows.Forms.TextBox()
+            Me.Label42 = New System.Windows.Forms.Label()
+            Me.tbOnUserDefined = New System.Windows.Forms.TextBox()
+            Me.Label43 = New System.Windows.Forms.Label()
+            Me.Label21 = New System.Windows.Forms.Label()
+            Me.tbOnEndDialogue = New System.Windows.Forms.TextBox()
+            Me.tbOnInvDisturbed = New System.Windows.Forms.TextBox()
+            Me.Label22 = New System.Windows.Forms.Label()
+            Me.btnEditOnUsed = New System.Windows.Forms.Button()
+            Me.btnEditOnInvDisturbed = New System.Windows.Forms.Button()
+            Me.btnEditOnEndDialogue = New System.Windows.Forms.Button()
+            Me.TabPageDescription = New System.Windows.Forms.TabPage()
+            Me.btnSetDescriptionLang = New System.Windows.Forms.Button()
+            Me.tbDescription = New System.Windows.Forms.TextBox()
+            Me.TabPageComments = New System.Windows.Forms.TabPage()
+            Me.tbComment = New System.Windows.Forms.TextBox()
+            Me.TabPageTrap = New System.Windows.Forms.TabPage()
+            Me.chkbTrapDisarmable = New System.Windows.Forms.CheckBox()
+            Me.chkbTrapDetectable = New System.Windows.Forms.CheckBox()
+            Me.Label6 = New System.Windows.Forms.Label()
+            Me.Label3 = New System.Windows.Forms.Label()
+            Me.nudDisarmDC = New System.Windows.Forms.NumericUpDown()
+            Me.Label4 = New System.Windows.Forms.Label()
+            Me.Label15 = New System.Windows.Forms.Label()
+            Me.nudTrapDetectDC = New System.Windows.Forms.NumericUpDown()
+            Me.Label16 = New System.Windows.Forms.Label()
+            Me.lblTrapDetectable = New System.Windows.Forms.Label()
+            Me.nudTrapType = New System.Windows.Forms.NumericUpDown()
+            Me.Label17 = New System.Windows.Forms.Label()
+            Me.chkbTrapFlag = New System.Windows.Forms.CheckBox()
+            Me.chkbTrapOneShot = New System.Windows.Forms.CheckBox()
+            Me.btnSave = New System.Windows.Forms.Button()
+            Me.btnCancel = New System.Windows.Forms.Button()
+            Me.btnInventory = New System.Windows.Forms.Button()
+            Me.btnDebug = New System.Windows.Forms.Button()
             Me.TabControl1.SuspendLayout()
             Me.TabPageBasic.SuspendLayout()
-            CType(Me.nudWill, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudFort, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudHP, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudHardness, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudRef, Global.System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudWill, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudFort, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudHP, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudHardness, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudRef, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TabPageLock.SuspendLayout()
-            CType(Me.nudCloseLockDC, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudOpenLockDC, Global.System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudCloseLockDC, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudOpenLockDC, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TabPageAdvanced.SuspendLayout()
             Me.TabPageScripts.SuspendLayout()
             Me.TabPageDescription.SuspendLayout()
             Me.TabPageComments.SuspendLayout()
             Me.TabPageTrap.SuspendLayout()
-            CType(Me.nudDisarmDC, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudTrapDetectDC, Global.System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.nudTrapType, Global.System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudDisarmDC, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudTrapDetectDC, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudTrapType, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.SuspendLayout()
-            Me.TabControl1.Anchor = Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left Or Global.System.Windows.Forms.AnchorStyles.Right
+            '
+            'TabControl1
+            '
+            Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.TabControl1.Controls.Add(Me.TabPageBasic)
             Me.TabControl1.Controls.Add(Me.TabPageLock)
             Me.TabControl1.Controls.Add(Me.TabPageAdvanced)
@@ -285,14 +290,17 @@ Namespace kotor_tool
             Me.TabControl1.Controls.Add(Me.TabPageDescription)
             Me.TabControl1.Controls.Add(Me.TabPageComments)
             Me.TabControl1.Controls.Add(Me.TabPageTrap)
-            Me.TabControl1.Location = New Global.System.Drawing.Point(19, 11)
+            Me.TabControl1.Location = New System.Drawing.Point(19, 13)
             Me.TabControl1.Multiline = True
             Me.TabControl1.Name = "TabControl1"
-            Me.TabControl1.Padding = New Global.System.Drawing.Point(15, 3)
+            Me.TabControl1.Padding = New System.Drawing.Point(15, 3)
             Me.TabControl1.SelectedIndex = 0
-            Me.TabControl1.Size = New Global.System.Drawing.Size(456, 461)
-            Me.TabControl1.SizeMode = Global.System.Windows.Forms.TabSizeMode.FillToRight
+            Me.TabControl1.Size = New System.Drawing.Size(456, 452)
+            Me.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
             Me.TabControl1.TabIndex = 0
+            '
+            'TabPageBasic
+            '
             Me.TabPageBasic.Controls.Add(Me.Label19)
             Me.TabPageBasic.Controls.Add(Me.cmbxAppearance)
             Me.TabPageBasic.Controls.Add(Me.btnSetNameLang)
@@ -313,126 +321,187 @@ Namespace kotor_tool
             Me.TabPageBasic.Controls.Add(Me.Label2)
             Me.TabPageBasic.Controls.Add(Me.chkbStatic)
             Me.TabPageBasic.Controls.Add(Me.chkbMin1HP)
-            Me.TabPageBasic.Location = New Global.System.Drawing.Point(4, 40)
+            Me.TabPageBasic.Location = New System.Drawing.Point(4, 40)
             Me.TabPageBasic.Name = "TabPageBasic"
-            Me.TabPageBasic.Size = New Global.System.Drawing.Size(448, 393)
+            Me.TabPageBasic.Size = New System.Drawing.Size(448, 408)
             Me.TabPageBasic.TabIndex = 0
             Me.TabPageBasic.Text = "Basic"
-            Me.Label19.Location = New Global.System.Drawing.Point(48, 80)
+            '
+            'Label19
+            '
+            Me.Label19.Location = New System.Drawing.Point(48, 92)
             Me.Label19.Name = "Label19"
-            Me.Label19.Size = New Global.System.Drawing.Size(80, 16)
+            Me.Label19.Size = New System.Drawing.Size(80, 19)
             Me.Label19.TabIndex = 10
             Me.Label19.Text = "Appearance"
-            Me.Label19.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.cmbxAppearance.DropDownStyle = Global.System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxAppearance.Location = New Global.System.Drawing.Point(128, 80)
+            Me.Label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'cmbxAppearance
+            '
+            Me.cmbxAppearance.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+            Me.cmbxAppearance.Location = New System.Drawing.Point(128, 92)
             Me.cmbxAppearance.Name = "cmbxAppearance"
-            Me.cmbxAppearance.Size = New Global.System.Drawing.Size(184, 21)
+            Me.cmbxAppearance.Size = New System.Drawing.Size(184, 21)
             Me.cmbxAppearance.TabIndex = 3
-            Me.btnSetNameLang.Location = New Global.System.Drawing.Point(344, 32)
+            '
+            'btnSetNameLang
+            '
+            Me.btnSetNameLang.Location = New System.Drawing.Point(344, 37)
             Me.btnSetNameLang.Name = "btnSetNameLang"
-            Me.btnSetNameLang.Size = New Global.System.Drawing.Size(88, 23)
+            Me.btnSetNameLang.Size = New System.Drawing.Size(88, 26)
             Me.btnSetNameLang.TabIndex = 1
             Me.btnSetNameLang.Text = "Set Language"
-            Me.Label5.Location = New Global.System.Drawing.Point(48, 200)
+            '
+            'Label5
+            '
+            Me.Label5.Location = New System.Drawing.Point(48, 231)
             Me.Label5.Name = "Label5"
-            Me.Label5.Size = New Global.System.Drawing.Size(88, 16)
+            Me.Label5.Size = New System.Drawing.Size(88, 18)
             Me.Label5.TabIndex = 8
             Me.Label5.Text = "Fortitude Save"
-            Me.Label5.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.nudWill.Location = New Global.System.Drawing.Point(192, 248)
+            Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'nudWill
+            '
+            Me.nudWill.Location = New System.Drawing.Point(192, 286)
             Me.nudWill.Name = "nudWill"
-            Me.nudWill.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Me.nudWill.Size = New Global.System.Drawing.Size(48, 20)
+            Me.nudWill.RightToLeft = System.Windows.Forms.RightToLeft.No
+            Me.nudWill.Size = New System.Drawing.Size(48, 22)
             Me.nudWill.TabIndex = 11
-            Me.nudWill.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.nudFort.Location = New Global.System.Drawing.Point(192, 200)
+            Me.nudWill.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'nudFort
+            '
+            Me.nudFort.Location = New System.Drawing.Point(192, 231)
             Me.nudFort.Name = "nudFort"
-            Me.nudFort.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Me.nudFort.Size = New Global.System.Drawing.Size(48, 20)
+            Me.nudFort.RightToLeft = System.Windows.Forms.RightToLeft.No
+            Me.nudFort.Size = New System.Drawing.Size(48, 22)
             Me.nudFort.TabIndex = 9
-            Me.nudFort.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.nudHP.Location = New Global.System.Drawing.Point(192, 176)
+            Me.nudFort.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'nudHP
+            '
+            Me.nudHP.Location = New System.Drawing.Point(192, 203)
             Me.nudHP.Maximum = New Decimal(New Integer() {99999, 0, 0, 0})
             Me.nudHP.Name = "nudHP"
-            Me.nudHP.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Me.nudHP.Size = New Global.System.Drawing.Size(48, 20)
+            Me.nudHP.RightToLeft = System.Windows.Forms.RightToLeft.No
+            Me.nudHP.Size = New System.Drawing.Size(48, 22)
             Me.nudHP.TabIndex = 8
-            Me.nudHP.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.lblTextureVariation.Location = New Global.System.Drawing.Point(48, 248)
+            Me.nudHP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'lblTextureVariation
+            '
+            Me.lblTextureVariation.Location = New System.Drawing.Point(48, 286)
             Me.lblTextureVariation.Name = "lblTextureVariation"
-            Me.lblTextureVariation.Size = New Global.System.Drawing.Size(96, 16)
+            Me.lblTextureVariation.Size = New System.Drawing.Size(96, 19)
             Me.lblTextureVariation.TabIndex = 5
             Me.lblTextureVariation.Text = "Will Save"
-            Me.lblTextureVariation.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label8.Location = New Global.System.Drawing.Point(48, 176)
+            Me.lblTextureVariation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label8
+            '
+            Me.Label8.Location = New System.Drawing.Point(48, 203)
             Me.Label8.Name = "Label8"
-            Me.Label8.Size = New Global.System.Drawing.Size(88, 16)
+            Me.Label8.Size = New System.Drawing.Size(88, 19)
             Me.Label8.TabIndex = 4
             Me.Label8.Text = "Hit Points"
-            Me.Label8.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.nudHardness.Location = New Global.System.Drawing.Point(192, 152)
+            Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'nudHardness
+            '
+            Me.nudHardness.Location = New System.Drawing.Point(192, 175)
             Me.nudHardness.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
             Me.nudHardness.Name = "nudHardness"
-            Me.nudHardness.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Me.nudHardness.Size = New Global.System.Drawing.Size(48, 20)
+            Me.nudHardness.RightToLeft = System.Windows.Forms.RightToLeft.No
+            Me.nudHardness.Size = New System.Drawing.Size(48, 22)
             Me.nudHardness.TabIndex = 7
-            Me.nudHardness.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.nudRef.Location = New Global.System.Drawing.Point(192, 224)
+            Me.nudHardness.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'nudRef
+            '
+            Me.nudRef.Location = New System.Drawing.Point(192, 258)
             Me.nudRef.Name = "nudRef"
-            Me.nudRef.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Me.nudRef.Size = New Global.System.Drawing.Size(48, 20)
+            Me.nudRef.RightToLeft = System.Windows.Forms.RightToLeft.No
+            Me.nudRef.Size = New System.Drawing.Size(48, 22)
             Me.nudRef.TabIndex = 10
-            Me.nudRef.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.Label12.Location = New Global.System.Drawing.Point(48, 152)
+            Me.nudRef.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'Label12
+            '
+            Me.Label12.Location = New System.Drawing.Point(48, 175)
             Me.Label12.Name = "Label12"
-            Me.Label12.Size = New Global.System.Drawing.Size(88, 16)
+            Me.Label12.Size = New System.Drawing.Size(88, 19)
             Me.Label12.TabIndex = 7
             Me.Label12.Text = "Hardness"
-            Me.Label12.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.lblBodyVariation.Location = New Global.System.Drawing.Point(48, 224)
+            Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'lblBodyVariation
+            '
+            Me.lblBodyVariation.Location = New System.Drawing.Point(48, 258)
             Me.lblBodyVariation.Name = "lblBodyVariation"
-            Me.lblBodyVariation.Size = New Global.System.Drawing.Size(88, 16)
+            Me.lblBodyVariation.Size = New System.Drawing.Size(88, 19)
             Me.lblBodyVariation.TabIndex = 6
             Me.lblBodyVariation.Text = "Reflex Save"
-            Me.lblBodyVariation.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.chkbPlotItem.Location = New Global.System.Drawing.Point(48, 112)
+            Me.lblBodyVariation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'chkbPlotItem
+            '
+            Me.chkbPlotItem.Location = New System.Drawing.Point(48, 129)
             Me.chkbPlotItem.Name = "chkbPlotItem"
-            Me.chkbPlotItem.Size = New Global.System.Drawing.Size(72, 24)
+            Me.chkbPlotItem.Size = New System.Drawing.Size(72, 28)
             Me.chkbPlotItem.TabIndex = 4
             Me.chkbPlotItem.Text = "Plot item"
-            Me.tbTag.Location = New Global.System.Drawing.Point(128, 56)
+            '
+            'tbTag
+            '
+            Me.tbTag.Location = New System.Drawing.Point(128, 65)
             Me.tbTag.Name = "tbTag"
-            Me.tbTag.Size = New Global.System.Drawing.Size(200, 20)
+            Me.tbTag.Size = New System.Drawing.Size(200, 22)
             Me.tbTag.TabIndex = 2
-            Me.tbTag.Text = ""
-            Me.tbName.Location = New Global.System.Drawing.Point(128, 32)
+            '
+            'tbName
+            '
+            Me.tbName.Location = New System.Drawing.Point(128, 37)
             Me.tbName.Name = "tbName"
-            Me.tbName.Size = New Global.System.Drawing.Size(200, 20)
+            Me.tbName.Size = New System.Drawing.Size(200, 22)
             Me.tbName.TabIndex = 0
-            Me.tbName.Text = ""
-            Me.Label1.Location = New Global.System.Drawing.Point(48, 32)
+            '
+            'Label1
+            '
+            Me.Label1.Location = New System.Drawing.Point(48, 37)
             Me.Label1.Name = "Label1"
-            Me.Label1.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label1.Size = New System.Drawing.Size(100, 18)
             Me.Label1.TabIndex = 0
             Me.Label1.Text = "Name"
-            Me.Label1.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label2.Location = New Global.System.Drawing.Point(48, 56)
+            Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label2
+            '
+            Me.Label2.Location = New System.Drawing.Point(48, 65)
             Me.Label2.Name = "Label2"
-            Me.Label2.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label2.Size = New System.Drawing.Size(100, 18)
             Me.Label2.TabIndex = 0
             Me.Label2.Text = "Tag"
-            Me.Label2.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.chkbStatic.Location = New Global.System.Drawing.Point(192, 112)
+            Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'chkbStatic
+            '
+            Me.chkbStatic.Location = New System.Drawing.Point(192, 129)
             Me.chkbStatic.Name = "chkbStatic"
-            Me.chkbStatic.Size = New Global.System.Drawing.Size(72, 24)
+            Me.chkbStatic.Size = New System.Drawing.Size(72, 28)
             Me.chkbStatic.TabIndex = 5
             Me.chkbStatic.Text = "Static"
-            Me.chkbMin1HP.Location = New Global.System.Drawing.Point(296, 112)
+            '
+            'chkbMin1HP
+            '
+            Me.chkbMin1HP.Location = New System.Drawing.Point(296, 129)
             Me.chkbMin1HP.Name = "chkbMin1HP"
-            Me.chkbMin1HP.Size = New Global.System.Drawing.Size(72, 24)
+            Me.chkbMin1HP.Size = New System.Drawing.Size(72, 28)
             Me.chkbMin1HP.TabIndex = 6
             Me.chkbMin1HP.Text = "Min1HP"
+            '
+            'TabPageLock
+            '
             Me.TabPageLock.Controls.Add(Me.tbKeyName)
             Me.TabPageLock.Controls.Add(Me.lblKeyTag)
             Me.TabPageLock.Controls.Add(Me.nudCloseLockDC)
@@ -443,75 +512,107 @@ Namespace kotor_tool
             Me.TabPageLock.Controls.Add(Me.chkbLocked)
             Me.TabPageLock.Controls.Add(Me.chkbKeyRequired)
             Me.TabPageLock.Controls.Add(Me.chkbAutoRemoveKey)
-            Me.TabPageLock.Location = New Global.System.Drawing.Point(4, 40)
+            Me.TabPageLock.Location = New System.Drawing.Point(4, 40)
             Me.TabPageLock.Name = "TabPageLock"
-            Me.TabPageLock.Size = New Global.System.Drawing.Size(448, 393)
+            Me.TabPageLock.Size = New System.Drawing.Size(448, 488)
             Me.TabPageLock.TabIndex = 1
             Me.TabPageLock.Text = "Lock"
             Me.TabPageLock.Visible = False
+            '
+            'tbKeyName
+            '
             Me.tbKeyName.Enabled = False
-            Me.tbKeyName.Location = New Global.System.Drawing.Point(176, 256)
+            Me.tbKeyName.Location = New System.Drawing.Point(176, 295)
             Me.tbKeyName.Name = "tbKeyName"
-            Me.tbKeyName.Size = New Global.System.Drawing.Size(200, 20)
+            Me.tbKeyName.Size = New System.Drawing.Size(200, 22)
             Me.tbKeyName.TabIndex = 6
-            Me.tbKeyName.Text = ""
+            '
+            'lblKeyTag
+            '
             Me.lblKeyTag.Enabled = False
-            Me.lblKeyTag.Location = New Global.System.Drawing.Point(52, 256)
+            Me.lblKeyTag.Location = New System.Drawing.Point(52, 295)
             Me.lblKeyTag.Name = "lblKeyTag"
-            Me.lblKeyTag.Size = New Global.System.Drawing.Size(100, 16)
+            Me.lblKeyTag.Size = New System.Drawing.Size(100, 19)
             Me.lblKeyTag.TabIndex = 18
             Me.lblKeyTag.Text = "Key Tag"
-            Me.lblKeyTag.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
+            Me.lblKeyTag.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'nudCloseLockDC
+            '
             Me.nudCloseLockDC.Enabled = False
-            Me.nudCloseLockDC.Location = New Global.System.Drawing.Point(176, 216)
+            Me.nudCloseLockDC.Location = New System.Drawing.Point(176, 249)
             Me.nudCloseLockDC.Name = "nudCloseLockDC"
-            Me.nudCloseLockDC.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Me.nudCloseLockDC.Size = New Global.System.Drawing.Size(48, 20)
+            Me.nudCloseLockDC.RightToLeft = System.Windows.Forms.RightToLeft.No
+            Me.nudCloseLockDC.Size = New System.Drawing.Size(48, 22)
             Me.nudCloseLockDC.TabIndex = 5
-            Me.nudCloseLockDC.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudCloseLockDC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'lblCloseLockDC
+            '
             Me.lblCloseLockDC.Enabled = False
-            Me.lblCloseLockDC.Location = New Global.System.Drawing.Point(48, 216)
+            Me.lblCloseLockDC.Location = New System.Drawing.Point(48, 249)
             Me.lblCloseLockDC.Name = "lblCloseLockDC"
-            Me.lblCloseLockDC.Size = New Global.System.Drawing.Size(88, 16)
+            Me.lblCloseLockDC.Size = New System.Drawing.Size(88, 19)
             Me.lblCloseLockDC.TabIndex = 14
             Me.lblCloseLockDC.Text = "Close Lock DC"
-            Me.lblCloseLockDC.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
+            Me.lblCloseLockDC.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'nudOpenLockDC
+            '
             Me.nudOpenLockDC.Enabled = False
-            Me.nudOpenLockDC.Location = New Global.System.Drawing.Point(176, 176)
+            Me.nudOpenLockDC.Location = New System.Drawing.Point(176, 203)
             Me.nudOpenLockDC.Name = "nudOpenLockDC"
-            Me.nudOpenLockDC.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Me.nudOpenLockDC.Size = New Global.System.Drawing.Size(48, 20)
+            Me.nudOpenLockDC.RightToLeft = System.Windows.Forms.RightToLeft.No
+            Me.nudOpenLockDC.Size = New System.Drawing.Size(48, 22)
             Me.nudOpenLockDC.TabIndex = 4
-            Me.nudOpenLockDC.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudOpenLockDC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'lblOpenLockDC
+            '
             Me.lblOpenLockDC.Enabled = False
-            Me.lblOpenLockDC.Location = New Global.System.Drawing.Point(48, 176)
+            Me.lblOpenLockDC.Location = New System.Drawing.Point(48, 203)
             Me.lblOpenLockDC.Name = "lblOpenLockDC"
-            Me.lblOpenLockDC.Size = New Global.System.Drawing.Size(88, 16)
+            Me.lblOpenLockDC.Size = New System.Drawing.Size(88, 19)
             Me.lblOpenLockDC.TabIndex = 15
             Me.lblOpenLockDC.Text = "Open Lock DC"
-            Me.lblOpenLockDC.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.chkbLockable.Location = New Global.System.Drawing.Point(48, 66)
+            Me.lblOpenLockDC.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'chkbLockable
+            '
+            Me.chkbLockable.Location = New System.Drawing.Point(48, 76)
             Me.chkbLockable.Name = "chkbLockable"
-            Me.chkbLockable.Size = New Global.System.Drawing.Size(112, 24)
+            Me.chkbLockable.Size = New System.Drawing.Size(112, 28)
             Me.chkbLockable.TabIndex = 1
             Me.chkbLockable.Text = "Can be relocked"
-            Me.chkbLocked.Location = New Global.System.Drawing.Point(48, 32)
+            '
+            'chkbLocked
+            '
+            Me.chkbLocked.Location = New System.Drawing.Point(48, 37)
             Me.chkbLocked.Name = "chkbLocked"
-            Me.chkbLocked.Size = New Global.System.Drawing.Size(72, 24)
+            Me.chkbLocked.Size = New System.Drawing.Size(72, 28)
             Me.chkbLocked.TabIndex = 0
             Me.chkbLocked.Text = "Locked"
+            '
+            'chkbKeyRequired
+            '
             Me.chkbKeyRequired.Enabled = False
-            Me.chkbKeyRequired.Location = New Global.System.Drawing.Point(48, 134)
+            Me.chkbKeyRequired.Location = New System.Drawing.Point(48, 155)
             Me.chkbKeyRequired.Name = "chkbKeyRequired"
-            Me.chkbKeyRequired.Size = New Global.System.Drawing.Size(184, 24)
+            Me.chkbKeyRequired.Size = New System.Drawing.Size(184, 27)
             Me.chkbKeyRequired.TabIndex = 3
             Me.chkbKeyRequired.Text = "Key required to unlock or lock"
+            '
+            'chkbAutoRemoveKey
+            '
             Me.chkbAutoRemoveKey.Enabled = False
-            Me.chkbAutoRemoveKey.Location = New Global.System.Drawing.Point(48, 100)
+            Me.chkbAutoRemoveKey.Location = New System.Drawing.Point(48, 115)
             Me.chkbAutoRemoveKey.Name = "chkbAutoRemoveKey"
-            Me.chkbAutoRemoveKey.Size = New Global.System.Drawing.Size(200, 24)
+            Me.chkbAutoRemoveKey.Size = New System.Drawing.Size(200, 28)
             Me.chkbAutoRemoveKey.TabIndex = 2
             Me.chkbAutoRemoveKey.Text = "Automatically remove key after use"
+            '
+            'TabPageAdvanced
+            '
             Me.TabPageAdvanced.Controls.Add(Me.chkbPartyInteract)
             Me.TabPageAdvanced.Controls.Add(Me.chkbHasInventory)
             Me.TabPageAdvanced.Controls.Add(Me.Label20)
@@ -526,89 +627,129 @@ Namespace kotor_tool
             Me.TabPageAdvanced.Controls.Add(Me.Label14)
             Me.TabPageAdvanced.Controls.Add(Me.tbAnimationState)
             Me.TabPageAdvanced.Controls.Add(Me.chkbUsable)
-            Me.TabPageAdvanced.Location = New Global.System.Drawing.Point(4, 40)
+            Me.TabPageAdvanced.Location = New System.Drawing.Point(4, 40)
             Me.TabPageAdvanced.Name = "TabPageAdvanced"
-            Me.TabPageAdvanced.Size = New Global.System.Drawing.Size(448, 393)
+            Me.TabPageAdvanced.Size = New System.Drawing.Size(448, 488)
             Me.TabPageAdvanced.TabIndex = 5
             Me.TabPageAdvanced.Text = "Advanced"
             Me.TabPageAdvanced.Visible = False
-            Me.chkbPartyInteract.Location = New Global.System.Drawing.Point(168, 240)
+            '
+            'chkbPartyInteract
+            '
+            Me.chkbPartyInteract.Location = New System.Drawing.Point(168, 277)
             Me.chkbPartyInteract.Name = "chkbPartyInteract"
-            Me.chkbPartyInteract.Size = New Global.System.Drawing.Size(184, 24)
+            Me.chkbPartyInteract.Size = New System.Drawing.Size(184, 28)
             Me.chkbPartyInteract.TabIndex = 6
             Me.chkbPartyInteract.Text = "Party Interact"
-            Me.chkbHasInventory.Location = New Global.System.Drawing.Point(168, 208)
+            '
+            'chkbHasInventory
+            '
+            Me.chkbHasInventory.Location = New System.Drawing.Point(168, 240)
             Me.chkbHasInventory.Name = "chkbHasInventory"
-            Me.chkbHasInventory.Size = New Global.System.Drawing.Size(184, 24)
+            Me.chkbHasInventory.Size = New System.Drawing.Size(184, 28)
             Me.chkbHasInventory.TabIndex = 5
             Me.chkbHasInventory.Text = "Has Inventory"
-            Me.Label20.Location = New Global.System.Drawing.Point(56, 176)
+            '
+            'Label20
+            '
+            Me.Label20.Location = New System.Drawing.Point(56, 203)
             Me.Label20.Name = "Label20"
-            Me.Label20.Size = New Global.System.Drawing.Size(48, 16)
+            Me.Label20.Size = New System.Drawing.Size(48, 19)
             Me.Label20.TabIndex = 5
             Me.Label20.Text = "Type"
-            Me.Label20.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbType.Location = New Global.System.Drawing.Point(168, 176)
+            Me.Label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbType
+            '
+            Me.tbType.Location = New System.Drawing.Point(168, 203)
             Me.tbType.Name = "tbType"
-            Me.tbType.Size = New Global.System.Drawing.Size(72, 20)
+            Me.tbType.Size = New System.Drawing.Size(72, 22)
             Me.tbType.TabIndex = 4
-            Me.tbType.Text = ""
-            Me.chkbInterruptable.Location = New Global.System.Drawing.Point(352, 112)
+            '
+            'chkbInterruptable
+            '
+            Me.chkbInterruptable.Location = New System.Drawing.Point(352, 129)
             Me.chkbInterruptable.Name = "chkbInterruptable"
-            Me.chkbInterruptable.Size = New Global.System.Drawing.Size(88, 24)
+            Me.chkbInterruptable.Size = New System.Drawing.Size(88, 28)
             Me.chkbInterruptable.TabIndex = 2
             Me.chkbInterruptable.Text = "Interruptable"
-            Me.tbConversation.Location = New Global.System.Drawing.Point(168, 112)
+            '
+            'tbConversation
+            '
+            Me.tbConversation.Location = New System.Drawing.Point(168, 129)
             Me.tbConversation.Name = "tbConversation"
-            Me.tbConversation.Size = New Global.System.Drawing.Size(168, 20)
+            Me.tbConversation.Size = New System.Drawing.Size(168, 22)
             Me.tbConversation.TabIndex = 1
-            Me.tbConversation.Text = ""
-            Me.tbFaction.Location = New Global.System.Drawing.Point(168, 80)
+            '
+            'tbFaction
+            '
+            Me.tbFaction.Location = New System.Drawing.Point(168, 92)
             Me.tbFaction.Name = "tbFaction"
-            Me.tbFaction.Size = New Global.System.Drawing.Size(30, 20)
+            Me.tbFaction.Size = New System.Drawing.Size(30, 22)
             Me.tbFaction.TabIndex = 0
-            Me.tbFaction.Text = ""
-            Me.tbTemplateResRef.CharacterCasing = Global.System.Windows.Forms.CharacterCasing.Lower
-            Me.tbTemplateResRef.Location = New Global.System.Drawing.Point(168, 32)
+            '
+            'tbTemplateResRef
+            '
+            Me.tbTemplateResRef.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
+            Me.tbTemplateResRef.Location = New System.Drawing.Point(168, 37)
             Me.tbTemplateResRef.MaxLength = 16
             Me.tbTemplateResRef.Name = "tbTemplateResRef"
-            Me.tbTemplateResRef.Size = New Global.System.Drawing.Size(200, 20)
+            Me.tbTemplateResRef.Size = New System.Drawing.Size(200, 22)
             Me.tbTemplateResRef.TabIndex = 3
-            Me.tbTemplateResRef.Text = ""
-            Me.Label10.Location = New Global.System.Drawing.Point(52, 32)
+            '
+            'Label10
+            '
+            Me.Label10.Location = New System.Drawing.Point(52, 37)
             Me.Label10.Name = "Label10"
-            Me.Label10.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label10.Size = New System.Drawing.Size(100, 18)
             Me.Label10.TabIndex = 2
             Me.Label10.Text = "Template ResRef"
-            Me.Label10.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label11.Location = New Global.System.Drawing.Point(56, 80)
+            Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label11
+            '
+            Me.Label11.Location = New System.Drawing.Point(56, 92)
             Me.Label11.Name = "Label11"
-            Me.Label11.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label11.Size = New System.Drawing.Size(100, 19)
             Me.Label11.TabIndex = 2
             Me.Label11.Text = "Faction"
-            Me.Label11.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label13.Location = New Global.System.Drawing.Point(56, 112)
+            Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label13
+            '
+            Me.Label13.Location = New System.Drawing.Point(56, 129)
             Me.Label13.Name = "Label13"
-            Me.Label13.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label13.Size = New System.Drawing.Size(100, 19)
             Me.Label13.TabIndex = 2
             Me.Label13.Text = "Conversation"
-            Me.Label13.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label14.Location = New Global.System.Drawing.Point(56, 144)
+            Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label14
+            '
+            Me.Label14.Location = New System.Drawing.Point(56, 166)
             Me.Label14.Name = "Label14"
-            Me.Label14.Size = New Global.System.Drawing.Size(100, 16)
+            Me.Label14.Size = New System.Drawing.Size(100, 19)
             Me.Label14.TabIndex = 2
             Me.Label14.Text = "Animation State"
-            Me.Label14.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbAnimationState.Location = New Global.System.Drawing.Point(168, 144)
+            Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbAnimationState
+            '
+            Me.tbAnimationState.Location = New System.Drawing.Point(168, 166)
             Me.tbAnimationState.Name = "tbAnimationState"
-            Me.tbAnimationState.Size = New Global.System.Drawing.Size(32, 20)
+            Me.tbAnimationState.Size = New System.Drawing.Size(32, 22)
             Me.tbAnimationState.TabIndex = 3
-            Me.tbAnimationState.Text = ""
-            Me.chkbUsable.Location = New Global.System.Drawing.Point(168, 272)
+            '
+            'chkbUsable
+            '
+            Me.chkbUsable.Location = New System.Drawing.Point(168, 314)
             Me.chkbUsable.Name = "chkbUsable"
-            Me.chkbUsable.Size = New Global.System.Drawing.Size(184, 24)
+            Me.chkbUsable.Size = New System.Drawing.Size(184, 28)
             Me.chkbUsable.TabIndex = 6
             Me.chkbUsable.Text = "Usable"
+            '
+            'TabPageScripts
+            '
             Me.TabPageScripts.Controls.Add(Me.btnEditOnUserDefined)
             Me.TabPageScripts.Controls.Add(Me.btnEditOnUnlock)
             Me.TabPageScripts.Controls.Add(Me.btnEditOnSpellCastAt)
@@ -654,209 +795,435 @@ Namespace kotor_tool
             Me.TabPageScripts.Controls.Add(Me.btnEditOnUsed)
             Me.TabPageScripts.Controls.Add(Me.btnEditOnInvDisturbed)
             Me.TabPageScripts.Controls.Add(Me.btnEditOnEndDialogue)
-            Me.TabPageScripts.Location = New Global.System.Drawing.Point(4, 40)
+            Me.TabPageScripts.Location = New System.Drawing.Point(4, 40)
             Me.TabPageScripts.Name = "TabPageScripts"
-            Me.TabPageScripts.Size = New Global.System.Drawing.Size(448, 417)
+            Me.TabPageScripts.Size = New System.Drawing.Size(448, 488)
             Me.TabPageScripts.TabIndex = 4
             Me.TabPageScripts.Text = "Scripts"
             Me.TabPageScripts.Visible = False
-            Me.tbOnUsed.Location = New Global.System.Drawing.Point(160, 354)
+            '
+            'btnEditOnUserDefined
+            '
+            Me.btnEditOnUserDefined.Location = New System.Drawing.Point(384, 438)
+            Me.btnEditOnUserDefined.Name = "btnEditOnUserDefined"
+            Me.btnEditOnUserDefined.Size = New System.Drawing.Size(32, 27)
+            Me.btnEditOnUserDefined.TabIndex = 29
+            Me.btnEditOnUserDefined.Text = "Edit"
+            Me.btnEditOnUserDefined.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'btnEditOnUnlock
+            '
+            Me.btnEditOnUnlock.Location = New System.Drawing.Point(384, 378)
+            Me.btnEditOnUnlock.Name = "btnEditOnUnlock"
+            Me.btnEditOnUnlock.Size = New System.Drawing.Size(32, 27)
+            Me.btnEditOnUnlock.TabIndex = 25
+            Me.btnEditOnUnlock.Text = "Edit"
+            Me.btnEditOnUnlock.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'btnEditOnSpellCastAt
+            '
+            Me.btnEditOnSpellCastAt.Location = New System.Drawing.Point(384, 318)
+            Me.btnEditOnSpellCastAt.Name = "btnEditOnSpellCastAt"
+            Me.btnEditOnSpellCastAt.Size = New System.Drawing.Size(32, 27)
+            Me.btnEditOnSpellCastAt.TabIndex = 21
+            Me.btnEditOnSpellCastAt.Text = "Edit"
+            Me.btnEditOnSpellCastAt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'btnEditOnTrapTriggered
+            '
+            Me.btnEditOnTrapTriggered.Location = New System.Drawing.Point(384, 348)
+            Me.btnEditOnTrapTriggered.Name = "btnEditOnTrapTriggered"
+            Me.btnEditOnTrapTriggered.Size = New System.Drawing.Size(32, 27)
+            Me.btnEditOnTrapTriggered.TabIndex = 23
+            Me.btnEditOnTrapTriggered.Text = "Edit"
+            Me.btnEditOnTrapTriggered.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'btnEditOnMeleeAttacked
+            '
+            Me.btnEditOnMeleeAttacked.Location = New System.Drawing.Point(384, 258)
+            Me.btnEditOnMeleeAttacked.Name = "btnEditOnMeleeAttacked"
+            Me.btnEditOnMeleeAttacked.Size = New System.Drawing.Size(32, 27)
+            Me.btnEditOnMeleeAttacked.TabIndex = 17
+            Me.btnEditOnMeleeAttacked.Text = "Edit"
+            Me.btnEditOnMeleeAttacked.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'btnEditOnOpen
+            '
+            Me.btnEditOnOpen.Location = New System.Drawing.Point(384, 288)
+            Me.btnEditOnOpen.Name = "btnEditOnOpen"
+            Me.btnEditOnOpen.Size = New System.Drawing.Size(32, 27)
+            Me.btnEditOnOpen.TabIndex = 19
+            Me.btnEditOnOpen.Text = "Edit"
+            Me.btnEditOnOpen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'btnEditOnLock
+            '
+            Me.btnEditOnLock.Location = New System.Drawing.Point(384, 228)
+            Me.btnEditOnLock.Name = "btnEditOnLock"
+            Me.btnEditOnLock.Size = New System.Drawing.Size(32, 27)
+            Me.btnEditOnLock.TabIndex = 15
+            Me.btnEditOnLock.Text = "Edit"
+            Me.btnEditOnLock.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'btnEditOnHeartbeat
+            '
+            Me.btnEditOnHeartbeat.Location = New System.Drawing.Point(384, 168)
+            Me.btnEditOnHeartbeat.Name = "btnEditOnHeartbeat"
+            Me.btnEditOnHeartbeat.Size = New System.Drawing.Size(32, 27)
+            Me.btnEditOnHeartbeat.TabIndex = 11
+            Me.btnEditOnHeartbeat.Text = "Edit"
+            Me.btnEditOnHeartbeat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'btnEditOnDeath
+            '
+            Me.btnEditOnDeath.Location = New System.Drawing.Point(384, 78)
+            Me.btnEditOnDeath.Name = "btnEditOnDeath"
+            Me.btnEditOnDeath.Size = New System.Drawing.Size(32, 27)
+            Me.btnEditOnDeath.TabIndex = 5
+            Me.btnEditOnDeath.Text = "Edit"
+            Me.btnEditOnDeath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'btnEditOnDisarm
+            '
+            Me.btnEditOnDisarm.Location = New System.Drawing.Point(384, 108)
+            Me.btnEditOnDisarm.Name = "btnEditOnDisarm"
+            Me.btnEditOnDisarm.Size = New System.Drawing.Size(32, 27)
+            Me.btnEditOnDisarm.TabIndex = 7
+            Me.btnEditOnDisarm.Text = "Edit"
+            Me.btnEditOnDisarm.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'btnEditOnDamaged
+            '
+            Me.btnEditOnDamaged.Location = New System.Drawing.Point(384, 48)
+            Me.btnEditOnDamaged.Name = "btnEditOnDamaged"
+            Me.btnEditOnDamaged.Size = New System.Drawing.Size(32, 27)
+            Me.btnEditOnDamaged.TabIndex = 3
+            Me.btnEditOnDamaged.Text = "Edit"
+            Me.btnEditOnDamaged.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'btnEditOnClosed
+            '
+            Me.btnEditOnClosed.Location = New System.Drawing.Point(384, 18)
+            Me.btnEditOnClosed.Name = "btnEditOnClosed"
+            Me.btnEditOnClosed.Size = New System.Drawing.Size(32, 27)
+            Me.btnEditOnClosed.TabIndex = 1
+            Me.btnEditOnClosed.Text = "Edit"
+            Me.btnEditOnClosed.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbOnUsed
+            '
+            Me.tbOnUsed.Location = New System.Drawing.Point(160, 408)
             Me.tbOnUsed.Name = "tbOnUsed"
-            Me.tbOnUsed.Size = New Global.System.Drawing.Size(204, 20)
+            Me.tbOnUsed.Size = New System.Drawing.Size(204, 22)
             Me.tbOnUsed.TabIndex = 26
-            Me.tbOnUsed.Text = ""
-            Me.Label18.Location = New Global.System.Drawing.Point(40, 354)
+            '
+            'Label18
+            '
+            Me.Label18.Location = New System.Drawing.Point(40, 408)
             Me.Label18.Name = "Label18"
-            Me.Label18.Size = New Global.System.Drawing.Size(112, 18)
+            Me.Label18.Size = New System.Drawing.Size(112, 21)
             Me.Label18.TabIndex = 30
             Me.Label18.Text = "OnUsed"
-            Me.Label18.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label34.Location = New Global.System.Drawing.Point(40, 68)
+            Me.Label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label34
+            '
+            Me.Label34.Location = New System.Drawing.Point(40, 78)
             Me.Label34.Name = "Label34"
-            Me.Label34.Size = New Global.System.Drawing.Size(112, 18)
+            Me.Label34.Size = New System.Drawing.Size(112, 21)
             Me.Label34.TabIndex = 27
             Me.Label34.Text = "OnDeath"
-            Me.Label34.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbOnDeath.Location = New Global.System.Drawing.Point(160, 68)
+            Me.Label34.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbOnDeath
+            '
+            Me.tbOnDeath.Location = New System.Drawing.Point(160, 78)
             Me.tbOnDeath.Name = "tbOnDeath"
-            Me.tbOnDeath.Size = New Global.System.Drawing.Size(204, 20)
+            Me.tbOnDeath.Size = New System.Drawing.Size(204, 22)
             Me.tbOnDeath.TabIndex = 4
-            Me.tbOnDeath.Text = ""
-            Me.Label33.Location = New Global.System.Drawing.Point(40, 42)
+            '
+            'Label33
+            '
+            Me.Label33.Location = New System.Drawing.Point(40, 48)
             Me.Label33.Name = "Label33"
-            Me.Label33.Size = New Global.System.Drawing.Size(112, 18)
+            Me.Label33.Size = New System.Drawing.Size(112, 21)
             Me.Label33.TabIndex = 17
             Me.Label33.Text = "OnDamaged"
-            Me.Label33.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbOnDamaged.Location = New Global.System.Drawing.Point(160, 42)
+            Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbOnDamaged
+            '
+            Me.tbOnDamaged.Location = New System.Drawing.Point(160, 48)
             Me.tbOnDamaged.Name = "tbOnDamaged"
-            Me.tbOnDamaged.Size = New Global.System.Drawing.Size(204, 20)
+            Me.tbOnDamaged.Size = New System.Drawing.Size(204, 22)
             Me.tbOnDamaged.TabIndex = 2
-            Me.tbOnDamaged.Text = ""
-            Me.Label32.Location = New Global.System.Drawing.Point(40, 16)
+            '
+            'Label32
+            '
+            Me.Label32.Location = New System.Drawing.Point(40, 18)
             Me.Label32.Name = "Label32"
-            Me.Label32.Size = New Global.System.Drawing.Size(112, 18)
+            Me.Label32.Size = New System.Drawing.Size(112, 21)
             Me.Label32.TabIndex = 14
             Me.Label32.Text = "OnClosed"
-            Me.Label32.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbOnClosed.Location = New Global.System.Drawing.Point(160, 16)
+            Me.Label32.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbOnClosed
+            '
+            Me.tbOnClosed.Location = New System.Drawing.Point(160, 18)
             Me.tbOnClosed.Name = "tbOnClosed"
-            Me.tbOnClosed.Size = New Global.System.Drawing.Size(204, 20)
+            Me.tbOnClosed.Size = New System.Drawing.Size(204, 22)
             Me.tbOnClosed.TabIndex = 0
-            Me.tbOnClosed.Text = ""
-            Me.Label35.Location = New Global.System.Drawing.Point(40, 94)
+            '
+            'Label35
+            '
+            Me.Label35.Location = New System.Drawing.Point(40, 108)
             Me.Label35.Name = "Label35"
-            Me.Label35.Size = New Global.System.Drawing.Size(112, 18)
+            Me.Label35.Size = New System.Drawing.Size(112, 21)
             Me.Label35.TabIndex = 26
             Me.Label35.Text = "OnDisarm"
-            Me.Label35.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbOnDisarm.Location = New Global.System.Drawing.Point(160, 94)
+            Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbOnDisarm
+            '
+            Me.tbOnDisarm.Location = New System.Drawing.Point(160, 108)
             Me.tbOnDisarm.Name = "tbOnDisarm"
-            Me.tbOnDisarm.Size = New Global.System.Drawing.Size(204, 20)
+            Me.tbOnDisarm.Size = New System.Drawing.Size(204, 22)
             Me.tbOnDisarm.TabIndex = 6
-            Me.tbOnDisarm.Text = ""
-            Me.tbOnHeartbeat.Location = New Global.System.Drawing.Point(160, 146)
+            '
+            'tbOnHeartbeat
+            '
+            Me.tbOnHeartbeat.Location = New System.Drawing.Point(160, 168)
             Me.tbOnHeartbeat.Name = "tbOnHeartbeat"
-            Me.tbOnHeartbeat.Size = New Global.System.Drawing.Size(204, 20)
+            Me.tbOnHeartbeat.Size = New System.Drawing.Size(204, 22)
             Me.tbOnHeartbeat.TabIndex = 10
-            Me.tbOnHeartbeat.Text = ""
-            Me.Label36.Location = New Global.System.Drawing.Point(40, 146)
+            '
+            'Label36
+            '
+            Me.Label36.Location = New System.Drawing.Point(40, 168)
             Me.Label36.Name = "Label36"
-            Me.Label36.Size = New Global.System.Drawing.Size(112, 18)
+            Me.Label36.Size = New System.Drawing.Size(112, 21)
             Me.Label36.TabIndex = 25
             Me.Label36.Text = "OnHeartbeat"
-            Me.Label36.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label37.Location = New Global.System.Drawing.Point(40, 198)
+            Me.Label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label37
+            '
+            Me.Label37.Location = New System.Drawing.Point(40, 228)
             Me.Label37.Name = "Label37"
-            Me.Label37.Size = New Global.System.Drawing.Size(112, 18)
+            Me.Label37.Size = New System.Drawing.Size(112, 21)
             Me.Label37.TabIndex = 28
             Me.Label37.Text = "OnLock"
-            Me.Label37.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbOnLock.Location = New Global.System.Drawing.Point(160, 198)
+            Me.Label37.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbOnLock
+            '
+            Me.tbOnLock.Location = New System.Drawing.Point(160, 228)
             Me.tbOnLock.Name = "tbOnLock"
-            Me.tbOnLock.Size = New Global.System.Drawing.Size(204, 20)
+            Me.tbOnLock.Size = New System.Drawing.Size(204, 22)
             Me.tbOnLock.TabIndex = 14
-            Me.tbOnLock.Text = ""
-            Me.tbOnMeleeAttacked.Location = New Global.System.Drawing.Point(160, 224)
+            '
+            'tbOnMeleeAttacked
+            '
+            Me.tbOnMeleeAttacked.Location = New System.Drawing.Point(160, 258)
             Me.tbOnMeleeAttacked.Name = "tbOnMeleeAttacked"
-            Me.tbOnMeleeAttacked.Size = New Global.System.Drawing.Size(204, 20)
+            Me.tbOnMeleeAttacked.Size = New System.Drawing.Size(204, 22)
             Me.tbOnMeleeAttacked.TabIndex = 16
-            Me.tbOnMeleeAttacked.Text = ""
-            Me.Label38.Location = New Global.System.Drawing.Point(40, 224)
+            '
+            'Label38
+            '
+            Me.Label38.Location = New System.Drawing.Point(40, 258)
             Me.Label38.Name = "Label38"
-            Me.Label38.Size = New Global.System.Drawing.Size(112, 18)
+            Me.Label38.Size = New System.Drawing.Size(112, 21)
             Me.Label38.TabIndex = 20
             Me.Label38.Text = "OnMeleeAttacked"
-            Me.Label38.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbOnOpen.Location = New Global.System.Drawing.Point(160, 250)
+            Me.Label38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbOnOpen
+            '
+            Me.tbOnOpen.Location = New System.Drawing.Point(160, 288)
             Me.tbOnOpen.Name = "tbOnOpen"
-            Me.tbOnOpen.Size = New Global.System.Drawing.Size(204, 20)
+            Me.tbOnOpen.Size = New System.Drawing.Size(204, 22)
             Me.tbOnOpen.TabIndex = 18
-            Me.tbOnOpen.Text = ""
-            Me.Label39.Location = New Global.System.Drawing.Point(40, 250)
+            '
+            'Label39
+            '
+            Me.Label39.Location = New System.Drawing.Point(40, 288)
             Me.Label39.Name = "Label39"
-            Me.Label39.Size = New Global.System.Drawing.Size(112, 18)
+            Me.Label39.Size = New System.Drawing.Size(112, 21)
             Me.Label39.TabIndex = 21
             Me.Label39.Text = "OnOpen"
-            Me.Label39.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label40.Location = New Global.System.Drawing.Point(40, 276)
+            Me.Label39.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label40
+            '
+            Me.Label40.Location = New System.Drawing.Point(40, 318)
             Me.Label40.Name = "Label40"
-            Me.Label40.Size = New Global.System.Drawing.Size(112, 18)
+            Me.Label40.Size = New System.Drawing.Size(112, 21)
             Me.Label40.TabIndex = 19
             Me.Label40.Text = "OnSpellCastAt"
-            Me.Label40.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbOnSpellCastAt.Location = New Global.System.Drawing.Point(160, 276)
+            Me.Label40.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbOnSpellCastAt
+            '
+            Me.tbOnSpellCastAt.Location = New System.Drawing.Point(160, 318)
             Me.tbOnSpellCastAt.Name = "tbOnSpellCastAt"
-            Me.tbOnSpellCastAt.Size = New Global.System.Drawing.Size(204, 20)
+            Me.tbOnSpellCastAt.Size = New System.Drawing.Size(204, 22)
             Me.tbOnSpellCastAt.TabIndex = 20
-            Me.tbOnSpellCastAt.Text = ""
-            Me.Label41.Location = New Global.System.Drawing.Point(40, 302)
+            '
+            'Label41
+            '
+            Me.Label41.Location = New System.Drawing.Point(40, 348)
             Me.Label41.Name = "Label41"
-            Me.Label41.Size = New Global.System.Drawing.Size(112, 18)
+            Me.Label41.Size = New System.Drawing.Size(112, 21)
             Me.Label41.TabIndex = 24
             Me.Label41.Text = "OnTrapTriggered"
-            Me.Label41.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbOnTrapTriggered.Location = New Global.System.Drawing.Point(160, 302)
+            Me.Label41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbOnTrapTriggered
+            '
+            Me.tbOnTrapTriggered.Location = New System.Drawing.Point(160, 348)
             Me.tbOnTrapTriggered.Name = "tbOnTrapTriggered"
-            Me.tbOnTrapTriggered.Size = New Global.System.Drawing.Size(204, 20)
+            Me.tbOnTrapTriggered.Size = New System.Drawing.Size(204, 22)
             Me.tbOnTrapTriggered.TabIndex = 22
-            Me.tbOnTrapTriggered.Text = ""
-            Me.tbOnUnlock.Location = New Global.System.Drawing.Point(160, 328)
+            '
+            'tbOnUnlock
+            '
+            Me.tbOnUnlock.Location = New System.Drawing.Point(160, 378)
             Me.tbOnUnlock.Name = "tbOnUnlock"
-            Me.tbOnUnlock.Size = New Global.System.Drawing.Size(204, 20)
+            Me.tbOnUnlock.Size = New System.Drawing.Size(204, 22)
             Me.tbOnUnlock.TabIndex = 24
-            Me.tbOnUnlock.Text = ""
-            Me.Label42.Location = New Global.System.Drawing.Point(40, 328)
+            '
+            'Label42
+            '
+            Me.Label42.Location = New System.Drawing.Point(40, 378)
             Me.Label42.Name = "Label42"
-            Me.Label42.Size = New Global.System.Drawing.Size(112, 18)
+            Me.Label42.Size = New System.Drawing.Size(112, 21)
             Me.Label42.TabIndex = 23
             Me.Label42.Text = "OnUnlock"
-            Me.Label42.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbOnUserDefined.Location = New Global.System.Drawing.Point(160, 380)
+            Me.Label42.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbOnUserDefined
+            '
+            Me.tbOnUserDefined.Location = New System.Drawing.Point(160, 438)
             Me.tbOnUserDefined.Name = "tbOnUserDefined"
-            Me.tbOnUserDefined.Size = New Global.System.Drawing.Size(204, 20)
+            Me.tbOnUserDefined.Size = New System.Drawing.Size(204, 22)
             Me.tbOnUserDefined.TabIndex = 28
-            Me.tbOnUserDefined.Text = ""
-            Me.Label43.Location = New Global.System.Drawing.Point(40, 380)
+            '
+            'Label43
+            '
+            Me.Label43.Location = New System.Drawing.Point(40, 438)
             Me.Label43.Name = "Label43"
-            Me.Label43.Size = New Global.System.Drawing.Size(112, 18)
+            Me.Label43.Size = New System.Drawing.Size(112, 21)
             Me.Label43.TabIndex = 22
             Me.Label43.Text = "OnUserDefined"
-            Me.Label43.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label21.Location = New Global.System.Drawing.Point(40, 120)
+            Me.Label43.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label21
+            '
+            Me.Label21.Location = New System.Drawing.Point(40, 138)
             Me.Label21.Name = "Label21"
-            Me.Label21.Size = New Global.System.Drawing.Size(112, 18)
+            Me.Label21.Size = New System.Drawing.Size(112, 21)
             Me.Label21.TabIndex = 30
             Me.Label21.Text = "OnEndDialogue"
-            Me.Label21.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.tbOnEndDialogue.Location = New Global.System.Drawing.Point(160, 120)
+            Me.Label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'tbOnEndDialogue
+            '
+            Me.tbOnEndDialogue.Location = New System.Drawing.Point(160, 138)
             Me.tbOnEndDialogue.Name = "tbOnEndDialogue"
-            Me.tbOnEndDialogue.Size = New Global.System.Drawing.Size(204, 20)
+            Me.tbOnEndDialogue.Size = New System.Drawing.Size(204, 22)
             Me.tbOnEndDialogue.TabIndex = 8
-            Me.tbOnEndDialogue.Text = ""
-            Me.tbOnInvDisturbed.Location = New Global.System.Drawing.Point(160, 172)
+            '
+            'tbOnInvDisturbed
+            '
+            Me.tbOnInvDisturbed.Location = New System.Drawing.Point(160, 198)
             Me.tbOnInvDisturbed.Name = "tbOnInvDisturbed"
-            Me.tbOnInvDisturbed.Size = New Global.System.Drawing.Size(204, 20)
+            Me.tbOnInvDisturbed.Size = New System.Drawing.Size(204, 22)
             Me.tbOnInvDisturbed.TabIndex = 12
-            Me.tbOnInvDisturbed.Text = ""
-            Me.Label22.Location = New Global.System.Drawing.Point(40, 172)
+            '
+            'Label22
+            '
+            Me.Label22.Location = New System.Drawing.Point(40, 198)
             Me.Label22.Name = "Label22"
-            Me.Label22.Size = New Global.System.Drawing.Size(112, 18)
+            Me.Label22.Size = New System.Drawing.Size(112, 21)
             Me.Label22.TabIndex = 30
             Me.Label22.Text = "OnInvDisturbed"
-            Me.Label22.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
+            Me.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'btnEditOnUsed
+            '
+            Me.btnEditOnUsed.Location = New System.Drawing.Point(384, 408)
+            Me.btnEditOnUsed.Name = "btnEditOnUsed"
+            Me.btnEditOnUsed.Size = New System.Drawing.Size(32, 27)
+            Me.btnEditOnUsed.TabIndex = 27
+            Me.btnEditOnUsed.Text = "Edit"
+            Me.btnEditOnUsed.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'btnEditOnInvDisturbed
+            '
+            Me.btnEditOnInvDisturbed.Location = New System.Drawing.Point(384, 198)
+            Me.btnEditOnInvDisturbed.Name = "btnEditOnInvDisturbed"
+            Me.btnEditOnInvDisturbed.Size = New System.Drawing.Size(32, 27)
+            Me.btnEditOnInvDisturbed.TabIndex = 13
+            Me.btnEditOnInvDisturbed.Text = "Edit"
+            Me.btnEditOnInvDisturbed.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'btnEditOnEndDialogue
+            '
+            Me.btnEditOnEndDialogue.Location = New System.Drawing.Point(384, 138)
+            Me.btnEditOnEndDialogue.Name = "btnEditOnEndDialogue"
+            Me.btnEditOnEndDialogue.Size = New System.Drawing.Size(32, 27)
+            Me.btnEditOnEndDialogue.TabIndex = 9
+            Me.btnEditOnEndDialogue.Text = "Edit"
+            Me.btnEditOnEndDialogue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'TabPageDescription
+            '
             Me.TabPageDescription.Controls.Add(Me.btnSetDescriptionLang)
             Me.TabPageDescription.Controls.Add(Me.tbDescription)
-            Me.TabPageDescription.Location = New Global.System.Drawing.Point(4, 40)
+            Me.TabPageDescription.Location = New System.Drawing.Point(4, 40)
             Me.TabPageDescription.Name = "TabPageDescription"
-            Me.TabPageDescription.Size = New Global.System.Drawing.Size(448, 393)
+            Me.TabPageDescription.Size = New System.Drawing.Size(448, 488)
             Me.TabPageDescription.TabIndex = 6
             Me.TabPageDescription.Text = "Description"
             Me.TabPageDescription.Visible = False
-            Me.btnSetDescriptionLang.Location = New Global.System.Drawing.Point(40, 320)
+            '
+            'btnSetDescriptionLang
+            '
+            Me.btnSetDescriptionLang.Location = New System.Drawing.Point(40, 369)
             Me.btnSetDescriptionLang.Name = "btnSetDescriptionLang"
-            Me.btnSetDescriptionLang.Size = New Global.System.Drawing.Size(88, 23)
+            Me.btnSetDescriptionLang.Size = New System.Drawing.Size(88, 27)
             Me.btnSetDescriptionLang.TabIndex = 1
             Me.btnSetDescriptionLang.Text = "Set Language"
-            Me.tbDescription.Location = New Global.System.Drawing.Point(12, 7)
+            '
+            'tbDescription
+            '
+            Me.tbDescription.Location = New System.Drawing.Point(12, 8)
             Me.tbDescription.Multiline = True
             Me.tbDescription.Name = "tbDescription"
-            Me.tbDescription.Size = New Global.System.Drawing.Size(424, 305)
+            Me.tbDescription.Size = New System.Drawing.Size(424, 352)
             Me.tbDescription.TabIndex = 0
-            Me.tbDescription.Text = ""
+            '
+            'TabPageComments
+            '
             Me.TabPageComments.Controls.Add(Me.tbComment)
-            Me.TabPageComments.Location = New Global.System.Drawing.Point(4, 40)
+            Me.TabPageComments.Location = New System.Drawing.Point(4, 40)
             Me.TabPageComments.Name = "TabPageComments"
-            Me.TabPageComments.Size = New Global.System.Drawing.Size(448, 393)
+            Me.TabPageComments.Size = New System.Drawing.Size(448, 488)
             Me.TabPageComments.TabIndex = 7
             Me.TabPageComments.Text = "Comments"
             Me.TabPageComments.Visible = False
-            Me.tbComment.Location = New Global.System.Drawing.Point(12, 7)
+            '
+            'tbComment
+            '
+            Me.tbComment.Location = New System.Drawing.Point(12, 8)
             Me.tbComment.Multiline = True
             Me.tbComment.Name = "tbComment"
-            Me.tbComment.Size = New Global.System.Drawing.Size(424, 336)
+            Me.tbComment.Size = New System.Drawing.Size(424, 388)
             Me.tbComment.TabIndex = 0
-            Me.tbComment.Text = ""
+            '
+            'TabPageTrap
+            '
             Me.TabPageTrap.Controls.Add(Me.chkbTrapDisarmable)
             Me.TabPageTrap.Controls.Add(Me.chkbTrapDetectable)
             Me.TabPageTrap.Controls.Add(Me.Label6)
@@ -871,205 +1238,174 @@ Namespace kotor_tool
             Me.TabPageTrap.Controls.Add(Me.Label17)
             Me.TabPageTrap.Controls.Add(Me.chkbTrapFlag)
             Me.TabPageTrap.Controls.Add(Me.chkbTrapOneShot)
-            Me.TabPageTrap.Location = New Global.System.Drawing.Point(4, 40)
+            Me.TabPageTrap.Location = New System.Drawing.Point(4, 40)
             Me.TabPageTrap.Name = "TabPageTrap"
-            Me.TabPageTrap.Size = New Global.System.Drawing.Size(448, 393)
+            Me.TabPageTrap.Size = New System.Drawing.Size(448, 488)
             Me.TabPageTrap.TabIndex = 10
             Me.TabPageTrap.Text = "Trap"
-            Me.chkbTrapDisarmable.Location = New Global.System.Drawing.Point(192, 85)
+            '
+            'chkbTrapDisarmable
+            '
+            Me.chkbTrapDisarmable.Location = New System.Drawing.Point(192, 98)
             Me.chkbTrapDisarmable.Name = "chkbTrapDisarmable"
-            Me.chkbTrapDisarmable.Size = New Global.System.Drawing.Size(24, 24)
+            Me.chkbTrapDisarmable.Size = New System.Drawing.Size(24, 28)
             Me.chkbTrapDisarmable.TabIndex = 2
-            Me.chkbTrapDetectable.Location = New Global.System.Drawing.Point(192, 21)
+            '
+            'chkbTrapDetectable
+            '
+            Me.chkbTrapDetectable.Location = New System.Drawing.Point(192, 24)
             Me.chkbTrapDetectable.Name = "chkbTrapDetectable"
-            Me.chkbTrapDetectable.Size = New Global.System.Drawing.Size(24, 24)
+            Me.chkbTrapDetectable.Size = New System.Drawing.Size(24, 28)
             Me.chkbTrapDetectable.TabIndex = 0
-            Me.Label6.Location = New Global.System.Drawing.Point(48, 184)
+            '
+            'Label6
+            '
+            Me.Label6.Location = New System.Drawing.Point(48, 212)
             Me.Label6.Name = "Label6"
-            Me.Label6.Size = New Global.System.Drawing.Size(88, 16)
+            Me.Label6.Size = New System.Drawing.Size(88, 19)
             Me.Label6.TabIndex = 26
             Me.Label6.Text = "TrapOneShot"
-            Me.Label6.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label3.Location = New Global.System.Drawing.Point(48, 152)
+            Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label3
+            '
+            Me.Label3.Location = New System.Drawing.Point(48, 175)
             Me.Label3.Name = "Label3"
-            Me.Label3.Size = New Global.System.Drawing.Size(88, 16)
+            Me.Label3.Size = New System.Drawing.Size(88, 19)
             Me.Label3.TabIndex = 27
             Me.Label3.Text = "TrapFlag"
-            Me.Label3.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.nudDisarmDC.Location = New Global.System.Drawing.Point(176, 120)
+            Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'nudDisarmDC
+            '
+            Me.nudDisarmDC.Location = New System.Drawing.Point(176, 138)
             Me.nudDisarmDC.Maximum = New Decimal(New Integer() {250, 0, 0, 0})
             Me.nudDisarmDC.Name = "nudDisarmDC"
-            Me.nudDisarmDC.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Me.nudDisarmDC.Size = New Global.System.Drawing.Size(48, 20)
+            Me.nudDisarmDC.RightToLeft = System.Windows.Forms.RightToLeft.No
+            Me.nudDisarmDC.Size = New System.Drawing.Size(48, 22)
             Me.nudDisarmDC.TabIndex = 3
-            Me.nudDisarmDC.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.Label4.Location = New Global.System.Drawing.Point(48, 120)
+            Me.nudDisarmDC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'Label4
+            '
+            Me.Label4.Location = New System.Drawing.Point(48, 138)
             Me.Label4.Name = "Label4"
-            Me.Label4.Size = New Global.System.Drawing.Size(88, 16)
+            Me.Label4.Size = New System.Drawing.Size(88, 19)
             Me.Label4.TabIndex = 22
             Me.Label4.Text = "DisarmDC"
-            Me.Label4.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.Label15.Location = New Global.System.Drawing.Point(48, 88)
+            Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'Label15
+            '
+            Me.Label15.Location = New System.Drawing.Point(48, 102)
             Me.Label15.Name = "Label15"
-            Me.Label15.Size = New Global.System.Drawing.Size(88, 16)
+            Me.Label15.Size = New System.Drawing.Size(88, 18)
             Me.Label15.TabIndex = 23
             Me.Label15.Text = "TrapDisarmable"
-            Me.Label15.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.nudTrapDetectDC.Location = New Global.System.Drawing.Point(176, 56)
+            Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'nudTrapDetectDC
+            '
+            Me.nudTrapDetectDC.Location = New System.Drawing.Point(176, 65)
             Me.nudTrapDetectDC.Maximum = New Decimal(New Integer() {250, 0, 0, 0})
             Me.nudTrapDetectDC.Name = "nudTrapDetectDC"
-            Me.nudTrapDetectDC.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Me.nudTrapDetectDC.Size = New Global.System.Drawing.Size(48, 20)
+            Me.nudTrapDetectDC.RightToLeft = System.Windows.Forms.RightToLeft.No
+            Me.nudTrapDetectDC.Size = New System.Drawing.Size(48, 22)
             Me.nudTrapDetectDC.TabIndex = 1
-            Me.nudTrapDetectDC.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.Label16.Location = New Global.System.Drawing.Point(48, 56)
+            Me.nudTrapDetectDC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'Label16
+            '
+            Me.Label16.Location = New System.Drawing.Point(48, 65)
             Me.Label16.Name = "Label16"
-            Me.Label16.Size = New Global.System.Drawing.Size(88, 16)
+            Me.Label16.Size = New System.Drawing.Size(88, 18)
             Me.Label16.TabIndex = 18
             Me.Label16.Text = "TrapDetectDC"
-            Me.Label16.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.lblTrapDetectable.Location = New Global.System.Drawing.Point(48, 24)
+            Me.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'lblTrapDetectable
+            '
+            Me.lblTrapDetectable.Location = New System.Drawing.Point(48, 28)
             Me.lblTrapDetectable.Name = "lblTrapDetectable"
-            Me.lblTrapDetectable.Size = New Global.System.Drawing.Size(88, 16)
+            Me.lblTrapDetectable.Size = New System.Drawing.Size(88, 18)
             Me.lblTrapDetectable.TabIndex = 19
             Me.lblTrapDetectable.Text = "TrapDetectable"
-            Me.lblTrapDetectable.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.nudTrapType.Location = New Global.System.Drawing.Point(176, 216)
+            Me.lblTrapDetectable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'nudTrapType
+            '
+            Me.nudTrapType.Location = New System.Drawing.Point(176, 249)
             Me.nudTrapType.Maximum = New Decimal(New Integer() {2, 0, 0, 0})
             Me.nudTrapType.Name = "nudTrapType"
-            Me.nudTrapType.RightToLeft = Global.System.Windows.Forms.RightToLeft.No
-            Me.nudTrapType.Size = New Global.System.Drawing.Size(48, 20)
+            Me.nudTrapType.RightToLeft = System.Windows.Forms.RightToLeft.No
+            Me.nudTrapType.Size = New System.Drawing.Size(48, 22)
             Me.nudTrapType.TabIndex = 6
-            Me.nudTrapType.TextAlign = Global.System.Windows.Forms.HorizontalAlignment.Right
-            Me.Label17.Location = New Global.System.Drawing.Point(48, 216)
+            Me.nudTrapType.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            '
+            'Label17
+            '
+            Me.Label17.Location = New System.Drawing.Point(48, 249)
             Me.Label17.Name = "Label17"
-            Me.Label17.Size = New Global.System.Drawing.Size(88, 16)
+            Me.Label17.Size = New System.Drawing.Size(88, 19)
             Me.Label17.TabIndex = 26
             Me.Label17.Text = "TrapType"
-            Me.Label17.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.chkbTrapFlag.Location = New Global.System.Drawing.Point(192, 152)
+            Me.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'chkbTrapFlag
+            '
+            Me.chkbTrapFlag.Location = New System.Drawing.Point(192, 175)
             Me.chkbTrapFlag.Name = "chkbTrapFlag"
-            Me.chkbTrapFlag.Size = New Global.System.Drawing.Size(24, 24)
+            Me.chkbTrapFlag.Size = New System.Drawing.Size(24, 28)
             Me.chkbTrapFlag.TabIndex = 4
-            Me.chkbTrapOneShot.Location = New Global.System.Drawing.Point(192, 184)
+            '
+            'chkbTrapOneShot
+            '
+            Me.chkbTrapOneShot.Location = New System.Drawing.Point(192, 212)
             Me.chkbTrapOneShot.Name = "chkbTrapOneShot"
-            Me.chkbTrapOneShot.Size = New Global.System.Drawing.Size(24, 24)
+            Me.chkbTrapOneShot.Size = New System.Drawing.Size(24, 28)
             Me.chkbTrapOneShot.TabIndex = 5
-            Me.btnSave.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Right
-            Me.btnSave.Location = New Global.System.Drawing.Point(312, 480)
+            '
+            'btnSave
+            '
+            Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.btnSave.Location = New System.Drawing.Point(312, 474)
             Me.btnSave.Name = "btnSave"
+            Me.btnSave.Size = New System.Drawing.Size(75, 26)
             Me.btnSave.TabIndex = 4
             Me.btnSave.Text = "&Save"
-            Me.btnCancel.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Right
-            Me.btnCancel.Location = New Global.System.Drawing.Point(408, 480)
+            '
+            'btnCancel
+            '
+            Me.btnCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.btnCancel.Location = New System.Drawing.Point(408, 474)
             Me.btnCancel.Name = "btnCancel"
+            Me.btnCancel.Size = New System.Drawing.Size(75, 26)
             Me.btnCancel.TabIndex = 5
             Me.btnCancel.Text = "&Cancel"
-            Me.btnInventory.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom Or Global.System.Windows.Forms.AnchorStyles.Left
-            Me.btnInventory.Location = New Global.System.Drawing.Point(64, 480)
+            '
+            'btnInventory
+            '
+            Me.btnInventory.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+            Me.btnInventory.Location = New System.Drawing.Point(64, 474)
             Me.btnInventory.Name = "btnInventory"
-            Me.btnInventory.Size = New Global.System.Drawing.Size(72, 24)
+            Me.btnInventory.Size = New System.Drawing.Size(72, 28)
             Me.btnInventory.TabIndex = 9
             Me.btnInventory.Text = "&Inventory"
-            Me.btnDebug.FlatStyle = Global.System.Windows.Forms.FlatStyle.Flat
-            Me.btnDebug.ForeColor = Global.System.Drawing.SystemColors.Control
-            Me.btnDebug.Location = New Global.System.Drawing.Point(0, 0)
+            '
+            'btnDebug
+            '
+            Me.btnDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnDebug.ForeColor = System.Drawing.SystemColors.Control
+            Me.btnDebug.Location = New System.Drawing.Point(0, 0)
             Me.btnDebug.Name = "btnDebug"
-            Me.btnDebug.Size = New Global.System.Drawing.Size(8, 9)
+            Me.btnDebug.Size = New System.Drawing.Size(8, 10)
             Me.btnDebug.TabIndex = 19
             Me.btnDebug.TabStop = False
-            Me.btnEditOnClosed.Location = New Global.System.Drawing.Point(384, 16)
-            Me.btnEditOnClosed.Name = "btnEditOnClosed"
-            Me.btnEditOnClosed.Size = New Global.System.Drawing.Size(32, 23)
-            Me.btnEditOnClosed.TabIndex = 1
-            Me.btnEditOnClosed.Text = "Edit"
-            Me.btnEditOnClosed.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.btnEditOnDamaged.Location = New Global.System.Drawing.Point(384, 42)
-            Me.btnEditOnDamaged.Name = "btnEditOnDamaged"
-            Me.btnEditOnDamaged.Size = New Global.System.Drawing.Size(32, 23)
-            Me.btnEditOnDamaged.TabIndex = 3
-            Me.btnEditOnDamaged.Text = "Edit"
-            Me.btnEditOnDamaged.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.btnEditOnDeath.Location = New Global.System.Drawing.Point(384, 68)
-            Me.btnEditOnDeath.Name = "btnEditOnDeath"
-            Me.btnEditOnDeath.Size = New Global.System.Drawing.Size(32, 23)
-            Me.btnEditOnDeath.TabIndex = 5
-            Me.btnEditOnDeath.Text = "Edit"
-            Me.btnEditOnDeath.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.btnEditOnDisarm.Location = New Global.System.Drawing.Point(384, 94)
-            Me.btnEditOnDisarm.Name = "btnEditOnDisarm"
-            Me.btnEditOnDisarm.Size = New Global.System.Drawing.Size(32, 23)
-            Me.btnEditOnDisarm.TabIndex = 7
-            Me.btnEditOnDisarm.Text = "Edit"
-            Me.btnEditOnDisarm.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.btnEditOnHeartbeat.Location = New Global.System.Drawing.Point(384, 146)
-            Me.btnEditOnHeartbeat.Name = "btnEditOnHeartbeat"
-            Me.btnEditOnHeartbeat.Size = New Global.System.Drawing.Size(32, 23)
-            Me.btnEditOnHeartbeat.TabIndex = 11
-            Me.btnEditOnHeartbeat.Text = "Edit"
-            Me.btnEditOnHeartbeat.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.btnEditOnLock.Location = New Global.System.Drawing.Point(384, 198)
-            Me.btnEditOnLock.Name = "btnEditOnLock"
-            Me.btnEditOnLock.Size = New Global.System.Drawing.Size(32, 23)
-            Me.btnEditOnLock.TabIndex = 15
-            Me.btnEditOnLock.Text = "Edit"
-            Me.btnEditOnLock.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.btnEditOnMeleeAttacked.Location = New Global.System.Drawing.Point(384, 224)
-            Me.btnEditOnMeleeAttacked.Name = "btnEditOnMeleeAttacked"
-            Me.btnEditOnMeleeAttacked.Size = New Global.System.Drawing.Size(32, 23)
-            Me.btnEditOnMeleeAttacked.TabIndex = 17
-            Me.btnEditOnMeleeAttacked.Text = "Edit"
-            Me.btnEditOnMeleeAttacked.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.btnEditOnOpen.Location = New Global.System.Drawing.Point(384, 250)
-            Me.btnEditOnOpen.Name = "btnEditOnOpen"
-            Me.btnEditOnOpen.Size = New Global.System.Drawing.Size(32, 23)
-            Me.btnEditOnOpen.TabIndex = 19
-            Me.btnEditOnOpen.Text = "Edit"
-            Me.btnEditOnOpen.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.btnEditOnSpellCastAt.Location = New Global.System.Drawing.Point(384, 276)
-            Me.btnEditOnSpellCastAt.Name = "btnEditOnSpellCastAt"
-            Me.btnEditOnSpellCastAt.Size = New Global.System.Drawing.Size(32, 23)
-            Me.btnEditOnSpellCastAt.TabIndex = 21
-            Me.btnEditOnSpellCastAt.Text = "Edit"
-            Me.btnEditOnSpellCastAt.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.btnEditOnTrapTriggered.Location = New Global.System.Drawing.Point(384, 302)
-            Me.btnEditOnTrapTriggered.Name = "btnEditOnTrapTriggered"
-            Me.btnEditOnTrapTriggered.Size = New Global.System.Drawing.Size(32, 23)
-            Me.btnEditOnTrapTriggered.TabIndex = 23
-            Me.btnEditOnTrapTriggered.Text = "Edit"
-            Me.btnEditOnTrapTriggered.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.btnEditOnUserDefined.Location = New Global.System.Drawing.Point(384, 380)
-            Me.btnEditOnUserDefined.Name = "btnEditOnUserDefined"
-            Me.btnEditOnUserDefined.Size = New Global.System.Drawing.Size(32, 23)
-            Me.btnEditOnUserDefined.TabIndex = 29
-            Me.btnEditOnUserDefined.Text = "Edit"
-            Me.btnEditOnUserDefined.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.btnEditOnUnlock.Location = New Global.System.Drawing.Point(384, 328)
-            Me.btnEditOnUnlock.Name = "btnEditOnUnlock"
-            Me.btnEditOnUnlock.Size = New Global.System.Drawing.Size(32, 23)
-            Me.btnEditOnUnlock.TabIndex = 25
-            Me.btnEditOnUnlock.Text = "Edit"
-            Me.btnEditOnUnlock.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.btnEditOnUsed.Location = New Global.System.Drawing.Point(384, 354)
-            Me.btnEditOnUsed.Name = "btnEditOnUsed"
-            Me.btnEditOnUsed.Size = New Global.System.Drawing.Size(32, 23)
-            Me.btnEditOnUsed.TabIndex = 27
-            Me.btnEditOnUsed.Text = "Edit"
-            Me.btnEditOnUsed.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.btnEditOnInvDisturbed.Location = New Global.System.Drawing.Point(384, 172)
-            Me.btnEditOnInvDisturbed.Name = "btnEditOnInvDisturbed"
-            Me.btnEditOnInvDisturbed.Size = New Global.System.Drawing.Size(32, 23)
-            Me.btnEditOnInvDisturbed.TabIndex = 13
-            Me.btnEditOnInvDisturbed.Text = "Edit"
-            Me.btnEditOnInvDisturbed.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.btnEditOnEndDialogue.Location = New Global.System.Drawing.Point(384, 120)
-            Me.btnEditOnEndDialogue.Name = "btnEditOnEndDialogue"
-            Me.btnEditOnEndDialogue.Size = New Global.System.Drawing.Size(32, 23)
-            Me.btnEditOnEndDialogue.TabIndex = 9
-            Me.btnEditOnEndDialogue.Text = "Edit"
-            Me.btnEditOnEndDialogue.TextAlign = Global.System.Drawing.ContentAlignment.MiddleLeft
-            Me.AutoScaleBaseSize = New Global.System.Drawing.Size(5, 13)
-            Me.ClientSize = New Global.System.Drawing.Size(496, 517)
+            '
+            'frmUTP_Editor
+            '
+            Me.AutoScaleBaseSize = New System.Drawing.Size(5, 15)
+            Me.ClientSize = New System.Drawing.Size(496, 517)
             Me.Controls.Add(Me.btnDebug)
             Me.Controls.Add(Me.TabControl1)
             Me.Controls.Add(Me.btnSave)
@@ -1079,52 +1415,31 @@ Namespace kotor_tool
             Me.Text = "Placeable Editor - KotOR "
             Me.TabControl1.ResumeLayout(False)
             Me.TabPageBasic.ResumeLayout(False)
-            CType(Me.nudWill, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudFort, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudHP, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudHardness, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudRef, Global.System.ComponentModel.ISupportInitialize).EndInit()
+            Me.TabPageBasic.PerformLayout()
+            CType(Me.nudWill, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudFort, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudHP, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudHardness, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudRef, System.ComponentModel.ISupportInitialize).EndInit()
             Me.TabPageLock.ResumeLayout(False)
-            CType(Me.nudCloseLockDC, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudOpenLockDC, Global.System.ComponentModel.ISupportInitialize).EndInit()
+            Me.TabPageLock.PerformLayout()
+            CType(Me.nudCloseLockDC, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudOpenLockDC, System.ComponentModel.ISupportInitialize).EndInit()
             Me.TabPageAdvanced.ResumeLayout(False)
+            Me.TabPageAdvanced.PerformLayout()
             Me.TabPageScripts.ResumeLayout(False)
+            Me.TabPageScripts.PerformLayout()
             Me.TabPageDescription.ResumeLayout(False)
+            Me.TabPageDescription.PerformLayout()
             Me.TabPageComments.ResumeLayout(False)
+            Me.TabPageComments.PerformLayout()
             Me.TabPageTrap.ResumeLayout(False)
-            CType(Me.nudDisarmDC, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudTrapDetectDC, Global.System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.nudTrapType, Global.System.ComponentModel.ISupportInitialize).EndInit()
-
-            ' -------------------------------------------------------------
-            ' Event bindings restored from decompiled synchronized
-            ' AccessedThroughProperty wrappers.
-            ' -------------------------------------------------------------
-            AddHandler Me.btnSetNameLang.Click, AddressOf Me.btnSetNameLang_Click
-            AddHandler Me.chkbLockable.CheckedChanged, AddressOf Me.chkbLockable_CheckedChanged
-            AddHandler Me.chkbLocked.CheckedChanged, AddressOf Me.chkbLocked_CheckedChanged
-            AddHandler Me.btnSetDescriptionLang.Click, AddressOf Me.btnSetDescLang_Click
-            AddHandler Me.btnSave.Click, AddressOf Me.btnSave_Click
-            AddHandler Me.btnCancel.Click, AddressOf Me.btnCancel_Click
-            AddHandler Me.btnInventory.Click, AddressOf Me.btnInventory_Click
-            AddHandler Me.btnDebug.Click, AddressOf Me.btnDebug_Click
-            AddHandler Me.btnEditOnClosed.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnDamaged.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnDeath.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnDisarm.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnHeartbeat.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnLock.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnMeleeAttacked.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnOpen.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnSpellCastAt.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnTrapTriggered.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnUserDefined.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnUnlock.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnUsed.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnInvDisturbed.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnEndDialogue.Click, AddressOf Me.btnEditScript_Click
+            CType(Me.nudDisarmDC, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudTrapDetectDC, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudTrapType, System.ComponentModel.ISupportInitialize).EndInit()
             Me.ResumeLayout(False)
+
         End Sub
 
-	End Class
+    End Class
 End Namespace

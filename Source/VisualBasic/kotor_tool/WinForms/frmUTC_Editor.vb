@@ -312,17 +312,17 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06001290 RID: 4752 RVA: 0x002A9C18 File Offset: 0x002A8C18
-        Private Sub trkbarAlignment_Scroll(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub trkbarAlignment_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles trkbarAlignment.Scroll
             Me.nudAlignment.Value = New Decimal(CType(sender, TrackBar).Value)
         End Sub
 
         ' Token: 0x06001291 RID: 4753 RVA: 0x002A9C38 File Offset: 0x002A8C38
-        Private Sub nudAlignment_ValueChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub nudAlignment_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles nudAlignment.ValueChanged
             Me.trkbarAlignment.Value = Convert.ToInt32(CType(sender, NumericUpDown).Value)
         End Sub
 
         ' Token: 0x06001292 RID: 4754 RVA: 0x002A9C58 File Offset: 0x002A8C58
-        Private Sub chklbForcePowers_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs)
+        Private Sub chklbForcePowers_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles chklbForcePowers.MouseMove
             Me.tbForcePowerSummary.Clear()
             Try
                 For Each obj As Object In Me.chklbForcePowers.CheckedItems
@@ -339,7 +339,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06001293 RID: 4755 RVA: 0x002A9CDC File Offset: 0x002A8CDC
-        Private Sub chklbFeats_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs)
+        Private Sub chklbFeats_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles chklbFeats.MouseMove
             Me.tbFeatSummary.Clear()
             Try
                 For Each obj As Object In Me.chklbFeats.CheckedItems
@@ -540,12 +540,12 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x0600129A RID: 4762 RVA: 0x002AA69C File Offset: 0x002A969C
-        Private Sub btnCancel_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnCancel_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnCancel.Click
             Me.Close()
         End Sub
 
         ' Token: 0x0600129B RID: 4763 RVA: 0x002AA6A4 File Offset: 0x002A96A4
-        Private Sub btnWriteFile_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnWriteFile_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnWriteFile.Click
             Me.SetGFFNodeValues()
             If Not Me.m_bSaveGameMode Then
                 Me.m_EditingFilePath = StringType.FromObject(frmMain.GetFilePath("save", Me.CurrentSettings.defaultSaveLocation, Path.GetFileNameWithoutExtension(Me.m_EditingFilePath) + ".utc", "", "", False, True))
@@ -572,7 +572,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x0600129D RID: 4765 RVA: 0x002AA7C8 File Offset: 0x002A97C8
-        Private Sub btnInventory_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnInventory_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnInventory.Click
             Dim frmInventoryEditor As frmInventoryEditor = New frmInventoryEditor(Me.KotorVersionIndex)
             Dim num As Integer = 0
             Dim num2 As Integer = Me.UTC.GetListItemCount("ItemList") - 1
@@ -659,7 +659,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x0600129E RID: 4766 RVA: 0x002AAC1C File Offset: 0x002A9C1C
-        Private Sub btnSelectAllPowers_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnSelectAllPowers_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSelectAllPowers.Click
             Dim num As Integer = 0
             Dim num2 As Integer = Me.chklbForcePowers.Items.Count - 1
             For i As Integer = num To num2
@@ -668,7 +668,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x0600129F RID: 4767 RVA: 0x002AAC58 File Offset: 0x002A9C58
-        Private Sub btnClearAllPowers_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnClearAllPowers_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnClearAllPowers.Click
             Dim num As Integer = 0
             Dim num2 As Integer = Me.chklbForcePowers.Items.Count - 1
             For i As Integer = num To num2
@@ -679,7 +679,41 @@ Namespace kotor_tool
         ' Token: 0x060012A0 RID: 4768 RVA: 0x002AAC94 File Offset: 0x002A9C94
         Private Sub frmUTC_Editor_Load(ByVal sender As Object, ByVal e As EventArgs)
             Me.PositionWindow(Me.[GetType]().Name)
+            'Me.tabCtrl1.Appearance = TabAppearance.Buttons
+            'Me.tabCtrl1.DrawMode = TabDrawMode.OwnerDrawFixed
         End Sub
+
+        '' Added Custom Tab Drawing System.
+        'Private Sub tabCtrl1_DrawItem(ByVal sender As Object, ByVal e As DrawItemEventArgs) Handles tabCtrl1.DrawItem
+        '    Dim tab As TabControl = CType(sender, TabControl)
+        '    Dim tabPage As TabPage = tab.TabPages(e.Index)
+        '    Dim tabRect As Rectangle = tab.GetTabRect(e.Index)
+
+        '    Dim backColor As Color = Color.FromArgb(22, 27, 34)
+        '    Dim selectedBackColor As Color = Color.FromArgb(28, 35, 44)
+        '    Dim borderColor As Color = Color.FromArgb(174, 136, 58)
+        '    Dim textColor As Color = Color.FromArgb(238, 238, 230)
+
+        '    If e.Index = tab.SelectedIndex Then
+        '        Using b As New SolidBrush(selectedBackColor)
+        '            e.Graphics.FillRectangle(b, tabRect)
+        '        End Using
+
+        '        Using p As New Pen(borderColor)
+        '            e.Graphics.DrawRectangle(p, tabRect.X, tabRect.Y, tabRect.Width - 1, tabRect.Height - 1)
+        '        End Using
+        '    Else
+        '        Using b As New SolidBrush(backColor)
+        '            e.Graphics.FillRectangle(b, tabRect)
+        '        End Using
+
+        '        Using p As New Pen(Color.FromArgb(62, 70, 82))
+        '            e.Graphics.DrawRectangle(p, tabRect.X, tabRect.Y, tabRect.Width - 1, tabRect.Height - 1)
+        '        End Using
+        '    End If
+
+        '    TextRenderer.DrawText(e.Graphics, tabPage.Text, tab.Font, tabRect, textColor, TextFormatFlags.HorizontalCenter Or TextFormatFlags.VerticalCenter)
+        'End Sub
 
         ' Token: 0x060012A1 RID: 4769 RVA: 0x002AACA8 File Offset: 0x002A9CA8
         Private Sub frmUTC_Editor_Closing(ByVal sender As Object, ByVal e As CancelEventArgs)
@@ -692,7 +726,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060012A3 RID: 4771 RVA: 0x002AACD0 File Offset: 0x002A9CD0
-        Private Sub btnDebug_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnDebug_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnDebug.Click
             Dim frmTextEditor As frmTextEditor = New frmTextEditor()
             frmTextEditor.Filename = Me.tbTag.Text
             frmTextEditor.Text = "Text Editor - " + frmTextEditor.Filename
@@ -731,7 +765,7 @@ Namespace kotor_tool
         End Function
 
         ' Token: 0x060012A5 RID: 4773 RVA: 0x002AAE78 File Offset: 0x002A9E78
-        Private Sub btnEditScript_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnEditScript_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnEditOnUserDefine.Click, btnEditOnSpellAt.Click, btnEditOnSpawn.Click, btnEditOnRested.Click, btnEditOnNotice.Click, btnEditOnHeartbeat.Click, btnEditOnEndRound.Click, btnEditOnEndDialogu.Click, btnEditOnDisturbed.Click, btnEditOnDialogue.Click, btnEditOnDeath.Click, btnEditOnDamaged.Click, btnEditOnBlocked.Click, btnEditOnAttacked.Click
             Utils.EditScriptForTextBox(CType(sender, Button), Me.m_EditingFilePath, Me.KotorVersionIndex)
         End Sub
 
