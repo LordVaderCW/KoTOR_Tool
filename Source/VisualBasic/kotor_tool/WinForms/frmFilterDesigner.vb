@@ -47,7 +47,7 @@ Namespace kotor_tool
 		End Sub
 
         ' Token: 0x060004F3 RID: 1267 RVA: 0x0023F9B4 File Offset: 0x0023E9B4
-        Private Sub btnOK_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnOK_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnOK.Click
             Me.RF.FilterParts.Clear()
             Dim num As Integer = 1
             Dim num2 As Integer = Me.FilterControlCount()
@@ -65,7 +65,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060004F4 RID: 1268 RVA: 0x0023FB0C File Offset: 0x0023EB0C
-        Private Sub btnReset_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnReset_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnReset.Click
             Me.m_HandlersActive = False
             Dim num As Integer = 1
             Dim num2 As Integer = Me.FilterControlCount()
@@ -79,7 +79,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060004F5 RID: 1269 RVA: 0x0023FBC8 File Offset: 0x0023EBC8
-        Private Sub btnAddFilter_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnAddFilter_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnAddFilter.Click
             Me.AddFilterRow()
         End Sub
 

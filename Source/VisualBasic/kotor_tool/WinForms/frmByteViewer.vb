@@ -73,18 +73,18 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060002DA RID: 730 RVA: 0x0022FCE8 File Offset: 0x0022ECE8
-        Private Sub rbANSI_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub rbANSI_Click(ByVal sender As Object, ByVal e As EventArgs) Handles rbANSI.Click
             Me.bv.SetDisplayMode(DisplayMode.Ansi)
             Me.bv.Font = New Font("Lucida Console", 8.0F)
         End Sub
 
         ' Token: 0x060002DB RID: 731 RVA: 0x0022FD10 File Offset: 0x0022ED10
-        Private Sub rbHex_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub rbHex_Click(ByVal sender As Object, ByVal e As EventArgs) Handles rbHex.Click
             Me.bv.SetDisplayMode(DisplayMode.Hexdump)
         End Sub
 
         ' Token: 0x060002DC RID: 732 RVA: 0x0022FD20 File Offset: 0x0022ED20
-        Private Sub rbUnicode_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub rbUnicode_Click(ByVal sender As Object, ByVal e As EventArgs) Handles rbUnicode.Click
             Me.bv.SetDisplayMode(DisplayMode.Unicode)
         End Sub
 
@@ -144,7 +144,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x060002E1 RID: 737 RVA: 0x0022FF14 File Offset: 0x0022EF14
-        Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button1.Click
             Me.Close()
         End Sub
 

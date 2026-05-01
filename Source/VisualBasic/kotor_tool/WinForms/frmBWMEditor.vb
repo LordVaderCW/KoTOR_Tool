@@ -40,7 +40,7 @@ Namespace kotor_tool
 
 #Region "Menu Events"
 
-        Private Sub miOpenBinary_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOpenBinary_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpenBinary.Click
             Dim defaultImportLocation As String = Me.GetDefaultImportLocation()
 
             Me.filepath = CStr(frmMain.GetFilePath("load", defaultImportLocation, "*.pwk", "Select a binary PWK/DWK file", "pwk", False, True))
@@ -62,7 +62,7 @@ Namespace kotor_tool
             Me.EnableSaveMenus()
         End Sub
 
-        Private Sub miOpenAscii_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOpenAscii_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpenAscii.Click
             Dim defaultImportLocation As String = Me.GetDefaultImportLocation()
 
             Me.filepath = CStr(frmMain.GetFilePath("load", defaultImportLocation, "", "Select an ASCII PWK/DWK/WOK file", "pwk", False, True))
@@ -86,7 +86,7 @@ Namespace kotor_tool
             Me.EnableSaveMenus()
         End Sub
 
-        Private Sub miSaveAsBinary_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miSaveAsBinary_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miSaveAsBinary.Click
             If Me.walk Is Nothing Then
                 Return
             End If
@@ -106,7 +106,7 @@ Namespace kotor_tool
             Me.tbFilepath.Text = Me.filepath
         End Sub
 
-        Private Sub miSaveAsASCII_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miSaveAsASCII_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miSaveAsASCII.Click
             If Me.walk Is Nothing Then
                 Return
             End If
@@ -136,7 +136,7 @@ Namespace kotor_tool
             End If
         End Sub
 
-        Private Sub miQuit_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miQuit_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miQuit.Click
             Me.Close()
         End Sub
 

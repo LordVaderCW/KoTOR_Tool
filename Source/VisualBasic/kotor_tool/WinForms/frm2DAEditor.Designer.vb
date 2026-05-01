@@ -287,11 +287,12 @@ Namespace kotor_tool
             Me.ClientSize = New Global.System.Drawing.Size(560, 409)
             Me.Controls.Add(Me.pnlRoot)
 
-            Try
-                Me.Icon = My.Resources.koTOR_icn
-            Catch
-                Me.Icon = CType(resources.GetObject("$this.Icon"), Global.System.Drawing.Icon)
-            End Try
+            '' Try catch removed. vs 2022. 
+            'Try
+            Me.Icon = My.Resources.koTOR_icn
+            'Catch
+            'Me.Icon = CType(resources.GetObject("$this.Icon"), Global.System.Drawing.Icon)
+            'End Try
 
             Me.Menu = Me.MainMenu1
             Me.MinimumSize = New Global.System.Drawing.Size(360, 260)

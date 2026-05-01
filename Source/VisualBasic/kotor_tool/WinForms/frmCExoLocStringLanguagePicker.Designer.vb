@@ -78,7 +78,7 @@ Namespace kotor_tool
             Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
             Me.pnlRoot.Name = "pnlRoot"
-            Me.pnlRoot.Size = New System.Drawing.Size(294, 195)
+            Me.pnlRoot.Size = New System.Drawing.Size(459, 185)
             Me.pnlRoot.TabIndex = 0
             '
             'pnlBody
@@ -91,7 +91,7 @@ Namespace kotor_tool
             Me.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlBody.Location = New System.Drawing.Point(0, 58)
             Me.pnlBody.Name = "pnlBody"
-            Me.pnlBody.Size = New System.Drawing.Size(294, 89)
+            Me.pnlBody.Size = New System.Drawing.Size(459, 79)
             Me.pnlBody.TabIndex = 1
             '
             'Label1
@@ -107,6 +107,8 @@ Namespace kotor_tool
             '
             'cmbxLanguage
             '
+            Me.cmbxLanguage.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.cmbxLanguage.BackColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
             Me.cmbxLanguage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -115,7 +117,7 @@ Namespace kotor_tool
             Me.cmbxLanguage.Items.AddRange(New Object() {"English", "French", "German", "Italian", "Spanish", "Polish"})
             Me.cmbxLanguage.Location = New System.Drawing.Point(105, 12)
             Me.cmbxLanguage.Name = "cmbxLanguage"
-            Me.cmbxLanguage.Size = New System.Drawing.Size(160, 21)
+            Me.cmbxLanguage.Size = New System.Drawing.Size(335, 21)
             Me.cmbxLanguage.TabIndex = 0
             '
             'Label2
@@ -131,6 +133,8 @@ Namespace kotor_tool
             '
             'cmbxGender
             '
+            Me.cmbxGender.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.cmbxGender.BackColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
             Me.cmbxGender.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -139,7 +143,7 @@ Namespace kotor_tool
             Me.cmbxGender.Items.AddRange(New Object() {"Neuter/Masculine", "Feminine"})
             Me.cmbxGender.Location = New System.Drawing.Point(105, 49)
             Me.cmbxGender.Name = "cmbxGender"
-            Me.cmbxGender.Size = New System.Drawing.Size(160, 21)
+            Me.cmbxGender.Size = New System.Drawing.Size(335, 21)
             Me.cmbxGender.TabIndex = 1
             '
             'pnlFooter
@@ -149,9 +153,9 @@ Namespace kotor_tool
             Me.pnlFooter.Controls.Add(Me.btnOK)
             Me.pnlFooter.Controls.Add(Me.btnCancel)
             Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.pnlFooter.Location = New System.Drawing.Point(0, 147)
+            Me.pnlFooter.Location = New System.Drawing.Point(0, 137)
             Me.pnlFooter.Name = "pnlFooter"
-            Me.pnlFooter.Size = New System.Drawing.Size(294, 48)
+            Me.pnlFooter.Size = New System.Drawing.Size(459, 48)
             Me.pnlFooter.TabIndex = 2
             '
             'lblFooterSeparator
@@ -160,11 +164,12 @@ Namespace kotor_tool
             Me.lblFooterSeparator.Dock = System.Windows.Forms.DockStyle.Top
             Me.lblFooterSeparator.Location = New System.Drawing.Point(0, 0)
             Me.lblFooterSeparator.Name = "lblFooterSeparator"
-            Me.lblFooterSeparator.Size = New System.Drawing.Size(294, 1)
+            Me.lblFooterSeparator.Size = New System.Drawing.Size(459, 1)
             Me.lblFooterSeparator.TabIndex = 0
             '
             'btnOK
             '
+            Me.btnOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.btnOK.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
             Me.btnOK.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
             Me.btnOK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
@@ -172,7 +177,7 @@ Namespace kotor_tool
             Me.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnOK.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.btnOK.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnOK.Location = New System.Drawing.Point(105, 13)
+            Me.btnOK.Location = New System.Drawing.Point(280, 13)
             Me.btnOK.Name = "btnOK"
             Me.btnOK.Size = New System.Drawing.Size(75, 25)
             Me.btnOK.TabIndex = 0
@@ -181,6 +186,7 @@ Namespace kotor_tool
             '
             'btnCancel
             '
+            Me.btnCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.btnCancel.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
             Me.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
             Me.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
@@ -189,7 +195,7 @@ Namespace kotor_tool
             Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnCancel.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.btnCancel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnCancel.Location = New System.Drawing.Point(190, 13)
+            Me.btnCancel.Location = New System.Drawing.Point(365, 13)
             Me.btnCancel.Name = "btnCancel"
             Me.btnCancel.Size = New System.Drawing.Size(75, 25)
             Me.btnCancel.TabIndex = 1
@@ -205,7 +211,7 @@ Namespace kotor_tool
             Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
             Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
             Me.pnlHeader.Name = "pnlHeader"
-            Me.pnlHeader.Size = New System.Drawing.Size(294, 58)
+            Me.pnlHeader.Size = New System.Drawing.Size(459, 58)
             Me.pnlHeader.TabIndex = 0
             '
             'lblTitle
@@ -236,7 +242,7 @@ Namespace kotor_tool
             Me.lblHeaderSeparator.Dock = System.Windows.Forms.DockStyle.Bottom
             Me.lblHeaderSeparator.Location = New System.Drawing.Point(0, 56)
             Me.lblHeaderSeparator.Name = "lblHeaderSeparator"
-            Me.lblHeaderSeparator.Size = New System.Drawing.Size(294, 2)
+            Me.lblHeaderSeparator.Size = New System.Drawing.Size(459, 2)
             Me.lblHeaderSeparator.TabIndex = 2
             '
             'frmCExoLocStringLanguagePicker
@@ -245,12 +251,11 @@ Namespace kotor_tool
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
             Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.CancelButton = Me.btnCancel
-            Me.ClientSize = New System.Drawing.Size(294, 195)
+            Me.ClientSize = New System.Drawing.Size(459, 185)
             Me.ControlBox = False
             Me.Controls.Add(Me.pnlRoot)
             Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-            Me.MaximumSize = New System.Drawing.Size(300, 224)
             Me.MinimumSize = New System.Drawing.Size(300, 224)
             Me.Name = "frmCExoLocStringLanguagePicker"
             Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide

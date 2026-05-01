@@ -117,4 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="TextBox1.Text" xml:space="preserve">
+    <value>The first time you run the program, it will attempt to detect where you have installed KotOR and configure some of the directory paths it needs to work. It will then bring up the path management screen so you can verify them.
+
+You can specify whether or not you want the BIF tree built at program startup or not from the Tools | Options... menu. If you leave the checkbox unchecked, the BIF portion of the tree view will only be built when you attempt to expand it.
+
+Once the program is running, you can:
+
+- Select any *.bif or *.rim  file from the tree view, then click Extract to extract every file in it to a directory
+
+- Select any file in a bif, rim, or erf, then click Extract to extract it to a directory
+
+- Double-click on any 2da file to bring up the editor for it.  You can then edit the values and write the file to a directory. (Most likely the override folder in your KotOR folder)  Clicking on the column header in the editor grid will sort it based on the values in that column.  Repeated clicking will change the sort direction.
+
+- Double-clicking on most other file types will bring up an editor/viewer for them, if one is available
+
+- You can also directly open a 2da v2.b file from the File menu for editing. NOTE: You do not have to open the chitin.key file first.
+
+Notes:
+* If you want to edit files contained in RIM files, install Bioware's Gff Editor in the same directory as kotor_tool.
+
+* If you want to extract texture pack .tpc files, you will need the tpc2tga program installed in the same directory as kotor_tool.
+
+* You can specify whether or not you want to automatically convert extracted .tpc files to TGA format from the Tools | Options... menu
+
+* If you also want to be able to view the .tpc files, you must install a TGA file viewer and specify the path to it in the Path Manager.
+You can download a free TGA viewer at http://www.creabit.com/viewer/</value>
+  </data>
 </root>

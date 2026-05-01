@@ -564,14 +564,17 @@
     <EmbeddedResource Include="WinForms\frmAutoDialog.resources">
       <LogicalName>kotor_tool.frmAutoDialog.resources</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmBasicHelp.resources">
-      <LogicalName>kotor_tool.frmBasicHelp.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmBasicHelp.resx">
+      <DependentUpon>frmBasicHelp.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmBWMEditor.resources">
-      <LogicalName>kotor_tool.frmBWMEditor.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmBWMEditor.resx">
+      <DependentUpon>frmBWMEditor.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmByteViewer.resources">
-      <LogicalName>kotor_tool.frmByteViewer.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmByteViewer.resx">
+      <DependentUpon>frmByteViewer.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmCExoLocStringLanguagePicker.resx">
       <DependentUpon>frmCExoLocStringLanguagePicker.vb</DependentUpon>
@@ -588,15 +591,17 @@
       <DependentUpon>frmDialogTlk.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmERFManager.resources">
-      <LogicalName>kotor_tool.frmERFManager.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmERFManager.resx">
+      <DependentUpon>frmERFManager.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmErrorMessageWithCopyableText.resx">
       <DependentUpon>frmErrorMessageWithCopyableText.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmFilterDesigner.resources">
-      <LogicalName>kotor_tool.frmFilterDesigner.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmFilterDesigner.resx">
+      <DependentUpon>frmFilterDesigner.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmGlobalVar_Editor.resx">
       <DependentUpon>frmGlobalVar_Editor.vb</DependentUpon>
@@ -635,7 +640,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmModuleIfo_AreaEditor.resx">
       <DependentUpon>frmModuleIfo_AreaEditor.vb</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmModuleItem_Base_Editor.resx">
       <DependentUpon>frmModuleItem_Base_Editor.vb</DependentUpon>

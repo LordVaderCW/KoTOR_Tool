@@ -137,6 +137,10 @@ Namespace kotor_tool
         Friend WithEvents Label38 As Global.System.Windows.Forms.Label
         Friend WithEvents tbActionsTakenScript2 As Global.System.Windows.Forms.TextBox
         Friend WithEvents Label39 As Global.System.Windows.Forms.Label
+        Friend WithEvents pnlHeader As Global.System.Windows.Forms.Panel
+        Friend WithEvents lblTitle As Global.System.Windows.Forms.Label
+        Friend WithEvents lblSubtitle As Global.System.Windows.Forms.Label
+        Friend WithEvents lblHeaderSeparator As Global.System.Windows.Forms.Label
 
         ' Token: 0x0600030F RID: 783 RVA: 0x002310AC File Offset: 0x002300AC
         Protected Overrides Sub Dispose(ByVal disposing As Boolean)
@@ -276,6 +280,10 @@ Namespace kotor_tool
             Me.MenuItem4 = New System.Windows.Forms.MenuItem()
             Me.miQuit = New System.Windows.Forms.MenuItem()
             Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+            Me.pnlHeader = New System.Windows.Forms.Panel()
+            Me.lblTitle = New System.Windows.Forms.Label()
+            Me.lblSubtitle = New System.Windows.Forms.Label()
+            Me.lblHeaderSeparator = New System.Windows.Forms.Label()
             Me.TabControl1.SuspendLayout()
             Me.tabpagActionsTaken.SuspendLayout()
             Me.tabpagCamera.SuspendLayout()
@@ -304,21 +312,22 @@ Namespace kotor_tool
             Me.tabpagDebug.SuspendLayout()
             CType(Me.trkbTVIndent, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.trkbTVItemHeight, System.ComponentModel.ISupportInitialize).BeginInit()
+            Me.pnlHeader.SuspendLayout()
             Me.SuspendLayout()
             '
             'tvConversation
             '
             Me.tvConversation.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                        Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tvConversation.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.tvConversation.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tvConversation.HideSelection = False
             Me.tvConversation.Indent = 16
             Me.tvConversation.ItemHeight = 16
-            Me.tvConversation.Location = New System.Drawing.Point(32, 45)
+            Me.tvConversation.Location = New System.Drawing.Point(107, 124)
             Me.tvConversation.Name = "tvConversation"
-            Me.tvConversation.Size = New System.Drawing.Size(905, 198)
+            Me.tvConversation.Size = New System.Drawing.Size(830, 198)
             Me.tvConversation.TabIndex = 0
             '
             'tbConversationText
@@ -326,11 +335,11 @@ Namespace kotor_tool
             Me.tbConversationText.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
             Me.tbConversationText.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.tbConversationText.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbConversationText.Location = New System.Drawing.Point(12, 382)
+            Me.tbConversationText.Location = New System.Drawing.Point(12, 408)
             Me.tbConversationText.Multiline = True
             Me.tbConversationText.Name = "tbConversationText"
             Me.tbConversationText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.tbConversationText.Size = New System.Drawing.Size(260, 120)
+            Me.tbConversationText.Size = New System.Drawing.Size(260, 169)
             Me.tbConversationText.TabIndex = 4
             '
             'Label1
@@ -338,7 +347,7 @@ Namespace kotor_tool
             Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
             Me.Label1.BackColor = System.Drawing.Color.Transparent
             Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label1.Location = New System.Drawing.Point(12, 302)
+            Me.Label1.Location = New System.Drawing.Point(12, 328)
             Me.Label1.Name = "Label1"
             Me.Label1.Size = New System.Drawing.Size(260, 18)
             Me.Label1.TabIndex = 3
@@ -349,7 +358,7 @@ Namespace kotor_tool
             Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
             Me.Label2.BackColor = System.Drawing.Color.Transparent
             Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label2.Location = New System.Drawing.Point(12, 360)
+            Me.Label2.Location = New System.Drawing.Point(12, 386)
             Me.Label2.Name = "Label2"
             Me.Label2.Size = New System.Drawing.Size(260, 19)
             Me.Label2.TabIndex = 3
@@ -358,7 +367,7 @@ Namespace kotor_tool
             'TabControl1
             '
             Me.TabControl1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.TabControl1.Controls.Add(Me.tabpagActionsTaken)
             Me.TabControl1.Controls.Add(Me.tabpagCamera)
             Me.TabControl1.Controls.Add(Me.tabpagAnimationSound)
@@ -368,7 +377,7 @@ Namespace kotor_tool
             Me.TabControl1.Controls.Add(Me.tabpagThisFile2)
             Me.TabControl1.Controls.Add(Me.tabpagThisFile3)
             Me.TabControl1.Controls.Add(Me.tabpagDebug)
-            Me.TabControl1.Location = New System.Drawing.Point(280, 249)
+            Me.TabControl1.Location = New System.Drawing.Point(280, 328)
             Me.TabControl1.Multiline = True
             Me.TabControl1.Name = "TabControl1"
             Me.TabControl1.Padding = New System.Drawing.Point(8, 3)
@@ -400,7 +409,7 @@ Namespace kotor_tool
             Me.tbTextActiveScript.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.tbTextActiveScript.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
             Me.tbTextActiveScript.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbTextActiveScript.Location = New System.Drawing.Point(32, 102)
+            Me.tbTextActiveScript.Location = New System.Drawing.Point(32, 114)
             Me.tbTextActiveScript.MaxLength = 16
             Me.tbTextActiveScript.Name = "tbTextActiveScript"
             Me.tbTextActiveScript.Size = New System.Drawing.Size(120, 22)
@@ -442,7 +451,7 @@ Namespace kotor_tool
             Me.tbTextActiveScript2.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.tbTextActiveScript2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
             Me.tbTextActiveScript2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbTextActiveScript2.Location = New System.Drawing.Point(252, 102)
+            Me.tbTextActiveScript2.Location = New System.Drawing.Point(252, 114)
             Me.tbTextActiveScript2.MaxLength = 16
             Me.tbTextActiveScript2.Name = "tbTextActiveScript2"
             Me.tbTextActiveScript2.Size = New System.Drawing.Size(128, 22)
@@ -543,8 +552,8 @@ Namespace kotor_tool
             Me.cmbxCamVidEffect.Name = "cmbxCamVidEffect"
             Me.cmbxCamVidEffect.Size = New System.Drawing.Size(96, 21)
             Me.cmbxCamVidEffect.TabIndex = 12
-            Me.ToolTip1.SetToolTip(Me.cmbxCamVidEffect, "Selecting one of the two colors will make the conversation look like it was viewe" & _
-                    "d through a filter of that color")
+            Me.ToolTip1.SetToolTip(Me.cmbxCamVidEffect, "Selecting one of the two colors will make the conversation look like it was viewe" &
+        "d through a filter of that color")
             '
             'nudFadeColorG
             '
@@ -603,8 +612,8 @@ Namespace kotor_tool
             Me.nudCameraID.Size = New System.Drawing.Size(40, 22)
             Me.nudCameraID.TabIndex = 11
             Me.nudCameraID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-            Me.ToolTip1.SetToolTip(Me.nudCameraID, "The Camera ID indicates which Camera in a module shoould the Conversation be view" & _
-                    "ed from. It should be in the same room and the conversants.")
+            Me.ToolTip1.SetToolTip(Me.nudCameraID, "The Camera ID indicates which Camera in a module shoould the Conversation be view" &
+        "ed from. It should be in the same room and the conversants.")
             '
             'nudCamHeightOffset
             '
@@ -1039,8 +1048,8 @@ Namespace kotor_tool
             'tbComments
             '
             Me.tbComments.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                        Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tbComments.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.tbComments.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbComments.Location = New System.Drawing.Point(8, 18)
@@ -1542,11 +1551,11 @@ Namespace kotor_tool
             Me.btnCollapseAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
             Me.btnCollapseAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnCollapseAll.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnCollapseAll.Location = New System.Drawing.Point(5, 217)
+            Me.btnCollapseAll.Location = New System.Drawing.Point(5, 157)
             Me.btnCollapseAll.Name = "btnCollapseAll"
-            Me.btnCollapseAll.Size = New System.Drawing.Size(24, 26)
+            Me.btnCollapseAll.Size = New System.Drawing.Size(96, 26)
             Me.btnCollapseAll.TabIndex = 2
-            Me.btnCollapseAll.Text = "C"
+            Me.btnCollapseAll.Text = "Collapse All"
             Me.ToolTip1.SetToolTip(Me.btnCollapseAll, "Collapse all nodes in the treeview")
             Me.btnCollapseAll.UseVisualStyleBackColor = False
             '
@@ -1558,11 +1567,11 @@ Namespace kotor_tool
             Me.btnExpandAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
             Me.btnExpandAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnExpandAll.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnExpandAll.Location = New System.Drawing.Point(5, 45)
+            Me.btnExpandAll.Location = New System.Drawing.Point(5, 124)
             Me.btnExpandAll.Name = "btnExpandAll"
-            Me.btnExpandAll.Size = New System.Drawing.Size(24, 27)
+            Me.btnExpandAll.Size = New System.Drawing.Size(96, 27)
             Me.btnExpandAll.TabIndex = 1
-            Me.btnExpandAll.Text = "E"
+            Me.btnExpandAll.Text = "Expand All"
             Me.ToolTip1.SetToolTip(Me.btnExpandAll, "Expand all nodes in the treeview")
             Me.btnExpandAll.UseVisualStyleBackColor = False
             '
@@ -1574,7 +1583,7 @@ Namespace kotor_tool
             Me.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
             Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnSave.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnSave.Location = New System.Drawing.Point(59, 12)
+            Me.btnSave.Location = New System.Drawing.Point(59, 91)
             Me.btnSave.Name = "btnSave"
             Me.btnSave.Size = New System.Drawing.Size(42, 27)
             Me.btnSave.TabIndex = 6
@@ -1590,7 +1599,7 @@ Namespace kotor_tool
             Me.btnTest.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
             Me.btnTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnTest.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnTest.Location = New System.Drawing.Point(107, 12)
+            Me.btnTest.Location = New System.Drawing.Point(107, 91)
             Me.btnTest.Name = "btnTest"
             Me.btnTest.Size = New System.Drawing.Size(40, 27)
             Me.btnTest.TabIndex = 5
@@ -1649,7 +1658,7 @@ Namespace kotor_tool
             Me.tbSpeaker.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.tbSpeaker.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
             Me.tbSpeaker.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbSpeaker.Location = New System.Drawing.Point(12, 327)
+            Me.tbSpeaker.Location = New System.Drawing.Point(12, 353)
             Me.tbSpeaker.Name = "tbSpeaker"
             Me.tbSpeaker.Size = New System.Drawing.Size(260, 22)
             Me.tbSpeaker.TabIndex = 9
@@ -1662,7 +1671,7 @@ Namespace kotor_tool
             Me.btnOpen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
             Me.btnOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnOpen.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnOpen.Location = New System.Drawing.Point(5, 12)
+            Me.btnOpen.Location = New System.Drawing.Point(5, 91)
             Me.btnOpen.Name = "btnOpen"
             Me.btnOpen.Size = New System.Drawing.Size(48, 27)
             Me.btnOpen.TabIndex = 6
@@ -1708,12 +1717,59 @@ Namespace kotor_tool
             Me.miQuit.Shortcut = System.Windows.Forms.Shortcut.CtrlQ
             Me.miQuit.Text = "&Quit"
             '
+            'pnlHeader
+            '
+            Me.pnlHeader.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.pnlHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.pnlHeader.Controls.Add(Me.lblTitle)
+            Me.pnlHeader.Controls.Add(Me.lblSubtitle)
+            Me.pnlHeader.Controls.Add(Me.lblHeaderSeparator)
+            Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
+            Me.pnlHeader.Name = "pnlHeader"
+            Me.pnlHeader.Size = New System.Drawing.Size(961, 79)
+            Me.pnlHeader.TabIndex = 40
+            '
+            'lblTitle
+            '
+            Me.lblTitle.BackColor = System.Drawing.Color.Transparent
+            Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.lblTitle.Location = New System.Drawing.Point(16, 10)
+            Me.lblTitle.Name = "lblTitle"
+            Me.lblTitle.Size = New System.Drawing.Size(560, 34)
+            Me.lblTitle.TabIndex = 0
+            Me.lblTitle.Text = "Conversation Editor"
+            '
+            'lblSubtitle
+            '
+            Me.lblSubtitle.BackColor = System.Drawing.Color.Transparent
+            Me.lblSubtitle.Font = New System.Drawing.Font("Segoe UI", 8.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.lblSubtitle.Location = New System.Drawing.Point(18, 45)
+            Me.lblSubtitle.Name = "lblSubtitle"
+            Me.lblSubtitle.Size = New System.Drawing.Size(760, 21)
+            Me.lblSubtitle.TabIndex = 1
+            Me.lblSubtitle.Text = "Edit DLG conversation trees, node scripts, camera settings, animations, sounds, p" &
+    "lot data, and file-level metadata."
+            '
+            'lblHeaderSeparator
+            '
+            Me.lblHeaderSeparator.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.lblHeaderSeparator.BackColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.lblHeaderSeparator.Location = New System.Drawing.Point(0, 75)
+            Me.lblHeaderSeparator.Name = "lblHeaderSeparator"
+            Me.lblHeaderSeparator.Size = New System.Drawing.Size(961, 3)
+            Me.lblHeaderSeparator.TabIndex = 2
+            '
             'frmDialogEditor
             '
             Me.AcceptButton = Me.btnTest
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 15)
             Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
-            Me.ClientSize = New System.Drawing.Size(961, 517)
+            Me.ClientSize = New System.Drawing.Size(961, 596)
+            Me.Controls.Add(Me.pnlHeader)
             Me.Controls.Add(Me.tbSpeaker)
             Me.Controls.Add(Me.tbConversationText)
             Me.Controls.Add(Me.btnCollapseAll)
@@ -1725,8 +1781,6 @@ Namespace kotor_tool
             Me.Controls.Add(Me.btnSave)
             Me.Controls.Add(Me.btnTest)
             Me.Controls.Add(Me.btnOpen)
-            Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.Menu = Me.MainMenu1
             Me.Name = "frmDialogEditor"
             Me.Text = "Conversation Editor"
@@ -1765,6 +1819,7 @@ Namespace kotor_tool
             Me.tabpagDebug.PerformLayout()
             CType(Me.trkbTVIndent, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.trkbTVItemHeight, System.ComponentModel.ISupportInitialize).EndInit()
+            Me.pnlHeader.ResumeLayout(False)
             Me.ResumeLayout(False)
             Me.PerformLayout()
 

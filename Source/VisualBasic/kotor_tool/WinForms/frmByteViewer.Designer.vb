@@ -1,17 +1,29 @@
+Option Strict Off
+Option Explicit On
+
 Namespace kotor_tool
-    ' Token: 0x02000043 RID: 67
+
+    <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Public Class frmByteViewer
         Inherits Global.System.Windows.Forms.Form
 
         ' -----------------------------------------------------------------
-        ' Designer fields restored from decompiled
-        ' AccessedThroughProperty wrappers.
-        ' Kept before InitializeComponent for VS2010 CodeDom safety.
+        ' frmByteViewer.Designer.vb
         '
-        ' Theme notes:
-        '   - This Designer uses hard-coded fallback colours only.
-        '   - Runtime theme loading should remain in frmByteViewer.vb.
-        '   - No helper methods are used, to avoid VS2010 CodeDom issues.
+        ' Restored / facelifted Byte Viewer for the KoTOR Tool Restoration.
+        '
+        ' Original Tool:
+        '   Fred Tetra's KotOR Tool
+        '
+        ' Restoration Project:
+        '   KoTOR Tool Restoration Project
+        '
+        ' Notes:
+        '   - VS2010 / .NET Framework 2.0 compatible.
+        '   - Original control names preserved for source compatibility.
+        '   - Theme colours are applied at runtime from Themes\DarkSaber.ini.
+        '   - Designer keeps fallback colours only for safe VS designer display.
+        '   - Restored AddHandler bindings are preserved from decompiled wrappers.
         ' -----------------------------------------------------------------
 
         Private components As Global.System.ComponentModel.IContainer
@@ -21,111 +33,235 @@ Namespace kotor_tool
         Friend WithEvents rbUnicode As Global.System.Windows.Forms.RadioButton
         Friend WithEvents Button1 As Global.System.Windows.Forms.Button
 
-        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-            If disposing AndAlso Me.components IsNot Nothing Then
-                Me.components.Dispose()
-            End If
+        Friend WithEvents pnlRoot As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlHeader As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlBody As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlFooter As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlOptions As Global.System.Windows.Forms.Panel
+        Friend WithEvents lblTitle As Global.System.Windows.Forms.Label
+        Friend WithEvents lblSubtitle As Global.System.Windows.Forms.Label
+        Friend WithEvents lblSeparatorTop As Global.System.Windows.Forms.Label
+        Friend WithEvents lblSeparatorBottom As Global.System.Windows.Forms.Label
 
-            MyBase.Dispose(disposing)
+        <Global.System.Diagnostics.DebuggerNonUserCode()>
+        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+            Try
+                If disposing AndAlso Me.components IsNot Nothing Then
+                    Me.components.Dispose()
+                End If
+            Finally
+                MyBase.Dispose(disposing)
+            End Try
         End Sub
 
-        <Global.System.Diagnostics.DebuggerStepThrough()> _
+        <Global.System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
-            Dim resources As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager(GetType(Global.kotor_tool.frmByteViewer))
-            Me.rbHex = New Global.System.Windows.Forms.RadioButton()
-            Me.rbANSI = New Global.System.Windows.Forms.RadioButton()
-            Me.rbUnicode = New Global.System.Windows.Forms.RadioButton()
-            Me.Button1 = New Global.System.Windows.Forms.Button()
+            Me.pnlRoot = New System.Windows.Forms.Panel()
+            Me.pnlBody = New System.Windows.Forms.Panel()
+            Me.lblSeparatorBottom = New System.Windows.Forms.Label()
+            Me.pnlFooter = New System.Windows.Forms.Panel()
+            Me.pnlOptions = New System.Windows.Forms.Panel()
+            Me.rbHex = New System.Windows.Forms.RadioButton()
+            Me.rbANSI = New System.Windows.Forms.RadioButton()
+            Me.rbUnicode = New System.Windows.Forms.RadioButton()
+            Me.Button1 = New System.Windows.Forms.Button()
+            Me.pnlHeader = New System.Windows.Forms.Panel()
+            Me.lblSeparatorTop = New System.Windows.Forms.Label()
+            Me.lblSubtitle = New System.Windows.Forms.Label()
+            Me.lblTitle = New System.Windows.Forms.Label()
+            Me.pnlRoot.SuspendLayout()
+            Me.pnlBody.SuspendLayout()
+            Me.pnlFooter.SuspendLayout()
+            Me.pnlOptions.SuspendLayout()
+            Me.pnlHeader.SuspendLayout()
             Me.SuspendLayout()
-
+            '
+            'pnlRoot
+            '
+            Me.pnlRoot.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.pnlRoot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.pnlRoot.Controls.Add(Me.pnlBody)
+            Me.pnlRoot.Controls.Add(Me.pnlFooter)
+            Me.pnlRoot.Controls.Add(Me.pnlHeader)
+            Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
+            Me.pnlRoot.Name = "pnlRoot"
+            Me.pnlRoot.Size = New System.Drawing.Size(624, 550)
+            Me.pnlRoot.TabIndex = 0
+            '
+            'pnlBody
+            '
+            Me.pnlBody.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.pnlBody.Controls.Add(Me.lblSeparatorBottom)
+            Me.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.pnlBody.Location = New System.Drawing.Point(0, 88)
+            Me.pnlBody.Name = "pnlBody"
+            Me.pnlBody.Padding = New System.Windows.Forms.Padding(16)
+            Me.pnlBody.Size = New System.Drawing.Size(622, 404)
+            Me.pnlBody.TabIndex = 1
+            '
+            'lblSeparatorBottom
+            '
+            Me.lblSeparatorBottom.BackColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.lblSeparatorBottom.Dock = System.Windows.Forms.DockStyle.Bottom
+            Me.lblSeparatorBottom.Location = New System.Drawing.Point(16, 386)
+            Me.lblSeparatorBottom.Name = "lblSeparatorBottom"
+            Me.lblSeparatorBottom.Size = New System.Drawing.Size(590, 2)
+            Me.lblSeparatorBottom.TabIndex = 0
+            '
+            'pnlFooter
+            '
+            Me.pnlFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.pnlFooter.Controls.Add(Me.pnlOptions)
+            Me.pnlFooter.Controls.Add(Me.Button1)
+            Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
+            Me.pnlFooter.Location = New System.Drawing.Point(0, 492)
+            Me.pnlFooter.Name = "pnlFooter"
+            Me.pnlFooter.Size = New System.Drawing.Size(622, 56)
+            Me.pnlFooter.TabIndex = 2
+            '
+            'pnlOptions
+            '
+            Me.pnlOptions.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+            Me.pnlOptions.BackColor = System.Drawing.Color.Transparent
+            Me.pnlOptions.Controls.Add(Me.rbHex)
+            Me.pnlOptions.Controls.Add(Me.rbANSI)
+            Me.pnlOptions.Controls.Add(Me.rbUnicode)
+            Me.pnlOptions.Location = New System.Drawing.Point(18, 15)
+            Me.pnlOptions.Name = "pnlOptions"
+            Me.pnlOptions.Size = New System.Drawing.Size(328, 28)
+            Me.pnlOptions.TabIndex = 0
             '
             'rbHex
             '
-            Me.rbHex.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom
-            Me.rbHex.BackColor = Global.System.Drawing.Color.Transparent
+            Me.rbHex.BackColor = System.Drawing.Color.Transparent
             Me.rbHex.Checked = True
-            Me.rbHex.ForeColor = Global.System.Drawing.Color.FromArgb(176, 186, 198)
-            Me.rbHex.Location = New Global.System.Drawing.Point(64, 256)
+            Me.rbHex.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.rbHex.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.rbHex.Location = New System.Drawing.Point(6, 6)
             Me.rbHex.Name = "rbHex"
-            Me.rbHex.Size = New Global.System.Drawing.Size(64, 16)
+            Me.rbHex.Size = New System.Drawing.Size(72, 18)
             Me.rbHex.TabIndex = 0
             Me.rbHex.TabStop = True
             Me.rbHex.Text = "Hex"
             Me.rbHex.UseVisualStyleBackColor = False
-
             '
             'rbANSI
             '
-            Me.rbANSI.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom
-            Me.rbANSI.BackColor = Global.System.Drawing.Color.Transparent
-            Me.rbANSI.ForeColor = Global.System.Drawing.Color.FromArgb(176, 186, 198)
-            Me.rbANSI.Location = New Global.System.Drawing.Point(156, 256)
+            Me.rbANSI.BackColor = System.Drawing.Color.Transparent
+            Me.rbANSI.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.rbANSI.ForeColor = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(186, Byte), Integer), CType(CType(198, Byte), Integer))
+            Me.rbANSI.Location = New System.Drawing.Point(112, 6)
             Me.rbANSI.Name = "rbANSI"
-            Me.rbANSI.Size = New Global.System.Drawing.Size(64, 16)
+            Me.rbANSI.Size = New System.Drawing.Size(72, 18)
             Me.rbANSI.TabIndex = 1
             Me.rbANSI.Text = "ANSI"
             Me.rbANSI.UseVisualStyleBackColor = False
-
             '
             'rbUnicode
             '
-            Me.rbUnicode.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom
-            Me.rbUnicode.BackColor = Global.System.Drawing.Color.Transparent
-            Me.rbUnicode.ForeColor = Global.System.Drawing.Color.FromArgb(176, 186, 198)
-            Me.rbUnicode.Location = New Global.System.Drawing.Point(248, 256)
+            Me.rbUnicode.BackColor = System.Drawing.Color.Transparent
+            Me.rbUnicode.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.rbUnicode.ForeColor = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(186, Byte), Integer), CType(CType(198, Byte), Integer))
+            Me.rbUnicode.Location = New System.Drawing.Point(218, 6)
             Me.rbUnicode.Name = "rbUnicode"
-            Me.rbUnicode.Size = New Global.System.Drawing.Size(64, 16)
+            Me.rbUnicode.Size = New System.Drawing.Size(88, 18)
             Me.rbUnicode.TabIndex = 2
             Me.rbUnicode.Text = "Unicode"
             Me.rbUnicode.UseVisualStyleBackColor = False
-
             '
             'Button1
             '
-            Me.Button1.Anchor = Global.System.Windows.Forms.AnchorStyles.Bottom
-            Me.Button1.BackColor = Global.System.Drawing.Color.FromArgb(46, 55, 66)
-            Me.Button1.DialogResult = Global.System.Windows.Forms.DialogResult.OK
-            Me.Button1.FlatAppearance.BorderColor = Global.System.Drawing.Color.FromArgb(174, 136, 58)
-            Me.Button1.FlatAppearance.MouseDownBackColor = Global.System.Drawing.Color.FromArgb(82, 65, 32)
-            Me.Button1.FlatAppearance.MouseOverBackColor = Global.System.Drawing.Color.FromArgb(60, 70, 84)
-            Me.Button1.FlatStyle = Global.System.Windows.Forms.FlatStyle.Flat
-            Me.Button1.ForeColor = Global.System.Drawing.Color.FromArgb(238, 238, 230)
-            Me.Button1.Location = New Global.System.Drawing.Point(504, 248)
+            Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.Button1.DialogResult = System.Windows.Forms.DialogResult.OK
+            Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.Button1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.Button1.Location = New System.Drawing.Point(526, 15)
             Me.Button1.Name = "Button1"
-            Me.Button1.Size = New Global.System.Drawing.Size(75, 23)
+            Me.Button1.Size = New System.Drawing.Size(78, 27)
             Me.Button1.TabIndex = 3
             Me.Button1.Text = "OK"
             Me.Button1.UseVisualStyleBackColor = False
-
+            '
+            'pnlHeader
+            '
+            Me.pnlHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.pnlHeader.Controls.Add(Me.lblSeparatorTop)
+            Me.pnlHeader.Controls.Add(Me.lblSubtitle)
+            Me.pnlHeader.Controls.Add(Me.lblTitle)
+            Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
+            Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
+            Me.pnlHeader.Name = "pnlHeader"
+            Me.pnlHeader.Size = New System.Drawing.Size(622, 88)
+            Me.pnlHeader.TabIndex = 0
+            '
+            'lblSeparatorTop
+            '
+            Me.lblSeparatorTop.BackColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.lblSeparatorTop.Dock = System.Windows.Forms.DockStyle.Bottom
+            Me.lblSeparatorTop.Location = New System.Drawing.Point(0, 85)
+            Me.lblSeparatorTop.Name = "lblSeparatorTop"
+            Me.lblSeparatorTop.Size = New System.Drawing.Size(622, 3)
+            Me.lblSeparatorTop.TabIndex = 2
+            '
+            'lblSubtitle
+            '
+            Me.lblSubtitle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.lblSubtitle.AutoEllipsis = True
+            Me.lblSubtitle.BackColor = System.Drawing.Color.Transparent
+            Me.lblSubtitle.Font = New System.Drawing.Font("Segoe UI", 8.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.lblSubtitle.Location = New System.Drawing.Point(18, 52)
+            Me.lblSubtitle.Name = "lblSubtitle"
+            Me.lblSubtitle.Size = New System.Drawing.Size(586, 21)
+            Me.lblSubtitle.TabIndex = 1
+            Me.lblSubtitle.Text = "Choose how raw bytes should be displayed: hexadecimal, ANSI text, or Unicode text" &
+    "."
+            Me.lblSubtitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'lblTitle
+            '
+            Me.lblTitle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.lblTitle.AutoEllipsis = True
+            Me.lblTitle.BackColor = System.Drawing.Color.Transparent
+            Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.lblTitle.Location = New System.Drawing.Point(16, 12)
+            Me.lblTitle.Name = "lblTitle"
+            Me.lblTitle.Size = New System.Drawing.Size(588, 39)
+            Me.lblTitle.TabIndex = 0
+            Me.lblTitle.Text = "Byte Viewer"
+            Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
             '
             'frmByteViewer
             '
-            Me.AutoScaleBaseSize = New Global.System.Drawing.Size(5, 13)
-            Me.BackColor = Global.System.Drawing.Color.FromArgb(18, 22, 28)
-            Me.ClientSize = New Global.System.Drawing.Size(632, 277)
-            Me.Controls.Add(Me.Button1)
-            Me.Controls.Add(Me.rbHex)
-            Me.Controls.Add(Me.rbANSI)
-            Me.Controls.Add(Me.rbUnicode)
-            Me.ForeColor = Global.System.Drawing.Color.FromArgb(238, 238, 230)
-            Me.Icon = CType(resources.GetObject("$this.Icon"), Global.System.Drawing.Icon)
-            Me.MaximumSize = New Global.System.Drawing.Size(640, 1600)
-            Me.MinimumSize = New Global.System.Drawing.Size(640, 200)
+            Me.AcceptButton = Me.Button1
+            Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
+            Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.ClientSize = New System.Drawing.Size(624, 550)
+            Me.Controls.Add(Me.pnlRoot)
+            Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.MaximumSize = New System.Drawing.Size(640, 1600)
+            Me.MinimumSize = New System.Drawing.Size(640, 200)
             Me.Name = "frmByteViewer"
-            Me.StartPosition = Global.System.Windows.Forms.FormStartPosition.CenterParent
+            Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
             Me.Text = "Byte Viewer"
-
-            ' -------------------------------------------------------------
-            ' Event bindings restored from decompiled synchronized
-            ' AccessedThroughProperty wrappers.
-            ' -------------------------------------------------------------
-            AddHandler Me.rbHex.Click, AddressOf Me.rbHex_Click
-            AddHandler Me.rbANSI.Click, AddressOf Me.rbANSI_Click
-            AddHandler Me.rbUnicode.Click, AddressOf Me.rbUnicode_Click
-            AddHandler Me.Button1.Click, AddressOf Me.Button1_Click
-
+            Me.pnlRoot.ResumeLayout(False)
+            Me.pnlBody.ResumeLayout(False)
+            Me.pnlFooter.ResumeLayout(False)
+            Me.pnlOptions.ResumeLayout(False)
+            Me.pnlHeader.ResumeLayout(False)
             Me.ResumeLayout(False)
+
         End Sub
 
     End Class
+
 End Namespace

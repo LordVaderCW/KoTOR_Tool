@@ -82,7 +82,7 @@ Namespace kotor_tool
             Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
             Me.pnlRoot.Name = "pnlRoot"
-            Me.pnlRoot.Size = New System.Drawing.Size(440, 360)
+            Me.pnlRoot.Size = New System.Drawing.Size(730, 425)
             Me.pnlRoot.TabIndex = 0
             '
             'pnlBody
@@ -95,19 +95,19 @@ Namespace kotor_tool
             Me.pnlBody.Location = New System.Drawing.Point(0, 76)
             Me.pnlBody.Name = "pnlBody"
             Me.pnlBody.Padding = New System.Windows.Forms.Padding(22, 18, 22, 14)
-            Me.pnlBody.Size = New System.Drawing.Size(438, 230)
+            Me.pnlBody.Size = New System.Drawing.Size(728, 295)
             Me.pnlBody.TabIndex = 1
             '
             'lblMsg
             '
             Me.lblMsg.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.lblMsg.BackColor = System.Drawing.Color.Transparent
             Me.lblMsg.Font = New System.Drawing.Font("Segoe UI", 8.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblMsg.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.lblMsg.Location = New System.Drawing.Point(22, 18)
             Me.lblMsg.Name = "lblMsg"
-            Me.lblMsg.Size = New System.Drawing.Size(394, 82)
+            Me.lblMsg.Size = New System.Drawing.Size(684, 82)
             Me.lblMsg.TabIndex = 0
             Me.lblMsg.Text = resources.GetString("lblMsg.Text")
             Me.lblMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -115,8 +115,8 @@ Namespace kotor_tool
             'tbMsg
             '
             Me.tbMsg.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                        Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tbMsg.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
             Me.tbMsg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbMsg.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -126,16 +126,16 @@ Namespace kotor_tool
             Me.tbMsg.Name = "tbMsg"
             Me.tbMsg.ReadOnly = True
             Me.tbMsg.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.tbMsg.Size = New System.Drawing.Size(394, 96)
+            Me.tbMsg.Size = New System.Drawing.Size(684, 161)
             Me.tbMsg.TabIndex = 1
             '
             'lblSeparatorBottom
             '
             Me.lblSeparatorBottom.BackColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.lblSeparatorBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.lblSeparatorBottom.Location = New System.Drawing.Point(22, 214)
+            Me.lblSeparatorBottom.Location = New System.Drawing.Point(22, 279)
             Me.lblSeparatorBottom.Name = "lblSeparatorBottom"
-            Me.lblSeparatorBottom.Size = New System.Drawing.Size(394, 2)
+            Me.lblSeparatorBottom.Size = New System.Drawing.Size(684, 2)
             Me.lblSeparatorBottom.TabIndex = 2
             '
             'pnlFooter
@@ -143,9 +143,9 @@ Namespace kotor_tool
             Me.pnlFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.pnlFooter.Controls.Add(Me.Button1)
             Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.pnlFooter.Location = New System.Drawing.Point(0, 306)
+            Me.pnlFooter.Location = New System.Drawing.Point(0, 371)
             Me.pnlFooter.Name = "pnlFooter"
-            Me.pnlFooter.Size = New System.Drawing.Size(438, 52)
+            Me.pnlFooter.Size = New System.Drawing.Size(728, 52)
             Me.pnlFooter.TabIndex = 2
             '
             'Button1
@@ -159,7 +159,7 @@ Namespace kotor_tool
             Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.Button1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.Button1.Location = New System.Drawing.Point(332, 13)
+            Me.Button1.Location = New System.Drawing.Point(622, 13)
             Me.Button1.Name = "Button1"
             Me.Button1.Size = New System.Drawing.Size(84, 25)
             Me.Button1.TabIndex = 0
@@ -175,7 +175,7 @@ Namespace kotor_tool
             Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
             Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
             Me.pnlHeader.Name = "pnlHeader"
-            Me.pnlHeader.Size = New System.Drawing.Size(438, 76)
+            Me.pnlHeader.Size = New System.Drawing.Size(728, 76)
             Me.pnlHeader.TabIndex = 0
             '
             'lblSeparatorTop
@@ -184,20 +184,20 @@ Namespace kotor_tool
             Me.lblSeparatorTop.Dock = System.Windows.Forms.DockStyle.Bottom
             Me.lblSeparatorTop.Location = New System.Drawing.Point(0, 74)
             Me.lblSeparatorTop.Name = "lblSeparatorTop"
-            Me.lblSeparatorTop.Size = New System.Drawing.Size(438, 2)
+            Me.lblSeparatorTop.Size = New System.Drawing.Size(728, 2)
             Me.lblSeparatorTop.TabIndex = 2
             '
             'lblSubtitle
             '
             Me.lblSubtitle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.lblSubtitle.AutoEllipsis = True
             Me.lblSubtitle.BackColor = System.Drawing.Color.Transparent
             Me.lblSubtitle.Font = New System.Drawing.Font("Segoe UI", 8.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.lblSubtitle.Location = New System.Drawing.Point(18, 45)
             Me.lblSubtitle.Name = "lblSubtitle"
-            Me.lblSubtitle.Size = New System.Drawing.Size(398, 18)
+            Me.lblSubtitle.Size = New System.Drawing.Size(688, 18)
             Me.lblSubtitle.TabIndex = 1
             Me.lblSubtitle.Text = "Copy the diagnostic text below when reporting the issue."
             Me.lblSubtitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -205,14 +205,14 @@ Namespace kotor_tool
             'lblTitle
             '
             Me.lblTitle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.lblTitle.AutoEllipsis = True
             Me.lblTitle.BackColor = System.Drawing.Color.Transparent
             Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.lblTitle.Location = New System.Drawing.Point(16, 10)
             Me.lblTitle.Name = "lblTitle"
-            Me.lblTitle.Size = New System.Drawing.Size(400, 34)
+            Me.lblTitle.Size = New System.Drawing.Size(690, 34)
             Me.lblTitle.TabIndex = 0
             Me.lblTitle.Text = "An Error Has Occurred"
             Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -222,7 +222,7 @@ Namespace kotor_tool
             Me.AcceptButton = Me.Button1
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
             Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
-            Me.ClientSize = New System.Drawing.Size(440, 360)
+            Me.ClientSize = New System.Drawing.Size(730, 425)
             Me.ControlBox = False
             Me.Controls.Add(Me.pnlRoot)
             Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog

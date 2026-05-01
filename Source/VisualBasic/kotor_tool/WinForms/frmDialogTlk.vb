@@ -171,7 +171,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000489 RID: 1161 RVA: 0x0023CBC4 File Offset: 0x0023BBC4
-        Private Sub dgDialogTlk_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub dgDialogTlk_Click(ByVal sender As Object, ByVal e As EventArgs) Handles dgDialogTlk.Click
             Dim currentCell As DataGridCell = CType(sender, DataGrid).CurrentCell
             Dim hitTestInfo As DataGrid.HitTestInfo = Me.dgDialogTlk.HitTest(Me.dgDialogTlk.PointToClient(Control.MousePosition))
             If hitTestInfo.Type = DataGrid.HitTestType.RowHeader OrElse hitTestInfo.Type = DataGrid.HitTestType.Cell Then
@@ -190,7 +190,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x0600048A RID: 1162 RVA: 0x0023CCBC File Offset: 0x0023BCBC
-        Private Sub dgDialogTlk_CurrentCellChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub dgDialogTlk_CurrentCellChanged(ByVal sender As Object, ByVal e As EventArgs) Handles dgDialogTlk.CurrentCellChanged
             Me.RemoveTextChangeHandlers()
             If Me.dgDialogTlk(Me.dgDialogTlk.CurrentCell.RowNumber, 1) IsNot DBNull.Value Then
                 Me.tbString.Text = Strings.Replace(StringType.FromObject(Me.dgDialogTlk(Me.dgDialogTlk.CurrentCell.RowNumber, 1)), vbLf, vbCrLf, 1, -1, CompareMethod.Binary)
@@ -222,7 +222,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x0600048D RID: 1165 RVA: 0x0023CEA0 File Offset: 0x0023BEA0
-        Private Sub btnApplyChanges_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnApplyChanges_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnApplyChanges.Click
             ' The following expression was wrapped in a checked-statement
             If Me.g_useApplyBtn AndAlso Me.g_currentRow = Me.dgDialogTlk.CurrentCell.RowNumber Then
                 Me.dgDialogTlk.TableStyles(0).GridColumnStyles(1).[ReadOnly] = False
@@ -250,7 +250,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000490 RID: 1168 RVA: 0x0023D050 File Offset: 0x0023C050
-        Private Sub btnGoToEntry_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnGoToEntry_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnGoToEntry.Click
             Dim num As Integer = Convert.ToInt32(Me.nudEntryNumber.Value)
             If num > Me.dt.Rows.Count - 1 Then
                 Return
@@ -261,7 +261,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000491 RID: 1169 RVA: 0x0023D09C File Offset: 0x0023C09C
-        Private Sub btnFilter_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnFilter_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnFilter.Click
             Dim columnEntryList As ColumnEntryList = New ColumnEntryList()
             Dim columnEntryList2 As ColumnEntryList = New ColumnEntryList()
             columnEntryList2.Add(New ColumnEntry("index", "(index)", GetType(Integer)))
@@ -286,7 +286,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000492 RID: 1170 RVA: 0x0023D194 File Offset: 0x0023C194
-        Private Sub nudEntryNumber_KeyUp(ByVal sender As Object, ByVal e As KeyEventArgs)
+        Private Sub nudEntryNumber_KeyUp(ByVal sender As Object, ByVal e As KeyEventArgs) Handles nudEntryNumber.KeyUp
             Dim num As Integer = Convert.ToInt32(Me.nudEntryNumber.Value)
             If (num > Me.dt.Rows.Count - 1) Or (num < 0) Then
                 Return
@@ -298,7 +298,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000493 RID: 1171 RVA: 0x0023D1F0 File Offset: 0x0023C1F0
-        Private Sub miOpenExternal_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOpenExternal_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpenExternal.Click
             Dim text As String
             If frmMain.IsOnly1KotORInstalled() Then
                 If frmMain.hasKotor1() Then
@@ -324,21 +324,21 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000494 RID: 1172 RVA: 0x0023D2B8 File Offset: 0x0023C2B8
-        Private Sub miOpenK1_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOpenK1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpenK1.Click
             Dim clsDialogTlk As clsDialogTlk = New clsDialogTlk(UserSettings.GetSettings().KotorLocation(0) + "\dialog.tlk", True)
             Me.LoadTableAndBuildGrid(clsDialogTlk)
             Me.dgDialogTlk.CaptionText = UserSettings.GetSettings().KotorLocation(0) + "\dialog.tlk"
         End Sub
 
         ' Token: 0x06000495 RID: 1173 RVA: 0x0023D308 File Offset: 0x0023C308
-        Private Sub miOpenK2_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOpenK2_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpenK2.Click
             Dim clsDialogTlk As clsDialogTlk = New clsDialogTlk(UserSettings.GetSettings().KotorLocation(1) + "\dialog.tlk", True)
             Me.LoadTableAndBuildGrid(clsDialogTlk)
             Me.dgDialogTlk.CaptionText = UserSettings.GetSettings().KotorLocation(1) + "\dialog.tlk"
         End Sub
 
         ' Token: 0x06000496 RID: 1174 RVA: 0x0023D358 File Offset: 0x0023C358
-        Private Sub miSave_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miSave_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miSave.Click
             Dim text As String = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, "Dialog.tlk", "Save Dialog.tlk file...", "xml", False, True))
             If StringType.StrCmp(text, "", False) = 0 Then
                 Return
@@ -373,7 +373,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000497 RID: 1175 RVA: 0x0023D4CC File Offset: 0x0023C4CC
-        Private Sub miSaveAsXML_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miSaveAsXML_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miSaveAsXML.Click
             Dim text As String = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, "Dialog.tlk.xml", "Save Dialog.tlk XML file...", "xml", False, True))
             If StringType.StrCmp(text, "", False) = 0 Then
                 Return
@@ -386,7 +386,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000498 RID: 1176 RVA: 0x0023D550 File Offset: 0x0023C550
-        Private Sub miQuit_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miQuit_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miQuit.Click
             Me.Close()
         End Sub
 
