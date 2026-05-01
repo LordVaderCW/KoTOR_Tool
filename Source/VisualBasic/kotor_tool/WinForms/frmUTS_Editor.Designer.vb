@@ -363,7 +363,7 @@ Namespace kotor_tool
             Me.tabpagBasic.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabpagBasic.Location = New System.Drawing.Point(4, 22)
             Me.tabpagBasic.Name = "tabpagBasic"
-            Me.tabpagBasic.Size = New System.Drawing.Size(520, 503)
+            Me.tabpagBasic.Size = New System.Drawing.Size(520, 537)
             Me.tabpagBasic.TabIndex = 0
             Me.tabpagBasic.Text = "Basic"
             '
@@ -630,7 +630,7 @@ Namespace kotor_tool
             Me.tbapagPositioning.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbapagPositioning.Location = New System.Drawing.Point(4, 22)
             Me.tbapagPositioning.Name = "tbapagPositioning"
-            Me.tbapagPositioning.Size = New System.Drawing.Size(520, 503)
+            Me.tbapagPositioning.Size = New System.Drawing.Size(520, 537)
             Me.tbapagPositioning.TabIndex = 1
             Me.tbapagPositioning.Text = "Positioning"
             '

@@ -3,9 +3,27 @@ Option Explicit On
 
 Namespace kotor_tool
 
-    <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+    <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Public Class frmUTW_Editor
         Inherits Global.kotor_tool.frmParent
+
+        ' -----------------------------------------------------------------
+        ' frmUTW_Editor.Designer.vb
+        '
+        ' Restored / facelifted Waypoint Editor for the KoTOR Tool Restoration.
+        '
+        ' Original Tool:
+        '   Fred Tetra's KotOR Tool
+        '
+        ' Restoration Project:
+        '   KoTOR Tool Restoration Project
+        '
+        ' Notes:
+        '   - VS2010 / .NET Framework 2.0 compatible.
+        '   - Original control names preserved for source compatibility.
+        '   - Theme colours are applied at runtime from Themes\DarkSaber.ini.
+        '   - Designer keeps fallback colours only for safe VS designer display.
+        ' -----------------------------------------------------------------
 
         Private components As Global.System.ComponentModel.IContainer
 
@@ -39,15 +57,18 @@ Namespace kotor_tool
         Friend WithEvents Label12 As Global.System.Windows.Forms.Label
         Friend WithEvents chkbMapNoteEnabled As Global.System.Windows.Forms.CheckBox
 
-        <Global.System.Diagnostics.DebuggerNonUserCode()> _
+        <Global.System.Diagnostics.DebuggerNonUserCode()>
         Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-            If disposing AndAlso Me.components IsNot Nothing Then
-                Me.components.Dispose()
-            End If
-            MyBase.Dispose(disposing)
+            Try
+                If disposing AndAlso Me.components IsNot Nothing Then
+                    Me.components.Dispose()
+                End If
+            Finally
+                MyBase.Dispose(disposing)
+            End Try
         End Sub
 
-        <Global.System.Diagnostics.DebuggerStepThrough()> _
+        <Global.System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlBody = New System.Windows.Forms.Panel()
@@ -86,6 +107,7 @@ Namespace kotor_tool
             'pnlRoot
             '
             Me.pnlRoot.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.pnlRoot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.pnlRoot.Controls.Add(Me.pnlBody)
             Me.pnlRoot.Controls.Add(Me.pnlFooter)
             Me.pnlRoot.Controls.Add(Me.pnlHeader)
@@ -115,16 +137,17 @@ Namespace kotor_tool
             Me.pnlBody.Controls.Add(Me.Label11)
             Me.pnlBody.Controls.Add(Me.Label1)
             Me.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.pnlBody.Location = New System.Drawing.Point(0, 67)
+            Me.pnlBody.Location = New System.Drawing.Point(0, 76)
             Me.pnlBody.Name = "pnlBody"
-            Me.pnlBody.Size = New System.Drawing.Size(520, 459)
+            Me.pnlBody.Padding = New System.Windows.Forms.Padding(18, 16, 18, 16)
+            Me.pnlBody.Size = New System.Drawing.Size(518, 449)
             Me.pnlBody.TabIndex = 1
             '
             'chkbHasMapNote
             '
             Me.chkbHasMapNote.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbHasMapNote.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.chkbHasMapNote.Location = New System.Drawing.Point(168, 258)
+            Me.chkbHasMapNote.Location = New System.Drawing.Point(168, 248)
             Me.chkbHasMapNote.Name = "chkbHasMapNote"
             Me.chkbHasMapNote.Size = New System.Drawing.Size(192, 28)
             Me.chkbHasMapNote.TabIndex = 33
@@ -132,9 +155,10 @@ Namespace kotor_tool
             '
             'Label9
             '
+            Me.Label9.BackColor = System.Drawing.Color.Transparent
             Me.Label9.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label9.Location = New System.Drawing.Point(56, 138)
+            Me.Label9.Location = New System.Drawing.Point(56, 128)
             Me.Label9.Name = "Label9"
             Me.Label9.Size = New System.Drawing.Size(100, 19)
             Me.Label9.TabIndex = 31
@@ -143,10 +167,12 @@ Namespace kotor_tool
             '
             'tbWPLinkedTo
             '
+            Me.tbWPLinkedTo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tbWPLinkedTo.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.tbWPLinkedTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbWPLinkedTo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbWPLinkedTo.Location = New System.Drawing.Point(168, 138)
+            Me.tbWPLinkedTo.Location = New System.Drawing.Point(168, 128)
             Me.tbWPLinkedTo.Name = "tbWPLinkedTo"
             Me.tbWPLinkedTo.Size = New System.Drawing.Size(320, 22)
             Me.tbWPLinkedTo.TabIndex = 28
@@ -158,7 +184,7 @@ Namespace kotor_tool
             Me.tbWpDescription.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.tbWpDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbWpDescription.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbWpDescription.Location = New System.Drawing.Point(168, 185)
+            Me.tbWpDescription.Location = New System.Drawing.Point(168, 175)
             Me.tbWpDescription.Multiline = True
             Me.tbWpDescription.Name = "tbWpDescription"
             Me.tbWpDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -172,7 +198,7 @@ Namespace kotor_tool
             Me.tbWpMapNote.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.tbWpMapNote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbWpMapNote.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbWpMapNote.Location = New System.Drawing.Point(168, 305)
+            Me.tbWpMapNote.Location = New System.Drawing.Point(168, 295)
             Me.tbWpMapNote.Multiline = True
             Me.tbWpMapNote.Name = "tbWpMapNote"
             Me.tbWpMapNote.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -181,9 +207,10 @@ Namespace kotor_tool
             '
             'Label3
             '
+            Me.Label3.BackColor = System.Drawing.Color.Transparent
             Me.Label3.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label3.Location = New System.Drawing.Point(56, 185)
+            Me.Label3.Location = New System.Drawing.Point(56, 175)
             Me.Label3.Name = "Label3"
             Me.Label3.Size = New System.Drawing.Size(100, 18)
             Me.Label3.TabIndex = 29
@@ -192,9 +219,10 @@ Namespace kotor_tool
             '
             'Label12
             '
+            Me.Label12.BackColor = System.Drawing.Color.Transparent
             Me.Label12.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label12.Location = New System.Drawing.Point(56, 305)
+            Me.Label12.Location = New System.Drawing.Point(56, 295)
             Me.Label12.Name = "Label12"
             Me.Label12.Size = New System.Drawing.Size(80, 18)
             Me.Label12.TabIndex = 30
@@ -205,7 +233,7 @@ Namespace kotor_tool
             '
             Me.chkbMapNoteEnabled.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbMapNoteEnabled.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.chkbMapNoteEnabled.Location = New System.Drawing.Point(360, 258)
+            Me.chkbMapNoteEnabled.Location = New System.Drawing.Point(360, 248)
             Me.chkbMapNoteEnabled.Name = "chkbMapNoteEnabled"
             Me.chkbMapNoteEnabled.Size = New System.Drawing.Size(128, 28)
             Me.chkbMapNoteEnabled.TabIndex = 32
@@ -213,12 +241,13 @@ Namespace kotor_tool
             '
             'tbComment
             '
-            Me.tbComment.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.tbComment.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tbComment.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.tbComment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbComment.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbComment.Location = New System.Drawing.Point(168, 388)
+            Me.tbComment.Location = New System.Drawing.Point(168, 378)
             Me.tbComment.Multiline = True
             Me.tbComment.Name = "tbComment"
             Me.tbComment.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -227,19 +256,22 @@ Namespace kotor_tool
             '
             'tbTag
             '
+            Me.tbTag.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tbTag.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.tbTag.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbTag.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbTag.Location = New System.Drawing.Point(168, 102)
+            Me.tbTag.Location = New System.Drawing.Point(168, 92)
             Me.tbTag.Name = "tbTag"
             Me.tbTag.Size = New System.Drawing.Size(320, 22)
             Me.tbTag.TabIndex = 24
             '
             'Label2
             '
+            Me.Label2.BackColor = System.Drawing.Color.Transparent
             Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label2.Location = New System.Drawing.Point(56, 102)
+            Me.Label2.Location = New System.Drawing.Point(56, 92)
             Me.Label2.Name = "Label2"
             Me.Label2.Size = New System.Drawing.Size(100, 18)
             Me.Label2.TabIndex = 23
@@ -248,11 +280,13 @@ Namespace kotor_tool
             '
             'tbTemplateResRef
             '
+            Me.tbTemplateResRef.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tbTemplateResRef.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.tbTemplateResRef.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbTemplateResRef.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
             Me.tbTemplateResRef.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbTemplateResRef.Location = New System.Drawing.Point(168, 28)
+            Me.tbTemplateResRef.Location = New System.Drawing.Point(168, 18)
             Me.tbTemplateResRef.MaxLength = 16
             Me.tbTemplateResRef.Name = "tbTemplateResRef"
             Me.tbTemplateResRef.Size = New System.Drawing.Size(320, 22)
@@ -260,9 +294,10 @@ Namespace kotor_tool
             '
             'Label57
             '
+            Me.Label57.BackColor = System.Drawing.Color.Transparent
             Me.Label57.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label57.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label57.Location = New System.Drawing.Point(56, 28)
+            Me.Label57.Location = New System.Drawing.Point(56, 18)
             Me.Label57.Name = "Label57"
             Me.Label57.Size = New System.Drawing.Size(100, 20)
             Me.Label57.TabIndex = 21
@@ -271,19 +306,22 @@ Namespace kotor_tool
             '
             'tbName
             '
+            Me.tbName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tbName.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.tbName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbName.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbName.Location = New System.Drawing.Point(168, 65)
+            Me.tbName.Location = New System.Drawing.Point(168, 55)
             Me.tbName.Name = "tbName"
             Me.tbName.Size = New System.Drawing.Size(320, 22)
             Me.tbName.TabIndex = 19
             '
             'Label11
             '
+            Me.Label11.BackColor = System.Drawing.Color.Transparent
             Me.Label11.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label11.Location = New System.Drawing.Point(56, 65)
+            Me.Label11.Location = New System.Drawing.Point(56, 55)
             Me.Label11.Name = "Label11"
             Me.Label11.Size = New System.Drawing.Size(100, 18)
             Me.Label11.TabIndex = 20
@@ -292,9 +330,10 @@ Namespace kotor_tool
             '
             'Label1
             '
+            Me.Label1.BackColor = System.Drawing.Color.Transparent
             Me.Label1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label1.Location = New System.Drawing.Point(56, 397)
+            Me.Label1.Location = New System.Drawing.Point(56, 387)
             Me.Label1.Name = "Label1"
             Me.Label1.Size = New System.Drawing.Size(88, 18)
             Me.Label1.TabIndex = 23
@@ -310,9 +349,9 @@ Namespace kotor_tool
             Me.pnlFooter.Controls.Add(Me.btnCancel)
             Me.pnlFooter.Controls.Add(Me.btnDebug)
             Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.pnlFooter.Location = New System.Drawing.Point(0, 526)
+            Me.pnlFooter.Location = New System.Drawing.Point(0, 525)
             Me.pnlFooter.Name = "pnlFooter"
-            Me.pnlFooter.Size = New System.Drawing.Size(520, 62)
+            Me.pnlFooter.Size = New System.Drawing.Size(518, 61)
             Me.pnlFooter.TabIndex = 2
             '
             'lblFooterRule
@@ -321,7 +360,7 @@ Namespace kotor_tool
             Me.lblFooterRule.Dock = System.Windows.Forms.DockStyle.Top
             Me.lblFooterRule.Location = New System.Drawing.Point(0, 0)
             Me.lblFooterRule.Name = "lblFooterRule"
-            Me.lblFooterRule.Size = New System.Drawing.Size(520, 1)
+            Me.lblFooterRule.Size = New System.Drawing.Size(518, 2)
             Me.lblFooterRule.TabIndex = 0
             '
             'btnSetNameLang
@@ -334,9 +373,9 @@ Namespace kotor_tool
             Me.btnSetNameLang.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnSetNameLang.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.btnSetNameLang.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnSetNameLang.Location = New System.Drawing.Point(24, 18)
+            Me.btnSetNameLang.Location = New System.Drawing.Point(24, 17)
             Me.btnSetNameLang.Name = "btnSetNameLang"
-            Me.btnSetNameLang.Size = New System.Drawing.Size(104, 29)
+            Me.btnSetNameLang.Size = New System.Drawing.Size(112, 29)
             Me.btnSetNameLang.TabIndex = 7
             Me.btnSetNameLang.Text = "Set Language"
             Me.btnSetNameLang.UseVisualStyleBackColor = False
@@ -351,7 +390,7 @@ Namespace kotor_tool
             Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnSave.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.btnSave.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnSave.Location = New System.Drawing.Point(324, 18)
+            Me.btnSave.Location = New System.Drawing.Point(324, 17)
             Me.btnSave.Name = "btnSave"
             Me.btnSave.Size = New System.Drawing.Size(80, 29)
             Me.btnSave.TabIndex = 5
@@ -369,7 +408,7 @@ Namespace kotor_tool
             Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnCancel.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.btnCancel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnCancel.Location = New System.Drawing.Point(416, 18)
+            Me.btnCancel.Location = New System.Drawing.Point(416, 17)
             Me.btnCancel.Name = "btnCancel"
             Me.btnCancel.Size = New System.Drawing.Size(80, 29)
             Me.btnCancel.TabIndex = 6
@@ -378,18 +417,17 @@ Namespace kotor_tool
             '
             'btnDebug
             '
-            Me.btnDebug.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
-            Me.btnDebug.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
-            Me.btnDebug.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
-            Me.btnDebug.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnDebug.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.btnDebug.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.btnDebug.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.btnDebug.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.btnDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-            Me.btnDebug.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnDebug.Location = New System.Drawing.Point(134, 18)
+            Me.btnDebug.ForeColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.btnDebug.Location = New System.Drawing.Point(0, 0)
             Me.btnDebug.Name = "btnDebug"
-            Me.btnDebug.Size = New System.Drawing.Size(104, 29)
+            Me.btnDebug.Size = New System.Drawing.Size(8, 10)
             Me.btnDebug.TabIndex = 18
             Me.btnDebug.TabStop = False
-            Me.btnDebug.Text = "Debug"
             Me.btnDebug.UseVisualStyleBackColor = False
             '
             'pnlHeader
@@ -401,38 +439,42 @@ Namespace kotor_tool
             Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
             Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
             Me.pnlHeader.Name = "pnlHeader"
-            Me.pnlHeader.Size = New System.Drawing.Size(520, 67)
+            Me.pnlHeader.Size = New System.Drawing.Size(518, 76)
             Me.pnlHeader.TabIndex = 0
             '
             'lblTitle
             '
-            Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.lblTitle.Location = New System.Drawing.Point(18, 12)
+            Me.lblTitle.AutoEllipsis = True
+            Me.lblTitle.BackColor = System.Drawing.Color.Transparent
+            Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.lblTitle.Location = New System.Drawing.Point(16, 12)
             Me.lblTitle.Name = "lblTitle"
-            Me.lblTitle.Size = New System.Drawing.Size(360, 23)
+            Me.lblTitle.Size = New System.Drawing.Size(480, 32)
             Me.lblTitle.TabIndex = 0
             Me.lblTitle.Text = "Waypoint Editor"
             Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
             '
             'lblSubtitle
             '
+            Me.lblSubtitle.AutoEllipsis = True
+            Me.lblSubtitle.BackColor = System.Drawing.Color.Transparent
             Me.lblSubtitle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.lblSubtitle.Location = New System.Drawing.Point(20, 37)
+            Me.lblSubtitle.Location = New System.Drawing.Point(18, 45)
             Me.lblSubtitle.Name = "lblSubtitle"
-            Me.lblSubtitle.Size = New System.Drawing.Size(440, 18)
+            Me.lblSubtitle.Size = New System.Drawing.Size(480, 18)
             Me.lblSubtitle.TabIndex = 1
-            Me.lblSubtitle.Text = "Restored KoTOR Tool waypoint properties and map note data."
+            Me.lblSubtitle.Text = "Edit UTW waypoint properties, linked targets, map notes, and comments."
             Me.lblSubtitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
             '
             'lblHeaderRule
             '
             Me.lblHeaderRule.BackColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
             Me.lblHeaderRule.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.lblHeaderRule.Location = New System.Drawing.Point(0, 65)
+            Me.lblHeaderRule.Location = New System.Drawing.Point(0, 74)
             Me.lblHeaderRule.Name = "lblHeaderRule"
-            Me.lblHeaderRule.Size = New System.Drawing.Size(520, 2)
+            Me.lblHeaderRule.Size = New System.Drawing.Size(518, 2)
             Me.lblHeaderRule.TabIndex = 2
             '
             'frmUTW_Editor
@@ -457,4 +499,5 @@ Namespace kotor_tool
         End Sub
 
     End Class
+
 End Namespace

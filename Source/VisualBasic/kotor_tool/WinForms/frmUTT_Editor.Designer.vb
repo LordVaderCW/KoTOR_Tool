@@ -215,7 +215,7 @@ Namespace kotor_tool
             Me.TabControl1.Controls.Add(Me.TabPageScripts)
             Me.TabControl1.Controls.Add(Me.TabPageTrap)
             Me.TabControl1.Controls.Add(Me.TabPageComments)
-            Me.TabControl1.Location = New System.Drawing.Point(16, 14)
+            Me.TabControl1.Location = New System.Drawing.Point(16, 13)
             Me.TabControl1.Name = "TabControl1"
             Me.TabControl1.SelectedIndex = 0
             Me.TabControl1.Size = New System.Drawing.Size(472, 396)
