@@ -361,7 +361,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000B23 RID: 2851 RVA: 0x0027A82C File Offset: 0x0027982C
-        Private Sub nudXY_KeyUp(ByVal sender As Object, ByVal e As KeyEventArgs) Handles nudXY.KeyUp
+        Private Sub nudXY_KeyUp(ByVal sender As Object, ByVal e As KeyEventArgs)
             Me._XYAngle = DoubleType.FromObject(LateBinding.LateGet(sender, Nothing, "value", New Object(-1) {}, Nothing, Nothing))
             Me.DrawXYOrientation()
             Me._XOrientation = -CSng(Math.Round(Math.Cos((Me._XYAngle + 90.0) / 180.0 * 3.1415926535897931), 5))
@@ -369,7 +369,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000B24 RID: 2852 RVA: 0x0027A8D0 File Offset: 0x002798D0
-        Private Sub nudXY_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles nudXY.ValueChanged
+        Private Sub nudXY_ValueChanged(ByVal sender As Object, ByVal e As EventArgs)
             Me._XYAngle = DoubleType.FromObject(LateBinding.LateGet(sender, Nothing, "value", New Object(-1) {}, Nothing, Nothing))
             Me.DrawXYOrientation()
             Me._XOrientation = -CSng(Math.Round(Math.Cos((Me._XYAngle + 90.0) / 180.0 * 3.1415926535897931), 5))
@@ -377,7 +377,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000B25 RID: 2853 RVA: 0x0027A974 File Offset: 0x00279974
-        Private Sub SetColor_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSunFogColor.Click, btnSunDiffuseColor.Click, btnSunAmbientColor.Click, btnMoonFogColor.Click, btnMoonDiffuseColor.Click, btnMoonAmbientColor.Click, btnGrassEmissiveColor.Click, btnGrassDiffuseColor.Click, btnGrassAmbientColor.Click, btnDynAmbientColor.Click
+        Private Sub SetColor_Click(ByVal sender As Object, ByVal e As EventArgs)
             Dim colorDialog As ColorDialog = Me.ColorDialog1
             colorDialog.AllowFullOpen = True
             colorDialog.AnyColor = True
@@ -389,27 +389,27 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000B26 RID: 2854 RVA: 0x0027A9D8 File Offset: 0x002799D8
-        Private Sub trkbarXPScale_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles trkbarXPScale.Scroll
+        Private Sub trkbarXPScale_Scroll(ByVal sender As Object, ByVal e As EventArgs)
             Me.nudXPScale.Value = New Decimal(CType(sender, TrackBar).Value)
         End Sub
 
         ' Token: 0x06000B27 RID: 2855 RVA: 0x0027A9F8 File Offset: 0x002799F8
-        Private Sub nudXPScale_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles nudXPScale.ValueChanged
+        Private Sub nudXPScale_ValueChanged(ByVal sender As Object, ByVal e As EventArgs)
             Me.trkbarXPScale.Value = Convert.ToInt32(CType(sender, NumericUpDown).Value)
         End Sub
 
         ' Token: 0x06000B28 RID: 2856 RVA: 0x0027AA18 File Offset: 0x00279A18
-        Private Sub trkbarGrassDensityX10_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles trkbarGrassDensityX10.Scroll
+        Private Sub trkbarGrassDensityX10_Scroll(ByVal sender As Object, ByVal e As EventArgs)
             Me.nudGrassDensity.Value = New Decimal(CDbl(CType(sender, TrackBar).Value) / 10.0)
         End Sub
 
         ' Token: 0x06000B29 RID: 2857 RVA: 0x0027AA40 File Offset: 0x00279A40
-        Private Sub nudGrassDensity_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles nudGrassDensity.ValueChanged
+        Private Sub nudGrassDensity_ValueChanged(ByVal sender As Object, ByVal e As EventArgs)
             Me.trkbarGrassDensityX10.Value = Convert.ToInt32(Decimal.Multiply(CType(sender, NumericUpDown).Value, 10D))
         End Sub
 
         ' Token: 0x06000B2A RID: 2858 RVA: 0x0027AA70 File Offset: 0x00279A70
-        Private Sub nudGrassProbXX_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles nudGrassProbUR.ValueChanged, nudGrassProbUL.ValueChanged, nudGrassProbLR.ValueChanged, nudGrassProbLL.ValueChanged
+        Private Sub nudGrassProbXX_ValueChanged(ByVal sender As Object, ByVal e As EventArgs)
             Dim num As Single = Convert.ToSingle(Decimal.Add(Decimal.Add(Decimal.Add(Me.nudGrassProbLL.Value, Me.nudGrassProbUL.Value), Me.nudGrassProbLR.Value), Me.nudGrassProbUR.Value))
             Me.lblTotalGrassProbability.Text = "Total: " + StringType.FromSingle(num) + "%"
             If (num > 100.0F) Or (num < 100.0F) Then
@@ -420,7 +420,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000B2B RID: 2859 RVA: 0x0027AB14 File Offset: 0x00279B14
-        Private Sub DayNight_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles rbDayNightCycle.CheckedChanged, rbAlwaysNight.CheckedChanged, rbAlwaysDay.CheckedChanged
+        Private Sub DayNight_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
             If Me.rbDayNightCycle.Checked Then
                 Me.gbMoon.Enabled = True
                 Me.gbSun.Enabled = True
@@ -434,7 +434,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000B2C RID: 2860 RVA: 0x0027AB88 File Offset: 0x00279B88
-        Private Sub SunFogEnabled(ByVal sender As Object, ByVal e As EventArgs) Handles chkbSunFogOn.CheckedChanged
+        Private Sub SunFogEnabled(ByVal sender As Object, ByVal e As EventArgs)
             Me.trkbarSunFogNear.Enabled = Me.chkbSunFogOn.Checked
             Me.trkbarSunFogFar.Enabled = Me.chkbSunFogOn.Checked
             Me.lblSunFogFar.Enabled = Me.chkbSunFogOn.Checked
@@ -442,7 +442,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000B2D RID: 2861 RVA: 0x0027ABF0 File Offset: 0x00279BF0
-        Private Sub MoonFogEnabled(ByVal sender As Object, ByVal e As EventArgs) Handles chkbMoonFogOn.CheckedChanged
+        Private Sub MoonFogEnabled(ByVal sender As Object, ByVal e As EventArgs)
             Me.trkbarMoonFogNear.Enabled = Me.chkbMoonFogOn.Checked
             Me.trkbarMoonFogFar.Enabled = Me.chkbMoonFogOn.Checked
             Me.lblMoonFogFar.Enabled = Me.chkbMoonFogOn.Checked
@@ -450,7 +450,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000B2E RID: 2862 RVA: 0x0027AC58 File Offset: 0x00279C58
-        Private Sub lbRooms_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles lbRooms.SelectedIndexChanged
+        Private Sub lbRooms_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
             If Me.lbRooms.SelectedIndex = -1 Then
                 Return
             End If
@@ -491,7 +491,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000B33 RID: 2867 RVA: 0x0027AE44 File Offset: 0x00279E44
-        Private Sub btnSetDescriptionLang_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSetDescriptionLang.Click
+        Private Sub btnSetDescriptionLang_Click(ByVal sender As Object, ByVal e As EventArgs)
             Dim frmCExoLocStringLanguagePicker As frmCExoLocStringLanguagePicker = New frmCExoLocStringLanguagePicker(Me.ModDescriptionLang)
             If frmCExoLocStringLanguagePicker.ShowDialog(Me) = DialogResult.OK Then
                 Me.ModDescriptionLang = frmCExoLocStringLanguagePicker.LanguageID
@@ -499,7 +499,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000B34 RID: 2868 RVA: 0x0027AE74 File Offset: 0x00279E74
-        Private Sub btnSetModNameLang_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSetModNameLang.Click
+        Private Sub btnSetModNameLang_Click(ByVal sender As Object, ByVal e As EventArgs)
             Dim frmCExoLocStringLanguagePicker As frmCExoLocStringLanguagePicker = New frmCExoLocStringLanguagePicker(Me.ModNameLang)
             If frmCExoLocStringLanguagePicker.ShowDialog(Me) = DialogResult.OK Then
                 Me.ModNameLang = frmCExoLocStringLanguagePicker.LanguageID
@@ -507,7 +507,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000B35 RID: 2869 RVA: 0x0027AEA4 File Offset: 0x00279EA4
-        Private Sub btnSetAreaNameLang_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSetAreaNameLang.Click
+        Private Sub btnSetAreaNameLang_Click(ByVal sender As Object, ByVal e As EventArgs)
             Dim frmCExoLocStringLanguagePicker As frmCExoLocStringLanguagePicker = New frmCExoLocStringLanguagePicker(Me.AreaNameLang)
             If frmCExoLocStringLanguagePicker.ShowDialog(Me) = DialogResult.OK Then
                 Me.AreaNameLang = frmCExoLocStringLanguagePicker.LanguageID

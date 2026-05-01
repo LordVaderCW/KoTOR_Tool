@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|p:\\game tools\\github\\kotor_tool\\kotor_tool\\source\\visualbasic\\kotor_tool\\winforms\\frmmoduleifo_areaeditor.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|solutionrelative:kotor_tool\\winforms\\frmmoduleifo_areaeditor.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|p:\\game tools\\github\\kotor_tool\\kotor_tool\\source\\visualbasic\\kotor_tool\\winforms\\frmmoduleifo_areaeditor.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|solutionrelative:kotor_tool\\winforms\\frmmoduleifo_areaeditor.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmModuleIfo_AreaEditor.vb [Design]",
+              "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmModuleIfo_AreaEditor.vb",
+              "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmModuleIfo_AreaEditor.vb",
+              "ToolTip": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmModuleIfo_AreaEditor.vb [Design]",
+              "RelativeToolTip": "kotor_tool\\WinForms\\frmModuleIfo_AreaEditor.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-05-01T06:36:54.364Z",
+              "EditorCaption": " [Design]"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,7 +40,7 @@
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmModuleIfo_AreaEditor.Designer.vb",
               "ToolTip": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmModuleIfo_AreaEditor.Designer.vb",
               "RelativeToolTip": "kotor_tool\\WinForms\\frmModuleIfo_AreaEditor.Designer.vb",
-              "ViewState": "AgIAANIHAAAAAAAAAAAmwOwHAABRAAAAAAAAAA==",
+              "ViewState": "AgIAAOgAAAAAAAAAAAAmwPwAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-01T06:35:27.075Z",
               "EditorCaption": ""
