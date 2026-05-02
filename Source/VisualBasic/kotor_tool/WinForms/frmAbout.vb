@@ -104,10 +104,10 @@ Namespace kotor_tool
                 Me.lblSpecialCredits.Font = _theme.CreateBodyFont()
             End If
 
-            If Me.Label4 IsNot Nothing Then
-                Me.Label4.ForeColor = _theme.TextMuted
-                Me.Label4.Font = _theme.CreateBodyFont()
-            End If
+            ''If Me.Label4 IsNot Nothing Then
+            ''Me.Label4.ForeColor = _theme.TextMuted
+            ''Me.Label4.Font = _theme.CreateBodyFont()
+            ''End If
 
             If Me.Button1 IsNot Nothing Then
                 Me.Button1.BackColor = _theme.ControlDark

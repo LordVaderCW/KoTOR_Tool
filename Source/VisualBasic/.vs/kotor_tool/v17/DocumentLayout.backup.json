@@ -10,6 +10,10 @@
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|kotor_tool||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|p:\\game tools\\github\\kotor_tool\\kotor_tool\\source\\visualbasic\\kotor_tool\\winforms\\frmabout.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|solutionrelative:kotor_tool\\winforms\\frmabout.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\winforms\\frmutw_editor.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
       "RelativeMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|solutionrelative:kotor_tool\\winforms\\frmutw_editor.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     },
@@ -241,52 +245,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "kotor_tool",
-              "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\kotor_tool.vbproj",
-              "RelativeDocumentMoniker": "kotor_tool\\kotor_tool.vbproj",
-              "ToolTip": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\kotor_tool.vbproj*",
-              "RelativeToolTip": "kotor_tool\\kotor_tool.vbproj*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-05-02T05:32:12.597Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "frmUTP_Editor.vb [Design]",
-              "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmUTP_Editor.vb",
-              "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmUTP_Editor.vb",
-              "ToolTip": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmUTP_Editor.vb [Design]",
-              "RelativeToolTip": "kotor_tool\\WinForms\\frmUTP_Editor.vb [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-05-01T20:17:43.354Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "frmUTT_Editor.vb [Design]",
-              "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmUTT_Editor.vb",
-              "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmUTT_Editor.vb",
-              "ToolTip": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmUTT_Editor.vb [Design]",
-              "RelativeToolTip": "kotor_tool\\WinForms\\frmUTT_Editor.vb [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-05-01T20:23:18.179Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "frmUTW_Editor.vb [Design]",
-              "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmUTW_Editor.vb",
-              "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmUTW_Editor.vb",
-              "ToolTip": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmUTW_Editor.vb [Design]",
-              "RelativeToolTip": "kotor_tool\\WinForms\\frmUTW_Editor.vb [Design]",
+              "Title": "frmAbout.vb",
+              "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmAbout.vb",
+              "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmAbout.vb",
+              "ToolTip": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmAbout.vb",
+              "RelativeToolTip": "kotor_tool\\WinForms\\frmAbout.vb",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAvwG0AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-05-01T20:23:14.557Z"
+              "WhenOpened": "2026-05-02T06:29:22.896Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -302,7 +274,52 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "frmUTT_Editor.vb [Design]",
+              "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmUTT_Editor.vb",
+              "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmUTT_Editor.vb",
+              "ToolTip": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmUTT_Editor.vb [Design]",
+              "RelativeToolTip": "kotor_tool\\WinForms\\frmUTT_Editor.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-05-01T20:23:18.179Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "frmUTW_Editor.vb [Design]",
+              "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmUTW_Editor.vb",
+              "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmUTW_Editor.vb",
+              "ToolTip": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmUTW_Editor.vb [Design]",
+              "RelativeToolTip": "kotor_tool\\WinForms\\frmUTW_Editor.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-05-01T20:23:14.557Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "kotor_tool",
+              "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\kotor_tool.vbproj",
+              "RelativeDocumentMoniker": "kotor_tool\\kotor_tool.vbproj",
+              "ToolTip": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\kotor_tool.vbproj",
+              "RelativeToolTip": "kotor_tool\\kotor_tool.vbproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-05-02T05:32:12.597Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "frmUTP_Editor.vb [Design]",
+              "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmUTP_Editor.vb",
+              "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmUTP_Editor.vb",
+              "ToolTip": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmUTP_Editor.vb [Design]",
+              "RelativeToolTip": "kotor_tool\\WinForms\\frmUTP_Editor.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-05-01T20:17:43.354Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "frmUTS_Editor.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmUTS_Editor.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmUTS_Editor.vb",
@@ -313,7 +330,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "frm2DAEditor.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frm2DAEditor.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frm2DAEditor.vb",
@@ -324,7 +341,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "frmUTP_Editor.Designer.vb",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmUTP_Editor.Designer.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmUTP_Editor.Designer.vb",
@@ -336,7 +353,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "frmAppearanceWizard.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmAppearanceWizard.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmAppearanceWizard.vb",
@@ -347,7 +364,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "frmAutoDialog.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmAutoDialog.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmAutoDialog.vb",
@@ -358,7 +375,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "frmBasicHelp.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmBasicHelp.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmBasicHelp.vb",
@@ -369,7 +386,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "frmBWMEditor.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmBWMEditor.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmBWMEditor.vb",
@@ -380,7 +397,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "frmByteViewer.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmByteViewer.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmByteViewer.vb",
@@ -391,7 +408,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "frmCExoLocStringLanguagePicker.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmCExoLocStringLanguagePicker.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmCExoLocStringLanguagePicker.vb",
@@ -402,7 +419,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "frmCreateAnimListEntry.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmCreateAnimListEntry.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmCreateAnimListEntry.vb",
@@ -413,7 +430,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "frmDialogEditor.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmDialogEditor.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmDialogEditor.vb",
@@ -424,7 +441,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "frmDialogTlk.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmDialogTlk.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmDialogTlk.vb",
@@ -435,7 +452,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "frmERFManager.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmERFManager.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmERFManager.vb",
@@ -446,7 +463,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "frmErrorMessageWithCopyableText.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmErrorMessageWithCopyableText.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmErrorMessageWithCopyableText.vb",
@@ -457,7 +474,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "frmFilterDesigner.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmFilterDesigner.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmFilterDesigner.vb",
@@ -468,7 +485,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "frmGlobalVar_Editor.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmGlobalVar_Editor.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmGlobalVar_Editor.vb",
@@ -479,7 +496,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "frmImageViewer.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmImageViewer.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmImageViewer.vb",
@@ -490,7 +507,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "frmInstanceOrRefPrompt.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmInstanceOrRefPrompt.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmInstanceOrRefPrompt.vb",
@@ -501,7 +518,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "frmInventoryEditor.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmInventoryEditor.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmInventoryEditor.vb",
@@ -512,7 +529,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "frmItemPropertyEditor.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmItemPropertyEditor.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmItemPropertyEditor.vb",
@@ -523,7 +540,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "frmMain.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmMain.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmMain.vb",
@@ -534,7 +551,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "frmMapInfoStatus.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmMapInfoStatus.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmMapInfoStatus.vb",
@@ -545,7 +562,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "frmMdlOpsSwitches.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmMdlOpsSwitches.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmMdlOpsSwitches.vb",
@@ -556,7 +573,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "frmModule_Editor.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmModule_Editor.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmModule_Editor.vb",
@@ -567,7 +584,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "frmModuleEditor_MissingItemSelector.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmModuleEditor_MissingItemSelector.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmModuleEditor_MissingItemSelector.vb",
@@ -578,7 +595,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "frmModuleEditorOptions.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmModuleEditorOptions.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmModuleEditorOptions.vb",
@@ -589,7 +606,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "frmModuleIfo_AreaEditor.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmModuleIfo_AreaEditor.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmModuleIfo_AreaEditor.vb",
@@ -600,7 +617,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "frmModuleItem_Base_Editor.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmModuleItem_Base_Editor.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmModuleItem_Base_Editor.vb",
@@ -611,7 +628,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "frmOptions.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmOptions.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmOptions.vb",
@@ -622,7 +639,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "frmOverrideFilesUsed.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmOverrideFilesUsed.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmOverrideFilesUsed.vb",
@@ -633,7 +650,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "frmPackageTypeSelector.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmPackageTypeSelector.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmPackageTypeSelector.vb",
@@ -644,7 +661,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "frmParent.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmParent.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmParent.vb",
@@ -655,7 +672,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "frmPathManager.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmPathManager.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmPathManager.vb",
@@ -666,7 +683,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "frmProgressMeter.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmProgressMeter.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmProgressMeter.vb",
@@ -677,7 +694,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "frmProjectManager.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmProjectManager.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmProjectManager.vb",
@@ -688,7 +705,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "frmProjectManagerProperties.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmProjectManagerProperties.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmProjectManagerProperties.vb",
@@ -699,7 +716,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "frmPromptForString.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmPromptForString.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmPromptForString.vb",
@@ -710,7 +727,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "frmQueryUserInfo.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmQueryUserInfo.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmQueryUserInfo.vb",
@@ -721,7 +738,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "frmRefSearchCriteria.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmRefSearchCriteria.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmRefSearchCriteria.vb",
@@ -732,7 +749,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 45,
               "Title": "frmRefSearchResults.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmRefSearchResults.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmRefSearchResults.vb",
@@ -743,7 +760,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 46,
               "Title": "frmResourceTypeSelector.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmResourceTypeSelector.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmResourceTypeSelector.vb",
@@ -754,7 +771,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 47,
               "Title": "frmSoundChooser.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmSoundChooser.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmSoundChooser.vb",
@@ -765,7 +782,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "frmSpecifyKotorVersion.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmSpecifyKotorVersion.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmSpecifyKotorVersion.vb",
@@ -776,7 +793,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 49,
               "Title": "frmSSFEditor.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmSSFEditor.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmSSFEditor.vb",
@@ -787,7 +804,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 50,
               "Title": "frmTextEditor.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmTextEditor.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmTextEditor.vb",
@@ -798,7 +815,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 51,
               "Title": "frmTextEditorFind.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmTextEditorFind.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmTextEditorFind.vb",
@@ -809,7 +826,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 52,
               "Title": "frmTPCFileSaveType.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmTPCFileSaveType.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmTPCFileSaveType.vb",
@@ -820,7 +837,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 53,
               "Title": "frmUserRegistration.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmUserRegistration.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmUserRegistration.vb",
@@ -831,7 +848,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 54,
               "Title": "frmUTC_Editor.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmUTC_Editor.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmUTC_Editor.vb",
@@ -842,7 +859,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 55,
               "Title": "frmUTD_Editor.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmUTD_Editor.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmUTD_Editor.vb",
@@ -853,7 +870,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 56,
               "Title": "frmUTI_Editor.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmUTI_Editor.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmUTI_Editor.vb",
@@ -864,7 +881,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 57,
               "Title": "frmUTM_Editor.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmUTM_Editor.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmUTM_Editor.vb",

@@ -93,9 +93,19 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property LordVaderCW_Circle() As System.Drawing.Bitmap
+        Friend ReadOnly Property LordVaderCW70() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("LordVaderCW_Circle", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("LordVaderCW70", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property miles_ss_logo() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("miles_ss_logo", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

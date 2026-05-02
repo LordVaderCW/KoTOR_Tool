@@ -125,9 +125,8 @@ Namespace kotor_tool
             '
             'BWLogoPB
             '
-            Me.BWLogoPB.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
-            Me.BWLogoPB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-            Me.BWLogoPB.Location = New System.Drawing.Point(381, 96)
+            Me.BWLogoPB.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.BWLogoPB.Location = New System.Drawing.Point(381, 100)
             Me.BWLogoPB.Name = "BWLogoPB"
             Me.BWLogoPB.Size = New System.Drawing.Size(86, 86)
             Me.BWLogoPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -139,7 +138,7 @@ Namespace kotor_tool
             Me.Label2.BackColor = System.Drawing.Color.Transparent
             Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label2.Location = New System.Drawing.Point(103, 96)
+            Me.Label2.Location = New System.Drawing.Point(103, 100)
             Me.Label2.Name = "Label2"
             Me.Label2.Size = New System.Drawing.Size(270, 86)
             Me.Label2.TabIndex = 15
@@ -149,9 +148,9 @@ Namespace kotor_tool
             '
             'MSSLogoPB
             '
-            Me.MSSLogoPB.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
-            Me.MSSLogoPB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-            Me.MSSLogoPB.Location = New System.Drawing.Point(13, 96)
+            Me.MSSLogoPB.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.MSSLogoPB.Image = Global.My.Resources.Resources.miles_ss_logo
+            Me.MSSLogoPB.Location = New System.Drawing.Point(13, 100)
             Me.MSSLogoPB.Name = "MSSLogoPB"
             Me.MSSLogoPB.Size = New System.Drawing.Size(86, 86)
             Me.MSSLogoPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -280,12 +279,11 @@ Namespace kotor_tool
             '
             'LordVaderCW_PB1
             '
-            Me.LordVaderCW_PB1.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
-            Me.LordVaderCW_PB1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-            Me.LordVaderCW_PB1.Image = Global.My.Resources.Resources.LordVaderCW_Circle
-            Me.LordVaderCW_PB1.Location = New System.Drawing.Point(379, 3)
+            Me.LordVaderCW_PB1.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.LordVaderCW_PB1.Image = Global.My.Resources.Resources.LordVaderCW70
+            Me.LordVaderCW_PB1.Location = New System.Drawing.Point(379, 16)
             Me.LordVaderCW_PB1.Name = "LordVaderCW_PB1"
-            Me.LordVaderCW_PB1.Size = New System.Drawing.Size(96, 96)
+            Me.LordVaderCW_PB1.Size = New System.Drawing.Size(70, 70)
             Me.LordVaderCW_PB1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
             Me.LordVaderCW_PB1.TabIndex = 10
             Me.LordVaderCW_PB1.TabStop = False
@@ -340,12 +338,11 @@ Namespace kotor_tool
             '
             'PictureBox1
             '
-            Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
-            Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
             Me.PictureBox1.Image = Global.My.Resources.Resources.koTOR_icon
-            Me.PictureBox1.Location = New System.Drawing.Point(3, 3)
+            Me.PictureBox1.Location = New System.Drawing.Point(31, 16)
             Me.PictureBox1.Name = "PictureBox1"
-            Me.PictureBox1.Size = New System.Drawing.Size(96, 96)
+            Me.PictureBox1.Size = New System.Drawing.Size(70, 70)
             Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
             Me.PictureBox1.TabIndex = 4
             Me.PictureBox1.TabStop = False
