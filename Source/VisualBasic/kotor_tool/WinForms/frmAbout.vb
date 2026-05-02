@@ -84,9 +84,9 @@ Namespace kotor_tool
                 Me.lblVersion.Font = _theme.CreateMonoFont()
             End If
 
-            If Me.Label3 IsNot Nothing Then
-                Me.Label3.ForeColor = _theme.TextPrimary
-                Me.Label3.Font = _theme.CreateBodyFont()
+            If Me.lblOriginalAuthor IsNot Nothing Then
+                Me.lblOriginalAuthor.ForeColor = _theme.TextPrimary
+                Me.lblOriginalAuthor.Font = _theme.CreateBodyFont()
             End If
 
             If Me.lblOriginalCredit IsNot Nothing Then
@@ -99,9 +99,9 @@ Namespace kotor_tool
                 Me.lblRestorationCredit.Font = _theme.CreateBodyFont()
             End If
 
-            If Me.Label5 IsNot Nothing Then
-                Me.Label5.ForeColor = _theme.TextMuted
-                Me.Label5.Font = _theme.CreateBodyFont()
+            If Me.lblSpecialCredits IsNot Nothing Then
+                Me.lblSpecialCredits.ForeColor = _theme.TextMuted
+                Me.lblSpecialCredits.Font = _theme.CreateBodyFont()
             End If
 
             If Me.Label4 IsNot Nothing Then

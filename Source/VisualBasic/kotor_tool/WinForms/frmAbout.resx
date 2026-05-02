@@ -117,4 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblSpecialCredits.Text" xml:space="preserve">
+    <value>Thanks to Achilles, illuzion69, CDRSeadog, Darth333, death_disco, ChAiNz.2da, Guardian Archon, Gsccc, Uchiha Itachi, and everyone else for their support.
+Thanks to Eiz for his dxt1/5 converter code, and Special Thanks to Fred Tetra.</value>
+  </data>
 </root>

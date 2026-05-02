@@ -29,10 +29,9 @@ Namespace kotor_tool
 
         Friend WithEvents Label1 As Global.System.Windows.Forms.Label
         Friend WithEvents Button1 As Global.System.Windows.Forms.Button
-        Friend WithEvents Label3 As Global.System.Windows.Forms.Label
+        Friend WithEvents lblOriginalAuthor As Global.System.Windows.Forms.Label
         Friend WithEvents PictureBox1 As Global.System.Windows.Forms.PictureBox
-        Friend WithEvents Label4 As Global.System.Windows.Forms.Label
-        Friend WithEvents Label5 As Global.System.Windows.Forms.Label
+        Friend WithEvents lblSpecialCredits As Global.System.Windows.Forms.Label
         Friend WithEvents lblVersion As Global.System.Windows.Forms.Label
 
         Friend WithEvents pnlRoot As Global.System.Windows.Forms.Panel
@@ -63,30 +62,35 @@ Namespace kotor_tool
 
         <Global.System.Diagnostics.DebuggerStepThrough()> _
         Private Sub InitializeComponent()
+            Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAbout))
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlBody = New System.Windows.Forms.Panel()
-            Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-            Me.Label2 = New System.Windows.Forms.Label()
+            Me.MSSLogoPB = New System.Windows.Forms.PictureBox()
+            Me.lblSpecialCreditTxt = New System.Windows.Forms.Label()
             Me.lblSeparatorBottom = New System.Windows.Forms.Label()
-            Me.Label4 = New System.Windows.Forms.Label()
-            Me.Label5 = New System.Windows.Forms.Label()
+            Me.lblSpecialCredits = New System.Windows.Forms.Label()
             Me.lblRestorationCredit = New System.Windows.Forms.Label()
             Me.lblOriginalCredit = New System.Windows.Forms.Label()
-            Me.Label3 = New System.Windows.Forms.Label()
+            Me.lblOriginalAuthor = New System.Windows.Forms.Label()
             Me.pnlFooter = New System.Windows.Forms.Panel()
             Me.Button1 = New System.Windows.Forms.Button()
             Me.pnlHeader = New System.Windows.Forms.Panel()
+            Me.LordVaderCW_PB1 = New System.Windows.Forms.PictureBox()
             Me.lblSeparatorTop = New System.Windows.Forms.Label()
             Me.lblVersion = New System.Windows.Forms.Label()
             Me.lblProjectName = New System.Windows.Forms.Label()
             Me.Label1 = New System.Windows.Forms.Label()
             Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+            Me.Label2 = New System.Windows.Forms.Label()
+            Me.BWLogoPB = New System.Windows.Forms.PictureBox()
             Me.pnlRoot.SuspendLayout()
             Me.pnlBody.SuspendLayout()
-            CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.MSSLogoPB, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.pnlFooter.SuspendLayout()
             Me.pnlHeader.SuspendLayout()
+            CType(Me.LordVaderCW_PB1, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.BWLogoPB, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.SuspendLayout()
             '
             'pnlRoot
@@ -105,44 +109,45 @@ Namespace kotor_tool
             'pnlBody
             '
             Me.pnlBody.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
-            Me.pnlBody.Controls.Add(Me.PictureBox2)
+            Me.pnlBody.Controls.Add(Me.BWLogoPB)
             Me.pnlBody.Controls.Add(Me.Label2)
+            Me.pnlBody.Controls.Add(Me.MSSLogoPB)
+            Me.pnlBody.Controls.Add(Me.lblSpecialCreditTxt)
             Me.pnlBody.Controls.Add(Me.lblSeparatorBottom)
-            Me.pnlBody.Controls.Add(Me.Label4)
-            Me.pnlBody.Controls.Add(Me.Label5)
+            Me.pnlBody.Controls.Add(Me.lblSpecialCredits)
             Me.pnlBody.Controls.Add(Me.lblRestorationCredit)
             Me.pnlBody.Controls.Add(Me.lblOriginalCredit)
-            Me.pnlBody.Controls.Add(Me.Label3)
+            Me.pnlBody.Controls.Add(Me.lblOriginalAuthor)
             Me.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlBody.Location = New System.Drawing.Point(0, 104)
             Me.pnlBody.Name = "pnlBody"
             Me.pnlBody.Size = New System.Drawing.Size(478, 303)
             Me.pnlBody.TabIndex = 1
             '
-            'PictureBox2
+            'MSSLogoPB
             '
-            Me.PictureBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
-            Me.PictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-            Me.PictureBox2.Location = New System.Drawing.Point(22, 107)
-            Me.PictureBox2.Name = "PictureBox2"
-            Me.PictureBox2.Size = New System.Drawing.Size(86, 86)
-            Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-            Me.PictureBox2.TabIndex = 14
-            Me.PictureBox2.TabStop = False
+            Me.MSSLogoPB.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
+            Me.MSSLogoPB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.MSSLogoPB.Location = New System.Drawing.Point(13, 110)
+            Me.MSSLogoPB.Name = "MSSLogoPB"
+            Me.MSSLogoPB.Size = New System.Drawing.Size(86, 86)
+            Me.MSSLogoPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+            Me.MSSLogoPB.TabIndex = 14
+            Me.MSSLogoPB.TabStop = False
             '
-            'Label2
+            'lblSpecialCreditTxt
             '
-            Me.Label2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.lblSpecialCreditTxt.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.Label2.BackColor = System.Drawing.Color.Transparent
-            Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.Label2.Location = New System.Drawing.Point(28, 209)
-            Me.Label2.Name = "Label2"
-            Me.Label2.Size = New System.Drawing.Size(422, 20)
-            Me.Label2.TabIndex = 13
-            Me.Label2.Text = "Special Credits:"
-            Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+            Me.lblSpecialCreditTxt.BackColor = System.Drawing.Color.Transparent
+            Me.lblSpecialCreditTxt.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblSpecialCreditTxt.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.lblSpecialCreditTxt.Location = New System.Drawing.Point(28, 209)
+            Me.lblSpecialCreditTxt.Name = "lblSpecialCreditTxt"
+            Me.lblSpecialCreditTxt.Size = New System.Drawing.Size(422, 20)
+            Me.lblSpecialCreditTxt.TabIndex = 13
+            Me.lblSpecialCreditTxt.Text = "Special Credits:"
+            Me.lblSpecialCreditTxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
             '
             'lblSeparatorBottom
             '
@@ -153,34 +158,19 @@ Namespace kotor_tool
             Me.lblSeparatorBottom.Size = New System.Drawing.Size(478, 2)
             Me.lblSeparatorBottom.TabIndex = 12
             '
-            'Label4
+            'lblSpecialCredits
             '
-            Me.Label4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.lblSpecialCredits.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.Label4.BackColor = System.Drawing.Color.Transparent
-            Me.Label4.Font = New System.Drawing.Font("Segoe UI", 7.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(186, Byte), Integer), CType(CType(198, Byte), Integer))
-            Me.Label4.Location = New System.Drawing.Point(28, 262)
-            Me.Label4.Name = "Label4"
-            Me.Label4.Size = New System.Drawing.Size(422, 22)
-            Me.Label4.TabIndex = 6
-            Me.Label4.Text = "Thanks to Eiz for his dxt1/5 converter code."
-            Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-            '
-            'Label5
-            '
-            Me.Label5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.Label5.BackColor = System.Drawing.Color.Transparent
-            Me.Label5.Font = New System.Drawing.Font("Segoe UI", 7.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(186, Byte), Integer), CType(CType(198, Byte), Integer))
-            Me.Label5.Location = New System.Drawing.Point(28, 229)
-            Me.Label5.Name = "Label5"
-            Me.Label5.Size = New System.Drawing.Size(422, 34)
-            Me.Label5.TabIndex = 7
-            Me.Label5.Text = "Thanks to Achilles, illuzion69, CDRSeadog, Darth333, death_disco, ChAiNz.2da, Gua" &
-    "rdian Archon, Gsccc, Uchiha Itachi, and everyone else for their support."
-            Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+            Me.lblSpecialCredits.BackColor = System.Drawing.Color.Transparent
+            Me.lblSpecialCredits.Font = New System.Drawing.Font("Segoe UI", 7.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblSpecialCredits.ForeColor = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(186, Byte), Integer), CType(CType(198, Byte), Integer))
+            Me.lblSpecialCredits.Location = New System.Drawing.Point(28, 229)
+            Me.lblSpecialCredits.Name = "lblSpecialCredits"
+            Me.lblSpecialCredits.Size = New System.Drawing.Size(422, 59)
+            Me.lblSpecialCredits.TabIndex = 7
+            Me.lblSpecialCredits.Text = resources.GetString("lblSpecialCredits.Text")
+            Me.lblSpecialCredits.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
             '
             'lblRestorationCredit
             '
@@ -207,18 +197,18 @@ Namespace kotor_tool
     "at kept it alive. Thank You Fred. "
             Me.lblOriginalCredit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
             '
-            'Label3
+            'lblOriginalAuthor
             '
-            Me.Label3.AutoEllipsis = True
-            Me.Label3.BackColor = System.Drawing.Color.Transparent
-            Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(232, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(226, Byte), Integer))
-            Me.Label3.Location = New System.Drawing.Point(24, 16)
-            Me.Label3.Name = "Label3"
-            Me.Label3.Size = New System.Drawing.Size(430, 22)
-            Me.Label3.TabIndex = 3
-            Me.Label3.Text = "KoTOR Tool Original Author: Fred Tetra  "
-            Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+            Me.lblOriginalAuthor.AutoEllipsis = True
+            Me.lblOriginalAuthor.BackColor = System.Drawing.Color.Transparent
+            Me.lblOriginalAuthor.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblOriginalAuthor.ForeColor = System.Drawing.Color.FromArgb(CType(CType(232, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(226, Byte), Integer))
+            Me.lblOriginalAuthor.Location = New System.Drawing.Point(24, 16)
+            Me.lblOriginalAuthor.Name = "lblOriginalAuthor"
+            Me.lblOriginalAuthor.Size = New System.Drawing.Size(430, 22)
+            Me.lblOriginalAuthor.TabIndex = 3
+            Me.lblOriginalAuthor.Text = "KoTOR Tool Original Author: Fred Tetra  "
+            Me.lblOriginalAuthor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
             '
             'pnlFooter
             '
@@ -251,6 +241,7 @@ Namespace kotor_tool
             'pnlHeader
             '
             Me.pnlHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.pnlHeader.Controls.Add(Me.LordVaderCW_PB1)
             Me.pnlHeader.Controls.Add(Me.lblSeparatorTop)
             Me.pnlHeader.Controls.Add(Me.lblVersion)
             Me.pnlHeader.Controls.Add(Me.lblProjectName)
@@ -261,6 +252,18 @@ Namespace kotor_tool
             Me.pnlHeader.Name = "pnlHeader"
             Me.pnlHeader.Size = New System.Drawing.Size(478, 104)
             Me.pnlHeader.TabIndex = 0
+            '
+            'LordVaderCW_PB1
+            '
+            Me.LordVaderCW_PB1.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
+            Me.LordVaderCW_PB1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.LordVaderCW_PB1.Image = Global.My.Resources.Resources.LordVaderCW_Circle
+            Me.LordVaderCW_PB1.Location = New System.Drawing.Point(379, 3)
+            Me.LordVaderCW_PB1.Name = "LordVaderCW_PB1"
+            Me.LordVaderCW_PB1.Size = New System.Drawing.Size(96, 96)
+            Me.LordVaderCW_PB1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+            Me.LordVaderCW_PB1.TabIndex = 10
+            Me.LordVaderCW_PB1.TabStop = False
             '
             'lblSeparatorTop
             '
@@ -279,10 +282,10 @@ Namespace kotor_tool
             Me.lblVersion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
             Me.lblVersion.Location = New System.Drawing.Point(105, 70)
             Me.lblVersion.Name = "lblVersion"
-            Me.lblVersion.Size = New System.Drawing.Size(347, 18)
+            Me.lblVersion.Size = New System.Drawing.Size(268, 18)
             Me.lblVersion.TabIndex = 5
             Me.lblVersion.Text = "Version 1.0.3.1"
-            Me.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            Me.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
             '
             'lblProjectName
             '
@@ -292,10 +295,10 @@ Namespace kotor_tool
             Me.lblProjectName.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.lblProjectName.Location = New System.Drawing.Point(105, 50)
             Me.lblProjectName.Name = "lblProjectName"
-            Me.lblProjectName.Size = New System.Drawing.Size(347, 20)
+            Me.lblProjectName.Size = New System.Drawing.Size(268, 20)
             Me.lblProjectName.TabIndex = 8
             Me.lblProjectName.Text = "KoTOR Tool Restoration Project"
-            Me.lblProjectName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            Me.lblProjectName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
             '
             'Label1
             '
@@ -305,22 +308,46 @@ Namespace kotor_tool
             Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.Label1.Location = New System.Drawing.Point(102, 16)
             Me.Label1.Name = "Label1"
-            Me.Label1.Size = New System.Drawing.Size(350, 34)
+            Me.Label1.Size = New System.Drawing.Size(271, 34)
             Me.Label1.TabIndex = 0
             Me.Label1.Text = "KotOR Tool"
-            Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
             '
             'PictureBox1
             '
             Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
             Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.PictureBox1.Image = Global.My.Resources.Resources.koTOR_icon
-            Me.PictureBox1.Location = New System.Drawing.Point(22, 20)
+            Me.PictureBox1.Location = New System.Drawing.Point(3, 3)
             Me.PictureBox1.Name = "PictureBox1"
-            Me.PictureBox1.Size = New System.Drawing.Size(64, 64)
+            Me.PictureBox1.Size = New System.Drawing.Size(96, 96)
             Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
             Me.PictureBox1.TabIndex = 4
             Me.PictureBox1.TabStop = False
+            '
+            'Label2
+            '
+            Me.Label2.BackColor = System.Drawing.Color.Transparent
+            Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label2.Location = New System.Drawing.Point(103, 110)
+            Me.Label2.Name = "Label2"
+            Me.Label2.Size = New System.Drawing.Size(270, 86)
+            Me.Label2.TabIndex = 15
+            Me.Label2.Text = "Uses Miles Sound System from RAD Game Tools (C) Copyright Epic Games. (Pending Li" &
+    "cence) Uses GFF Editor for NeverWinter Nights from Bioware, Inc."
+            Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+            '
+            'BWLogoPB
+            '
+            Me.BWLogoPB.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
+            Me.BWLogoPB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.BWLogoPB.Location = New System.Drawing.Point(381, 110)
+            Me.BWLogoPB.Name = "BWLogoPB"
+            Me.BWLogoPB.Size = New System.Drawing.Size(86, 86)
+            Me.BWLogoPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+            Me.BWLogoPB.TabIndex = 16
+            Me.BWLogoPB.TabStop = False
             '
             'frmAbout
             '
@@ -341,16 +368,21 @@ Namespace kotor_tool
             Me.Text = "About KotOR Tool"
             Me.pnlRoot.ResumeLayout(False)
             Me.pnlBody.ResumeLayout(False)
-            CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.MSSLogoPB, System.ComponentModel.ISupportInitialize).EndInit()
             Me.pnlFooter.ResumeLayout(False)
             Me.pnlHeader.ResumeLayout(False)
+            CType(Me.LordVaderCW_PB1, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.BWLogoPB, System.ComponentModel.ISupportInitialize).EndInit()
             Me.ResumeLayout(False)
 
         End Sub
 
-        Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+        Friend WithEvents MSSLogoPB As System.Windows.Forms.PictureBox
+        Friend WithEvents lblSpecialCreditTxt As System.Windows.Forms.Label
+        Friend WithEvents LordVaderCW_PB1 As System.Windows.Forms.PictureBox
         Friend WithEvents Label2 As System.Windows.Forms.Label
+        Friend WithEvents BWLogoPB As System.Windows.Forms.PictureBox
     End Class
 
 End Namespace
