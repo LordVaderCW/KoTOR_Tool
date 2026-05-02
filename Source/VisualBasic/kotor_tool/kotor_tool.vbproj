@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="Build">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -162,8 +162,14 @@
     <Compile Include="Classes\DLGConvListNode.vb" />
     <Compile Include="Classes\ERFKeyEntry.vb" />
     <Compile Include="Classes\ERFLocalizedString.vb" />
+    <Compile Include="CustomControls\CustomPictureBoxControl.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CustomControls\CustomTabControl.vb">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControls\DarkByteViewerControl.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>

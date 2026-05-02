@@ -23,6 +23,12 @@ Namespace kotor_tool
 			Me.m_bSaveGameMode = False
             Me.g_ForcePowerList = New ArrayList()
 
+
+            Me.InitializeComponent()
+
+
+            '' ALWAYS PUT BINDINGS AFTER COMPONENTS HAVE BEEN INITIALISED. OR YOU WILL CRASH THE EDITOR. :) 
+
             ' -------------------------------------------------------------
             ' Event bindings restored from decompiled synchronized
             ' AccessedThroughProperty wrappers.
@@ -36,7 +42,7 @@ Namespace kotor_tool
             AddHandler Me.btnClearAllPowers.Click, AddressOf Me.btnClearAllPowers_Click
             AddHandler Me.btnSelectAllPowers.Click, AddressOf Me.btnSelectAllPowers_Click
             AddHandler Me.btnInventory.Click, AddressOf Me.btnInventory_Click
-            AddHandler Me.btnDebug.Click, AddressOf Me.btnDebug_Click
+            'AddHandler Me.btnDebug.Click, AddressOf Me.btnDebug_Click (This one already exists somewhere). 
             AddHandler Me.btnEditOnEndDialogu.Click, AddressOf Me.btnEditScript_Click
             AddHandler Me.btnEditOnDialogue.Click, AddressOf Me.btnEditScript_Click
             AddHandler Me.btnEditOnUserDefine.Click, AddressOf Me.btnEditScript_Click
@@ -51,9 +57,6 @@ Namespace kotor_tool
             AddHandler Me.btnEditOnBlocked.Click, AddressOf Me.btnEditScript_Click
             AddHandler Me.btnEditOnRested.Click, AddressOf Me.btnEditScript_Click
             AddHandler Me.btnEditOnEndRound.Click, AddressOf Me.btnEditScript_Click
-
-            Me.InitializeComponent()
-
 
         End Sub
 
