@@ -71,7 +71,7 @@ Namespace kotor_tool
         Friend WithEvents MenuItem7 As Global.System.Windows.Forms.MenuItem
         Friend WithEvents miOpenMapsFolder As Global.System.Windows.Forms.MenuItem
         Friend WithEvents miOpenModuleEditor As Global.System.Windows.Forms.MenuItem
-        Friend WithEvents MenuItem10 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miOpenHexViewer As Global.System.Windows.Forms.MenuItem
         Friend WithEvents miOpenSSFEditor As Global.System.Windows.Forms.MenuItem
         Friend WithEvents btnCreateMapInfoBFD As Global.System.Windows.Forms.Button
         Friend WithEvents Button1 As Global.System.Windows.Forms.Button
@@ -142,7 +142,7 @@ Namespace kotor_tool
             Me.miOpenPWKEditor = New System.Windows.Forms.MenuItem()
             Me.miOpenSSFEditor = New System.Windows.Forms.MenuItem()
             Me.miOpenERFBuilder = New System.Windows.Forms.MenuItem()
-            Me.MenuItem10 = New System.Windows.Forms.MenuItem()
+            Me.miOpenHexViewer = New System.Windows.Forms.MenuItem()
             Me.miRefSearch = New System.Windows.Forms.MenuItem()
             Me.MenuItem4 = New System.Windows.Forms.MenuItem()
             Me.miCleanWorkingDir = New System.Windows.Forms.MenuItem()
@@ -160,6 +160,7 @@ Namespace kotor_tool
             Me.miAbout = New System.Windows.Forms.MenuItem()
             Me.tvCMenu = New System.Windows.Forms.ContextMenu()
             Me.cmiExtractForModuleEditing = New System.Windows.Forms.MenuItem()
+            Me.MenuItem9 = New System.Windows.Forms.MenuItem()
             Me.pnlRoot.SuspendLayout()
             Me.pnlMainArea.SuspendLayout()
             Me.pnlActionPanel.SuspendLayout()
@@ -467,7 +468,7 @@ Namespace kotor_tool
             'MenuItem3
             '
             Me.MenuItem3.Index = 1
-            Me.MenuItem3.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miExtract, Me.miOpenProjectManager, Me.miOpen2DAEditor, Me.miConversationEditor, Me.miOpenModuleEditor, Me.miOpenDialogTlkViewer, Me.miGlobalVariableEditor, Me.miOpenTextEditor, Me.miOpenPWKEditor, Me.miOpenSSFEditor, Me.miOpenERFBuilder, Me.MenuItem10, Me.miRefSearch, Me.MenuItem4, Me.miCleanWorkingDir, Me.MenuItem1, Me.miOpenWorkingDir, Me.MenuItem8, Me.miShowSupportedModEditorMaps, Me.miOpenMapsFolder, Me.MenuItem7, Me.miOptions})
+            Me.MenuItem3.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miExtract, Me.miOpenProjectManager, Me.miOpen2DAEditor, Me.miConversationEditor, Me.miOpenModuleEditor, Me.miOpenDialogTlkViewer, Me.miGlobalVariableEditor, Me.miOpenTextEditor, Me.miOpenPWKEditor, Me.miOpenSSFEditor, Me.miOpenERFBuilder, Me.MenuItem9, Me.miOpenHexViewer, Me.miRefSearch, Me.MenuItem4, Me.miCleanWorkingDir, Me.MenuItem1, Me.miOpenWorkingDir, Me.MenuItem8, Me.miShowSupportedModEditorMaps, Me.miOpenMapsFolder, Me.MenuItem7, Me.miOptions})
             Me.MenuItem3.Text = "&Tools"
             '
             'miExtract
@@ -531,60 +532,60 @@ Namespace kotor_tool
             Me.miOpenERFBuilder.Index = 10
             Me.miOpenERFBuilder.Text = "Open &ERF/MOD builder"
             '
-            'MenuItem10
+            'miOpenHexViewer
             '
-            Me.MenuItem10.Index = 11
-            Me.MenuItem10.Text = "-"
+            Me.miOpenHexViewer.Index = 12
+            Me.miOpenHexViewer.Text = "-"
             '
             'miRefSearch
             '
-            Me.miRefSearch.Index = 12
+            Me.miRefSearch.Index = 13
             Me.miRefSearch.Shortcut = System.Windows.Forms.Shortcut.CtrlF
             Me.miRefSearch.Text = "Search for text in BIFs/RIMs"
             '
             'MenuItem4
             '
-            Me.MenuItem4.Index = 13
+            Me.MenuItem4.Index = 14
             Me.MenuItem4.Text = "-"
             '
             'miCleanWorkingDir
             '
-            Me.miCleanWorkingDir.Index = 14
+            Me.miCleanWorkingDir.Index = 15
             Me.miCleanWorkingDir.Text = "Clean Working Directory"
             '
             'MenuItem1
             '
-            Me.MenuItem1.Index = 15
+            Me.MenuItem1.Index = 16
             Me.MenuItem1.Text = "-"
             '
             'miOpenWorkingDir
             '
-            Me.miOpenWorkingDir.Index = 16
+            Me.miOpenWorkingDir.Index = 17
             Me.miOpenWorkingDir.Text = "Open Working Directory"
             '
             'MenuItem8
             '
-            Me.MenuItem8.Index = 17
+            Me.MenuItem8.Index = 18
             Me.MenuItem8.Text = "-"
             '
             'miShowSupportedModEditorMaps
             '
-            Me.miShowSupportedModEditorMaps.Index = 18
+            Me.miShowSupportedModEditorMaps.Index = 19
             Me.miShowSupportedModEditorMaps.Text = "Show Maps supported by Module editor"
             '
             'miOpenMapsFolder
             '
-            Me.miOpenMapsFolder.Index = 19
+            Me.miOpenMapsFolder.Index = 20
             Me.miOpenMapsFolder.Text = "Explore Maps folder"
             '
             'MenuItem7
             '
-            Me.MenuItem7.Index = 20
+            Me.MenuItem7.Index = 21
             Me.MenuItem7.Text = "-"
             '
             'miOptions
             '
-            Me.miOptions.Index = 21
+            Me.miOptions.Index = 22
             Me.miOptions.Text = "&Options..."
             '
             'MenuItem2
@@ -623,6 +624,11 @@ Namespace kotor_tool
             Me.cmiExtractForModuleEditing.Index = 0
             Me.cmiExtractForModuleEditing.Text = "Extract for Module editing..."
             '
+            'MenuItem9
+            '
+            Me.MenuItem9.Index = 11
+            Me.MenuItem9.Text = "Open &Hex Viewer"
+            '
             'frmMain
             '
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
@@ -642,6 +648,7 @@ Namespace kotor_tool
 
         End Sub
 
+        Friend WithEvents MenuItem9 As System.Windows.Forms.MenuItem
     End Class
 
 End Namespace

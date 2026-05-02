@@ -23,7 +23,9 @@ Namespace kotor_tool
         '   - Original control names preserved for source compatibility.
         '   - Theme colours are applied at runtime from Themes\DarkSaber.ini.
         '   - Designer keeps fallback colours only for safe VS designer display.
-        '   - Restored AddHandler bindings are preserved from decompiled wrappers.
+        '   - Event bindings are handled in the code-behind.
+        '   - pnlByteSurface is the intended host/drawing surface for the
+        '     Hex / ANSI / Unicode byte views.
         ' -----------------------------------------------------------------
 
         Private components As Global.System.ComponentModel.IContainer
@@ -38,6 +40,9 @@ Namespace kotor_tool
         Friend WithEvents pnlBody As Global.System.Windows.Forms.Panel
         Friend WithEvents pnlFooter As Global.System.Windows.Forms.Panel
         Friend WithEvents pnlOptions As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlByteSurface As Global.System.Windows.Forms.Panel
+        Friend WithEvents lblBytePreviewHeader As Global.System.Windows.Forms.Label
+        Friend WithEvents lblBytePreviewRows As Global.System.Windows.Forms.Label
         Friend WithEvents lblTitle As Global.System.Windows.Forms.Label
         Friend WithEvents lblSubtitle As Global.System.Windows.Forms.Label
         Friend WithEvents lblSeparatorTop As Global.System.Windows.Forms.Label
@@ -56,8 +61,12 @@ Namespace kotor_tool
 
         <Global.System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
+            Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmByteViewer))
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlBody = New System.Windows.Forms.Panel()
+            Me.pnlByteSurface = New System.Windows.Forms.Panel()
+            Me.lblBytePreviewHeader = New System.Windows.Forms.Label()
+            Me.lblBytePreviewRows = New System.Windows.Forms.Label()
             Me.lblSeparatorBottom = New System.Windows.Forms.Label()
             Me.pnlFooter = New System.Windows.Forms.Panel()
             Me.pnlOptions = New System.Windows.Forms.Panel()
@@ -71,6 +80,7 @@ Namespace kotor_tool
             Me.lblTitle = New System.Windows.Forms.Label()
             Me.pnlRoot.SuspendLayout()
             Me.pnlBody.SuspendLayout()
+            Me.pnlByteSurface.SuspendLayout()
             Me.pnlFooter.SuspendLayout()
             Me.pnlOptions.SuspendLayout()
             Me.pnlHeader.SuspendLayout()
@@ -92,6 +102,7 @@ Namespace kotor_tool
             'pnlBody
             '
             Me.pnlBody.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.pnlBody.Controls.Add(Me.pnlByteSurface)
             Me.pnlBody.Controls.Add(Me.lblSeparatorBottom)
             Me.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlBody.Location = New System.Drawing.Point(0, 88)
@@ -100,6 +111,61 @@ Namespace kotor_tool
             Me.pnlBody.Size = New System.Drawing.Size(622, 404)
             Me.pnlBody.TabIndex = 1
             '
+            'pnlByteSurface
+            '
+            Me.pnlByteSurface.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.pnlByteSurface.Controls.Add(Me.lblBytePreviewRows)
+            Me.pnlByteSurface.Controls.Add(Me.lblBytePreviewHeader)
+            Me.pnlByteSurface.AutoScroll = True
+            Me.pnlByteSurface.BackColor = System.Drawing.Color.FromArgb(CType(CType(12, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(24, Byte), Integer))
+            Me.pnlByteSurface.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.pnlByteSurface.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.pnlByteSurface.Location = New System.Drawing.Point(18, 18)
+            Me.pnlByteSurface.Name = "pnlByteSurface"
+            Me.pnlByteSurface.Size = New System.Drawing.Size(586, 360)
+            Me.pnlByteSurface.TabIndex = 0
+            '
+            'lblBytePreviewHeader
+            '
+            Me.lblBytePreviewHeader.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.lblBytePreviewHeader.BackColor = System.Drawing.Color.Transparent
+            Me.lblBytePreviewHeader.Font = New System.Drawing.Font("Consolas", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblBytePreviewHeader.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.lblBytePreviewHeader.Location = New System.Drawing.Point(12, 12)
+            Me.lblBytePreviewHeader.Name = "lblBytePreviewHeader"
+            Me.lblBytePreviewHeader.Size = New System.Drawing.Size(560, 18)
+            Me.lblBytePreviewHeader.TabIndex = 0
+            Me.lblBytePreviewHeader.Text = "OFFSET    00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F  ASCII"
+            Me.lblBytePreviewHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'lblBytePreviewRows
+            '
+            Me.lblBytePreviewRows.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.lblBytePreviewRows.BackColor = System.Drawing.Color.Transparent
+            Me.lblBytePreviewRows.Font = New System.Drawing.Font("Consolas", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblBytePreviewRows.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.lblBytePreviewRows.Location = New System.Drawing.Point(12, 36)
+            Me.lblBytePreviewRows.Name = "lblBytePreviewRows"
+            Me.lblBytePreviewRows.Size = New System.Drawing.Size(560, 304)
+            Me.lblBytePreviewRows.TabIndex = 1
+            Me.lblBytePreviewRows.Text = "00000000  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  ................" &
+                Microsoft.VisualBasic.ControlChars.CrLf &
+                "00000010  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  ................" &
+                Microsoft.VisualBasic.ControlChars.CrLf &
+                "00000020  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  ................" &
+                Microsoft.VisualBasic.ControlChars.CrLf &
+                "00000030  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  ................" &
+                Microsoft.VisualBasic.ControlChars.CrLf &
+                "00000040  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  ................" &
+                Microsoft.VisualBasic.ControlChars.CrLf &
+                "00000050  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  ................"
+            Me.lblBytePreviewRows.TextAlign = System.Drawing.ContentAlignment.TopLeft
+            '
             'lblSeparatorBottom
             '
             Me.lblSeparatorBottom.BackColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
@@ -107,7 +173,7 @@ Namespace kotor_tool
             Me.lblSeparatorBottom.Location = New System.Drawing.Point(16, 386)
             Me.lblSeparatorBottom.Name = "lblSeparatorBottom"
             Me.lblSeparatorBottom.Size = New System.Drawing.Size(590, 2)
-            Me.lblSeparatorBottom.TabIndex = 0
+            Me.lblSeparatorBottom.TabIndex = 1
             '
             'pnlFooter
             '
@@ -217,12 +283,12 @@ Namespace kotor_tool
             Me.lblSubtitle.BackColor = System.Drawing.Color.Transparent
             Me.lblSubtitle.Font = New System.Drawing.Font("Segoe UI", 8.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.lblSubtitle.Location = New System.Drawing.Point(18, 52)
+            Me.lblSubtitle.Location = New System.Drawing.Point(18, 50)
             Me.lblSubtitle.Name = "lblSubtitle"
-            Me.lblSubtitle.Size = New System.Drawing.Size(586, 21)
+            Me.lblSubtitle.Size = New System.Drawing.Size(586, 24)
             Me.lblSubtitle.TabIndex = 1
             Me.lblSubtitle.Text = "Choose how raw bytes should be displayed: hexadecimal, ANSI text, or Unicode text" &
-    "."
+                "."
             Me.lblSubtitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
             '
             'lblTitle
@@ -233,9 +299,9 @@ Namespace kotor_tool
             Me.lblTitle.BackColor = System.Drawing.Color.Transparent
             Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.lblTitle.Location = New System.Drawing.Point(16, 12)
+            Me.lblTitle.Location = New System.Drawing.Point(16, 10)
             Me.lblTitle.Name = "lblTitle"
-            Me.lblTitle.Size = New System.Drawing.Size(588, 39)
+            Me.lblTitle.Size = New System.Drawing.Size(588, 38)
             Me.lblTitle.TabIndex = 0
             Me.lblTitle.Text = "Byte Viewer"
             Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -248,6 +314,7 @@ Namespace kotor_tool
             Me.ClientSize = New System.Drawing.Size(624, 550)
             Me.Controls.Add(Me.pnlRoot)
             Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
             Me.MaximumSize = New System.Drawing.Size(640, 1600)
             Me.MinimumSize = New System.Drawing.Size(640, 200)
             Me.Name = "frmByteViewer"
@@ -255,6 +322,7 @@ Namespace kotor_tool
             Me.Text = "Byte Viewer"
             Me.pnlRoot.ResumeLayout(False)
             Me.pnlBody.ResumeLayout(False)
+            Me.pnlByteSurface.ResumeLayout(False)
             Me.pnlFooter.ResumeLayout(False)
             Me.pnlOptions.ResumeLayout(False)
             Me.pnlHeader.ResumeLayout(False)

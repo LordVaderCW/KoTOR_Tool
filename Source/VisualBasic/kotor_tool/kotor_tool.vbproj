@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="Build">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -553,8 +553,9 @@
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frm2DAEditor.resources">
-      <LogicalName>kotor_tool.frm2DAEditor.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frm2DAEditor.resx">
+      <DependentUpon>frm2DAEditor.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmAbout.resx">
       <DependentUpon>frmAbout.vb</DependentUpon>
@@ -564,8 +565,9 @@
       <DependentUpon>frmAppearanceWizard.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmAutoDialog.resources">
-      <LogicalName>kotor_tool.frmAutoDialog.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmAutoDialog.resx">
+      <DependentUpon>frmAutoDialog.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmBasicHelp.resx">
       <DependentUpon>frmBasicHelp.vb</DependentUpon>
@@ -814,9 +816,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ProjectManager.py" />
-    <None Include="Resources\LordVaderCW_Circle.png" />
-    <None Include="Resources\miles_ss_logo.png" />
-    <None Include="Resources\LordVaderCW70.png" />
+    <EmbeddedResource Include="Resources\LordVaderCW_Circle.png" />
+    <EmbeddedResource Include="Resources\miles_ss_logo.png" />
+    <EmbeddedResource Include="Resources\LordVaderCW70.png" />
     <Content Include="settings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

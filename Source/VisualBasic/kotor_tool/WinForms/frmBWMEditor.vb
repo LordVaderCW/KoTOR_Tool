@@ -19,6 +19,17 @@ Namespace kotor_tool
 
         Public Sub New()
             Me.InitializeComponent()
+
+            ' -------------------------------------------------------------
+            ' Event bindings restored from decompiled synchronized
+            ' AccessedThroughProperty wrappers.
+            ' -------------------------------------------------------------
+            AddHandler Me.miQuit.Click, AddressOf Me.miQuit_Click
+            AddHandler Me.miOpenBinary.Click, AddressOf Me.miOpenBinary_Click
+            AddHandler Me.miOpenAscii.Click, AddressOf Me.miOpenAscii_Click
+            AddHandler Me.miSaveAsBinary.Click, AddressOf Me.miSaveAsBinary_Click
+            AddHandler Me.miSaveAsASCII.Click, AddressOf Me.miSaveAsASCII_Click
+
         End Sub
 
         Public Sub New(ByVal Data As Byte(), ByVal filename As String)

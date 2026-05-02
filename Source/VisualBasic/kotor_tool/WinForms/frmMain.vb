@@ -5275,5 +5275,11 @@ IL_12BE:
             ' Token: 0x040003CD RID: 973
             Public face As Integer
         End Structure
+
+        Private Sub miOpenHexViewer_Click(sender As Object, e As EventArgs) Handles miOpenHexViewer.Click, MenuItem9.Click
+            Using viewer As New frmByteViewer()
+                viewer.ShowDialog(Me)
+            End Using
+        End Sub
     End Class
 End Namespace

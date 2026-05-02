@@ -38,6 +38,11 @@ Namespace kotor_tool
             AddHandler MyBase.Load, AddressOf Me.Form1_Load
             Me.bv = New ByteViewer()
             Me.InitializeComponent()
+            ' -------------------------------------------------------------
+            AddHandler Me.rbHex.Click, AddressOf Me.rbHex_Click
+            AddHandler Me.rbANSI.Click, AddressOf Me.rbANSI_Click
+            AddHandler Me.rbUnicode.Click, AddressOf Me.rbUnicode_Click
+            AddHandler Me.Button1.Click, AddressOf Me.Button1_Click
         End Sub
 
         ' Token: 0x060002D7 RID: 727 RVA: 0x0022FBBC File Offset: 0x0022EBBC
@@ -57,10 +62,15 @@ Namespace kotor_tool
             Dim bv As Control = Me.bv
             Dim size As Size = New Size(638, 250)
             bv.Size = size
+
             Me.bv.Anchor = AnchorStyles.Top
             Me.bv.ForeColor = Color.Black
             Me.bv.BackColor = Control.DefaultBackColor
             Me.bv.Visible = True
+
+            Me.bv.Dock = DockStyle.Fill
+
+
             Me.Controls.Add(Me.bv)
             If StringType.StrCmp(Me.filepath, "", False) <> 0 Then
                 Me.bv.SetFile(Me.filepath)
@@ -70,6 +80,9 @@ Namespace kotor_tool
             Me.bv.SetDisplayMode(DisplayMode.Hexdump)
             Me.PositionWindow()
             Me.bv.Height = CInt(Math.Round(Conversion.Int(CDbl((Me.Height - 80)) / 21.0) * 21.0 + 21.0))
+
+            Me.pnlByteSurface.Controls.Clear()
+            Me.pnlByteSurface.Controls.Add(Me.bv)
         End Sub
 
         ' Token: 0x060002DA RID: 730 RVA: 0x0022FCE8 File Offset: 0x0022ECE8

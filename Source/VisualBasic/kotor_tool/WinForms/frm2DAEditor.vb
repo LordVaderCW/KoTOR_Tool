@@ -31,8 +31,21 @@ Namespace kotor_tool
 			Me.cmiPasteRow = New MenuItem("Paste Row")
 			Me.cmiInsertCopiedRow = New MenuItem("Insert Copied Row")
 			Me.cmiRenumberRowLabelColumn = New MenuItem("Renumber Row Labels")
-			Me.cmiShowStrings = New MenuItem("Show Strings for Refs")
+            Me.cmiShowStrings = New MenuItem("Show Strings for Refs")
+
             Me.InitializeComponent()
+
+            AddHandler Me.dg2DA.MouseUp, AddressOf Me.dg_MouseUp
+            AddHandler Me.miLoad2da.Click, AddressOf Me.miLoad2da_Click
+            AddHandler Me.miSave2daV2b.Click, AddressOf Me.miSave2daV2b_Click
+            AddHandler Me.miSave2daV2bXML.Click, AddressOf Me.miSave2daV2bXML_Click
+            AddHandler Me.miQuit.Click, AddressOf Me.miQuit_Click
+            AddHandler Me.miResetSort.Click, AddressOf Me.miResetSort_Click
+            AddHandler Me.miUndoAll.Click, AddressOf Me.miUndoAll_Click
+            AddHandler Me.miLoad2daXml.Click, AddressOf Me.miLoad2daXml_Click
+            AddHandler Me.miSetKotORversion.Click, AddressOf Me.miSetKotORversion_Click
+            AddHandler Me.miTestFunction.Click, AddressOf Me.miTestFunction_Click
+
             Me.LoadAndApplyTheme()
 		End Sub
 
