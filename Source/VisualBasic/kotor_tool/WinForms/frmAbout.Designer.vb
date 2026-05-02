@@ -62,9 +62,10 @@ Namespace kotor_tool
 
         <Global.System.Diagnostics.DebuggerStepThrough()> _
         Private Sub InitializeComponent()
-            Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAbout))
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlBody = New System.Windows.Forms.Panel()
+            Me.BWLogoPB = New System.Windows.Forms.PictureBox()
+            Me.Label2 = New System.Windows.Forms.Label()
             Me.MSSLogoPB = New System.Windows.Forms.PictureBox()
             Me.lblSpecialCreditTxt = New System.Windows.Forms.Label()
             Me.lblSeparatorBottom = New System.Windows.Forms.Label()
@@ -81,16 +82,14 @@ Namespace kotor_tool
             Me.lblProjectName = New System.Windows.Forms.Label()
             Me.Label1 = New System.Windows.Forms.Label()
             Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-            Me.Label2 = New System.Windows.Forms.Label()
-            Me.BWLogoPB = New System.Windows.Forms.PictureBox()
             Me.pnlRoot.SuspendLayout()
             Me.pnlBody.SuspendLayout()
+            CType(Me.BWLogoPB, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.MSSLogoPB, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.pnlFooter.SuspendLayout()
             Me.pnlHeader.SuspendLayout()
             CType(Me.LordVaderCW_PB1, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.BWLogoPB, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.SuspendLayout()
             '
             'pnlRoot
@@ -124,11 +123,35 @@ Namespace kotor_tool
             Me.pnlBody.Size = New System.Drawing.Size(478, 303)
             Me.pnlBody.TabIndex = 1
             '
+            'BWLogoPB
+            '
+            Me.BWLogoPB.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
+            Me.BWLogoPB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.BWLogoPB.Location = New System.Drawing.Point(381, 96)
+            Me.BWLogoPB.Name = "BWLogoPB"
+            Me.BWLogoPB.Size = New System.Drawing.Size(86, 86)
+            Me.BWLogoPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+            Me.BWLogoPB.TabIndex = 16
+            Me.BWLogoPB.TabStop = False
+            '
+            'Label2
+            '
+            Me.Label2.BackColor = System.Drawing.Color.Transparent
+            Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.Label2.Location = New System.Drawing.Point(103, 96)
+            Me.Label2.Name = "Label2"
+            Me.Label2.Size = New System.Drawing.Size(270, 86)
+            Me.Label2.TabIndex = 15
+            Me.Label2.Text = "Uses Miles Sound System from RAD Game Tools (C) Copyright Epic Games. (Pending Li" &
+    "cence) Uses GFF Editor for NeverWinter Nights from Bioware, Inc."
+            Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+            '
             'MSSLogoPB
             '
             Me.MSSLogoPB.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
             Me.MSSLogoPB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-            Me.MSSLogoPB.Location = New System.Drawing.Point(13, 110)
+            Me.MSSLogoPB.Location = New System.Drawing.Point(13, 96)
             Me.MSSLogoPB.Name = "MSSLogoPB"
             Me.MSSLogoPB.Size = New System.Drawing.Size(86, 86)
             Me.MSSLogoPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -142,7 +165,7 @@ Namespace kotor_tool
             Me.lblSpecialCreditTxt.BackColor = System.Drawing.Color.Transparent
             Me.lblSpecialCreditTxt.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblSpecialCreditTxt.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.lblSpecialCreditTxt.Location = New System.Drawing.Point(28, 209)
+            Me.lblSpecialCreditTxt.Location = New System.Drawing.Point(28, 199)
             Me.lblSpecialCreditTxt.Name = "lblSpecialCreditTxt"
             Me.lblSpecialCreditTxt.Size = New System.Drawing.Size(422, 20)
             Me.lblSpecialCreditTxt.TabIndex = 13
@@ -165,11 +188,13 @@ Namespace kotor_tool
             Me.lblSpecialCredits.BackColor = System.Drawing.Color.Transparent
             Me.lblSpecialCredits.Font = New System.Drawing.Font("Segoe UI", 7.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblSpecialCredits.ForeColor = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(186, Byte), Integer), CType(CType(198, Byte), Integer))
-            Me.lblSpecialCredits.Location = New System.Drawing.Point(28, 229)
+            Me.lblSpecialCredits.Location = New System.Drawing.Point(28, 219)
             Me.lblSpecialCredits.Name = "lblSpecialCredits"
             Me.lblSpecialCredits.Size = New System.Drawing.Size(422, 59)
             Me.lblSpecialCredits.TabIndex = 7
-            Me.lblSpecialCredits.Text = resources.GetString("lblSpecialCredits.Text")
+            Me.lblSpecialCredits.Text = "Thanks to Achilles, illuzion69, CDRSeadog, Darth333, death_disco, ChAiNz.2da, Gua" &
+    "rdian Archon, Gsccc, Uchiha Itachi, and everyone else for their support." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Thanks" &
+    " to Eiz for his dxt1/5 converter code."
             Me.lblSpecialCredits.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
             '
             'lblRestorationCredit
@@ -177,9 +202,9 @@ Namespace kotor_tool
             Me.lblRestorationCredit.BackColor = System.Drawing.Color.Transparent
             Me.lblRestorationCredit.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblRestorationCredit.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.lblRestorationCredit.Location = New System.Drawing.Point(28, 76)
+            Me.lblRestorationCredit.Location = New System.Drawing.Point(6, 66)
             Me.lblRestorationCredit.Name = "lblRestorationCredit"
-            Me.lblRestorationCredit.Size = New System.Drawing.Size(422, 20)
+            Me.lblRestorationCredit.Size = New System.Drawing.Size(469, 20)
             Me.lblRestorationCredit.TabIndex = 11
             Me.lblRestorationCredit.Text = "Restored, repaired, and maintained by LordVaderCW."
             Me.lblRestorationCredit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -189,9 +214,9 @@ Namespace kotor_tool
             Me.lblOriginalCredit.BackColor = System.Drawing.Color.Transparent
             Me.lblOriginalCredit.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblOriginalCredit.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.lblOriginalCredit.Location = New System.Drawing.Point(28, 43)
+            Me.lblOriginalCredit.Location = New System.Drawing.Point(3, 34)
             Me.lblOriginalCredit.Name = "lblOriginalCredit"
-            Me.lblOriginalCredit.Size = New System.Drawing.Size(422, 32)
+            Me.lblOriginalCredit.Size = New System.Drawing.Size(472, 32)
             Me.lblOriginalCredit.TabIndex = 10
             Me.lblOriginalCredit.Text = "This restored build honours Fred Tetra's original KotOR Tool and the community th" &
     "at kept it alive. Thank You Fred. "
@@ -203,9 +228,9 @@ Namespace kotor_tool
             Me.lblOriginalAuthor.BackColor = System.Drawing.Color.Transparent
             Me.lblOriginalAuthor.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblOriginalAuthor.ForeColor = System.Drawing.Color.FromArgb(CType(CType(232, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(226, Byte), Integer))
-            Me.lblOriginalAuthor.Location = New System.Drawing.Point(24, 16)
+            Me.lblOriginalAuthor.Location = New System.Drawing.Point(3, 7)
             Me.lblOriginalAuthor.Name = "lblOriginalAuthor"
-            Me.lblOriginalAuthor.Size = New System.Drawing.Size(430, 22)
+            Me.lblOriginalAuthor.Size = New System.Drawing.Size(472, 22)
             Me.lblOriginalAuthor.TabIndex = 3
             Me.lblOriginalAuthor.Text = "KoTOR Tool Original Author: Fred Tetra  "
             Me.lblOriginalAuthor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -325,30 +350,6 @@ Namespace kotor_tool
             Me.PictureBox1.TabIndex = 4
             Me.PictureBox1.TabStop = False
             '
-            'Label2
-            '
-            Me.Label2.BackColor = System.Drawing.Color.Transparent
-            Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label2.Location = New System.Drawing.Point(103, 110)
-            Me.Label2.Name = "Label2"
-            Me.Label2.Size = New System.Drawing.Size(270, 86)
-            Me.Label2.TabIndex = 15
-            Me.Label2.Text = "Uses Miles Sound System from RAD Game Tools (C) Copyright Epic Games. (Pending Li" &
-    "cence) Uses GFF Editor for NeverWinter Nights from Bioware, Inc."
-            Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-            '
-            'BWLogoPB
-            '
-            Me.BWLogoPB.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
-            Me.BWLogoPB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-            Me.BWLogoPB.Location = New System.Drawing.Point(381, 110)
-            Me.BWLogoPB.Name = "BWLogoPB"
-            Me.BWLogoPB.Size = New System.Drawing.Size(86, 86)
-            Me.BWLogoPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-            Me.BWLogoPB.TabIndex = 16
-            Me.BWLogoPB.TabStop = False
-            '
             'frmAbout
             '
             Me.AcceptButton = Me.Button1
@@ -368,12 +369,12 @@ Namespace kotor_tool
             Me.Text = "About KotOR Tool"
             Me.pnlRoot.ResumeLayout(False)
             Me.pnlBody.ResumeLayout(False)
+            CType(Me.BWLogoPB, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.MSSLogoPB, System.ComponentModel.ISupportInitialize).EndInit()
             Me.pnlFooter.ResumeLayout(False)
             Me.pnlHeader.ResumeLayout(False)
             CType(Me.LordVaderCW_PB1, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.BWLogoPB, System.ComponentModel.ISupportInitialize).EndInit()
             Me.ResumeLayout(False)
 
         End Sub
