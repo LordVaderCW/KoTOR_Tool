@@ -48,13 +48,33 @@ Namespace kotor_tool
         ' These defaults are intentionally tuned together.
         '
         ' Recommended baseline:
-        '   CustomBorderStyle        = Accent
-        '   ShowTabBorder            = False
-        '   ShowTabButtonBorder      = False
-        '   ShowTabChromeErase       = False
-        '   ShowTabDivider           = False
-        '   ShowTabNativeInsetBorder = False
-        '   ShowPageInsetBorder      = False
+        '
+        '   CustomBorderStyle          = Accent
+        '
+        '   ControlBackColor           = 18, 22, 28
+        '   TabStripBackColor          = 22, 27, 34
+        '   TabPageBackColor           = 22, 27, 34
+        '
+        '   NormalTabBackColor         = 28, 35, 44
+        '   SelectedTabBackColor       = 22, 27, 34
+        '
+        '   NormalTextColor            = 188, 198, 210
+        '   SelectedTextColor          = 238, 238, 230
+        '
+        '   AccentColor                = 174, 136, 58
+        '   DarkBorderColor            = 62, 70, 82
+        '
+        '   ShowTabBorder              = False
+        '   ShowTabButtonBorder        = False
+        '   ShowTabChromeErase         = False
+        '   ShowTabDivider             = False
+        '   ShowTabNativeInsetBorder   = False
+        '   ShowPageInsetBorder        = False
+        '
+        '   PageInsetErasePadding      = 1
+        '   PageChromeErasePadding     = 4
+        '   PageEdgeArtifactThickness  = 2
+        '   PageEdgeArtifactOffset     = 0
         '
         ' The accent outer border visually integrates the tab strip with the
         ' surrounding editor panel without needing extra native-border hacks.
