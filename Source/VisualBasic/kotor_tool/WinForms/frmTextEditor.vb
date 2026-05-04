@@ -842,9 +842,9 @@ Namespace kotor_tool
         End Sub
 
         Private Sub tbGeneric_LostFocus(ByVal sender As Object, ByVal e As EventArgs) Handles tbGeneric.LostFocus
-            Me.miCut.Enabled = False
-            Me.miCopy.Enabled = False
-            Me.miPaste.Enabled = False
+            'Me.miCut.Enabled = False
+            'Me.miCopy.Enabled = False
+            'Me.miPaste.Enabled = False
         End Sub
 
         Private Sub tbGeneric_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles tbGeneric.MouseMove
