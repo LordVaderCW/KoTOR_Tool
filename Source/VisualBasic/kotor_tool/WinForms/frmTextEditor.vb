@@ -43,10 +43,13 @@ Namespace kotor_tool
             Me.funcs = New frmTextEditor.func(876) {}
 
             Me.InitializeComponent()
+            Me.ApplyApplicationIcon()
 
             Me.miWordWrap.Checked = frmMain.CurrentSettings.bTextEditorWordWrap
             Me.tbGeneric.WordWrap = Me.miWordWrap.Checked
             Me.CurrentSettings = UserSettings.GetSettings()
+
+
         End Sub
 
         Public Sub New(ByVal filename As String, Optional ByVal IsDirectEdit As Boolean = False, Optional ByVal EditingPath As String = "")
@@ -73,6 +76,14 @@ Namespace kotor_tool
             Me.tbGeneric.Text = streamReader.ReadToEnd()
             Me.tbGeneric.SelectionLength = 0
             streamReader.Close()
+        End Sub
+
+        Private Sub ApplyApplicationIcon()
+            Try
+                Me.Icon = My.Resources.koTOR_icn
+            Catch ex As System.Exception
+                'Console.WriteLine("Icon could not be applied: " & ex.Message)
+            End Try
         End Sub
 
 #Region "Designer Control Properties"

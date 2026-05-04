@@ -14,8 +14,15 @@ Namespace kotor_tool
 		' Token: 0x060002E2 RID: 738 RVA: 0x0022FF1C File Offset: 0x0022EF1C
 		Public Sub New()
 			AddHandler MyBase.Load, AddressOf Me.frmCExoLocStringLanguagePicker_Load
-			Me.InitializeComponent()
-		End Sub
+            Me.InitializeComponent()
+
+            ' -------------------------------------------------------------
+            ' Event bindings restored from decompiled synchronized
+            ' AccessedThroughProperty wrappers.
+            ' -------------------------------------------------------------
+            AddHandler Me.btnOK.Click, AddressOf Me.btnOK_Click
+
+        End Sub
 
         ' Token: 0x170000C2 RID: 194
         ' (get) Token: 0x060002F1 RID: 753 RVA: 0x00230498 File Offset: 0x0022F498
@@ -50,5 +57,10 @@ Namespace kotor_tool
 
         ' Token: 0x040001D2 RID: 466
         Private m_LanguageID As Integer
+
+        Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+            Me.Close()
+
+        End Sub
     End Class
 End Namespace

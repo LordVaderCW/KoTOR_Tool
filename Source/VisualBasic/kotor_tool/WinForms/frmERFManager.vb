@@ -19,8 +19,9 @@ Namespace kotor_tool
 		Public Sub New()
 			AddHandler MyBase.Load, AddressOf Me.frmERFManager_Load
 			AddHandler MyBase.Closing, AddressOf Me.frmERFManager_Closing
-			Me.InitializeComponent()
-			Me.CurrentSettings = UserSettings.GetSettings()
+            Me.InitializeComponent()
+            Me.ApplyApplicationIcon()
+            Me.CurrentSettings = UserSettings.GetSettings()
 		End Sub
 
         ' Token: 0x060004B9 RID: 1209 RVA: 0x0023E2D0 File Offset: 0x0023D2D0
@@ -70,6 +71,14 @@ Namespace kotor_tool
                 Dim erfcontentFiles As ListBox = Me.ERFContentFiles
                 erfcontentFiles.SelectedIndex += 1
             End If
+        End Sub
+
+        Private Sub ApplyApplicationIcon()
+            Try
+                Me.Icon = My.Resources.koTOR_icn
+            Catch ex As System.Exception
+                'Console.WriteLine("Icon could not be applied: " & ex.Message)
+            End Try
         End Sub
 
         ' Token: 0x060004BD RID: 1213 RVA: 0x0023E4D0 File Offset: 0x0023D4D0

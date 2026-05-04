@@ -13,7 +13,7 @@ Namespace kotor_tool
         Friend WithEvents pnlBody As Global.System.Windows.Forms.Panel
         Friend WithEvents lblHeaderSeparator As Global.System.Windows.Forms.Label
 
-        Friend WithEvents pbar As Global.System.Windows.Forms.ProgressBar
+        Friend WithEvents pbar As Global.kotor_tool.CustomProgressBar
         Friend WithEvents lblStatus As Global.System.Windows.Forms.Label
         Friend WithEvents lblMsg As Global.System.Windows.Forms.Label
 
@@ -31,9 +31,9 @@ Namespace kotor_tool
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlBody = New System.Windows.Forms.Panel()
             Me.lblStatus = New System.Windows.Forms.Label()
-            Me.pbar = New System.Windows.Forms.ProgressBar()
             Me.lblMsg = New System.Windows.Forms.Label()
             Me.lblHeaderSeparator = New System.Windows.Forms.Label()
+            Me.pbar = New kotor_tool.CustomProgressBar()
             Me.pnlRoot.SuspendLayout()
             Me.pnlBody.SuspendLayout()
             Me.SuspendLayout()
@@ -73,13 +73,6 @@ Namespace kotor_tool
             Me.lblStatus.TabIndex = 1
             Me.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
             '
-            'pbar
-            '
-            Me.pbar.Location = New System.Drawing.Point(36, 58)
-            Me.pbar.Name = "pbar"
-            Me.pbar.Size = New System.Drawing.Size(248, 17)
-            Me.pbar.TabIndex = 0
-            '
             'lblMsg
             '
             Me.lblMsg.BackColor = System.Drawing.Color.Transparent
@@ -99,6 +92,31 @@ Namespace kotor_tool
             Me.lblHeaderSeparator.Name = "lblHeaderSeparator"
             Me.lblHeaderSeparator.Size = New System.Drawing.Size(320, 2)
             Me.lblHeaderSeparator.TabIndex = 3
+            '
+            'pbar
+            '
+            Me.pbar.BackColor = System.Drawing.Color.Transparent
+            Me.pbar.BorderDarkColor = System.Drawing.Color.Transparent
+            Me.pbar.BorderGoldColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.pbar.BottomGlowColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(20, Byte), Integer))
+            Me.pbar.EdgeLightColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(150, Byte), Integer))
+            Me.pbar.FillBottomColor = System.Drawing.Color.FromArgb(CType(CType(142, Byte), Integer), CType(CType(101, Byte), Integer), CType(CType(38, Byte), Integer))
+            Me.pbar.FillMiddleColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.pbar.FillTopColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(214, Byte), Integer), CType(CType(132, Byte), Integer))
+            Me.pbar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.pbar.InsetHighlightColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.pbar.Location = New System.Drawing.Point(36, 58)
+            Me.pbar.MinimumSize = New System.Drawing.Size(40, 12)
+            Me.pbar.Name = "pbar"
+            Me.pbar.ShineBottomColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(190, Byte), Integer))
+            Me.pbar.ShineTopColor = System.Drawing.Color.FromArgb(CType(CType(135, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(190, Byte), Integer))
+            Me.pbar.Size = New System.Drawing.Size(248, 17)
+            Me.pbar.SweepColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(245, Byte), Integer), CType(CType(180, Byte), Integer))
+            Me.pbar.TabIndex = 0
+            Me.pbar.TrackBottomColor = System.Drawing.Color.FromArgb(CType(CType(7, Byte), Integer), CType(CType(10, Byte), Integer), CType(CType(15, Byte), Integer))
+            Me.pbar.TrackShadowColor = System.Drawing.Color.FromArgb(CType(CType(120, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.pbar.TrackTopColor = System.Drawing.Color.FromArgb(CType(CType(13, Byte), Integer), CType(CType(18, Byte), Integer), CType(CType(25, Byte), Integer))
+            Me.pbar.Value = 50
             '
             'frmProgressMeter
             '

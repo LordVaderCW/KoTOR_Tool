@@ -14,8 +14,10 @@ Namespace kotor_tool
 
 		' Token: 0x06000CCB RID: 3275 RVA: 0x002838FC File Offset: 0x002828FC
 		Public Sub New()
-			Me.InitializeComponent()
-		End Sub
+            Me.InitializeComponent()
+            Me.Icon = My.Resources.koTOR_icn
+
+        End Sub
 
 		' Token: 0x06000CCE RID: 3278 RVA: 0x002839A0 File Offset: 0x002829A0
 		Protected Sub WriteConsoleMsg(msg As Object)

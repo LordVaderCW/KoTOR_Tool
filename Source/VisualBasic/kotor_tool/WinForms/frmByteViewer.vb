@@ -53,6 +53,8 @@ Namespace kotor_tool
 
             Me.InitializeComponent()
 
+            Me.ApplyApplicationIcon()
+
             ' -------------------------------------------------------------
             ' Legacy display mode buttons.
             ' -------------------------------------------------------------
@@ -90,11 +92,12 @@ Namespace kotor_tool
 
             ' -------------------------------------------------------------
             ' DarkByteViewerControl event bindings.
-            ' These are the important missing bindings from the previous pass.
             ' -------------------------------------------------------------
             AddHandler Me.bv.CurrentByteChanged, AddressOf Me.bv_CurrentByteChanged
             AddHandler Me.bv.SelectionChanged, AddressOf Me.bv_SelectionChanged
             AddHandler Me.bv.VisibleRangeChanged, AddressOf Me.bv_VisibleRangeChanged
+
+
         End Sub
 
         Public Sub New(ByVal path As String)
@@ -110,6 +113,13 @@ Namespace kotor_tool
             Else
                 Me.data = bytes
             End If
+        End Sub
+        Private Sub ApplyApplicationIcon()
+            Try
+                Me.Icon = My.Resources.koTOR_icn
+            Catch ex As System.Exception
+                'Console.WriteLine("Icon could not be applied: " & ex.Message)
+            End Try
         End Sub
 
         Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs)

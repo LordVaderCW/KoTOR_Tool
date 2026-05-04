@@ -78,7 +78,7 @@ Namespace kotor_tool
             Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
             Me.pnlRoot.Name = "pnlRoot"
-            Me.pnlRoot.Size = New System.Drawing.Size(459, 185)
+            Me.pnlRoot.Size = New System.Drawing.Size(459, 193)
             Me.pnlRoot.TabIndex = 0
             '
             'pnlBody
@@ -91,7 +91,7 @@ Namespace kotor_tool
             Me.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlBody.Location = New System.Drawing.Point(0, 58)
             Me.pnlBody.Name = "pnlBody"
-            Me.pnlBody.Size = New System.Drawing.Size(459, 79)
+            Me.pnlBody.Size = New System.Drawing.Size(459, 87)
             Me.pnlBody.TabIndex = 1
             '
             'Label1
@@ -111,7 +111,6 @@ Namespace kotor_tool
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.cmbxLanguage.BackColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxLanguage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxLanguage.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.cmbxLanguage.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxLanguage.Items.AddRange(New Object() {"English", "French", "German", "Italian", "Spanish", "Polish"})
@@ -137,7 +136,6 @@ Namespace kotor_tool
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.cmbxGender.BackColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxGender.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxGender.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.cmbxGender.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxGender.Items.AddRange(New Object() {"Neuter/Masculine", "Feminine"})
@@ -153,7 +151,7 @@ Namespace kotor_tool
             Me.pnlFooter.Controls.Add(Me.btnOK)
             Me.pnlFooter.Controls.Add(Me.btnCancel)
             Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.pnlFooter.Location = New System.Drawing.Point(0, 137)
+            Me.pnlFooter.Location = New System.Drawing.Point(0, 145)
             Me.pnlFooter.Name = "pnlFooter"
             Me.pnlFooter.Size = New System.Drawing.Size(459, 48)
             Me.pnlFooter.TabIndex = 2
@@ -251,7 +249,7 @@ Namespace kotor_tool
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
             Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.CancelButton = Me.btnCancel
-            Me.ClientSize = New System.Drawing.Size(459, 185)
+            Me.ClientSize = New System.Drawing.Size(459, 193)
             Me.ControlBox = False
             Me.Controls.Add(Me.pnlRoot)
             Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))

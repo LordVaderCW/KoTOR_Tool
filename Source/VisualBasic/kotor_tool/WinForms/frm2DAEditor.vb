@@ -56,7 +56,7 @@ Namespace kotor_tool
             Try
                 Me.Icon = My.Resources.koTOR_icn
             Catch ex As System.Exception
-                Console.WriteLine("2DA Editor icon could not be applied: " & ex.Message)
+                'Console.WriteLine("Icon could not be applied: " & ex.Message)
             End Try
         End Sub
 

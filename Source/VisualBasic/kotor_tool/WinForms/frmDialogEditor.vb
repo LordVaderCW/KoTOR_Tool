@@ -23,8 +23,49 @@ Namespace kotor_tool
 			Me.m_defaultTitleText = "Conversation Editor - KotOR "
 			Me.Text = Me.m_defaultTitleText
 			Me.BuildStuntDataGrid()
-			Me.BuildAnimDataGrid()
-		End Sub
+            Me.BuildAnimDataGrid()
+
+
+            ' -------------------------------------------------------------
+            ' Event bindings restored from decompiled synchronized
+            ' AccessedThroughProperty wrappers.
+            ' -------------------------------------------------------------
+            ' Uncomment each line if nothing occurs when pressing the buttons etc. 
+
+            'AddHandler Me.tvConversation.AfterSelect, AddressOf Me.tvConversation_AfterSelect
+            'AddHandler Me.tvConversation.MouseUp, AddressOf Me.tvConversation_MouseUp
+            'AddHandler Me.tvConversation.MouseDown, AddressOf Me.tvConversation_MouseDown
+            'AddHandler Me.btnCollapseAll.Click, AddressOf Me.btnCollapseAll_Click
+            'AddHandler Me.btnExpandAll.Click, AddressOf Me.btnExpandAll_Click
+            'AddHandler Me.btnDebug.Click, AddressOf Me.btnDebug_Click
+            'AddHandler Me.btnTest.Click, AddressOf Me.btnTest_Click
+            'AddHandler Me.btnChooseColor.Click, AddressOf Me.btnChooseColor_Click
+            'AddHandler Me.cmiTV_Add.Click, AddressOf Me.cmiTV_Add_Click
+            'AddHandler Me.cmiTV_Copy.Click, AddressOf Me.cmiTV_Copy_Click
+            'AddHandler Me.cmiTV_Paste.Click, AddressOf Me.cmiTV_Paste_Click
+            'AddHandler Me.cmiTV_PasteAsLink.Click, AddressOf Me.cmiTV_PasteAsLink_Click
+            'AddHandler Me.cmiTV_Cut.Click, AddressOf Me.cmiTV_Cut_Click
+            'AddHandler Me.btnSave.Click, AddressOf Me.Button1_Click
+            'AddHandler Me.btnOpen.Click, AddressOf Me.btnOpen_Click
+            'AddHandler Me.miOpen.Click, AddressOf Me.miOpen_Click
+            'AddHandler Me.miSave.Click, AddressOf Me.miSave_Click
+            'AddHandler Me.miQuit.Click, AddressOf Me.miQuit_Click
+            'AddHandler Me.dgAnimList.Validated, AddressOf Me.dgAnimList_Validated
+            'AddHandler Me.dgAnimList.Click, AddressOf Me.dgAnimList_Click
+            'AddHandler Me.btnDeleteAnimListEntry.Click, AddressOf Me.btnDeleteAnimListEntry_Click
+            'AddHandler Me.btnAddAnimListEntry.Click, AddressOf Me.btnAddAnimListEntry_Click
+            'AddHandler Me.trkbTVIndent.Scroll, AddressOf Me.trkbTVIndent_Scroll
+            'AddHandler Me.miNew.Click, AddressOf Me.miNew_Click
+            'AddHandler Me.trkbTVItemHeight.Scroll, AddressOf Me.trkbTVItemHeight_Scroll
+            'AddHandler Me.cmiTV_PasteTree.Click, AddressOf Me.cmiTV_PasteTree_Click
+            'AddHandler Me.cmbxConversationType.SelectedIndexChanged, AddressOf Me.cmbxConversationType_SelectedIndexChanged
+            'AddHandler Me.btnShowLists.Click, AddressOf Me.btnShowLists_Click
+            'AddHandler Me.chkbAnimatedCut.CheckedChanged, AddressOf Me.chkbAnimatedCut_CheckedChanged
+            'AddHandler Me.cmiTV_MoveNodeUp.Click, AddressOf Me.cmiTV_MoveNodeUp_Click
+            'AddHandler Me.cmiTV_MoveNodeDown.Click, AddressOf Me.cmiTV_MoveNodeDown_Click
+
+
+        End Sub
 
         ' Token: 0x0600040D RID: 1037 RVA: 0x002374C8 File Offset: 0x002364C8
         Public Sub New(ByVal EditingPath As String, ByVal KotorVerIndex As Integer)

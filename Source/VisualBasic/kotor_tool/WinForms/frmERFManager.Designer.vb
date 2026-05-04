@@ -388,7 +388,6 @@ Namespace kotor_tool
             Me.cmbxErfType.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.cmbxErfType.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
             Me.cmbxErfType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxErfType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxErfType.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.cmbxErfType.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxErfType.Items.AddRange(New Object() {"MOD", "ERF", "HAK", "SAV"})

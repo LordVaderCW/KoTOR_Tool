@@ -18,11 +18,20 @@ Namespace kotor_tool
 		Public Sub New()
 			AddHandler MyBase.Load, AddressOf Me.frmCreateAnimListEntry_Load
 			Me.al = New ArrayList()
-			Me.InitializeComponent()
-		End Sub
+            Me.InitializeComponent()
+
+
+            ' -------------------------------------------------------------
+            ' Event bindings restored from decompiled synchronized
+            ' AccessedThroughProperty wrappers.
+            ' -------------------------------------------------------------
+            AddHandler Me.btnOK.Click, AddressOf Me.btnOK_Click
+
+
+        End Sub
 
         ' Token: 0x06000307 RID: 775 RVA: 0x00230AC4 File Offset: 0x0022FAC4
-        Private Sub btnOK_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnOK_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnOK.Click
             Dim text As String = Nothing
             If Me.cmbxAnimation.SelectedIndex = -1 AndAlso StringType.StrCmp(Me.cmbxAnimation.Text, "", False) <> 0 Then
                 text = Me.cmbxAnimation.Text
@@ -132,5 +141,10 @@ Namespace kotor_tool
 			' Token: 0x040001DF RID: 479
 			Private m_number As Integer
 		End Class
-	End Class
+
+        Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+            Me.Close()
+        End Sub
+
+    End Class
 End Namespace

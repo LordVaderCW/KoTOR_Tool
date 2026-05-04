@@ -111,7 +111,7 @@ Namespace kotor_tool
             Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
             Me.pnlRoot.Name = "pnlRoot"
-            Me.pnlRoot.Size = New System.Drawing.Size(440, 620)
+            Me.pnlRoot.Size = New System.Drawing.Size(617, 620)
             Me.pnlRoot.TabIndex = 0
             '
             'pnlBody
@@ -123,7 +123,7 @@ Namespace kotor_tool
             Me.pnlBody.Location = New System.Drawing.Point(0, 76)
             Me.pnlBody.Name = "pnlBody"
             Me.pnlBody.Padding = New System.Windows.Forms.Padding(14, 14, 14, 12)
-            Me.pnlBody.Size = New System.Drawing.Size(438, 358)
+            Me.pnlBody.Size = New System.Drawing.Size(615, 358)
             Me.pnlBody.TabIndex = 1
             '
             'Panel1
@@ -137,7 +137,7 @@ Namespace kotor_tool
             Me.Panel1.Controls.Add(Me.pbox)
             Me.Panel1.Location = New System.Drawing.Point(14, 14)
             Me.Panel1.Name = "Panel1"
-            Me.Panel1.Size = New System.Drawing.Size(410, 318)
+            Me.Panel1.Size = New System.Drawing.Size(587, 318)
             Me.Panel1.TabIndex = 0
             '
             'pbox
@@ -157,7 +157,7 @@ Namespace kotor_tool
             Me.lblSeparatorBottom.Dock = System.Windows.Forms.DockStyle.Bottom
             Me.lblSeparatorBottom.Location = New System.Drawing.Point(14, 344)
             Me.lblSeparatorBottom.Name = "lblSeparatorBottom"
-            Me.lblSeparatorBottom.Size = New System.Drawing.Size(410, 2)
+            Me.lblSeparatorBottom.Size = New System.Drawing.Size(587, 2)
             Me.lblSeparatorBottom.TabIndex = 1
             '
             'pnlFooter
@@ -169,14 +169,13 @@ Namespace kotor_tool
             Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
             Me.pnlFooter.Location = New System.Drawing.Point(0, 434)
             Me.pnlFooter.Name = "pnlFooter"
-            Me.pnlFooter.Size = New System.Drawing.Size(438, 54)
+            Me.pnlFooter.Size = New System.Drawing.Size(615, 54)
             Me.pnlFooter.TabIndex = 3
             '
             'chkbExportSelectionToTXIfile
             '
             Me.chkbExportSelectionToTXIfile.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
             Me.chkbExportSelectionToTXIfile.BackColor = System.Drawing.Color.Transparent
-            Me.chkbExportSelectionToTXIfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbExportSelectionToTXIfile.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbExportSelectionToTXIfile.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbExportSelectionToTXIfile.Location = New System.Drawing.Point(18, 18)
@@ -196,7 +195,7 @@ Namespace kotor_tool
             Me.btnWriteFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnWriteFile.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.btnWriteFile.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnWriteFile.Location = New System.Drawing.Point(238, 14)
+            Me.btnWriteFile.Location = New System.Drawing.Point(415, 14)
             Me.btnWriteFile.Name = "btnWriteFile"
             Me.btnWriteFile.Size = New System.Drawing.Size(88, 25)
             Me.btnWriteFile.TabIndex = 1
@@ -214,7 +213,7 @@ Namespace kotor_tool
             Me.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnOK.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.btnOK.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnOK.Location = New System.Drawing.Point(336, 14)
+            Me.btnOK.Location = New System.Drawing.Point(513, 14)
             Me.btnOK.Name = "btnOK"
             Me.btnOK.Size = New System.Drawing.Size(84, 25)
             Me.btnOK.TabIndex = 2
@@ -233,7 +232,7 @@ Namespace kotor_tool
             Me.pnlInfo.Location = New System.Drawing.Point(0, 488)
             Me.pnlInfo.Name = "pnlInfo"
             Me.pnlInfo.Padding = New System.Windows.Forms.Padding(16, 12, 16, 12)
-            Me.pnlInfo.Size = New System.Drawing.Size(438, 130)
+            Me.pnlInfo.Size = New System.Drawing.Size(615, 130)
             Me.pnlInfo.TabIndex = 2
             '
             'tbImageInfo
@@ -372,7 +371,7 @@ Namespace kotor_tool
             Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
             Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
             Me.pnlHeader.Name = "pnlHeader"
-            Me.pnlHeader.Size = New System.Drawing.Size(438, 76)
+            Me.pnlHeader.Size = New System.Drawing.Size(615, 76)
             Me.pnlHeader.TabIndex = 0
             '
             'lblSeparatorTop
@@ -381,7 +380,7 @@ Namespace kotor_tool
             Me.lblSeparatorTop.Dock = System.Windows.Forms.DockStyle.Bottom
             Me.lblSeparatorTop.Location = New System.Drawing.Point(0, 74)
             Me.lblSeparatorTop.Name = "lblSeparatorTop"
-            Me.lblSeparatorTop.Size = New System.Drawing.Size(438, 2)
+            Me.lblSeparatorTop.Size = New System.Drawing.Size(615, 2)
             Me.lblSeparatorTop.TabIndex = 2
             '
             'lblSubtitle
@@ -394,7 +393,7 @@ Namespace kotor_tool
             Me.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.lblSubtitle.Location = New System.Drawing.Point(18, 45)
             Me.lblSubtitle.Name = "lblSubtitle"
-            Me.lblSubtitle.Size = New System.Drawing.Size(402, 18)
+            Me.lblSubtitle.Size = New System.Drawing.Size(579, 18)
             Me.lblSubtitle.TabIndex = 1
             Me.lblSubtitle.Text = "Preview texture assets, inspect image metadata, and export texture files."
             Me.lblSubtitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -409,7 +408,7 @@ Namespace kotor_tool
             Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer))
             Me.lblTitle.Location = New System.Drawing.Point(16, 10)
             Me.lblTitle.Name = "lblTitle"
-            Me.lblTitle.Size = New System.Drawing.Size(404, 34)
+            Me.lblTitle.Size = New System.Drawing.Size(581, 34)
             Me.lblTitle.TabIndex = 0
             Me.lblTitle.Text = "Image Viewer"
             Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -420,7 +419,7 @@ Namespace kotor_tool
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
             Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.CancelButton = Me.btnOK
-            Me.ClientSize = New System.Drawing.Size(440, 620)
+            Me.ClientSize = New System.Drawing.Size(617, 620)
             Me.Controls.Add(Me.pnlRoot)
             Me.MinimumSize = New System.Drawing.Size(456, 472)
             Me.Name = "frmImageViewer"

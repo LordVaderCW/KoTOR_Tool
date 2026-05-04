@@ -38,11 +38,21 @@ Namespace kotor_tool
 			Me.CalibrationToolsVis = False
 			Me.labelFont = New Font("Lucida Console", 9F, FontStyle.Regular, GraphicsUnit.Point, 0)
 			Me.labelBrush = New SolidBrush(Color.White)
-			Me.InitializeComponent()
-		End Sub
+            Me.InitializeComponent()
+            Me.ApplyApplicationIcon()
+        End Sub
 
-		' Token: 0x06000893 RID: 2195 RVA: 0x002600A0 File Offset: 0x0025F0A0
-		Public Function Setup(ProjectPath As String) As Boolean
+
+        Private Sub ApplyApplicationIcon()
+            Try
+                Me.Icon = My.Resources.koTOR_icn
+            Catch ex As System.Exception
+                'Console.WriteLine("Icon could not be applied: " & ex.Message)
+            End Try
+        End Sub
+
+        ' Token: 0x06000893 RID: 2195 RVA: 0x002600A0 File Offset: 0x0025F0A0
+        Public Function Setup(ProjectPath As String) As Boolean
 			Dim binaryFormatter As BinaryFormatter = New BinaryFormatter()
 			frmModule_Editor.g_form = Me
 			Me.CurrentSettings = UserSettings.GetSettings()

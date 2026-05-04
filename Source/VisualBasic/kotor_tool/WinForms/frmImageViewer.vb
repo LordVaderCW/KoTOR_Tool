@@ -21,8 +21,9 @@ Namespace kotor_tool
 		Public Sub New()
 			AddHandler MyBase.Load, AddressOf Me.frmImageViewer_Load
 			AddHandler MyBase.Closing, AddressOf Me.frmImageViewer_Closing
-			Me.InitializeComponent()
-		End Sub
+            Me.InitializeComponent()
+            Me.ApplyApplicationIcon()
+        End Sub
 
         ' Token: 0x0600056F RID: 1391 RVA: 0x00243B00 File Offset: 0x00242B00
         Public Sub SetupPixelArray(ByVal data As Array)
@@ -55,6 +56,14 @@ Namespace kotor_tool
             pbox.Size = size
             Me._BitsPerPixel = CShort((BytesPerPixel * 8))
             Me.Text = "Image Viewer: " + Me.fname
+        End Sub
+
+        Private Sub ApplyApplicationIcon()
+            Try
+                Me.Icon = My.Resources.koTOR_icn
+            Catch ex As System.Exception
+                'Console.WriteLine("Icon could not be applied: " & ex.Message)
+            End Try
         End Sub
 
         ' Token: 0x06000572 RID: 1394 RVA: 0x00243C4C File Offset: 0x00242C4C

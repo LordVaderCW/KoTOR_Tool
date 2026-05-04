@@ -14,14 +14,24 @@ Namespace kotor_tool
 	Public Partial Class frmDialogTlk
 		Inherits frmParent
 
-		' Token: 0x06000458 RID: 1112 RVA: 0x0023B65C File Offset: 0x0023A65C
-		Public Sub New()
-			AddHandler MyBase.Load, AddressOf Me.frmDialogTlk_Load
-			Me.dt = New DataTable()
-			Me.g_currentRow = -1
-			Me.g_useApplyBtn = True
-			Me.InitializeComponent()
-		End Sub
+        ' Token: 0x06000458 RID: 1112 RVA: 0x0023B65C File Offset: 0x0023A65C
+        Public Sub New()
+            AddHandler MyBase.Load, AddressOf Me.frmDialogTlk_Load
+            Me.dt = New DataTable()
+            Me.g_currentRow = -1
+            Me.g_useApplyBtn = True
+            Me.InitializeComponent()
+            Me.ApplyApplicationIcon()
+        End Sub
+
+
+        Private Sub ApplyApplicationIcon()
+            Try
+                Me.Icon = My.Resources.koTOR_icn
+            Catch ex As System.Exception
+                'Console.WriteLine("Icon could not be applied: " & ex.Message)
+            End Try
+        End Sub
 
         ' Token: 0x06000483 RID: 1155 RVA: 0x0023C5AC File Offset: 0x0023B5AC
         Public Sub New(ByVal inputpath As String)
