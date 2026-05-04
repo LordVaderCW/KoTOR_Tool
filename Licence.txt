@@ -166,12 +166,17 @@ release approval should be made through the Official GitHub Repository:
 
     https://github.com/LordVaderCW/KoTOR_Tool
 
+
 or via the Official DeadlySteam Forum page
 
-    https://deadlystream.com/topic/12194-kotor-tool-reborn/
+    (REMOVED Due to Objections from Staff at DeadlyStream Forum.)
 
 or via the Official Reddit Thread
 
-    https://www.reddit.com/r/kotor/comments/1sw3jeq/fred_tetras_kotor_tool_successfully_reconstructed/
+    (REMOVED Due to Objections from ModStaff at DeadlyStream / SubReddit Mods)
+
+    A new thread is available on my official Reddit Thread. 
+    https://www.reddit.com/user/Character-Tip8287/comments/1t2encw/kotor_tool_successfully_reengineered_kotor/
+
 
 End of Licence.
