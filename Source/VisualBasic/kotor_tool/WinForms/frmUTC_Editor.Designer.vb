@@ -524,6 +524,8 @@ Namespace kotor_tool
             '
             'tabCtrl1
             '
+            Me.tabCtrl1.AccentColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.tabCtrl1.ControlBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.tabCtrl1.Controls.Add(Me.tpBasic)
             Me.tabCtrl1.Controls.Add(Me.tpStatistics)
             Me.tabCtrl1.Controls.Add(Me.tpSkills)
@@ -535,18 +537,40 @@ Namespace kotor_tool
             Me.tabCtrl1.Controls.Add(Me.tpScripts)
             Me.tabCtrl1.Controls.Add(Me.tpComments)
             Me.tabCtrl1.CustomBorderStyle = kotor_tool.CustomTabBorderStyle.Accent
+            Me.tabCtrl1.DarkBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.tabCtrl1.DividerColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.tabCtrl1.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.tabCtrl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
             Me.tabCtrl1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.tabCtrl1.ItemSize = New System.Drawing.Size(112, 32)
             Me.tabCtrl1.Location = New System.Drawing.Point(12, 12)
             Me.tabCtrl1.Multiline = True
             Me.tabCtrl1.Name = "tabCtrl1"
+            Me.tabCtrl1.NormalTabBackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.tabCtrl1.NormalTextColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.tabCtrl1.OuterNativeBorderBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.tabCtrl1.Padding = New System.Drawing.Point(14, 3)
+            Me.tabCtrl1.PageChromeBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.tabCtrl1.PageEdgeArtifactBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.tabCtrl1.PageInsetBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.tabCtrl1.SelectedIndex = 0
+            Me.tabCtrl1.SelectedTabBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.tabCtrl1.SelectedTabBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.tabCtrl1.SelectedTabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.tabCtrl1.SelectedTextColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tabCtrl1.ShowPageChromeErase = False
+            Me.tabCtrl1.ShowPageEdgeArtifactErase = False
+            Me.tabCtrl1.ShowTabBorder = False
+            Me.tabCtrl1.ShowTabButtonBorder = False
             Me.tabCtrl1.Size = New System.Drawing.Size(443, 651)
             Me.tabCtrl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
+            Me.tabCtrl1.TabBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
+            Me.tabCtrl1.TabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
+            Me.tabCtrl1.TabChromeBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.tabCtrl1.TabIndex = 0
+            Me.tabCtrl1.TabNativeBorderBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.tabCtrl1.TabNativeInsetBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.tabCtrl1.TabPageBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.tabCtrl1.TabStripBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             '
             'tpBasic
             '
@@ -558,7 +582,7 @@ Namespace kotor_tool
             Me.tpBasic.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tpBasic.Location = New System.Drawing.Point(4, 68)
             Me.tpBasic.Name = "tpBasic"
-            Me.tpBasic.Size = New System.Drawing.Size(435, 529)
+            Me.tpBasic.Size = New System.Drawing.Size(435, 579)
             Me.tpBasic.TabIndex = 0
             Me.tpBasic.Text = "Basic"
             '
@@ -610,7 +634,6 @@ Namespace kotor_tool
             '
             Me.cmbxPortrait.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxPortrait.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxPortrait.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxPortrait.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxPortrait.Location = New System.Drawing.Point(116, 35)
             Me.cmbxPortrait.Name = "cmbxPortrait"
@@ -650,7 +673,6 @@ Namespace kotor_tool
             '
             Me.cmbxRace.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxRace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxRace.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxRace.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxRace.Location = New System.Drawing.Point(116, 120)
             Me.cmbxRace.Name = "cmbxRace"
@@ -790,7 +812,6 @@ Namespace kotor_tool
             '
             Me.cmbxAppearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxAppearance.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxAppearance.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxAppearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxAppearance.Location = New System.Drawing.Point(116, 157)
             Me.cmbxAppearance.Name = "cmbxAppearance"
@@ -801,7 +822,6 @@ Namespace kotor_tool
             '
             Me.cmbxPhenotype.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxPhenotype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxPhenotype.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxPhenotype.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxPhenotype.Location = New System.Drawing.Point(116, 194)
             Me.cmbxPhenotype.Name = "cmbxPhenotype"
@@ -812,7 +832,6 @@ Namespace kotor_tool
             '
             Me.cmbxGender.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxGender.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxGender.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxGender.Location = New System.Drawing.Point(116, 231)
             Me.cmbxGender.Name = "cmbxGender"
@@ -823,7 +842,6 @@ Namespace kotor_tool
             '
             Me.cmbxBodyBag.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxBodyBag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxBodyBag.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxBodyBag.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxBodyBag.Location = New System.Drawing.Point(116, 300)
             Me.cmbxBodyBag.Name = "cmbxBodyBag"
@@ -850,9 +868,9 @@ Namespace kotor_tool
             Me.tpStatistics.Controls.Add(Me.GroupBox6)
             Me.tpStatistics.Controls.Add(Me.GroupBox5)
             Me.tpStatistics.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tpStatistics.Location = New System.Drawing.Point(4, 68)
+            Me.tpStatistics.Location = New System.Drawing.Point(4, 36)
             Me.tpStatistics.Name = "tpStatistics"
-            Me.tpStatistics.Size = New System.Drawing.Size(435, 579)
+            Me.tpStatistics.Size = New System.Drawing.Size(435, 611)
             Me.tpStatistics.TabIndex = 1
             Me.tpStatistics.Text = "Statistics"
             '
@@ -1303,9 +1321,9 @@ Namespace kotor_tool
             Me.tpSkills.Controls.Add(Me.nudTreatInjury)
             Me.tpSkills.Controls.Add(Me.Label31)
             Me.tpSkills.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tpSkills.Location = New System.Drawing.Point(4, 68)
+            Me.tpSkills.Location = New System.Drawing.Point(4, 36)
             Me.tpSkills.Name = "tpSkills"
-            Me.tpSkills.Size = New System.Drawing.Size(435, 579)
+            Me.tpSkills.Size = New System.Drawing.Size(435, 611)
             Me.tpSkills.TabIndex = 4
             Me.tpSkills.Text = "Skills"
             '
@@ -1495,9 +1513,9 @@ Namespace kotor_tool
             Me.tpAdvanced.Controls.Add(Me.GroupBox15)
             Me.tpAdvanced.Controls.Add(Me.GroupBox18)
             Me.tpAdvanced.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tpAdvanced.Location = New System.Drawing.Point(4, 68)
+            Me.tpAdvanced.Location = New System.Drawing.Point(4, 36)
             Me.tpAdvanced.Name = "tpAdvanced"
-            Me.tpAdvanced.Size = New System.Drawing.Size(435, 579)
+            Me.tpAdvanced.Size = New System.Drawing.Size(435, 611)
             Me.tpAdvanced.TabIndex = 6
             Me.tpAdvanced.Text = "Advanced"
             '
@@ -1857,9 +1875,9 @@ Namespace kotor_tool
             Me.tpFeats.Controls.Add(Me.GroupBox10)
             Me.tpFeats.Controls.Add(Me.chklbFeats)
             Me.tpFeats.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tpFeats.Location = New System.Drawing.Point(4, 68)
+            Me.tpFeats.Location = New System.Drawing.Point(4, 36)
             Me.tpFeats.Name = "tpFeats"
-            Me.tpFeats.Size = New System.Drawing.Size(435, 579)
+            Me.tpFeats.Size = New System.Drawing.Size(435, 611)
             Me.tpFeats.TabIndex = 7
             Me.tpFeats.Text = "Feats"
             '
@@ -1908,7 +1926,7 @@ Namespace kotor_tool
             Me.toForcePowers.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.toForcePowers.Location = New System.Drawing.Point(4, 68)
             Me.toForcePowers.Name = "toForcePowers"
-            Me.toForcePowers.Size = New System.Drawing.Size(435, 570)
+            Me.toForcePowers.Size = New System.Drawing.Size(435, 579)
             Me.toForcePowers.TabIndex = 8
             Me.toForcePowers.Text = "Force Powers"
             '

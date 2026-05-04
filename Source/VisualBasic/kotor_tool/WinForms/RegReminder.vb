@@ -16,8 +16,13 @@ Namespace kotor_tool
 		Public Sub New()
 			AddHandler MyBase.Load, AddressOf Me.RegReminder_Load
 			Me.m_sec = 10
-			Me.InitializeComponent()
-		End Sub
+            Me.InitializeComponent()
+
+            ' Moved Handlers to Behind form Code. 
+            AddHandler Me.Button1.Click, AddressOf Me.Button1_Click
+            AddHandler Me.Timer1.Tick, AddressOf Me.Timer1_Tick
+            AddHandler Me.Button2.Click, AddressOf Me.Button2_Click
+        End Sub
 
         ' Token: 0x060017EF RID: 6127 RVA: 0x002CCE10 File Offset: 0x002CBE10
         Private Sub Timer1_Tick(ByVal sender As Object, ByVal e As EventArgs)

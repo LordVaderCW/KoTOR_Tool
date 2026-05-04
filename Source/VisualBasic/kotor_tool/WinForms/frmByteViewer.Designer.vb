@@ -687,7 +687,6 @@ Namespace kotor_tool
             Me.cmbEncoding.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.cmbEncoding.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbEncoding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbEncoding.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbEncoding.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.cmbEncoding.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbEncoding.Items.AddRange(New Object() {"Hexdump", "ANSI", "UTF-8", "UTF-16 LE", "UTF-16 BE"})
@@ -785,7 +784,6 @@ Namespace kotor_tool
             '
             Me.cmbFindMode.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbFindMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbFindMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbFindMode.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.cmbFindMode.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbFindMode.Items.AddRange(New Object() {"Hex", "ANSI", "Unicode"})
@@ -978,11 +976,17 @@ Namespace kotor_tool
             '
             'bv
             '
+            Me.bv.AlternateRows = True
             Me.bv.BackColor = System.Drawing.Color.FromArgb(CType(CType(12, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(24, Byte), Integer))
             Me.bv.DisplayMode = kotor_tool.DarkByteViewerDisplayMode.Hexdump
             Me.bv.Dock = System.Windows.Forms.DockStyle.Fill
             Me.bv.Font = New System.Drawing.Font("Consolas", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.bv.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.bv.FreezeHeader = True
+            Me.bv.HighlightControlBytes = False
+            Me.bv.HighlightHighAsciiBytes = False
+            Me.bv.HighlightNonPrintableBytes = False
+            Me.bv.HighlightNullBytes = False
             Me.bv.Location = New System.Drawing.Point(0, 0)
             Me.bv.Name = "bv"
             Me.bv.Size = New System.Drawing.Size(658, 437)

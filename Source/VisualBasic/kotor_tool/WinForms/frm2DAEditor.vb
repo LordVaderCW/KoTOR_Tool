@@ -34,6 +34,7 @@ Namespace kotor_tool
             Me.cmiShowStrings = New MenuItem("Show Strings for Refs")
 
             Me.InitializeComponent()
+            Me.LoadAndApplyTheme()
 
             AddHandler Me.dg2DA.MouseUp, AddressOf Me.dg_MouseUp
             AddHandler Me.miLoad2da.Click, AddressOf Me.miLoad2da_Click
@@ -46,8 +47,7 @@ Namespace kotor_tool
             AddHandler Me.miSetKotORversion.Click, AddressOf Me.miSetKotORversion_Click
             AddHandler Me.miTestFunction.Click, AddressOf Me.miTestFunction_Click
 
-            Me.LoadAndApplyTheme()
-		End Sub
+        End Sub
 
 
         Private _theme As KotorTheme
