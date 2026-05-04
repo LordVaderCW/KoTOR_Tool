@@ -591,8 +591,9 @@
       <DependentUpon>frmCExoLocStringLanguagePicker.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmCreateAnimListEntry.resources">
-      <LogicalName>kotor_tool.frmCreateAnimListEntry.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmCreateAnimListEntry.resx">
+      <DependentUpon>frmCreateAnimListEntry.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmDialogEditor.resx">
       <DependentUpon>frmDialogEditor.vb</DependentUpon>
@@ -618,11 +619,13 @@
       <DependentUpon>frmGlobalVar_Editor.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmImageViewer.resources">
-      <LogicalName>kotor_tool.frmImageViewer.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmImageViewer.resx">
+      <DependentUpon>frmImageViewer.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmInstanceOrRefPrompt.resources">
-      <LogicalName>kotor_tool.frmInstanceOrRefPrompt.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmInstanceOrRefPrompt.resx">
+      <DependentUpon>frmInstanceOrRefPrompt.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmInventoryEditor.resx">
       <DependentUpon>frmInventoryEditor.vb</DependentUpon>
@@ -636,18 +639,21 @@
       <DependentUpon>frmMain.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmMapInfoStatus.resources">
-      <LogicalName>kotor_tool.frmMapInfoStatus.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmMapInfoStatus.resx">
+      <DependentUpon>frmMapInfoStatus.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmMdlOpsSwitches.resx">
       <DependentUpon>frmMdlOpsSwitches.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmModuleEditorOptions.resources">
-      <LogicalName>kotor_tool.frmModuleEditorOptions.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmModuleEditorOptions.resx">
+      <DependentUpon>frmModuleEditorOptions.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmModuleEditor_MissingItemSelector.resources">
-      <LogicalName>kotor_tool.frmModuleEditor_MissingItemSelector.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmModuleEditor_MissingItemSelector.resx">
+      <DependentUpon>frmModuleEditor_MissingItemSelector.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmModuleIfo_AreaEditor.resx">
       <DependentUpon>frmModuleIfo_AreaEditor.vb</DependentUpon>
@@ -661,8 +667,9 @@
       <DependentUpon>frmModule_Editor.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmOptions.resources">
-      <LogicalName>kotor_tool.frmOptions.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmOptions.resx">
+      <DependentUpon>frmOptions.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmOverrideFilesUsed.resx">
       <DependentUpon>frmOverrideFilesUsed.vb</DependentUpon>
@@ -672,8 +679,9 @@
       <DependentUpon>frmPackageTypeSelector.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmParent.resources">
-      <LogicalName>kotor_tool.frmParent.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmParent.resx">
+      <DependentUpon>frmParent.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmPathManager.resx">
       <DependentUpon>frmPathManager.vb</DependentUpon>
@@ -691,11 +699,13 @@
       <DependentUpon>frmProjectManagerProperties.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmPromptForString.resources">
-      <LogicalName>kotor_tool.frmPromptForString.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmPromptForString.resx">
+      <DependentUpon>frmPromptForString.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmQueryUserInfo.resources">
-      <LogicalName>kotor_tool.frmQueryUserInfo.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmQueryUserInfo.resx">
+      <DependentUpon>frmQueryUserInfo.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmRefSearchCriteria.resx">
       <DependentUpon>frmRefSearchCriteria.vb</DependentUpon>
@@ -721,18 +731,21 @@
       <DependentUpon>frmSSFEditor.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmTextEditor.resources">
-      <LogicalName>kotor_tool.frmTextEditor.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmTextEditor.resx">
+      <DependentUpon>frmTextEditor.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmTextEditorFind.resx">
       <DependentUpon>frmTextEditorFind.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmTPCFileSaveType.resources">
-      <LogicalName>kotor_tool.frmTPCFileSaveType.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmTPCFileSaveType.resx">
+      <DependentUpon>frmTPCFileSaveType.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmUserRegistration.resources">
-      <LogicalName>kotor_tool.frmUserRegistration.resources</LogicalName>
+    <EmbeddedResource Include="WinForms\frmUserRegistration.resx">
+      <DependentUpon>frmUserRegistration.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmUTC_Editor.resx">
       <DependentUpon>frmUTC_Editor.vb</DependentUpon>

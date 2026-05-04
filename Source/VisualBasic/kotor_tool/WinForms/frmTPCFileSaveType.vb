@@ -16,12 +16,12 @@ Namespace kotor_tool
 		End Sub
 
         ' Token: 0x060010EC RID: 4332 RVA: 0x0029E5AC File Offset: 0x0029D5AC
-        Private Sub btnTPC_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnTPC_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnTPC.Click
             Me.saveType = "tpc"
         End Sub
 
         ' Token: 0x060010ED RID: 4333 RVA: 0x0029E5BC File Offset: 0x0029D5BC
-        Private Sub btnTGA_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnTGA_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnTGA.Click
             Me.saveType = "tga"
         End Sub
 

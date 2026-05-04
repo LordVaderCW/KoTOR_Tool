@@ -29,7 +29,9 @@ Namespace kotor_tool
         Private components As Global.System.ComponentModel.IContainer
 
         Friend WithEvents dgBoolGlobals As Global.System.Windows.Forms.DataGrid
-        Friend WithEvents TabControl1 As Global.System.Windows.Forms.TabControl
+        Friend WithEvents TabControl1 As Global.kotor_tool.CustomTabControl
+
+
         Friend WithEvents TabPage1 As Global.System.Windows.Forms.TabPage
         Friend WithEvents TabPage2 As Global.System.Windows.Forms.TabPage
         Friend WithEvents dgNumericGlobals As Global.System.Windows.Forms.DataGrid
@@ -93,7 +95,7 @@ Namespace kotor_tool
             Me.sbpString = New System.Windows.Forms.StatusBarPanel()
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlBody = New System.Windows.Forms.Panel()
-            Me.TabControl1 = New System.Windows.Forms.TabControl()
+            Me.TabControl1 = New kotor_tool.CustomTabControl()
             Me.TabPage1 = New System.Windows.Forms.TabPage()
             Me.dgBoolGlobals = New System.Windows.Forms.DataGrid()
             Me.TabPage2 = New System.Windows.Forms.TabPage()

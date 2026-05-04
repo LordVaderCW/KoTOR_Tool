@@ -60,9 +60,9 @@ Namespace kotor_tool
         Friend WithEvents NumericUpDown12 As Global.System.Windows.Forms.NumericUpDown
         Friend WithEvents Label17 As Global.System.Windows.Forms.Label
         Friend WithEvents Label18 As Global.System.Windows.Forms.Label
-        Friend WithEvents TabControlModule As Global.System.Windows.Forms.TabControl
-        Friend WithEvents TabControlMain As Global.System.Windows.Forms.TabControl
-        Friend WithEvents TabControlArea As Global.System.Windows.Forms.TabControl
+        Friend WithEvents TabControlModule As Global.kotor_tool.CustomTabControl
+        Friend WithEvents TabControlMain As Global.kotor_tool.CustomTabControl
+        Friend WithEvents TabControlArea As Global.kotor_tool.CustomTabControl
         Friend WithEvents Label20 As Global.System.Windows.Forms.Label
         Friend WithEvents ColorDialog1 As Global.System.Windows.Forms.ColorDialog
         Friend WithEvents Label21 As Global.System.Windows.Forms.Label
@@ -241,9 +241,9 @@ Namespace kotor_tool
         Private Sub InitializeComponent()
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlBody = New System.Windows.Forms.Panel()
-            Me.TabControlMain = New System.Windows.Forms.TabControl()
+            Me.TabControlMain = New kotor_tool.CustomTabControl()
             Me.TabPage5 = New System.Windows.Forms.TabPage()
-            Me.TabControlModule = New System.Windows.Forms.TabControl()
+            Me.TabControlModule = New kotor_tool.CustomTabControl()
             Me.tabpagModuleBasic = New System.Windows.Forms.TabPage()
             Me.pboxXY = New System.Windows.Forms.PictureBox()
             Me.nudXY = New System.Windows.Forms.NumericUpDown()
@@ -310,7 +310,7 @@ Namespace kotor_tool
             Me.btnSetDescriptionLang = New System.Windows.Forms.Button()
             Me.tbModDescription = New System.Windows.Forms.TextBox()
             Me.TabPage6 = New System.Windows.Forms.TabPage()
-            Me.TabControlArea = New System.Windows.Forms.TabControl()
+            Me.TabControlArea = New kotor_tool.CustomTabControl()
             Me.tabpagAreaBasic = New System.Windows.Forms.TabPage()
             Me.chkbUnescapable = New System.Windows.Forms.CheckBox()
             Me.Label19 = New System.Windows.Forms.Label()
@@ -526,7 +526,7 @@ Namespace kotor_tool
             Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
             Me.pnlRoot.Name = "pnlRoot"
-            Me.pnlRoot.Size = New System.Drawing.Size(552, 747)
+            Me.pnlRoot.Size = New System.Drawing.Size(552, 834)
             Me.pnlRoot.TabIndex = 0
             '
             'pnlBody
@@ -537,46 +537,97 @@ Namespace kotor_tool
             Me.pnlBody.Location = New System.Drawing.Point(0, 90)
             Me.pnlBody.Name = "pnlBody"
             Me.pnlBody.Padding = New System.Windows.Forms.Padding(14)
-            Me.pnlBody.Size = New System.Drawing.Size(550, 585)
+            Me.pnlBody.Size = New System.Drawing.Size(550, 672)
             Me.pnlBody.TabIndex = 1
             '
             'TabControlMain
             '
+            Me.TabControlMain.AccentColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.TabControlMain.ControlBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.TabControlMain.Controls.Add(Me.TabPage5)
             Me.TabControlMain.Controls.Add(Me.TabPage6)
+            Me.TabControlMain.DarkBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.TabControlMain.DividerColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.TabControlMain.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlMain.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
             Me.TabControlMain.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.TabControlMain.ItemSize = New System.Drawing.Size(88, 31)
             Me.TabControlMain.Location = New System.Drawing.Point(14, 14)
+            Me.TabControlMain.Multiline = True
             Me.TabControlMain.Name = "TabControlMain"
+            Me.TabControlMain.NormalTabBackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.TabControlMain.NormalTextColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.TabControlMain.OuterNativeBorderBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.TabControlMain.Padding = New System.Drawing.Point(12, 3)
+            Me.TabControlMain.PageChromeBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControlMain.PageEdgeArtifactBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControlMain.PageInsetBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.TabControlMain.SelectedIndex = 0
-            Me.TabControlMain.Size = New System.Drawing.Size(522, 557)
+            Me.TabControlMain.SelectedTabBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControlMain.SelectedTabBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.TabControlMain.SelectedTabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.TabControlMain.SelectedTextColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.TabControlMain.Size = New System.Drawing.Size(522, 644)
+            Me.TabControlMain.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
+            Me.TabControlMain.TabBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
+            Me.TabControlMain.TabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
+            Me.TabControlMain.TabChromeBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.TabControlMain.TabIndex = 1
+            Me.TabControlMain.TabNativeBorderBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControlMain.TabNativeInsetBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.TabControlMain.TabPageBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControlMain.TabStripBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             '
             'TabPage5
             '
             Me.TabPage5.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.TabPage5.Controls.Add(Me.TabControlModule)
             Me.TabPage5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.TabPage5.Location = New System.Drawing.Point(4, 22)
+            Me.TabPage5.Location = New System.Drawing.Point(4, 35)
             Me.TabPage5.Name = "TabPage5"
-            Me.TabPage5.Size = New System.Drawing.Size(514, 531)
+            Me.TabPage5.Size = New System.Drawing.Size(514, 605)
             Me.TabPage5.TabIndex = 0
             Me.TabPage5.Text = "Module"
             '
             'TabControlModule
             '
+            Me.TabControlModule.AccentColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.TabControlModule.ControlBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.TabControlModule.Controls.Add(Me.tabpagModuleBasic)
             Me.TabControlModule.Controls.Add(Me.tabpagModuleAdvanced)
             Me.TabControlModule.Controls.Add(Me.tabpagModuleEvents)
             Me.TabControlModule.Controls.Add(Me.tabpagModuleDescription)
+            Me.TabControlModule.DarkBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.TabControlModule.DividerColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.TabControlModule.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlModule.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
+            Me.TabControlModule.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControlModule.ItemSize = New System.Drawing.Size(88, 31)
             Me.TabControlModule.Location = New System.Drawing.Point(0, 0)
+            Me.TabControlModule.Multiline = True
             Me.TabControlModule.Name = "TabControlModule"
+            Me.TabControlModule.NormalTabBackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.TabControlModule.NormalTextColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.TabControlModule.OuterNativeBorderBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.TabControlModule.Padding = New System.Drawing.Point(12, 3)
+            Me.TabControlModule.PageChromeBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControlModule.PageEdgeArtifactBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControlModule.PageInsetBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.TabControlModule.SelectedIndex = 0
-            Me.TabControlModule.Size = New System.Drawing.Size(514, 531)
+            Me.TabControlModule.SelectedTabBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControlModule.SelectedTabBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.TabControlModule.SelectedTabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.TabControlModule.SelectedTextColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.TabControlModule.Size = New System.Drawing.Size(514, 605)
+            Me.TabControlModule.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
+            Me.TabControlModule.TabBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
+            Me.TabControlModule.TabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
+            Me.TabControlModule.TabChromeBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.TabControlModule.TabIndex = 0
+            Me.TabControlModule.TabNativeBorderBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControlModule.TabNativeInsetBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.TabControlModule.TabPageBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControlModule.TabStripBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             '
             'tabpagModuleBasic
             '
@@ -598,9 +649,9 @@ Namespace kotor_tool
             Me.tabpagModuleBasic.Controls.Add(Me.tbModEntryArea)
             Me.tabpagModuleBasic.Controls.Add(Me.Label10)
             Me.tabpagModuleBasic.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tabpagModuleBasic.Location = New System.Drawing.Point(4, 22)
+            Me.tabpagModuleBasic.Location = New System.Drawing.Point(4, 35)
             Me.tabpagModuleBasic.Name = "tabpagModuleBasic"
-            Me.tabpagModuleBasic.Size = New System.Drawing.Size(506, 505)
+            Me.tabpagModuleBasic.Size = New System.Drawing.Size(506, 566)
             Me.tabpagModuleBasic.TabIndex = 0
             Me.tabpagModuleBasic.Text = "Basic"
             '
@@ -809,9 +860,9 @@ Namespace kotor_tool
             Me.tabpagModuleAdvanced.Controls.Add(Me.nudStartYear)
             Me.tabpagModuleAdvanced.Controls.Add(Me.Label7)
             Me.tabpagModuleAdvanced.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tabpagModuleAdvanced.Location = New System.Drawing.Point(4, 22)
+            Me.tabpagModuleAdvanced.Location = New System.Drawing.Point(4, 35)
             Me.tabpagModuleAdvanced.Name = "tabpagModuleAdvanced"
-            Me.tabpagModuleAdvanced.Size = New System.Drawing.Size(506, 505)
+            Me.tabpagModuleAdvanced.Size = New System.Drawing.Size(506, 566)
             Me.tabpagModuleAdvanced.TabIndex = 2
             Me.tabpagModuleAdvanced.Text = "Advanced"
             '
@@ -1037,9 +1088,9 @@ Namespace kotor_tool
             Me.tabpagModuleEvents.Controls.Add(Me.Label44)
             Me.tabpagModuleEvents.Controls.Add(Me.tbMod_OnUsrDefined)
             Me.tabpagModuleEvents.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tabpagModuleEvents.Location = New System.Drawing.Point(4, 22)
+            Me.tabpagModuleEvents.Location = New System.Drawing.Point(4, 35)
             Me.tabpagModuleEvents.Name = "tabpagModuleEvents"
-            Me.tabpagModuleEvents.Size = New System.Drawing.Size(506, 505)
+            Me.tabpagModuleEvents.Size = New System.Drawing.Size(506, 566)
             Me.tabpagModuleEvents.TabIndex = 1
             Me.tabpagModuleEvents.Text = "Events"
             '
@@ -1348,9 +1399,9 @@ Namespace kotor_tool
             Me.tabpagModuleDescription.Controls.Add(Me.btnSetDescriptionLang)
             Me.tabpagModuleDescription.Controls.Add(Me.tbModDescription)
             Me.tabpagModuleDescription.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tabpagModuleDescription.Location = New System.Drawing.Point(4, 22)
+            Me.tabpagModuleDescription.Location = New System.Drawing.Point(4, 35)
             Me.tabpagModuleDescription.Name = "tabpagModuleDescription"
-            Me.tabpagModuleDescription.Size = New System.Drawing.Size(506, 505)
+            Me.tabpagModuleDescription.Size = New System.Drawing.Size(506, 566)
             Me.tabpagModuleDescription.TabIndex = 3
             Me.tabpagModuleDescription.Text = "Description"
             '
@@ -1364,7 +1415,7 @@ Namespace kotor_tool
             Me.btnSetDescriptionLang.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnSetDescriptionLang.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.btnSetDescriptionLang.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnSetDescriptionLang.Location = New System.Drawing.Point(374, 456)
+            Me.btnSetDescriptionLang.Location = New System.Drawing.Point(374, 517)
             Me.btnSetDescriptionLang.Name = "btnSetDescriptionLang"
             Me.btnSetDescriptionLang.Size = New System.Drawing.Size(112, 33)
             Me.btnSetDescriptionLang.TabIndex = 1
@@ -1382,7 +1433,7 @@ Namespace kotor_tool
             Me.tbModDescription.Location = New System.Drawing.Point(14, 16)
             Me.tbModDescription.Multiline = True
             Me.tbModDescription.Name = "tbModDescription"
-            Me.tbModDescription.Size = New System.Drawing.Size(478, 426)
+            Me.tbModDescription.Size = New System.Drawing.Size(478, 487)
             Me.tbModDescription.TabIndex = 0
             '
             'TabPage6
@@ -1390,27 +1441,53 @@ Namespace kotor_tool
             Me.TabPage6.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.TabPage6.Controls.Add(Me.TabControlArea)
             Me.TabPage6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.TabPage6.Location = New System.Drawing.Point(4, 22)
+            Me.TabPage6.Location = New System.Drawing.Point(4, 35)
             Me.TabPage6.Name = "TabPage6"
-            Me.TabPage6.Size = New System.Drawing.Size(514, 531)
+            Me.TabPage6.Size = New System.Drawing.Size(514, 605)
             Me.TabPage6.TabIndex = 1
             Me.TabPage6.Text = "Area"
             '
             'TabControlArea
             '
+            Me.TabControlArea.AccentColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.TabControlArea.ControlBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.TabControlArea.Controls.Add(Me.tabpagAreaBasic)
             Me.TabControlArea.Controls.Add(Me.tabpagAreaEnvironment)
             Me.TabControlArea.Controls.Add(Me.tabpagAreaGrass)
             Me.TabControlArea.Controls.Add(Me.tabpagAreaAudio)
             Me.TabControlArea.Controls.Add(Me.tabpagArea_Events)
             Me.TabControlArea.Controls.Add(Me.tabpagAreaRooms)
+            Me.TabControlArea.DarkBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.TabControlArea.DividerColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.TabControlArea.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlArea.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
+            Me.TabControlArea.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControlArea.ItemSize = New System.Drawing.Size(88, 31)
             Me.TabControlArea.Location = New System.Drawing.Point(0, 0)
+            Me.TabControlArea.Multiline = True
             Me.TabControlArea.Name = "TabControlArea"
+            Me.TabControlArea.NormalTabBackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.TabControlArea.NormalTextColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.TabControlArea.OuterNativeBorderBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.TabControlArea.Padding = New System.Drawing.Point(12, 3)
+            Me.TabControlArea.PageChromeBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControlArea.PageEdgeArtifactBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControlArea.PageInsetBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.TabControlArea.SelectedIndex = 0
-            Me.TabControlArea.Size = New System.Drawing.Size(514, 531)
+            Me.TabControlArea.SelectedTabBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControlArea.SelectedTabBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.TabControlArea.SelectedTabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.TabControlArea.SelectedTextColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.TabControlArea.Size = New System.Drawing.Size(514, 605)
+            Me.TabControlArea.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
+            Me.TabControlArea.TabBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
+            Me.TabControlArea.TabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
+            Me.TabControlArea.TabChromeBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.TabControlArea.TabIndex = 0
+            Me.TabControlArea.TabNativeBorderBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControlArea.TabNativeInsetBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.TabControlArea.TabPageBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControlArea.TabStripBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             '
             'tabpagAreaBasic
             '
@@ -1433,9 +1510,9 @@ Namespace kotor_tool
             Me.tabpagAreaBasic.Controls.Add(Me.chkbDisableTransit)
             Me.tabpagAreaBasic.Controls.Add(Me.Label86)
             Me.tabpagAreaBasic.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tabpagAreaBasic.Location = New System.Drawing.Point(4, 22)
+            Me.tabpagAreaBasic.Location = New System.Drawing.Point(4, 35)
             Me.tabpagAreaBasic.Name = "tabpagAreaBasic"
-            Me.tabpagAreaBasic.Size = New System.Drawing.Size(506, 505)
+            Me.tabpagAreaBasic.Size = New System.Drawing.Size(506, 566)
             Me.tabpagAreaBasic.TabIndex = 1
             Me.tabpagAreaBasic.Text = "Basic"
             '
@@ -1467,7 +1544,7 @@ Namespace kotor_tool
             Me.cmbxCameraStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxCameraStyle.Location = New System.Drawing.Point(132, 125)
             Me.cmbxCameraStyle.Name = "cmbxCameraStyle"
-            Me.cmbxCameraStyle.Size = New System.Drawing.Size(140, 21)
+            Me.cmbxCameraStyle.Size = New System.Drawing.Size(138, 21)
             Me.cmbxCameraStyle.TabIndex = 21
             '
             'Label14
@@ -1475,7 +1552,7 @@ Namespace kotor_tool
             Me.Label14.BackColor = System.Drawing.Color.Transparent
             Me.Label14.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label14.Location = New System.Drawing.Point(88, 353)
+            Me.Label14.Location = New System.Drawing.Point(276, 85)
             Me.Label14.Name = "Label14"
             Me.Label14.Size = New System.Drawing.Size(104, 21)
             Me.Label14.TabIndex = 19
@@ -1488,7 +1565,7 @@ Namespace kotor_tool
             Me.NumericUpDown10.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.NumericUpDown10.DecimalPlaces = 4
             Me.NumericUpDown10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.NumericUpDown10.Location = New System.Drawing.Point(208, 353)
+            Me.NumericUpDown10.Location = New System.Drawing.Point(396, 85)
             Me.NumericUpDown10.Maximum = New Decimal(New Integer() {4000, 0, 0, 0})
             Me.NumericUpDown10.Minimum = New Decimal(New Integer() {4000, 0, 0, -2147483648})
             Me.NumericUpDown10.Name = "NumericUpDown10"
@@ -1502,7 +1579,7 @@ Namespace kotor_tool
             Me.Label15.BackColor = System.Drawing.Color.Transparent
             Me.Label15.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label15.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label15.Location = New System.Drawing.Point(88, 390)
+            Me.Label15.Location = New System.Drawing.Point(276, 122)
             Me.Label15.Name = "Label15"
             Me.Label15.Size = New System.Drawing.Size(104, 21)
             Me.Label15.TabIndex = 20
@@ -1515,7 +1592,7 @@ Namespace kotor_tool
             Me.NumericUpDown11.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.NumericUpDown11.DecimalPlaces = 4
             Me.NumericUpDown11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.NumericUpDown11.Location = New System.Drawing.Point(208, 390)
+            Me.NumericUpDown11.Location = New System.Drawing.Point(396, 122)
             Me.NumericUpDown11.Maximum = New Decimal(New Integer() {4000, 0, 0, 0})
             Me.NumericUpDown11.Minimum = New Decimal(New Integer() {4000, 0, 0, -2147483648})
             Me.NumericUpDown11.Name = "NumericUpDown11"
@@ -1529,7 +1606,7 @@ Namespace kotor_tool
             Me.Label16.BackColor = System.Drawing.Color.Transparent
             Me.Label16.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label16.Location = New System.Drawing.Point(88, 427)
+            Me.Label16.Location = New System.Drawing.Point(276, 159)
             Me.Label16.Name = "Label16"
             Me.Label16.Size = New System.Drawing.Size(104, 21)
             Me.Label16.TabIndex = 18
@@ -1542,7 +1619,7 @@ Namespace kotor_tool
             Me.NumericUpDown12.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.NumericUpDown12.DecimalPlaces = 4
             Me.NumericUpDown12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.NumericUpDown12.Location = New System.Drawing.Point(208, 427)
+            Me.NumericUpDown12.Location = New System.Drawing.Point(396, 159)
             Me.NumericUpDown12.Maximum = New Decimal(New Integer() {4000, 0, 0, 0})
             Me.NumericUpDown12.Minimum = New Decimal(New Integer() {4000, 0, 0, -2147483648})
             Me.NumericUpDown12.Name = "NumericUpDown12"
@@ -1560,9 +1637,9 @@ Namespace kotor_tool
             Me.btnSetAreaNameLang.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnSetAreaNameLang.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.btnSetAreaNameLang.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnSetAreaNameLang.Location = New System.Drawing.Point(396, 43)
+            Me.btnSetAreaNameLang.Location = New System.Drawing.Point(396, 46)
             Me.btnSetAreaNameLang.Name = "btnSetAreaNameLang"
-            Me.btnSetAreaNameLang.Size = New System.Drawing.Size(96, 32)
+            Me.btnSetAreaNameLang.Size = New System.Drawing.Size(96, 22)
             Me.btnSetAreaNameLang.TabIndex = 1
             Me.btnSetAreaNameLang.Text = "Set Language"
             Me.btnSetAreaNameLang.UseVisualStyleBackColor = False
@@ -1574,7 +1651,7 @@ Namespace kotor_tool
             Me.tbAreaTag.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbAreaTag.Location = New System.Drawing.Point(132, 85)
             Me.tbAreaTag.Name = "tbAreaTag"
-            Me.tbAreaTag.Size = New System.Drawing.Size(120, 22)
+            Me.tbAreaTag.Size = New System.Drawing.Size(138, 22)
             Me.tbAreaTag.TabIndex = 2
             '
             'tbAreaName
@@ -1656,9 +1733,9 @@ Namespace kotor_tool
             Me.tabpagAreaEnvironment.Controls.Add(Me.nudShadowOpacity)
             Me.tabpagAreaEnvironment.Controls.Add(Me.Label84)
             Me.tabpagAreaEnvironment.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tabpagAreaEnvironment.Location = New System.Drawing.Point(4, 22)
+            Me.tabpagAreaEnvironment.Location = New System.Drawing.Point(4, 35)
             Me.tabpagAreaEnvironment.Name = "tabpagAreaEnvironment"
-            Me.tabpagAreaEnvironment.Size = New System.Drawing.Size(506, 490)
+            Me.tabpagAreaEnvironment.Size = New System.Drawing.Size(506, 566)
             Me.tabpagAreaEnvironment.TabIndex = 4
             Me.tabpagAreaEnvironment.Text = "Environment"
             '
@@ -1669,7 +1746,7 @@ Namespace kotor_tool
             Me.cmbxWindPower.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxWindPower.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxWindPower.Items.AddRange(New Object() {"Calm", "Light", "Heavy"})
-            Me.cmbxWindPower.Location = New System.Drawing.Point(348, 413)
+            Me.cmbxWindPower.Location = New System.Drawing.Point(347, 426)
             Me.cmbxWindPower.Name = "cmbxWindPower"
             Me.cmbxWindPower.Size = New System.Drawing.Size(112, 21)
             Me.cmbxWindPower.TabIndex = 26
@@ -1685,9 +1762,9 @@ Namespace kotor_tool
             Me.GroupBox1.Controls.Add(Me.nudChanceLightning)
             Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.GroupBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.GroupBox1.Location = New System.Drawing.Point(18, 397)
+            Me.GroupBox1.Location = New System.Drawing.Point(17, 410)
             Me.GroupBox1.Name = "GroupBox1"
-            Me.GroupBox1.Size = New System.Drawing.Size(210, 101)
+            Me.GroupBox1.Size = New System.Drawing.Size(210, 109)
             Me.GroupBox1.TabIndex = 25
             Me.GroupBox1.TabStop = False
             Me.GroupBox1.Text = "Weather"
@@ -1789,7 +1866,7 @@ Namespace kotor_tool
             Me.gbMoon.Controls.Add(Me.lblMoonFogFar)
             Me.gbMoon.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.gbMoon.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.gbMoon.Location = New System.Drawing.Point(18, 231)
+            Me.gbMoon.Location = New System.Drawing.Point(17, 244)
             Me.gbMoon.Name = "gbMoon"
             Me.gbMoon.Size = New System.Drawing.Size(468, 157)
             Me.gbMoon.TabIndex = 21
@@ -1910,6 +1987,7 @@ Namespace kotor_tool
             '
             'trkbarMoonFogNear
             '
+            Me.trkbarMoonFogNear.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.trkbarMoonFogNear.Enabled = False
             Me.trkbarMoonFogNear.Location = New System.Drawing.Point(246, 28)
             Me.trkbarMoonFogNear.Maximum = 2000
@@ -1933,6 +2011,7 @@ Namespace kotor_tool
             '
             'trkbarMoonFogFar
             '
+            Me.trkbarMoonFogFar.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.trkbarMoonFogFar.Enabled = False
             Me.trkbarMoonFogFar.Location = New System.Drawing.Point(246, 102)
             Me.trkbarMoonFogFar.Maximum = 2000
@@ -1973,7 +2052,7 @@ Namespace kotor_tool
             Me.gbSun.Controls.Add(Me.chkbSunFogOn)
             Me.gbSun.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.gbSun.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.gbSun.Location = New System.Drawing.Point(18, 65)
+            Me.gbSun.Location = New System.Drawing.Point(17, 78)
             Me.gbSun.Name = "gbSun"
             Me.gbSun.Size = New System.Drawing.Size(468, 157)
             Me.gbSun.TabIndex = 20
@@ -1991,6 +2070,7 @@ Namespace kotor_tool
             '
             'trkbarSunFogNear
             '
+            Me.trkbarSunFogNear.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.trkbarSunFogNear.Enabled = False
             Me.trkbarSunFogNear.Location = New System.Drawing.Point(246, 28)
             Me.trkbarSunFogNear.Maximum = 2000
@@ -2096,6 +2176,7 @@ Namespace kotor_tool
             '
             'trkbarSunFogFar
             '
+            Me.trkbarSunFogFar.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.trkbarSunFogFar.Enabled = False
             Me.trkbarSunFogFar.Location = New System.Drawing.Point(246, 92)
             Me.trkbarSunFogFar.Maximum = 2000
@@ -2215,7 +2296,7 @@ Namespace kotor_tool
             Me.Label84.Enabled = False
             Me.Label84.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label84.ForeColor = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(186, Byte), Integer), CType(CType(198, Byte), Integer))
-            Me.Label84.Location = New System.Drawing.Point(248, 415)
+            Me.Label84.Location = New System.Drawing.Point(245, 425)
             Me.Label84.Name = "Label84"
             Me.Label84.Size = New System.Drawing.Size(96, 21)
             Me.Label84.TabIndex = 16
@@ -2253,9 +2334,9 @@ Namespace kotor_tool
             Me.tabpagAreaGrass.Controls.Add(Me.Label68)
             Me.tabpagAreaGrass.Controls.Add(Me.nudGrassQuadSize)
             Me.tabpagAreaGrass.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tabpagAreaGrass.Location = New System.Drawing.Point(4, 22)
+            Me.tabpagAreaGrass.Location = New System.Drawing.Point(4, 35)
             Me.tabpagAreaGrass.Name = "tabpagAreaGrass"
-            Me.tabpagAreaGrass.Size = New System.Drawing.Size(506, 490)
+            Me.tabpagAreaGrass.Size = New System.Drawing.Size(506, 566)
             Me.tabpagAreaGrass.TabIndex = 2
             Me.tabpagAreaGrass.Text = "Grass"
             '
@@ -2264,7 +2345,7 @@ Namespace kotor_tool
             Me.nudGrassDensity.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.nudGrassDensity.DecimalPlaces = 2
             Me.nudGrassDensity.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.nudGrassDensity.Location = New System.Drawing.Point(334, 369)
+            Me.nudGrassDensity.Location = New System.Drawing.Point(334, 317)
             Me.nudGrassDensity.Maximum = New Decimal(New Integer() {50, 0, 0, 0})
             Me.nudGrassDensity.Name = "nudGrassDensity"
             Me.nudGrassDensity.Size = New System.Drawing.Size(62, 22)
@@ -2273,7 +2354,7 @@ Namespace kotor_tool
             '
             'trkbarGrassDensityX10
             '
-            Me.trkbarGrassDensityX10.Location = New System.Drawing.Point(118, 360)
+            Me.trkbarGrassDensityX10.Location = New System.Drawing.Point(118, 309)
             Me.trkbarGrassDensityX10.Maximum = 500
             Me.trkbarGrassDensityX10.Name = "trkbarGrassDensityX10"
             Me.trkbarGrassDensityX10.Size = New System.Drawing.Size(210, 45)
@@ -2284,7 +2365,7 @@ Namespace kotor_tool
             '
             Me.Label62.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label62.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label62.Location = New System.Drawing.Point(24, 369)
+            Me.Label62.Location = New System.Drawing.Point(24, 318)
             Me.Label62.Name = "Label62"
             Me.Label62.Size = New System.Drawing.Size(90, 21)
             Me.Label62.TabIndex = 18
@@ -2298,9 +2379,9 @@ Namespace kotor_tool
             Me.btnGrassDiffuseColor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
             Me.btnGrassDiffuseColor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
             Me.btnGrassDiffuseColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-            Me.btnGrassDiffuseColor.Location = New System.Drawing.Point(128, 120)
+            Me.btnGrassDiffuseColor.Location = New System.Drawing.Point(142, 121)
             Me.btnGrassDiffuseColor.Name = "btnGrassDiffuseColor"
-            Me.btnGrassDiffuseColor.Size = New System.Drawing.Size(18, 21)
+            Me.btnGrassDiffuseColor.Size = New System.Drawing.Size(62, 21)
             Me.btnGrassDiffuseColor.TabIndex = 15
             Me.btnGrassDiffuseColor.UseVisualStyleBackColor = False
             '
@@ -2309,10 +2390,10 @@ Namespace kotor_tool
             Me.tbGrass_TexName.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.tbGrass_TexName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbGrass_TexName.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbGrass_TexName.Location = New System.Drawing.Point(128, 46)
+            Me.tbGrass_TexName.Location = New System.Drawing.Point(142, 47)
             Me.tbGrass_TexName.MaxLength = 16
             Me.tbGrass_TexName.Name = "tbGrass_TexName"
-            Me.tbGrass_TexName.Size = New System.Drawing.Size(176, 22)
+            Me.tbGrass_TexName.Size = New System.Drawing.Size(300, 22)
             Me.tbGrass_TexName.TabIndex = 14
             '
             'Label20
@@ -2355,9 +2436,9 @@ Namespace kotor_tool
             Me.btnGrassAmbientColor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
             Me.btnGrassAmbientColor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
             Me.btnGrassAmbientColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-            Me.btnGrassAmbientColor.Location = New System.Drawing.Point(128, 92)
+            Me.btnGrassAmbientColor.Location = New System.Drawing.Point(142, 93)
             Me.btnGrassAmbientColor.Name = "btnGrassAmbientColor"
-            Me.btnGrassAmbientColor.Size = New System.Drawing.Size(18, 21)
+            Me.btnGrassAmbientColor.Size = New System.Drawing.Size(62, 21)
             Me.btnGrassAmbientColor.TabIndex = 15
             Me.btnGrassAmbientColor.UseVisualStyleBackColor = False
             '
@@ -2379,9 +2460,9 @@ Namespace kotor_tool
             Me.btnGrassEmissiveColor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
             Me.btnGrassEmissiveColor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
             Me.btnGrassEmissiveColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-            Me.btnGrassEmissiveColor.Location = New System.Drawing.Point(128, 148)
+            Me.btnGrassEmissiveColor.Location = New System.Drawing.Point(142, 149)
             Me.btnGrassEmissiveColor.Name = "btnGrassEmissiveColor"
-            Me.btnGrassEmissiveColor.Size = New System.Drawing.Size(18, 20)
+            Me.btnGrassEmissiveColor.Size = New System.Drawing.Size(62, 20)
             Me.btnGrassEmissiveColor.TabIndex = 15
             Me.btnGrassEmissiveColor.UseVisualStyleBackColor = False
             '
@@ -2389,7 +2470,7 @@ Namespace kotor_tool
             '
             Me.nudGrassProbUL.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.nudGrassProbUL.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.nudGrassProbUL.Location = New System.Drawing.Point(168, 249)
+            Me.nudGrassProbUL.Location = New System.Drawing.Point(168, 228)
             Me.nudGrassProbUL.Name = "nudGrassProbUL"
             Me.nudGrassProbUL.Size = New System.Drawing.Size(44, 22)
             Me.nudGrassProbUL.TabIndex = 19
@@ -2400,7 +2481,7 @@ Namespace kotor_tool
             '
             Me.nudGrassProbLL.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.nudGrassProbLL.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.nudGrassProbLL.Location = New System.Drawing.Point(168, 314)
+            Me.nudGrassProbLL.Location = New System.Drawing.Point(168, 263)
             Me.nudGrassProbLL.Name = "nudGrassProbLL"
             Me.nudGrassProbLL.Size = New System.Drawing.Size(44, 22)
             Me.nudGrassProbLL.TabIndex = 19
@@ -2411,7 +2492,7 @@ Namespace kotor_tool
             '
             Me.nudGrassProbUR.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.nudGrassProbUR.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.nudGrassProbUR.Location = New System.Drawing.Point(280, 249)
+            Me.nudGrassProbUR.Location = New System.Drawing.Point(280, 227)
             Me.nudGrassProbUR.Name = "nudGrassProbUR"
             Me.nudGrassProbUR.Size = New System.Drawing.Size(44, 22)
             Me.nudGrassProbUR.TabIndex = 19
@@ -2422,7 +2503,7 @@ Namespace kotor_tool
             '
             Me.nudGrassProbLR.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.nudGrassProbLR.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.nudGrassProbLR.Location = New System.Drawing.Point(280, 314)
+            Me.nudGrassProbLR.Location = New System.Drawing.Point(280, 263)
             Me.nudGrassProbLR.Name = "nudGrassProbLR"
             Me.nudGrassProbLR.Size = New System.Drawing.Size(44, 22)
             Me.nudGrassProbLR.TabIndex = 19
@@ -2433,7 +2514,7 @@ Namespace kotor_tool
             '
             Me.Label63.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label63.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label63.Location = New System.Drawing.Point(24, 258)
+            Me.Label63.Location = New System.Drawing.Point(24, 228)
             Me.Label63.Name = "Label63"
             Me.Label63.Size = New System.Drawing.Size(96, 56)
             Me.Label63.TabIndex = 18
@@ -2444,7 +2525,7 @@ Namespace kotor_tool
             '
             Me.Label64.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label64.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label64.Location = New System.Drawing.Point(232, 240)
+            Me.Label64.Location = New System.Drawing.Point(232, 218)
             Me.Label64.Name = "Label64"
             Me.Label64.Size = New System.Drawing.Size(48, 37)
             Me.Label64.TabIndex = 13
@@ -2455,7 +2536,7 @@ Namespace kotor_tool
             '
             Me.Label65.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label65.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label65.Location = New System.Drawing.Point(120, 240)
+            Me.Label65.Location = New System.Drawing.Point(120, 219)
             Me.Label65.Name = "Label65"
             Me.Label65.Size = New System.Drawing.Size(48, 37)
             Me.Label65.TabIndex = 13
@@ -2466,7 +2547,7 @@ Namespace kotor_tool
             '
             Me.Label66.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label66.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label66.Location = New System.Drawing.Point(120, 305)
+            Me.Label66.Location = New System.Drawing.Point(120, 254)
             Me.Label66.Name = "Label66"
             Me.Label66.Size = New System.Drawing.Size(48, 37)
             Me.Label66.TabIndex = 13
@@ -2477,7 +2558,7 @@ Namespace kotor_tool
             '
             Me.Label67.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label67.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label67.Location = New System.Drawing.Point(232, 305)
+            Me.Label67.Location = New System.Drawing.Point(232, 254)
             Me.Label67.Name = "Label67"
             Me.Label67.Size = New System.Drawing.Size(48, 37)
             Me.Label67.TabIndex = 13
@@ -2488,7 +2569,7 @@ Namespace kotor_tool
             '
             Me.lblTotalGrassProbability.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblTotalGrassProbability.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.lblTotalGrassProbability.Location = New System.Drawing.Point(352, 286)
+            Me.lblTotalGrassProbability.Location = New System.Drawing.Point(352, 246)
             Me.lblTotalGrassProbability.Name = "lblTotalGrassProbability"
             Me.lblTotalGrassProbability.Size = New System.Drawing.Size(90, 21)
             Me.lblTotalGrassProbability.TabIndex = 18
@@ -2499,7 +2580,7 @@ Namespace kotor_tool
             '
             Me.Label69.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label69.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label69.Location = New System.Drawing.Point(214, 252)
+            Me.Label69.Location = New System.Drawing.Point(214, 231)
             Me.Label69.Name = "Label69"
             Me.Label69.Size = New System.Drawing.Size(16, 18)
             Me.Label69.TabIndex = 13
@@ -2510,7 +2591,7 @@ Namespace kotor_tool
             '
             Me.Label70.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label70.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label70.Location = New System.Drawing.Point(326, 252)
+            Me.Label70.Location = New System.Drawing.Point(326, 230)
             Me.Label70.Name = "Label70"
             Me.Label70.Size = New System.Drawing.Size(16, 18)
             Me.Label70.TabIndex = 13
@@ -2521,7 +2602,7 @@ Namespace kotor_tool
             '
             Me.Label71.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label71.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label71.Location = New System.Drawing.Point(326, 316)
+            Me.Label71.Location = New System.Drawing.Point(326, 265)
             Me.Label71.Name = "Label71"
             Me.Label71.Size = New System.Drawing.Size(16, 19)
             Me.Label71.TabIndex = 13
@@ -2532,7 +2613,7 @@ Namespace kotor_tool
             '
             Me.Label72.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Label72.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label72.Location = New System.Drawing.Point(214, 316)
+            Me.Label72.Location = New System.Drawing.Point(214, 265)
             Me.Label72.Name = "Label72"
             Me.Label72.Size = New System.Drawing.Size(16, 19)
             Me.Label72.TabIndex = 13
@@ -2545,7 +2626,7 @@ Namespace kotor_tool
             Me.Label68.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.Label68.Location = New System.Drawing.Point(24, 185)
             Me.Label68.Name = "Label68"
-            Me.Label68.Size = New System.Drawing.Size(112, 20)
+            Me.Label68.Size = New System.Drawing.Size(96, 20)
             Me.Label68.TabIndex = 18
             Me.Label68.Text = "Grass Quad Size"
             Me.Label68.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2556,7 +2637,7 @@ Namespace kotor_tool
             Me.nudGrassQuadSize.DecimalPlaces = 2
             Me.nudGrassQuadSize.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.nudGrassQuadSize.Increment = New Decimal(New Integer() {5, 0, 0, 131072})
-            Me.nudGrassQuadSize.Location = New System.Drawing.Point(128, 185)
+            Me.nudGrassQuadSize.Location = New System.Drawing.Point(142, 183)
             Me.nudGrassQuadSize.Maximum = New Decimal(New Integer() {20, 0, 0, 0})
             Me.nudGrassQuadSize.Name = "nudGrassQuadSize"
             Me.nudGrassQuadSize.Size = New System.Drawing.Size(62, 22)
@@ -2587,9 +2668,9 @@ Namespace kotor_tool
             Me.tabpagAreaAudio.Controls.Add(Me.Label60)
             Me.tabpagAreaAudio.Controls.Add(Me.Label61)
             Me.tabpagAreaAudio.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tabpagAreaAudio.Location = New System.Drawing.Point(4, 22)
+            Me.tabpagAreaAudio.Location = New System.Drawing.Point(4, 35)
             Me.tabpagAreaAudio.Name = "tabpagAreaAudio"
-            Me.tabpagAreaAudio.Size = New System.Drawing.Size(506, 490)
+            Me.tabpagAreaAudio.Size = New System.Drawing.Size(506, 566)
             Me.tabpagAreaAudio.TabIndex = 5
             Me.tabpagAreaAudio.Text = "Audio"
             '
@@ -2637,7 +2718,6 @@ Namespace kotor_tool
             '
             Me.cmbxMusicNight.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxMusicNight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxMusicNight.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxMusicNight.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxMusicNight.Location = New System.Drawing.Point(170, 351)
             Me.cmbxMusicNight.Name = "cmbxMusicNight"
@@ -2648,7 +2728,6 @@ Namespace kotor_tool
             '
             Me.cmbxMusicDay.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxMusicDay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxMusicDay.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxMusicDay.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxMusicDay.Location = New System.Drawing.Point(170, 314)
             Me.cmbxMusicDay.Name = "cmbxMusicDay"
@@ -2659,7 +2738,6 @@ Namespace kotor_tool
             '
             Me.cmbxMusicBattle.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxMusicBattle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxMusicBattle.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxMusicBattle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxMusicBattle.Location = New System.Drawing.Point(170, 277)
             Me.cmbxMusicBattle.Name = "cmbxMusicBattle"
@@ -2670,7 +2748,6 @@ Namespace kotor_tool
             '
             Me.cmbxEnvAudio.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxEnvAudio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxEnvAudio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxEnvAudio.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxEnvAudio.Location = New System.Drawing.Point(170, 240)
             Me.cmbxEnvAudio.Name = "cmbxEnvAudio"
@@ -2681,7 +2758,6 @@ Namespace kotor_tool
             '
             Me.cmbxAmbientSndNight.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxAmbientSndNight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxAmbientSndNight.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxAmbientSndNight.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxAmbientSndNight.Location = New System.Drawing.Point(170, 138)
             Me.cmbxAmbientSndNight.Name = "cmbxAmbientSndNight"
@@ -2692,7 +2768,6 @@ Namespace kotor_tool
             '
             Me.cmbxAmbientSndDay.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxAmbientSndDay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxAmbientSndDay.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxAmbientSndDay.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxAmbientSndDay.Location = New System.Drawing.Point(170, 46)
             Me.cmbxAmbientSndDay.Name = "cmbxAmbientSndDay"
@@ -2810,9 +2885,9 @@ Namespace kotor_tool
             Me.tabpagArea_Events.Controls.Add(Me.Label75)
             Me.tabpagArea_Events.Controls.Add(Me.tbArea_OnExit)
             Me.tabpagArea_Events.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tabpagArea_Events.Location = New System.Drawing.Point(4, 22)
+            Me.tabpagArea_Events.Location = New System.Drawing.Point(4, 35)
             Me.tabpagArea_Events.Name = "tabpagArea_Events"
-            Me.tabpagArea_Events.Size = New System.Drawing.Size(506, 490)
+            Me.tabpagArea_Events.Size = New System.Drawing.Size(506, 566)
             Me.tabpagArea_Events.TabIndex = 6
             Me.tabpagArea_Events.Text = "Events"
             '
@@ -2924,9 +2999,9 @@ Namespace kotor_tool
             Me.tabpagAreaRooms.Controls.Add(Me.Label81)
             Me.tabpagAreaRooms.Controls.Add(Me.Label83)
             Me.tabpagAreaRooms.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tabpagAreaRooms.Location = New System.Drawing.Point(4, 22)
+            Me.tabpagAreaRooms.Location = New System.Drawing.Point(4, 35)
             Me.tabpagAreaRooms.Name = "tabpagAreaRooms"
-            Me.tabpagAreaRooms.Size = New System.Drawing.Size(506, 490)
+            Me.tabpagAreaRooms.Size = New System.Drawing.Size(506, 566)
             Me.tabpagAreaRooms.TabIndex = 7
             Me.tabpagAreaRooms.Text = "Rooms"
             '
@@ -2938,7 +3013,7 @@ Namespace kotor_tool
             Me.lbRooms.Location = New System.Drawing.Point(184, 46)
             Me.lbRooms.Name = "lbRooms"
             Me.lbRooms.ScrollAlwaysVisible = True
-            Me.lbRooms.Size = New System.Drawing.Size(112, 119)
+            Me.lbRooms.Size = New System.Drawing.Size(206, 119)
             Me.lbRooms.TabIndex = 41
             '
             'Label82
@@ -2954,7 +3029,6 @@ Namespace kotor_tool
             '
             'chkbRoomDisableWeather
             '
-            Me.chkbRoomDisableWeather.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbRoomDisableWeather.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbRoomDisableWeather.Location = New System.Drawing.Point(184, 335)
             Me.chkbRoomDisableWeather.Name = "chkbRoomDisableWeather"
@@ -2970,9 +3044,9 @@ Namespace kotor_tool
             Me.nudRoomAmbientScale.Location = New System.Drawing.Point(184, 261)
             Me.nudRoomAmbientScale.Maximum = New Decimal(New Integer() {1, 0, 0, 0})
             Me.nudRoomAmbientScale.Name = "nudRoomAmbientScale"
-            Me.nudRoomAmbientScale.Size = New System.Drawing.Size(64, 22)
+            Me.nudRoomAmbientScale.Size = New System.Drawing.Size(206, 22)
             Me.nudRoomAmbientScale.TabIndex = 38
-            Me.nudRoomAmbientScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudRoomAmbientScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'Label80
             '
@@ -2989,7 +3063,6 @@ Namespace kotor_tool
             '
             Me.cmbxRoomEnvAudio.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxRoomEnvAudio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxRoomEnvAudio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxRoomEnvAudio.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxRoomEnvAudio.Location = New System.Drawing.Point(184, 224)
             Me.cmbxRoomEnvAudio.Name = "cmbxRoomEnvAudio"
@@ -3028,7 +3101,7 @@ Namespace kotor_tool
             Me.tbRoomName.MaxLength = 16
             Me.tbRoomName.Name = "tbRoomName"
             Me.tbRoomName.ReadOnly = True
-            Me.tbRoomName.Size = New System.Drawing.Size(120, 22)
+            Me.tbRoomName.Size = New System.Drawing.Size(206, 22)
             Me.tbRoomName.TabIndex = 33
             '
             'nudRoomForceRating
@@ -3038,9 +3111,9 @@ Namespace kotor_tool
             Me.nudRoomForceRating.Location = New System.Drawing.Point(184, 298)
             Me.nudRoomForceRating.Minimum = New Decimal(New Integer() {100, 0, 0, -2147483648})
             Me.nudRoomForceRating.Name = "nudRoomForceRating"
-            Me.nudRoomForceRating.Size = New System.Drawing.Size(64, 22)
+            Me.nudRoomForceRating.Size = New System.Drawing.Size(206, 22)
             Me.nudRoomForceRating.TabIndex = 38
-            Me.nudRoomForceRating.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudRoomForceRating.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'Label81
             '
@@ -3071,7 +3144,7 @@ Namespace kotor_tool
             Me.pnlFooter.Controls.Add(Me.btnOK)
             Me.pnlFooter.Controls.Add(Me.btnCancel)
             Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.pnlFooter.Location = New System.Drawing.Point(0, 675)
+            Me.pnlFooter.Location = New System.Drawing.Point(0, 762)
             Me.pnlFooter.Name = "pnlFooter"
             Me.pnlFooter.Size = New System.Drawing.Size(550, 70)
             Me.pnlFooter.TabIndex = 2
@@ -3174,7 +3247,7 @@ Namespace kotor_tool
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 15)
             Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.CancelButton = Me.btnCancel
-            Me.ClientSize = New System.Drawing.Size(552, 747)
+            Me.ClientSize = New System.Drawing.Size(552, 834)
             Me.Controls.Add(Me.pnlRoot)
             Me.MinimumSize = New System.Drawing.Size(568, 786)
             Me.Name = "frmModuleIfo_AreaEditor"

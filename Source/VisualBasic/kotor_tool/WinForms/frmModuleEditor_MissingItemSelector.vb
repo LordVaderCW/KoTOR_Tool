@@ -28,7 +28,7 @@ Namespace kotor_tool
         End Property
 
         ' Token: 0x06000947 RID: 2375 RVA: 0x0026D830 File Offset: 0x0026C830
-        Private Sub CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles rbUserPalette.CheckedChanged, rbTemplatesBif.CheckedChanged, rbGlobalTemplates.CheckedChanged
             Me.btnOK.Enabled = Me.rbGlobalTemplates.Checked OrElse Me.rbTemplatesBif.Checked OrElse Me.rbUserPalette.Checked
         End Sub
 

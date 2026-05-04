@@ -130,7 +130,7 @@ Namespace kotor_tool
             Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
             Me.pnlRoot.Name = "pnlRoot"
-            Me.pnlRoot.Size = New System.Drawing.Size(430, 722)
+            Me.pnlRoot.Size = New System.Drawing.Size(422, 664)
             Me.pnlRoot.TabIndex = 0
             '
             'pnlBody
@@ -145,7 +145,7 @@ Namespace kotor_tool
             Me.pnlBody.Location = New System.Drawing.Point(0, 88)
             Me.pnlBody.Name = "pnlBody"
             Me.pnlBody.Padding = New System.Windows.Forms.Padding(18, 16, 18, 16)
-            Me.pnlBody.Size = New System.Drawing.Size(430, 563)
+            Me.pnlBody.Size = New System.Drawing.Size(422, 505)
             Me.pnlBody.TabIndex = 1
             '
             'gboxSearchString
@@ -155,9 +155,9 @@ Namespace kotor_tool
             Me.gboxSearchString.Enabled = False
             Me.gboxSearchString.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.gboxSearchString.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.gboxSearchString.Location = New System.Drawing.Point(22, 102)
+            Me.gboxSearchString.Location = New System.Drawing.Point(22, 97)
             Me.gboxSearchString.Name = "gboxSearchString"
-            Me.gboxSearchString.Size = New System.Drawing.Size(220, 73)
+            Me.gboxSearchString.Size = New System.Drawing.Size(376, 73)
             Me.gboxSearchString.TabIndex = 1
             Me.gboxSearchString.TabStop = False
             Me.gboxSearchString.Text = "String to search for"
@@ -170,7 +170,7 @@ Namespace kotor_tool
             Me.tbSearchString.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbSearchString.Location = New System.Drawing.Point(16, 28)
             Me.tbSearchString.Name = "tbSearchString"
-            Me.tbSearchString.Size = New System.Drawing.Size(188, 22)
+            Me.tbSearchString.Size = New System.Drawing.Size(344, 22)
             Me.tbSearchString.TabIndex = 0
             '
             'GroupBox2
@@ -182,7 +182,7 @@ Namespace kotor_tool
             Me.GroupBox2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
             Me.GroupBox2.Location = New System.Drawing.Point(22, 18)
             Me.GroupBox2.Name = "GroupBox2"
-            Me.GroupBox2.Size = New System.Drawing.Size(368, 74)
+            Me.GroupBox2.Size = New System.Drawing.Size(242, 73)
             Me.GroupBox2.TabIndex = 0
             Me.GroupBox2.TabStop = False
             Me.GroupBox2.Text = "Search within"
@@ -192,7 +192,7 @@ Namespace kotor_tool
             Me.rbSearchKotor1.BackColor = System.Drawing.Color.Transparent
             Me.rbSearchKotor1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.rbSearchKotor1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.rbSearchKotor1.Location = New System.Drawing.Point(24, 18)
+            Me.rbSearchKotor1.Location = New System.Drawing.Point(24, 28)
             Me.rbSearchKotor1.Name = "rbSearchKotor1"
             Me.rbSearchKotor1.Size = New System.Drawing.Size(86, 24)
             Me.rbSearchKotor1.TabIndex = 0
@@ -204,9 +204,9 @@ Namespace kotor_tool
             Me.rbSearchKotor2.BackColor = System.Drawing.Color.Transparent
             Me.rbSearchKotor2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.rbSearchKotor2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.rbSearchKotor2.Location = New System.Drawing.Point(24, 46)
+            Me.rbSearchKotor2.Location = New System.Drawing.Point(134, 29)
             Me.rbSearchKotor2.Name = "rbSearchKotor2"
-            Me.rbSearchKotor2.Size = New System.Drawing.Size(86, 23)
+            Me.rbSearchKotor2.Size = New System.Drawing.Size(76, 23)
             Me.rbSearchKotor2.TabIndex = 1
             Me.rbSearchKotor2.Text = "KotOR II"
             Me.rbSearchKotor2.UseVisualStyleBackColor = False
@@ -219,7 +219,7 @@ Namespace kotor_tool
             Me.gboxCaseSens.Enabled = False
             Me.gboxCaseSens.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.gboxCaseSens.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.gboxCaseSens.Location = New System.Drawing.Point(258, 102)
+            Me.gboxCaseSens.Location = New System.Drawing.Point(266, 18)
             Me.gboxCaseSens.Name = "gboxCaseSens"
             Me.gboxCaseSens.Size = New System.Drawing.Size(132, 73)
             Me.gboxCaseSens.TabIndex = 2
@@ -231,7 +231,7 @@ Namespace kotor_tool
             Me.rbtnSensitive.BackColor = System.Drawing.Color.Transparent
             Me.rbtnSensitive.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.rbtnSensitive.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.rbtnSensitive.Location = New System.Drawing.Point(20, 18)
+            Me.rbtnSensitive.Location = New System.Drawing.Point(20, 15)
             Me.rbtnSensitive.Name = "rbtnSensitive"
             Me.rbtnSensitive.Size = New System.Drawing.Size(96, 24)
             Me.rbtnSensitive.TabIndex = 0
@@ -244,7 +244,7 @@ Namespace kotor_tool
             Me.rbtnInsensitive.Checked = True
             Me.rbtnInsensitive.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.rbtnInsensitive.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.rbtnInsensitive.Location = New System.Drawing.Point(20, 44)
+            Me.rbtnInsensitive.Location = New System.Drawing.Point(20, 41)
             Me.rbtnInsensitive.Name = "rbtnInsensitive"
             Me.rbtnInsensitive.Size = New System.Drawing.Size(96, 23)
             Me.rbtnInsensitive.TabIndex = 1
@@ -262,9 +262,9 @@ Namespace kotor_tool
             Me.gboxArchiveTypes.Enabled = False
             Me.gboxArchiveTypes.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.gboxArchiveTypes.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.gboxArchiveTypes.Location = New System.Drawing.Point(22, 187)
+            Me.gboxArchiveTypes.Location = New System.Drawing.Point(22, 176)
             Me.gboxArchiveTypes.Name = "gboxArchiveTypes"
-            Me.gboxArchiveTypes.Size = New System.Drawing.Size(368, 111)
+            Me.gboxArchiveTypes.Size = New System.Drawing.Size(376, 57)
             Me.gboxArchiveTypes.TabIndex = 3
             Me.gboxArchiveTypes.TabStop = False
             Me.gboxArchiveTypes.Text = "Archive types to search in"
@@ -276,9 +276,9 @@ Namespace kotor_tool
             Me.chkbScripts.CheckState = System.Windows.Forms.CheckState.Checked
             Me.chkbScripts.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbScripts.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.chkbScripts.Location = New System.Drawing.Point(82, 74)
+            Me.chkbScripts.Location = New System.Drawing.Point(203, 21)
             Me.chkbScripts.Name = "chkbScripts"
-            Me.chkbScripts.Size = New System.Drawing.Size(98, 28)
+            Me.chkbScripts.Size = New System.Drawing.Size(80, 24)
             Me.chkbScripts.TabIndex = 2
             Me.chkbScripts.Text = "Scripts.bif"
             Me.chkbScripts.UseVisualStyleBackColor = False
@@ -290,9 +290,9 @@ Namespace kotor_tool
             Me.chkbTemplates.CheckState = System.Windows.Forms.CheckState.Checked
             Me.chkbTemplates.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbTemplates.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.chkbTemplates.Location = New System.Drawing.Point(82, 46)
+            Me.chkbTemplates.Location = New System.Drawing.Point(101, 21)
             Me.chkbTemplates.Name = "chkbTemplates"
-            Me.chkbTemplates.Size = New System.Drawing.Size(112, 28)
+            Me.chkbTemplates.Size = New System.Drawing.Size(96, 24)
             Me.chkbTemplates.TabIndex = 1
             Me.chkbTemplates.Text = "Templates.bif"
             Me.chkbTemplates.UseVisualStyleBackColor = False
@@ -304,9 +304,9 @@ Namespace kotor_tool
             Me.chkbRIMs.CheckState = System.Windows.Forms.CheckState.Checked
             Me.chkbRIMs.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbRIMs.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.chkbRIMs.Location = New System.Drawing.Point(244, 18)
+            Me.chkbRIMs.Location = New System.Drawing.Point(287, 21)
             Me.chkbRIMs.Name = "chkbRIMs"
-            Me.chkbRIMs.Size = New System.Drawing.Size(80, 28)
+            Me.chkbRIMs.Size = New System.Drawing.Size(52, 24)
             Me.chkbRIMs.TabIndex = 3
             Me.chkbRIMs.Text = "RIMs"
             Me.chkbRIMs.UseVisualStyleBackColor = False
@@ -318,9 +318,9 @@ Namespace kotor_tool
             Me.chkbAllBifs.CheckState = System.Windows.Forms.CheckState.Checked
             Me.chkbAllBifs.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbAllBifs.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.chkbAllBifs.Location = New System.Drawing.Point(82, 18)
+            Me.chkbAllBifs.Location = New System.Drawing.Point(29, 21)
             Me.chkbAllBifs.Name = "chkbAllBifs"
-            Me.chkbAllBifs.Size = New System.Drawing.Size(92, 28)
+            Me.chkbAllBifs.Size = New System.Drawing.Size(66, 24)
             Me.chkbAllBifs.TabIndex = 0
             Me.chkbAllBifs.Text = "All BIFs"
             Me.chkbAllBifs.UseVisualStyleBackColor = False
@@ -335,9 +335,9 @@ Namespace kotor_tool
             Me.gboxFileTypes.Enabled = False
             Me.gboxFileTypes.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.gboxFileTypes.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.gboxFileTypes.Location = New System.Drawing.Point(22, 316)
+            Me.gboxFileTypes.Location = New System.Drawing.Point(21, 239)
             Me.gboxFileTypes.Name = "gboxFileTypes"
-            Me.gboxFileTypes.Size = New System.Drawing.Size(368, 219)
+            Me.gboxFileTypes.Size = New System.Drawing.Size(377, 242)
             Me.gboxFileTypes.TabIndex = 4
             Me.gboxFileTypes.TabStop = False
             Me.gboxFileTypes.Text = "File types to search in"
@@ -352,9 +352,9 @@ Namespace kotor_tool
             Me.btnSetAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnSetAll.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.btnSetAll.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnSetAll.Location = New System.Drawing.Point(164, 178)
+            Me.btnSetAll.Location = New System.Drawing.Point(6, 166)
             Me.btnSetAll.Name = "btnSetAll"
-            Me.btnSetAll.Size = New System.Drawing.Size(84, 30)
+            Me.btnSetAll.Size = New System.Drawing.Size(364, 30)
             Me.btnSetAll.TabIndex = 2
             Me.btnSetAll.Text = "Set All"
             Me.btnSetAll.UseVisualStyleBackColor = False
@@ -369,9 +369,9 @@ Namespace kotor_tool
             Me.btnClearAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnClearAll.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.btnClearAll.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnClearAll.Location = New System.Drawing.Point(260, 178)
+            Me.btnClearAll.Location = New System.Drawing.Point(6, 202)
             Me.btnClearAll.Name = "btnClearAll"
-            Me.btnClearAll.Size = New System.Drawing.Size(84, 30)
+            Me.btnClearAll.Size = New System.Drawing.Size(364, 30)
             Me.btnClearAll.TabIndex = 3
             Me.btnClearAll.Text = "Clear All"
             Me.btnClearAll.UseVisualStyleBackColor = False
@@ -394,7 +394,7 @@ Namespace kotor_tool
             Me.gboxGFF.Controls.Add(Me.CheckBox12)
             Me.gboxGFF.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.gboxGFF.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.gboxGFF.Location = New System.Drawing.Point(16, 32)
+            Me.gboxGFF.Location = New System.Drawing.Point(6, 21)
             Me.gboxGFF.Name = "gboxGFF"
             Me.gboxGFF.Size = New System.Drawing.Size(244, 139)
             Me.gboxGFF.TabIndex = 0
@@ -408,7 +408,7 @@ Namespace kotor_tool
             Me.CheckBox2.CheckState = System.Windows.Forms.CheckState.Checked
             Me.CheckBox2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.CheckBox2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.CheckBox2.Location = New System.Drawing.Point(8, 106)
+            Me.CheckBox2.Location = New System.Drawing.Point(13, 100)
             Me.CheckBox2.Name = "CheckBox2"
             Me.CheckBox2.Size = New System.Drawing.Size(52, 21)
             Me.CheckBox2.TabIndex = 3
@@ -422,7 +422,7 @@ Namespace kotor_tool
             Me.CheckBox3.CheckState = System.Windows.Forms.CheckState.Checked
             Me.CheckBox3.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.CheckBox3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.CheckBox3.Location = New System.Drawing.Point(62, 28)
+            Me.CheckBox3.Location = New System.Drawing.Point(67, 22)
             Me.CheckBox3.Name = "CheckBox3"
             Me.CheckBox3.Size = New System.Drawing.Size(52, 20)
             Me.CheckBox3.TabIndex = 4
@@ -436,7 +436,7 @@ Namespace kotor_tool
             Me.CheckBox4.CheckState = System.Windows.Forms.CheckState.Checked
             Me.CheckBox4.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.CheckBox4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.CheckBox4.Location = New System.Drawing.Point(62, 54)
+            Me.CheckBox4.Location = New System.Drawing.Point(67, 48)
             Me.CheckBox4.Name = "CheckBox4"
             Me.CheckBox4.Size = New System.Drawing.Size(52, 21)
             Me.CheckBox4.TabIndex = 5
@@ -450,7 +450,7 @@ Namespace kotor_tool
             Me.CheckBox5.CheckState = System.Windows.Forms.CheckState.Checked
             Me.CheckBox5.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.CheckBox5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.CheckBox5.Location = New System.Drawing.Point(62, 106)
+            Me.CheckBox5.Location = New System.Drawing.Point(67, 100)
             Me.CheckBox5.Name = "CheckBox5"
             Me.CheckBox5.Size = New System.Drawing.Size(52, 21)
             Me.CheckBox5.TabIndex = 7
@@ -464,7 +464,7 @@ Namespace kotor_tool
             Me.CheckBox6.CheckState = System.Windows.Forms.CheckState.Checked
             Me.CheckBox6.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.CheckBox6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.CheckBox6.Location = New System.Drawing.Point(118, 28)
+            Me.CheckBox6.Location = New System.Drawing.Point(123, 22)
             Me.CheckBox6.Name = "CheckBox6"
             Me.CheckBox6.Size = New System.Drawing.Size(52, 20)
             Me.CheckBox6.TabIndex = 8
@@ -478,7 +478,7 @@ Namespace kotor_tool
             Me.CheckBox7.CheckState = System.Windows.Forms.CheckState.Checked
             Me.CheckBox7.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.CheckBox7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.CheckBox7.Location = New System.Drawing.Point(62, 81)
+            Me.CheckBox7.Location = New System.Drawing.Point(67, 75)
             Me.CheckBox7.Name = "CheckBox7"
             Me.CheckBox7.Size = New System.Drawing.Size(52, 21)
             Me.CheckBox7.TabIndex = 6
@@ -492,7 +492,7 @@ Namespace kotor_tool
             Me.CheckBox8.CheckState = System.Windows.Forms.CheckState.Checked
             Me.CheckBox8.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.CheckBox8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.CheckBox8.Location = New System.Drawing.Point(118, 106)
+            Me.CheckBox8.Location = New System.Drawing.Point(123, 100)
             Me.CheckBox8.Name = "CheckBox8"
             Me.CheckBox8.Size = New System.Drawing.Size(52, 21)
             Me.CheckBox8.TabIndex = 11
@@ -506,7 +506,7 @@ Namespace kotor_tool
             Me.CheckBox11.CheckState = System.Windows.Forms.CheckState.Checked
             Me.CheckBox11.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.CheckBox11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.CheckBox11.Location = New System.Drawing.Point(118, 54)
+            Me.CheckBox11.Location = New System.Drawing.Point(123, 48)
             Me.CheckBox11.Name = "CheckBox11"
             Me.CheckBox11.Size = New System.Drawing.Size(52, 21)
             Me.CheckBox11.TabIndex = 9
@@ -520,7 +520,7 @@ Namespace kotor_tool
             Me.CheckBox13.CheckState = System.Windows.Forms.CheckState.Checked
             Me.CheckBox13.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.CheckBox13.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.CheckBox13.Location = New System.Drawing.Point(118, 81)
+            Me.CheckBox13.Location = New System.Drawing.Point(123, 75)
             Me.CheckBox13.Name = "CheckBox13"
             Me.CheckBox13.Size = New System.Drawing.Size(52, 21)
             Me.CheckBox13.TabIndex = 10
@@ -534,7 +534,7 @@ Namespace kotor_tool
             Me.CheckBox16.CheckState = System.Windows.Forms.CheckState.Checked
             Me.CheckBox16.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.CheckBox16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.CheckBox16.Location = New System.Drawing.Point(8, 81)
+            Me.CheckBox16.Location = New System.Drawing.Point(13, 75)
             Me.CheckBox16.Name = "CheckBox16"
             Me.CheckBox16.Size = New System.Drawing.Size(52, 21)
             Me.CheckBox16.TabIndex = 2
@@ -548,7 +548,7 @@ Namespace kotor_tool
             Me.CheckBox18.CheckState = System.Windows.Forms.CheckState.Checked
             Me.CheckBox18.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.CheckBox18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.CheckBox18.Location = New System.Drawing.Point(8, 54)
+            Me.CheckBox18.Location = New System.Drawing.Point(13, 48)
             Me.CheckBox18.Name = "CheckBox18"
             Me.CheckBox18.Size = New System.Drawing.Size(52, 21)
             Me.CheckBox18.TabIndex = 1
@@ -562,7 +562,7 @@ Namespace kotor_tool
             Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
             Me.CheckBox1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.CheckBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.CheckBox1.Location = New System.Drawing.Point(8, 28)
+            Me.CheckBox1.Location = New System.Drawing.Point(13, 22)
             Me.CheckBox1.Name = "CheckBox1"
             Me.CheckBox1.Size = New System.Drawing.Size(52, 20)
             Me.CheckBox1.TabIndex = 0
@@ -576,7 +576,7 @@ Namespace kotor_tool
             Me.CheckBox12.CheckState = System.Windows.Forms.CheckState.Checked
             Me.CheckBox12.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.CheckBox12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.CheckBox12.Location = New System.Drawing.Point(174, 28)
+            Me.CheckBox12.Location = New System.Drawing.Point(179, 22)
             Me.CheckBox12.Name = "CheckBox12"
             Me.CheckBox12.Size = New System.Drawing.Size(52, 20)
             Me.CheckBox12.TabIndex = 12
@@ -590,9 +590,9 @@ Namespace kotor_tool
             Me.gboxScript.Controls.Add(Me.CheckBox23)
             Me.gboxScript.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.gboxScript.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.gboxScript.Location = New System.Drawing.Point(274, 32)
+            Me.gboxScript.Location = New System.Drawing.Point(265, 21)
             Me.gboxScript.Name = "gboxScript"
-            Me.gboxScript.Size = New System.Drawing.Size(78, 102)
+            Me.gboxScript.Size = New System.Drawing.Size(105, 139)
             Me.gboxScript.TabIndex = 1
             Me.gboxScript.TabStop = False
             Me.gboxScript.Text = "Scripts"
@@ -604,9 +604,9 @@ Namespace kotor_tool
             Me.CheckBox22.CheckState = System.Windows.Forms.CheckState.Checked
             Me.CheckBox22.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.CheckBox22.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.CheckBox22.Location = New System.Drawing.Point(16, 37)
+            Me.CheckBox22.Location = New System.Drawing.Point(6, 22)
             Me.CheckBox22.Name = "CheckBox22"
-            Me.CheckBox22.Size = New System.Drawing.Size(52, 21)
+            Me.CheckBox22.Size = New System.Drawing.Size(43, 21)
             Me.CheckBox22.TabIndex = 0
             Me.CheckBox22.Text = "ncs"
             Me.CheckBox22.UseVisualStyleBackColor = False
@@ -618,9 +618,9 @@ Namespace kotor_tool
             Me.CheckBox23.CheckState = System.Windows.Forms.CheckState.Checked
             Me.CheckBox23.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.CheckBox23.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.CheckBox23.Location = New System.Drawing.Point(16, 65)
+            Me.CheckBox23.Location = New System.Drawing.Point(53, 23)
             Me.CheckBox23.Name = "CheckBox23"
-            Me.CheckBox23.Size = New System.Drawing.Size(52, 20)
+            Me.CheckBox23.Size = New System.Drawing.Size(46, 20)
             Me.CheckBox23.TabIndex = 1
             Me.CheckBox23.Text = "nss"
             Me.CheckBox23.UseVisualStyleBackColor = False
@@ -632,9 +632,9 @@ Namespace kotor_tool
             Me.pnlFooter.Controls.Add(Me.btnOK)
             Me.pnlFooter.Controls.Add(Me.lblFooterSeparator)
             Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.pnlFooter.Location = New System.Drawing.Point(0, 651)
+            Me.pnlFooter.Location = New System.Drawing.Point(0, 593)
             Me.pnlFooter.Name = "pnlFooter"
-            Me.pnlFooter.Size = New System.Drawing.Size(430, 71)
+            Me.pnlFooter.Size = New System.Drawing.Size(422, 71)
             Me.pnlFooter.TabIndex = 2
             '
             'btnCancel
@@ -648,7 +648,7 @@ Namespace kotor_tool
             Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnCancel.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.btnCancel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnCancel.Location = New System.Drawing.Point(322, 23)
+            Me.btnCancel.Location = New System.Drawing.Point(314, 23)
             Me.btnCancel.Name = "btnCancel"
             Me.btnCancel.Size = New System.Drawing.Size(76, 30)
             Me.btnCancel.TabIndex = 1
@@ -666,7 +666,7 @@ Namespace kotor_tool
             Me.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnOK.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.btnOK.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnOK.Location = New System.Drawing.Point(238, 23)
+            Me.btnOK.Location = New System.Drawing.Point(230, 23)
             Me.btnOK.Name = "btnOK"
             Me.btnOK.Size = New System.Drawing.Size(76, 30)
             Me.btnOK.TabIndex = 0
@@ -679,7 +679,7 @@ Namespace kotor_tool
             Me.lblFooterSeparator.Dock = System.Windows.Forms.DockStyle.Top
             Me.lblFooterSeparator.Location = New System.Drawing.Point(0, 0)
             Me.lblFooterSeparator.Name = "lblFooterSeparator"
-            Me.lblFooterSeparator.Size = New System.Drawing.Size(430, 1)
+            Me.lblFooterSeparator.Size = New System.Drawing.Size(422, 1)
             Me.lblFooterSeparator.TabIndex = 2
             '
             'pnlHeader
@@ -691,7 +691,7 @@ Namespace kotor_tool
             Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
             Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
             Me.pnlHeader.Name = "pnlHeader"
-            Me.pnlHeader.Size = New System.Drawing.Size(430, 88)
+            Me.pnlHeader.Size = New System.Drawing.Size(422, 88)
             Me.pnlHeader.TabIndex = 0
             '
             'lblSubtitle
@@ -722,7 +722,7 @@ Namespace kotor_tool
             Me.lblHeaderSeparator.Dock = System.Windows.Forms.DockStyle.Bottom
             Me.lblHeaderSeparator.Location = New System.Drawing.Point(0, 85)
             Me.lblHeaderSeparator.Name = "lblHeaderSeparator"
-            Me.lblHeaderSeparator.Size = New System.Drawing.Size(430, 3)
+            Me.lblHeaderSeparator.Size = New System.Drawing.Size(422, 3)
             Me.lblHeaderSeparator.TabIndex = 2
             '
             'frmRefSearchCriteria
@@ -731,7 +731,7 @@ Namespace kotor_tool
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 15)
             Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.CancelButton = Me.btnCancel
-            Me.ClientSize = New System.Drawing.Size(430, 722)
+            Me.ClientSize = New System.Drawing.Size(422, 664)
             Me.ControlBox = False
             Me.Controls.Add(Me.pnlRoot)
             Me.MaximizeBox = False

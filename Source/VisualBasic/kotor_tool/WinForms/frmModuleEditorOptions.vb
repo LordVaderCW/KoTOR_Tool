@@ -73,7 +73,7 @@ Namespace kotor_tool
         End Property
 
         ' Token: 0x06000972 RID: 2418 RVA: 0x0026E340 File Offset: 0x0026D340
-        Private Sub btnModuleExportPath_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnModuleExportPath_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnModuleExportPath.Click
             Dim tbModuleExportPath As TextBox = Me.tbModuleExportPath
             Me.BrowseForModFile(tbModuleExportPath)
             Me.tbModuleExportPath = tbModuleExportPath

@@ -23,7 +23,7 @@ Namespace kotor_tool
         Friend WithEvents lblHeaderRule As Global.System.Windows.Forms.Label
         Friend WithEvents lblFooterRule As Global.System.Windows.Forms.Label
 
-        Friend WithEvents TabControl1 As Global.System.Windows.Forms.TabControl
+        Friend WithEvents TabControl1 As Global.kotor_tool.CustomTabControl
         Friend WithEvents tabpagGeneral As Global.System.Windows.Forms.TabPage
         Friend WithEvents tabpagProperties As Global.System.Windows.Forms.TabPage
         Friend WithEvents tabpagDescription As Global.System.Windows.Forms.TabPage
@@ -88,7 +88,7 @@ Namespace kotor_tool
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUTI_Editor))
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlBody = New System.Windows.Forms.Panel()
-            Me.TabControl1 = New System.Windows.Forms.TabControl()
+            Me.TabControl1 = New kotor_tool.CustomTabControl()
             Me.tabpagGeneral = New System.Windows.Forms.TabPage()
             Me.cmbxBaseItem = New System.Windows.Forms.ComboBox()
             Me.nudCost = New System.Windows.Forms.NumericUpDown()
@@ -189,17 +189,43 @@ Namespace kotor_tool
             '
             'TabControl1
             '
+            Me.TabControl1.AccentColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.TabControl1.ControlBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.TabControl1.Controls.Add(Me.tabpagGeneral)
             Me.TabControl1.Controls.Add(Me.tabpagProperties)
             Me.TabControl1.Controls.Add(Me.tabpagDescription)
             Me.TabControl1.Controls.Add(Me.tabpagComments)
+            Me.TabControl1.DarkBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.TabControl1.DividerColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControl1.ItemSize = New System.Drawing.Size(49, 18)
+            Me.TabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
+            Me.TabControl1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControl1.ItemSize = New System.Drawing.Size(88, 31)
             Me.TabControl1.Location = New System.Drawing.Point(12, 10)
+            Me.TabControl1.Multiline = True
             Me.TabControl1.Name = "TabControl1"
+            Me.TabControl1.NormalTabBackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.TabControl1.NormalTextColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.TabControl1.OuterNativeBorderBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.TabControl1.Padding = New System.Drawing.Point(15, 3)
+            Me.TabControl1.PageChromeBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControl1.PageEdgeArtifactBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControl1.PageInsetBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.TabControl1.SelectedIndex = 0
+            Me.TabControl1.SelectedTabBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControl1.SelectedTabBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.TabControl1.SelectedTabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.TabControl1.SelectedTextColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.TabControl1.Size = New System.Drawing.Size(512, 360)
+            Me.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
+            Me.TabControl1.TabBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
+            Me.TabControl1.TabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
+            Me.TabControl1.TabChromeBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.TabControl1.TabIndex = 0
+            Me.TabControl1.TabNativeBorderBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControl1.TabNativeInsetBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.TabControl1.TabPageBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControl1.TabStripBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             '
             'tabpagGeneral
             '
@@ -231,9 +257,9 @@ Namespace kotor_tool
             Me.tabpagGeneral.Controls.Add(Me.lblUpgradeLevel)
             Me.tabpagGeneral.Controls.Add(Me.nudUpgradeLevel)
             Me.tabpagGeneral.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tabpagGeneral.Location = New System.Drawing.Point(4, 22)
+            Me.tabpagGeneral.Location = New System.Drawing.Point(4, 35)
             Me.tabpagGeneral.Name = "tabpagGeneral"
-            Me.tabpagGeneral.Size = New System.Drawing.Size(504, 334)
+            Me.tabpagGeneral.Size = New System.Drawing.Size(504, 321)
             Me.tabpagGeneral.TabIndex = 0
             Me.tabpagGeneral.Text = "General"
             '
@@ -550,8 +576,8 @@ Namespace kotor_tool
             '
             Me.dgProperties.AllowSorting = False
             Me.dgProperties.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                        Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.dgProperties.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.dgProperties.CaptionBackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
             Me.dgProperties.CaptionForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
@@ -562,8 +588,8 @@ Namespace kotor_tool
             Me.dgProperties.Name = "dgProperties"
             Me.dgProperties.Size = New System.Drawing.Size(488, 250)
             Me.dgProperties.TabIndex = 0
-            Me.ToolTip1.SetToolTip(Me.dgProperties, "Double-click on the row header to edit an existing entry or on the '*' row header" & _
-                    " to add a new entry")
+            Me.ToolTip1.SetToolTip(Me.dgProperties, "Double-click on the row header to edit an existing entry or on the '*' row header" &
+        " to add a new entry")
             '
             'btnSaveXML
             '
@@ -711,8 +737,8 @@ Namespace kotor_tool
             'tbComment
             '
             Me.tbComment.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                        Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tbComment.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.tbComment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbComment.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
@@ -839,8 +865,6 @@ Namespace kotor_tool
             Me.CancelButton = Me.btnCancel
             Me.ClientSize = New System.Drawing.Size(536, 509)
             Me.Controls.Add(Me.pnlRoot)
-            Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
             Me.MinimumSize = New System.Drawing.Size(544, 548)
             Me.Name = "frmUTI_Editor"

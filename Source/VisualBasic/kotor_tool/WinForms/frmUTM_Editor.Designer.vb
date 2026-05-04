@@ -49,7 +49,7 @@ Namespace kotor_tool
         Friend WithEvents Label12 As Global.System.Windows.Forms.Label
         Friend WithEvents Label4 As Global.System.Windows.Forms.Label
         Friend WithEvents Label5 As Global.System.Windows.Forms.Label
-        Friend WithEvents TabControl1 As Global.System.Windows.Forms.TabControl
+        Friend WithEvents TabControl1 As Global.kotor_tool.CustomTabControl
         Friend WithEvents TabPage1 As Global.System.Windows.Forms.TabPage
         Friend WithEvents TabPage2 As Global.System.Windows.Forms.TabPage
         Friend WithEvents tbComment As Global.System.Windows.Forms.TextBox
@@ -76,10 +76,9 @@ Namespace kotor_tool
 
         <Global.System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
-            Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUTM_Editor))
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlBody = New System.Windows.Forms.Panel()
-            Me.TabControl1 = New System.Windows.Forms.TabControl()
+            Me.TabControl1 = New kotor_tool.CustomTabControl()
             Me.TabPage1 = New System.Windows.Forms.TabPage()
             Me.btnEditOnOpenStore = New System.Windows.Forms.Button()
             Me.cmbxBuySellType = New System.Windows.Forms.ComboBox()
@@ -132,7 +131,7 @@ Namespace kotor_tool
             Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
             Me.pnlRoot.Name = "pnlRoot"
-            Me.pnlRoot.Size = New System.Drawing.Size(520, 480)
+            Me.pnlRoot.Size = New System.Drawing.Size(520, 505)
             Me.pnlRoot.TabIndex = 0
             '
             'pnlBody
@@ -143,20 +142,46 @@ Namespace kotor_tool
             Me.pnlBody.Location = New System.Drawing.Point(0, 76)
             Me.pnlBody.Name = "pnlBody"
             Me.pnlBody.Padding = New System.Windows.Forms.Padding(12)
-            Me.pnlBody.Size = New System.Drawing.Size(518, 341)
+            Me.pnlBody.Size = New System.Drawing.Size(518, 366)
             Me.pnlBody.TabIndex = 1
             '
             'TabControl1
             '
+            Me.TabControl1.AccentColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.TabControl1.ControlBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.TabControl1.Controls.Add(Me.TabPage1)
             Me.TabControl1.Controls.Add(Me.TabPage2)
+            Me.TabControl1.DarkBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.TabControl1.DividerColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
             Me.TabControl1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.TabControl1.ItemSize = New System.Drawing.Size(88, 31)
             Me.TabControl1.Location = New System.Drawing.Point(12, 12)
+            Me.TabControl1.Multiline = True
             Me.TabControl1.Name = "TabControl1"
+            Me.TabControl1.NormalTabBackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.TabControl1.NormalTextColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.TabControl1.OuterNativeBorderBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.TabControl1.Padding = New System.Drawing.Point(15, 3)
+            Me.TabControl1.PageChromeBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControl1.PageEdgeArtifactBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControl1.PageInsetBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.TabControl1.SelectedIndex = 0
-            Me.TabControl1.Size = New System.Drawing.Size(494, 317)
+            Me.TabControl1.SelectedTabBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControl1.SelectedTabBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.TabControl1.SelectedTabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.TabControl1.SelectedTextColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.TabControl1.Size = New System.Drawing.Size(494, 342)
+            Me.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
+            Me.TabControl1.TabBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
+            Me.TabControl1.TabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
+            Me.TabControl1.TabChromeBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.TabControl1.TabIndex = 0
+            Me.TabControl1.TabNativeBorderBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControl1.TabNativeInsetBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.TabControl1.TabPageBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControl1.TabStripBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             '
             'TabPage1
             '
@@ -181,10 +206,10 @@ Namespace kotor_tool
             Me.TabPage1.Controls.Add(Me.Label4)
             Me.TabPage1.Controls.Add(Me.tbOnOpenStore)
             Me.TabPage1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+            Me.TabPage1.Location = New System.Drawing.Point(4, 35)
             Me.TabPage1.Name = "TabPage1"
             Me.TabPage1.Padding = New System.Windows.Forms.Padding(10)
-            Me.TabPage1.Size = New System.Drawing.Size(486, 291)
+            Me.TabPage1.Size = New System.Drawing.Size(486, 303)
             Me.TabPage1.TabIndex = 0
             Me.TabPage1.Text = "Basic"
             '
@@ -208,7 +233,6 @@ Namespace kotor_tool
             '
             Me.cmbxBuySellType.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxBuySellType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxBuySellType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxBuySellType.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxBuySellType.Items.AddRange(New Object() {"Only buys", "Only sells", "Buys and Sells"})
             Me.cmbxBuySellType.Location = New System.Drawing.Point(150, 110)
@@ -404,10 +428,10 @@ Namespace kotor_tool
             Me.TabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.TabPage2.Controls.Add(Me.tbComment)
             Me.TabPage2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+            Me.TabPage2.Location = New System.Drawing.Point(4, 35)
             Me.TabPage2.Name = "TabPage2"
             Me.TabPage2.Padding = New System.Windows.Forms.Padding(10)
-            Me.TabPage2.Size = New System.Drawing.Size(486, 291)
+            Me.TabPage2.Size = New System.Drawing.Size(486, 303)
             Me.TabPage2.TabIndex = 1
             Me.TabPage2.Text = "Comments"
             '
@@ -421,7 +445,7 @@ Namespace kotor_tool
             Me.tbComment.Multiline = True
             Me.tbComment.Name = "tbComment"
             Me.tbComment.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.tbComment.Size = New System.Drawing.Size(464, 269)
+            Me.tbComment.Size = New System.Drawing.Size(464, 281)
             Me.tbComment.TabIndex = 1
             '
             'pnlFooter
@@ -433,7 +457,7 @@ Namespace kotor_tool
             Me.pnlFooter.Controls.Add(Me.btnCancel)
             Me.pnlFooter.Controls.Add(Me.btnDebug)
             Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.pnlFooter.Location = New System.Drawing.Point(0, 417)
+            Me.pnlFooter.Location = New System.Drawing.Point(0, 442)
             Me.pnlFooter.Name = "pnlFooter"
             Me.pnlFooter.Size = New System.Drawing.Size(518, 61)
             Me.pnlFooter.TabIndex = 2
@@ -528,7 +552,7 @@ Namespace kotor_tool
             Me.lblTitle.AutoEllipsis = True
             Me.lblTitle.BackColor = System.Drawing.Color.Transparent
             Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
             Me.lblTitle.Location = New System.Drawing.Point(16, 12)
             Me.lblTitle.Name = "lblTitle"
             Me.lblTitle.Size = New System.Drawing.Size(480, 32)
@@ -546,7 +570,8 @@ Namespace kotor_tool
             Me.lblSubtitle.Name = "lblSubtitle"
             Me.lblSubtitle.Size = New System.Drawing.Size(480, 18)
             Me.lblSubtitle.TabIndex = 1
-            Me.lblSubtitle.Text = "Edit UTM merchant store data, pricing behaviour, inventory, scripts, and comments."
+            Me.lblSubtitle.Text = "Edit UTM merchant store data, pricing behaviour, inventory, scripts, and comments" &
+    "."
             Me.lblSubtitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
             '
             'lblHeaderRule
@@ -563,14 +588,13 @@ Namespace kotor_tool
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 15)
             Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.CancelButton = Me.btnCancel
-            Me.ClientSize = New System.Drawing.Size(520, 480)
+            Me.ClientSize = New System.Drawing.Size(520, 505)
             Me.Controls.Add(Me.pnlRoot)
             Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
             Me.MaximizeBox = False
             Me.MinimizeBox = False
             Me.Name = "frmUTM_Editor"
             Me.ShowIcon = False
-            Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
             Me.Text = "Merchant Editor - KotOR"
             Me.pnlRoot.ResumeLayout(False)
             Me.pnlBody.ResumeLayout(False)

@@ -73,57 +73,57 @@ Namespace kotor_tool
 
         <Global.System.Diagnostics.DebuggerStepThrough()> _
         Private Sub InitializeComponent()
-            Dim resources As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager(GetType(Global.kotor_tool.frmTextEditor))
-            Me.pnlRoot = New Global.System.Windows.Forms.Panel()
-            Me.pnlEditorHost = New Global.System.Windows.Forms.Panel()
-            Me.tbGeneric = New Global.mystuff.Controls.LinenumberTextBox()
-            Me.pnlFunctions = New Global.System.Windows.Forms.Panel()
-            Me.tbFuncDecl = New Global.System.Windows.Forms.TextBox()
-            Me.tbFuncNameFilter = New Global.System.Windows.Forms.TextBox()
-            Me.lbFunctions = New Global.System.Windows.Forms.ListBox()
-            Me.Label1 = New Global.System.Windows.Forms.Label()
-            Me.lblMatches = New Global.System.Windows.Forms.Label()
-            Me.MainMenu1 = New Global.System.Windows.Forms.MainMenu()
-            Me.MenuItem1 = New Global.System.Windows.Forms.MenuItem()
-            Me.miOpen = New Global.System.Windows.Forms.MenuItem()
-            Me.miSave = New Global.System.Windows.Forms.MenuItem()
-            Me.miSaveAs = New Global.System.Windows.Forms.MenuItem()
-            Me.MenuItem4 = New Global.System.Windows.Forms.MenuItem()
-            Me.miPageSetup = New Global.System.Windows.Forms.MenuItem()
-            Me.miPrint = New Global.System.Windows.Forms.MenuItem()
-            Me.miQuit = New Global.System.Windows.Forms.MenuItem()
-            Me.MenuItem2 = New Global.System.Windows.Forms.MenuItem()
-            Me.miUndo = New Global.System.Windows.Forms.MenuItem()
-            Me.miRedo = New Global.System.Windows.Forms.MenuItem()
-            Me.MenuItem3 = New Global.System.Windows.Forms.MenuItem()
-            Me.miCut = New Global.System.Windows.Forms.MenuItem()
-            Me.miCopy = New Global.System.Windows.Forms.MenuItem()
-            Me.miPaste = New Global.System.Windows.Forms.MenuItem()
-            Me.MenuItem9 = New Global.System.Windows.Forms.MenuItem()
-            Me.miSelectAll = New Global.System.Windows.Forms.MenuItem()
-            Me.MenuItem7 = New Global.System.Windows.Forms.MenuItem()
-            Me.miFind = New Global.System.Windows.Forms.MenuItem()
-            Me.miFindAgain = New Global.System.Windows.Forms.MenuItem()
-            Me.MenuItem5 = New Global.System.Windows.Forms.MenuItem()
-            Me.miWordWrap = New Global.System.Windows.Forms.MenuItem()
-            Me.miFont = New Global.System.Windows.Forms.MenuItem()
-            Me.MenuItem6 = New Global.System.Windows.Forms.MenuItem()
-            Me.miCameras = New Global.System.Windows.Forms.MenuItem()
-            Me.miCreatureList = New Global.System.Windows.Forms.MenuItem()
-            Me.miDoorsList = New Global.System.Windows.Forms.MenuItem()
-            Me.miEncountersList = New Global.System.Windows.Forms.MenuItem()
-            Me.miMerchantList = New Global.System.Windows.Forms.MenuItem()
-            Me.miPlaceablesList = New Global.System.Windows.Forms.MenuItem()
-            Me.miSoundsList = New Global.System.Windows.Forms.MenuItem()
-            Me.miTriggersList = New Global.System.Windows.Forms.MenuItem()
-            Me.miWaypointsList = New Global.System.Windows.Forms.MenuItem()
-            Me.MenuItem8 = New Global.System.Windows.Forms.MenuItem()
-            Me.miScriptIsK1 = New Global.System.Windows.Forms.MenuItem()
-            Me.miScriptIsK2 = New Global.System.Windows.Forms.MenuItem()
-            Me.MenuItem12 = New Global.System.Windows.Forms.MenuItem()
-            Me.miCompile = New Global.System.Windows.Forms.MenuItem()
-            Me.cmText = New Global.System.Windows.Forms.ContextMenu()
-            Me.cmiShowDefinition = New Global.System.Windows.Forms.MenuItem()
+            Me.components = New System.ComponentModel.Container()
+            Me.pnlRoot = New System.Windows.Forms.Panel()
+            Me.pnlEditorHost = New System.Windows.Forms.Panel()
+            Me.tbGeneric = New mystuff.Controls.LinenumberTextBox()
+            Me.cmText = New System.Windows.Forms.ContextMenu()
+            Me.cmiShowDefinition = New System.Windows.Forms.MenuItem()
+            Me.pnlFunctions = New System.Windows.Forms.Panel()
+            Me.tbFuncDecl = New System.Windows.Forms.TextBox()
+            Me.tbFuncNameFilter = New System.Windows.Forms.TextBox()
+            Me.lbFunctions = New System.Windows.Forms.ListBox()
+            Me.Label1 = New System.Windows.Forms.Label()
+            Me.lblMatches = New System.Windows.Forms.Label()
+            Me.MainMenu1 = New System.Windows.Forms.MainMenu(Me.components)
+            Me.MenuItem1 = New System.Windows.Forms.MenuItem()
+            Me.miOpen = New System.Windows.Forms.MenuItem()
+            Me.miSave = New System.Windows.Forms.MenuItem()
+            Me.miSaveAs = New System.Windows.Forms.MenuItem()
+            Me.MenuItem4 = New System.Windows.Forms.MenuItem()
+            Me.miPageSetup = New System.Windows.Forms.MenuItem()
+            Me.miPrint = New System.Windows.Forms.MenuItem()
+            Me.miQuit = New System.Windows.Forms.MenuItem()
+            Me.MenuItem2 = New System.Windows.Forms.MenuItem()
+            Me.miUndo = New System.Windows.Forms.MenuItem()
+            Me.miRedo = New System.Windows.Forms.MenuItem()
+            Me.MenuItem3 = New System.Windows.Forms.MenuItem()
+            Me.miCut = New System.Windows.Forms.MenuItem()
+            Me.miCopy = New System.Windows.Forms.MenuItem()
+            Me.miPaste = New System.Windows.Forms.MenuItem()
+            Me.MenuItem9 = New System.Windows.Forms.MenuItem()
+            Me.miSelectAll = New System.Windows.Forms.MenuItem()
+            Me.MenuItem7 = New System.Windows.Forms.MenuItem()
+            Me.miFind = New System.Windows.Forms.MenuItem()
+            Me.miFindAgain = New System.Windows.Forms.MenuItem()
+            Me.MenuItem5 = New System.Windows.Forms.MenuItem()
+            Me.miWordWrap = New System.Windows.Forms.MenuItem()
+            Me.miFont = New System.Windows.Forms.MenuItem()
+            Me.MenuItem6 = New System.Windows.Forms.MenuItem()
+            Me.miCameras = New System.Windows.Forms.MenuItem()
+            Me.miCreatureList = New System.Windows.Forms.MenuItem()
+            Me.miDoorsList = New System.Windows.Forms.MenuItem()
+            Me.miEncountersList = New System.Windows.Forms.MenuItem()
+            Me.miMerchantList = New System.Windows.Forms.MenuItem()
+            Me.miPlaceablesList = New System.Windows.Forms.MenuItem()
+            Me.miSoundsList = New System.Windows.Forms.MenuItem()
+            Me.miTriggersList = New System.Windows.Forms.MenuItem()
+            Me.miWaypointsList = New System.Windows.Forms.MenuItem()
+            Me.MenuItem8 = New System.Windows.Forms.MenuItem()
+            Me.miScriptIsK1 = New System.Windows.Forms.MenuItem()
+            Me.miScriptIsK2 = New System.Windows.Forms.MenuItem()
+            Me.MenuItem12 = New System.Windows.Forms.MenuItem()
+            Me.miCompile = New System.Windows.Forms.MenuItem()
             Me.pnlRoot.SuspendLayout()
             Me.pnlEditorHost.SuspendLayout()
             Me.pnlFunctions.SuspendLayout()
@@ -131,151 +131,158 @@ Namespace kotor_tool
             '
             'pnlRoot
             '
-            Me.pnlRoot.BackColor = Global.System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.pnlRoot.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.pnlRoot.Controls.Add(Me.pnlEditorHost)
             Me.pnlRoot.Controls.Add(Me.pnlFunctions)
-            Me.pnlRoot.Dock = Global.System.Windows.Forms.DockStyle.Fill
-            Me.pnlRoot.Location = New Global.System.Drawing.Point(0, 0)
+            Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
             Me.pnlRoot.Name = "pnlRoot"
-            Me.pnlRoot.Padding = New Global.System.Windows.Forms.Padding(10, 10, 10, 10)
-            Me.pnlRoot.Size = New Global.System.Drawing.Size(936, 601)
+            Me.pnlRoot.Padding = New System.Windows.Forms.Padding(10)
+            Me.pnlRoot.Size = New System.Drawing.Size(936, 674)
             Me.pnlRoot.TabIndex = 0
             '
             'pnlEditorHost
             '
-            Me.pnlEditorHost.BackColor = Global.System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.pnlEditorHost.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.pnlEditorHost.Controls.Add(Me.tbGeneric)
-            Me.pnlEditorHost.Dock = Global.System.Windows.Forms.DockStyle.Fill
-            Me.pnlEditorHost.Location = New Global.System.Drawing.Point(10, 10)
+            Me.pnlEditorHost.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.pnlEditorHost.Location = New System.Drawing.Point(10, 10)
             Me.pnlEditorHost.Name = "pnlEditorHost"
-            Me.pnlEditorHost.Padding = New Global.System.Windows.Forms.Padding(8, 8, 8, 8)
-            Me.pnlEditorHost.Size = New Global.System.Drawing.Size(916, 581)
+            Me.pnlEditorHost.Padding = New System.Windows.Forms.Padding(8)
+            Me.pnlEditorHost.Size = New System.Drawing.Size(916, 518)
             Me.pnlEditorHost.TabIndex = 0
             '
             'tbGeneric
             '
-            Me.tbGeneric.BackColor = Global.System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(20, Byte), Integer), CType(CType(26, Byte), Integer))
-            Me.tbGeneric.BorderStyle = Global.System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbGeneric.BackColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(20, Byte), Integer), CType(CType(26, Byte), Integer))
+            Me.tbGeneric.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbGeneric.ContextMenu = Me.cmText
-            Me.tbGeneric.Dock = Global.System.Windows.Forms.DockStyle.Fill
-            Me.tbGeneric.Font = New Global.System.Drawing.Font("Consolas", 9.0!, Global.System.Drawing.FontStyle.Regular, Global.System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.tbGeneric.ForeColor = Global.System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbGeneric.Location = New Global.System.Drawing.Point(8, 8)
+            Me.tbGeneric.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.tbGeneric.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.tbGeneric.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbGeneric.Location = New System.Drawing.Point(8, 8)
             Me.tbGeneric.Name = "tbGeneric"
             Me.tbGeneric.ShowSelectionMargin = True
-            Me.tbGeneric.Size = New Global.System.Drawing.Size(900, 565)
+            Me.tbGeneric.Size = New System.Drawing.Size(900, 502)
             Me.tbGeneric.TabIndex = 5
             Me.tbGeneric.Text = ""
             '
+            'cmText
+            '
+            Me.cmText.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.cmiShowDefinition})
+            '
+            'cmiShowDefinition
+            '
+            Me.cmiShowDefinition.Index = 0
+            Me.cmiShowDefinition.Text = "Show Definition..."
+            '
             'pnlFunctions
             '
-            Me.pnlFunctions.BackColor = Global.System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.pnlFunctions.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
             Me.pnlFunctions.Controls.Add(Me.tbFuncDecl)
             Me.pnlFunctions.Controls.Add(Me.tbFuncNameFilter)
             Me.pnlFunctions.Controls.Add(Me.lbFunctions)
             Me.pnlFunctions.Controls.Add(Me.Label1)
             Me.pnlFunctions.Controls.Add(Me.lblMatches)
-            Me.pnlFunctions.Dock = Global.System.Windows.Forms.DockStyle.Bottom
-            Me.pnlFunctions.Location = New Global.System.Drawing.Point(10, 455)
+            Me.pnlFunctions.Dock = System.Windows.Forms.DockStyle.Bottom
+            Me.pnlFunctions.Location = New System.Drawing.Point(10, 528)
             Me.pnlFunctions.Name = "pnlFunctions"
-            Me.pnlFunctions.Padding = New Global.System.Windows.Forms.Padding(8, 8, 8, 8)
-            Me.pnlFunctions.Size = New Global.System.Drawing.Size(916, 136)
+            Me.pnlFunctions.Padding = New System.Windows.Forms.Padding(8)
+            Me.pnlFunctions.Size = New System.Drawing.Size(916, 136)
             Me.pnlFunctions.TabIndex = 10
             Me.pnlFunctions.Visible = False
             '
             'tbFuncDecl
             '
-            Me.tbFuncDecl.Anchor = CType((((Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Bottom) _
-                        Or Global.System.Windows.Forms.AnchorStyles.Left) _
-                        Or Global.System.Windows.Forms.AnchorStyles.Right), Global.System.Windows.Forms.AnchorStyles)
-            Me.tbFuncDecl.BackColor = Global.System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(20, Byte), Integer), CType(CType(26, Byte), Integer))
-            Me.tbFuncDecl.BorderStyle = Global.System.Windows.Forms.BorderStyle.FixedSingle
-            Me.tbFuncDecl.Font = New Global.System.Drawing.Font("Consolas", 8.25!, Global.System.Drawing.FontStyle.Regular, Global.System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.tbFuncDecl.ForeColor = Global.System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbFuncDecl.Location = New Global.System.Drawing.Point(8, 8)
+            Me.tbFuncDecl.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.tbFuncDecl.BackColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(20, Byte), Integer), CType(CType(26, Byte), Integer))
+            Me.tbFuncDecl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbFuncDecl.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.tbFuncDecl.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbFuncDecl.Location = New System.Drawing.Point(8, 8)
             Me.tbFuncDecl.Multiline = True
             Me.tbFuncDecl.Name = "tbFuncDecl"
-            Me.tbFuncDecl.ScrollBars = Global.System.Windows.Forms.ScrollBars.Vertical
-            Me.tbFuncDecl.Size = New Global.System.Drawing.Size(680, 120)
+            Me.tbFuncDecl.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+            Me.tbFuncDecl.Size = New System.Drawing.Size(680, 120)
             Me.tbFuncDecl.TabIndex = 8
-            Me.tbFuncDecl.Text = ""
             '
             'tbFuncNameFilter
             '
-            Me.tbFuncNameFilter.Anchor = CType((Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Right), Global.System.Windows.Forms.AnchorStyles)
-            Me.tbFuncNameFilter.BackColor = Global.System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(20, Byte), Integer), CType(CType(26, Byte), Integer))
-            Me.tbFuncNameFilter.BorderStyle = Global.System.Windows.Forms.BorderStyle.FixedSingle
-            Me.tbFuncNameFilter.Font = New Global.System.Drawing.Font("Segoe UI", 8.25!, Global.System.Drawing.FontStyle.Regular, Global.System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.tbFuncNameFilter.ForeColor = Global.System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbFuncNameFilter.Location = New Global.System.Drawing.Point(700, 24)
+            Me.tbFuncNameFilter.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.tbFuncNameFilter.BackColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(20, Byte), Integer), CType(CType(26, Byte), Integer))
+            Me.tbFuncNameFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbFuncNameFilter.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.tbFuncNameFilter.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbFuncNameFilter.Location = New System.Drawing.Point(700, 24)
             Me.tbFuncNameFilter.Name = "tbFuncNameFilter"
-            Me.tbFuncNameFilter.Size = New Global.System.Drawing.Size(208, 22)
+            Me.tbFuncNameFilter.Size = New System.Drawing.Size(208, 22)
             Me.tbFuncNameFilter.TabIndex = 7
-            Me.tbFuncNameFilter.Text = ""
             '
             'lbFunctions
             '
-            Me.lbFunctions.Anchor = CType(((Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Bottom) _
-                        Or Global.System.Windows.Forms.AnchorStyles.Right), Global.System.Windows.Forms.AnchorStyles)
-            Me.lbFunctions.BackColor = Global.System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(20, Byte), Integer), CType(CType(26, Byte), Integer))
-            Me.lbFunctions.BorderStyle = Global.System.Windows.Forms.BorderStyle.FixedSingle
-            Me.lbFunctions.Font = New Global.System.Drawing.Font("Segoe UI", 8.25!, Global.System.Drawing.FontStyle.Regular, Global.System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.lbFunctions.ForeColor = Global.System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.lbFunctions.Location = New Global.System.Drawing.Point(700, 50)
+            Me.lbFunctions.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.lbFunctions.BackColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(20, Byte), Integer), CType(CType(26, Byte), Integer))
+            Me.lbFunctions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.lbFunctions.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lbFunctions.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.lbFunctions.Location = New System.Drawing.Point(700, 50)
             Me.lbFunctions.Name = "lbFunctions"
-            Me.lbFunctions.Size = New Global.System.Drawing.Size(208, 67)
+            Me.lbFunctions.Size = New System.Drawing.Size(208, 67)
             Me.lbFunctions.TabIndex = 6
             '
             'Label1
             '
-            Me.Label1.Anchor = CType((Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Right), Global.System.Windows.Forms.AnchorStyles)
-            Me.Label1.BackColor = Global.System.Drawing.Color.Transparent
-            Me.Label1.Font = New Global.System.Drawing.Font("Segoe UI", 8.25!, Global.System.Drawing.FontStyle.Bold, Global.System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.Label1.ForeColor = Global.System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.Label1.Location = New Global.System.Drawing.Point(700, 6)
+            Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.Label1.BackColor = System.Drawing.Color.Transparent
+            Me.Label1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.Label1.Location = New System.Drawing.Point(700, 6)
             Me.Label1.Name = "Label1"
-            Me.Label1.Size = New Global.System.Drawing.Size(96, 16)
+            Me.Label1.Size = New System.Drawing.Size(96, 16)
             Me.Label1.TabIndex = 9
             Me.Label1.Text = "Function filter"
             '
             'lblMatches
             '
-            Me.lblMatches.Anchor = CType((Global.System.Windows.Forms.AnchorStyles.Top Or Global.System.Windows.Forms.AnchorStyles.Right), Global.System.Windows.Forms.AnchorStyles)
-            Me.lblMatches.BackColor = Global.System.Drawing.Color.Transparent
-            Me.lblMatches.Font = New Global.System.Drawing.Font("Segoe UI", 8.25!, Global.System.Drawing.FontStyle.Bold, Global.System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.lblMatches.ForeColor = Global.System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.lblMatches.Location = New Global.System.Drawing.Point(824, 6)
+            Me.lblMatches.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.lblMatches.BackColor = System.Drawing.Color.Transparent
+            Me.lblMatches.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblMatches.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.lblMatches.Location = New System.Drawing.Point(824, 6)
             Me.lblMatches.Name = "lblMatches"
-            Me.lblMatches.Size = New Global.System.Drawing.Size(84, 16)
+            Me.lblMatches.Size = New System.Drawing.Size(84, 16)
             Me.lblMatches.TabIndex = 10
             Me.lblMatches.Text = "Matches: "
             '
             'MainMenu1
             '
-            Me.MainMenu1.MenuItems.AddRange(New Global.System.Windows.Forms.MenuItem() {Me.MenuItem1, Me.MenuItem2, Me.MenuItem5, Me.MenuItem6, Me.MenuItem8})
+            Me.MainMenu1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.MenuItem1, Me.MenuItem2, Me.MenuItem5, Me.MenuItem6, Me.MenuItem8})
             '
             'MenuItem1
             '
             Me.MenuItem1.Index = 0
-            Me.MenuItem1.MenuItems.AddRange(New Global.System.Windows.Forms.MenuItem() {Me.miOpen, Me.miSave, Me.miSaveAs, Me.MenuItem4, Me.miPageSetup, Me.miPrint, Me.miQuit})
+            Me.MenuItem1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miOpen, Me.miSave, Me.miSaveAs, Me.MenuItem4, Me.miPageSetup, Me.miPrint, Me.miQuit})
             Me.MenuItem1.Text = "&File"
             '
             'miOpen
             '
             Me.miOpen.Index = 0
-            Me.miOpen.Shortcut = Global.System.Windows.Forms.Shortcut.CtrlO
+            Me.miOpen.Shortcut = System.Windows.Forms.Shortcut.CtrlO
             Me.miOpen.Text = "&Open..."
             '
             'miSave
             '
             Me.miSave.Index = 1
-            Me.miSave.Shortcut = Global.System.Windows.Forms.Shortcut.CtrlS
+            Me.miSave.Shortcut = System.Windows.Forms.Shortcut.CtrlS
             Me.miSave.Text = "&Save"
             '
             'miSaveAs
             '
             Me.miSaveAs.Index = 2
-            Me.miSaveAs.Shortcut = Global.System.Windows.Forms.Shortcut.CtrlShiftS
+            Me.miSaveAs.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftS
             Me.miSaveAs.Text = "Save &As..."
             '
             'MenuItem4
@@ -291,31 +298,31 @@ Namespace kotor_tool
             'miPrint
             '
             Me.miPrint.Index = 5
-            Me.miPrint.Shortcut = Global.System.Windows.Forms.Shortcut.CtrlP
+            Me.miPrint.Shortcut = System.Windows.Forms.Shortcut.CtrlP
             Me.miPrint.Text = "&Print"
             '
             'miQuit
             '
             Me.miQuit.Index = 6
-            Me.miQuit.Shortcut = Global.System.Windows.Forms.Shortcut.CtrlQ
+            Me.miQuit.Shortcut = System.Windows.Forms.Shortcut.CtrlQ
             Me.miQuit.Text = "&Quit"
             '
             'MenuItem2
             '
             Me.MenuItem2.Index = 1
-            Me.MenuItem2.MenuItems.AddRange(New Global.System.Windows.Forms.MenuItem() {Me.miUndo, Me.miRedo, Me.MenuItem3, Me.miCut, Me.miCopy, Me.miPaste, Me.MenuItem9, Me.miSelectAll, Me.MenuItem7, Me.miFind, Me.miFindAgain})
+            Me.MenuItem2.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miUndo, Me.miRedo, Me.MenuItem3, Me.miCut, Me.miCopy, Me.miPaste, Me.MenuItem9, Me.miSelectAll, Me.MenuItem7, Me.miFind, Me.miFindAgain})
             Me.MenuItem2.Text = "&Edit"
             '
             'miUndo
             '
             Me.miUndo.Index = 0
-            Me.miUndo.Shortcut = Global.System.Windows.Forms.Shortcut.CtrlZ
+            Me.miUndo.Shortcut = System.Windows.Forms.Shortcut.CtrlZ
             Me.miUndo.Text = "&Undo"
             '
             'miRedo
             '
             Me.miRedo.Index = 1
-            Me.miRedo.Shortcut = Global.System.Windows.Forms.Shortcut.CtrlY
+            Me.miRedo.Shortcut = System.Windows.Forms.Shortcut.CtrlY
             Me.miRedo.Text = "&Redo"
             '
             'MenuItem3
@@ -326,19 +333,19 @@ Namespace kotor_tool
             'miCut
             '
             Me.miCut.Index = 3
-            Me.miCut.Shortcut = Global.System.Windows.Forms.Shortcut.CtrlX
+            Me.miCut.Shortcut = System.Windows.Forms.Shortcut.CtrlX
             Me.miCut.Text = "Cu&t"
             '
             'miCopy
             '
             Me.miCopy.Index = 4
-            Me.miCopy.Shortcut = Global.System.Windows.Forms.Shortcut.CtrlC
+            Me.miCopy.Shortcut = System.Windows.Forms.Shortcut.CtrlC
             Me.miCopy.Text = "&Copy"
             '
             'miPaste
             '
             Me.miPaste.Index = 5
-            Me.miPaste.Shortcut = Global.System.Windows.Forms.Shortcut.CtrlV
+            Me.miPaste.Shortcut = System.Windows.Forms.Shortcut.CtrlV
             Me.miPaste.Text = "&Paste"
             '
             'MenuItem9
@@ -349,7 +356,7 @@ Namespace kotor_tool
             'miSelectAll
             '
             Me.miSelectAll.Index = 7
-            Me.miSelectAll.Shortcut = Global.System.Windows.Forms.Shortcut.CtrlA
+            Me.miSelectAll.Shortcut = System.Windows.Forms.Shortcut.CtrlA
             Me.miSelectAll.Text = "Select &All"
             '
             'MenuItem7
@@ -360,19 +367,19 @@ Namespace kotor_tool
             'miFind
             '
             Me.miFind.Index = 9
-            Me.miFind.Shortcut = Global.System.Windows.Forms.Shortcut.CtrlF
+            Me.miFind.Shortcut = System.Windows.Forms.Shortcut.CtrlF
             Me.miFind.Text = "&Find..."
             '
             'miFindAgain
             '
             Me.miFindAgain.Index = 10
-            Me.miFindAgain.Shortcut = Global.System.Windows.Forms.Shortcut.F3
+            Me.miFindAgain.Shortcut = System.Windows.Forms.Shortcut.F3
             Me.miFindAgain.Text = "Find &Next"
             '
             'MenuItem5
             '
             Me.MenuItem5.Index = 2
-            Me.MenuItem5.MenuItems.AddRange(New Global.System.Windows.Forms.MenuItem() {Me.miWordWrap, Me.miFont})
+            Me.MenuItem5.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miWordWrap, Me.miFont})
             Me.MenuItem5.Text = "F&ormat"
             '
             'miWordWrap
@@ -389,7 +396,7 @@ Namespace kotor_tool
             'MenuItem6
             '
             Me.MenuItem6.Index = 3
-            Me.MenuItem6.MenuItems.AddRange(New Global.System.Windows.Forms.MenuItem() {Me.miCameras, Me.miCreatureList, Me.miDoorsList, Me.miEncountersList, Me.miMerchantList, Me.miPlaceablesList, Me.miSoundsList, Me.miTriggersList, Me.miWaypointsList})
+            Me.MenuItem6.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miCameras, Me.miCreatureList, Me.miDoorsList, Me.miEncountersList, Me.miMerchantList, Me.miPlaceablesList, Me.miSoundsList, Me.miTriggersList, Me.miWaypointsList})
             Me.MenuItem6.Text = "&Quick"
             '
             'miCameras
@@ -440,7 +447,7 @@ Namespace kotor_tool
             'MenuItem8
             '
             Me.MenuItem8.Index = 4
-            Me.MenuItem8.MenuItems.AddRange(New Global.System.Windows.Forms.MenuItem() {Me.miScriptIsK1, Me.miScriptIsK2, Me.MenuItem12, Me.miCompile})
+            Me.MenuItem8.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miScriptIsK1, Me.miScriptIsK2, Me.MenuItem12, Me.miCompile})
             Me.MenuItem8.Text = "&Script"
             '
             'miScriptIsK1
@@ -462,75 +469,26 @@ Namespace kotor_tool
             '
             Me.miCompile.Enabled = False
             Me.miCompile.Index = 3
-            Me.miCompile.Shortcut = Global.System.Windows.Forms.Shortcut.F5
+            Me.miCompile.Shortcut = System.Windows.Forms.Shortcut.F5
             Me.miCompile.Text = "&Compile"
-            '
-            'cmText
-            '
-            Me.cmText.MenuItems.AddRange(New Global.System.Windows.Forms.MenuItem() {Me.cmiShowDefinition})
-            '
-            'cmiShowDefinition
-            '
-            Me.cmiShowDefinition.Index = 0
-            Me.cmiShowDefinition.Text = "Show Definition..."
             '
             'frmTextEditor
             '
-            Me.AutoScaleBaseSize = New Global.System.Drawing.Size(5, 13)
-            Me.BackColor = Global.System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
-            Me.ClientSize = New Global.System.Drawing.Size(936, 601)
+            Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
+            Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.ClientSize = New System.Drawing.Size(936, 674)
             Me.Controls.Add(Me.pnlRoot)
-            Me.Icon = CType(resources.GetObject("$this.Icon"), Global.System.Drawing.Icon)
             Me.Menu = Me.MainMenu1
             Me.Name = "frmTextEditor"
-            Me.SizeGripStyle = Global.System.Windows.Forms.SizeGripStyle.Show
-            Me.StartPosition = Global.System.Windows.Forms.FormStartPosition.CenterParent
+            Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show
+            Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
             Me.Text = "Text Editor"
             Me.pnlRoot.ResumeLayout(False)
             Me.pnlEditorHost.ResumeLayout(False)
-            Me.pnlEditorHost.PerformLayout()
             Me.pnlFunctions.ResumeLayout(False)
             Me.pnlFunctions.PerformLayout()
-
-            AddHandler Me.tbGeneric.MouseDown, AddressOf Me.tbGeneric_MouseDown
-            AddHandler Me.tbGeneric.LostFocus, AddressOf Me.tbGeneric_LostFocus
-            AddHandler Me.tbGeneric.GotFocus, AddressOf Me.tbGeneric_GotFocus
-            AddHandler Me.tbGeneric.MouseMove, AddressOf Me.tbGeneric_MouseMove
-            AddHandler Me.miFind.Click, AddressOf Me.miFind_Click
-            AddHandler Me.miFindAgain.Click, AddressOf Me.miFindAgain_Click
-            AddHandler Me.miUndo.Click, AddressOf Me.miUndo_Click
-            AddHandler Me.miRedo.Click, AddressOf Me.miRedo_Click
-            AddHandler Me.miCut.Click, AddressOf Me.miCut_Click
-            AddHandler Me.miCopy.Click, AddressOf Me.miCopy_Click
-            AddHandler Me.miPaste.Click, AddressOf Me.miPaste_Click
-            AddHandler Me.miSelectAll.Click, AddressOf Me.miSelectAll_Click
-            AddHandler Me.miSaveAs.Click, AddressOf Me.miSaveAs_Click
-            AddHandler Me.miQuit.Click, AddressOf Me.miQuit_Click
-            AddHandler Me.miOpen.Click, AddressOf Me.miOpen_Click
-            AddHandler Me.miPrint.Click, AddressOf Me.miPrint_Click
-            AddHandler Me.miPageSetup.Click, AddressOf Me.miPageSetup_Click
-            AddHandler Me.miFont.Click, AddressOf Me.miFont_Click
-            AddHandler Me.miWordWrap.Click, AddressOf Me.miWordWrap_Click
-            AddHandler Me.miPlaceablesList.Click, AddressOf Me.miPlaceablesList_Click
-            AddHandler Me.miEncountersList.Click, AddressOf Me.miEncountersList_Click
-            AddHandler Me.miWaypointsList.Click, AddressOf Me.miWaypointsList_Click
-            AddHandler Me.miSoundsList.Click, AddressOf Me.miSoundsList_Click
-            AddHandler Me.miTriggersList.Click, AddressOf Me.miTriggersList_Click
-            AddHandler Me.miDoorsList.Click, AddressOf Me.miDoorsList_Click
-            AddHandler Me.miCameras.Click, AddressOf Me.miCameras_Click
-            AddHandler Me.miCreatureList.Click, AddressOf Me.miCreatureList_Click
-            AddHandler Me.miMerchantList.Click, AddressOf Me.miMerchantList_Click
-            AddHandler Me.miSave.Click, AddressOf Me.miSave_Click
-            AddHandler Me.miScriptIsK1.Click, AddressOf Me.miScriptIsK1_Click
-            AddHandler Me.miScriptIsK2.Click, AddressOf Me.miScriptIsK2_Click
-            AddHandler Me.miCompile.Click, AddressOf Me.miCompile_Click
-            AddHandler Me.lbFunctions.SelectedIndexChanged, AddressOf Me.lbFunctions_SelectedIndexChanged
-            AddHandler Me.lbFunctions.DoubleClick, AddressOf Me.lbFunctions_DoubleClick
-            AddHandler Me.lbFunctions.Click, AddressOf Me.lbFunctions_Click
-            AddHandler Me.tbFuncNameFilter.TextChanged, AddressOf Me.tbFuncNameFilter_TextChanged
-            AddHandler Me.cmiShowDefinition.Click, AddressOf Me.cmiShowDefinition_Click
-
             Me.ResumeLayout(False)
+
         End Sub
 
     End Class

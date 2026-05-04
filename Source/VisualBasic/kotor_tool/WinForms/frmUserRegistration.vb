@@ -22,7 +22,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06001107 RID: 4359 RVA: 0x0029EED4 File Offset: 0x0029DED4
-        Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button1.Click
             Dim frmQueryUserInfo As frmQueryUserInfo = New frmQueryUserInfo()
             Dim text As String = "paddingpaddingpaddingpaddingpaddingpadding|1|paddingpadding|User name|paddingpaddingpaddingpaddingpaddingpadding|paddingpaddingpaddingpaddingpaddingpadding|user@user.com|paddingpaddingpaddingpaddingpaddingpadding|8-2-2004|paddingpaddingpaddingpaddingpaddingpadding|00:00:0a:01:02:03|paddingpaddingpaddingpaddingpaddingpadding|00:00:0f:05:06:07|paddingpaddingpaddingpaddingpaddingpadding"
             If frmQueryUserInfo.ShowDialog(Me) = DialogResult.OK Then
@@ -69,7 +69,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06001108 RID: 4360 RVA: 0x0029F11C File Offset: 0x0029E11C
-        Private Sub Button2_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub Button2_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button2.Click
             Dim openFileDialog As OpenFileDialog = New OpenFileDialog()
             Dim frmMain As frmMain = New frmMain()
             openFileDialog.Title = "Select key file..."

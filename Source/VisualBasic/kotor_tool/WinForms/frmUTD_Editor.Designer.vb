@@ -23,7 +23,7 @@ Namespace kotor_tool
         Friend WithEvents lblHeaderRule As Global.System.Windows.Forms.Label
         Friend WithEvents lblFooterRule As Global.System.Windows.Forms.Label
 
-        Friend WithEvents TabControl1 As Global.System.Windows.Forms.TabControl
+        Friend WithEvents TabControl1 As Global.kotor_tool.CustomTabControl
         Friend WithEvents TabPageBasic As Global.System.Windows.Forms.TabPage
         Friend WithEvents TabPageLock As Global.System.Windows.Forms.TabPage
         Friend WithEvents TabPageScripts As Global.System.Windows.Forms.TabPage
@@ -135,7 +135,7 @@ Namespace kotor_tool
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUTD_Editor))
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlBody = New System.Windows.Forms.Panel()
-            Me.TabControl1 = New System.Windows.Forms.TabControl()
+            Me.TabControl1 = New kotor_tool.CustomTabControl()
             Me.TabPageBasic = New System.Windows.Forms.TabPage()
             Me.Label19 = New System.Windows.Forms.Label()
             Me.cmbxDoorType = New System.Windows.Forms.ComboBox()
@@ -815,6 +815,8 @@ Namespace kotor_tool
             '
             'tbOnDeath
             '
+            Me.tbOnDeath.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbOnDeath.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbOnDeath.Location = New System.Drawing.Point(160, 106)
             Me.tbOnDeath.Name = "tbOnDeath"
             Me.tbOnDeath.Size = New System.Drawing.Size(204, 22)
@@ -831,6 +833,8 @@ Namespace kotor_tool
             '
             'tbOnDamaged
             '
+            Me.tbOnDamaged.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbOnDamaged.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbOnDamaged.Location = New System.Drawing.Point(160, 74)
             Me.tbOnDamaged.Name = "tbOnDamaged"
             Me.tbOnDamaged.Size = New System.Drawing.Size(204, 22)
@@ -847,6 +851,8 @@ Namespace kotor_tool
             '
             'tbOnClosed
             '
+            Me.tbOnClosed.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbOnClosed.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbOnClosed.Location = New System.Drawing.Point(160, 42)
             Me.tbOnClosed.Name = "tbOnClosed"
             Me.tbOnClosed.Size = New System.Drawing.Size(204, 22)
@@ -863,6 +869,8 @@ Namespace kotor_tool
             '
             'tbOnDisarm
             '
+            Me.tbOnDisarm.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbOnDisarm.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbOnDisarm.Location = New System.Drawing.Point(160, 138)
             Me.tbOnDisarm.Name = "tbOnDisarm"
             Me.tbOnDisarm.Size = New System.Drawing.Size(204, 22)
@@ -870,6 +878,8 @@ Namespace kotor_tool
             '
             'tbOnHeartbeat
             '
+            Me.tbOnHeartbeat.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbOnHeartbeat.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbOnHeartbeat.Location = New System.Drawing.Point(160, 203)
             Me.tbOnHeartbeat.Name = "tbOnHeartbeat"
             Me.tbOnHeartbeat.Size = New System.Drawing.Size(204, 22)
@@ -895,6 +905,8 @@ Namespace kotor_tool
             '
             'tbOnLock
             '
+            Me.tbOnLock.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbOnLock.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbOnLock.Location = New System.Drawing.Point(160, 235)
             Me.tbOnLock.Name = "tbOnLock"
             Me.tbOnLock.Size = New System.Drawing.Size(204, 22)
@@ -902,6 +914,8 @@ Namespace kotor_tool
             '
             'tbOnMeleeAttacked
             '
+            Me.tbOnMeleeAttacked.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbOnMeleeAttacked.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbOnMeleeAttacked.Location = New System.Drawing.Point(160, 268)
             Me.tbOnMeleeAttacked.Name = "tbOnMeleeAttacked"
             Me.tbOnMeleeAttacked.Size = New System.Drawing.Size(204, 22)
@@ -918,6 +932,8 @@ Namespace kotor_tool
             '
             'tbOnOpen
             '
+            Me.tbOnOpen.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbOnOpen.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbOnOpen.Location = New System.Drawing.Point(160, 300)
             Me.tbOnOpen.Name = "tbOnOpen"
             Me.tbOnOpen.Size = New System.Drawing.Size(204, 22)
@@ -943,6 +959,8 @@ Namespace kotor_tool
             '
             'tbOnSpellCastAt
             '
+            Me.tbOnSpellCastAt.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbOnSpellCastAt.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbOnSpellCastAt.Location = New System.Drawing.Point(160, 332)
             Me.tbOnSpellCastAt.Name = "tbOnSpellCastAt"
             Me.tbOnSpellCastAt.Size = New System.Drawing.Size(204, 22)
@@ -959,6 +977,8 @@ Namespace kotor_tool
             '
             'tbOnTrapTriggered
             '
+            Me.tbOnTrapTriggered.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbOnTrapTriggered.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbOnTrapTriggered.Location = New System.Drawing.Point(160, 365)
             Me.tbOnTrapTriggered.Name = "tbOnTrapTriggered"
             Me.tbOnTrapTriggered.Size = New System.Drawing.Size(204, 22)
@@ -966,6 +986,8 @@ Namespace kotor_tool
             '
             'tbOnUnlock
             '
+            Me.tbOnUnlock.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbOnUnlock.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbOnUnlock.Location = New System.Drawing.Point(160, 397)
             Me.tbOnUnlock.Name = "tbOnUnlock"
             Me.tbOnUnlock.Size = New System.Drawing.Size(204, 22)
@@ -982,6 +1004,8 @@ Namespace kotor_tool
             '
             'tbOnUserDefined
             '
+            Me.tbOnUserDefined.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbOnUserDefined.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbOnUserDefined.Location = New System.Drawing.Point(160, 429)
             Me.tbOnUserDefined.Name = "tbOnUserDefined"
             Me.tbOnUserDefined.Size = New System.Drawing.Size(204, 22)
@@ -998,6 +1022,8 @@ Namespace kotor_tool
             '
             'tbOnClick
             '
+            Me.tbOnClick.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbOnClick.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbOnClick.Location = New System.Drawing.Point(160, 9)
             Me.tbOnClick.Name = "tbOnClick"
             Me.tbOnClick.Size = New System.Drawing.Size(204, 22)
@@ -1023,6 +1049,8 @@ Namespace kotor_tool
             '
             'tbOnFailToOpen
             '
+            Me.tbOnFailToOpen.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbOnFailToOpen.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbOnFailToOpen.Location = New System.Drawing.Point(160, 171)
             Me.tbOnFailToOpen.Name = "tbOnFailToOpen"
             Me.tbOnFailToOpen.Size = New System.Drawing.Size(204, 22)
@@ -1116,6 +1144,8 @@ Namespace kotor_tool
             '
             'tbConversation
             '
+            Me.tbConversation.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbConversation.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbConversation.Location = New System.Drawing.Point(168, 157)
             Me.tbConversation.Name = "tbConversation"
             Me.tbConversation.Size = New System.Drawing.Size(168, 22)
@@ -1123,7 +1153,9 @@ Namespace kotor_tool
             '
             'tbTemplateResRef
             '
+            Me.tbTemplateResRef.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.tbTemplateResRef.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
+            Me.tbTemplateResRef.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbTemplateResRef.Location = New System.Drawing.Point(168, 37)
             Me.tbTemplateResRef.MaxLength = 16
             Me.tbTemplateResRef.Name = "tbTemplateResRef"
@@ -1168,6 +1200,8 @@ Namespace kotor_tool
             '
             'tbAnimationState
             '
+            Me.tbAnimationState.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
+            Me.tbAnimationState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbAnimationState.Location = New System.Drawing.Point(168, 212)
             Me.tbAnimationState.Name = "tbAnimationState"
             Me.tbAnimationState.Size = New System.Drawing.Size(32, 22)
@@ -1196,8 +1230,8 @@ Namespace kotor_tool
             'tbDescription
             '
             Me.tbDescription.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                        Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tbDescription.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.tbDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbDescription.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
@@ -1221,8 +1255,8 @@ Namespace kotor_tool
             'tbComment
             '
             Me.tbComment.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                        Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tbComment.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.tbComment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbComment.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
@@ -1351,8 +1385,6 @@ Namespace kotor_tool
             Me.CancelButton = Me.btnCancel
             Me.ClientSize = New System.Drawing.Size(520, 650)
             Me.Controls.Add(Me.pnlRoot)
-            Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
             Me.MaximizeBox = False
             Me.MinimizeBox = False

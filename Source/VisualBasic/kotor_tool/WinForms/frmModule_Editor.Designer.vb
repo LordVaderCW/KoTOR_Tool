@@ -90,12 +90,14 @@ Namespace kotor_tool
         Friend WithEvents Label5 As Global.System.Windows.Forms.Label
         Friend WithEvents tbHelp As Global.System.Windows.Forms.TextBox
         Friend WithEvents tabpagUserPalette As Global.System.Windows.Forms.TabPage
-        Friend WithEvents tabctrlPalette As Global.System.Windows.Forms.TabControl
+        Friend WithEvents tabctrlPalette As Global.kotor_tool.CustomTabControl
+
         Friend WithEvents MenuItem7 As Global.System.Windows.Forms.MenuItem
         Friend WithEvents miOpenProject As Global.System.Windows.Forms.MenuItem
         Friend WithEvents tabpagModuleElements As Global.System.Windows.Forms.TabPage
         Friend WithEvents tabpagScripts As Global.System.Windows.Forms.TabPage
-        Friend WithEvents tabctrlModule As Global.System.Windows.Forms.TabControl
+
+        Friend WithEvents tabctrlModule As Global.kotor_tool.CustomTabControl
         Friend WithEvents mnuView As Global.System.Windows.Forms.MenuItem
         Friend WithEvents miExploreModuleFolder As Global.System.Windows.Forms.MenuItem
         Friend WithEvents miBuildModFile As Global.System.Windows.Forms.MenuItem
@@ -204,7 +206,7 @@ Namespace kotor_tool
             Me.tbarbtnTrigger = New System.Windows.Forms.ToolBarButton()
             Me.tbarbtnWaypoint = New System.Windows.Forms.ToolBarButton()
             Me.ilModElementsFilter = New System.Windows.Forms.ImageList(Me.components)
-            Me.tabctrlModule = New System.Windows.Forms.TabControl()
+            Me.tabctrlModule = New kotor_tool.CustomTabControl()
             Me.tabpagModuleElements = New System.Windows.Forms.TabPage()
             Me.tvModule = New System.Windows.Forms.TreeView()
             Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
@@ -227,7 +229,7 @@ Namespace kotor_tool
             Me.pnlPalette = New System.Windows.Forms.Panel()
             Me.Label5 = New System.Windows.Forms.Label()
             Me.tbHelp = New System.Windows.Forms.TextBox()
-            Me.tabctrlPalette = New System.Windows.Forms.TabControl()
+            Me.tabctrlPalette = New kotor_tool.CustomTabControl()
             Me.TabPage1 = New System.Windows.Forms.TabPage()
             Me.btnPalWaypoint = New System.Windows.Forms.Button()
             Me.btnPalSound = New System.Windows.Forms.Button()

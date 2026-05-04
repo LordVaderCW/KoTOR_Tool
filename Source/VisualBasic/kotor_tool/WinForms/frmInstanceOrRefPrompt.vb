@@ -33,12 +33,12 @@ Namespace kotor_tool
 
 #Region "Button Events"
 
-        Private Sub btnReference_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnReference_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnReference.Click
             Me._itemclass = "reference"
             Me.DialogResult = DialogResult.OK
         End Sub
 
-        Private Sub btnInstance_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnInstance_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnInstance.Click
             Me._itemclass = "instance"
             Me.DialogResult = DialogResult.OK
         End Sub

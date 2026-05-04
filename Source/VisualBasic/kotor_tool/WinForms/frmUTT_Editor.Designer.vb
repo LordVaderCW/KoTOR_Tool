@@ -23,7 +23,7 @@ Namespace kotor_tool
         Friend WithEvents lblHeaderRule As Global.System.Windows.Forms.Label
         Friend WithEvents lblFooterRule As Global.System.Windows.Forms.Label
 
-        Friend WithEvents TabControl1 As Global.System.Windows.Forms.TabControl
+        Friend WithEvents TabControl1 As Global.kotor_tool.CustomTabControl
         Friend WithEvents tbTag As Global.System.Windows.Forms.TextBox
         Friend WithEvents Label2 As Global.System.Windows.Forms.Label
         Friend WithEvents tbTemplateResRef As Global.System.Windows.Forms.TextBox
@@ -100,7 +100,7 @@ Namespace kotor_tool
         Private Sub InitializeComponent()
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlBody = New System.Windows.Forms.Panel()
-            Me.TabControl1 = New System.Windows.Forms.TabControl()
+            Me.TabControl1 = New kotor_tool.CustomTabControl()
             Me.TabPageBasic = New System.Windows.Forms.TabPage()
             Me.cmbxType = New System.Windows.Forms.ComboBox()
             Me.cmbxFaction = New System.Windows.Forms.ComboBox()

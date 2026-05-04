@@ -49,7 +49,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000CAD RID: 3245 RVA: 0x00282E68 File Offset: 0x00281E68
-        Private Sub btnOK_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnOK_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnOK.Click
             Me.options.bBuildBIFFtreeOnStartup = Me.chkbBuildBIFTreeAtStartup.Checked
             Me.options.bBuildModelsBifNode = Me.chkbBuildModelsBifNode.Checked
             Me.options.bAlwaysUnknownGFFasText = Me.chkbAlwaysUnknownGFFasText.Checked
@@ -84,13 +84,13 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000CAE RID: 3246 RVA: 0x002830A0 File Offset: 0x002820A0
-        Private Sub chkbCheckForUpdatesAtStartup_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub chkbCheckForUpdatesAtStartup_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles chkbCheckForUpdatesAtStartup.CheckedChanged
             Me.chkbDownloadUpdatesAutomatically.Enabled = Me.chkbCheckForUpdatesAtStartup.Checked
             Me.chkbDownloadUpdatesAutomatically.Checked = Me.chkbCheckForUpdatesAtStartup.Checked
         End Sub
 
         ' Token: 0x06000CAF RID: 3247 RVA: 0x002830D0 File Offset: 0x002820D0
-        Private Sub btnBrowseProjMgrDLGEditorPath_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnBrowseProjMgrDLGEditorPath_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnBrowseProjMgrDLGEditorPath.Click
             Dim text As String = StringType.FromObject(frmMain.GetFilePath("load", "C:\", "*.exe", "Select the Dialog Editor you wish to use", "", False, True))
             If StringType.StrCmp(text, "", False) = 0 Then
                 Return
@@ -99,7 +99,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000CB0 RID: 3248 RVA: 0x00283120 File Offset: 0x00282120
-        Private Sub btnBrowseProjMgrTxtEditorPath_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnBrowseProjMgrTxtEditorPath_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnBrowseProjMgrTxtEditorPath.Click
             Dim text As String = StringType.FromObject(frmMain.GetFilePath("load", "C:\", "*.exe", "Select the Text Editor you wish to use", "", False, True))
             If StringType.StrCmp(text, "", False) = 0 Then
                 Return
@@ -108,14 +108,14 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000CB1 RID: 3249 RVA: 0x00283170 File Offset: 0x00282170
-        Private Sub rbProjMgrUseExternDLGEditor_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub rbProjMgrUseExternDLGEditor_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles rbProjMgrUseExternDLGEditor.CheckedChanged
             Dim checked As Boolean = CType(sender, RadioButton).Checked
             Me.tbProjMgrDLGEditorPath.Enabled = checked
             Me.btnBrowseProjMgrDLGEditorPath.Enabled = checked
         End Sub
 
         ' Token: 0x06000CB2 RID: 3250 RVA: 0x002831A4 File Offset: 0x002821A4
-        Private Sub rbProjMgrUseExternTxtEditor_CheckedChanged_1(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub rbProjMgrUseExternTxtEditor_CheckedChanged_1(ByVal sender As Object, ByVal e As EventArgs) Handles rbProjMgrUseExternTxtEditor.CheckedChanged
             Dim checked As Boolean = CType(sender, RadioButton).Checked
             Me.tbProjMgrTxtEditorPath.Enabled = checked
             Me.btnBrowseProjMgrTxtEditorPath.Enabled = checked

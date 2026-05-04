@@ -33,7 +33,7 @@ Namespace kotor_tool
         Friend WithEvents btnOK As Global.System.Windows.Forms.Button
         Friend WithEvents btnCancel As Global.System.Windows.Forms.Button
         Friend WithEvents ToolTip1 As Global.System.Windows.Forms.ToolTip
-        Friend WithEvents TabControl1 As Global.System.Windows.Forms.TabControl
+        Friend WithEvents TabControl1 As Global.kotor_tool.CustomTabControl
         Friend WithEvents TabPage1 As Global.System.Windows.Forms.TabPage
         Friend WithEvents TabPage2 As Global.System.Windows.Forms.TabPage
         Friend WithEvents Label14 As Global.System.Windows.Forms.Label
@@ -79,7 +79,7 @@ Namespace kotor_tool
             Me.components = New System.ComponentModel.Container()
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlBody = New System.Windows.Forms.Panel()
-            Me.TabControl1 = New System.Windows.Forms.TabControl()
+            Me.TabControl1 = New kotor_tool.CustomTabControl()
             Me.TabPage1 = New System.Windows.Forms.TabPage()
             Me.btnAutoDetectKotor1 = New System.Windows.Forms.Button()
             Me.Label7 = New System.Windows.Forms.Label()

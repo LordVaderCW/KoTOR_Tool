@@ -207,7 +207,6 @@ Namespace kotor_tool
             '
             Me.cmbxPropertyName.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
             Me.cmbxPropertyName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxPropertyName.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxPropertyName.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.cmbxPropertyName.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxPropertyName.Location = New System.Drawing.Point(16, 42)
@@ -221,7 +220,6 @@ Namespace kotor_tool
             Me.cmbxSubtype.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
             Me.cmbxSubtype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
             Me.cmbxSubtype.Enabled = False
-            Me.cmbxSubtype.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxSubtype.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.cmbxSubtype.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxSubtype.Location = New System.Drawing.Point(16, 97)
@@ -235,7 +233,6 @@ Namespace kotor_tool
             Me.cmbxParam1Value.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
             Me.cmbxParam1Value.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
             Me.cmbxParam1Value.Enabled = False
-            Me.cmbxParam1Value.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxParam1Value.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.cmbxParam1Value.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxParam1Value.Location = New System.Drawing.Point(260, 42)
@@ -317,7 +314,6 @@ Namespace kotor_tool
             Me.cmbxCostValue.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
             Me.cmbxCostValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
             Me.cmbxCostValue.Enabled = False
-            Me.cmbxCostValue.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxCostValue.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.cmbxCostValue.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxCostValue.Location = New System.Drawing.Point(16, 152)
@@ -341,7 +337,6 @@ Namespace kotor_tool
             Me.cmbxParam2Value.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
             Me.cmbxParam2Value.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
             Me.cmbxParam2Value.Enabled = False
-            Me.cmbxParam2Value.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxParam2Value.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.cmbxParam2Value.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxParam2Value.Location = New System.Drawing.Point(260, 97)
@@ -395,7 +390,6 @@ Namespace kotor_tool
             Me.cmbxUpgrade.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
             Me.cmbxUpgrade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
             Me.cmbxUpgrade.Enabled = False
-            Me.cmbxUpgrade.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxUpgrade.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.cmbxUpgrade.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxUpgrade.Location = New System.Drawing.Point(260, 152)

@@ -347,7 +347,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000575 RID: 1397 RVA: 0x002442F8 File Offset: 0x002432F8
-        Private Sub btnWriteFile_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnWriteFile_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnWriteFile.Click
             Dim text As String = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, Strings.Mid(Me.fname, 1, Me.fname.IndexOf(".")) + ".tga", "Save TGA file...", "tga", False, True))
             If StringType.StrCmp(text, "", False) = 0 Then
                 Return
@@ -406,7 +406,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000577 RID: 1399 RVA: 0x00244538 File Offset: 0x00243538
-        Private Sub btnOK_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnOK_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnOK.Click
             If Me.ghImage.IsAllocated Then
                 Me.ghImage.Free()
             End If

@@ -50,7 +50,7 @@ Namespace kotor_tool
         Friend WithEvents lblLocalizedName As Global.System.Windows.Forms.Label
         Friend WithEvents chkbHasMapNote As Global.System.Windows.Forms.CheckBox
         Friend WithEvents chkbMapNoteEnabled As Global.System.Windows.Forms.CheckBox
-        Friend WithEvents tabctrl As Global.System.Windows.Forms.TabControl
+        Friend WithEvents tabctrl As Global.kotor_tool.CustomTabControl
         Friend WithEvents cmbxDoorLinkedToFlags As Global.System.Windows.Forms.ComboBox
         Friend WithEvents lblResRef As Global.System.Windows.Forms.Label
         Friend WithEvents tbWpMapNote As Global.System.Windows.Forms.TextBox
@@ -127,7 +127,7 @@ Namespace kotor_tool
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmModuleItem_Base_Editor))
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlBody = New System.Windows.Forms.Panel()
-            Me.tabctrl = New System.Windows.Forms.TabControl()
+            Me.tabctrl = New kotor_tool.CustomTabControl()
             Me.tabpagGeneral = New System.Windows.Forms.TabPage()
             Me.tbXPosition = New System.Windows.Forms.TextBox()
             Me.tbYPosition = New System.Windows.Forms.TextBox()

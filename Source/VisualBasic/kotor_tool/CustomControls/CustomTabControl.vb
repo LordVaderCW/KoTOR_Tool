@@ -520,12 +520,13 @@ Namespace kotor_tool
         '   Me.TabControl1.TabBevelStrength = 0
         '   Me.TabControl1.TabCornerRadius = 0
         ' -----------------------------------------------------------------
+
         Private Const WM_PAINT As Integer = &HF
 
-        Private _customBorderStyle As CustomTabBorderStyle = CustomTabBorderStyle.Dark
+        Private _customBorderStyle As CustomTabBorderStyle = CustomTabBorderStyle.Accent
 
-        Private _controlBackColor As Color = Color.FromArgb(18, 22, 28)
-        Private _tabStripBackColor As Color = Color.FromArgb(18, 22, 28)
+        Private _controlBackColor As Color = Color.FromArgb(22, 27, 34)
+        Private _tabStripBackColor As Color = Color.FromArgb(22, 27, 34)
         Private _tabPageBackColor As Color = Color.FromArgb(22, 27, 34)
 
         Private _normalTabBackColor As Color = Color.FromArgb(28, 35, 44)
@@ -541,9 +542,9 @@ Namespace kotor_tool
         Private _showPageInsetBorder As Boolean = False
         Private _pageInsetBorderColor As Color = Color.FromArgb(62, 70, 82)
         Private _pageInsetBorderThickness As Integer = 1
-        Private _pageInsetErasePadding As Integer = 6
+        Private _pageInsetErasePadding As Integer = 1
 
-        Private _showTabBorder As Boolean = True
+        Private _showTabBorder As Boolean = False
         Private _tabBorderColor As Color = Color.FromArgb(90, 100, 115)
         Private _selectedTabBorderColor As Color = Color.FromArgb(174, 136, 58)
         Private _tabBorderThickness As Integer = 1
@@ -551,19 +552,19 @@ Namespace kotor_tool
         Private _tabBevelStrength As Integer = 0
         Private _tabBevelAngle As Single = 90.0!
 
-        Private _tabNativeBorderBackColor As Color = Color.FromArgb(18, 22, 28)
+        Private _tabNativeBorderBackColor As Color = Color.FromArgb(22, 27, 34)
         Private _tabNativeBorderErasePadding As Integer = 3
         Private _showTabNativeInsetBorder As Boolean = False
         Private _tabNativeInsetBorderColor As Color = Color.FromArgb(62, 70, 82)
         Private _tabNativeInsetBorderThickness As Integer = 1
 
-        Private _showTabButtonBorder As Boolean = True
+        Private _showTabButtonBorder As Boolean = False
         Private _tabButtonBorderColor As Color = Color.FromArgb(90, 100, 115)
         Private _selectedTabButtonBorderColor As Color = Color.FromArgb(174, 136, 58)
         Private _tabButtonBorderThickness As Integer = 1
         Private _tabButtonBorderInset As Integer = 0
 
-        Private _showTabChromeErase As Boolean = True
+        Private _showTabChromeErase As Boolean = False
         Private _tabChromeBackColor As Color = Color.FromArgb(18, 22, 28)
         Private _tabChromeErasePadding As Integer = 4
 
@@ -628,7 +629,7 @@ Namespace kotor_tool
 
         <Category("DarkSaber")>
         <Description("Controls how aggressively the native inner page inset border is erased before optional repainting.")>
-        <DefaultValue(6)>
+        <DefaultValue(1)>
         Public Property PageInsetErasePadding() As Integer
             Get
                 Return _pageInsetErasePadding
@@ -644,7 +645,7 @@ Namespace kotor_tool
 
         <Category("DarkSaber")>
         <Description("Controls whether each tab header receives a custom painted border.")>
-        <DefaultValue(True)>
+        <DefaultValue(False)>
         Public Property ShowTabBorder() As Boolean
             Get
                 Return _showTabBorder
@@ -811,7 +812,7 @@ Namespace kotor_tool
 
         <Category("DarkSaber")>
         <Description("Controls whether the button-style tab border is painted around each tab header.")>
-        <DefaultValue(True)>
+        <DefaultValue(False)>
         Public Property ShowTabButtonBorder() As Boolean
             Get
                 Return _showTabButtonBorder
@@ -880,7 +881,7 @@ Namespace kotor_tool
 
         <Category("DarkSaber")>
         <Description("Controls whether the remaining native tab chrome border around the tab row is erased and the tabs are redrawn.")>
-        <DefaultValue(True)>
+        <DefaultValue(False)>
         Public Property ShowTabChromeErase() As Boolean
             Get
                 Return _showTabChromeErase
@@ -1121,7 +1122,7 @@ Namespace kotor_tool
 
         <Category("DarkSaber")>
         <Description("Controls the custom painted outer border around the tab control.")>
-        <DefaultValue(GetType(CustomTabBorderStyle), "Dark")>
+        <DefaultValue(GetType(CustomTabBorderStyle), "Accent")>
         Public Property CustomBorderStyle() As CustomTabBorderStyle
             Get
                 Return _customBorderStyle
@@ -1262,7 +1263,7 @@ Namespace kotor_tool
             Me.SizeMode = TabSizeMode.FillToRight
             Me.Multiline = True
             Me.ItemSize = New Size(88, 31)
-            Me.Padding = New Point(0, 0)
+            Me.Padding = New Point(10, 3)
             Me.Font = New Font("Segoe UI", 8.25!, FontStyle.Bold)
             Me.BackColor = _controlBackColor
 

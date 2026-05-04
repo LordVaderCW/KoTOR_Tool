@@ -107,7 +107,7 @@ Namespace kotor_tool
             Me.ClientSize = New System.Drawing.Size(340, 150)
             Me.ControlBox = False
             Me.Controls.Add(Me.pnlRoot)
-            Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+            Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
             Me.Name = "frmProgressMeter"
             Me.ShowInTaskbar = False
             Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide

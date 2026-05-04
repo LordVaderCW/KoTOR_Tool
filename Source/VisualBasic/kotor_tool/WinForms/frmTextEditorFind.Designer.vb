@@ -88,10 +88,9 @@ Namespace kotor_tool
             'chkbSearchUp
             '
             Me.chkbSearchUp.BackColor = System.Drawing.Color.Transparent
-            Me.chkbSearchUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbSearchUp.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbSearchUp.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.chkbSearchUp.Location = New System.Drawing.Point(324, 62)
+            Me.chkbSearchUp.Location = New System.Drawing.Point(281, 62)
             Me.chkbSearchUp.Name = "chkbSearchUp"
             Me.chkbSearchUp.Size = New System.Drawing.Size(104, 18)
             Me.chkbSearchUp.TabIndex = 4
@@ -101,10 +100,9 @@ Namespace kotor_tool
             'chkbMatchWholeWord
             '
             Me.chkbMatchWholeWord.BackColor = System.Drawing.Color.Transparent
-            Me.chkbMatchWholeWord.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbMatchWholeWord.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbMatchWholeWord.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.chkbMatchWholeWord.Location = New System.Drawing.Point(162, 62)
+            Me.chkbMatchWholeWord.Location = New System.Drawing.Point(133, 62)
             Me.chkbMatchWholeWord.Name = "chkbMatchWholeWord"
             Me.chkbMatchWholeWord.Size = New System.Drawing.Size(142, 18)
             Me.chkbMatchWholeWord.TabIndex = 3
@@ -114,10 +112,9 @@ Namespace kotor_tool
             'chkbMatchCase
             '
             Me.chkbMatchCase.BackColor = System.Drawing.Color.Transparent
-            Me.chkbMatchCase.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbMatchCase.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbMatchCase.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.chkbMatchCase.Location = New System.Drawing.Point(72, 62)
+            Me.chkbMatchCase.Location = New System.Drawing.Point(31, 62)
             Me.chkbMatchCase.Name = "chkbMatchCase"
             Me.chkbMatchCase.Size = New System.Drawing.Size(96, 18)
             Me.chkbMatchCase.TabIndex = 2

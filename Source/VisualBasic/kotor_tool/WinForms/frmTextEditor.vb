@@ -235,7 +235,7 @@ Namespace kotor_tool
 
 #Region "Find Logic"
 
-        Private Sub miFind_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miFind_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miFind.Click
             Dim findDialog As frmTextEditorFind = New frmTextEditorFind()
 
             If Me.tbGeneric.SelectionLength > 0 Then
@@ -275,7 +275,7 @@ Namespace kotor_tool
             End If
         End Sub
 
-        Private Sub miFindAgain_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miFindAgain_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miFindAgain.Click
             Dim previousFindPos As Integer = Me.g_findPos
 
             If StringType.StrCmp(Me.g_findString, "", False) = 0 Then
@@ -331,15 +331,15 @@ Namespace kotor_tool
 
 #Region "Edit Menu"
 
-        Private Sub miUndo_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miUndo_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miUndo.Click
             Me.tbGeneric.Undo()
         End Sub
 
-        Private Sub miRedo_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miRedo_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miRedo.Click
             Me.tbGeneric.Redo()
         End Sub
 
-        Private Sub miCut_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miCut_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miCut.Click
             If Me.tbGeneric.SelectedText.Equals("") Then
                 Return
             End If
@@ -353,7 +353,7 @@ Namespace kotor_tool
             End If
         End Sub
 
-        Private Sub miCopy_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miCopy_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miCopy.Click
             If Me.RTFMode Then
                 Clipboard.SetDataObject(Me.tbGeneric.SelectedRtf, True)
             Else
@@ -361,7 +361,7 @@ Namespace kotor_tool
             End If
         End Sub
 
-        Private Sub miPaste_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miPaste_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miPaste.Click
             Try
                 Dim dataObject As DataObject = CType(Clipboard.GetDataObject(), DataObject)
 
@@ -389,7 +389,7 @@ Namespace kotor_tool
             End Try
         End Sub
 
-        Private Sub miSelectAll_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miSelectAll_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miSelectAll.Click
             Me.tbGeneric.SelectAll()
             Me.tbGeneric.Focus()
         End Sub
@@ -398,7 +398,7 @@ Namespace kotor_tool
 
 #Region "File Menu"
 
-        Private Sub miOpen_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miOpen_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpen.Click
             Dim selectedPath As String = StringType.FromObject(frmMain.GetFilePath("load", frmMain.CurrentSettings.defaultSaveLocation, Me.fname, "Load file...", "", False, True))
 
             If StringType.StrCmp(selectedPath, "", False) = 0 Then
@@ -421,7 +421,7 @@ Namespace kotor_tool
             End Try
         End Sub
 
-        Private Sub miSave_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miSave_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miSave.Click
             If StringType.StrCmp(Me._EditingFilePath, "", False) = 0 Then
                 Me._EditingFilePath = StringType.FromObject(frmMain.GetFilePath("save", Me.CurrentSettings.TextEditorSavePath, Me.fname, "Save file...", "", False, True))
 
@@ -442,7 +442,7 @@ Namespace kotor_tool
             Me.Filename = Path.GetFileName(Me._EditingFilePath)
         End Sub
 
-        Private Sub miSaveAs_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miSaveAs_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miSaveAs.Click
             Dim saveDirectory As String
 
             If Me._IsDirectEdit Then
@@ -475,7 +475,7 @@ Namespace kotor_tool
             Me.Filename = Path.GetFileName(selectedPath)
         End Sub
 
-        Private Sub miQuit_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miQuit_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miQuit.Click
             Me.Close()
         End Sub
 
@@ -483,7 +483,7 @@ Namespace kotor_tool
 
 #Region "Print Menu"
 
-        Private Sub miPrint_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miPrint_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miPrint.Click
             Me.streamToPrint = New StringReader(Me.tbGeneric.Text)
 
             Try
@@ -535,7 +535,7 @@ Namespace kotor_tool
             ev.HasMorePages = line IsNot Nothing
         End Sub
 
-        Private Sub miPageSetup_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miPageSetup_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miPageSetup.Click
             Try
                 Dim pageSetupDialog As PageSetupDialog = New PageSetupDialog()
 
@@ -550,7 +550,7 @@ Namespace kotor_tool
             End Try
         End Sub
 
-        Private Sub miFont_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miFont_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miFont.Click
             Dim fontDialog As FontDialog = New FontDialog()
 
             fontDialog.ShowColor = True
@@ -567,7 +567,7 @@ Namespace kotor_tool
             End If
         End Sub
 
-        Private Sub miWordWrap_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miWordWrap_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miWordWrap.Click
             Dim item As MenuItem = CType(sender, MenuItem)
 
             If item.Checked Then
@@ -583,39 +583,39 @@ Namespace kotor_tool
 
 #Region "Script Navigation"
 
-        Private Sub miEncountersList_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miEncountersList_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miEncountersList.Click
             Me.SearchForSection("Encounter List")
         End Sub
 
-        Private Sub miPlaceablesList_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miPlaceablesList_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miPlaceablesList.Click
             Me.SearchForSection("Placeable List")
         End Sub
 
-        Private Sub miCameras_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miCameras_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miCameras.Click
             Me.SearchForSection("CameraList")
         End Sub
 
-        Private Sub miDoorsList_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miDoorsList_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miDoorsList.Click
             Me.SearchForSection("Door List")
         End Sub
 
-        Private Sub miSoundsList_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miSoundsList_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miSoundsList.Click
             Me.SearchForSection("SoundList")
         End Sub
 
-        Private Sub miTriggersList_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miTriggersList_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miTriggersList.Click
             Me.SearchForSection("TriggerList")
         End Sub
 
-        Private Sub miWaypointsList_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miWaypointsList_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miWaypointsList.Click
             Me.SearchForSection("WaypointList")
         End Sub
 
-        Private Sub miCreatureList_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miCreatureList_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miCreatureList.Click
             Me.SearchForSection("Creature List")
         End Sub
 
-        Private Sub miMerchantList_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miMerchantList_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miMerchantList.Click
             Me.SearchForSection("StoreList")
         End Sub
 
@@ -663,19 +663,19 @@ Namespace kotor_tool
             Return String.Empty
         End Function
 
-        Private Sub miCompile_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miCompile_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miCompile.Click
             Me.miSave_Click(Nothing, Nothing)
             Me.CompileNSS()
         End Sub
 
-        Private Sub miScriptIsK1_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miScriptIsK1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miScriptIsK1.Click
             Me.KotorVersionIndex = 0
             Me.miScriptIsK2.Checked = False
             Me.miCompile.Enabled = True
             Me.PrepareForScriptEditing()
         End Sub
 
-        Private Sub miScriptIsK2_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub miScriptIsK2_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miScriptIsK2.Click
             Me.KotorVersionIndex = 1
             Me.miScriptIsK1.Checked = False
             Me.miCompile.Enabled = True
@@ -791,11 +791,11 @@ Namespace kotor_tool
             Me.lblMatches.Text = "Matches: " & Me.lbFunctions.Items.Count.ToString()
         End Sub
 
-        Private Sub tbFuncNameFilter_TextChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tbFuncNameFilter_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles tbFuncNameFilter.TextChanged
             Me.ShowFilterMatches()
         End Sub
 
-        Private Sub lbFunctions_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub lbFunctions_Click(ByVal sender As Object, ByVal e As EventArgs) Handles lbFunctions.Click
             If Me.lbFunctions.SelectedItem Is Nothing Then
                 Return
             End If
@@ -808,7 +808,7 @@ Namespace kotor_tool
             Next
         End Sub
 
-        Private Sub lbFunctions_DoubleClick(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub lbFunctions_DoubleClick(ByVal sender As Object, ByVal e As EventArgs) Handles lbFunctions.DoubleClick
             If Me.lbFunctions.SelectedItem Is Nothing Then
                 Return
             End If
@@ -827,7 +827,7 @@ Namespace kotor_tool
             Next
         End Sub
 
-        Private Sub lbFunctions_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub lbFunctions_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles lbFunctions.SelectedIndexChanged
             Me.lbFunctions_Click(Nothing, Nothing)
         End Sub
 
@@ -835,19 +835,19 @@ Namespace kotor_tool
 
 #Region "Text Box Events"
 
-        Private Sub tbGeneric_GotFocus(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tbGeneric_GotFocus(ByVal sender As Object, ByVal e As EventArgs) Handles tbGeneric.GotFocus
             Me.miCut.Enabled = True
             Me.miCopy.Enabled = True
             Me.miPaste.Enabled = True
         End Sub
 
-        Private Sub tbGeneric_LostFocus(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub tbGeneric_LostFocus(ByVal sender As Object, ByVal e As EventArgs) Handles tbGeneric.LostFocus
             Me.miCut.Enabled = False
             Me.miCopy.Enabled = False
             Me.miPaste.Enabled = False
         End Sub
 
-        Private Sub tbGeneric_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs)
+        Private Sub tbGeneric_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles tbGeneric.MouseMove
             If e.X > 0 AndAlso e.X < 7 Then
                 Cursor.Current = Cursors.Arrow
             Else
@@ -855,7 +855,7 @@ Namespace kotor_tool
             End If
         End Sub
 
-        Private Sub tbGeneric_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs)
+        Private Sub tbGeneric_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles tbGeneric.MouseDown
             If e.Button = MouseButtons.Right Then
                 If Me.tbGeneric.SelectionLength = 0 Then
                     Return
@@ -868,7 +868,7 @@ Namespace kotor_tool
             End If
         End Sub
 
-        Private Sub cmiShowDefinition_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmiShowDefinition_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiShowDefinition.Click
             Me.tbFuncNameFilter.Text = Me.tbGeneric.SelectedText
         End Sub
 

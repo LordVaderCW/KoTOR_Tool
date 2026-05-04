@@ -536,12 +536,12 @@ Namespace kotor_tool
             Me.tabCtrl1.Controls.Add(Me.tpSpecialAbilities)
             Me.tabCtrl1.Controls.Add(Me.tpScripts)
             Me.tabCtrl1.Controls.Add(Me.tpComments)
-            Me.tabCtrl1.CustomBorderStyle = kotor_tool.CustomTabBorderStyle.Accent
             Me.tabCtrl1.DarkBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.tabCtrl1.DividerColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.tabCtrl1.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.tabCtrl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
             Me.tabCtrl1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.tabCtrl1.ItemSize = New System.Drawing.Size(112, 32)
+            Me.tabCtrl1.ItemSize = New System.Drawing.Size(88, 31)
             Me.tabCtrl1.Location = New System.Drawing.Point(12, 12)
             Me.tabCtrl1.Multiline = True
             Me.tabCtrl1.Name = "tabCtrl1"
@@ -559,8 +559,6 @@ Namespace kotor_tool
             Me.tabCtrl1.SelectedTextColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabCtrl1.ShowPageChromeErase = False
             Me.tabCtrl1.ShowPageEdgeArtifactErase = False
-            Me.tabCtrl1.ShowTabBorder = False
-            Me.tabCtrl1.ShowTabButtonBorder = False
             Me.tabCtrl1.Size = New System.Drawing.Size(443, 651)
             Me.tabCtrl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
             Me.tabCtrl1.TabBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
@@ -580,9 +578,9 @@ Namespace kotor_tool
             Me.tpBasic.Controls.Add(Me.GroupBox2)
             Me.tpBasic.Controls.Add(Me.GroupBox1)
             Me.tpBasic.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tpBasic.Location = New System.Drawing.Point(4, 68)
+            Me.tpBasic.Location = New System.Drawing.Point(4, 66)
             Me.tpBasic.Name = "tpBasic"
-            Me.tpBasic.Size = New System.Drawing.Size(435, 579)
+            Me.tpBasic.Size = New System.Drawing.Size(435, 581)
             Me.tpBasic.TabIndex = 0
             Me.tpBasic.Text = "Basic"
             '
@@ -868,9 +866,9 @@ Namespace kotor_tool
             Me.tpStatistics.Controls.Add(Me.GroupBox6)
             Me.tpStatistics.Controls.Add(Me.GroupBox5)
             Me.tpStatistics.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tpStatistics.Location = New System.Drawing.Point(4, 36)
+            Me.tpStatistics.Location = New System.Drawing.Point(4, 68)
             Me.tpStatistics.Name = "tpStatistics"
-            Me.tpStatistics.Size = New System.Drawing.Size(435, 611)
+            Me.tpStatistics.Size = New System.Drawing.Size(435, 579)
             Me.tpStatistics.TabIndex = 1
             Me.tpStatistics.Text = "Statistics"
             '
@@ -1321,9 +1319,9 @@ Namespace kotor_tool
             Me.tpSkills.Controls.Add(Me.nudTreatInjury)
             Me.tpSkills.Controls.Add(Me.Label31)
             Me.tpSkills.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tpSkills.Location = New System.Drawing.Point(4, 36)
+            Me.tpSkills.Location = New System.Drawing.Point(4, 68)
             Me.tpSkills.Name = "tpSkills"
-            Me.tpSkills.Size = New System.Drawing.Size(435, 611)
+            Me.tpSkills.Size = New System.Drawing.Size(435, 579)
             Me.tpSkills.TabIndex = 4
             Me.tpSkills.Text = "Skills"
             '
@@ -1513,9 +1511,9 @@ Namespace kotor_tool
             Me.tpAdvanced.Controls.Add(Me.GroupBox15)
             Me.tpAdvanced.Controls.Add(Me.GroupBox18)
             Me.tpAdvanced.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tpAdvanced.Location = New System.Drawing.Point(4, 36)
+            Me.tpAdvanced.Location = New System.Drawing.Point(4, 68)
             Me.tpAdvanced.Name = "tpAdvanced"
-            Me.tpAdvanced.Size = New System.Drawing.Size(435, 611)
+            Me.tpAdvanced.Size = New System.Drawing.Size(435, 579)
             Me.tpAdvanced.TabIndex = 6
             Me.tpAdvanced.Text = "Advanced"
             '
@@ -1875,9 +1873,9 @@ Namespace kotor_tool
             Me.tpFeats.Controls.Add(Me.GroupBox10)
             Me.tpFeats.Controls.Add(Me.chklbFeats)
             Me.tpFeats.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tpFeats.Location = New System.Drawing.Point(4, 36)
+            Me.tpFeats.Location = New System.Drawing.Point(4, 68)
             Me.tpFeats.Name = "tpFeats"
-            Me.tpFeats.Size = New System.Drawing.Size(435, 611)
+            Me.tpFeats.Size = New System.Drawing.Size(435, 579)
             Me.tpFeats.TabIndex = 7
             Me.tpFeats.Text = "Feats"
             '

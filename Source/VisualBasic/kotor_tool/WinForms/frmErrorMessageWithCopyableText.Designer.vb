@@ -54,7 +54,6 @@ Namespace kotor_tool
 
         <Global.System.Diagnostics.DebuggerStepThrough()> _
         Private Sub InitializeComponent()
-            Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmErrorMessageWithCopyableText))
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlBody = New System.Windows.Forms.Panel()
             Me.lblMsg = New System.Windows.Forms.Label()
@@ -109,7 +108,8 @@ Namespace kotor_tool
             Me.lblMsg.Name = "lblMsg"
             Me.lblMsg.Size = New System.Drawing.Size(684, 82)
             Me.lblMsg.TabIndex = 0
-            Me.lblMsg.Text = resources.GetString("lblMsg.Text")
+            Me.lblMsg.Text = "KoTOR Tool has detected an error. Please copy the error and paste it into the Git" &
+    "Hub Issues and make a bug report."
             Me.lblMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
             '
             'tbMsg

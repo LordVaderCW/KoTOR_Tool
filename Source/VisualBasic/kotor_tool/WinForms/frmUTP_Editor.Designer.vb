@@ -36,7 +36,7 @@ Namespace kotor_tool
         Friend WithEvents lblHeaderRule As Global.System.Windows.Forms.Label
         Friend WithEvents lblFooterRule As Global.System.Windows.Forms.Label
 
-        Friend WithEvents TabControl1 As Global.System.Windows.Forms.TabControl
+        Friend WithEvents TabControl1 As Global.kotor_tool.CustomTabControl
         Friend WithEvents TabPageBasic As Global.System.Windows.Forms.TabPage
         Friend WithEvents btnSetNameLang As Global.System.Windows.Forms.Button
         Friend WithEvents Label5 As Global.System.Windows.Forms.Label
@@ -170,7 +170,7 @@ Namespace kotor_tool
         Private Sub InitializeComponent()
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlBody = New System.Windows.Forms.Panel()
-            Me.TabControl1 = New System.Windows.Forms.TabControl()
+            Me.TabControl1 = New kotor_tool.CustomTabControl()
             Me.TabPageBasic = New System.Windows.Forms.TabPage()
             Me.Label19 = New System.Windows.Forms.Label()
             Me.cmbxAppearance = New System.Windows.Forms.ComboBox()
@@ -344,6 +344,8 @@ Namespace kotor_tool
             '
             'TabControl1
             '
+            Me.TabControl1.AccentColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.TabControl1.ControlBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.TabControl1.Controls.Add(Me.TabPageBasic)
             Me.TabControl1.Controls.Add(Me.TabPageLock)
             Me.TabControl1.Controls.Add(Me.TabPageAdvanced)
@@ -351,16 +353,37 @@ Namespace kotor_tool
             Me.TabControl1.Controls.Add(Me.TabPageDescription)
             Me.TabControl1.Controls.Add(Me.TabPageComments)
             Me.TabControl1.Controls.Add(Me.TabPageTrap)
+            Me.TabControl1.DarkBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.TabControl1.DividerColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
             Me.TabControl1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.TabControl1.ItemSize = New System.Drawing.Size(88, 31)
             Me.TabControl1.Location = New System.Drawing.Point(12, 12)
             Me.TabControl1.Multiline = True
             Me.TabControl1.Name = "TabControl1"
+            Me.TabControl1.NormalTabBackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.TabControl1.NormalTextColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.TabControl1.OuterNativeBorderBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.TabControl1.Padding = New System.Drawing.Point(15, 3)
+            Me.TabControl1.PageChromeBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControl1.PageEdgeArtifactBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControl1.PageInsetBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.TabControl1.SelectedIndex = 0
+            Me.TabControl1.SelectedTabBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControl1.SelectedTabBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.TabControl1.SelectedTabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.TabControl1.SelectedTextColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.TabControl1.Size = New System.Drawing.Size(494, 535)
             Me.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
+            Me.TabControl1.TabBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
+            Me.TabControl1.TabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
+            Me.TabControl1.TabChromeBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.TabControl1.TabIndex = 0
+            Me.TabControl1.TabNativeBorderBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControl1.TabNativeInsetBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.TabControl1.TabPageBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.TabControl1.TabStripBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             '
             'TabPageBasic
             '
@@ -387,9 +410,9 @@ Namespace kotor_tool
             Me.TabPageBasic.Controls.Add(Me.chkbStatic)
             Me.TabPageBasic.Controls.Add(Me.chkbMin1HP)
             Me.TabPageBasic.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.TabPageBasic.Location = New System.Drawing.Point(4, 40)
+            Me.TabPageBasic.Location = New System.Drawing.Point(4, 66)
             Me.TabPageBasic.Name = "TabPageBasic"
-            Me.TabPageBasic.Size = New System.Drawing.Size(486, 433)
+            Me.TabPageBasic.Size = New System.Drawing.Size(486, 465)
             Me.TabPageBasic.TabIndex = 0
             Me.TabPageBasic.Text = "Basic"
             '
@@ -408,7 +431,6 @@ Namespace kotor_tool
             '
             Me.cmbxAppearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxAppearance.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxAppearance.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxAppearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxAppearance.Location = New System.Drawing.Point(152, 92)
             Me.cmbxAppearance.Name = "cmbxAppearance"
@@ -627,9 +649,9 @@ Namespace kotor_tool
             Me.TabPageLock.Controls.Add(Me.chkbKeyRequired)
             Me.TabPageLock.Controls.Add(Me.chkbAutoRemoveKey)
             Me.TabPageLock.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.TabPageLock.Location = New System.Drawing.Point(4, 40)
+            Me.TabPageLock.Location = New System.Drawing.Point(4, 66)
             Me.TabPageLock.Name = "TabPageLock"
-            Me.TabPageLock.Size = New System.Drawing.Size(486, 433)
+            Me.TabPageLock.Size = New System.Drawing.Size(486, 465)
             Me.TabPageLock.TabIndex = 1
             Me.TabPageLock.Text = "Lock"
             '
@@ -758,9 +780,9 @@ Namespace kotor_tool
             Me.TabPageAdvanced.Controls.Add(Me.tbAnimationState)
             Me.TabPageAdvanced.Controls.Add(Me.chkbUsable)
             Me.TabPageAdvanced.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.TabPageAdvanced.Location = New System.Drawing.Point(4, 40)
+            Me.TabPageAdvanced.Location = New System.Drawing.Point(4, 66)
             Me.TabPageAdvanced.Name = "TabPageAdvanced"
-            Me.TabPageAdvanced.Size = New System.Drawing.Size(486, 491)
+            Me.TabPageAdvanced.Size = New System.Drawing.Size(486, 465)
             Me.TabPageAdvanced.TabIndex = 5
             Me.TabPageAdvanced.Text = "Advanced"
             '
@@ -952,9 +974,9 @@ Namespace kotor_tool
             Me.TabPageScripts.Controls.Add(Me.btnEditOnInvDisturbed)
             Me.TabPageScripts.Controls.Add(Me.btnEditOnEndDialogue)
             Me.TabPageScripts.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.TabPageScripts.Location = New System.Drawing.Point(4, 40)
+            Me.TabPageScripts.Location = New System.Drawing.Point(4, 66)
             Me.TabPageScripts.Name = "TabPageScripts"
-            Me.TabPageScripts.Size = New System.Drawing.Size(486, 491)
+            Me.TabPageScripts.Size = New System.Drawing.Size(486, 465)
             Me.TabPageScripts.TabIndex = 4
             Me.TabPageScripts.Text = "Scripts"
             '
@@ -1490,9 +1512,9 @@ Namespace kotor_tool
             Me.TabPageDescription.Controls.Add(Me.btnSetDescriptionLang)
             Me.TabPageDescription.Controls.Add(Me.tbDescription)
             Me.TabPageDescription.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.TabPageDescription.Location = New System.Drawing.Point(4, 40)
+            Me.TabPageDescription.Location = New System.Drawing.Point(4, 66)
             Me.TabPageDescription.Name = "TabPageDescription"
-            Me.TabPageDescription.Size = New System.Drawing.Size(486, 491)
+            Me.TabPageDescription.Size = New System.Drawing.Size(486, 465)
             Me.TabPageDescription.TabIndex = 6
             Me.TabPageDescription.Text = "Description"
             '
@@ -1524,7 +1546,7 @@ Namespace kotor_tool
             Me.tbDescription.Multiline = True
             Me.tbDescription.Name = "tbDescription"
             Me.tbDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.tbDescription.Size = New System.Drawing.Size(460, 433)
+            Me.tbDescription.Size = New System.Drawing.Size(460, 407)
             Me.tbDescription.TabIndex = 0
             '
             'TabPageComments
@@ -1533,9 +1555,9 @@ Namespace kotor_tool
             Me.TabPageComments.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.TabPageComments.Controls.Add(Me.tbComment)
             Me.TabPageComments.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.TabPageComments.Location = New System.Drawing.Point(4, 40)
+            Me.TabPageComments.Location = New System.Drawing.Point(4, 66)
             Me.TabPageComments.Name = "TabPageComments"
-            Me.TabPageComments.Size = New System.Drawing.Size(486, 491)
+            Me.TabPageComments.Size = New System.Drawing.Size(486, 465)
             Me.TabPageComments.TabIndex = 7
             Me.TabPageComments.Text = "Comments"
             '
@@ -1549,7 +1571,7 @@ Namespace kotor_tool
             Me.tbComment.Multiline = True
             Me.tbComment.Name = "tbComment"
             Me.tbComment.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.tbComment.Size = New System.Drawing.Size(484, 489)
+            Me.tbComment.Size = New System.Drawing.Size(484, 463)
             Me.tbComment.TabIndex = 0
             '
             'TabPageTrap
@@ -1571,9 +1593,9 @@ Namespace kotor_tool
             Me.TabPageTrap.Controls.Add(Me.chkbTrapFlag)
             Me.TabPageTrap.Controls.Add(Me.chkbTrapOneShot)
             Me.TabPageTrap.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.TabPageTrap.Location = New System.Drawing.Point(4, 40)
+            Me.TabPageTrap.Location = New System.Drawing.Point(4, 66)
             Me.TabPageTrap.Name = "TabPageTrap"
-            Me.TabPageTrap.Size = New System.Drawing.Size(486, 491)
+            Me.TabPageTrap.Size = New System.Drawing.Size(486, 465)
             Me.TabPageTrap.TabIndex = 10
             Me.TabPageTrap.Text = "Trap"
             '
