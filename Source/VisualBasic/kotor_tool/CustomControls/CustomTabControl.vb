@@ -42,7 +42,23 @@ Namespace kotor_tool
         '   - TabPages are forced to UseVisualStyleBackColor = False so that
         '     the designer/runtime does not restore the pale system colour.
         ' -----------------------------------------------------------------
-
+        ' -----------------------------------------------------------------
+        ' Default DarkSaber Integrated Tab Layout
+        '
+        ' These defaults are intentionally tuned together.
+        '
+        ' Recommended baseline:
+        '   CustomBorderStyle        = Accent
+        '   ShowTabBorder            = False
+        '   ShowTabButtonBorder      = False
+        '   ShowTabChromeErase       = False
+        '   ShowTabDivider           = False
+        '   ShowTabNativeInsetBorder = False
+        '   ShowPageInsetBorder      = False
+        '
+        ' The accent outer border visually integrates the tab strip with the
+        ' surrounding editor panel without needing extra native-border hacks.
+        ' -----------------------------------------------------------------
         Private Const WM_PAINT As Integer = &HF
 
         Private _customBorderStyle As CustomTabBorderStyle = CustomTabBorderStyle.Dark
