@@ -20,7 +20,7 @@ Namespace kotor_tool
 
         ' -----------------------------------------------------------------
         ' CustomTabControl
-        ' Copyright (C) LordVaderCW
+        ' Copyright (C) LordVaderCW, MIT Licence, the usual stuff. Credit me if you use it. 
         '
         ' DarkSaber owner-drawn TabControl/ Renders better in Standard, complete control over Standard appearance. 
         '
@@ -78,6 +78,447 @@ Namespace kotor_tool
         '
         ' The accent outer border visually integrates the tab strip with the
         ' surrounding editor panel without needing extra native-border hacks.
+        ' -----------------------------------------------------------------
+        ' DarkSaber CustomTabControl - Tuned Default Property Documentation
+        ' -----------------------------------------------------------------
+        '
+        ' This block documents the tuned integrated tab layout defaults.
+        ' These values are intended for the current DarkSaber appearance used by
+        ' the KoTOR Tool restoration forms.
+        '
+        ' Recommended Behaviour Properties:
+        '
+        '   Appearance = TabAppearance.Normal
+        '     Purpose:
+        '       Uses the standard tab rendering mode. This gives the cleanest
+        '       integrated result with the current owner-drawn DarkSaber painter.
+        '     Example:
+        '       Me.TabControl1.Appearance = TabAppearance.Normal
+        '
+        '   DrawMode = TabDrawMode.OwnerDrawFixed
+        '     Purpose:
+        '       Required. Allows the control to paint the tab headers manually.
+        '     Example:
+        '       Me.TabControl1.DrawMode = TabDrawMode.OwnerDrawFixed
+        '
+        '   ItemSize = New Size(88, 31)
+        '     Purpose:
+        '       Controls the fixed tab header dimensions.
+        '     Example:
+        '       Me.TabControl1.ItemSize = New Size(88, 31)
+        '
+        '   Multiline = True
+        '     Purpose:
+        '       Allows multiple rows of tab headers.
+        '     Example:
+        '       Me.TabControl1.Multiline = True
+        '
+        '   Padding = New Point(10, 3)
+        '     Purpose:
+        '       Controls inner tab text/header spacing.
+        '     Example:
+        '       Me.TabControl1.Padding = New Point(10, 3)
+        '
+        '   SizeMode = TabSizeMode.FillToRight
+        '     Purpose:
+        '       Allows tabs to fill available horizontal header space.
+        '     Example:
+        '       Me.TabControl1.SizeMode = TabSizeMode.FillToRight
+        '
+        '
+        ' -----------------------------------------------------------------
+        ' DarkSaber Colour Defaults
+        ' -----------------------------------------------------------------
+        '
+        '   AccentColor = Color.FromArgb(174, 136, 58)
+        '     Purpose:
+        '       Gold highlight used for selected underline and accent borders.
+        '     Example:
+        '       Me.TabControl1.AccentColor = Color.FromArgb(174, 136, 58)
+        '
+        '   ControlBackColor = Color.FromArgb(22, 27, 34)
+        '     Purpose:
+        '       Main visible background of the control surface.
+        '     Example:
+        '       Me.TabControl1.ControlBackColor = Color.FromArgb(22, 27, 34)
+        '
+        '   DarkBorderColor = Color.FromArgb(62, 70, 82)
+        '     Purpose:
+        '       Standard dark border colour when CustomBorderStyle = Dark.
+        '     Example:
+        '       Me.TabControl1.DarkBorderColor = Color.FromArgb(62, 70, 82)
+        '
+        '   DividerColor = Color.FromArgb(62, 70, 82)
+        '     Purpose:
+        '       Optional divider-line colour between tabs.
+        '     Example:
+        '       Me.TabControl1.DividerColor = Color.FromArgb(62, 70, 82)
+        '
+        '   NormalTabBackColor = Color.FromArgb(28, 35, 44)
+        '     Purpose:
+        '       Background colour for unselected tabs.
+        '     Example:
+        '       Me.TabControl1.NormalTabBackColor = Color.FromArgb(28, 35, 44)
+        '
+        '   SelectedTabBackColor = Color.FromArgb(22, 27, 34)
+        '     Purpose:
+        '       Background colour for the selected tab.
+        '     Example:
+        '       Me.TabControl1.SelectedTabBackColor = Color.FromArgb(22, 27, 34)
+        '
+        '   NormalTextColor = Color.FromArgb(188, 198, 210)
+        '     Purpose:
+        '       Text colour for unselected tabs.
+        '     Example:
+        '       Me.TabControl1.NormalTextColor = Color.FromArgb(188, 198, 210)
+        '
+        '   SelectedTextColor = Color.FromArgb(238, 238, 230)
+        '     Purpose:
+        '       Text colour for selected tabs.
+        '     Example:
+        '       Me.TabControl1.SelectedTextColor = Color.FromArgb(238, 238, 230)
+        '
+        '   TabPageBackColor = Color.FromArgb(22, 27, 34)
+        '     Purpose:
+        '       Background colour applied to each TabPage.
+        '     Example:
+        '       Me.TabControl1.TabPageBackColor = Color.FromArgb(22, 27, 34)
+        '
+        '   TabStripBackColor = Color.FromArgb(22, 27, 34)
+        '     Purpose:
+        '       Background behind the tab headers.
+        '     Example:
+        '       Me.TabControl1.TabStripBackColor = Color.FromArgb(22, 27, 34)
+        '
+        '
+        ' -----------------------------------------------------------------
+        ' Control Border Defaults
+        ' -----------------------------------------------------------------
+        '
+        '   CustomBorderStyle = CustomTabBorderStyle.Accent
+        '     Purpose:
+        '       Paints the outer TabControl border using AccentColor.
+        '       This is the main trick that visually integrates the tab area
+        '       with the surrounding editor panel.
+        '     Example:
+        '       Me.TabControl1.CustomBorderStyle = CustomTabBorderStyle.Accent
+        '
+        '   ShowOuterNativeBorderErase = True
+        '     Purpose:
+        '       Enables cleanup of remaining native outer TabControl artefacts.
+        '     Example:
+        '       Me.TabControl1.ShowOuterNativeBorderErase = True
+        '
+        '   OuterNativeBorderBackColor = Color.FromArgb(18, 22, 28)
+        '     Purpose:
+        '       Colour used to erase native outer border fragments.
+        '     Example:
+        '       Me.TabControl1.OuterNativeBorderBackColor = Color.FromArgb(18, 22, 28)
+        '
+        '   OuterNativeBorderErasePadding = 3
+        '     Purpose:
+        '       Thickness of the native outer border erase pass.
+        '     Example:
+        '       Me.TabControl1.OuterNativeBorderErasePadding = 3
+        '
+        '
+        ' -----------------------------------------------------------------
+        ' Page / Container Border Defaults
+        ' -----------------------------------------------------------------
+        '
+        '   ShowPageInsetBorder = False
+        '     Purpose:
+        '       Leaves the inner page inset border disabled for a cleaner integrated
+        '       look.
+        '     Example:
+        '       Me.TabControl1.ShowPageInsetBorder = False
+        '
+        '   PageInsetBorderColor = Color.FromArgb(62, 70, 82)
+        '     Purpose:
+        '       Colour used if ShowPageInsetBorder is enabled.
+        '     Example:
+        '       Me.TabControl1.PageInsetBorderColor = Color.FromArgb(62, 70, 82)
+        '
+        '   PageInsetBorderThickness = 1
+        '     Purpose:
+        '       Thickness used if ShowPageInsetBorder is enabled.
+        '     Example:
+        '       Me.TabControl1.PageInsetBorderThickness = 1
+        '
+        '   PageInsetErasePadding = 1
+        '     Purpose:
+        '       Padding used to erase the native inner inset border.
+        '     Example:
+        '       Me.TabControl1.PageInsetErasePadding = 1
+        '
+        '   ShowPageChromeErase = True
+        '     Purpose:
+        '       Enables cleanup of native page chrome fragments.
+        '     Example:
+        '       Me.TabControl1.ShowPageChromeErase = True
+        '
+        '   PageChromeBackColor = Color.FromArgb(22, 27, 34)
+        '     Purpose:
+        '       Colour used for broad page chrome cleanup.
+        '     Example:
+        '       Me.TabControl1.PageChromeBackColor = Color.FromArgb(22, 27, 34)
+        '
+        '   PageChromeErasePadding = 4
+        '     Purpose:
+        '       Padding used for the page chrome erase pass.
+        '     Example:
+        '       Me.TabControl1.PageChromeErasePadding = 4
+        '
+        '   ShowPageEdgeArtifactErase = True
+        '     Purpose:
+        '       Enables targeted cleanup of stubborn vertical and bottom edge artefacts.
+        '     Example:
+        '       Me.TabControl1.ShowPageEdgeArtifactErase = True
+        '
+        '   PageEdgeArtifactBackColor = Color.FromArgb(22, 27, 34)
+        '     Purpose:
+        '       Colour used to erase page-edge artefacts.
+        '     Example:
+        '       Me.TabControl1.PageEdgeArtifactBackColor = Color.FromArgb(22, 27, 34)
+        '
+        '   PageEdgeArtifactOffset = 0
+        '     Purpose:
+        '       Offset used when targeting page-edge artefact cleanup.
+        '     Example:
+        '       Me.TabControl1.PageEdgeArtifactOffset = 0
+        '
+        '   PageEdgeArtifactThickness = 2
+        '     Purpose:
+        '       Thickness of the targeted page-edge artefact erase pass.
+        '     Example:
+        '       Me.TabControl1.PageEdgeArtifactThickness = 2
+        '
+        '
+        ' -----------------------------------------------------------------
+        ' Tab Border Defaults
+        ' -----------------------------------------------------------------
+        '
+        '   ShowTabBorder = False
+        '     Purpose:
+        '       Disables the main custom tab body border for a flatter integrated
+        '       appearance.
+        '     Example:
+        '       Me.TabControl1.ShowTabBorder = False
+        '
+        '   TabBorderColor = Color.FromArgb(90, 100, 115)
+        '     Purpose:
+        '       Border colour used if ShowTabBorder is enabled.
+        '     Example:
+        '       Me.TabControl1.TabBorderColor = Color.FromArgb(90, 100, 115)
+        '
+        '   SelectedTabBorderColor = Color.FromArgb(174, 136, 58)
+        '     Purpose:
+        '       Selected tab body border colour if ShowTabBorder is enabled.
+        '     Example:
+        '       Me.TabControl1.SelectedTabBorderColor = Color.FromArgb(174, 136, 58)
+        '
+        '   TabBorderThickness = 1
+        '     Purpose:
+        '       Thickness of the main custom tab body border.
+        '     Example:
+        '       Me.TabControl1.TabBorderThickness = 1
+        '
+        '   ShowTabButtonBorder = False
+        '     Purpose:
+        '       Disables button-style tab borders for the tuned normal appearance.
+        '     Example:
+        '       Me.TabControl1.ShowTabButtonBorder = False
+        '
+        '   TabButtonBorderColor = Color.FromArgb(90, 100, 115)
+        '     Purpose:
+        '       Button-style border colour if ShowTabButtonBorder is enabled.
+        '     Example:
+        '       Me.TabControl1.TabButtonBorderColor = Color.FromArgb(90, 100, 115)
+        '
+        '   SelectedTabButtonBorderColor = Color.FromArgb(174, 136, 58)
+        '     Purpose:
+        '       Selected button-style border colour if ShowTabButtonBorder is enabled.
+        '     Example:
+        '       Me.TabControl1.SelectedTabButtonBorderColor = Color.FromArgb(174, 136, 58)
+        '
+        '   TabButtonBorderInset = 0
+        '     Purpose:
+        '       Inset applied to the button-style border rectangle.
+        '     Example:
+        '       Me.TabControl1.TabButtonBorderInset = 0
+        '
+        '   TabButtonBorderThickness = 1
+        '     Purpose:
+        '       Thickness of the button-style tab border.
+        '     Example:
+        '       Me.TabControl1.TabButtonBorderThickness = 1
+        '
+        '   ShowTabChromeErase = False
+        '     Purpose:
+        '       Disabled in the tuned integrated layout because the current normal
+        '       appearance does not require full tab-row chrome erasing.
+        '     Example:
+        '       Me.TabControl1.ShowTabChromeErase = False
+        '
+        '   TabChromeBackColor = Color.FromArgb(18, 22, 28)
+        '     Purpose:
+        '       Colour used if ShowTabChromeErase is enabled.
+        '     Example:
+        '       Me.TabControl1.TabChromeBackColor = Color.FromArgb(18, 22, 28)
+        '
+        '   TabChromeErasePadding = 4
+        '     Purpose:
+        '       Padding used if ShowTabChromeErase is enabled.
+        '     Example:
+        '       Me.TabControl1.TabChromeErasePadding = 4
+        '
+        '   TabCornerRadius = 0
+        '     Purpose:
+        '       Keeps tabs square and consistent with the DarkSaber editor style.
+        '     Example:
+        '       Me.TabControl1.TabCornerRadius = 0
+        '
+        '   TabBevelAngle = 90.0!
+        '     Purpose:
+        '       Gradient angle used only when TabBevelStrength is above 0.
+        '     Example:
+        '       Me.TabControl1.TabBevelAngle = 90.0!
+        '
+        '   TabBevelStrength = 0
+        '     Purpose:
+        '       Disables bevel/gradient fill for a clean flat tab appearance.
+        '     Example:
+        '       Me.TabControl1.TabBevelStrength = 0
+        '
+        '
+        ' -----------------------------------------------------------------
+        ' Tab Native / Divider Defaults
+        ' -----------------------------------------------------------------
+        '
+        '   ShowTabDivider = False
+        '     Purpose:
+        '       Disables divider lines between tabs.
+        '     Example:
+        '       Me.TabControl1.ShowTabDivider = False
+        '
+        '   TabDividerInsetTop = 6
+        '     Purpose:
+        '       Top inset used if ShowTabDivider is enabled.
+        '     Example:
+        '       Me.TabControl1.TabDividerInsetTop = 6
+        '
+        '   TabDividerInsetBottom = 6
+        '     Purpose:
+        '       Bottom inset used if ShowTabDivider is enabled.
+        '     Example:
+        '       Me.TabControl1.TabDividerInsetBottom = 6
+        '
+        '   TabDividerOffsetX = -2
+        '     Purpose:
+        '       Horizontal offset used if ShowTabDivider is enabled.
+        '     Example:
+        '       Me.TabControl1.TabDividerOffsetX = -2
+        '
+        '   ShowTabNativeInsetBorder = False
+        '     Purpose:
+        '       Disables optional native-style tab inset repainting.
+        '     Example:
+        '       Me.TabControl1.ShowTabNativeInsetBorder = False
+        '
+        '   TabNativeInsetBorderColor = Color.FromArgb(62, 70, 82)
+        '     Purpose:
+        '       Colour used if ShowTabNativeInsetBorder is enabled.
+        '     Example:
+        '       Me.TabControl1.TabNativeInsetBorderColor = Color.FromArgb(62, 70, 82)
+        '
+        '   TabNativeInsetBorderThickness = 1
+        '     Purpose:
+        '       Thickness used if ShowTabNativeInsetBorder is enabled.
+        '     Example:
+        '       Me.TabControl1.TabNativeInsetBorderThickness = 1
+        '
+        '   TabNativeBorderBackColor = Color.FromArgb(22, 27, 34)
+        '     Purpose:
+        '       Colour used to erase native tab border pixels.
+        '     Example:
+        '       Me.TabControl1.TabNativeBorderBackColor = Color.FromArgb(22, 27, 34)
+        '
+        '   TabNativeBorderErasePadding = 3
+        '     Purpose:
+        '       Padding used to erase native tab border pixels.
+        '     Example:
+        '       Me.TabControl1.TabNativeBorderErasePadding = 3
+        '
+        ' -----------------------------------------------------------------
+        ' Full Tuned Usage Block
+        ' -----------------------------------------------------------------
+        '
+        '   Me.TabControl1.Appearance = TabAppearance.Normal
+        '   Me.TabControl1.DrawMode = TabDrawMode.OwnerDrawFixed
+        '   Me.TabControl1.ItemSize = New Size(88, 31)
+        '   Me.TabControl1.Multiline = True
+        '   Me.TabControl1.Padding = New Point(10, 3)
+        '   Me.TabControl1.SizeMode = TabSizeMode.FillToRight
+        '
+        '   Me.TabControl1.AccentColor = Color.FromArgb(174, 136, 58)
+        '   Me.TabControl1.ControlBackColor = Color.FromArgb(22, 27, 34)
+        '   Me.TabControl1.CustomBorderStyle = CustomTabBorderStyle.Accent
+        '   Me.TabControl1.DarkBorderColor = Color.FromArgb(62, 70, 82)
+        '   Me.TabControl1.DividerColor = Color.FromArgb(62, 70, 82)
+        '   Me.TabControl1.NormalTabBackColor = Color.FromArgb(28, 35, 44)
+        '   Me.TabControl1.NormalTextColor = Color.FromArgb(188, 198, 210)
+        '   Me.TabControl1.SelectedTabBackColor = Color.FromArgb(22, 27, 34)
+        '   Me.TabControl1.SelectedTextColor = Color.FromArgb(238, 238, 230)
+        '   Me.TabControl1.TabPageBackColor = Color.FromArgb(22, 27, 34)
+        '   Me.TabControl1.TabStripBackColor = Color.FromArgb(22, 27, 34)
+        '
+        '   Me.TabControl1.OuterNativeBorderBackColor = Color.FromArgb(18, 22, 28)
+        '   Me.TabControl1.OuterNativeBorderErasePadding = 3
+        '   Me.TabControl1.ShowOuterNativeBorderErase = True
+        '
+        '   Me.TabControl1.PageChromeBackColor = Color.FromArgb(22, 27, 34)
+        '   Me.TabControl1.PageChromeErasePadding = 4
+        '   Me.TabControl1.ShowPageChromeErase = True
+        '
+        '   Me.TabControl1.PageEdgeArtifactBackColor = Color.FromArgb(22, 27, 34)
+        '   Me.TabControl1.PageEdgeArtifactOffset = 0
+        '   Me.TabControl1.PageEdgeArtifactThickness = 2
+        '   Me.TabControl1.ShowPageEdgeArtifactErase = True
+        '
+        '   Me.TabControl1.PageInsetBorderColor = Color.FromArgb(62, 70, 82)
+        '   Me.TabControl1.PageInsetBorderThickness = 1
+        '   Me.TabControl1.PageInsetErasePadding = 1
+        '   Me.TabControl1.ShowPageInsetBorder = False
+        '
+        '   Me.TabControl1.SelectedTabBorderColor = Color.FromArgb(174, 136, 58)
+        '   Me.TabControl1.ShowTabBorder = False
+        '   Me.TabControl1.TabBorderColor = Color.FromArgb(90, 100, 115)
+        '   Me.TabControl1.TabBorderThickness = 1
+        '
+        '   Me.TabControl1.SelectedTabButtonBorderColor = Color.FromArgb(174, 136, 58)
+        '   Me.TabControl1.ShowTabButtonBorder = False
+        '   Me.TabControl1.TabButtonBorderColor = Color.FromArgb(90, 100, 115)
+        '   Me.TabControl1.TabButtonBorderInset = 0
+        '   Me.TabControl1.TabButtonBorderThickness = 1
+        '
+        '   Me.TabControl1.ShowTabChromeErase = False
+        '   Me.TabControl1.TabChromeBackColor = Color.FromArgb(18, 22, 28)
+        '   Me.TabControl1.TabChromeErasePadding = 4
+        '
+        '   Me.TabControl1.ShowTabDivider = False
+        '   Me.TabControl1.TabDividerInsetBottom = 6
+        '   Me.TabControl1.TabDividerInsetTop = 6
+        '   Me.TabControl1.TabDividerOffsetX = -2
+        '
+        '   Me.TabControl1.ShowTabNativeInsetBorder = False
+        '   Me.TabControl1.TabNativeBorderBackColor = Color.FromArgb(22, 27, 34)
+        '   Me.TabControl1.TabNativeBorderErasePadding = 3
+        '   Me.TabControl1.TabNativeInsetBorderColor = Color.FromArgb(62, 70, 82)
+        '   Me.TabControl1.TabNativeInsetBorderThickness = 1
+        '
+        '   Me.TabControl1.TabBevelAngle = 90.0!
+        '   Me.TabControl1.TabBevelStrength = 0
+        '   Me.TabControl1.TabCornerRadius = 0
         ' -----------------------------------------------------------------
         Private Const WM_PAINT As Integer = &HF
 
