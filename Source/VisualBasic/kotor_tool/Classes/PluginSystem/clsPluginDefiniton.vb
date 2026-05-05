@@ -20,6 +20,7 @@ Namespace kotor_tool
     ' Notes:
     '   - VS2010 / .NET Framework 2.0 compatible.
     '   - Loaded from Plugins\InstalledPlugins.xml and each plugin.xml file.
+    '   - Available catalogue entries may also provide DownloadUrl metadata.
     '   - Command execution data is loaded separately from command.ini.
     ' -----------------------------------------------------------------
 
@@ -74,6 +75,7 @@ Namespace kotor_tool
         Public GitHubRepo As String
         Public GitHubBranch As String
         Public Website As String
+        Public DownloadUrl As String
 
         ' -------------------------------------------------------------
         ' Capabilities and file requirements
@@ -110,6 +112,7 @@ Namespace kotor_tool
             Me.GitHubRepo = ""
             Me.GitHubBranch = ""
             Me.Website = ""
+            Me.DownloadUrl = ""
 
             Me.AppFolderName = "app"
             Me.ConfigFolderName = "config"

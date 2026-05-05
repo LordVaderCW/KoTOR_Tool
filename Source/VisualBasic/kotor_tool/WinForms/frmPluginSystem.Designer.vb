@@ -103,6 +103,7 @@ Partial Class frmPluginSystem
         Me.lblHeaderRule = New System.Windows.Forms.Label()
         Me.lblSubtitle = New System.Windows.Forms.Label()
         Me.lblTitle = New System.Windows.Forms.Label()
+        Me.btnDownloadPlugin = New System.Windows.Forms.Button()
         Me.pnlRoot.SuspendLayout()
         Me.pnlBody.SuspendLayout()
         Me.pnlDetails.SuspendLayout()
@@ -215,6 +216,7 @@ Partial Class frmPluginSystem
         '
         Me.pnlActions.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
         Me.pnlActions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlActions.Controls.Add(Me.btnDownloadPlugin)
         Me.pnlActions.Controls.Add(Me.btnEditCommandIni)
         Me.pnlActions.Controls.Add(Me.btnEditPluginXml)
         Me.pnlActions.Controls.Add(Me.btnOpenPluginFolder)
@@ -236,11 +238,11 @@ Partial Class frmPluginSystem
         Me.btnEditCommandIni.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEditCommandIni.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEditCommandIni.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-        Me.btnEditCommandIni.Location = New System.Drawing.Point(11, 344)
+        Me.btnEditCommandIni.Location = New System.Drawing.Point(11, 305)
         Me.btnEditCommandIni.Name = "btnEditCommandIni"
         Me.btnEditCommandIni.Size = New System.Drawing.Size(108, 30)
         Me.btnEditCommandIni.TabIndex = 4
-        Me.btnEditCommandIni.Text = "Edit INI"
+        Me.btnEditCommandIni.Text = "Edit Plugin INI"
         Me.btnEditCommandIni.UseVisualStyleBackColor = False
         '
         'btnEditPluginXml
@@ -252,11 +254,11 @@ Partial Class frmPluginSystem
         Me.btnEditPluginXml.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEditPluginXml.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEditPluginXml.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-        Me.btnEditPluginXml.Location = New System.Drawing.Point(11, 308)
+        Me.btnEditPluginXml.Location = New System.Drawing.Point(11, 341)
         Me.btnEditPluginXml.Name = "btnEditPluginXml"
         Me.btnEditPluginXml.Size = New System.Drawing.Size(108, 30)
         Me.btnEditPluginXml.TabIndex = 3
-        Me.btnEditPluginXml.Text = "Edit XML"
+        Me.btnEditPluginXml.Text = "Edit Plugin XML"
         Me.btnEditPluginXml.UseVisualStyleBackColor = False
         '
         'btnOpenPluginFolder
@@ -284,11 +286,11 @@ Partial Class frmPluginSystem
         Me.btnOpenPluginsFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnOpenPluginsFolder.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnOpenPluginsFolder.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-        Me.btnOpenPluginsFolder.Location = New System.Drawing.Point(11, 154)
+        Me.btnOpenPluginsFolder.Location = New System.Drawing.Point(11, 158)
         Me.btnOpenPluginsFolder.Name = "btnOpenPluginsFolder"
         Me.btnOpenPluginsFolder.Size = New System.Drawing.Size(108, 34)
         Me.btnOpenPluginsFolder.TabIndex = 1
-        Me.btnOpenPluginsFolder.Text = "Open Plugins"
+        Me.btnOpenPluginsFolder.Text = "Open Plugin Dir"
         Me.btnOpenPluginsFolder.UseVisualStyleBackColor = False
         '
         'btnReload
@@ -300,11 +302,11 @@ Partial Class frmPluginSystem
         Me.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnReload.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnReload.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-        Me.btnReload.Location = New System.Drawing.Point(12, 14)
+        Me.btnReload.Location = New System.Drawing.Point(11, 49)
         Me.btnReload.Name = "btnReload"
         Me.btnReload.Size = New System.Drawing.Size(108, 30)
         Me.btnReload.TabIndex = 0
-        Me.btnReload.Text = "Reload"
+        Me.btnReload.Text = "Reload Plugins"
         Me.btnReload.UseVisualStyleBackColor = False
         '
         'pnlList
@@ -336,7 +338,7 @@ Partial Class frmPluginSystem
         'lbAvailablePlugins
         '
         Me.lbAvailablePlugins.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
-        Me.lbAvailablePlugins.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lbAvailablePlugins.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.lbAvailablePlugins.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lbAvailablePlugins.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbAvailablePlugins.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
@@ -375,7 +377,7 @@ Partial Class frmPluginSystem
         'lbPlugins
         '
         Me.lbPlugins.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
-        Me.lbPlugins.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lbPlugins.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.lbPlugins.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lbPlugins.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbPlugins.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
@@ -505,6 +507,22 @@ Partial Class frmPluginSystem
         Me.lblTitle.Text = "Plugin System"
         Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'btnDownloadPlugin
+        '
+        Me.btnDownloadPlugin.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.btnDownloadPlugin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+        Me.btnDownloadPlugin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.btnDownloadPlugin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+        Me.btnDownloadPlugin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDownloadPlugin.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDownloadPlugin.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+        Me.btnDownloadPlugin.Location = New System.Drawing.Point(11, 13)
+        Me.btnDownloadPlugin.Name = "btnDownloadPlugin"
+        Me.btnDownloadPlugin.Size = New System.Drawing.Size(108, 30)
+        Me.btnDownloadPlugin.TabIndex = 5
+        Me.btnDownloadPlugin.Text = "Download Plugin"
+        Me.btnDownloadPlugin.UseVisualStyleBackColor = False
+        '
         'frmPluginSystem
         '
         Me.AcceptButton = Me.btnClose
@@ -537,4 +555,5 @@ Partial Class frmPluginSystem
 
     End Sub
 
+    Friend WithEvents btnDownloadPlugin As System.Windows.Forms.Button
 End Class

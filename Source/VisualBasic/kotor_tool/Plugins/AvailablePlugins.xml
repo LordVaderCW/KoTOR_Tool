@@ -5,11 +5,12 @@
 		<Name>DeNCS</Name>
 		<Version>1.0.2</Version>
 		<Type>ExternalTool</Type>
-		<Description>Decompiles KotOR NCS scripts to NSS source.</Description>
+		<Enabled>True</Enabled>
+		<Directory>DeNCS</Directory>
 		<GitHubRepo>https://github.com/OpenKotOR/DeNCS</GitHubRepo>
 		<GitHubBranch>v1.0.2</GitHubBranch>
 		<Website>https://github.com/OpenKotOR/DeNCS</Website>
-		<Directory>DeNCS</Directory>
-		<Enabled>True</Enabled>
+		<DownloadUrl>https://github.com/OpenKotOR/DeNCS/releases/download/v1.0.2/DeNCS-v1.0.2-Windows.zip</DownloadUrl>
+		<Description>Decompiles compiled KotOR NCS scripts into readable NSS source using NCSDecompCLI.</Description>
 	</AvailablePlugin>
 </PluginLibrary>

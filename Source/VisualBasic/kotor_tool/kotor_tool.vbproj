@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="Build">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0" DefaultTargets="Build">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -8,7 +8,7 @@
     <RootNamespace>
     </RootNamespace>
     <AssemblyName>kotor_tool</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>4096</FileAlignment>
     <ApplicationIcon>koTOR_icn.ico</ApplicationIcon>
     <StartupObject>kotor_tool.KT_Launch</StartupObject>
@@ -50,6 +50,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -62,6 +63,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -74,6 +76,7 @@
     <WarningLevel>4</WarningLevel>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314,42353,42354,42355</NoWarn>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -85,6 +88,7 @@
     <WarningLevel>4</WarningLevel>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314,42353,42354,42355</NoWarn>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
@@ -107,6 +111,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -122,11 +128,14 @@
     <Compile Include="Classes\BIFFVarRsrcEntryInfo.vb" />
     <Compile Include="Classes\KotorTheme.vb" />
     <Compile Include="Classes\NCS\clsNCS.vb" />
+    <Compile Include="Classes\PluginSystem\clsDownloadPlugin.vb" />
+    <Compile Include="Classes\PluginSystem\clsInstallPlugin.vb" />
     <Compile Include="Classes\PluginSystem\clsPluginCommand.vb" />
     <Compile Include="Classes\PluginSystem\clsPluginDefiniton.vb" />
     <Compile Include="Classes\PluginSystem\clsPluginExecutionResult.vb" />
     <Compile Include="Classes\PluginSystem\clsPluginHandle.vb" />
     <Compile Include="Classes\PluginSystem\clsPluginManager.vb" />
+    <Compile Include="Classes\Shared\clsPluginProgressEventArgs.vb" />
     <Compile Include="Classes\ThemeManager.vb" />
     <Compile Include="Classes\cls2DA.vb" />
     <Compile Include="Classes\clsBaseItems2DA.vb" />
@@ -815,9 +824,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="My Project\app.manifest" />
-    <Content Include="Plugins\DeNCS\command.ini">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Plugins\DeNCS\command.ini" />
     <None Include="Themes\DarkSaber.ini">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -855,9 +862,7 @@
     <Content Include="Plugins\AvailablePlugins.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Plugins\DeNCS\plugin.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Plugins\DeNCS\plugin.xml" />
     <Content Include="Plugins\InstalledPlugins.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
