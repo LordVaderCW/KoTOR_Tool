@@ -7,10 +7,15 @@ Rebuild and rebirth of the original **KoTOR Tool**, originally developed by Fred
 # KoTOR Tool Restoration Project
 
 **Version:** v1.0.3.3
+
 **Patch Date:** 29.04.26
+
 **Project Status:** Restored source build confirmed
-**Target IDE:** Visual Studio 2010
-**Target Framework:** .NET Framework 2.0
+
+**Target IDE:** Visual Studio 2010/2022
+
+**Target Framework:** .NET Framework 4.0
+
 **Platform:** x86
 **Language:** VB.NET
 
