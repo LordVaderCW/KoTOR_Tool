@@ -102,7 +102,7 @@ Namespace kotor_tool
             Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
             Me.pnlRoot.Name = "pnlRoot"
-            Me.pnlRoot.Size = New System.Drawing.Size(420, 236)
+            Me.pnlRoot.Size = New System.Drawing.Size(424, 258)
             Me.pnlRoot.TabIndex = 0
             '
             'pnlBody
@@ -118,7 +118,7 @@ Namespace kotor_tool
             Me.pnlBody.Location = New System.Drawing.Point(0, 72)
             Me.pnlBody.Name = "pnlBody"
             Me.pnlBody.Padding = New System.Windows.Forms.Padding(18, 16, 18, 12)
-            Me.pnlBody.Size = New System.Drawing.Size(418, 100)
+            Me.pnlBody.Size = New System.Drawing.Size(422, 122)
             Me.pnlBody.TabIndex = 1
             '
             'lblElapsed
@@ -127,7 +127,7 @@ Namespace kotor_tool
             Me.lblElapsed.BackColor = System.Drawing.Color.Transparent
             Me.lblElapsed.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblElapsed.ForeColor = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(186, Byte), Integer), CType(CType(198, Byte), Integer))
-            Me.lblElapsed.Location = New System.Drawing.Point(283, 75)
+            Me.lblElapsed.Location = New System.Drawing.Point(287, 97)
             Me.lblElapsed.Name = "lblElapsed"
             Me.lblElapsed.Size = New System.Drawing.Size(117, 18)
             Me.lblElapsed.TabIndex = 5
@@ -142,9 +142,9 @@ Namespace kotor_tool
             Me.lblOperation.BackColor = System.Drawing.Color.Transparent
             Me.lblOperation.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblOperation.ForeColor = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(186, Byte), Integer), CType(CType(198, Byte), Integer))
-            Me.lblOperation.Location = New System.Drawing.Point(18, 75)
+            Me.lblOperation.Location = New System.Drawing.Point(18, 97)
             Me.lblOperation.Name = "lblOperation"
-            Me.lblOperation.Size = New System.Drawing.Size(259, 18)
+            Me.lblOperation.Size = New System.Drawing.Size(263, 18)
             Me.lblOperation.TabIndex = 4
             Me.lblOperation.Text = "Preparing operation..."
             Me.lblOperation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -155,7 +155,7 @@ Namespace kotor_tool
             Me.lblPercent.BackColor = System.Drawing.Color.Transparent
             Me.lblPercent.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblPercent.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.lblPercent.Location = New System.Drawing.Point(335, 14)
+            Me.lblPercent.Location = New System.Drawing.Point(339, 14)
             Me.lblPercent.Name = "lblPercent"
             Me.lblPercent.Size = New System.Drawing.Size(65, 21)
             Me.lblPercent.TabIndex = 3
@@ -172,7 +172,7 @@ Namespace kotor_tool
             Me.lblStatus.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.lblStatus.Location = New System.Drawing.Point(18, 34)
             Me.lblStatus.Name = "lblStatus"
-            Me.lblStatus.Size = New System.Drawing.Size(382, 18)
+            Me.lblStatus.Size = New System.Drawing.Size(386, 18)
             Me.lblStatus.TabIndex = 1
             Me.lblStatus.Text = "Waiting for task..."
             Me.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -196,13 +196,12 @@ Namespace kotor_tool
             Me.pbar.Name = "pbar"
             Me.pbar.ShineBottomColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(190, Byte), Integer))
             Me.pbar.ShineTopColor = System.Drawing.Color.FromArgb(CType(CType(135, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(190, Byte), Integer))
-            Me.pbar.Size = New System.Drawing.Size(382, 17)
+            Me.pbar.Size = New System.Drawing.Size(386, 17)
             Me.pbar.SweepColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(245, Byte), Integer), CType(CType(180, Byte), Integer))
             Me.pbar.TabIndex = 2
             Me.pbar.TrackBottomColor = System.Drawing.Color.FromArgb(CType(CType(7, Byte), Integer), CType(CType(10, Byte), Integer), CType(CType(15, Byte), Integer))
             Me.pbar.TrackShadowColor = System.Drawing.Color.FromArgb(CType(CType(120, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
             Me.pbar.TrackTopColor = System.Drawing.Color.FromArgb(CType(CType(13, Byte), Integer), CType(CType(18, Byte), Integer), CType(CType(25, Byte), Integer))
-            Me.pbar.Value = 0
             '
             'lblMsg
             '
@@ -214,7 +213,7 @@ Namespace kotor_tool
             Me.lblMsg.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
             Me.lblMsg.Location = New System.Drawing.Point(18, 12)
             Me.lblMsg.Name = "lblMsg"
-            Me.lblMsg.Size = New System.Drawing.Size(311, 22)
+            Me.lblMsg.Size = New System.Drawing.Size(315, 22)
             Me.lblMsg.TabIndex = 0
             Me.lblMsg.Text = "Processing"
             Me.lblMsg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -226,10 +225,10 @@ Namespace kotor_tool
             Me.pnlDetailsHost.Controls.Add(Me.lblDetailsCaption)
             Me.pnlDetailsHost.Controls.Add(Me.lblDetailsSeparator)
             Me.pnlDetailsHost.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.pnlDetailsHost.Location = New System.Drawing.Point(0, 172)
+            Me.pnlDetailsHost.Location = New System.Drawing.Point(0, 194)
             Me.pnlDetailsHost.Name = "pnlDetailsHost"
             Me.pnlDetailsHost.Padding = New System.Windows.Forms.Padding(18, 10, 18, 12)
-            Me.pnlDetailsHost.Size = New System.Drawing.Size(418, 0)
+            Me.pnlDetailsHost.Size = New System.Drawing.Size(422, 0)
             Me.pnlDetailsHost.TabIndex = 2
             Me.pnlDetailsHost.Visible = False
             '
@@ -247,7 +246,7 @@ Namespace kotor_tool
             Me.tbDetails.Name = "tbDetails"
             Me.tbDetails.ReadOnly = True
             Me.tbDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.tbDetails.Size = New System.Drawing.Size(382, 77)
+            Me.tbDetails.Size = New System.Drawing.Size(386, 77)
             Me.tbDetails.TabIndex = 2
             '
             'lblDetailsCaption
@@ -260,7 +259,7 @@ Namespace kotor_tool
             Me.lblDetailsCaption.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
             Me.lblDetailsCaption.Location = New System.Drawing.Point(18, 13)
             Me.lblDetailsCaption.Name = "lblDetailsCaption"
-            Me.lblDetailsCaption.Size = New System.Drawing.Size(382, 19)
+            Me.lblDetailsCaption.Size = New System.Drawing.Size(386, 19)
             Me.lblDetailsCaption.TabIndex = 1
             Me.lblDetailsCaption.Text = "Operation Details"
             Me.lblDetailsCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -271,7 +270,7 @@ Namespace kotor_tool
             Me.lblDetailsSeparator.Dock = System.Windows.Forms.DockStyle.Top
             Me.lblDetailsSeparator.Location = New System.Drawing.Point(18, 10)
             Me.lblDetailsSeparator.Name = "lblDetailsSeparator"
-            Me.lblDetailsSeparator.Size = New System.Drawing.Size(382, 1)
+            Me.lblDetailsSeparator.Size = New System.Drawing.Size(386, 1)
             Me.lblDetailsSeparator.TabIndex = 0
             '
             'pnlFooter
@@ -281,9 +280,9 @@ Namespace kotor_tool
             Me.pnlFooter.Controls.Add(Me.btnDetails)
             Me.pnlFooter.Controls.Add(Me.btnCancel)
             Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.pnlFooter.Location = New System.Drawing.Point(0, 172)
+            Me.pnlFooter.Location = New System.Drawing.Point(0, 194)
             Me.pnlFooter.Name = "pnlFooter"
-            Me.pnlFooter.Size = New System.Drawing.Size(418, 62)
+            Me.pnlFooter.Size = New System.Drawing.Size(422, 62)
             Me.pnlFooter.TabIndex = 3
             '
             'lblFooterSeparator
@@ -292,7 +291,7 @@ Namespace kotor_tool
             Me.lblFooterSeparator.Dock = System.Windows.Forms.DockStyle.Top
             Me.lblFooterSeparator.Location = New System.Drawing.Point(0, 0)
             Me.lblFooterSeparator.Name = "lblFooterSeparator"
-            Me.lblFooterSeparator.Size = New System.Drawing.Size(418, 1)
+            Me.lblFooterSeparator.Size = New System.Drawing.Size(422, 1)
             Me.lblFooterSeparator.TabIndex = 0
             '
             'btnDetails
@@ -323,7 +322,7 @@ Namespace kotor_tool
             Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnCancel.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.btnCancel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnCancel.Location = New System.Drawing.Point(316, 18)
+            Me.btnCancel.Location = New System.Drawing.Point(320, 18)
             Me.btnCancel.Name = "btnCancel"
             Me.btnCancel.Size = New System.Drawing.Size(84, 29)
             Me.btnCancel.TabIndex = 2
@@ -339,7 +338,7 @@ Namespace kotor_tool
             Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
             Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
             Me.pnlHeader.Name = "pnlHeader"
-            Me.pnlHeader.Size = New System.Drawing.Size(418, 72)
+            Me.pnlHeader.Size = New System.Drawing.Size(422, 72)
             Me.pnlHeader.TabIndex = 0
             '
             'lblSubtitle
@@ -352,7 +351,7 @@ Namespace kotor_tool
             Me.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.lblSubtitle.Location = New System.Drawing.Point(18, 39)
             Me.lblSubtitle.Name = "lblSubtitle"
-            Me.lblSubtitle.Size = New System.Drawing.Size(382, 18)
+            Me.lblSubtitle.Size = New System.Drawing.Size(386, 18)
             Me.lblSubtitle.TabIndex = 1
             Me.lblSubtitle.Text = "Please wait while KoTOR Tool completes the current task."
             Me.lblSubtitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -367,7 +366,7 @@ Namespace kotor_tool
             Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.lblTitle.Location = New System.Drawing.Point(16, 11)
             Me.lblTitle.Name = "lblTitle"
-            Me.lblTitle.Size = New System.Drawing.Size(384, 27)
+            Me.lblTitle.Size = New System.Drawing.Size(388, 27)
             Me.lblTitle.TabIndex = 0
             Me.lblTitle.Text = "Operation Progress"
             Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -378,7 +377,7 @@ Namespace kotor_tool
             Me.lblHeaderSeparator.Dock = System.Windows.Forms.DockStyle.Bottom
             Me.lblHeaderSeparator.Location = New System.Drawing.Point(0, 70)
             Me.lblHeaderSeparator.Name = "lblHeaderSeparator"
-            Me.lblHeaderSeparator.Size = New System.Drawing.Size(418, 2)
+            Me.lblHeaderSeparator.Size = New System.Drawing.Size(422, 2)
             Me.lblHeaderSeparator.TabIndex = 2
             '
             'frmProgressMeter
@@ -386,7 +385,7 @@ Namespace kotor_tool
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
             Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.CancelButton = Me.btnCancel
-            Me.ClientSize = New System.Drawing.Size(420, 236)
+            Me.ClientSize = New System.Drawing.Size(424, 258)
             Me.ControlBox = False
             Me.Controls.Add(Me.pnlRoot)
             Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
@@ -405,13 +404,6 @@ Namespace kotor_tool
             Me.pnlDetailsHost.PerformLayout()
             Me.pnlFooter.ResumeLayout(False)
             Me.pnlHeader.ResumeLayout(False)
-
-            ' -------------------------------------------------------------
-            ' Event bindings restored / retained for progress dialog controls.
-            ' -------------------------------------------------------------
-            AddHandler Me.btnDetails.Click, AddressOf Me.btnDetails_Click
-            AddHandler Me.btnCancel.Click, AddressOf Me.btnCancel_Click
-
             Me.ResumeLayout(False)
 
         End Sub

@@ -31,8 +31,8 @@ Namespace kotor_tool
         Friend WithEvents TreeView As Global.System.Windows.Forms.TreeView
         Friend WithEvents btnExtract As Global.System.Windows.Forms.Button
         Friend WithEvents MainMenu1 As Global.System.Windows.Forms.MainMenu
-        Friend WithEvents MenuItem2 As Global.System.Windows.Forms.MenuItem
-        Friend WithEvents MenuItem3 As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miHelp As Global.System.Windows.Forms.MenuItem
+        Friend WithEvents miTools As Global.System.Windows.Forms.MenuItem
         Friend WithEvents miAbout As Global.System.Windows.Forms.MenuItem
         Friend WithEvents MenuItem5 As Global.System.Windows.Forms.MenuItem
         Friend WithEvents miOpenKey As Global.System.Windows.Forms.MenuItem
@@ -100,6 +100,7 @@ Namespace kotor_tool
 
         <Global.System.Diagnostics.DebuggerStepThrough()> _
         Private Sub InitializeComponent()
+            Me.components = New System.ComponentModel.Container()
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlMainArea = New System.Windows.Forms.Panel()
             Me.TreeView = New System.Windows.Forms.TreeView()
@@ -117,8 +118,8 @@ Namespace kotor_tool
             Me.btnToolText = New System.Windows.Forms.Button()
             Me.btnToolConversation = New System.Windows.Forms.Button()
             Me.btnTool2DA = New System.Windows.Forms.Button()
-            Me.ToolTip1 = New System.Windows.Forms.ToolTip()
-            Me.MainMenu1 = New System.Windows.Forms.MainMenu()
+            Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+            Me.MainMenu1 = New System.Windows.Forms.MainMenu(Me.components)
             Me.miFile = New System.Windows.Forms.MenuItem()
             Me.miManagePaths = New System.Windows.Forms.MenuItem()
             Me.miOpenGFFFile = New System.Windows.Forms.MenuItem()
@@ -129,7 +130,7 @@ Namespace kotor_tool
             Me.miRecentFiles = New System.Windows.Forms.MenuItem()
             Me.MenuItem6 = New System.Windows.Forms.MenuItem()
             Me.miQuit = New System.Windows.Forms.MenuItem()
-            Me.MenuItem3 = New System.Windows.Forms.MenuItem()
+            Me.miTools = New System.Windows.Forms.MenuItem()
             Me.miExtract = New System.Windows.Forms.MenuItem()
             Me.miOpenProjectManager = New System.Windows.Forms.MenuItem()
             Me.miOpen2DAEditor = New System.Windows.Forms.MenuItem()
@@ -141,7 +142,7 @@ Namespace kotor_tool
             Me.miOpenPWKEditor = New System.Windows.Forms.MenuItem()
             Me.miOpenSSFEditor = New System.Windows.Forms.MenuItem()
             Me.miOpenERFBuilder = New System.Windows.Forms.MenuItem()
-            Me.MenuItem9 = New System.Windows.Forms.MenuItem()
+            Me.miOpenByteView = New System.Windows.Forms.MenuItem()
             Me.miOpenHexViewer = New System.Windows.Forms.MenuItem()
             Me.miRefSearch = New System.Windows.Forms.MenuItem()
             Me.MenuItem4 = New System.Windows.Forms.MenuItem()
@@ -153,13 +154,15 @@ Namespace kotor_tool
             Me.miOpenMapsFolder = New System.Windows.Forms.MenuItem()
             Me.MenuItem7 = New System.Windows.Forms.MenuItem()
             Me.miOptions = New System.Windows.Forms.MenuItem()
-            Me.MenuItem2 = New System.Windows.Forms.MenuItem()
+            Me.miHelp = New System.Windows.Forms.MenuItem()
             Me.miBasicHelp = New System.Windows.Forms.MenuItem()
             Me.miCheckForUpdates = New System.Windows.Forms.MenuItem()
             Me.miRegisterSoftware = New System.Windows.Forms.MenuItem()
             Me.miAbout = New System.Windows.Forms.MenuItem()
             Me.tvCMenu = New System.Windows.Forms.ContextMenu()
             Me.cmiExtractForModuleEditing = New System.Windows.Forms.MenuItem()
+            Me.miPlugins = New System.Windows.Forms.MenuItem()
+            Me.miOpenPluginManager = New System.Windows.Forms.MenuItem()
             Me.pnlRoot.SuspendLayout()
             Me.pnlMainArea.SuspendLayout()
             Me.pnlActionPanel.SuspendLayout()
@@ -401,7 +404,7 @@ Namespace kotor_tool
             '
             'MainMenu1
             '
-            Me.MainMenu1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miFile, Me.MenuItem3, Me.MenuItem2})
+            Me.MainMenu1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miFile, Me.miTools, Me.miHelp, Me.miPlugins})
             '
             'miFile
             '
@@ -460,11 +463,11 @@ Namespace kotor_tool
             Me.miQuit.Shortcut = System.Windows.Forms.Shortcut.CtrlQ
             Me.miQuit.Text = "&Quit"
             '
-            'MenuItem3
+            'miTools
             '
-            Me.MenuItem3.Index = 1
-            Me.MenuItem3.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miExtract, Me.miOpenProjectManager, Me.miOpen2DAEditor, Me.miConversationEditor, Me.miOpenModuleEditor, Me.miOpenDialogTlkViewer, Me.miGlobalVariableEditor, Me.miOpenTextEditor, Me.miOpenPWKEditor, Me.miOpenSSFEditor, Me.miOpenERFBuilder, Me.MenuItem9, Me.miOpenHexViewer, Me.miRefSearch, Me.MenuItem4, Me.miCleanWorkingDir, Me.MenuItem1, Me.miOpenWorkingDir, Me.MenuItem8, Me.miShowSupportedModEditorMaps, Me.miOpenMapsFolder, Me.MenuItem7, Me.miOptions})
-            Me.MenuItem3.Text = "&Tools"
+            Me.miTools.Index = 1
+            Me.miTools.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miExtract, Me.miOpenProjectManager, Me.miOpen2DAEditor, Me.miConversationEditor, Me.miOpenModuleEditor, Me.miOpenDialogTlkViewer, Me.miGlobalVariableEditor, Me.miOpenTextEditor, Me.miOpenPWKEditor, Me.miOpenSSFEditor, Me.miOpenERFBuilder, Me.miOpenByteView, Me.miOpenHexViewer, Me.miRefSearch, Me.MenuItem4, Me.miCleanWorkingDir, Me.MenuItem1, Me.miOpenWorkingDir, Me.MenuItem8, Me.miShowSupportedModEditorMaps, Me.miOpenMapsFolder, Me.MenuItem7, Me.miOptions})
+            Me.miTools.Text = "&Tools"
             '
             'miExtract
             '
@@ -527,10 +530,10 @@ Namespace kotor_tool
             Me.miOpenERFBuilder.Index = 10
             Me.miOpenERFBuilder.Text = "Open &ERF/MOD builder"
             '
-            'MenuItem9
+            'miOpenByteView
             '
-            Me.MenuItem9.Index = 11
-            Me.MenuItem9.Text = "Open &Hex Viewer"
+            Me.miOpenByteView.Index = 11
+            Me.miOpenByteView.Text = "Open &Hex Viewer"
             '
             'miOpenHexViewer
             '
@@ -588,11 +591,11 @@ Namespace kotor_tool
             Me.miOptions.Index = 22
             Me.miOptions.Text = "&Options..."
             '
-            'MenuItem2
+            'miHelp
             '
-            Me.MenuItem2.Index = 2
-            Me.MenuItem2.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miBasicHelp, Me.miCheckForUpdates, Me.miRegisterSoftware, Me.miAbout})
-            Me.MenuItem2.Text = "&Help"
+            Me.miHelp.Index = 2
+            Me.miHelp.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miBasicHelp, Me.miCheckForUpdates, Me.miRegisterSoftware, Me.miAbout})
+            Me.miHelp.Text = "&Help"
             '
             'miBasicHelp
             '
@@ -624,6 +627,17 @@ Namespace kotor_tool
             Me.cmiExtractForModuleEditing.Index = 0
             Me.cmiExtractForModuleEditing.Text = "Extract for Module editing..."
             '
+            'miPlugins
+            '
+            Me.miPlugins.Index = 3
+            Me.miPlugins.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miOpenPluginManager})
+            Me.miPlugins.Text = "&Plugins"
+            '
+            'miOpenPluginManager
+            '
+            Me.miOpenPluginManager.Index = 0
+            Me.miOpenPluginManager.Text = "Open &Manager"
+            '
             'frmMain
             '
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
@@ -643,7 +657,9 @@ Namespace kotor_tool
 
         End Sub
 
-        Friend WithEvents MenuItem9 As System.Windows.Forms.MenuItem
+        Friend WithEvents miOpenByteView As System.Windows.Forms.MenuItem
+        Friend WithEvents miPlugins As System.Windows.Forms.MenuItem
+        Friend WithEvents miOpenPluginManager As System.Windows.Forms.MenuItem
     End Class
 
 End Namespace

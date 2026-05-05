@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PluginLibrary>
+	<InstalledPlugin>
+		<Id>ncsdecomp</Id>
+		<Name>DeNCS</Name>
+		<Directory>DeNCS</Directory>
+		<Enabled>True</Enabled>
+		<Manifest>plugin.xml</Manifest>
+		<InstalledVersion>1.0.2</InstalledVersion>
+	</InstalledPlugin>
+</PluginLibrary>

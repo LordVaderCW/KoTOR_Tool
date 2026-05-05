@@ -3904,7 +3904,7 @@ Namespace kotor_tool
                 '    End Try
                 'End If
 
-               
+
 
 
                 '' Fixed Issue with not finding nwnnsscomp.exe after updating to relative directory root.
@@ -3929,114 +3929,167 @@ Namespace kotor_tool
 
                     Dim workingDirectory As String = frmMain.GetWorkingDirectoryPath()
                     Dim tempNcsPath As String = System.IO.Path.Combine(workingDirectory, "temp.ncs")
-                    Dim tempNssPath As String = System.IO.Path.Combine(workingDirectory, "temp.nss")
-                    Dim expectedNssPath As String = System.IO.Path.Combine(workingDirectory, System.IO.Path.GetFileNameWithoutExtension(node.Filename) & ".nss")
-                    Dim compilerPath As String = System.IO.Path.Combine(Application.StartupPath, "nwnnsscomp.exe")
+                    Dim byteCodeOutputPath As String = System.IO.Path.Combine(workingDirectory, "temp_ncs_bytecode.txt")
+
+                    Dim sourceCompilerPath As String = System.IO.Path.Combine(Application.StartupPath, "nwnnsscomp.exe")
+                    Dim workingCompilerPath As String = System.IO.Path.Combine(workingDirectory, "nwnnsscomp.exe")
+
+                    Dim sourceNwScriptPath As String = System.IO.Path.Combine(Application.StartupPath, "nwscript.nss")
+                    Dim workingNwScriptPath As String = System.IO.Path.Combine(workingDirectory, "nwscript.nss")
+
+                    Dim gameNumber As Integer = Me.NodeTreeRootIndex(node) + 1
 
                     frmMain.WriteByteArray(tempNcsPath, array)
 
-                    ' -------------------------------------------------------------
-                    ' Preferred path:
-                    ' If the matching NSS source file has already been extracted into
-                    ' the working folder, open that directly instead of invoking
-                    ' nwnnsscomp.
-                    ' -------------------------------------------------------------
-                    If System.IO.File.Exists(expectedNssPath) Then
-                        Dim existingSourceStream As FileStream = New FileStream(expectedNssPath, FileMode.Open, FileAccess.Read)
-                        Dim existingTextEditor As frmTextEditor = New frmTextEditor(node.Filename, False, "")
-                        Dim existingAsciiEncoding As ASCIIEncoding = New ASCIIEncoding()
-
-                        array = New Byte(CInt(existingSourceStream.Length - 1L)) {}
-                        existingSourceStream.Read(array, 0, CInt(existingSourceStream.Length))
-
-                        existingTextEditor.tbGeneric.Text = existingAsciiEncoding.GetString(array)
-                        existingTextEditor.tbGeneric.SelectionLength = 0
-
-                        existingSourceStream.Close()
-                        existingTextEditor.Show()
-
-                        GoTo IL_12BE
+                    If System.IO.File.Exists(byteCodeOutputPath) Then
+                        System.IO.File.Delete(byteCodeOutputPath)
                     End If
 
-                    If Not System.IO.File.Exists(compilerPath) Then
-                        Interaction.MsgBox( _
-                            "Error launching nwnnsscomp.exe." & vbCrLf & vbCrLf & _
-                            "Expected location:" & vbCrLf & _
-                            compilerPath, _
-                            MsgBoxStyle.OkOnly, _
-                            "Kotor Tool" _
-                        )
+                    If Not System.IO.File.Exists(sourceCompilerPath) Then
+                        Interaction.MsgBox(
+            "Error launching nwnnsscomp.exe." & vbCrLf & vbCrLf &
+            "The compiler could not be found." & vbCrLf & vbCrLf &
+            "Expected location:" & vbCrLf &
+            sourceCompilerPath,
+            MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly,
+            "NCS Bytecode Viewer"
+        )
 
                         GoTo IL_12BE
                     End If
 
                     Try
+                        System.IO.File.Copy(sourceCompilerPath, workingCompilerPath, True)
+
+                        If System.IO.File.Exists(sourceNwScriptPath) Then
+                            System.IO.File.Copy(sourceNwScriptPath, workingNwScriptPath, True)
+                        End If
+
+                    Catch copyEx As System.Exception
+                        Interaction.MsgBox(
+            "Unable to prepare the NCS decompiler working folder." & vbCrLf & vbCrLf &
+            "Working folder:" & vbCrLf &
+            workingDirectory & vbCrLf & vbCrLf &
+            "Error:" & vbCrLf &
+            copyEx.Message,
+            MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly,
+            "NCS Bytecode Viewer"
+        )
+
+                        GoTo IL_12BE
+                    End Try
+
+                    If Not System.IO.File.Exists(workingNwScriptPath) Then
+                        Interaction.MsgBox(
+            "Warning: nwscript.nss was not found beside Kotor Tool." & vbCrLf & vbCrLf &
+            "The bytecode viewer will continue, but nwnnsscomp.exe may fail to initialise its script loader." & vbCrLf & vbCrLf &
+            "Expected location:" & vbCrLf &
+            sourceNwScriptPath,
+            MsgBoxStyle.Exclamation Or MsgBoxStyle.OkOnly,
+            "NCS Bytecode Viewer"
+        )
+                    End If
+
+                    Try
                         Dim process2 As Process = New Process()
 
-                        process2.StartInfo.FileName = compilerPath
+                        process2.StartInfo.FileName = workingCompilerPath
                         process2.StartInfo.UseShellExecute = False
                         process2.StartInfo.CreateNoWindow = True
                         process2.StartInfo.WindowStyle = ProcessWindowStyle.Hidden
                         process2.StartInfo.RedirectStandardOutput = True
+                        process2.StartInfo.RedirectStandardError = True
+                        process2.StartInfo.WorkingDirectory = workingDirectory
 
-                        process2.StartInfo.Arguments = _
-                            "-d -o " & _
-                            """" & tempNssPath & """" & " " & _
-                            """" & tempNcsPath & """"
+                        process2.StartInfo.Arguments =
+            "-d -g " & gameNumber.ToString() & " " &
+            "--outputdir " & """" & workingDirectory & """" & " " &
+            """" & tempNcsPath & """"
 
                         process2.Start()
 
-                        Dim text7 As String = process2.StandardOutput.ReadToEnd()
-                        process2.WaitForExit(4000)
+                        Dim standardOutput As String = process2.StandardOutput.ReadToEnd()
+                        Dim standardError As String = process2.StandardError.ReadToEnd()
 
-                        Dim outputNssPath As String = tempNssPath
+                        If Not process2.WaitForExit(8000) Then
+                            Try
+                                process2.Kill()
+                            Catch killEx As System.Exception
+                            End Try
 
-                        If Not System.IO.File.Exists(outputNssPath) Then
-                            If System.IO.File.Exists(expectedNssPath) Then
-                                outputNssPath = expectedNssPath
-                            End If
-                        End If
-
-                        If Not System.IO.File.Exists(outputNssPath) Then
-                            Interaction.MsgBox( _
-                                "nwnnsscomp ran, but did not create an NSS file." & vbCrLf & vbCrLf & _
-                                "Compiler:" & vbCrLf & compilerPath & vbCrLf & vbCrLf & _
-                                "Arguments:" & vbCrLf & process2.StartInfo.Arguments & vbCrLf & vbCrLf & _
-                                "Expected temp output:" & vbCrLf & tempNssPath & vbCrLf & vbCrLf & _
-                                "Expected named output:" & vbCrLf & expectedNssPath & vbCrLf & vbCrLf & _
-                                "Output:" & vbCrLf & text7, _
-                                MsgBoxStyle.OkOnly, _
-                                "Kotor Tool" _
-                            )
+                            Interaction.MsgBox(
+                "nwnnsscomp.exe did not finish in time and was stopped." & vbCrLf & vbCrLf &
+                "File:" & vbCrLf &
+                node.Filename & vbCrLf & vbCrLf &
+                "Arguments:" & vbCrLf &
+                process2.StartInfo.Arguments,
+                MsgBoxStyle.Exclamation Or MsgBoxStyle.OkOnly,
+                "NCS Bytecode Viewer"
+            )
 
                             GoTo IL_12BE
                         End If
 
-                        Dim fileStream3 As FileStream = New FileStream(outputNssPath, FileMode.Open, FileAccess.Read)
+                        Dim outputText As String = ""
+
+                        If standardOutput IsNot Nothing AndAlso standardOutput.Length > 0 Then
+                            outputText &= standardOutput
+                        End If
+
+                        If standardError IsNot Nothing AndAlso standardError.Trim().Length > 0 Then
+                            If outputText.Trim().Length > 0 Then
+                                outputText &= vbCrLf & vbCrLf
+                            End If
+
+                            outputText &= standardError
+                        End If
+
+                        If outputText Is Nothing OrElse outputText.Trim().Length = 0 Then
+                            outputText =
+                "; nwnnsscomp.exe produced no readable bytecode output." & vbCrLf &
+                "; File: " & node.Filename & vbCrLf &
+                "; Game: " & gameNumber.ToString() & vbCrLf &
+                "; Compiler: " & workingCompilerPath & vbCrLf &
+                "; Working Directory: " & workingDirectory & vbCrLf &
+                "; Arguments: " & process2.StartInfo.Arguments
+                        End If
+
+                        System.IO.File.WriteAllText(byteCodeOutputPath, outputText, System.Text.Encoding.ASCII)
+
+                        If outputText.IndexOf("Couldn't initialize the NwnStdLoader") >= 0 Then
+                            Interaction.MsgBox(
+                "nwnnsscomp.exe ran, but failed to initialise its internal script/resource loader." & vbCrLf & vbCrLf &
+                "The output will still be opened for inspection." & vbCrLf & vbCrLf &
+                "This usually means the tool is still looking for a Neverwinter Nights style lookup path instead of a valid local KotOR script environment." & vbCrLf & vbCrLf &
+                "Working folder:" & vbCrLf &
+                workingDirectory,
+                MsgBoxStyle.Exclamation Or MsgBoxStyle.OkOnly,
+                "NCS Bytecode Viewer"
+            )
+                        End If
+
                         Dim frmTextEditor2 As frmTextEditor = New frmTextEditor(node.Filename, False, "")
-                        Dim asciiencoding2 As ASCIIEncoding = New ASCIIEncoding()
-
-                        array = New Byte(CInt(fileStream3.Length - 1L)) {}
-                        fileStream3.Read(array, 0, CInt(fileStream3.Length))
-
-                        frmTextEditor2.tbGeneric.Text = asciiencoding2.GetString(array)
+                        frmTextEditor2.Filename = node.Filename
+                        frmTextEditor2.Text = "NCS Bytecode Viewer - " & node.Filename
+                        frmTextEditor2.tbGeneric.Text = outputText
                         frmTextEditor2.tbGeneric.SelectionLength = 0
-
-                        fileStream3.Close()
+                        frmTextEditor2.KotorVersionIndex = Me.NodeTreeRootIndex(node)
                         frmTextEditor2.Show()
 
                         GoTo IL_12BE
 
                     Catch ex2 As System.Exception
-                        Interaction.MsgBox( _
-                            "Error launching nwnnsscomp.exe." & vbCrLf & vbCrLf & _
-                            "Compiler path:" & vbCrLf & _
-                            compilerPath & vbCrLf & vbCrLf & _
-                            "Exception:" & vbCrLf & _
-                            ex2.Message, _
-                            MsgBoxStyle.OkOnly, _
-                            "Kotor Tool" _
-                        )
+                        Interaction.MsgBox(
+            "Error launching nwnnsscomp.exe." & vbCrLf & vbCrLf &
+            "Compiler path:" & vbCrLf &
+            workingCompilerPath & vbCrLf & vbCrLf &
+            "Working folder:" & vbCrLf &
+            workingDirectory & vbCrLf & vbCrLf &
+            "Exception:" & vbCrLf &
+            ex2.Message,
+            MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly,
+            "NCS Bytecode Viewer"
+        )
 
                         GoTo IL_12BE
                     End Try
@@ -5276,10 +5329,17 @@ IL_12BE:
             Public face As Integer
         End Structure
 
-        Private Sub miOpenHexViewer_Click(sender As Object, e As EventArgs) Handles miOpenHexViewer.Click, MenuItem9.Click
+        Private Sub miOpenHexViewer_Click(sender As Object, e As EventArgs) Handles miOpenHexViewer.Click, miOpenByteView.Click
             Using viewer As New frmByteViewer()
                 viewer.ShowDialog(Me)
             End Using
+        End Sub
+
+        Private Sub miOpenPluginManager_Click(sender As Object, e As EventArgs) Handles miOpenPluginManager.Click
+            Dim frmPluginSystem As frmPluginSystem = New frmPluginSystem()
+            frmPluginSystem.StartPosition = FormStartPosition.CenterParent
+            frmPluginSystem.ShowDialog(Me)
+            frmPluginSystem.Dispose()
         End Sub
     End Class
 End Namespace

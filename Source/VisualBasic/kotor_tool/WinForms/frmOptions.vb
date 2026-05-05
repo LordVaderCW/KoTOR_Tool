@@ -46,6 +46,16 @@ Namespace kotor_tool
             Else
                 Me.rbProjMgrUseInternDLGEditor.Checked = True
             End If
+
+            Me.ApplyApplicationIcon()
+        End Sub
+
+        Private Sub ApplyApplicationIcon()
+            Try
+                Me.Icon = My.Resources.koTOR_icn
+            Catch ex As System.Exception
+                'Console.WriteLine("Icon could not be applied: " & ex.Message)
+            End Try
         End Sub
 
         ' Token: 0x06000CAD RID: 3245 RVA: 0x00282E68 File Offset: 0x00281E68

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Plugin>
+	<Id>ncsdecomp</Id>
+	<Name>DeNCS</Name>
+	<Author>JdNoa / Dashus / th3w1zard1</Author>
+	<Version>1.0.2</Version>
+	<Type>ExternalTool</Type>
+	<Enabled>True</Enabled>
+
+	<Description>
+		Decompiles compiled KotOR NCS scripts into readable NSS source using NCSDecompCLI.
+	</Description>
+
+	<Compatibility>
+		<Application>KoTOR Tool Restoration Project</Application>
+		<MinimumAppVersion>1.0.3.3</MinimumAppVersion>
+		<Framework>NET20</Framework>
+		<Platform>Windows</Platform>
+	</Compatibility>
+
+	<Project>
+		<GitHubRepo>https://github.com/OpenKotOR/DeNCS</GitHubRepo>
+		<GitHubBranch>v1.0.2</GitHubBranch>
+		<Website>https://github.com/OpenKotOR/DeNCS</Website>
+	</Project>
+
+	<Layout>
+		<Folder name="app">app</Folder>
+		<Folder name="config">config</Folder>
+		<Folder name="runtime">runtime</Folder>
+		<Folder name="tools">tools</Folder>
+	</Layout>
+
+	<Handles>
+		<Resource extension="ncs" action="decompile" />
+	</Handles>
+
+	<Files>
+		<File required="true">plugin.xml</File>
+		<File required="true">command.ini</File>
+		<File required="true">NCSDecompCLI.exe</File>
+
+		<File required="true">tools\k1_nwscript.nss</File>
+		<File required="true">tools\tsl_nwscript.nss</File>
+		<File required="true">tools\nwnnsscomp_kscript.exe</File>
+		<File required="true">tools\nwnnsscomp_ktool.exe</File>
+
+		<File required="false">NCSDecompCLI.jar</File>
+	</Files>
+
+	<CommandIni>command.ini</CommandIni>
+</Plugin>

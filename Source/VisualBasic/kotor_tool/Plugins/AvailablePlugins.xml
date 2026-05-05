@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PluginLibrary>
+	<AvailablePlugin>
+		<Id>ncsdecomp</Id>
+		<Name>DeNCS</Name>
+		<Version>1.0.2</Version>
+		<Type>ExternalTool</Type>
+		<Description>Decompiles KotOR NCS scripts to NSS source.</Description>
+		<GitHubRepo>https://github.com/OpenKotOR/DeNCS</GitHubRepo>
+		<GitHubBranch>v1.0.2</GitHubBranch>
+		<Website>https://github.com/OpenKotOR/DeNCS</Website>
+		<Directory>DeNCS</Directory>
+		<Enabled>True</Enabled>
+	</AvailablePlugin>
+</PluginLibrary>

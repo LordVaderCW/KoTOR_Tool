@@ -206,11 +206,11 @@ Namespace kotor_tool
             Me.SetDetailsVisible(False)
         End Sub
 
-        Private Sub btnDetails_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnDetails_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnDetails.Click
             Me.SetDetailsVisible(Not Me._detailsVisible)
         End Sub
 
-        Private Sub btnCancel_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnCancel_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnCancel.Click
             If Not Me.btnCancel.Enabled Then
                 Return
             End If
