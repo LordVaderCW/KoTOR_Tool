@@ -113,6 +113,10 @@ Namespace kotor_tool
 
                 Me.RegisterInstalledPlugin(pluginsRoot)
 
+                RaiseEvent ProgressChanged(Me, New clsPluginProgressEventArgs("Installing Plugin", "Cleaning downloaded package...", 98))
+
+                Me.CleanupDownloadedPackage(zipPath)
+
                 RaiseEvent ProgressChanged(Me, New clsPluginProgressEventArgs("Installing Plugin", "Installation complete.", 100))
 
                 Return targetRoot
@@ -127,42 +131,41 @@ Namespace kotor_tool
             End Try
         End Function
 
-        'Private Sub ExtractZipWithShell(ByVal zipPath As String, ByVal outputDirectory As String)
-        '    Dim shell As Object = CreateObject("Shell.Application")
-        '    Dim source As Object = shell.NameSpace(zipPath)
-        '    Dim destination As Object = shell.NameSpace(outputDirectory)
+        Private Sub CleanupDownloadedPackage(ByVal zipPath As String)
+            If zipPath Is Nothing OrElse zipPath.Trim().Length = 0 Then
+                Return
+            End If
 
-        '    If source Is Nothing Then
-        '        Throw New ApplicationException("Unable to open zip package through Windows Shell.")
-        '    End If
+            Try
+                If File.Exists(zipPath) Then
+                    File.SetAttributes(zipPath, FileAttributes.Normal)
+                    File.Delete(zipPath)
+                End If
+            Catch exDelete As System.Exception
+            End Try
 
-        '    If destination Is Nothing Then
-        '        Throw New ApplicationException("Unable to open temporary extraction directory through Windows Shell.")
-        '    End If
+            Try
+                Dim downloadDirectory As String = Path.GetDirectoryName(zipPath)
 
-        '    destination.CopyHere(source.Items(), 16)
+                If downloadDirectory Is Nothing OrElse downloadDirectory.Trim().Length = 0 Then
+                    Return
+                End If
 
-        '    Dim waitUntil As DateTime = DateTime.Now.AddMinutes(3)
-        '    Dim foundAnyExtractedItem As Boolean = False
+                If String.Compare(Path.GetFileName(downloadDirectory), "_Downloads", True) <> 0 Then
+                    Return
+                End If
 
-        '    Do While DateTime.Now < waitUntil
-        '        Thread.Sleep(150)
+                If Directory.Exists(downloadDirectory) Then
+                    If Directory.GetFiles(downloadDirectory, "*", SearchOption.AllDirectories).Length = 0 AndAlso
+               Directory.GetDirectories(downloadDirectory, "*", SearchOption.AllDirectories).Length = 0 Then
 
-        '        If Directory.GetDirectories(outputDirectory, "*", SearchOption.AllDirectories).Length > 0 OrElse
-        '           Directory.GetFiles(outputDirectory, "*", SearchOption.AllDirectories).Length > 0 Then
+                        Directory.Delete(downloadDirectory, False)
+                    End If
+                End If
 
-        '            foundAnyExtractedItem = True
-
-        '            If Me.FindDirectory(outputDirectory, "NCSDecompCLI") IsNot Nothing Then
-        '                Exit Do
-        '            End If
-        '        End If
-        '    Loop
-
-        '    If Not foundAnyExtractedItem Then
-        '        Throw New ApplicationException("The plugin package did not extract any files.")
-        '    End If
-        'End Sub
+            Catch exDirectory As System.Exception
+            End Try
+        End Sub
 
         Private Sub ExtractZipWithShell(ByVal zipPath As String, ByVal outputDirectory As String)
             Me.ExtractZipWithCompression(zipPath, outputDirectory)
