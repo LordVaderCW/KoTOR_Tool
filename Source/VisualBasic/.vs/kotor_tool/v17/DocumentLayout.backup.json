@@ -3,16 +3,40 @@
   "WorkspaceRootPath": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|p:\\game tools\\github\\kotor_tool\\kotor_tool\\source\\visualbasic\\kotor_tool\\winforms\\frmprogressmeter.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|solutionrelative:kotor_tool\\winforms\\frmprogressmeter.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|p:\\game tools\\github\\kotor_tool\\kotor_tool\\source\\visualbasic\\kotor_tool\\winforms\\frmprogressmeter.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|solutionrelative:kotor_tool\\winforms\\frmprogressmeter.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|p:\\game tools\\github\\kotor_tool\\kotor_tool\\source\\visualbasic\\kotor_tool\\winforms\\frmprogressmeter.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|solutionrelative:kotor_tool\\winforms\\frmprogressmeter.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|p:\\game tools\\github\\kotor_tool\\kotor_tool\\source\\visualbasic\\kotor_tool\\classes\\ncs\\clsncs.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|solutionrelative:kotor_tool\\classes\\ncs\\clsncs.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|p:\\game tools\\github\\kotor_tool\\kotor_tool\\source\\visualbasic\\kotor_tool\\classes\\pluginsystem\\clspluginmanager.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|solutionrelative:kotor_tool\\classes\\pluginsystem\\clspluginmanager.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|p:\\game tools\\github\\kotor_tool\\kotor_tool\\source\\visualbasic\\kotor_tool\\winforms\\frmmain.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|solutionrelative:kotor_tool\\winforms\\frmmain.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|p:\\game tools\\github\\kotor_tool\\kotor_tool\\source\\visualbasic\\kotor_tool\\winforms\\frmmain.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|solutionrelative:kotor_tool\\winforms\\frmmain.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|p:\\game tools\\github\\kotor_tool\\kotor_tool\\source\\visualbasic\\kotor_tool\\plugins\\dencs\\command.ini||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|solutionrelative:kotor_tool\\plugins\\dencs\\command.ini||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|p:\\game tools\\github\\kotor_tool\\kotor_tool\\source\\visualbasic\\kotor_tool\\classes\\pluginsystem\\clspluginhandle.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|solutionrelative:kotor_tool\\classes\\pluginsystem\\clspluginhandle.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|p:\\game tools\\github\\kotor_tool\\kotor_tool\\source\\visualbasic\\kotor_tool\\classes\\pluginsystem\\clspluginmanager.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|solutionrelative:kotor_tool\\classes\\pluginsystem\\clspluginmanager.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}|kotor_tool\\kotor_tool.vbproj|p:\\game tools\\github\\kotor_tool\\kotor_tool\\source\\visualbasic\\kotor_tool\\classes\\pluginsystem\\clsplugindefiniton.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
@@ -38,24 +62,100 @@
       "DocumentGroups": [
         {
           "DockedWidth": 117,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmProgressMeter.Designer.vb",
+              "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmProgressMeter.Designer.vb",
+              "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmProgressMeter.Designer.vb",
+              "ToolTip": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmProgressMeter.Designer.vb",
+              "RelativeToolTip": "kotor_tool\\WinForms\\frmProgressMeter.Designer.vb",
+              "ViewState": "AgIAAFwBAAAAAAAAAAAQwIcBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-05-05T16:09:40.823Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "frmProgressMeter.vb",
+              "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmProgressMeter.vb",
+              "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmProgressMeter.vb",
+              "ToolTip": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmProgressMeter.vb",
+              "RelativeToolTip": "kotor_tool\\WinForms\\frmProgressMeter.vb",
+              "ViewState": "AgIAAOoAAAAAAAAAAAAQwP8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-05-05T16:09:15.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmProgressMeter.vb [Design]",
+              "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmProgressMeter.vb",
+              "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmProgressMeter.vb",
+              "ToolTip": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmProgressMeter.vb [Design]",
+              "RelativeToolTip": "kotor_tool\\WinForms\\frmProgressMeter.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-05-05T16:09:10.057Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "frmMain.vb",
+              "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmMain.vb",
+              "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmMain.vb",
+              "ToolTip": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmMain.vb",
+              "RelativeToolTip": "kotor_tool\\WinForms\\frmMain.vb",
+              "ViewState": "AgIAAAcPAAAAAAAAAAAlwB4PAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-05-05T15:38:26.477Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "frmMain.vb [Design]",
+              "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmMain.vb",
+              "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmMain.vb",
+              "ToolTip": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmMain.vb [Design]",
+              "RelativeToolTip": "kotor_tool\\WinForms\\frmMain.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-05-05T15:38:21.794Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "clsNCS.vb",
+              "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\Classes\\NCS\\clsNCS.vb",
+              "RelativeDocumentMoniker": "kotor_tool\\Classes\\NCS\\clsNCS.vb",
+              "ToolTip": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\Classes\\NCS\\clsNCS.vb",
+              "RelativeToolTip": "kotor_tool\\Classes\\NCS\\clsNCS.vb",
+              "ViewState": "AgIAAJIAAAAAAAAAAAAgwKkAAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-05-05T15:33:07.597Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "command.ini",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\Plugins\\DeNCS\\command.ini",
               "RelativeDocumentMoniker": "kotor_tool\\Plugins\\DeNCS\\command.ini",
               "ToolTip": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\Plugins\\DeNCS\\command.ini",
               "RelativeToolTip": "kotor_tool\\Plugins\\DeNCS\\command.ini",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002768|",
               "WhenOpened": "2026-05-05T14:49:18.005Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 8,
               "Title": "clsPluginHandle.vb",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\Classes\\PluginSystem\\clsPluginHandle.vb",
               "RelativeDocumentMoniker": "kotor_tool\\Classes\\PluginSystem\\clsPluginHandle.vb",
@@ -68,20 +168,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "clsPluginManager.vb",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\Classes\\PluginSystem\\clsPluginManager.vb",
               "RelativeDocumentMoniker": "kotor_tool\\Classes\\PluginSystem\\clsPluginManager.vb",
               "ToolTip": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\Classes\\PluginSystem\\clsPluginManager.vb",
               "RelativeToolTip": "kotor_tool\\Classes\\PluginSystem\\clsPluginManager.vb",
-              "ViewState": "AgIAAJACAAAAAAAAAAAlwLgCAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJwDAAAAAAAAAAAQwKQDAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-05-05T14:42:56.661Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "clsPluginDefiniton.vb",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\Classes\\PluginSystem\\clsPluginDefiniton.vb",
               "RelativeDocumentMoniker": "kotor_tool\\Classes\\PluginSystem\\clsPluginDefiniton.vb",
@@ -94,7 +194,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "frmPluginSystem.vb",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmPluginSystem.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmPluginSystem.vb",
@@ -107,7 +207,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": "frmPluginSystem.vb [Design]",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmPluginSystem.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmPluginSystem.vb",
@@ -119,7 +219,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 12,
               "Title": "frmPluginSystem.Designer.vb",
               "DocumentMoniker": "P:\\GAME TOOLS\\GitHub\\KoTOR_Tool\\KoTOR_Tool\\Source\\VisualBasic\\kotor_tool\\WinForms\\frmPluginSystem.Designer.vb",
               "RelativeDocumentMoniker": "kotor_tool\\WinForms\\frmPluginSystem.Designer.vb",

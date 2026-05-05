@@ -22,6 +22,7 @@ Namespace kotor_tool
         ' Notes:
         '   - VS2010 / .NET Framework 2.0 compatible.
         '   - Original public-facing progress meter controls preserved.
+        '   - Details log is now always visible; no expanding details button.
         '   - Designer keeps fallback DarkSaber colours only for safe VS display.
         ' -----------------------------------------------------------------
 
@@ -48,7 +49,6 @@ Namespace kotor_tool
         Friend WithEvents lblDetailsCaption As Global.System.Windows.Forms.Label
 
         Friend WithEvents tbDetails As Global.System.Windows.Forms.TextBox
-        Friend WithEvents btnDetails As Global.System.Windows.Forms.Button
         Friend WithEvents btnCancel As Global.System.Windows.Forms.Button
 
         <Global.System.Diagnostics.DebuggerNonUserCode()>
@@ -78,7 +78,6 @@ Namespace kotor_tool
             Me.lblDetailsSeparator = New System.Windows.Forms.Label()
             Me.pnlFooter = New System.Windows.Forms.Panel()
             Me.lblFooterSeparator = New System.Windows.Forms.Label()
-            Me.btnDetails = New System.Windows.Forms.Button()
             Me.btnCancel = New System.Windows.Forms.Button()
             Me.pnlHeader = New System.Windows.Forms.Panel()
             Me.lblSubtitle = New System.Windows.Forms.Label()
@@ -102,7 +101,7 @@ Namespace kotor_tool
             Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
             Me.pnlRoot.Name = "pnlRoot"
-            Me.pnlRoot.Size = New System.Drawing.Size(424, 258)
+            Me.pnlRoot.Size = New System.Drawing.Size(424, 388)
             Me.pnlRoot.TabIndex = 0
             '
             'pnlBody
@@ -228,40 +227,37 @@ Namespace kotor_tool
             Me.pnlDetailsHost.Location = New System.Drawing.Point(0, 194)
             Me.pnlDetailsHost.Name = "pnlDetailsHost"
             Me.pnlDetailsHost.Padding = New System.Windows.Forms.Padding(18, 10, 18, 12)
-            Me.pnlDetailsHost.Size = New System.Drawing.Size(422, 0)
+            Me.pnlDetailsHost.Size = New System.Drawing.Size(422, 130)
             Me.pnlDetailsHost.TabIndex = 2
-            Me.pnlDetailsHost.Visible = False
+            Me.pnlDetailsHost.Visible = True
             '
             'tbDetails
             '
-            Me.tbDetails.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tbDetails.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
             Me.tbDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbDetails.Dock = System.Windows.Forms.DockStyle.Fill
             Me.tbDetails.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.tbDetails.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbDetails.Location = New System.Drawing.Point(18, 38)
+            Me.tbDetails.Location = New System.Drawing.Point(18, 35)
             Me.tbDetails.Multiline = True
             Me.tbDetails.Name = "tbDetails"
             Me.tbDetails.ReadOnly = True
             Me.tbDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.tbDetails.Size = New System.Drawing.Size(386, 77)
+            Me.tbDetails.Size = New System.Drawing.Size(386, 83)
             Me.tbDetails.TabIndex = 2
             '
             'lblDetailsCaption
             '
-            Me.lblDetailsCaption.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.lblDetailsCaption.AutoEllipsis = True
             Me.lblDetailsCaption.BackColor = System.Drawing.Color.Transparent
+            Me.lblDetailsCaption.Dock = System.Windows.Forms.DockStyle.Top
             Me.lblDetailsCaption.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblDetailsCaption.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.lblDetailsCaption.Location = New System.Drawing.Point(18, 13)
+            Me.lblDetailsCaption.Location = New System.Drawing.Point(18, 11)
             Me.lblDetailsCaption.Name = "lblDetailsCaption"
-            Me.lblDetailsCaption.Size = New System.Drawing.Size(386, 19)
+            Me.lblDetailsCaption.Size = New System.Drawing.Size(386, 24)
             Me.lblDetailsCaption.TabIndex = 1
-            Me.lblDetailsCaption.Text = "Operation Details"
+            Me.lblDetailsCaption.Text = "Operation Log"
             Me.lblDetailsCaption.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
             '
             'lblDetailsSeparator
@@ -277,10 +273,9 @@ Namespace kotor_tool
             '
             Me.pnlFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.pnlFooter.Controls.Add(Me.lblFooterSeparator)
-            Me.pnlFooter.Controls.Add(Me.btnDetails)
             Me.pnlFooter.Controls.Add(Me.btnCancel)
             Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.pnlFooter.Location = New System.Drawing.Point(0, 194)
+            Me.pnlFooter.Location = New System.Drawing.Point(0, 324)
             Me.pnlFooter.Name = "pnlFooter"
             Me.pnlFooter.Size = New System.Drawing.Size(422, 62)
             Me.pnlFooter.TabIndex = 3
@@ -293,23 +288,6 @@ Namespace kotor_tool
             Me.lblFooterSeparator.Name = "lblFooterSeparator"
             Me.lblFooterSeparator.Size = New System.Drawing.Size(422, 1)
             Me.lblFooterSeparator.TabIndex = 0
-            '
-            'btnDetails
-            '
-            Me.btnDetails.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-            Me.btnDetails.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
-            Me.btnDetails.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
-            Me.btnDetails.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
-            Me.btnDetails.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
-            Me.btnDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-            Me.btnDetails.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.btnDetails.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnDetails.Location = New System.Drawing.Point(18, 18)
-            Me.btnDetails.Name = "btnDetails"
-            Me.btnDetails.Size = New System.Drawing.Size(92, 29)
-            Me.btnDetails.TabIndex = 1
-            Me.btnDetails.Text = "Details"
-            Me.btnDetails.UseVisualStyleBackColor = False
             '
             'btnCancel
             '
@@ -385,13 +363,13 @@ Namespace kotor_tool
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
             Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.CancelButton = Me.btnCancel
-            Me.ClientSize = New System.Drawing.Size(424, 258)
+            Me.ClientSize = New System.Drawing.Size(424, 388)
             Me.ControlBox = False
             Me.Controls.Add(Me.pnlRoot)
             Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
             Me.MaximizeBox = False
             Me.MinimizeBox = False
-            Me.MinimumSize = New System.Drawing.Size(426, 260)
+            Me.MinimumSize = New System.Drawing.Size(426, 390)
             Me.Name = "frmProgressMeter"
             Me.ShowIcon = False
             Me.ShowInTaskbar = False

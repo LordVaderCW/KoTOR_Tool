@@ -3,9 +3,11 @@ Option Explicit On
 
 Imports System
 Imports System.Collections
+Imports System.ComponentModel
 Imports System.Diagnostics
 Imports System.IO
 Imports System.Text
+Imports System.Threading
 Imports System.Windows.Forms
 Imports System.Xml
 Imports Microsoft.VisualBasic.CompilerServices
@@ -32,7 +34,9 @@ Namespace kotor_tool
     '   - Loads editable command-line data from command.ini.
     '   - Resolves placeholders such as {input}, {output}, {game},
     '     {plugin_dir}, {working_dir}, {filename}, and {resref}.
-    '   - Executes external tools and returns clsPluginExecutionResult.
+    '   - Plugin process execution is run through a BackgroundWorker wrapper
+    '     to keep the WinForms UI responsive.
+    '   - stdout/stderr are captured asynchronously to avoid pipe deadlocks.
     ' -----------------------------------------------------------------
 
     Public Class clsPluginManager
@@ -42,6 +46,17 @@ Namespace kotor_tool
         Private _availablePluginsPath As String
         Private _plugins As ArrayList
         Private _availablePlugins As ArrayList
+
+        Private Class clsPluginExecutionRequest
+            Public Plugin As clsPluginDefinition
+            Public InputPath As String
+            Public OutputPath As String
+            Public GameNumber As Integer
+            Public Filename As String
+            Public ResRef As String
+            Public ExtensionValue As String
+            Public ActionValue As String
+        End Class
 
         Public Sub New()
             Me.New(Path.Combine(Application.StartupPath, "Plugins"))
@@ -242,7 +257,6 @@ Namespace kotor_tool
             plugin.GitHubBranch = Me.GetXmlNodeText(pluginNode, "Project/GitHubBranch", Me.GetXmlNodeText(pluginNode, "GitHubBranch", ""))
             plugin.Website = Me.GetXmlNodeText(pluginNode, "Project/Website", Me.GetXmlNodeText(pluginNode, "Website", ""))
 
-
             plugin.AppFolderName = Me.GetXmlNodeText(pluginNode, "Layout/Folder[@name='app']", "app")
             plugin.ConfigFolderName = Me.GetXmlNodeText(pluginNode, "Layout/Folder[@name='config']", "config")
             plugin.RuntimeFolderName = Me.GetXmlNodeText(pluginNode, "Layout/Folder[@name='runtime']", "runtime")
@@ -252,7 +266,6 @@ Namespace kotor_tool
             plugin.ConfigDirectory = Path.Combine(plugin.PluginDirectory, plugin.ConfigFolderName)
             plugin.RuntimeDirectory = Path.Combine(plugin.PluginDirectory, plugin.RuntimeFolderName)
             plugin.ToolsDirectory = Path.Combine(plugin.PluginDirectory, plugin.ToolsFolderName)
-
 
             Dim commandIniName As String = Me.GetXmlNodeText(pluginNode, "CommandIni", "command.ini")
             plugin.CommandIniFileName = commandIniName
@@ -349,7 +362,6 @@ Namespace kotor_tool
             Return True
         End Function
 
-
         Public Function GetMissingRequiredFiles(ByVal plugin As clsPluginDefinition) As ArrayList
             Dim missingFiles As ArrayList = New ArrayList()
 
@@ -388,7 +400,6 @@ Namespace kotor_tool
 
             Return Path.Combine(plugin.PluginDirectory, resolvedPath)
         End Function
-
 
         Public Function FindPluginForResource(ByVal extensionValue As String, ByVal actionValue As String) As clsPluginDefinition
             Dim normalizedExtension As String = Me.NormalizeExtension(extensionValue)
@@ -452,37 +463,93 @@ Namespace kotor_tool
                                       ByVal extensionValue As String,
                                       Optional ByVal actionValue As String = "") As clsPluginExecutionResult
 
-            Dim result As clsPluginExecutionResult = New clsPluginExecutionResult()
-            result.InputPath = inputPath
-            result.OutputPath = outputPath
+            Dim request As clsPluginExecutionRequest = New clsPluginExecutionRequest()
+            request.Plugin = plugin
+            request.InputPath = inputPath
+            request.OutputPath = outputPath
+            request.GameNumber = gameNumber
+            request.Filename = filename
+            request.ResRef = resref
+            request.ExtensionValue = extensionValue
+            request.ActionValue = actionValue
 
-            If plugin IsNot Nothing Then
-                result.PluginId = plugin.Id
-                result.PluginName = plugin.Name
+            Return Me.ExecutePluginOnBackgroundWorker(request)
+        End Function
+
+        Private Function ExecutePluginOnBackgroundWorker(ByVal request As clsPluginExecutionRequest) As clsPluginExecutionResult
+            Dim worker As BackgroundWorker = New BackgroundWorker()
+            Dim waitHandle As ManualResetEvent = New ManualResetEvent(False)
+            Dim result As clsPluginExecutionResult = Nothing
+            Dim workerException As System.Exception = Nothing
+
+            AddHandler worker.DoWork,
+                Sub(ByVal sender As Object, ByVal e As DoWorkEventArgs)
+                    Try
+                        result = Me.ExecutePluginInternal(request)
+                    Catch ex As System.Exception
+                        workerException = ex
+                    Finally
+                        waitHandle.Set()
+                    End Try
+                End Sub
+
+            worker.RunWorkerAsync()
+
+            Do While Not waitHandle.WaitOne(25, False)
+                Application.DoEvents()
+            Loop
+
+            waitHandle.Close()
+            worker.Dispose()
+
+            If workerException IsNot Nothing Then
+                Dim failedResult As clsPluginExecutionResult = New clsPluginExecutionResult()
+                failedResult.Success = False
+                failedResult.ErrorMessage = workerException.Message
+                Return failedResult
             End If
 
-            result.Action = actionValue
-            result.Extension = Me.NormalizeExtension(extensionValue)
+            If result Is Nothing Then
+                result = New clsPluginExecutionResult()
+                result.Success = False
+                result.ErrorMessage = "Plugin execution did not return a result."
+            End If
+
+            Return result
+        End Function
+
+        Private Function ExecutePluginInternal(ByVal request As clsPluginExecutionRequest) As clsPluginExecutionResult
+            Dim result As clsPluginExecutionResult = New clsPluginExecutionResult()
+
+            result.InputPath = request.InputPath
+            result.OutputPath = request.OutputPath
+            result.Action = request.ActionValue
+            result.Extension = Me.NormalizeExtension(request.ExtensionValue)
+
+            If request.Plugin IsNot Nothing Then
+                result.PluginId = request.Plugin.Id
+                result.PluginName = request.Plugin.Name
+            End If
 
             Try
-                If plugin Is Nothing Then
+                If request.Plugin Is Nothing Then
                     result.ErrorMessage = "Plugin definition was not supplied."
                     Return result
                 End If
 
-                If Not plugin.Enabled Then
-                    result.ErrorMessage = "Plugin is disabled: " & plugin.Name
+                If Not request.Plugin.Enabled Then
+                    result.ErrorMessage = "Plugin is disabled: " & request.Plugin.Name
                     Return result
                 End If
 
-                Dim missingFiles As ArrayList = Me.GetMissingRequiredFiles(plugin)
+                Dim missingFiles As ArrayList = Me.GetMissingRequiredFiles(request.Plugin)
                 If missingFiles.Count > 0 Then
                     result.ErrorMessage = "Plugin is missing required file(s): " & Me.JoinArrayList(missingFiles, ", ")
                     Return result
                 End If
 
-                Dim command As clsPluginCommand = Me.LoadPluginCommand(plugin)
-                Dim placeholders As Hashtable = Me.BuildPlaceholders(plugin, inputPath, outputPath, gameNumber, filename, resref, extensionValue)
+                Dim command As clsPluginCommand = Me.LoadPluginCommand(request.Plugin)
+                Dim placeholders As Hashtable = Me.BuildPlaceholders(request.Plugin, request.InputPath, request.OutputPath, request.GameNumber, request.Filename, request.ResRef, request.ExtensionValue)
 
                 Dim executableText As String = Me.ResolvePlaceholders(command.Executable, placeholders)
                 Dim argumentsText As String = Me.ResolvePlaceholders(command.Arguments, placeholders)
@@ -494,15 +561,15 @@ Namespace kotor_tool
                 End If
 
                 If Not Path.IsPathRooted(executableText) Then
-                    executableText = Path.Combine(plugin.PluginDirectory, executableText)
+                    executableText = Path.Combine(request.Plugin.PluginDirectory, executableText)
                 End If
 
                 If workingDirectoryText Is Nothing OrElse workingDirectoryText.Trim().Length = 0 Then
-                    workingDirectoryText = plugin.PluginDirectory
+                    workingDirectoryText = request.Plugin.PluginDirectory
                 End If
 
                 If Not Path.IsPathRooted(workingDirectoryText) Then
-                    workingDirectoryText = Path.Combine(plugin.PluginDirectory, workingDirectoryText)
+                    workingDirectoryText = Path.Combine(request.Plugin.PluginDirectory, workingDirectoryText)
                 End If
 
                 result.ExecutablePath = executableText
@@ -518,8 +585,8 @@ Namespace kotor_tool
                     Directory.CreateDirectory(workingDirectoryText)
                 End If
 
-                If outputPath IsNot Nothing AndAlso outputPath.Trim().Length > 0 Then
-                    Dim outputDirectory As String = Path.GetDirectoryName(outputPath)
+                If request.OutputPath IsNot Nothing AndAlso request.OutputPath.Trim().Length > 0 Then
+                    Dim outputDirectory As String = Path.GetDirectoryName(request.OutputPath)
 
                     If outputDirectory IsNot Nothing AndAlso outputDirectory.Trim().Length > 0 Then
                         If Not Directory.Exists(outputDirectory) Then
@@ -527,10 +594,13 @@ Namespace kotor_tool
                         End If
                     End If
 
-                    If command.OverwriteOutput AndAlso File.Exists(outputPath) Then
-                        File.Delete(outputPath)
+                    If command.OverwriteOutput AndAlso File.Exists(request.OutputPath) Then
+                        File.Delete(request.OutputPath)
                     End If
                 End If
+
+                Dim outputBuilder As StringBuilder = New StringBuilder()
+                Dim errorBuilder As StringBuilder = New StringBuilder()
 
                 Dim process As Process = New Process()
                 process.StartInfo.FileName = executableText
@@ -542,14 +612,36 @@ Namespace kotor_tool
                 process.StartInfo.RedirectStandardOutput = command.CaptureStdOut
                 process.StartInfo.RedirectStandardError = command.CaptureStdErr
 
-                process.Start()
-
                 If command.CaptureStdOut Then
-                    result.StandardOutput = process.StandardOutput.ReadToEnd()
+                    AddHandler process.OutputDataReceived,
+                        Sub(ByVal sender As Object, ByVal e As DataReceivedEventArgs)
+                            If e.Data IsNot Nothing Then
+                                SyncLock outputBuilder
+                                    outputBuilder.AppendLine(e.Data)
+                                End SyncLock
+                            End If
+                        End Sub
                 End If
 
                 If command.CaptureStdErr Then
-                    result.StandardError = process.StandardError.ReadToEnd()
+                    AddHandler process.ErrorDataReceived,
+                        Sub(ByVal sender As Object, ByVal e As DataReceivedEventArgs)
+                            If e.Data IsNot Nothing Then
+                                SyncLock errorBuilder
+                                    errorBuilder.AppendLine(e.Data)
+                                End SyncLock
+                            End If
+                        End Sub
+                End If
+
+                process.Start()
+
+                If command.CaptureStdOut Then
+                    process.BeginOutputReadLine()
+                End If
+
+                If command.CaptureStdErr Then
+                    process.BeginErrorReadLine()
                 End If
 
                 If Not process.WaitForExit(command.TimeoutMS) Then
@@ -560,11 +652,38 @@ Namespace kotor_tool
                     Catch exKill As System.Exception
                     End Try
 
+                    Try
+                        process.WaitForExit()
+                    Catch exWaitKill As System.Exception
+                    End Try
+
                     result.ErrorMessage = "Plugin process timed out."
                     Return result
                 End If
 
+                Try
+                    process.WaitForExit()
+                Catch exFinalWait As System.Exception
+                End Try
+
+                If command.CaptureStdOut Then
+                    SyncLock outputBuilder
+                        result.StandardOutput = outputBuilder.ToString()
+                    End SyncLock
+                End If
+
+                If command.CaptureStdErr Then
+                    SyncLock errorBuilder
+                        result.StandardError = errorBuilder.ToString()
+                    End SyncLock
+                End If
+
                 result.ExitCode = process.ExitCode
+
+                Try
+                    process.Close()
+                Catch exClose As System.Exception
+                End Try
 
                 If result.StandardOutput IsNot Nothing AndAlso result.StandardOutput.Trim().Length > 0 Then
                     result.DiagnosticMessage &= result.StandardOutput
@@ -586,7 +705,7 @@ Namespace kotor_tool
                     End If
 
                     If command.OutputMode IsNot Nothing AndAlso command.OutputMode.Trim().ToLower() = "file" Then
-                        result.Success = File.Exists(outputPath)
+                        result.Success = File.Exists(request.OutputPath)
 
                         If Not result.Success Then
                             result.ErrorMessage = "Plugin finished, but the expected output file was not created."
@@ -657,28 +776,24 @@ Namespace kotor_tool
             Dim placeholders As Hashtable = New Hashtable(StringComparer.OrdinalIgnoreCase)
             Dim gameName As String = "k1"
             Dim workingDirectory As String = ""
+            Dim nwscriptFileName As String = "k1_nwscript.nss"
+            Dim nwscriptPath As String = ""
 
             If gameNumber = 2 Then
                 gameName = "k2"
+                nwscriptFileName = "tsl_nwscript.nss"
             End If
 
             If inputPath IsNot Nothing AndAlso inputPath.Trim().Length > 0 Then
                 workingDirectory = Path.GetDirectoryName(inputPath)
             End If
 
+            nwscriptPath = Path.Combine(plugin.ToolsDirectory, nwscriptFileName)
+
             placeholders("input") = inputPath
             placeholders("output") = outputPath
             placeholders("game") = gameNumber.ToString()
             placeholders("game_name") = gameName
-
-            Dim nwscriptFileName As String = "k1_nwscript.nss"
-            Dim nwscriptPath As String = ""
-
-            If gameNumber = 2 Then
-                nwscriptFileName = "tsl_nwscript.nss"
-            End If
-
-            nwscriptPath = Path.Combine(plugin.ToolsDirectory, nwscriptFileName)
             placeholders("plugin_id") = plugin.Id
             placeholders("plugin_name") = plugin.Name
             placeholders("plugin_dir") = plugin.PluginDirectory
@@ -693,7 +808,6 @@ Namespace kotor_tool
             placeholders("tools_dir") = plugin.ToolsDirectory
             placeholders("nwscript") = nwscriptPath
             placeholders("nwscript_file") = nwscriptFileName
-
 
             Return placeholders
         End Function

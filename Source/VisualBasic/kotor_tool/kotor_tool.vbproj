@@ -121,6 +121,7 @@
     <Compile Include="Classes\BIFFVarRsrcEntry.vb" />
     <Compile Include="Classes\BIFFVarRsrcEntryInfo.vb" />
     <Compile Include="Classes\KotorTheme.vb" />
+    <Compile Include="Classes\NCS\clsNCS.vb" />
     <Compile Include="Classes\PluginSystem\clsPluginCommand.vb" />
     <Compile Include="Classes\PluginSystem\clsPluginDefiniton.vb" />
     <Compile Include="Classes\PluginSystem\clsPluginExecutionResult.vb" />

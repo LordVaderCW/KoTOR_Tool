@@ -9,17 +9,9 @@ Imports System.Runtime.CompilerServices
 Imports System.Windows.Forms
 
 Namespace kotor_tool
-    ' Token: 0x02000069 RID: 105
+
     Partial Public Class frmProgressMeter
         Inherits Form
-
-        ' -----------------------------------------------------------------
-        ' frmProgressMeter.vb
-        '
-        ' Legacy progress meter backend preserved for KoTOR Tool source
-        ' compatibility. Additional facelift controls are updated only where
-        ' safe and do not replace the original public API.
-        ' -----------------------------------------------------------------
 
         Private _cancelRequested As Boolean
         Private _detailsVisible As Boolean
@@ -28,13 +20,14 @@ Namespace kotor_tool
 
         Public Event CancelRequested(ByVal sender As Object, ByVal e As EventArgs)
 
-        ' Token: 0x06000D19 RID: 3353 RVA: 0x002858A8 File Offset: 0x002848A8
         Public Sub New()
             Me.InitializeComponent()
 
             Me._cancelRequested = False
-            Me._detailsVisible = False
+            Me._detailsVisible = True
             Me._startedAt = DateTime.Now
+
+            Me.pnlDetailsHost.Visible = True
 
             Me._elapsedTimer = New Timer()
             Me._elapsedTimer.Interval = 500
@@ -117,25 +110,28 @@ Namespace kotor_tool
             End Set
         End Property
 
-        ' Token: 0x1700048E RID: 1166
-        ' (set) Token: 0x06000D22 RID: 3362 RVA: 0x00285B20 File Offset: 0x00284B20
         Public WriteOnly Property progress() As Integer
             Set(ByVal value As Integer)
+                If value < Me.pbar.Minimum Then
+                    value = Me.pbar.Minimum
+                End If
+
+                If value > Me.pbar.Maximum Then
+                    value = Me.pbar.Maximum
+                End If
+
                 Me.pbar.Value = value
                 Me.UpdatePercentLabel()
+                Application.DoEvents()
             End Set
         End Property
 
-        ' Token: 0x1700048F RID: 1167
-        ' (set) Token: 0x06000D23 RID: 3363 RVA: 0x00285B30 File Offset: 0x00284B30
         Public WriteOnly Property stepAmount() As Integer
             Set(ByVal value As Integer)
                 Me.pbar.[Step] = value
             End Set
         End Property
 
-        ' Token: 0x17000490 RID: 1168
-        ' (set) Token: 0x06000D24 RID: 3364 RVA: 0x00285B40 File Offset: 0x00284B40
         Public WriteOnly Property message() As String
             Set(ByVal value As String)
                 Me.lblMsg.Text = value
@@ -148,8 +144,6 @@ Namespace kotor_tool
             End Set
         End Property
 
-        ' Token: 0x17000491 RID: 1169
-        ' (set) Token: 0x06000D25 RID: 3365 RVA: 0x00285B54 File Offset: 0x00284B54
         Public WriteOnly Property status() As String
             Set(ByVal value As String)
                 Me.lblStatus.Text = value
@@ -162,18 +156,30 @@ Namespace kotor_tool
             End Set
         End Property
 
-        ' Token: 0x17000492 RID: 1170
-        ' (set) Token: 0x06000D26 RID: 3366 RVA: 0x00285B68 File Offset: 0x00284B68
         Public WriteOnly Property maxvalue() As Integer
             Set(ByVal value As Integer)
+                If value < 1 Then
+                    value = 1
+                End If
+
                 Me.pbar.Maximum = value
+
+                If Me.pbar.Value > Me.pbar.Maximum Then
+                    Me.pbar.Value = Me.pbar.Maximum
+                End If
+
                 Me.UpdatePercentLabel()
+                Application.DoEvents()
             End Set
         End Property
 
-        ' Token: 0x06000D27 RID: 3367 RVA: 0x00285B78 File Offset: 0x00284B78
         Public Sub stepUp()
-            Me.pbar.PerformStep()
+            If Me.pbar.Value + Me.pbar.[Step] > Me.pbar.Maximum Then
+                Me.pbar.Value = Me.pbar.Maximum
+            Else
+                Me.pbar.PerformStep()
+            End If
+
             Me.UpdatePercentLabel()
             Application.DoEvents()
         End Sub
@@ -203,11 +209,7 @@ Namespace kotor_tool
         End Sub
 
         Public Sub HideDetailsPanel()
-            Me.SetDetailsVisible(False)
-        End Sub
-
-        Private Sub btnDetails_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnDetails.Click
-            Me.SetDetailsVisible(Not Me._detailsVisible)
+            Me.SetDetailsVisible(True)
         End Sub
 
         Private Sub btnCancel_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnCancel.Click
@@ -228,22 +230,8 @@ Namespace kotor_tool
         End Sub
 
         Private Sub SetDetailsVisible(ByVal visible As Boolean)
-            Me._detailsVisible = visible
-            Me.pnlDetailsHost.Visible = visible
-
-            If visible Then
-                Me.pnlDetailsHost.Height = 150
-                Me.ClientSize = New Size(Me.ClientSize.Width, 386)
-                Me.lblDetailsCaption.Location = New Point(18, 7)
-                Me.tbDetails.Location = New Point(18, 28)
-                Me.tbDetails.Size = New Size(Me.pnlDetailsHost.ClientSize.Width - 36, 86)
-                Me.btnDetails.Text = "Hide Details"
-            Else
-                Me.pnlDetailsHost.Height = 0
-                Me.ClientSize = New Size(Me.ClientSize.Width, 236)
-                Me.btnDetails.Text = "Details"
-            End If
-
+            Me._detailsVisible = True
+            Me.pnlDetailsHost.Visible = True
             Application.DoEvents()
         End Sub
 
@@ -286,4 +274,5 @@ Namespace kotor_tool
         End Sub
 
     End Class
+
 End Namespace
