@@ -8,7 +8,7 @@ Rebuild and rebirth of the original **KoTOR Tool**, originally developed by Fred
 
 **Version:** v1.0.3.3
 
-**Patch Date:** 29.04.26
+**Patch Date:** 05.05.26
 
 **Project Status:** Restored source build confirmed
 
