@@ -10,7 +10,7 @@ Rebuild and rebirth of the original **KoTOR Tool**, originally developed by Fred
 
 **Patch Date:** 05.05.26
 
-**Project Status:** Restored source build confirmed
+**Project Status:** Restored source build
 
 **Target IDE:** Visual Studio 2010/2022
 
