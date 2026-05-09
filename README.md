@@ -2,6 +2,10 @@
 
 Rebuild and rebirth of the original **KoTOR Tool**, originally developed by Fred Tetra in 2005.
 
+## Treya Branch
+
+-- This Branch is exclusively for Agentic / AI Agents, I have intended this branch to be named, Treya and this shall be the temple for the AI to work from, specifically so that we can use AI Agent tools such as Codex, without damaging or breaking the main code, as, working directly on the project via codex, and using Visual Studio, causes something to break and everything somehow dissappears. SAFETYS ON!. 
+
 ---
 
 # KoTOR Tool Restoration Project
