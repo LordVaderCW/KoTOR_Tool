@@ -307,7 +307,7 @@ Namespace kotor_tool
             Me.lblVersion.Name = "lblVersion"
             Me.lblVersion.Size = New System.Drawing.Size(268, 18)
             Me.lblVersion.TabIndex = 5
-            Me.lblVersion.Text = "Version 1.0.3.1"
+            Me.lblVersion.Text = "Version 1.0.3.4"
             Me.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
             '
             'lblProjectName
