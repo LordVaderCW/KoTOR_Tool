@@ -5710,58 +5710,92 @@ IL_12BE:
 
         ' Token: 0x06000760 RID: 1888 RVA: 0x00258890 File Offset: 0x00257890
         Public Shared Function GetKotorSoundInfo(ByVal filepath As Object) As KTSoundInfo
-            Dim stream As Stream = File.Open(StringType.FromObject(filepath), FileMode.Open)
-            Dim binaryReader As BinaryReader = New BinaryReader(stream)
-            Dim text As String = New String(binaryReader.ReadChars(4))
-            While StringType.StrCmp(text, "RIFF", False) <> 0
-                text = New String(binaryReader.ReadChars(4))
-            End While
-            Dim num As Integer = CInt((binaryReader.BaseStream.Position - 4L))
-            binaryReader.ReadBytes(8)
-            text = New String(binaryReader.ReadChars(4))
-            While StringType.StrCmp(text, "data", False) <> 0
-                Dim text2 As String = text
-                If StringType.StrCmp(text2, "fmt ", False) = 0 Then
-                    Dim num2 As Integer = binaryReader.ReadInt32()
-                    Dim num3 As Integer = CInt(binaryReader.ReadInt16())
-                    Dim num4 As Integer = CInt(binaryReader.ReadInt16())
-                    Dim num5 As Integer = binaryReader.ReadInt32()
-                    Dim num6 As Integer = binaryReader.ReadInt32()
-                    Dim num7 As Integer = CInt(binaryReader.ReadInt16())
-                    Dim num8 As Integer = CInt(binaryReader.ReadInt16())
-                    If num2 > 16 Then
-                        binaryReader.ReadBytes(num2 - 16)
+            Using stream As Stream = File.Open(StringType.FromObject(filepath), FileMode.Open, FileAccess.Read, FileShare.Read)
+                Using binaryReader As BinaryReader = New BinaryReader(stream)
+                    Dim text As String = frmMain.ReadFourCC(binaryReader)
+                    While StringType.StrCmp(text, "RIFF", False) <> 0
+                        If binaryReader.BaseStream.Position >= binaryReader.BaseStream.Length Then
+                            Throw New InvalidDataException("The sound file does not contain a RIFF header.")
+                        End If
+                        binaryReader.BaseStream.Seek(-3L, SeekOrigin.Current)
+                        text = frmMain.ReadFourCC(binaryReader)
+                    End While
+
+                    Dim num As Integer = CInt((binaryReader.BaseStream.Position - 4L))
+                    binaryReader.ReadInt32()
+                    If StringType.StrCmp(frmMain.ReadFourCC(binaryReader), "WAVE", False) <> 0 Then
+                        Throw New InvalidDataException("The RIFF sound file is not a WAVE file.")
                     End If
-                ElseIf StringType.StrCmp(text2, "fact", False) = 0 Then
-                    Dim num2 As Integer = binaryReader.ReadInt32()
-                    binaryReader.ReadBytes(num2)
-                End If
-                text = New String(binaryReader.ReadChars(4))
-            End While
-            Dim num10 As Integer
-            Dim num11 As Integer
-            Dim text3 As String
-            If StringType.StrCmp(text, "data", False) = 0 Then
-                Dim num9 As Integer = binaryReader.ReadInt32()
-                If num9 = 0 Then
-                    num10 = CInt(binaryReader.BaseStream.Position)
-                    num11 = CInt((binaryReader.BaseStream.Length - CLng(num10)))
-                    binaryReader.ReadBytes(1)
-                    Dim b As Byte = binaryReader.ReadByte()
-                    Dim b2 As Byte = binaryReader.ReadByte()
-                    Dim num12 As Integer = (b And 24) >> 3
-                    Dim num13 As Integer = (b And 6) >> 1
-                    Dim num14 As Integer = (b2 And 240) >> 4
-                    Dim num5 As Integer = (b2 And 12) >> 2
-                    text3 = "MPEG " + StringType.FromInteger(num12) + "-" + StringType.FromInteger(num13)
-                Else
-                    num10 = num
-                    num11 = CInt((binaryReader.BaseStream.Length - CLng(num10)))
-                    text3 = "WAVE"
-                End If
+
+                    Dim num10 As Integer = 0
+                    Dim num11 As Integer = 0
+                    Dim text3 As String = String.Empty
+                    Dim flag As Boolean = False
+
+                    While binaryReader.BaseStream.Position + 8L <= binaryReader.BaseStream.Length
+                        text = frmMain.ReadFourCC(binaryReader)
+                        Dim num2 As Integer = binaryReader.ReadInt32()
+                        If num2 < 0 OrElse binaryReader.BaseStream.Position + CLng(num2) > binaryReader.BaseStream.Length Then
+                            Throw New InvalidDataException("The sound file contains an invalid RIFF chunk size.")
+                        End If
+
+                        Dim num15 As Long = binaryReader.BaseStream.Position + CLng(num2)
+                        Dim text2 As String = text
+                        If StringType.StrCmp(text2, "fmt ", False) = 0 Then
+                            If num2 >= 16 Then
+                                Dim num3 As Integer = CInt(binaryReader.ReadInt16())
+                                Dim num4 As Integer = CInt(binaryReader.ReadInt16())
+                                Dim num5 As Integer = binaryReader.ReadInt32()
+                                Dim num6 As Integer = binaryReader.ReadInt32()
+                                Dim num7 As Integer = CInt(binaryReader.ReadInt16())
+                                Dim num8 As Integer = CInt(binaryReader.ReadInt16())
+                            End If
+                        ElseIf StringType.StrCmp(text2, "data", False) = 0 Then
+                            If num2 = 0 Then
+                                num10 = CInt(binaryReader.BaseStream.Position)
+                                num11 = CInt((binaryReader.BaseStream.Length - CLng(num10)))
+                                If binaryReader.BaseStream.Position + 3L <= binaryReader.BaseStream.Length Then
+                                    binaryReader.ReadByte()
+                                    Dim b As Byte = binaryReader.ReadByte()
+                                    Dim b2 As Byte = binaryReader.ReadByte()
+                                    Dim num12 As Integer = (b And 24) >> 3
+                                    Dim num13 As Integer = (b And 6) >> 1
+                                    Dim num14 As Integer = (b2 And 240) >> 4
+                                    Dim num5 As Integer = (b2 And 12) >> 2
+                                    text3 = "MPEG " + StringType.FromInteger(num12) + "-" + StringType.FromInteger(num13)
+                                Else
+                                    text3 = "MPEG"
+                                End If
+                            Else
+                                num10 = num
+                                num11 = CInt((binaryReader.BaseStream.Length - CLng(num10)))
+                                text3 = "WAVE"
+                            End If
+                            flag = True
+                            Exit While
+                        End If
+
+                        binaryReader.BaseStream.Position = num15
+                        If (num2 And 1) = 1 AndAlso binaryReader.BaseStream.Position < binaryReader.BaseStream.Length Then
+                            binaryReader.BaseStream.Seek(1L, SeekOrigin.Current)
+                        End If
+                    End While
+
+                    If Not flag Then
+                        Throw New InvalidDataException("The sound file does not contain a data chunk.")
+                    End If
+
+                    Return New KTSoundInfo() With {.DataOffset = num10, .DataSize = num11, .Format = text3}
+                End Using
+            End Using
+        End Function
+
+        Private Shared Function ReadFourCC(ByVal binaryReader As BinaryReader) As String
+            Dim bytes As Byte() = binaryReader.ReadBytes(4)
+            If bytes.Length <> 4 Then
+                Throw New EndOfStreamException("Unexpected end of file while reading a RIFF chunk identifier.")
             End If
-            stream.Close()
-            Return New KTSoundInfo() With {.DataOffset = num10, .DataSize = num11, .Format = text3}
+            Return Encoding.ASCII.GetString(bytes)
         End Function
 
         ' Token: 0x06000761 RID: 1889 RVA: 0x00258A9C File Offset: 0x00257A9C
