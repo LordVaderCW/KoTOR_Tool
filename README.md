@@ -9,11 +9,17 @@ This repository contains the restored, repaired, and actively modernised source-
 ## Current Release
 
 >**Version:** v1.0.3.4
+>
 >**Patch date:** 10.05.26
+>
 >**Project status:** Active restoration / modernisation
+>
 >**Target IDE:** Visual Studio 2022
+>
 >**Target framework:** .NET Framework 4.6.2 or later
+>
 >**Platform:** x86
+>
 >**Language:** VB.NET WinForms
 
 ---
