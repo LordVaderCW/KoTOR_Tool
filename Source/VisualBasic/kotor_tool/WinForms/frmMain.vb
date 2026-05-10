@@ -3706,7 +3706,7 @@ Namespace kotor_tool
                     frmPathManager.tbModuleExportPath.Text = frmMain.gRootPath + "working\Exported Models"
                     frmPathManager.StartPosition = FormStartPosition.CenterScreen
                     frmPathManager.TabControl1.SelectedIndex = 2
-                    frmPathManager.tbModuleExportPath.BackColor = Color.MistyRose
+                    frmPathManager.tbModuleExportPath.BackColor = KotorThemeManager.LoadTheme("DarkSaber").ValidationErrorBack
                     frmPathManager.ShowDialog(Me)
                     frmMain.CurrentSettings = UserSettings.GetSettings()
                 End If

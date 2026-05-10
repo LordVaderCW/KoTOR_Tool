@@ -127,6 +127,7 @@
     <Compile Include="Classes\BIFFSystem\BIFFVarRsrcEntry.vb" />
     <Compile Include="Classes\BIFFSystem\BIFFVarRsrcEntryInfo.vb" />
     <Compile Include="Classes\ThemeSystem\KotorTheme.vb" />
+    <Compile Include="Classes\ThemeSystem\KotorThemeApplier.vb" />
     <Compile Include="Classes\NCSSystem\clsNCS.vb" />
     <Compile Include="Classes\PluginSystem\clsDownloadPlugin.vb" />
     <Compile Include="Classes\PluginSystem\clsInstallPlugin.vb" />

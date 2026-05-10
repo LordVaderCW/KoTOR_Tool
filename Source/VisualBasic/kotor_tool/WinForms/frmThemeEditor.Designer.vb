@@ -3,7 +3,7 @@ Option Explicit On
 
 Namespace kotor_tool
 
-    <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+    <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Public Class frmThemeEditor
         Inherits Global.System.Windows.Forms.Form
 
@@ -95,7 +95,7 @@ Namespace kotor_tool
         Friend WithEvents btnPreviewBrowse As Global.System.Windows.Forms.Button
         Friend WithEvents lblPreviewFooterSeparator As Global.System.Windows.Forms.Label
 
-        <Global.System.Diagnostics.DebuggerNonUserCode()> _
+        <Global.System.Diagnostics.DebuggerNonUserCode()>
         Protected Overrides Sub Dispose(ByVal disposing As Boolean)
             Try
                 If disposing AndAlso components IsNot Nothing Then
@@ -106,7 +106,7 @@ Namespace kotor_tool
             End Try
         End Sub
 
-        <Global.System.Diagnostics.DebuggerStepThrough()> _
+        <Global.System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlBody = New System.Windows.Forms.Panel()
@@ -178,6 +178,7 @@ Namespace kotor_tool
             Me.lblFooterSeparator = New System.Windows.Forms.Label()
             Me.pnlRoot.SuspendLayout()
             Me.pnlBody.SuspendLayout()
+            CType(Me.splitMain, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.splitMain.Panel1.SuspendLayout()
             Me.splitMain.Panel2.SuspendLayout()
             Me.splitMain.SuspendLayout()
@@ -248,8 +249,8 @@ Namespace kotor_tool
             'grpColors
             '
             Me.grpColors.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                        Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.grpColors.Controls.Add(Me.lbColors)
             Me.grpColors.Controls.Add(Me.pnlColorEditor)
             Me.grpColors.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -265,8 +266,8 @@ Namespace kotor_tool
             'lbColors
             '
             Me.lbColors.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                        Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.lbColors.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
             Me.lbColors.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.lbColors.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -280,7 +281,7 @@ Namespace kotor_tool
             'pnlColorEditor
             '
             Me.pnlColorEditor.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.pnlColorEditor.Controls.Add(Me.btnPickColor)
             Me.pnlColorEditor.Controls.Add(Me.nudBlue)
             Me.pnlColorEditor.Controls.Add(Me.nudGreen)
@@ -385,7 +386,7 @@ Namespace kotor_tool
             'grpFonts
             '
             Me.grpFonts.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.grpFonts.Controls.Add(Me.chkbStrikeout)
             Me.grpFonts.Controls.Add(Me.chkbUnderline)
             Me.grpFonts.Controls.Add(Me.chkbItalic)
@@ -425,7 +426,7 @@ Namespace kotor_tool
             Me.chkbUnderline.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.chkbUnderline.Location = New System.Drawing.Point(197, 111)
             Me.chkbUnderline.Name = "chkbUnderline"
-            Me.chkbUnderline.Size = New System.Drawing.Size(33, 17)
+            Me.chkbUnderline.Size = New System.Drawing.Size(34, 17)
             Me.chkbUnderline.TabIndex = 8
             Me.chkbUnderline.Text = "U"
             Me.chkbUnderline.UseVisualStyleBackColor = True
@@ -437,7 +438,7 @@ Namespace kotor_tool
             Me.chkbItalic.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.chkbItalic.Location = New System.Drawing.Point(134, 111)
             Me.chkbItalic.Name = "chkbItalic"
-            Me.chkbItalic.Size = New System.Drawing.Size(28, 17)
+            Me.chkbItalic.Size = New System.Drawing.Size(29, 17)
             Me.chkbItalic.TabIndex = 7
             Me.chkbItalic.Text = "I"
             Me.chkbItalic.UseVisualStyleBackColor = True
@@ -471,7 +472,7 @@ Namespace kotor_tool
             'cmbFontName
             '
             Me.cmbFontName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.cmbFontName.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
             Me.cmbFontName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
             Me.cmbFontName.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -486,7 +487,7 @@ Namespace kotor_tool
             'cmbFontRole
             '
             Me.cmbFontRole.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.cmbFontRole.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
             Me.cmbFontRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
             Me.cmbFontRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -535,7 +536,7 @@ Namespace kotor_tool
             'grpTheme
             '
             Me.grpTheme.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.grpTheme.Controls.Add(Me.tbDescription)
             Me.grpTheme.Controls.Add(Me.tbVersion)
             Me.grpTheme.Controls.Add(Me.tbAuthor)
@@ -557,7 +558,7 @@ Namespace kotor_tool
             'tbDescription
             '
             Me.tbDescription.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tbDescription.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
             Me.tbDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbDescription.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -570,7 +571,7 @@ Namespace kotor_tool
             'tbVersion
             '
             Me.tbVersion.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tbVersion.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
             Me.tbVersion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbVersion.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -583,7 +584,7 @@ Namespace kotor_tool
             'tbAuthor
             '
             Me.tbAuthor.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tbAuthor.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
             Me.tbAuthor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbAuthor.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -596,7 +597,7 @@ Namespace kotor_tool
             'tbName
             '
             Me.tbName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tbName.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
             Me.tbName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbName.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -682,8 +683,8 @@ Namespace kotor_tool
             '
             Me.tabPreview.AccentColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
             Me.tabPreview.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                        Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tabPreview.ControlBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tabPreview.Controls.Add(Me.tabPreviewOne)
             Me.tabPreview.Controls.Add(Me.tabPreviewTwo)
@@ -734,7 +735,7 @@ Namespace kotor_tool
             'grpPreview
             '
             Me.grpPreview.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.grpPreview.Controls.Add(Me.btnPreviewBrowse)
             Me.grpPreview.Controls.Add(Me.tbPreviewPath)
             Me.grpPreview.Controls.Add(Me.rbPreviewExternal)
@@ -767,7 +768,7 @@ Namespace kotor_tool
             'tbPreviewPath
             '
             Me.tbPreviewPath.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tbPreviewPath.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
             Me.tbPreviewPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbPreviewPath.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -818,6 +819,7 @@ Namespace kotor_tool
             'tabPreviewTwo
             '
             Me.tabPreviewTwo.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.tabPreviewTwo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabPreviewTwo.Location = New System.Drawing.Point(4, 35)
             Me.tabPreviewTwo.Name = "tabPreviewTwo"
             Me.tabPreviewTwo.Padding = New System.Windows.Forms.Padding(12)
@@ -828,6 +830,7 @@ Namespace kotor_tool
             'tabPreviewThree
             '
             Me.tabPreviewThree.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.tabPreviewThree.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabPreviewThree.Location = New System.Drawing.Point(4, 35)
             Me.tabPreviewThree.Name = "tabPreviewThree"
             Me.tabPreviewThree.Padding = New System.Windows.Forms.Padding(12)
@@ -838,22 +841,21 @@ Namespace kotor_tool
             'txtPreview
             '
             Me.txtPreview.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.txtPreview.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.txtPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.txtPreview.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.txtPreview.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.txtPreview.Location = New System.Drawing.Point(19, 98)
-            Me.txtPreview.Multiline = False
             Me.txtPreview.Name = "txtPreview"
-            Me.txtPreview.Size = New System.Drawing.Size(514, 22)
+            Me.txtPreview.Size = New System.Drawing.Size(514, 20)
             Me.txtPreview.TabIndex = 2
             Me.txtPreview.Text = "Input preview"
             '
             'lblPreviewMuted
             '
             Me.lblPreviewMuted.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.lblPreviewMuted.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblPreviewMuted.ForeColor = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(186, Byte), Integer), CType(CType(198, Byte), Integer))
             Me.lblPreviewMuted.Location = New System.Drawing.Point(16, 64)
@@ -866,7 +868,7 @@ Namespace kotor_tool
             'lblPreviewBody
             '
             Me.lblPreviewBody.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.lblPreviewBody.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblPreviewBody.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.lblPreviewBody.Location = New System.Drawing.Point(16, 16)
@@ -897,7 +899,7 @@ Namespace kotor_tool
             Me.btnPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnPreview.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.btnPreview.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnPreview.Location = New System.Drawing.Point(14, 14)
+            Me.btnPreview.Location = New System.Drawing.Point(213, 20)
             Me.btnPreview.Name = "btnPreview"
             Me.btnPreview.Size = New System.Drawing.Size(120, 26)
             Me.btnPreview.TabIndex = 0
@@ -929,7 +931,7 @@ Namespace kotor_tool
             'lblPreviewSubtitle
             '
             Me.lblPreviewSubtitle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.lblPreviewSubtitle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblPreviewSubtitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(186, Byte), Integer), CType(CType(198, Byte), Integer))
             Me.lblPreviewSubtitle.Location = New System.Drawing.Point(17, 52)
@@ -967,16 +969,16 @@ Namespace kotor_tool
             Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
             Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
             Me.pnlHeader.Name = "pnlHeader"
-            Me.pnlHeader.Size = New System.Drawing.Size(984, 70)
+            Me.pnlHeader.Size = New System.Drawing.Size(984, 86)
             Me.pnlHeader.TabIndex = 0
             '
             'lblSubtitle
             '
             Me.lblSubtitle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.lblSubtitle.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(186, Byte), Integer), CType(CType(198, Byte), Integer))
-            Me.lblSubtitle.Location = New System.Drawing.Point(24, 43)
+            Me.lblSubtitle.Location = New System.Drawing.Point(24, 54)
             Me.lblSubtitle.Name = "lblSubtitle"
             Me.lblSubtitle.Size = New System.Drawing.Size(936, 18)
             Me.lblSubtitle.TabIndex = 1
@@ -985,12 +987,12 @@ Namespace kotor_tool
             'lblTitle
             '
             Me.lblTitle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.lblTitle.Location = New System.Drawing.Point(24, 15)
+            Me.lblTitle.Location = New System.Drawing.Point(24, 17)
             Me.lblTitle.Name = "lblTitle"
-            Me.lblTitle.Size = New System.Drawing.Size(936, 25)
+            Me.lblTitle.Size = New System.Drawing.Size(936, 31)
             Me.lblTitle.TabIndex = 0
             Me.lblTitle.Text = "Theme Editor"
             '
@@ -998,7 +1000,7 @@ Namespace kotor_tool
             '
             Me.lblHeaderSeparator.BackColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
             Me.lblHeaderSeparator.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.lblHeaderSeparator.Location = New System.Drawing.Point(0, 68)
+            Me.lblHeaderSeparator.Location = New System.Drawing.Point(0, 84)
             Me.lblHeaderSeparator.Name = "lblHeaderSeparator"
             Me.lblHeaderSeparator.Size = New System.Drawing.Size(984, 2)
             Me.lblHeaderSeparator.TabIndex = 2
@@ -1138,6 +1140,7 @@ Namespace kotor_tool
             Me.pnlBody.ResumeLayout(False)
             Me.splitMain.Panel1.ResumeLayout(False)
             Me.splitMain.Panel2.ResumeLayout(False)
+            CType(Me.splitMain, System.ComponentModel.ISupportInitialize).EndInit()
             Me.splitMain.ResumeLayout(False)
             Me.grpColors.ResumeLayout(False)
             Me.pnlColorEditor.ResumeLayout(False)
@@ -1161,28 +1164,6 @@ Namespace kotor_tool
             Me.pnlHeader.ResumeLayout(False)
             Me.pnlFooter.ResumeLayout(False)
             Me.ResumeLayout(False)
-
-            AddHandler Me.cmbThemes.SelectedIndexChanged, AddressOf Me.cmbThemes_SelectedIndexChanged
-            AddHandler Me.btnReload.Click, AddressOf Me.btnReload_Click
-            AddHandler Me.btnSave.Click, AddressOf Me.btnSave_Click
-            AddHandler Me.btnSaveAs.Click, AddressOf Me.btnSaveAs_Click
-            AddHandler Me.btnReset.Click, AddressOf Me.btnReset_Click
-            AddHandler Me.tbName.TextChanged, AddressOf Me.MetadataChanged
-            AddHandler Me.tbAuthor.TextChanged, AddressOf Me.MetadataChanged
-            AddHandler Me.tbVersion.TextChanged, AddressOf Me.MetadataChanged
-            AddHandler Me.tbDescription.TextChanged, AddressOf Me.MetadataChanged
-            AddHandler Me.lbColors.SelectedIndexChanged, AddressOf Me.lbColors_SelectedIndexChanged
-            AddHandler Me.nudRed.ValueChanged, AddressOf Me.ColorValueChanged
-            AddHandler Me.nudGreen.ValueChanged, AddressOf Me.ColorValueChanged
-            AddHandler Me.nudBlue.ValueChanged, AddressOf Me.ColorValueChanged
-            AddHandler Me.btnPickColor.Click, AddressOf Me.btnPickColor_Click
-            AddHandler Me.cmbFontRole.SelectedIndexChanged, AddressOf Me.cmbFontRole_SelectedIndexChanged
-            AddHandler Me.cmbFontName.SelectedIndexChanged, AddressOf Me.FontValueChanged
-            AddHandler Me.nudFontSize.ValueChanged, AddressOf Me.FontValueChanged
-            AddHandler Me.chkbBold.CheckedChanged, AddressOf Me.FontValueChanged
-            AddHandler Me.chkbItalic.CheckedChanged, AddressOf Me.FontValueChanged
-            AddHandler Me.chkbUnderline.CheckedChanged, AddressOf Me.FontValueChanged
-            AddHandler Me.chkbStrikeout.CheckedChanged, AddressOf Me.FontValueChanged
 
         End Sub
 

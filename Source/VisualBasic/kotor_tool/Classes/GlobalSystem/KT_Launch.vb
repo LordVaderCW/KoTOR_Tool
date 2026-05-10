@@ -11,6 +11,7 @@ Namespace kotor_tool
         Public Sub Main(ByVal CmdArgs As String())
             Application.EnableVisualStyles()
             Application.SetCompatibleTextRenderingDefault(False)
+            KotorThemeApplier.InstallGlobalThemeHooks()
 
             If CmdArgs IsNot Nothing AndAlso CmdArgs.Length > 0 Then
                 Application.Run(New frmMain(CmdArgs))

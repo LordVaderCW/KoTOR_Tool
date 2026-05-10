@@ -85,8 +85,45 @@ Namespace kotor_tool
             lbColors.Items.Add(New ThemeColorEntry("InputBack", "Input Back"))
             lbColors.Items.Add(New ThemeColorEntry("InputText", "Input Text"))
             lbColors.Items.Add(New ThemeColorEntry("InputBorder", "Input Border"))
+            lbColors.Items.Add(New ThemeColorEntry("InputBackAlt", "Input Back Alt"))
             lbColors.Items.Add(New ThemeColorEntry("DisabledText", "Disabled Text"))
             lbColors.Items.Add(New ThemeColorEntry("LogoBack", "Logo Back"))
+            lbColors.Items.Add(New ThemeColorEntry("ValidationErrorBack", "Validation Error Back"))
+            lbColors.Items.Add(New ThemeColorEntry("DataGridBack", "Data Grid Back"))
+            lbColors.Items.Add(New ThemeColorEntry("DataGridBackground", "Data Grid Background"))
+            lbColors.Items.Add(New ThemeColorEntry("DataGridAlternatingBack", "Data Grid Alternating Back"))
+            lbColors.Items.Add(New ThemeColorEntry("DataGridGridLine", "Data Grid Line"))
+            lbColors.Items.Add(New ThemeColorEntry("DataGridHeaderBack", "Data Grid Header Back"))
+            lbColors.Items.Add(New ThemeColorEntry("DataGridHeaderText", "Data Grid Header Text"))
+            lbColors.Items.Add(New ThemeColorEntry("DataGridSelectionBack", "Data Grid Selection Back"))
+            lbColors.Items.Add(New ThemeColorEntry("DataGridSelectionText", "Data Grid Selection Text"))
+            lbColors.Items.Add(New ThemeColorEntry("DataGridLink", "Data Grid Link"))
+            lbColors.Items.Add(New ThemeColorEntry("ByteViewerBack", "Byte Viewer Back"))
+            lbColors.Items.Add(New ThemeColorEntry("ByteViewerAltRow", "Byte Viewer Alt Row"))
+            lbColors.Items.Add(New ThemeColorEntry("ByteViewerSelectionBack", "Byte Viewer Selection Back"))
+            lbColors.Items.Add(New ThemeColorEntry("ByteViewerCurrentBack", "Byte Viewer Current Back"))
+            lbColors.Items.Add(New ThemeColorEntry("ByteViewerNullBack", "Byte Viewer Null Back"))
+            lbColors.Items.Add(New ThemeColorEntry("ByteViewerControlBack", "Byte Viewer Control Back"))
+            lbColors.Items.Add(New ThemeColorEntry("ByteViewerHighAsciiBack", "Byte Viewer High ASCII Back"))
+            lbColors.Items.Add(New ThemeColorEntry("ByteViewerNonPrintableBack", "Byte Viewer Non Printable Back"))
+            lbColors.Items.Add(New ThemeColorEntry("PictureBorder", "Picture Border"))
+            lbColors.Items.Add(New ThemeColorEntry("PictureBorderSecondary", "Picture Border Secondary"))
+            lbColors.Items.Add(New ThemeColorEntry("PictureOuterShadow", "Picture Outer Shadow"))
+            lbColors.Items.Add(New ThemeColorEntry("PictureInnerHighlight", "Picture Inner Highlight"))
+            lbColors.Items.Add(New ThemeColorEntry("ProgressBorderDark", "Progress Border Dark"))
+            lbColors.Items.Add(New ThemeColorEntry("ProgressBorderAccent", "Progress Border Accent"))
+            lbColors.Items.Add(New ThemeColorEntry("ProgressTrackTop", "Progress Track Top"))
+            lbColors.Items.Add(New ThemeColorEntry("ProgressTrackBottom", "Progress Track Bottom"))
+            lbColors.Items.Add(New ThemeColorEntry("ProgressFillTop", "Progress Fill Top"))
+            lbColors.Items.Add(New ThemeColorEntry("ProgressFillMiddle", "Progress Fill Middle"))
+            lbColors.Items.Add(New ThemeColorEntry("ProgressFillBottom", "Progress Fill Bottom"))
+            lbColors.Items.Add(New ThemeColorEntry("ProgressShineTop", "Progress Shine Top"))
+            lbColors.Items.Add(New ThemeColorEntry("ProgressShineBottom", "Progress Shine Bottom"))
+            lbColors.Items.Add(New ThemeColorEntry("ProgressEdgeLight", "Progress Edge Light"))
+            lbColors.Items.Add(New ThemeColorEntry("ProgressBottomGlow", "Progress Bottom Glow"))
+            lbColors.Items.Add(New ThemeColorEntry("ProgressInsetHighlight", "Progress Inset Highlight"))
+            lbColors.Items.Add(New ThemeColorEntry("ProgressTrackShadow", "Progress Track Shadow"))
+            lbColors.Items.Add(New ThemeColorEntry("ProgressSweep", "Progress Sweep"))
             lbColors.Items.Add(New ThemeColorEntry("TabControlBack", "Tab Control Back"))
             lbColors.Items.Add(New ThemeColorEntry("TabStripBack", "Tab Strip Back"))
             lbColors.Items.Add(New ThemeColorEntry("TabPageBack", "Tab Page Back"))
@@ -111,7 +148,7 @@ Namespace kotor_tool
             ApplyPreview()
         End Sub
 
-        Private Sub cmbThemes_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmbThemes_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbThemes.SelectedIndexChanged
             If _isLoading Then
                 Return
             End If
@@ -121,27 +158,28 @@ Namespace kotor_tool
             End If
         End Sub
 
-        Private Sub btnReload_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnReload_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnReload.Click
             If cmbThemes.SelectedItem IsNot Nothing Then
                 LoadTheme(cmbThemes.SelectedItem.ToString())
             End If
         End Sub
 
-        Private Sub btnReset_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnReset_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnReset.Click
             _theme = KotorTheme.CreateDefault()
             PopulateThemeControls()
         End Sub
 
-        Private Sub btnSave_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnSave_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSave.Click
             UpdateThemeFromControls()
             Dim savedThemeName As String = _theme.Name
             KotorThemeManager.SaveTheme(_theme)
+            KotorThemeApplier.ReloadAndApplyOpenForms()
             MessageBox.Show(Me, "Theme saved.", "Theme Editor", MessageBoxButtons.OK, MessageBoxIcon.Information)
             LoadThemeList()
             SelectThemeName(savedThemeName)
         End Sub
 
-        Private Sub btnSaveAs_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnSaveAs_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSaveAs.Click
             UpdateThemeFromControls()
 
             Dim saveDialog As SaveFileDialog = New SaveFileDialog()
@@ -151,6 +189,7 @@ Namespace kotor_tool
 
             If saveDialog.ShowDialog(Me) = DialogResult.OK Then
                 KotorThemeManager.SaveTheme(_theme, saveDialog.FileName)
+                KotorThemeApplier.ReloadAndApplyOpenForms()
                 MessageBox.Show(Me, "Theme saved.", "Theme Editor", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 LoadThemeList()
                 SelectThemeName(Path.GetFileNameWithoutExtension(saveDialog.FileName))
@@ -168,7 +207,7 @@ Namespace kotor_tool
             Next
         End Sub
 
-        Private Sub MetadataChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub MetadataChanged(ByVal sender As Object, ByVal e As EventArgs) Handles tbVersion.TextChanged, tbName.TextChanged, tbDescription.TextChanged, tbAuthor.TextChanged
             If _isLoading Then
                 Return
             End If
@@ -177,7 +216,7 @@ Namespace kotor_tool
             ApplyPreview()
         End Sub
 
-        Private Sub lbColors_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub lbColors_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles lbColors.SelectedIndexChanged
             If lbColors.SelectedItem Is Nothing OrElse _theme Is Nothing Then
                 Return
             End If
@@ -191,18 +230,19 @@ Namespace kotor_tool
             _isLoading = False
         End Sub
 
-        Private Sub ColorValueChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub ColorValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles nudRed.ValueChanged, nudGreen.ValueChanged, nudBlue.ValueChanged
             If _isLoading OrElse lbColors.SelectedItem Is Nothing Then
                 Return
             End If
 
-            Dim colorValue As Color = Color.FromArgb(CInt(nudRed.Value), CInt(nudGreen.Value), CInt(nudBlue.Value))
+            Dim currentColor As Color = GetThemeColor(CType(lbColors.SelectedItem, ThemeColorEntry).Key)
+            Dim colorValue As Color = Color.FromArgb(currentColor.A, CInt(nudRed.Value), CInt(nudGreen.Value), CInt(nudBlue.Value))
             SetThemeColor(CType(lbColors.SelectedItem, ThemeColorEntry).Key, colorValue)
             pnlSwatch.BackColor = colorValue
             ApplyPreview()
         End Sub
 
-        Private Sub btnPickColor_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub btnPickColor_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnPickColor.Click
             If lbColors.SelectedItem Is Nothing Then
                 Return
             End If
@@ -217,15 +257,17 @@ Namespace kotor_tool
                 nudGreen.Value = dialog.Color.G
                 nudBlue.Value = dialog.Color.B
                 _isLoading = False
-                SetThemeColor(CType(lbColors.SelectedItem, ThemeColorEntry).Key, dialog.Color)
-                pnlSwatch.BackColor = dialog.Color
+                Dim currentColor As Color = GetThemeColor(CType(lbColors.SelectedItem, ThemeColorEntry).Key)
+                Dim pickedColor As Color = Color.FromArgb(currentColor.A, dialog.Color.R, dialog.Color.G, dialog.Color.B)
+                SetThemeColor(CType(lbColors.SelectedItem, ThemeColorEntry).Key, pickedColor)
+                pnlSwatch.BackColor = pickedColor
                 ApplyPreview()
             End If
 
             dialog.Dispose()
         End Sub
 
-        Private Sub cmbFontRole_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub cmbFontRole_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbFontRole.SelectedIndexChanged
             LoadSelectedFontRole()
         End Sub
 
@@ -258,7 +300,7 @@ Namespace kotor_tool
             _isLoading = False
         End Sub
 
-        Private Sub FontValueChanged(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub FontValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles nudFontSize.ValueChanged, cmbFontName.SelectedIndexChanged, chkbUnderline.CheckedChanged, chkbStrikeout.CheckedChanged, chkbItalic.CheckedChanged, chkbBold.CheckedChanged
             If _isLoading OrElse _theme Is Nothing OrElse cmbFontRole.SelectedItem Is Nothing OrElse cmbFontName.SelectedItem Is Nothing Then
                 Return
             End If
@@ -380,8 +422,45 @@ Namespace kotor_tool
                 Case "InputBack" : Return _theme.InputBack
                 Case "InputText" : Return _theme.InputText
                 Case "InputBorder" : Return _theme.InputBorder
+                Case "InputBackAlt" : Return _theme.InputBackAlt
                 Case "DisabledText" : Return _theme.DisabledText
                 Case "LogoBack" : Return _theme.LogoBack
+                Case "ValidationErrorBack" : Return _theme.ValidationErrorBack
+                Case "DataGridBack" : Return _theme.DataGridBack
+                Case "DataGridBackground" : Return _theme.DataGridBackground
+                Case "DataGridAlternatingBack" : Return _theme.DataGridAlternatingBack
+                Case "DataGridGridLine" : Return _theme.DataGridGridLine
+                Case "DataGridHeaderBack" : Return _theme.DataGridHeaderBack
+                Case "DataGridHeaderText" : Return _theme.DataGridHeaderText
+                Case "DataGridSelectionBack" : Return _theme.DataGridSelectionBack
+                Case "DataGridSelectionText" : Return _theme.DataGridSelectionText
+                Case "DataGridLink" : Return _theme.DataGridLink
+                Case "ByteViewerBack" : Return _theme.ByteViewerBack
+                Case "ByteViewerAltRow" : Return _theme.ByteViewerAltRow
+                Case "ByteViewerSelectionBack" : Return _theme.ByteViewerSelectionBack
+                Case "ByteViewerCurrentBack" : Return _theme.ByteViewerCurrentBack
+                Case "ByteViewerNullBack" : Return _theme.ByteViewerNullBack
+                Case "ByteViewerControlBack" : Return _theme.ByteViewerControlBack
+                Case "ByteViewerHighAsciiBack" : Return _theme.ByteViewerHighAsciiBack
+                Case "ByteViewerNonPrintableBack" : Return _theme.ByteViewerNonPrintableBack
+                Case "PictureBorder" : Return _theme.PictureBorder
+                Case "PictureBorderSecondary" : Return _theme.PictureBorderSecondary
+                Case "PictureOuterShadow" : Return _theme.PictureOuterShadow
+                Case "PictureInnerHighlight" : Return _theme.PictureInnerHighlight
+                Case "ProgressBorderDark" : Return _theme.ProgressBorderDark
+                Case "ProgressBorderAccent" : Return _theme.ProgressBorderAccent
+                Case "ProgressTrackTop" : Return _theme.ProgressTrackTop
+                Case "ProgressTrackBottom" : Return _theme.ProgressTrackBottom
+                Case "ProgressFillTop" : Return _theme.ProgressFillTop
+                Case "ProgressFillMiddle" : Return _theme.ProgressFillMiddle
+                Case "ProgressFillBottom" : Return _theme.ProgressFillBottom
+                Case "ProgressShineTop" : Return _theme.ProgressShineTop
+                Case "ProgressShineBottom" : Return _theme.ProgressShineBottom
+                Case "ProgressEdgeLight" : Return _theme.ProgressEdgeLight
+                Case "ProgressBottomGlow" : Return _theme.ProgressBottomGlow
+                Case "ProgressInsetHighlight" : Return _theme.ProgressInsetHighlight
+                Case "ProgressTrackShadow" : Return _theme.ProgressTrackShadow
+                Case "ProgressSweep" : Return _theme.ProgressSweep
                 Case "TabControlBack" : Return _theme.TabControlBack
                 Case "TabStripBack" : Return _theme.TabStripBack
                 Case "TabPageBack" : Return _theme.TabPageBack
@@ -426,8 +505,45 @@ Namespace kotor_tool
                 Case "InputBack" : _theme.InputBack = value
                 Case "InputText" : _theme.InputText = value
                 Case "InputBorder" : _theme.InputBorder = value
+                Case "InputBackAlt" : _theme.InputBackAlt = value
                 Case "DisabledText" : _theme.DisabledText = value
                 Case "LogoBack" : _theme.LogoBack = value
+                Case "ValidationErrorBack" : _theme.ValidationErrorBack = value
+                Case "DataGridBack" : _theme.DataGridBack = value
+                Case "DataGridBackground" : _theme.DataGridBackground = value
+                Case "DataGridAlternatingBack" : _theme.DataGridAlternatingBack = value
+                Case "DataGridGridLine" : _theme.DataGridGridLine = value
+                Case "DataGridHeaderBack" : _theme.DataGridHeaderBack = value
+                Case "DataGridHeaderText" : _theme.DataGridHeaderText = value
+                Case "DataGridSelectionBack" : _theme.DataGridSelectionBack = value
+                Case "DataGridSelectionText" : _theme.DataGridSelectionText = value
+                Case "DataGridLink" : _theme.DataGridLink = value
+                Case "ByteViewerBack" : _theme.ByteViewerBack = value
+                Case "ByteViewerAltRow" : _theme.ByteViewerAltRow = value
+                Case "ByteViewerSelectionBack" : _theme.ByteViewerSelectionBack = value
+                Case "ByteViewerCurrentBack" : _theme.ByteViewerCurrentBack = value
+                Case "ByteViewerNullBack" : _theme.ByteViewerNullBack = value
+                Case "ByteViewerControlBack" : _theme.ByteViewerControlBack = value
+                Case "ByteViewerHighAsciiBack" : _theme.ByteViewerHighAsciiBack = value
+                Case "ByteViewerNonPrintableBack" : _theme.ByteViewerNonPrintableBack = value
+                Case "PictureBorder" : _theme.PictureBorder = value
+                Case "PictureBorderSecondary" : _theme.PictureBorderSecondary = value
+                Case "PictureOuterShadow" : _theme.PictureOuterShadow = value
+                Case "PictureInnerHighlight" : _theme.PictureInnerHighlight = value
+                Case "ProgressBorderDark" : _theme.ProgressBorderDark = value
+                Case "ProgressBorderAccent" : _theme.ProgressBorderAccent = value
+                Case "ProgressTrackTop" : _theme.ProgressTrackTop = value
+                Case "ProgressTrackBottom" : _theme.ProgressTrackBottom = value
+                Case "ProgressFillTop" : _theme.ProgressFillTop = value
+                Case "ProgressFillMiddle" : _theme.ProgressFillMiddle = value
+                Case "ProgressFillBottom" : _theme.ProgressFillBottom = value
+                Case "ProgressShineTop" : _theme.ProgressShineTop = value
+                Case "ProgressShineBottom" : _theme.ProgressShineBottom = value
+                Case "ProgressEdgeLight" : _theme.ProgressEdgeLight = value
+                Case "ProgressBottomGlow" : _theme.ProgressBottomGlow = value
+                Case "ProgressInsetHighlight" : _theme.ProgressInsetHighlight = value
+                Case "ProgressTrackShadow" : _theme.ProgressTrackShadow = value
+                Case "ProgressSweep" : _theme.ProgressSweep = value
                 Case "TabControlBack" : _theme.TabControlBack = value
                 Case "TabStripBack" : _theme.TabStripBack = value
                 Case "TabPageBack" : _theme.TabPageBack = value
