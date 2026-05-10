@@ -159,10 +159,12 @@ Namespace kotor_tool
             Me.miCheckForUpdates = New System.Windows.Forms.MenuItem()
             Me.miRegisterSoftware = New System.Windows.Forms.MenuItem()
             Me.miAbout = New System.Windows.Forms.MenuItem()
-            Me.tvCMenu = New System.Windows.Forms.ContextMenu()
-            Me.cmiExtractForModuleEditing = New System.Windows.Forms.MenuItem()
             Me.miPlugins = New System.Windows.Forms.MenuItem()
             Me.miOpenPluginManager = New System.Windows.Forms.MenuItem()
+            Me.tvCMenu = New System.Windows.Forms.ContextMenu()
+            Me.cmiExtractForModuleEditing = New System.Windows.Forms.MenuItem()
+            Me.miCustomise = New System.Windows.Forms.MenuItem()
+            Me.miThemeEditor = New System.Windows.Forms.MenuItem()
             Me.pnlRoot.SuspendLayout()
             Me.pnlMainArea.SuspendLayout()
             Me.pnlActionPanel.SuspendLayout()
@@ -404,7 +406,7 @@ Namespace kotor_tool
             '
             'MainMenu1
             '
-            Me.MainMenu1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miFile, Me.miTools, Me.miHelp, Me.miPlugins})
+            Me.MainMenu1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miFile, Me.miTools, Me.miPlugins, Me.miHelp, Me.miCustomise})
             '
             'miFile
             '
@@ -593,7 +595,7 @@ Namespace kotor_tool
             '
             'miHelp
             '
-            Me.miHelp.Index = 2
+            Me.miHelp.Index = 3
             Me.miHelp.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miBasicHelp, Me.miCheckForUpdates, Me.miRegisterSoftware, Me.miAbout})
             Me.miHelp.Text = "&Help"
             '
@@ -618,6 +620,17 @@ Namespace kotor_tool
             Me.miAbout.Index = 3
             Me.miAbout.Text = "&About..."
             '
+            'miPlugins
+            '
+            Me.miPlugins.Index = 2
+            Me.miPlugins.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miOpenPluginManager})
+            Me.miPlugins.Text = "&Plugins"
+            '
+            'miOpenPluginManager
+            '
+            Me.miOpenPluginManager.Index = 0
+            Me.miOpenPluginManager.Text = "Open &Manager"
+            '
             'tvCMenu
             '
             Me.tvCMenu.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.cmiExtractForModuleEditing})
@@ -627,16 +640,16 @@ Namespace kotor_tool
             Me.cmiExtractForModuleEditing.Index = 0
             Me.cmiExtractForModuleEditing.Text = "Extract for Module editing..."
             '
-            'miPlugins
+            'miCustomise
             '
-            Me.miPlugins.Index = 3
-            Me.miPlugins.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miOpenPluginManager})
-            Me.miPlugins.Text = "&Plugins"
+            Me.miCustomise.Index = 4
+            Me.miCustomise.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miThemeEditor})
+            Me.miCustomise.Text = "&Customize"
             '
-            'miOpenPluginManager
+            'miThemeEditor
             '
-            Me.miOpenPluginManager.Index = 0
-            Me.miOpenPluginManager.Text = "Open &Manager"
+            Me.miThemeEditor.Index = 0
+            Me.miThemeEditor.Text = "Theme Editor"
             '
             'frmMain
             '
@@ -660,6 +673,8 @@ Namespace kotor_tool
         Friend WithEvents miOpenByteView As System.Windows.Forms.MenuItem
         Friend WithEvents miPlugins As System.Windows.Forms.MenuItem
         Friend WithEvents miOpenPluginManager As System.Windows.Forms.MenuItem
+        Friend WithEvents miCustomise As System.Windows.Forms.MenuItem
+        Friend WithEvents miThemeEditor As System.Windows.Forms.MenuItem
     End Class
 
 End Namespace

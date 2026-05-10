@@ -5133,5 +5133,12 @@ IL_12BE:
             frmPluginSystem.ShowDialog(Me)
             frmPluginSystem.Dispose()
         End Sub
+
+        Private Sub miThemeEditor_Click(sender As Object, e As EventArgs) Handles miThemeEditor.Click
+            Dim frmThemeEditor As frmThemeEditor = New frmThemeEditor()
+            frmThemeEditor.StartPosition = FormStartPosition.CenterParent
+            frmThemeEditor.ShowDialog(Me)
+            frmThemeEditor.Dispose()
+        End Sub
     End Class
 End Namespace
