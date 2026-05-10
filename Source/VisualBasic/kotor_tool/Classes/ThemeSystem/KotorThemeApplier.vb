@@ -46,6 +46,12 @@ Namespace kotor_tool
                 ReloadTheme()
             End If
 
+            If TypeOf form Is frmProgressMeter Then
+                CType(form, frmProgressMeter).ApplyActiveTheme()
+                _appliedForms(form) = _themeStamp
+                Return
+            End If
+
             ApplyControl(form, _theme)
             _appliedForms(form) = _themeStamp
         End Sub
