@@ -1,212 +1,128 @@
-# KoTOR Tool
+# KoTOR Tool Restoration Project
 
-Rebuild and rebirth of the original **KoTOR Tool**, originally developed by Fred Tetra in 2005.
+Rebuild and rebirth of the original **KoTOR Tool**, originally developed by **Fred Tetra** in 2005.
 
-## Treya Branch
-
--- This Branch is exclusively for Agentic / AI Agents, I have intended this branch to be named, Treya and this shall be the temple for the AI to work from, specifically so that we can use AI Agent tools such as Codex, without damaging or breaking the main code, as, working directly on the project via codex, and using Visual Studio, causes something to break and everything somehow dissappears. SAFETYS ON!. 
+This repository contains the restored, repaired, and actively modernised source-code build of KoTOR Tool for the *Star Wars: Knights of the Old Republic* modding community.
 
 ---
 
-# KoTOR Tool Restoration Project
+## Current Release
 
-**Version:** v1.0.3.3
-**Patch Date:** 29.04.26
-**Project Status:** Restored source build confirmed
-**Target IDE:** Visual Studio 2010
-**Target Framework:** .NET Framework 2.0
+**Version:** v1.0.3.4
+**Patch date:** 10.05.26
+**Project status:** Active restoration / modernisation
+**Target IDE:** Visual Studio 2022
+**Target framework:** .NET Framework 4.6.2 or later
 **Platform:** x86
-**Language:** VB.NET
+**Language:** VB.NET WinForms
 
 ---
 
 ## Overview
 
-This repository contains a restored and repaired source-code build of **Fred Tetra's KoTOR Tool**, rebuilt from a damaged and decompiled VB.NET codebase and repaired for modern development use.
+The KoTOR Tool Restoration Project is focused on preserving the original behaviour of Fred Tetra's KoTOR Tool while repairing the recovered source tree, stabilising the WinForms application, modernising the interface, and preparing the project for long-term maintenance.
 
-This release represents a major turning point in the project — transitioning from raw source recovery into a structured, maintainable, and visually modernised toolchain.
+The project began from a damaged and decompiled VB.NET codebase. It has since been rebuilt into a maintainable Visual Studio solution with restored forms, repaired designer files, upgraded UI systems, plugin support, and modern build compatibility.
 
----
+The restoration goal is simple:
 
-# Current Release
-
-## v1.0.3.3 — GUI Overhaul & Structural Stabilisation
-
-This is the **first true foundation release** where the KoTOR Tool begins to resemble a fully restored application rather than a recovered codebase.
-
-Focus areas for this patch:
-
-* WinForms Designer recovery and stabilisation
-* DarkSaber UI implementation
-* Structural refactoring of legacy forms
-* Elimination of decompiler artefacts
-* Long-term maintainability groundwork
+> Preserve the original KoTOR Tool workflow, repair what was broken, and make the tool viable for modern development again.
 
 ---
 
-## Major Improvements
+## Branch Notes
 
-### UI System Overhaul (DarkSaber)
+### Treya Branch
 
-* Introduced the **DarkSaber theme** as the standard UI framework across restored forms
-* Implemented consistent panel-based layouts:
+The **Treya** branch is reserved for AI-agent-assisted development work.
 
-  * `pnlRoot`
-  * `pnlHeader`
-  * `pnlBody`
-  * `pnlFooter`
-* Added gold-accented header separators and structured visual hierarchy
-* Standardised fonts, colours, and spacing across forms
-* Replaced legacy flat WinForms layouts with **professional, tool-grade UI structure**
+This branch exists so tools such as Codex can safely inspect, edit, refactor, and test project changes without risking direct damage to the main working branch.
 
----
+Use Treya for:
 
-### WinForms Designer Restoration
+* AI-assisted patches
+* experimental refactors
+* controlled feature work
+* staged code repair
+* pre-merge validation
 
-* Rebuilt large portions of Designer files from unstable decompiled output
-* Fixed Designer-breaking issues including:
-
-  * Invalid control declarations
-  * Missing component containers
-  * Broken initialization ordering
-  * Corrupt property assignments
-* Ensured forms now:
-
-  * Open reliably in Visual Studio 2010
-  * Render correctly without visual corruption
-  * Maintain consistent layout behaviour
+Mainline releases should only be updated after changes have been reviewed and confirmed stable.
 
 ---
 
-### Legacy Compatibility Preservation
+## v1.0.3.4 Highlights
 
-* Maintained original control names and structure for source compatibility
-* Preserved inherited base classes and legacy form behaviour
-* Retained **AccessedThroughProperty-compatible patterns** where required
-* Ensured all restored forms remain compatible with:
+### Sound Editor Stabilisation
 
-  * VS2010 CodeDom Designer
-  * .NET Framework 2.0 runtime
+* Fixed Sound Editor preview playback for level sound objects whose RIFF/WAVE metadata previously triggered UTF-8 decoding errors.
+* Reworked sound metadata parsing so RIFF FourCC identifiers are read as raw ASCII bytes instead of text-decoded payload data.
+* Added safer handling for unknown RIFF chunks during sound parsing.
+* Preserved existing KoTOR WAVE and embedded MPEG offset handling for FMOD playback.
+* Stabilised FMOD cleanup so closing, cancelling, or completing preview playback no longer double-releases completed sound handles.
 
----
+### Modern Build Baseline
 
-### Event Binding Recovery (Critical)
-
-* Restored missing event bindings from decompiled sources
-* Reintroduced explicit `AddHandler` bindings where Designer wiring was lost
-* Ensured UI controls remain functionally identical to the original tool
-
-This is a **critical restoration step** — without this, many forms would appear correct but fail at runtime.
+* Updated active development target to **Visual Studio 2022**.
+* Updated framework target to **.NET Framework 4.6.2+**.
+* Continued x86 targeting for compatibility with legacy dependencies and original KoTOR Tool behaviour.
+* Maintained VB.NET WinForms architecture.
 
 ---
 
-### Form Refactoring Standardisation
+## v1.0.3.3 Foundation Release
 
-All restored forms now follow a consistent structure model:
+Version **v1.0.3.3** established the restored application baseline.
 
-* Root container-driven layout (Dock-based)
-* Header with title + subtitle
-* Body with padded content layout
-* Footer with action controls
-* Separator labels used as UI rules
+Major work included:
 
-This establishes a **repeatable template** for future form restoration.
+* DarkSaber UI implementation across restored forms.
+* WinForms Designer recovery and stabilisation.
+* Structural refactoring of legacy forms.
+* Theme system groundwork and restored visual consistency.
+* Plugin framework introduction.
+* DeNCS external-tool plugin support.
+* Progress Manager and progress meter improvements.
+* Byte Viewer upgrades.
+* Custom reusable UI controls.
+* Long-term maintainability groundwork.
 
----
-
-### Designer Cleanup & Stability Fixes
-
-* Removed duplicate or corrupt Designer-generated variables
-* Fixed NumericUpDown initialization issues
-* Corrected resource binding inconsistencies
-* Eliminated invisible control layering issues caused by identical backcolors
-* Reduced Designer re-serialization corruption risk
+This was the first release where the project moved from recovered source code into a structured restoration platform.
 
 ---
 
-### Structural Codebase Improvements
+## UI and Theme System
 
-* Cleaned and reorganised partial classes
-* Repaired broken inheritance chains
-* Reduced reliance on unsafe decompiler patterns
-* Improved readability and maintainability of Designer code
+The restored UI uses the project theme system, with **DarkSaber** as the core restoration theme.
 
----
+Current UI restoration standards include:
 
-## Designer Restoration Coverage
+* Dock-based WinForms layouts.
+* Restored header, body, and footer panel structures.
+* Theme-aware colours and control styling.
+* Preserved legacy control names for source compatibility.
+* Preserved event bindings recovered from decompiled `AccessedThroughProperty` patterns.
+* Designer-safe fallback colours for stable editing inside Visual Studio.
 
-Completed major Designer restorations across multiple forms, including:
+Reusable custom controls introduced during restoration include:
 
-* frmAbout
-* frmAppearanceWizard
-* frmDialogEditor
-* frmGlobalVar_Editor
-* frmModule_Editor
-* frmModuleItem_Base_Editor
-* frmPackageTypeSelector
-* frmSSFEditor
-* frmUTM_Editor
-* frmPathManager
-* Progress meter and utility dialogs
-* Additional legacy forms following the same repair pattern
+* `CustomTabControl`
+* `CustomProgressBar`
+* `DarkByteViewerControl`
+* `CustomPictureBox`
 
 ---
 
-## Result
+## Plugin System
 
-Version **1.0.3.3** marks the transition from:
+KoTOR Tool now includes an XML / INI driven plugin framework for external tool integration.
 
-> “Recovered source code”
-> → to →
-> “Structured, maintainable development platform”
-
-The tool is now:
-
-* Stable inside Visual Studio 2010
-* Consistent in UI structure
-* Ready for feature expansion
-* Suitable for long-term maintenance
-
-This is the **true baseline** for future development.
-
----
-
-## Additional Patch Highlights (May the 4th Release – 05.05.26)
-
-This update also marks a celebratory milestone release aligned with the May the 4th event, bringing several major system-level upgrades beyond UI restoration.
-
-### Plugin System Introduction
-
-* Implemented a **new Plugin Manager System**
-* Introduced a flexible **XML / INI-driven plugin framework**
-* Enables external tooling and modular feature expansion
-* Establishes groundwork for future third-party integrations
-
----
-
-### DeNCS Plugin Installation (OpenKOTOR)
-
-KoTOR Tool v1.0.3.3 supports **DeNCS** through the new plugin framework.
-
-This uses the **command-line version of DeNCS** via:
+The first supported plugin profile is **DeNCS**, used for NCS script decompilation through:
 
 ```text
 NCSDecompCLI.exe
 ```
 
-DeNCS is loaded as an external tool plugin and is used for NCS script decompilation.
-
----
-
-#### Plugin Folder Layout
-
-To install DeNCS as a KoTOR Tool plugin, create the following folder if it does not already exist:
-
-```text
-Plugins/DeNCS/
-```
-
-Expected folder structure:
+Expected DeNCS plugin layout:
 
 ```text
 Plugins/
@@ -220,428 +136,29 @@ Plugins/
         app/*
 ```
 
-The plugin support XML files are already provided by KoTOR Tool:
+Plugin library files:
 
 ```text
 AvailablePlugins.xml
 InstalledPlugins.xml
 ```
 
-These files define which plugins are available and which plugins are installed/enabled.
+These define which plugins are available, installed, enabled, and visible to the Plugin Manager.
 
 ---
 
-#### DeNCS `plugin.xml` Structure
+## Build Requirements
 
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<Plugin>
-    <Id>ncsdecomp</Id>
-    <Name>DeNCS</Name>
-    <Author>JdNoa / Dashus / th3w1zard1</Author>
-    <Version>1.0.2</Version>
-    <Type>ExternalTool</Type>
-    <Enabled>True</Enabled>
-
-    <Description>
-        Decompiles compiled KotOR NCS scripts into readable NSS source using NCSDecompCLI.
-    </Description>
-
-    <Compatibility>
-        <Application>KoTOR Tool Restoration Project</Application>
-        <MinimumAppVersion>1.0.3.3</MinimumAppVersion>
-        <Framework>NET20</Framework>
-        <Platform>Windows</Platform>
-    </Compatibility>
-
-    <Project>
-        <GitHubRepo>https://github.com/OpenKotOR/DeNCS</GitHubRepo>
-        <GitHubBranch>v1.0.2</GitHubBranch>
-        <Website>https://github.com/OpenKotOR/DeNCS</Website>
-    </Project>
-
-    <Layout>
-        <Folder name="app">app</Folder>
-        <Folder name="config">config</Folder>
-        <Folder name="runtime">runtime</Folder>
-        <Folder name="tools">tools</Folder>
-    </Layout>
-
-    <Handles>
-        <Resource extension="ncs" action="decompile" />
-    </Handles>
-
-    <Files>
-        <File required="true">plugin.xml</File>
-        <File required="true">command.ini</File>
-        <File required="true">NCSDecompCLI.exe</File>
-
-        <File required="true">tools/k1_nwscript.nss</File>
-        <File required="true">tools/tsl_nwscript.nss</File>
-        <File required="true">tools/nwnnsscomp_kscript.exe</File>
-        <File required="true">tools/nwnnsscomp_ktool.exe</File>
-
-        <File required="false">NCSDecompCLI.jar</File>
-    </Files>
-
-    <CommandIni>command.ini</CommandIni>
-</Plugin>
-```
-
----
-
-#### `AvailablePlugins.xml` Structure
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<PluginLibrary>
-    <AvailablePlugin>
-        <Id>ncsdecomp</Id>
-        <Name>DeNCS</Name>
-        <Version>1.0.2</Version>
-        <Type>ExternalTool</Type>
-        <Description>Decompiles KotOR NCS scripts to NSS source.</Description>
-        <GitHubRepo>https://github.com/OpenKotOR/DeNCS</GitHubRepo>
-        <GitHubBranch>v1.0.2</GitHubBranch>
-        <Website>https://github.com/OpenKotOR/DeNCS</Website>
-        <Directory>DeNCS</Directory>
-        <Enabled>True</Enabled>
-    </AvailablePlugin>
-</PluginLibrary>
-```
-
----
-
-#### `InstalledPlugins.xml` Structure
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<PluginLibrary>
-    <InstalledPlugin>
-        <Id>ncsdecomp</Id>
-        <Name>DeNCS</Name>
-        <Directory>DeNCS</Directory>
-        <Enabled>True</Enabled>
-        <Manifest>plugin.xml</Manifest>
-        <InstalledVersion>1.0.2</InstalledVersion>
-    </InstalledPlugin>
-</PluginLibrary>
-```
-
----
-
-#### Notes
-
-* DeNCS is loaded through the KoTOR Tool plugin framework as an external tool
-* The plugin handles `.ncs` resources with the `decompile` action
-* `command.ini` controls the command-line execution behaviour
-* `NCSDecompCLI.exe` is the expected executable entry point
-* Required support files must remain inside the `tools` directory
-* Plugin paths should remain relative to preserve portability
-
----
-
-### NCS Decompilation Upgrade
-
-* Replaced reliance on legacy **nwnsscomp.exe** for decompilation
-* Integrated **OpenKOTOR DeNCS** as a third-party plugin backend
-* Improved reliability and accuracy of script decompilation
-* Decoupled core tool from outdated NWN toolchain dependencies
-
----
-
-### Progress System Overhaul
-
-* Implemented a **new global Progress Manager system**
-* Progress reporting now available across multiple operations
-* Updated UI feedback via restored progress meter system
-* Improved usability during long-running tasks
-
----
-
-### Byte Viewer Enhancements
-
-* Upgraded Byte Viewer to display **extended byte-level information**
-* Improved rendering clarity and usability
-* Introduced new backend control for byte display
-
----
-
-### Full Form Restoration Status
-
-* All forms now either:
-
-  * Fully restored
-  * Upgraded to DarkSaber layout standard
-  * Or preserved with stable legacy structure
-* Remaining inconsistencies are limited to **missing legacy icon assets** (e.g. Module Editor)
-
----
-
-### New Custom Controls
-
-Introduced a suite of reusable custom UI controls:
-
-* **CustomTabControl** — Styled tab system with full DarkSaber integration
-* **CustomProgressBar** — Animated, themed progress display control
-* **DarkByteViewerControl** *(pending rename to CustomByteViewerControl)* — Custom hex/byte rendering engine
-* **CustomPictureBox** — Themed image container for consistent UI presentation
-
-These controls form the foundation of the new UI system and will be reused across future updates.
-
----
-
-## Known Limitations / Pending Work
-
-### Updater System
-
-* Automatic updater remains **disabled by design**
-* Future implementation planned:
-
-  * GitHub-based update delivery
-  * Optional user-controlled updates
-  * Packaged build distribution system
-
----
-
-### Missing Icon Assets
-
-* Some editor forms (notably Module Editor) are missing original icons
-* Icons were lost during decompilation process
-* Planned for restoration in next patch cycle
-
----
-
-## Why This Matters
-
-### A Brief History of Copyright (Why Restoration Matters Legally and Culturally)
-
-Copyright did not begin as a permanent or near-permanent control over creative works.
-
-It began as a **limited, balanced protection** between creator and public:
-
-* **Statute of Anne (1710, Great Britain)** — the first modern copyright law
-
-  * 14-year protection
-  * Renewable once (maximum 28 years) if the author was still alive
-
-* **U.S. Copyright Act (1790)** — mirrored the same structure
-
-  * 14 years + optional 14-year renewal
-
-The original intent was clear:
-
-> Grant creators a temporary monopoly, then return the work to the public domain.
-
----
-
-### Expansion Over Time
-
-Over the centuries, copyright terms expanded significantly:
-
-* 1814 (UK): Extended to 28 years or life of the author
-* 1831 (US): Initial term increased to 28 years
-* 1976 Copyright Act: Shifted to **life of the author + 50 years**
-* 1998 Copyright Term Extension Act (CTEA): Extended to
-
-  * **Life + 70 years** (individual works)
-  * **95 years** (corporate works / works for hire)
-
----
-
-### Corporate Influence and the “Mickey Mouse Effect”
-
-The 1998 extension is widely associated with lobbying efforts by major corporations, most notably **The Walt Disney Company**.
-
-* The act was informally dubbed the **“Mickey Mouse Protection Act”**
-* It extended corporate copyright from 75 to 95 years
-* It delayed the public domain release of *Steamboat Willie* (1928)
-
-Despite these extensions:
-
-* The original *Steamboat Willie* finally entered the public domain on **January 1, 2024**
-
----
-
-### Why This Matters for KoTOR Tool
-
-This historical shift has real consequences:
-
-* Tools and software remain locked away far longer than originally intended
-* Communities lose access to foundational infrastructure
-* Preservation becomes legally and technically difficult
-
-KoTOR Tool sits in that gap:
-
-* Not actively maintained
-* Not commercially supported
-* Yet still essential to a living modding ecosystem
-
----
-
-### The Core Argument
-
-The original philosophy of copyright was **temporary stewardship — not permanent control**.
-
-When software is abandoned for decades, the balance shifts:
-
-* The creator is no longer maintaining it
-* The community still depends on it
-
-At that point, restoration becomes not just practical — but justified.
-
----
-
-### A Personal Statement — LordVaderCW
-
-Efforts were made to locate and contact **Fred Tetra**, the original author of KoTOR Tool, regarding the restoration and continuation of the project. These efforts were unsuccessful. No active presence, point of contact, or ongoing stewardship of the original tool could be established.
-
-In the absence of the original maintainer, and given the **clear, long-term abandonment of the software and its codebase**, I, **LordVaderCW**, have taken it upon myself to continue the work.
-
-This decision was not made lightly. It is grounded in:
-
-* The demonstrable lack of maintenance or support over an extended period
-* The continued reliance of the modding community on this tool
-* The risk of permanent loss if no action was taken
-
-Where a tool has been abandoned, yet remains essential, responsibility does not vanish — it transfers to those willing to preserve it.
-
-This restoration is therefore both:
-
-* A continuation of the original vision
-* And a necessary act of preservation in the absence of its creator
-
----
-
-### A Personal Statement — LordVaderCW
-
-This project is more than a technical restoration — it is a statement of principle.
-
-Abandoned software is, in practice, **abandoned property**.
-
-When a tool is no longer maintained, supported, or distributed by its original creators, it does not cease to have value. Instead, it becomes dependent on the community that continues to rely on it. If that community does nothing, the software dies. If it steps in, the software lives.
-
-This restoration exists because KoTOR Tool was too important to be left to decay.
-
----
-
-### The Right to Repair — Applied to Software
-
-The philosophy behind this work aligns directly with the **Right to Repair** movement.
-
-Traditionally applied to hardware, the principle is simple:
-
-> If you own it, you should be able to fix it.
-
-That same logic applies to software:
-
-* If a tool is essential, it should not become unusable due to neglect
-* If source code is recoverable, it should be restorable
-* If systems break, they should be repairable — not discarded
-
-KoTOR Tool represents exactly this situation — a critical modding utility that was effectively lost due to time, tooling changes, and lack of maintenance.
-
-This project restores that right.
-
----
-
-### #StopKillingGames — Preservation of Digital Culture
-
-There is also a broader issue at play.
-
-The **#StopKillingGames** argument highlights a growing problem in the industry:
-
-> Software, tools, and even entire games are being rendered unusable over time — not because they must be, but because they are abandoned.
-
-Modding tools like KoTOR Tool are part of that ecosystem.
-
-Without them:
-
-* Modding communities collapse
-* Knowledge disappears
-* Digital history is lost
-
-By restoring this tool, we are not just fixing software — we are preserving:
-
-* A modding pipeline
-* A community standard
-* A piece of gaming history
-
----
-
-### The Real Outcome
-
-This project proves something important:
-
-* Legacy software **can** be restored
-* Decompiled code **can** be made maintainable
-* Abandoned tools **do not have to die**
-
-KoTOR Tool is no longer a relic.
-
-It is now a **living platform**, ready for extension, improvement, and future development.
-
----
-
-## Forward Direction
-
-The next phases will focus on:
-
-* Completing UI overhaul across all remaining forms
-* Enhancing editor functionality (GFF, UTC, UTP, etc.)
-* Improving tool responsiveness and usability
-* Expanding modding capabilities while preserving legacy behaviour
-
----
-
-# Previous Release
-
-## v1.0.3.1 — Source Recovery Milestone
-
-This update focused on restoring and stabilising the original KOTOR Tool source code after decompilation, with particular attention to WinForms Designer compatibility and safe recovery of the VB.NET project structure.
-
-### Core Source Repair Fixes
-
-* Restored multiple decompiled WinForms forms so they now open correctly in the Visual Studio 2010 Designer
-* Repaired forms where decompiled `AccessedThroughProperty` wrappers prevented proper Designer loading
-* Converted recovered control wrappers back into proper `Friend WithEvents` Designer declarations
-* Moved Designer control declarations into the correct `.Designer.vb` files
-* Preserved original event bindings by restoring them as explicit `AddHandler` calls inside `InitializeComponent`
-* Removed obsolete private backing fields such as `_Button1`, `_Panel1`, `_MenuItem1`, etc.
-* Fixed forms that previously produced Designer errors such as "undeclared or never assigned"
-
----
-
-# Previous Release
-
-## v1.0.23 — First Restoration Patch
-
-This patch represents the first successful source-restored build of KoTOR Tool.
-
-The application now:
-
-* Builds successfully in Visual Studio 2010
-* Launches from the restored VB.NET source
-* Loads embedded WinForms resources
-* Uses a portable `settings.xml` location beside the executable
-* Avoids dead legacy auto-update calls during startup
-* Supports improved KotOR I / KotOR II path detection
-* Handles both old-style registry installs and Steam installs
-* Preserves original legacy behaviour where practical
-
----
-
-# Build Requirements
-
-Recommended environment:
+Recommended development environment:
 
 ```text
-Visual Studio 2010
-.NET Framework 2.0 Targeting Pack
+Visual Studio 2022
+.NET Framework 4.6.2 or later
 Windows x86 build target
+VB.NET WinForms workload
 ```
 
-Required references are expected under the local `Lib` folder:
+Required legacy references are expected under the local `Lib` folder:
 
 ```text
 Lib\FMODCL.dll
@@ -649,29 +166,71 @@ Lib\ImageTools.dll
 Lib\RTFLinenumberTextBox.dll
 ```
 
+The application should continue to build as an x86 WinForms application due to legacy dependency expectations.
+
 ---
 
-# Preservation Notice
+## Known Limitations
+
+### Updater System
+
+The automatic updater remains disabled by design.
+
+A future updater may use:
+
+* GitHub-based release delivery
+* user-controlled update checks
+* packaged build distribution
+* safe rollback behaviour
+
+### Missing Legacy Assets
+
+Some original icon assets were lost during source recovery and decompilation.
+
+Known affected areas include some editor forms, notably parts of the Module Editor UI.
+
+### Legacy Dependency Constraints
+
+Some original dependencies remain part of the restored project for compatibility. These should be replaced carefully and only where behaviour can be verified against the original tool.
+
+---
+
+## Project Direction
+
+Upcoming work is focused on:
+
+* completing form restoration and theme integration
+* improving editor usability
+* expanding plugin support
+* strengthening archive and resource handling
+* improving responsiveness during long-running operations
+* preserving original behaviour while removing unstable decompiler artefacts
+
+The long-term goal is to turn KoTOR Tool into a stable, maintainable, modern restoration of the original utility without breaking the workflows that made it valuable.
+
+---
+
+## Preservation Notice
 
 This project exists for preservation, compatibility, education, and modding support.
 
-The goal is to keep an important *Knights of the Old Republic* modding utility alive for modern systems while respecting the original tool's structure and purpose.
+KoTOR Tool remains an important part of the *Knights of the Old Republic* modding ecosystem. This restoration keeps that tool usable for modern systems while respecting the structure and purpose of the original application.
 
 ---
 
-# Credits
+## Credits
 
-## Original KoTOR Tool
+### Original KoTOR Tool
 
 **Fred Tetra**
 
-## Restoration, Source Repair, Project Rebuild, and Modern Compatibility
+### Restoration, Source Repair, Project Rebuild, and Modern Compatibility
 
 **LordVaderCW**
 
 ---
 
-# Disclaimer
+## Disclaimer
 
 This is an unofficial restoration project.
 
@@ -681,6 +240,12 @@ All Star Wars and Knights of the Old Republic names, assets, and trademarks rema
 
 ---
 
-# Licensing
+## Licensing
 
-See the attached `Licence.txt` for licensing terms.
+See `Licence.txt` for licensing terms.
+
+---
+
+## Changelog
+
+See `Changelog.txt` for the full release history and detailed patch notes.
