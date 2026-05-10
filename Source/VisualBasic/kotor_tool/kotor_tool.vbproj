@@ -126,7 +126,7 @@
     <Compile Include="Classes\BIFFSystem\BIFFEntry.vb" />
     <Compile Include="Classes\BIFFSystem\BIFFVarRsrcEntry.vb" />
     <Compile Include="Classes\BIFFSystem\BIFFVarRsrcEntryInfo.vb" />
-    <Compile Include="Classes\Theming\KotorTheme.vb" />
+    <Compile Include="Classes\ThemeSystem\KotorTheme.vb" />
     <Compile Include="Classes\NCSSystem\clsNCS.vb" />
     <Compile Include="Classes\PluginSystem\clsDownloadPlugin.vb" />
     <Compile Include="Classes\PluginSystem\clsInstallPlugin.vb" />
@@ -136,16 +136,16 @@
     <Compile Include="Classes\PluginSystem\clsPluginHandle.vb" />
     <Compile Include="Classes\PluginSystem\clsPluginManager.vb" />
     <Compile Include="Classes\Shared\clsPluginProgressEventArgs.vb" />
-    <Compile Include="Classes\Theming\ThemeManager.vb" />
+    <Compile Include="Classes\ThemeSystem\ThemeManager.vb" />
     <Compile Include="Classes\2DASystem\cls2DA.vb" />
     <Compile Include="Classes\2DASystem\clsBaseItems2DA.vb" />
-    <Compile Include="Classes\clsBWM.vb" />
+    <Compile Include="Classes\BWMSystem\clsBWM.vb" />
     <Compile Include="Classes\Security\clsChitinKey.vb" />
     <Compile Include="Classes\DLGSystem\clsDialogTlk.vb" />
     <Compile Include="Classes\DLGSystem\clsDLG.vb" />
     <Compile Include="Classes\ERFSystem\clsERF.vb" />
     <Compile Include="Classes\GFFSystem\clsGFF.vb" />
-    <Compile Include="Classes\Globals\clsGlobalVars.vb" />
+    <Compile Include="Classes\GlobalSystem\clsGlobalVars.vb" />
     <Compile Include="Classes\StandardUI\clsGridDisplay.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -154,14 +154,14 @@
     <Compile Include="Classes\ProjectSystem\clsProjectManager.vb" />
     <Compile Include="Classes\RIMSystem\clsRIM.vb" />
     <Compile Include="Classes\SoundSystem\clsSSF.vb" />
-    <Compile Include="Classes\clsUTC.vb" />
-    <Compile Include="Classes\clsUTD.vb" />
-    <Compile Include="Classes\clsUTI.vb" />
-    <Compile Include="Classes\clsUTM.vb" />
-    <Compile Include="Classes\clsUTP.vb" />
-    <Compile Include="Classes\clsUTS.vb" />
-    <Compile Include="Classes\clsUTT.vb" />
-    <Compile Include="Classes\clsUTW.vb" />
+    <Compile Include="Classes\UTCSystem\clsUTC.vb" />
+    <Compile Include="Classes\UTDSystem\clsUTD.vb" />
+    <Compile Include="Classes\UTISystem\clsUTI.vb" />
+    <Compile Include="Classes\UTMSystem\clsUTM.vb" />
+    <Compile Include="Classes\UTPSystem\clsUTP.vb" />
+    <Compile Include="Classes\UTSSytem\clsUTS.vb" />
+    <Compile Include="Classes\UTTSystem\clsUTT.vb" />
+    <Compile Include="Classes\UTWSystem\clsUTW.vb" />
     <Compile Include="Classes\StandardUI\ColumnEntry.vb" />
     <Compile Include="Classes\StandardUI\ColumnEntryList.vb" />
     <Compile Include="Classes\StandardUI\ColumnSortEntry.vb" />
@@ -547,24 +547,24 @@
     <Compile Include="Classes\GFFSystem\GFFVoid.vb" />
     <Compile Include="Classes\GFFSystem\GFF_Field.vb" />
     <Compile Include="Classes\GFFSystem\GFF_Struct.vb" />
-    <Compile Include="Classes\Items\InventoryItem.vb" />
+    <Compile Include="Classes\ItemSystem\InventoryItem.vb" />
     <Compile Include="Classes\StandardUI\InventoryPanel.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Classes\Security\KeyEntry.vb" />
     <Compile Include="Classes\StandardUI\KotorTreeNode.vb" />
     <Compile Include="Classes\SoundSystem\KTSoundInfo.vb" />
-    <Compile Include="Classes\Globals\KT_Launch.vb" />
+    <Compile Include="Classes\GlobalSystem\KT_Launch.vb" />
     <Compile Include="Classes\MAPSystem\MapInfo.vb" />
-    <Compile Include="Classes\Items\ModItem.vb" />
-    <Compile Include="Classes\Items\ModItemTvNode.vb" />
-    <Compile Include="Classes\Utilities\ModuleEditorProjectOptions.vb" />
-    <Compile Include="Classes\Utilities\ModuleEditorProjectSettings.vb" />
-    <Compile Include="Classes\Utilities\ModuleFileEntry.vb" />
+    <Compile Include="Classes\ItemSystem\ModItem.vb" />
+    <Compile Include="Classes\ItemSystem\ModItemTvNode.vb" />
+    <Compile Include="Classes\UtilitySystem\ModuleEditorProjectOptions.vb" />
+    <Compile Include="Classes\UtilitySystem\ModuleEditorProjectSettings.vb" />
+    <Compile Include="Classes\UtilitySystem\ModuleFileEntry.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="Classes\MAPSystem\MyMapInfoSurrogate.vb" />
-    <Compile Include="Classes\Globals\Options.vb" />
-    <Compile Include="Classes\Items\ProjectFileItemTreeNode.vb" />
+    <Compile Include="Classes\GlobalSystem\Options.vb" />
+    <Compile Include="Classes\ItemSystem\ProjectFileItemTreeNode.vb" />
     <Compile Include="WinForms\RegReminder.Designer.vb">
       <DependentUpon>RegReminder.vb</DependentUpon>
     </Compile>
@@ -575,13 +575,13 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Classes\RIMSystem\RIMKeyEntry.vb" />
-    <Compile Include="Classes\Filters\RowFilter.vb" />
-    <Compile Include="Classes\Filters\RowFilterPart.vb" />
-    <Compile Include="Classes\Items\TreeBaseItem.vb" />
-    <Compile Include="Classes\Globals\UserSettings.vb" />
-    <Compile Include="Classes\Utilities\utilFileValidator.vb" />
-    <Compile Include="Classes\Globals\Utils.vb" />
-    <Compile Include="Classes\Utilities\utilWindowRelativePositioner.vb" />
+    <Compile Include="Classes\FilterSystem\RowFilter.vb" />
+    <Compile Include="Classes\FilterSystem\RowFilterPart.vb" />
+    <Compile Include="Classes\ItemSystem\TreeBaseItem.vb" />
+    <Compile Include="Classes\GlobalSystem\UserSettings.vb" />
+    <Compile Include="Classes\UtilitySystem\utilFileValidator.vb" />
+    <Compile Include="Classes\GlobalSystem\Utils.vb" />
+    <Compile Include="Classes\UtilitySystem\utilWindowRelativePositioner.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
