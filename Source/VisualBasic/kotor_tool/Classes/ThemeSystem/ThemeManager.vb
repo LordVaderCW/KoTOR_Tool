@@ -146,6 +146,40 @@ Namespace kotor_tool
             End Try
         End Function
 
+        Public Shared Function GetActiveThemeName() As String
+            Try
+                Dim activeThemePath As String = GetActiveThemeFilePath()
+
+                If File.Exists(activeThemePath) Then
+                    Dim themeName As String = File.ReadAllText(activeThemePath).Trim()
+
+                    If themeName.Length > 0 Then
+                        Return SanitizeThemeName(themeName)
+                    End If
+                End If
+
+            Catch ex As System.Exception
+            End Try
+
+            Return "DarkSaber"
+        End Function
+
+        Public Shared Sub SetActiveThemeName(ByVal themeName As String)
+            Dim safeThemeName As String = SanitizeThemeName(themeName)
+            Dim activeThemePath As String = GetActiveThemeFilePath()
+            Dim directoryPath As String = Path.GetDirectoryName(activeThemePath)
+
+            If Directory.Exists(directoryPath) = False Then
+                Directory.CreateDirectory(directoryPath)
+            End If
+
+            File.WriteAllText(activeThemePath, safeThemeName, Encoding.UTF8)
+        End Sub
+
+        Private Shared Function GetActiveThemeFilePath() As String
+            Return Path.Combine(GetThemesDirectory(), "ActiveTheme.txt")
+        End Function
+
         Public Shared Function GetThemesDirectory() As String
             Return Path.Combine(Application.StartupPath, "Themes")
         End Function

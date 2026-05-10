@@ -4,6 +4,7 @@ Option Explicit On
 Imports System
 Imports System.Collections.Generic
 Imports System.Drawing
+Imports System.Globalization
 Imports System.IO
 Imports System.Windows.Forms
 
@@ -13,6 +14,7 @@ Namespace kotor_tool
 
         Private Shared _installed As Boolean
         Private Shared _theme As KotorTheme
+        Private Shared _themeName As String = "DarkSaber"
         Private Shared _themeStamp As DateTime = DateTime.MinValue
         Private Shared ReadOnly _appliedForms As Dictionary(Of Form, DateTime) = New Dictionary(Of Form, DateTime)()
 
@@ -78,22 +80,24 @@ Namespace kotor_tool
         End Sub
 
         Private Shared Sub ReloadThemeIfChanged()
+            Dim currentThemeName As String = KotorThemeManager.GetActiveThemeName()
             Dim currentStamp As DateTime = GetThemeStamp()
 
-            If currentStamp <> _themeStamp Then
+            If String.Compare(currentThemeName, _themeName, True, CultureInfo.InvariantCulture) <> 0 OrElse currentStamp <> _themeStamp Then
                 ReloadTheme()
                 _appliedForms.Clear()
             End If
         End Sub
 
         Private Shared Sub ReloadTheme()
-            _theme = KotorThemeManager.LoadTheme("DarkSaber")
+            _themeName = KotorThemeManager.GetActiveThemeName()
+            _theme = KotorThemeManager.LoadTheme(_themeName)
             _themeStamp = GetThemeStamp()
         End Sub
 
         Private Shared Function GetThemeStamp() As DateTime
             Try
-                Dim themePath As String = KotorThemeManager.FindThemeFilePath("DarkSaber")
+                Dim themePath As String = KotorThemeManager.FindThemeFilePath(KotorThemeManager.GetActiveThemeName())
                 If File.Exists(themePath) Then
                     Return File.GetLastWriteTimeUtc(themePath)
                 End If

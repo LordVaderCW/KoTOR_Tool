@@ -37,13 +37,24 @@ Namespace kotor_tool
             _isLoading = True
             cmbThemes.Items.Clear()
             cmbThemes.Items.AddRange(KotorThemeManager.GetAvailableThemeNames())
-            _isLoading = False
 
             If cmbThemes.Items.Count > 0 Then
-                cmbThemes.SelectedIndex = 0
+                Dim activeThemeName As String = KotorThemeManager.GetActiveThemeName()
+                Dim selectedIndex As Integer = FindThemeIndex(activeThemeName)
+
+                If selectedIndex < 0 Then
+                    selectedIndex = 0
+                End If
+
+                cmbThemes.SelectedIndex = selectedIndex
             Else
-                LoadTheme("DarkSaber")
+                cmbThemes.Items.Add("DarkSaber")
+                cmbThemes.SelectedIndex = 0
             End If
+
+            Dim themeName As String = cmbThemes.SelectedItem.ToString()
+            _isLoading = False
+            LoadTheme(themeName)
         End Sub
 
         Private Sub LoadTheme(ByVal themeName As String)
@@ -169,6 +180,23 @@ Namespace kotor_tool
             PopulateThemeControls()
         End Sub
 
+        Private Sub btnApplyTheme_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnApplyTheme.Click
+            If _theme Is Nothing Then
+                Return
+            End If
+
+            UpdateThemeFromControls()
+            Dim appliedThemeName As String = _theme.Name
+
+            KotorThemeManager.SaveTheme(_theme)
+            KotorThemeManager.SetActiveThemeName(appliedThemeName)
+            KotorThemeApplier.ReloadAndApplyOpenForms()
+
+            MessageBox.Show(Me, "Theme applied.", "Theme Editor", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            LoadThemeList()
+            SelectThemeName(appliedThemeName)
+        End Sub
+
         Private Sub btnSave_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSave.Click
             UpdateThemeFromControls()
             Dim savedThemeName As String = _theme.Name
@@ -199,13 +227,22 @@ Namespace kotor_tool
         End Sub
 
         Private Sub SelectThemeName(ByVal themeName As String)
+            Dim selectedIndex As Integer = FindThemeIndex(themeName)
+
+            If selectedIndex >= 0 Then
+                cmbThemes.SelectedIndex = selectedIndex
+            End If
+        End Sub
+
+        Private Function FindThemeIndex(ByVal themeName As String) As Integer
             For i As Integer = 0 To cmbThemes.Items.Count - 1
                 If String.Compare(cmbThemes.Items(i).ToString(), themeName, True, CultureInfo.InvariantCulture) = 0 Then
-                    cmbThemes.SelectedIndex = i
-                    Return
+                    Return i
                 End If
             Next
-        End Sub
+
+            Return -1
+        End Function
 
         Private Sub MetadataChanged(ByVal sender As Object, ByVal e As EventArgs) Handles tbVersion.TextChanged, tbName.TextChanged, tbDescription.TextChanged, tbAuthor.TextChanged
             If _isLoading Then
@@ -223,6 +260,7 @@ Namespace kotor_tool
 
             Dim colorValue As Color = GetThemeColor(CType(lbColors.SelectedItem, ThemeColorEntry).Key)
             _isLoading = True
+            nudAlpha.Value = colorValue.A
             nudRed.Value = colorValue.R
             nudGreen.Value = colorValue.G
             nudBlue.Value = colorValue.B
@@ -230,16 +268,20 @@ Namespace kotor_tool
             _isLoading = False
         End Sub
 
-        Private Sub ColorValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles nudRed.ValueChanged, nudGreen.ValueChanged, nudBlue.ValueChanged
+        Private Sub ColorValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles nudAlpha.ValueChanged, nudRed.ValueChanged, nudGreen.ValueChanged, nudBlue.ValueChanged
             If _isLoading OrElse lbColors.SelectedItem Is Nothing Then
                 Return
             End If
 
-            Dim currentColor As Color = GetThemeColor(CType(lbColors.SelectedItem, ThemeColorEntry).Key)
-            Dim colorValue As Color = Color.FromArgb(currentColor.A, CInt(nudRed.Value), CInt(nudGreen.Value), CInt(nudBlue.Value))
-            SetThemeColor(CType(lbColors.SelectedItem, ThemeColorEntry).Key, colorValue)
+            Dim colorValue As Color = Color.FromArgb(CInt(nudAlpha.Value), CInt(nudRed.Value), CInt(nudGreen.Value), CInt(nudBlue.Value))
+            Dim colorKey As String = CType(lbColors.SelectedItem, ThemeColorEntry).Key
+            SetThemeColor(colorKey, colorValue)
             pnlSwatch.BackColor = colorValue
-            ApplyPreview()
+            If IsProgressColorKey(colorKey) Then
+                ApplyProgressPreview()
+            Else
+                ApplyPreview()
+            End If
         End Sub
 
         Private Sub btnPickColor_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnPickColor.Click
@@ -252,16 +294,22 @@ Namespace kotor_tool
             dialog.Color = GetThemeColor(CType(lbColors.SelectedItem, ThemeColorEntry).Key)
 
             If dialog.ShowDialog(Me) = DialogResult.OK Then
+                Dim currentColor As Color = GetThemeColor(CType(lbColors.SelectedItem, ThemeColorEntry).Key)
                 _isLoading = True
+                nudAlpha.Value = currentColor.A
                 nudRed.Value = dialog.Color.R
                 nudGreen.Value = dialog.Color.G
                 nudBlue.Value = dialog.Color.B
                 _isLoading = False
-                Dim currentColor As Color = GetThemeColor(CType(lbColors.SelectedItem, ThemeColorEntry).Key)
                 Dim pickedColor As Color = Color.FromArgb(currentColor.A, dialog.Color.R, dialog.Color.G, dialog.Color.B)
-                SetThemeColor(CType(lbColors.SelectedItem, ThemeColorEntry).Key, pickedColor)
+                Dim colorKey As String = CType(lbColors.SelectedItem, ThemeColorEntry).Key
+                SetThemeColor(colorKey, pickedColor)
                 pnlSwatch.BackColor = pickedColor
-                ApplyPreview()
+                If IsProgressColorKey(colorKey) Then
+                    ApplyProgressPreview()
+                Else
+                    ApplyPreview()
+                End If
             End If
 
             dialog.Dispose()
@@ -396,7 +444,29 @@ Namespace kotor_tool
             btnPreviewBrowse.Font = _theme.CreateBodyFont()
 
             _theme.ApplyToCustomTabControl(tabPreview)
+            ApplyProgressPreview()
         End Sub
+
+        Private Sub ApplyProgressPreview()
+            If _theme Is Nothing OrElse progressPreview Is Nothing Then
+                Return
+            End If
+
+            _theme.ApplyToCustomProgressBar(progressPreview)
+            progressPreview.Value = 68
+            progressPreview.SnapToValue()
+            progressPreview.BringToFront()
+            progressPreview.Invalidate()
+            progressPreview.Update()
+        End Sub
+
+        Private Function IsProgressColorKey(ByVal key As String) As Boolean
+            If key Is Nothing Then
+                Return False
+            End If
+
+            Return key.StartsWith("Progress", StringComparison.OrdinalIgnoreCase)
+        End Function
 
         Private Function GetThemeColor(ByVal key As String) As Color
             Select Case key

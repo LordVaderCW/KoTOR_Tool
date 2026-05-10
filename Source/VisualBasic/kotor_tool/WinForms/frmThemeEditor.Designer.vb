@@ -32,6 +32,7 @@ Namespace kotor_tool
 
         Friend WithEvents lblThemePicker As Global.System.Windows.Forms.Label
         Friend WithEvents cmbThemes As Global.System.Windows.Forms.ComboBox
+        Friend WithEvents btnApplyTheme As Global.System.Windows.Forms.Button
         Friend WithEvents btnReload As Global.System.Windows.Forms.Button
         Friend WithEvents btnSave As Global.System.Windows.Forms.Button
         Friend WithEvents btnSaveAs As Global.System.Windows.Forms.Button
@@ -52,9 +53,11 @@ Namespace kotor_tool
         Friend WithEvents lbColors As Global.System.Windows.Forms.ListBox
         Friend WithEvents pnlColorEditor As Global.System.Windows.Forms.Panel
         Friend WithEvents pnlSwatch As Global.System.Windows.Forms.Panel
+        Friend WithEvents lblAlpha As Global.System.Windows.Forms.Label
         Friend WithEvents lblRed As Global.System.Windows.Forms.Label
         Friend WithEvents lblGreen As Global.System.Windows.Forms.Label
         Friend WithEvents lblBlue As Global.System.Windows.Forms.Label
+        Friend WithEvents nudAlpha As Global.System.Windows.Forms.NumericUpDown
         Friend WithEvents nudRed As Global.System.Windows.Forms.NumericUpDown
         Friend WithEvents nudGreen As Global.System.Windows.Forms.NumericUpDown
         Friend WithEvents nudBlue As Global.System.Windows.Forms.NumericUpDown
@@ -81,6 +84,7 @@ Namespace kotor_tool
         Friend WithEvents lblPreviewHeaderSeparator As Global.System.Windows.Forms.Label
         Friend WithEvents lblPreviewBody As Global.System.Windows.Forms.Label
         Friend WithEvents lblPreviewMuted As Global.System.Windows.Forms.Label
+        Friend WithEvents progressPreview As Global.kotor_tool.CustomProgressBar
         Friend WithEvents btnPreview As Global.System.Windows.Forms.Button
         Friend WithEvents txtPreview As Global.System.Windows.Forms.TextBox
         Friend WithEvents tabPreview As Global.kotor_tool.CustomTabControl
@@ -118,9 +122,11 @@ Namespace kotor_tool
             Me.nudBlue = New System.Windows.Forms.NumericUpDown()
             Me.nudGreen = New System.Windows.Forms.NumericUpDown()
             Me.nudRed = New System.Windows.Forms.NumericUpDown()
+            Me.nudAlpha = New System.Windows.Forms.NumericUpDown()
             Me.lblBlue = New System.Windows.Forms.Label()
             Me.lblGreen = New System.Windows.Forms.Label()
             Me.lblRed = New System.Windows.Forms.Label()
+            Me.lblAlpha = New System.Windows.Forms.Label()
             Me.pnlSwatch = New System.Windows.Forms.Panel()
             Me.grpFonts = New System.Windows.Forms.GroupBox()
             Me.chkbStrikeout = New System.Windows.Forms.CheckBox()
@@ -155,6 +161,7 @@ Namespace kotor_tool
             Me.tabPreviewTwo = New System.Windows.Forms.TabPage()
             Me.tabPreviewThree = New System.Windows.Forms.TabPage()
             Me.txtPreview = New System.Windows.Forms.TextBox()
+            Me.progressPreview = New kotor_tool.CustomProgressBar()
             Me.lblPreviewMuted = New System.Windows.Forms.Label()
             Me.lblPreviewBody = New System.Windows.Forms.Label()
             Me.pnlPreviewFooter = New System.Windows.Forms.Panel()
@@ -172,6 +179,7 @@ Namespace kotor_tool
             Me.btnReset = New System.Windows.Forms.Button()
             Me.btnSaveAs = New System.Windows.Forms.Button()
             Me.btnSave = New System.Windows.Forms.Button()
+            Me.btnApplyTheme = New System.Windows.Forms.Button()
             Me.btnReload = New System.Windows.Forms.Button()
             Me.cmbThemes = New System.Windows.Forms.ComboBox()
             Me.lblThemePicker = New System.Windows.Forms.Label()
@@ -187,6 +195,7 @@ Namespace kotor_tool
             CType(Me.nudBlue, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.nudGreen, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.nudRed, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.nudAlpha, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.grpFonts.SuspendLayout()
             CType(Me.nudFontSize, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.grpTheme.SuspendLayout()
@@ -210,7 +219,7 @@ Namespace kotor_tool
             Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
             Me.pnlRoot.Name = "pnlRoot"
-            Me.pnlRoot.Size = New System.Drawing.Size(984, 661)
+            Me.pnlRoot.Size = New System.Drawing.Size(984, 715)
             Me.pnlRoot.TabIndex = 0
             '
             'pnlBody
@@ -218,10 +227,10 @@ Namespace kotor_tool
             Me.pnlBody.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.pnlBody.Controls.Add(Me.splitMain)
             Me.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.pnlBody.Location = New System.Drawing.Point(0, 70)
+            Me.pnlBody.Location = New System.Drawing.Point(0, 86)
             Me.pnlBody.Name = "pnlBody"
             Me.pnlBody.Padding = New System.Windows.Forms.Padding(16)
-            Me.pnlBody.Size = New System.Drawing.Size(984, 526)
+            Me.pnlBody.Size = New System.Drawing.Size(984, 564)
             Me.pnlBody.TabIndex = 1
             '
             'splitMain
@@ -242,7 +251,7 @@ Namespace kotor_tool
             '
             Me.splitMain.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.splitMain.Panel2.Controls.Add(Me.pnlPreviewRoot)
-            Me.splitMain.Size = New System.Drawing.Size(952, 494)
+            Me.splitMain.Size = New System.Drawing.Size(952, 532)
             Me.splitMain.SplitterDistance = 366
             Me.splitMain.TabIndex = 0
             '
@@ -258,7 +267,7 @@ Namespace kotor_tool
             Me.grpColors.Location = New System.Drawing.Point(0, 148)
             Me.grpColors.Name = "grpColors"
             Me.grpColors.Padding = New System.Windows.Forms.Padding(10, 18, 10, 10)
-            Me.grpColors.Size = New System.Drawing.Size(360, 190)
+            Me.grpColors.Size = New System.Drawing.Size(360, 228)
             Me.grpColors.TabIndex = 1
             Me.grpColors.TabStop = False
             Me.grpColors.Text = "Colors"
@@ -275,7 +284,7 @@ Namespace kotor_tool
             Me.lbColors.FormattingEnabled = True
             Me.lbColors.Location = New System.Drawing.Point(13, 25)
             Me.lbColors.Name = "lbColors"
-            Me.lbColors.Size = New System.Drawing.Size(185, 145)
+            Me.lbColors.Size = New System.Drawing.Size(185, 184)
             Me.lbColors.TabIndex = 0
             '
             'pnlColorEditor
@@ -286,13 +295,15 @@ Namespace kotor_tool
             Me.pnlColorEditor.Controls.Add(Me.nudBlue)
             Me.pnlColorEditor.Controls.Add(Me.nudGreen)
             Me.pnlColorEditor.Controls.Add(Me.nudRed)
+            Me.pnlColorEditor.Controls.Add(Me.nudAlpha)
             Me.pnlColorEditor.Controls.Add(Me.lblBlue)
             Me.pnlColorEditor.Controls.Add(Me.lblGreen)
             Me.pnlColorEditor.Controls.Add(Me.lblRed)
+            Me.pnlColorEditor.Controls.Add(Me.lblAlpha)
             Me.pnlColorEditor.Controls.Add(Me.pnlSwatch)
             Me.pnlColorEditor.Location = New System.Drawing.Point(207, 25)
             Me.pnlColorEditor.Name = "pnlColorEditor"
-            Me.pnlColorEditor.Size = New System.Drawing.Size(140, 145)
+            Me.pnlColorEditor.Size = New System.Drawing.Size(140, 183)
             Me.pnlColorEditor.TabIndex = 1
             '
             'btnPickColor
@@ -304,9 +315,9 @@ Namespace kotor_tool
             Me.btnPickColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnPickColor.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.btnPickColor.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnPickColor.Location = New System.Drawing.Point(0, 111)
+            Me.btnPickColor.Location = New System.Drawing.Point(9, 146)
             Me.btnPickColor.Name = "btnPickColor"
-            Me.btnPickColor.Size = New System.Drawing.Size(140, 25)
+            Me.btnPickColor.Size = New System.Drawing.Size(123, 25)
             Me.btnPickColor.TabIndex = 7
             Me.btnPickColor.Text = "Pick Color"
             Me.btnPickColor.UseVisualStyleBackColor = False
@@ -315,39 +326,50 @@ Namespace kotor_tool
             '
             Me.nudBlue.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
             Me.nudBlue.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.nudBlue.Location = New System.Drawing.Point(39, 84)
+            Me.nudBlue.Location = New System.Drawing.Point(42, 119)
             Me.nudBlue.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
             Me.nudBlue.Name = "nudBlue"
-            Me.nudBlue.Size = New System.Drawing.Size(101, 22)
+            Me.nudBlue.Size = New System.Drawing.Size(90, 22)
             Me.nudBlue.TabIndex = 6
             '
             'nudGreen
             '
             Me.nudGreen.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
             Me.nudGreen.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.nudGreen.Location = New System.Drawing.Point(39, 58)
+            Me.nudGreen.Location = New System.Drawing.Point(42, 93)
             Me.nudGreen.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
             Me.nudGreen.Name = "nudGreen"
-            Me.nudGreen.Size = New System.Drawing.Size(101, 22)
+            Me.nudGreen.Size = New System.Drawing.Size(90, 22)
             Me.nudGreen.TabIndex = 5
             '
             'nudRed
             '
             Me.nudRed.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
             Me.nudRed.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.nudRed.Location = New System.Drawing.Point(39, 32)
+            Me.nudRed.Location = New System.Drawing.Point(42, 67)
             Me.nudRed.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
             Me.nudRed.Name = "nudRed"
-            Me.nudRed.Size = New System.Drawing.Size(101, 22)
+            Me.nudRed.Size = New System.Drawing.Size(90, 22)
             Me.nudRed.TabIndex = 4
+            '
+            'nudAlpha
+            '
+            Me.nudAlpha.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.nudAlpha.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudAlpha.Location = New System.Drawing.Point(42, 41)
+            Me.nudAlpha.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
+            Me.nudAlpha.Name = "nudAlpha"
+            Me.nudAlpha.Size = New System.Drawing.Size(90, 22)
+            Me.nudAlpha.TabIndex = 3
+            Me.nudAlpha.Value = New Decimal(New Integer() {255, 0, 0, 0})
             '
             'lblBlue
             '
             Me.lblBlue.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblBlue.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.lblBlue.Location = New System.Drawing.Point(0, 84)
+            Me.lblBlue.Location = New System.Drawing.Point(9, 119)
             Me.lblBlue.Name = "lblBlue"
-            Me.lblBlue.Size = New System.Drawing.Size(34, 22)
+            Me.lblBlue.Size = New System.Drawing.Size(28, 22)
             Me.lblBlue.TabIndex = 3
             Me.lblBlue.Text = "B"
             Me.lblBlue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -356,9 +378,9 @@ Namespace kotor_tool
             '
             Me.lblGreen.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblGreen.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.lblGreen.Location = New System.Drawing.Point(0, 58)
+            Me.lblGreen.Location = New System.Drawing.Point(9, 93)
             Me.lblGreen.Name = "lblGreen"
-            Me.lblGreen.Size = New System.Drawing.Size(34, 22)
+            Me.lblGreen.Size = New System.Drawing.Size(28, 22)
             Me.lblGreen.TabIndex = 2
             Me.lblGreen.Text = "G"
             Me.lblGreen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -367,20 +389,31 @@ Namespace kotor_tool
             '
             Me.lblRed.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.lblRed.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.lblRed.Location = New System.Drawing.Point(0, 32)
+            Me.lblRed.Location = New System.Drawing.Point(9, 67)
             Me.lblRed.Name = "lblRed"
-            Me.lblRed.Size = New System.Drawing.Size(34, 22)
+            Me.lblRed.Size = New System.Drawing.Size(28, 22)
             Me.lblRed.TabIndex = 1
             Me.lblRed.Text = "R"
             Me.lblRed.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'lblAlpha
+            '
+            Me.lblAlpha.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblAlpha.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.lblAlpha.Location = New System.Drawing.Point(9, 41)
+            Me.lblAlpha.Name = "lblAlpha"
+            Me.lblAlpha.Size = New System.Drawing.Size(28, 22)
+            Me.lblAlpha.TabIndex = 1
+            Me.lblAlpha.Text = "A"
+            Me.lblAlpha.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
             '
             'pnlSwatch
             '
             Me.pnlSwatch.BackColor = System.Drawing.Color.Black
             Me.pnlSwatch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-            Me.pnlSwatch.Location = New System.Drawing.Point(0, 0)
+            Me.pnlSwatch.Location = New System.Drawing.Point(9, 10)
             Me.pnlSwatch.Name = "pnlSwatch"
-            Me.pnlSwatch.Size = New System.Drawing.Size(140, 24)
+            Me.pnlSwatch.Size = New System.Drawing.Size(123, 25)
             Me.pnlSwatch.TabIndex = 0
             '
             'grpFonts
@@ -399,7 +432,7 @@ Namespace kotor_tool
             Me.grpFonts.Controls.Add(Me.lblFontRole)
             Me.grpFonts.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.grpFonts.ForeColor = System.Drawing.Color.FromArgb(CType(CType(230, Byte), Integer), CType(CType(202, Byte), Integer), CType(CType(120, Byte), Integer))
-            Me.grpFonts.Location = New System.Drawing.Point(0, 347)
+            Me.grpFonts.Location = New System.Drawing.Point(0, 385)
             Me.grpFonts.Name = "grpFonts"
             Me.grpFonts.Padding = New System.Windows.Forms.Padding(10)
             Me.grpFonts.Size = New System.Drawing.Size(360, 147)
@@ -662,7 +695,7 @@ Namespace kotor_tool
             Me.pnlPreviewRoot.Location = New System.Drawing.Point(0, 0)
             Me.pnlPreviewRoot.Name = "pnlPreviewRoot"
             Me.pnlPreviewRoot.Padding = New System.Windows.Forms.Padding(14)
-            Me.pnlPreviewRoot.Size = New System.Drawing.Size(582, 494)
+            Me.pnlPreviewRoot.Size = New System.Drawing.Size(582, 532)
             Me.pnlPreviewRoot.TabIndex = 0
             '
             'pnlPreviewBody
@@ -670,13 +703,14 @@ Namespace kotor_tool
             Me.pnlPreviewBody.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.pnlPreviewBody.Controls.Add(Me.tabPreview)
             Me.pnlPreviewBody.Controls.Add(Me.txtPreview)
+            Me.pnlPreviewBody.Controls.Add(Me.progressPreview)
             Me.pnlPreviewBody.Controls.Add(Me.lblPreviewMuted)
             Me.pnlPreviewBody.Controls.Add(Me.lblPreviewBody)
             Me.pnlPreviewBody.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlPreviewBody.Location = New System.Drawing.Point(14, 110)
             Me.pnlPreviewBody.Name = "pnlPreviewBody"
             Me.pnlPreviewBody.Padding = New System.Windows.Forms.Padding(16)
-            Me.pnlPreviewBody.Size = New System.Drawing.Size(552, 314)
+            Me.pnlPreviewBody.Size = New System.Drawing.Size(552, 352)
             Me.pnlPreviewBody.TabIndex = 1
             '
             'tabPreview
@@ -694,7 +728,7 @@ Namespace kotor_tool
             Me.tabPreview.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
             Me.tabPreview.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.tabPreview.ItemSize = New System.Drawing.Size(90, 31)
-            Me.tabPreview.Location = New System.Drawing.Point(19, 136)
+            Me.tabPreview.Location = New System.Drawing.Point(19, 164)
             Me.tabPreview.Multiline = True
             Me.tabPreview.Name = "tabPreview"
             Me.tabPreview.NormalTabBackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
@@ -709,7 +743,7 @@ Namespace kotor_tool
             Me.tabPreview.SelectedTabBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
             Me.tabPreview.SelectedTabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
             Me.tabPreview.SelectedTextColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tabPreview.Size = New System.Drawing.Size(514, 160)
+            Me.tabPreview.Size = New System.Drawing.Size(514, 170)
             Me.tabPreview.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
             Me.tabPreview.TabBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
             Me.tabPreview.TabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
@@ -728,7 +762,7 @@ Namespace kotor_tool
             Me.tabPreviewOne.Location = New System.Drawing.Point(4, 35)
             Me.tabPreviewOne.Name = "tabPreviewOne"
             Me.tabPreviewOne.Padding = New System.Windows.Forms.Padding(12)
-            Me.tabPreviewOne.Size = New System.Drawing.Size(506, 121)
+            Me.tabPreviewOne.Size = New System.Drawing.Size(506, 131)
             Me.tabPreviewOne.TabIndex = 0
             Me.tabPreviewOne.Text = "Project Manager"
             '
@@ -823,7 +857,7 @@ Namespace kotor_tool
             Me.tabPreviewTwo.Location = New System.Drawing.Point(4, 35)
             Me.tabPreviewTwo.Name = "tabPreviewTwo"
             Me.tabPreviewTwo.Padding = New System.Windows.Forms.Padding(12)
-            Me.tabPreviewTwo.Size = New System.Drawing.Size(506, 121)
+            Me.tabPreviewTwo.Size = New System.Drawing.Size(506, 93)
             Me.tabPreviewTwo.TabIndex = 1
             Me.tabPreviewTwo.Text = "Other"
             '
@@ -834,7 +868,7 @@ Namespace kotor_tool
             Me.tabPreviewThree.Location = New System.Drawing.Point(4, 35)
             Me.tabPreviewThree.Name = "tabPreviewThree"
             Me.tabPreviewThree.Padding = New System.Windows.Forms.Padding(12)
-            Me.tabPreviewThree.Size = New System.Drawing.Size(506, 121)
+            Me.tabPreviewThree.Size = New System.Drawing.Size(506, 93)
             Me.tabPreviewThree.TabIndex = 2
             Me.tabPreviewThree.Text = "Treeview"
             '
@@ -851,6 +885,33 @@ Namespace kotor_tool
             Me.txtPreview.Size = New System.Drawing.Size(514, 20)
             Me.txtPreview.TabIndex = 2
             Me.txtPreview.Text = "Input preview"
+            '
+            'progressPreview
+            '
+            Me.progressPreview.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.progressPreview.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
+            Me.progressPreview.BorderDarkColor = System.Drawing.Color.FromArgb(CType(CType(8, Byte), Integer), CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer))
+            Me.progressPreview.BorderGoldColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.progressPreview.BottomGlowColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(20, Byte), Integer))
+            Me.progressPreview.EdgeLightColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(232, Byte), Integer), CType(CType(150, Byte), Integer))
+            Me.progressPreview.FillBottomColor = System.Drawing.Color.FromArgb(CType(CType(142, Byte), Integer), CType(CType(101, Byte), Integer), CType(CType(38, Byte), Integer))
+            Me.progressPreview.FillMiddleColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.progressPreview.FillTopColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(214, Byte), Integer), CType(CType(132, Byte), Integer))
+            Me.progressPreview.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.progressPreview.InsetHighlightColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.progressPreview.Location = New System.Drawing.Point(19, 130)
+            Me.progressPreview.MinimumSize = New System.Drawing.Size(40, 12)
+            Me.progressPreview.Name = "progressPreview"
+            Me.progressPreview.ShineBottomColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(190, Byte), Integer))
+            Me.progressPreview.ShineTopColor = System.Drawing.Color.FromArgb(CType(CType(135, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(246, Byte), Integer), CType(CType(190, Byte), Integer))
+            Me.progressPreview.Size = New System.Drawing.Size(514, 22)
+            Me.progressPreview.SweepColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(245, Byte), Integer), CType(CType(180, Byte), Integer))
+            Me.progressPreview.TabIndex = 4
+            Me.progressPreview.TrackBottomColor = System.Drawing.Color.FromArgb(CType(CType(7, Byte), Integer), CType(CType(10, Byte), Integer), CType(CType(15, Byte), Integer))
+            Me.progressPreview.TrackShadowColor = System.Drawing.Color.FromArgb(CType(CType(120, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.progressPreview.TrackTopColor = System.Drawing.Color.FromArgb(CType(CType(13, Byte), Integer), CType(CType(18, Byte), Integer), CType(CType(25, Byte), Integer))
+            Me.progressPreview.Value = 68
             '
             'lblPreviewMuted
             '
@@ -884,7 +945,7 @@ Namespace kotor_tool
             Me.pnlPreviewFooter.Controls.Add(Me.btnPreview)
             Me.pnlPreviewFooter.Controls.Add(Me.lblPreviewFooterSeparator)
             Me.pnlPreviewFooter.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.pnlPreviewFooter.Location = New System.Drawing.Point(14, 424)
+            Me.pnlPreviewFooter.Location = New System.Drawing.Point(14, 462)
             Me.pnlPreviewFooter.Name = "pnlPreviewFooter"
             Me.pnlPreviewFooter.Padding = New System.Windows.Forms.Padding(14)
             Me.pnlPreviewFooter.Size = New System.Drawing.Size(552, 54)
@@ -1011,12 +1072,13 @@ Namespace kotor_tool
             Me.pnlFooter.Controls.Add(Me.btnReset)
             Me.pnlFooter.Controls.Add(Me.btnSaveAs)
             Me.pnlFooter.Controls.Add(Me.btnSave)
+            Me.pnlFooter.Controls.Add(Me.btnApplyTheme)
             Me.pnlFooter.Controls.Add(Me.btnReload)
             Me.pnlFooter.Controls.Add(Me.cmbThemes)
             Me.pnlFooter.Controls.Add(Me.lblThemePicker)
             Me.pnlFooter.Controls.Add(Me.lblFooterSeparator)
             Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.pnlFooter.Location = New System.Drawing.Point(0, 596)
+            Me.pnlFooter.Location = New System.Drawing.Point(0, 650)
             Me.pnlFooter.Name = "pnlFooter"
             Me.pnlFooter.Size = New System.Drawing.Size(984, 65)
             Me.pnlFooter.TabIndex = 2
@@ -1072,6 +1134,23 @@ Namespace kotor_tool
             Me.btnSave.Text = "Save"
             Me.btnSave.UseVisualStyleBackColor = False
             '
+            'btnApplyTheme
+            '
+            Me.btnApplyTheme.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.btnApplyTheme.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnApplyTheme.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnApplyTheme.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnApplyTheme.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnApplyTheme.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnApplyTheme.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.btnApplyTheme.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnApplyTheme.Location = New System.Drawing.Point(447, 22)
+            Me.btnApplyTheme.Name = "btnApplyTheme"
+            Me.btnApplyTheme.Size = New System.Drawing.Size(126, 26)
+            Me.btnApplyTheme.TabIndex = 2
+            Me.btnApplyTheme.Text = "Apply Theme"
+            Me.btnApplyTheme.UseVisualStyleBackColor = False
+            '
             'btnReload
             '
             Me.btnReload.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -1126,7 +1205,7 @@ Namespace kotor_tool
             '
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 15)
             Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
-            Me.ClientSize = New System.Drawing.Size(984, 661)
+            Me.ClientSize = New System.Drawing.Size(984, 715)
             Me.Controls.Add(Me.pnlRoot)
             Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
@@ -1147,6 +1226,7 @@ Namespace kotor_tool
             CType(Me.nudBlue, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.nudGreen, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.nudRed, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.nudAlpha, System.ComponentModel.ISupportInitialize).EndInit()
             Me.grpFonts.ResumeLayout(False)
             Me.grpFonts.PerformLayout()
             CType(Me.nudFontSize, System.ComponentModel.ISupportInitialize).EndInit()

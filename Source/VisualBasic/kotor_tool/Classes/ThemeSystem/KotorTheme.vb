@@ -212,7 +212,7 @@ Namespace kotor_tool
             theme.TabOuterNativeBorderBack = Color.FromArgb(18, 22, 28)
 
             theme.TitleFontName = "Segoe UI"
-            theme.TitleFontSize = 18.0F
+            theme.TitleFontSize = 12.75F
             theme.TitleFontStyle = FontStyle.Bold
 
             theme.BodyFontName = "Segoe UI"

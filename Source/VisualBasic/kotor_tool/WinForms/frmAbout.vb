@@ -26,7 +26,7 @@ Namespace kotor_tool
 
         Private Sub LoadAndApplyTheme()
             Try
-                _theme = KotorThemeManager.LoadTheme("DarkSaber")
+                _theme = KotorThemeManager.LoadTheme(KotorThemeManager.GetActiveThemeName())
             Catch
                 _theme = KotorTheme.CreateDefault()
             End Try

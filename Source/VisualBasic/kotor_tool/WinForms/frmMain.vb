@@ -2941,7 +2941,7 @@ Namespace kotor_tool
 
         Private Sub LoadAndApplyTheme()
             Try
-                _theme = KotorThemeManager.LoadTheme("DarkSaber")
+                _theme = KotorThemeManager.LoadTheme(KotorThemeManager.GetActiveThemeName())
             Catch
                 _theme = KotorTheme.CreateDefault()
             End Try
@@ -3430,8 +3430,8 @@ Namespace kotor_tool
                     Dim obj As Object
                     Return obj
                 End If
-                Dim cursor As Cursor = cursor.Current
-                cursor.Current = Cursors.WaitCursor
+                Dim cursor As Cursor = Cursor.Current
+                Cursor.Current = Cursors.WaitCursor
                 Dim fileStream As FileStream = New FileStream(node.FilePath + "\" + node.Filename, FileMode.Open, FileAccess.Read)
                 Dim binaryReader As BinaryReader = New BinaryReader(fileStream, Encoding.ASCII)
                 Dim array As Byte() = binaryReader.ReadBytes(CInt(fileStream.Length))
@@ -3452,7 +3452,7 @@ Namespace kotor_tool
                         End If
                     Next
                 End If
-                cursor.Current = cursor
+                Cursor.Current = cursor
             ElseIf ObjectType.ObjTst(tag, "RIM_Res", False) = 0 Then
                 outputpath = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, node.Filename, "Save " + node.Filename + " file...", node.ResTypeStr, False, True))
                 If StringType.StrCmp(outputpath, "", False) = 0 Then
@@ -3673,7 +3673,7 @@ Namespace kotor_tool
 
         ' Token: 0x06000732 RID: 1842 RVA: 0x00255680 File Offset: 0x00254680
         Public Sub HandleDataByNodeType(ByVal node As KotorTreeNode, ByVal sender As Object)
-            Dim cursor As Cursor = cursor.Current
+            Dim cursor As Cursor = Cursor.Current
             frmMain.CurrentSettings = UserSettings.GetSettings()
             Dim tag As Object = node.Tag
             Dim array As Byte()
@@ -3706,7 +3706,7 @@ Namespace kotor_tool
                     frmPathManager.tbModuleExportPath.Text = frmMain.gRootPath + "working\Exported Models"
                     frmPathManager.StartPosition = FormStartPosition.CenterScreen
                     frmPathManager.TabControl1.SelectedIndex = 2
-                    frmPathManager.tbModuleExportPath.BackColor = KotorThemeManager.LoadTheme("DarkSaber").ValidationErrorBack
+                    frmPathManager.tbModuleExportPath.BackColor = KotorThemeManager.LoadTheme(KotorThemeManager.GetActiveThemeName()).ValidationErrorBack
                     frmPathManager.ShowDialog(Me)
                     frmMain.CurrentSettings = UserSettings.GetSettings()
                 End If

@@ -409,7 +409,7 @@ Namespace kotor_tool
                 Return
             End If
 
-            KotorThemeApplier.ApplyDataGridTableStyle(tableStyle, KotorThemeManager.LoadTheme("DarkSaber"))
+            KotorThemeApplier.ApplyDataGridTableStyle(tableStyle, KotorThemeManager.LoadTheme(KotorThemeManager.GetActiveThemeName()))
         End Sub
 
 

@@ -45,7 +45,7 @@ Namespace kotor_tool
         End Sub
 
         Private Sub ApplyKotorTheme()
-            Dim theme As KotorTheme = KotorThemeManager.LoadTheme("DarkSaber")
+            Dim theme As KotorTheme = KotorThemeManager.LoadTheme(KotorThemeManager.GetActiveThemeName())
 
             Me.BackColor = theme.WindowBack
             Me.ForeColor = theme.TextPrimary
