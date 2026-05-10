@@ -18,6 +18,7 @@ Namespace kotor_tool
             AddHandler MyBase.Closing, AddressOf Me.frmAutoDialog_Closing
             Me.filepath = frmMain.CurrentSettings.defaultKotORLocation + "\override\ft_watch.dlg"
             Me.InitializeComponent()
+            AddHandler Me.Timer1.Tick, AddressOf Me.Timer1_Tick
         End Sub
 
         Private Sub ApplyKotorTheme()
@@ -40,6 +41,12 @@ Namespace kotor_tool
         ' (set) Token: 0x0600026D RID: 621 RVA: 0x0022CAF0 File Offset: 0x0022BAF0
         ' Token: 0x0600026F RID: 623 RVA: 0x0022CC30 File Offset: 0x0022BC30
         Private Sub SetDLGData()
+            If Not File.Exists(Me.filepath) Then
+                Me.Timer1.Enabled = False
+                Me.Label1.Text = "The dialog file was not found:" & Environment.NewLine & Me.filepath
+                Return
+            End If
+
             Dim fileStream As FileStream = New FileStream(Me.filepath, FileMode.Open)
             Dim clsGFF As clsGFF = New clsGFF(fileStream, 0, True)
             clsGFF.SetEnglishCExoLocSubStringEntry("EntryList(0).Text", "The time is " + DateAndTime.Now.ToLongTimeString())

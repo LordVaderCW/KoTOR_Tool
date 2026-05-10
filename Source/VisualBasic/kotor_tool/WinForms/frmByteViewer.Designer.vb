@@ -143,6 +143,7 @@ Namespace kotor_tool
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlBody = New System.Windows.Forms.Panel()
             Me.pnlByteSurface = New System.Windows.Forms.Panel()
+            Me.bv = New kotor_tool.DarkByteViewerControl()
             Me.pnlInspector = New System.Windows.Forms.Panel()
             Me.chkbFreezeHeader = New System.Windows.Forms.CheckBox()
             Me.chkbAlternateRows = New System.Windows.Forms.CheckBox()
@@ -196,11 +197,10 @@ Namespace kotor_tool
             Me.lblStatus = New System.Windows.Forms.Label()
             Me.Button1 = New System.Windows.Forms.Button()
             Me.pnlHeader = New System.Windows.Forms.Panel()
+            Me.DarkPictureBox1 = New kotor_tool.DarkPictureBox()
             Me.lblSeparatorTop = New System.Windows.Forms.Label()
             Me.lblSubtitle = New System.Windows.Forms.Label()
             Me.lblTitle = New System.Windows.Forms.Label()
-            Me.bv = New kotor_tool.DarkByteViewerControl()
-            Me.DarkPictureBox1 = New kotor_tool.DarkPictureBox()
             Me.pnlRoot.SuspendLayout()
             Me.pnlBody.SuspendLayout()
             Me.pnlByteSurface.SuspendLayout()
@@ -254,6 +254,33 @@ Namespace kotor_tool
             Me.pnlByteSurface.Size = New System.Drawing.Size(660, 439)
             Me.pnlByteSurface.TabIndex = 1
             '
+            'bv
+            '
+            Me.bv.AlternateRowColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(31, Byte), Integer))
+            Me.bv.AlternateRows = True
+            Me.bv.BackColor = System.Drawing.Color.FromArgb(CType(CType(12, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(24, Byte), Integer))
+            Me.bv.ControlByteBackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.bv.CurrentBackColor = System.Drawing.Color.FromArgb(CType(CType(92, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.bv.DisplayMode = kotor_tool.DarkByteViewerDisplayMode.Hexdump
+            Me.bv.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.bv.Font = New System.Drawing.Font("Consolas", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.bv.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.bv.FreezeHeader = True
+            Me.bv.HeaderColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.bv.HighAsciiBackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(46, Byte), Integer))
+            Me.bv.HighlightControlBytes = False
+            Me.bv.HighlightHighAsciiBytes = False
+            Me.bv.HighlightNonPrintableBytes = False
+            Me.bv.HighlightNullBytes = False
+            Me.bv.Location = New System.Drawing.Point(0, 0)
+            Me.bv.MutedTextColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.bv.Name = "bv"
+            Me.bv.NonPrintableBackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(46, Byte), Integer))
+            Me.bv.NullBackColor = System.Drawing.Color.FromArgb(CType(CType(44, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.bv.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(70, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(120, Byte), Integer))
+            Me.bv.Size = New System.Drawing.Size(658, 437)
+            Me.bv.TabIndex = 0
+            '
             'pnlInspector
             '
             Me.pnlInspector.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -292,7 +319,6 @@ Namespace kotor_tool
             '
             Me.chkbFreezeHeader.Checked = True
             Me.chkbFreezeHeader.CheckState = System.Windows.Forms.CheckState.Checked
-            Me.chkbFreezeHeader.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbFreezeHeader.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbFreezeHeader.Location = New System.Drawing.Point(14, 350)
             Me.chkbFreezeHeader.Name = "chkbFreezeHeader"
@@ -304,7 +330,6 @@ Namespace kotor_tool
             '
             Me.chkbAlternateRows.Checked = True
             Me.chkbAlternateRows.CheckState = System.Windows.Forms.CheckState.Checked
-            Me.chkbAlternateRows.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbAlternateRows.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbAlternateRows.Location = New System.Drawing.Point(126, 350)
             Me.chkbAlternateRows.Name = "chkbAlternateRows"
@@ -328,7 +353,6 @@ Namespace kotor_tool
             '
             'chkbHighlightNull
             '
-            Me.chkbHighlightNull.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbHighlightNull.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbHighlightNull.Location = New System.Drawing.Point(10, 20)
             Me.chkbHighlightNull.Name = "chkbHighlightNull"
@@ -338,7 +362,6 @@ Namespace kotor_tool
             '
             'chkbHighlightControl
             '
-            Me.chkbHighlightControl.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbHighlightControl.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbHighlightControl.Location = New System.Drawing.Point(108, 20)
             Me.chkbHighlightControl.Name = "chkbHighlightControl"
@@ -348,7 +371,6 @@ Namespace kotor_tool
             '
             'chkbHighlightHighAscii
             '
-            Me.chkbHighlightHighAscii.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbHighlightHighAscii.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbHighlightHighAscii.Location = New System.Drawing.Point(10, 54)
             Me.chkbHighlightHighAscii.Name = "chkbHighlightHighAscii"
@@ -358,7 +380,6 @@ Namespace kotor_tool
             '
             'chkbHighlightNonPrintable
             '
-            Me.chkbHighlightNonPrintable.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbHighlightNonPrintable.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbHighlightNonPrintable.Location = New System.Drawing.Point(108, 54)
             Me.chkbHighlightNonPrintable.Name = "chkbHighlightNonPrintable"
@@ -934,6 +955,29 @@ Namespace kotor_tool
             Me.pnlHeader.Size = New System.Drawing.Size(958, 127)
             Me.pnlHeader.TabIndex = 0
             '
+            'DarkPictureBox1
+            '
+            Me.DarkPictureBox1.BackColor = System.Drawing.Color.Transparent
+            Me.DarkPictureBox1.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.DarkPictureBox1.BorderColorSecondary = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.DarkPictureBox1.BorderThickness = 1
+            Me.DarkPictureBox1.CornerRadius = 8
+            Me.DarkPictureBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.DarkPictureBox1.Image = Global.My.Resources.Resources.koTOR_icon
+            Me.DarkPictureBox1.InnerHighlightColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(52, Byte), Integer))
+            Me.DarkPictureBox1.InnerPadding = 4
+            Me.DarkPictureBox1.Location = New System.Drawing.Point(18, 10)
+            Me.DarkPictureBox1.Name = "DarkPictureBox1"
+            Me.DarkPictureBox1.OuterShadowColor = System.Drawing.Color.Transparent
+            Me.DarkPictureBox1.OuterShadowThickness = 2
+            Me.DarkPictureBox1.SecondaryBorderThickness = 1
+            Me.DarkPictureBox1.Size = New System.Drawing.Size(100, 100)
+            Me.DarkPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+            Me.DarkPictureBox1.TabIndex = 3
+            Me.DarkPictureBox1.TabStop = False
+            Me.DarkPictureBox1.UseInnerHighlight = True
+            Me.DarkPictureBox1.UseSecondaryBorder = True
+            '
             'lblSeparatorTop
             '
             Me.lblSeparatorTop.BackColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
@@ -973,47 +1017,6 @@ Namespace kotor_tool
             Me.lblTitle.TabIndex = 0
             Me.lblTitle.Text = "Byte Viewer"
             Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-            '
-            'bv
-            '
-            Me.bv.AlternateRows = True
-            Me.bv.BackColor = System.Drawing.Color.FromArgb(CType(CType(12, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(24, Byte), Integer))
-            Me.bv.DisplayMode = kotor_tool.DarkByteViewerDisplayMode.Hexdump
-            Me.bv.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.bv.Font = New System.Drawing.Font("Consolas", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.bv.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.bv.FreezeHeader = True
-            Me.bv.HighlightControlBytes = False
-            Me.bv.HighlightHighAsciiBytes = False
-            Me.bv.HighlightNonPrintableBytes = False
-            Me.bv.HighlightNullBytes = False
-            Me.bv.Location = New System.Drawing.Point(0, 0)
-            Me.bv.Name = "bv"
-            Me.bv.Size = New System.Drawing.Size(658, 437)
-            Me.bv.TabIndex = 0
-            '
-            'DarkPictureBox1
-            '
-            Me.DarkPictureBox1.BackColor = System.Drawing.Color.Transparent
-            Me.DarkPictureBox1.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
-            Me.DarkPictureBox1.BorderColorSecondary = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
-            Me.DarkPictureBox1.BorderThickness = 1
-            Me.DarkPictureBox1.CornerRadius = 8
-            Me.DarkPictureBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.DarkPictureBox1.Image = Global.My.Resources.Resources.koTOR_icon
-            Me.DarkPictureBox1.InnerHighlightColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(52, Byte), Integer))
-            Me.DarkPictureBox1.InnerPadding = 4
-            Me.DarkPictureBox1.Location = New System.Drawing.Point(18, 10)
-            Me.DarkPictureBox1.Name = "DarkPictureBox1"
-            Me.DarkPictureBox1.OuterShadowColor = System.Drawing.Color.Transparent
-            Me.DarkPictureBox1.OuterShadowThickness = 2
-            Me.DarkPictureBox1.SecondaryBorderThickness = 1
-            Me.DarkPictureBox1.Size = New System.Drawing.Size(100, 100)
-            Me.DarkPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-            Me.DarkPictureBox1.TabIndex = 3
-            Me.DarkPictureBox1.TabStop = False
-            Me.DarkPictureBox1.UseInnerHighlight = True
-            Me.DarkPictureBox1.UseSecondaryBorder = True
             '
             'frmByteViewer
             '

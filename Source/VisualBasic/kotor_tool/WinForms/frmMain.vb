@@ -43,6 +43,22 @@ Namespace kotor_tool
             End If
         End Sub
 
+        Private Sub WireOtherWindowsMenu()
+            If Me.miOtherWindows Is Nothing OrElse Me.miOtherWindows.MenuItems.Count > 0 Then
+                Return
+            End If
+
+            Me.miOtherWindows.MenuItems.AddRange(New MenuItem() {
+                New MenuItem("Appearance Wizard", AddressOf Me.miOtherAppearanceWizard_Click),
+                New MenuItem("Auto Dialog", AddressOf Me.miOtherAutoDialog_Click),
+                New MenuItem("Basic Help", AddressOf Me.miOtherBasicHelp_Click),
+                New MenuItem("Registration", AddressOf Me.miOtherRegistration_Click),
+                New MenuItem("Registration Reminder", AddressOf Me.miOtherRegistrationReminder_Click),
+                New MenuItem("Sound Chooser", AddressOf Me.miOtherSoundChooser_Click),
+                New MenuItem("Override Files Used", AddressOf Me.miOtherOverrideFilesUsed_Click)
+            })
+        End Sub
+
         Private Sub btnTool2DA_Click(ByVal sender As Object, ByVal e As EventArgs)
             Me.Open2DAFileEditor()
         End Sub
@@ -120,6 +136,7 @@ Namespace kotor_tool
 
             Me.InitializeComponent()
             Me.ApplyApplicationIcon()
+            Me.WireOtherWindowsMenu()
             Me.WireModernToolbar()
             Me.LoadModernToolbarImages()
             Me.InitialiseResourceBrowser()
@@ -143,6 +160,7 @@ Namespace kotor_tool
 
             Me.InitializeComponent()
             Me.ApplyApplicationIcon()
+            Me.WireOtherWindowsMenu()
             Me.WireModernToolbar()
             Me.LoadModernToolbarImages()
             Me.InitialiseResourceBrowser()
@@ -5907,6 +5925,42 @@ IL_12BE:
             If TypeOf Me.TreeView.SelectedNode Is KotorTreeNode Then
                 Me.PopulateResourceBrowserFromNode(CType(Me.TreeView.SelectedNode, KotorTreeNode))
             End If
+        End Sub
+
+        Private Sub ShowOtherWindow(ByVal form As Form)
+            form.StartPosition = FormStartPosition.CenterParent
+            form.Show(Me)
+        End Sub
+
+        Private Sub miOtherAppearanceWizard_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOtherAppearanceWizard.Click
+            Me.ShowOtherWindow(New frmAppearanceWizard())
+        End Sub
+
+        Private Sub miOtherAutoDialog_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOtherAutoDialog.Click
+            Me.ShowOtherWindow(New frmAutoDialog())
+        End Sub
+
+        Private Sub miOtherBasicHelp_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOtherBasicHelp.Click
+            Me.ShowOtherWindow(New frmBasicHelp())
+        End Sub
+
+        Private Sub miOtherRegistration_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOtherRegistration.Click
+            Me.ShowOtherWindow(New frmUserRegistration())
+        End Sub
+
+        Private Sub miOtherRegistrationReminder_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOtherRegistrationReminder.Click
+            Dim regReminder As RegReminder = New RegReminder()
+            regReminder.StartPosition = FormStartPosition.CenterParent
+            regReminder.ShowDialog(Me)
+            regReminder.Dispose()
+        End Sub
+
+        Private Sub miOtherSoundChooser_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOtherSoundChooser.Click
+            Me.ShowOtherWindow(New frmSoundChooser())
+        End Sub
+
+        Private Sub miOtherOverrideFilesUsed_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOtherOverrideFilesUsed.Click
+            Me.ShowOtherWindow(New frmOverrideFilesUsed())
         End Sub
     End Class
 End Namespace

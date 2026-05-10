@@ -267,10 +267,10 @@
     <Compile Include="WinForms\frmERFManager.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinForms\frmErrorMessageWithCopyableText.Designer.vb">
-      <DependentUpon>frmErrorMessageWithCopyableText.vb</DependentUpon>
+    <Compile Include="WinForms\frmErrorMessage.Designer.vb">
+      <DependentUpon>frmErrorMessage.vb</DependentUpon>
     </Compile>
-    <Compile Include="WinForms\frmErrorMessageWithCopyableText.vb">
+    <Compile Include="WinForms\frmErrorMessage.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WinForms\frmFilterDesigner.Designer.vb">
@@ -638,8 +638,8 @@
       <DependentUpon>frmERFManager.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmErrorMessageWithCopyableText.resx">
-      <DependentUpon>frmErrorMessageWithCopyableText.vb</DependentUpon>
+    <EmbeddedResource Include="WinForms\frmErrorMessage.resx">
+      <DependentUpon>frmErrorMessage.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmFilterDesigner.resx">
@@ -835,6 +835,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="My Project\app.manifest" />
+    <Content Include="fmodex.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Plugins\DeNCS\command.ini" />
     <None Include="Themes\DarkSaber.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -193,6 +193,14 @@ Namespace kotor_tool
             Me.miCheckForUpdates = New System.Windows.Forms.MenuItem()
             Me.miRegisterSoftware = New System.Windows.Forms.MenuItem()
             Me.miAbout = New System.Windows.Forms.MenuItem()
+            Me.miOtherWindows = New System.Windows.Forms.MenuItem()
+            Me.miOtherAppearanceWizard = New System.Windows.Forms.MenuItem()
+            Me.miOtherAutoDialog = New System.Windows.Forms.MenuItem()
+            Me.miOtherBasicHelp = New System.Windows.Forms.MenuItem()
+            Me.miOtherRegistration = New System.Windows.Forms.MenuItem()
+            Me.miOtherRegistrationReminder = New System.Windows.Forms.MenuItem()
+            Me.miOtherSoundChooser = New System.Windows.Forms.MenuItem()
+            Me.miOtherOverrideFilesUsed = New System.Windows.Forms.MenuItem()
             Me.tvCMenu = New System.Windows.Forms.ContextMenu()
             Me.cmiExtractForModuleEditing = New System.Windows.Forms.MenuItem()
             Me.pnlRoot.SuspendLayout()
@@ -216,7 +224,7 @@ Namespace kotor_tool
             Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
             Me.pnlRoot.Name = "pnlRoot"
             Me.pnlRoot.Padding = New System.Windows.Forms.Padding(10)
-            Me.pnlRoot.Size = New System.Drawing.Size(854, 650)
+            Me.pnlRoot.Size = New System.Drawing.Size(854, 671)
             Me.pnlRoot.TabIndex = 0
             '
             'pnlMainArea
@@ -229,7 +237,7 @@ Namespace kotor_tool
             Me.pnlMainArea.Location = New System.Drawing.Point(10, 48)
             Me.pnlMainArea.Name = "pnlMainArea"
             Me.pnlMainArea.Padding = New System.Windows.Forms.Padding(10)
-            Me.pnlMainArea.Size = New System.Drawing.Size(834, 592)
+            Me.pnlMainArea.Size = New System.Drawing.Size(834, 613)
             Me.pnlMainArea.TabIndex = 5
             '
             'pnlResourceArea
@@ -240,7 +248,7 @@ Namespace kotor_tool
             Me.pnlResourceArea.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlResourceArea.Location = New System.Drawing.Point(10, 10)
             Me.pnlResourceArea.Name = "pnlResourceArea"
-            Me.pnlResourceArea.Size = New System.Drawing.Size(682, 570)
+            Me.pnlResourceArea.Size = New System.Drawing.Size(682, 591)
             Me.pnlResourceArea.TabIndex = 8
             '
             'pnlBrowserContainer
@@ -252,7 +260,7 @@ Namespace kotor_tool
             Me.pnlBrowserContainer.Location = New System.Drawing.Point(0, 0)
             Me.pnlBrowserContainer.Name = "pnlBrowserContainer"
             Me.pnlBrowserContainer.Padding = New System.Windows.Forms.Padding(6, 0, 6, 6)
-            Me.pnlBrowserContainer.Size = New System.Drawing.Size(682, 438)
+            Me.pnlBrowserContainer.Size = New System.Drawing.Size(682, 459)
             Me.pnlBrowserContainer.TabIndex = 7
             '
             'pnlBrowserBody
@@ -264,7 +272,7 @@ Namespace kotor_tool
             Me.pnlBrowserBody.Location = New System.Drawing.Point(6, 62)
             Me.pnlBrowserBody.Name = "pnlBrowserBody"
             Me.pnlBrowserBody.Padding = New System.Windows.Forms.Padding(4)
-            Me.pnlBrowserBody.Size = New System.Drawing.Size(670, 370)
+            Me.pnlBrowserBody.Size = New System.Drawing.Size(670, 391)
             Me.pnlBrowserBody.TabIndex = 5
             '
             'TreeView
@@ -276,7 +284,7 @@ Namespace kotor_tool
             Me.TreeView.HideSelection = False
             Me.TreeView.Location = New System.Drawing.Point(4, 4)
             Me.TreeView.Name = "TreeView"
-            Me.TreeView.Size = New System.Drawing.Size(662, 362)
+            Me.TreeView.Size = New System.Drawing.Size(662, 383)
             Me.TreeView.TabIndex = 1
             '
             'lvResourceBrowser
@@ -292,7 +300,7 @@ Namespace kotor_tool
             Me.lvResourceBrowser.MultiSelect = False
             Me.lvResourceBrowser.Name = "lvResourceBrowser"
             Me.lvResourceBrowser.ShowItemToolTips = True
-            Me.lvResourceBrowser.Size = New System.Drawing.Size(662, 362)
+            Me.lvResourceBrowser.Size = New System.Drawing.Size(662, 383)
             Me.lvResourceBrowser.SmallImageList = Me.imgResourceSmall
             Me.lvResourceBrowser.TabIndex = 3
             Me.lvResourceBrowser.UseCompatibleStateImageBehavior = False
@@ -404,7 +412,7 @@ Namespace kotor_tool
             Me.pnlResourceDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.pnlResourceDetails.Controls.Add(Me.lvResourceDetails)
             Me.pnlResourceDetails.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.pnlResourceDetails.Location = New System.Drawing.Point(0, 438)
+            Me.pnlResourceDetails.Location = New System.Drawing.Point(0, 459)
             Me.pnlResourceDetails.Name = "pnlResourceDetails"
             Me.pnlResourceDetails.Padding = New System.Windows.Forms.Padding(6)
             Me.pnlResourceDetails.Size = New System.Drawing.Size(682, 132)
@@ -444,7 +452,7 @@ Namespace kotor_tool
             Me.pnlActionPanel.Location = New System.Drawing.Point(692, 10)
             Me.pnlActionPanel.Name = "pnlActionPanel"
             Me.pnlActionPanel.Padding = New System.Windows.Forms.Padding(10)
-            Me.pnlActionPanel.Size = New System.Drawing.Size(130, 570)
+            Me.pnlActionPanel.Size = New System.Drawing.Size(130, 591)
             Me.pnlActionPanel.TabIndex = 6
             '
             'Button4
@@ -626,7 +634,7 @@ Namespace kotor_tool
             '
             'MainMenu1
             '
-            Me.MainMenu1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miFile, Me.miTools, Me.miPlugins, Me.miCustomise, Me.miHelp})
+            Me.MainMenu1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miFile, Me.miTools, Me.miOtherWindows, Me.miPlugins, Me.miCustomise, Me.miHelp})
             '
             'miFile
             '
@@ -815,7 +823,7 @@ Namespace kotor_tool
             '
             'miPlugins
             '
-            Me.miPlugins.Index = 2
+            Me.miPlugins.Index = 3
             Me.miPlugins.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miOpenPluginManager})
             Me.miPlugins.Text = "&Plugins"
             '
@@ -826,7 +834,7 @@ Namespace kotor_tool
             '
             'miCustomise
             '
-            Me.miCustomise.Index = 3
+            Me.miCustomise.Index = 4
             Me.miCustomise.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miThemeEditor})
             Me.miCustomise.Text = "&Customize"
             '
@@ -837,7 +845,7 @@ Namespace kotor_tool
             '
             'miHelp
             '
-            Me.miHelp.Index = 4
+            Me.miHelp.Index = 5
             Me.miHelp.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miBasicHelp, Me.miCheckForUpdates, Me.miRegisterSoftware, Me.miAbout})
             Me.miHelp.Text = "&Help"
             '
@@ -862,6 +870,49 @@ Namespace kotor_tool
             Me.miAbout.Index = 3
             Me.miAbout.Text = "&About..."
             '
+            'miOtherWindows
+            '
+            Me.miOtherWindows.Index = 2
+            Me.miOtherWindows.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miOtherAppearanceWizard, Me.miOtherAutoDialog, Me.miOtherBasicHelp, Me.miOtherRegistration, Me.miOtherRegistrationReminder, Me.miOtherSoundChooser, Me.miOtherOverrideFilesUsed})
+            Me.miOtherWindows.Text = "&Other Windows"
+            '
+            'miOtherAppearanceWizard
+            '
+            Me.miOtherAppearanceWizard.Index = 0
+            Me.miOtherAppearanceWizard.Text = "Appearance Wizard"
+            '
+            'miOtherAutoDialog
+            '
+            Me.miOtherAutoDialog.Index = 1
+            Me.miOtherAutoDialog.Text = "Auto Dialog"
+            Me.miOtherAutoDialog.Visible = False
+            '
+            'miOtherBasicHelp
+            '
+            Me.miOtherBasicHelp.Index = 2
+            Me.miOtherBasicHelp.Text = "Basic Help"
+            '
+            'miOtherRegistration
+            '
+            Me.miOtherRegistration.Index = 3
+            Me.miOtherRegistration.Text = "Registration"
+            '
+            'miOtherRegistrationReminder
+            '
+            Me.miOtherRegistrationReminder.Index = 4
+            Me.miOtherRegistrationReminder.Text = "Registration Reminder"
+            Me.miOtherRegistrationReminder.Visible = False
+            '
+            'miOtherSoundChooser
+            '
+            Me.miOtherSoundChooser.Index = 5
+            Me.miOtherSoundChooser.Text = "Sound Chooser"
+            '
+            'miOtherOverrideFilesUsed
+            '
+            Me.miOtherOverrideFilesUsed.Index = 6
+            Me.miOtherOverrideFilesUsed.Text = "Override Files Used"
+            '
             'tvCMenu
             '
             Me.tvCMenu.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.cmiExtractForModuleEditing})
@@ -875,7 +926,7 @@ Namespace kotor_tool
             '
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
             Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
-            Me.ClientSize = New System.Drawing.Size(854, 650)
+            Me.ClientSize = New System.Drawing.Size(854, 671)
             Me.Controls.Add(Me.pnlRoot)
             Me.Menu = Me.MainMenu1
             Me.MinimumSize = New System.Drawing.Size(870, 710)
@@ -901,6 +952,14 @@ Namespace kotor_tool
         Friend WithEvents miOpenPluginManager As System.Windows.Forms.MenuItem
         Friend WithEvents miCustomise As System.Windows.Forms.MenuItem
         Friend WithEvents miThemeEditor As System.Windows.Forms.MenuItem
+        Friend WithEvents miOtherWindows As System.Windows.Forms.MenuItem
+        Friend WithEvents miOtherAppearanceWizard As System.Windows.Forms.MenuItem
+        Friend WithEvents miOtherAutoDialog As System.Windows.Forms.MenuItem
+        Friend WithEvents miOtherBasicHelp As System.Windows.Forms.MenuItem
+        Friend WithEvents miOtherRegistration As System.Windows.Forms.MenuItem
+        Friend WithEvents miOtherRegistrationReminder As System.Windows.Forms.MenuItem
+        Friend WithEvents miOtherSoundChooser As System.Windows.Forms.MenuItem
+        Friend WithEvents miOtherOverrideFilesUsed As System.Windows.Forms.MenuItem
     End Class
 
 End Namespace

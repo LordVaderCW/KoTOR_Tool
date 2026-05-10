@@ -1643,7 +1643,7 @@ Namespace kotor_tool
             Me.nudDisarmDC.RightToLeft = System.Windows.Forms.RightToLeft.No
             Me.nudDisarmDC.Size = New System.Drawing.Size(48, 22)
             Me.nudDisarmDC.TabIndex = 3
-            Me.nudDisarmDC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudDisarmDC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'Label4
             '
@@ -1675,7 +1675,7 @@ Namespace kotor_tool
             Me.nudTrapDetectDC.RightToLeft = System.Windows.Forms.RightToLeft.No
             Me.nudTrapDetectDC.Size = New System.Drawing.Size(48, 22)
             Me.nudTrapDetectDC.TabIndex = 1
-            Me.nudTrapDetectDC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudTrapDetectDC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'Label16
             '
@@ -1707,7 +1707,7 @@ Namespace kotor_tool
             Me.nudTrapType.RightToLeft = System.Windows.Forms.RightToLeft.No
             Me.nudTrapType.Size = New System.Drawing.Size(48, 22)
             Me.nudTrapType.TabIndex = 6
-            Me.nudTrapType.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudTrapType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'Label17
             '

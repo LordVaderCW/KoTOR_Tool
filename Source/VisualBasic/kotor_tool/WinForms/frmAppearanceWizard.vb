@@ -17,13 +17,14 @@ Namespace kotor_tool
 		' Token: 0x060001D5 RID: 469 RVA: 0x00228F04 File Offset: 0x00227F04
 		Public Sub New()
             AddHandler MyBase.Load, AddressOf Me.frmAppearanceWizard_Load
+            Me.InitializeComponent()
+
             Me.TabPage1.UseVisualStyleBackColor = False
             Me.TabPage2.UseVisualStyleBackColor = False
 
             Me.btnOK.FlatStyle = Global.System.Windows.Forms.FlatStyle.Flat
             Me.btnCancel.FlatStyle = Global.System.Windows.Forms.FlatStyle.Flat
             Me.Button1.FlatStyle = Global.System.Windows.Forms.FlatStyle.Flat
-            Me.InitializeComponent()
 
         End Sub
 
@@ -343,6 +344,16 @@ Namespace kotor_tool
             Me.tbTi.[ReadOnly] = checked
             Me.tbMj.[ReadOnly] = checked
             Me.tbTj.[ReadOnly] = checked
+        End Sub
+
+        Private Sub btnOK_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnOK.Click
+            Me.DialogResult = DialogResult.OK
+            Me.Close()
+        End Sub
+
+        Private Sub btnCancel_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnCancel.Click
+            Me.DialogResult = DialogResult.Cancel
+            Me.Close()
         End Sub
 
         ' Token: 0x04000197 RID: 407

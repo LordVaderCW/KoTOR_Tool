@@ -1,3 +1,6 @@
+Option Strict Off
+Option Explicit On
+
 Imports System
 Imports System.ComponentModel
 Imports System.Diagnostics
@@ -29,13 +32,17 @@ Namespace kotor_tool
         Private storedPageSettings As PageSettings
         Private streamToPrint As StringReader
         Private printFont As Font
-        Private _KotorVersionIndex As Integer
+        Private _KotorVersionIndex As Integer = -1
         Private _IsDirectEdit As Boolean
         Private _EditingFilePath As String = String.Empty
+        Private _isDirty As Boolean
+        Private _loadingDocument As Boolean
+        Private _currentEncoding As Encoding
         Private funcs As frmTextEditor.func()
 
         Public Sub New()
             AddHandler MyBase.Load, AddressOf Me.frmTextEditor_Load
+            AddHandler MyBase.Shown, AddressOf Me.frmTextEditor_Shown
             AddHandler MyBase.Closing, AddressOf Me.frmTextEditor_Closing
 
             Me.g_findPos = 0
@@ -44,10 +51,14 @@ Namespace kotor_tool
 
             Me.InitializeComponent()
             Me.ApplyApplicationIcon()
+            KotorThemeApplier.ApplyToForm(Me)
 
             Me.miWordWrap.Checked = frmMain.CurrentSettings.bTextEditorWordWrap
             Me.tbGeneric.WordWrap = Me.miWordWrap.Checked
             Me.CurrentSettings = UserSettings.GetSettings()
+            Me._currentEncoding = Encoding.ASCII
+            Me.SetDirty(False)
+            Me.UpdateStatus()
 
 
         End Sub
@@ -56,7 +67,7 @@ Namespace kotor_tool
             Me.New()
 
             Me.fname = filename
-            Me.Text = "Text Editor - " & Me.fname
+            Me.UpdateWindowTitle()
 
             If IsDirectEdit Then
                 Me._IsDirectEdit = True
@@ -72,10 +83,7 @@ Namespace kotor_tool
             Me._IsDirectEdit = IsDirectEdit
             Me._EditingFilePath = EditingPath
 
-            Dim streamReader As StreamReader = New StreamReader(Me._EditingFilePath)
-            Me.tbGeneric.Text = streamReader.ReadToEnd()
-            Me.tbGeneric.SelectionLength = 0
-            streamReader.Close()
+            Me.LoadDocumentFromPath(Me._EditingFilePath)
         End Sub
 
         Private Sub ApplyApplicationIcon()
@@ -98,6 +106,7 @@ Namespace kotor_tool
             End Get
             Set(ByVal value As String)
                 Me._EditingFilePath = value
+                Me.UpdateStatus()
             End Set
         End Property
 
@@ -116,7 +125,8 @@ Namespace kotor_tool
             End Get
             Set(ByVal value As String)
                 Me.fname = value
-                Me.Text = "Text Editor - " & value
+                Me.UpdateWindowTitle()
+                Me.UpdateStatus()
             End Set
         End Property
 
@@ -126,6 +136,7 @@ Namespace kotor_tool
             End Get
             Set(ByVal value As Boolean)
                 Me.m_rtfMode = value
+                Me.UpdateStatus()
             End Set
         End Property
 
@@ -149,6 +160,7 @@ Namespace kotor_tool
                         Me.miScriptIsK2.Checked = True
                     End If
                 End If
+                Me.UpdateStatus()
             End Set
         End Property
 
@@ -157,10 +169,32 @@ Namespace kotor_tool
 #Region "Core Form Events"
 
         Private Sub frmTextEditor_Load(ByVal sender As Object, ByVal e As EventArgs)
+            KotorThemeApplier.ApplyToForm(Me)
             Me.PositionWindow()
+            Me.UpdateStatus()
+        End Sub
+
+        Private Sub frmTextEditor_Shown(ByVal sender As Object, ByVal e As EventArgs)
+            Me.SetDirty(False)
         End Sub
 
         Private Sub frmTextEditor_Closing(ByVal sender As Object, ByVal e As CancelEventArgs)
+            If Me._isDirty Then
+                Dim result As DialogResult = MessageBox.Show(Me, "Save changes?", "Text Editor", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
+
+                If result = DialogResult.Cancel Then
+                    e.Cancel = True
+                    Return
+                End If
+
+                If result = DialogResult.Yes Then
+                    If Me.SaveDocument(False) = False Then
+                        e.Cancel = True
+                        Return
+                    End If
+                End If
+            End If
+
             Me.SaveSettings()
         End Sub
 
@@ -244,9 +278,86 @@ Namespace kotor_tool
 
 #End Region
 
+#Region "Dirty State And Status"
+
+        Private Sub SetDirty(ByVal value As Boolean)
+            Me._isDirty = value
+            Me.UpdateWindowTitle()
+            Me.UpdateStatus()
+        End Sub
+
+        Private Sub UpdateWindowTitle()
+            Dim displayName As String = Me.fname
+
+            If displayName Is Nothing OrElse displayName.Length = 0 Then
+                displayName = "Untitled"
+            End If
+
+            Me.Text = "Text Editor - " & displayName & If(Me._isDirty, " *", "")
+        End Sub
+
+        Private Sub UpdateStatus()
+            If Me.statusFile Is Nothing Then
+                Return
+            End If
+
+            Dim displayName As String = Me.fname
+            If displayName Is Nothing OrElse displayName.Length = 0 Then
+                displayName = "Untitled"
+            End If
+
+            Dim lineIndex As Integer = 0
+            Dim columnIndex As Integer = 0
+
+            Try
+                lineIndex = Me.tbGeneric.GetLineFromCharIndex(Me.tbGeneric.SelectionStart)
+                columnIndex = Me.tbGeneric.SelectionStart - Me.tbGeneric.GetFirstCharIndexFromLine(lineIndex)
+            Catch ex As System.Exception
+                lineIndex = 0
+                columnIndex = 0
+            End Try
+
+            Me.statusFile.Text = displayName
+            Me.statusMode.Text = If(Me.RTFMode, "RTF mode", "Plain Text")
+            Me.statusPosition.Text = "Ln " & (lineIndex + 1).ToString() & ", Col " & (columnIndex + 1).ToString()
+            Me.statusSelection.Text = "Sel " & Me.tbGeneric.SelectionLength.ToString()
+            Me.statusCharacters.Text = "Chars " & Me.tbGeneric.TextLength.ToString()
+            Me.statusDirty.Text = If(Me._isDirty, "Dirty", "Saved")
+
+            If Me._KotorVersionIndex = 0 Then
+                Me.statusScriptTarget.Text = "Script: KotOR I"
+            ElseIf Me._KotorVersionIndex = 1 Then
+                Me.statusScriptTarget.Text = "Script: KotOR II"
+            Else
+                Me.statusScriptTarget.Text = "Script: Not Set"
+            End If
+        End Sub
+
+        Private Sub tbGeneric_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles tbGeneric.TextChanged
+            If Me._loadingDocument = False Then
+                Me.SetDirty(True)
+            Else
+                Me.UpdateStatus()
+            End If
+        End Sub
+
+        Private Sub tbGeneric_SelectionChanged(ByVal sender As Object, ByVal e As EventArgs) Handles tbGeneric.SelectionChanged
+            Me.UpdateStatus()
+        End Sub
+
+#End Region
+
 #Region "Find Logic"
 
         Private Sub miFind_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miFind.Click
+            Me.ShowFindReplaceDialog(False)
+        End Sub
+
+        Private Sub miReplace_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miReplace.Click
+            Me.ShowFindReplaceDialog(True)
+        End Sub
+
+        Private Sub ShowFindReplaceDialog(ByVal replaceMode As Boolean)
             Dim findDialog As frmTextEditorFind = New frmTextEditorFind()
 
             If Me.tbGeneric.SelectionLength > 0 Then
@@ -258,6 +369,11 @@ Namespace kotor_tool
             findDialog.chkbMatchCase.Checked = Me.g_matchcase
             findDialog.chkbMatchWholeWord.Checked = Me.g_matchwholeword
             findDialog.chkbSearchUp.Checked = Me.g_searchup
+            findDialog.tbReplaceText.Enabled = replaceMode
+            findDialog.lblReplaceText.Enabled = replaceMode
+            findDialog.btnReplace.Enabled = replaceMode
+            findDialog.btnReplaceAll.Enabled = replaceMode
+            findDialog.Text = If(replaceMode, "Replace", "Find")
 
             If findDialog.ShowDialog(Me) = DialogResult.OK Then
                 If StringType.StrCmp(findDialog.tbFindText.Text, "", False) = 0 Then
@@ -282,60 +398,200 @@ Namespace kotor_tool
                     Me.g_searchoptions = Me.g_searchoptions Or RichTextBoxFinds.Reverse
                 End If
 
-                Me.SearchFromStart()
+                If findDialog.RequestedAction = frmTextEditorFind.TextEditorFindAction.ReplaceNext Then
+                    Me.ReplaceNext(findDialog.tbReplaceText.Text)
+                ElseIf findDialog.RequestedAction = frmTextEditorFind.TextEditorFindAction.ReplaceAll Then
+                    Me.ReplaceAllMatches(findDialog.tbReplaceText.Text)
+                Else
+                    Me.FindNext(True, True)
+                End If
             End If
         End Sub
 
         Private Sub miFindAgain_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miFindAgain.Click
-            Dim previousFindPos As Integer = Me.g_findPos
-
             If StringType.StrCmp(Me.g_findString, "", False) = 0 Then
                 Return
             End If
 
-            If (Me.g_searchoptions And RichTextBoxFinds.Reverse) > RichTextBoxFinds.None Then
-                Dim reverseStart As Integer
+            Me.FindNext(True, True)
+        End Sub
 
-                If previousFindPos = -1 Then
+        Private Function FindNext(ByVal allowWrap As Boolean, ByVal showMessages As Boolean) As Boolean
+            Dim previousStart As Integer = Me.tbGeneric.SelectionStart
+            Dim previousLength As Integer = Me.tbGeneric.SelectionLength
+
+            If Me.g_findString Is Nothing OrElse Me.g_findString.Length = 0 Then
+                Return False
+            End If
+
+            If (Me.g_searchoptions And RichTextBoxFinds.Reverse) > RichTextBoxFinds.None Then
+                Dim reverseStart As Integer = previousStart
+
+                If reverseStart <= 0 Then
+                    If allowWrap Then
+                        reverseStart = Me.tbGeneric.TextLength
+                    Else
+                        Return False
+                    End If
+                End If
+
+                If reverseStart > Me.tbGeneric.TextLength Then
                     reverseStart = Me.tbGeneric.TextLength
-                Else
-                    reverseStart = Me.g_findPos - 1
                 End If
 
                 Me.g_findPos = Me.tbGeneric.Find(Me.g_findString, 0, reverseStart, Me.g_searchoptions)
             Else
-                Me.g_findPos = Me.tbGeneric.Find(Me.g_findString, Me.g_findPos + 1, Me.g_searchoptions)
+                Dim forwardStart As Integer = previousStart
+
+                If previousLength > 0 Then
+                    forwardStart = previousStart + previousLength
+                End If
+
+                If forwardStart > Me.tbGeneric.TextLength Then
+                    forwardStart = Me.tbGeneric.TextLength
+                End If
+
+                Me.g_findPos = Me.tbGeneric.Find(Me.g_findString, forwardStart, Me.g_searchoptions)
             End If
 
             If Me.g_findPos = -1 Then
-                If Interaction.MsgBox("No more occurrences found" & vbLf & "Start search from beginning of file?", MsgBoxStyle.YesNo, Nothing) <> MsgBoxResult.Yes Then
-                    Me.tbGeneric.SelectionStart = previousFindPos
-                    Me.tbGeneric.SelectionLength = Me.g_findString.Length
-                    Me.tbGeneric.Focus()
-                    Return
+                If allowWrap AndAlso showMessages Then
+                    If Interaction.MsgBox("No more occurrences found" & vbLf & "Start search from " & If(Me.g_searchup, "end", "beginning") & " of file?", MsgBoxStyle.YesNo, Nothing) = MsgBoxResult.Yes Then
+                        Return Me.SearchFromBoundary(showMessages)
+                    End If
                 End If
 
-                Me.SearchFromStart()
+                Me.tbGeneric.SelectionStart = previousStart
+                Me.tbGeneric.SelectionLength = previousLength
+                Me.tbGeneric.Focus()
+                Return False
             End If
 
             Me.tbGeneric.SelectionStart = Me.g_findPos
             Me.tbGeneric.SelectionLength = Me.g_findString.Length
             Me.tbGeneric.Focus()
-        End Sub
+            Me.UpdateStatus()
+            Return True
+        End Function
 
-        Private Sub SearchFromStart()
-            Me.g_findPos = Me.tbGeneric.Find(Me.g_findString, Me.g_searchoptions)
+        Private Function SearchFromBoundary(ByVal showMessages As Boolean) As Boolean
+            Dim previousStart As Integer = Me.tbGeneric.SelectionStart
+            Dim previousLength As Integer = Me.tbGeneric.SelectionLength
+
+            If Me.g_findString Is Nothing OrElse Me.g_findString.Length = 0 Then
+                Return False
+            End If
+
+            If (Me.g_searchoptions And RichTextBoxFinds.Reverse) > RichTextBoxFinds.None Then
+                Me.g_findPos = Me.tbGeneric.Find(Me.g_findString, 0, Me.tbGeneric.TextLength, Me.g_searchoptions)
+            Else
+                Me.g_findPos = Me.tbGeneric.Find(Me.g_findString, 0, Me.g_searchoptions)
+            End If
 
             If Me.g_findPos = -1 Then
-                Interaction.MsgBox("Text not found", MsgBoxStyle.Information, Nothing)
-                Me.tbGeneric.SelectionStart = 0
-                Me.tbGeneric.SelectionLength = 0
+                If showMessages Then
+                    Interaction.MsgBox("Text not found", MsgBoxStyle.Information, Nothing)
+                End If
+                Me.tbGeneric.SelectionStart = previousStart
+                Me.tbGeneric.SelectionLength = previousLength
+                Me.tbGeneric.Focus()
+                Return False
+            End If
+
+            Me.tbGeneric.SelectionStart = Me.g_findPos
+            Me.tbGeneric.SelectionLength = Me.g_findString.Length
+            Me.tbGeneric.Focus()
+            Me.UpdateStatus()
+            Return True
+        End Function
+
+        Private Sub SearchFromStart()
+            Me.SearchFromBoundary(True)
+        End Sub
+
+        Private Function CurrentSelectionMatchesFind() As Boolean
+            If Me.g_findString Is Nothing OrElse Me.g_findString.Length = 0 Then
+                Return False
+            End If
+
+            If Me.tbGeneric.SelectionLength <> Me.g_findString.Length Then
+                Return False
+            End If
+
+            If String.Compare(Me.tbGeneric.SelectedText, Me.g_findString, Not Me.g_matchcase) <> 0 Then
+                Return False
+            End If
+
+            If Me.g_matchwholeword Then
+                Dim startIndex As Integer = Me.tbGeneric.SelectionStart
+                Dim endIndex As Integer = startIndex + Me.tbGeneric.SelectionLength
+
+                If startIndex > 0 AndAlso IsWordChar(Me.tbGeneric.Text.Chars(startIndex - 1)) Then
+                    Return False
+                End If
+
+                If endIndex < Me.tbGeneric.TextLength AndAlso IsWordChar(Me.tbGeneric.Text.Chars(endIndex)) Then
+                    Return False
+                End If
+            End If
+
+            Return True
+        End Function
+
+        Private Function IsWordChar(ByVal ch As Char) As Boolean
+            Return Char.IsLetterOrDigit(ch) OrElse ch = "_"c
+        End Function
+
+        Private Sub ReplaceNext(ByVal replacementText As String)
+            If Me.g_findString Is Nothing OrElse Me.g_findString.Length = 0 Then
                 Return
             End If
 
-            Me.tbGeneric.SelectionStart = Me.g_findPos
-            Me.tbGeneric.SelectionLength = Me.g_findString.Length
-            Me.tbGeneric.Focus()
+            If Me.CurrentSelectionMatchesFind() = False Then
+                If Me.FindNext(True, True) = False Then
+                    Return
+                End If
+            End If
+
+            Me.tbGeneric.SelectedText = replacementText
+            Me.FindNext(False, False)
+            Me.UpdateStatus()
+        End Sub
+
+        Private Sub ReplaceAllMatches(ByVal replacementText As String)
+            If Me.g_findString Is Nothing OrElse Me.g_findString.Length = 0 Then
+                Return
+            End If
+
+            Dim replaceCount As Integer = 0
+            Dim searchStart As Integer = 0
+            Dim foundAt As Integer
+            Dim replaceOptions As RichTextBoxFinds = Me.g_searchoptions
+
+            If (replaceOptions And RichTextBoxFinds.Reverse) > RichTextBoxFinds.None Then
+                replaceOptions = replaceOptions Xor RichTextBoxFinds.Reverse
+            End If
+
+            Do
+                foundAt = Me.tbGeneric.Find(Me.g_findString, searchStart, replaceOptions)
+
+                If foundAt = -1 Then
+                    Exit Do
+                End If
+
+                Me.tbGeneric.SelectionStart = foundAt
+                Me.tbGeneric.SelectionLength = Me.g_findString.Length
+                Me.tbGeneric.SelectedText = replacementText
+                replaceCount += 1
+                searchStart = foundAt + replacementText.Length
+
+                If searchStart > Me.tbGeneric.TextLength Then
+                    Exit Do
+                End If
+            Loop
+
+            MessageBox.Show(Me, replaceCount.ToString() & " replacement(s) made.", "Replace All", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Me.UpdateStatus()
         End Sub
 
 #End Region
@@ -405,6 +661,46 @@ Namespace kotor_tool
             Me.tbGeneric.Focus()
         End Sub
 
+        Private Sub miGoToLine_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miGoToLine.Click
+            Dim input As String = Interaction.InputBox("Line number:", "Go To Line", "1")
+
+            If input Is Nothing OrElse input.Trim().Length = 0 Then
+                Return
+            End If
+
+            Dim requestedLine As Integer
+
+            Try
+                requestedLine = Integer.Parse(input.Trim())
+            Catch ex As System.Exception
+                MessageBox.Show(Me, "Please enter a valid line number.", "Go To Line", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return
+            End Try
+
+            Dim lineCount As Integer = Me.tbGeneric.Lines.Length
+
+            If lineCount < 1 Then
+                lineCount = 1
+            End If
+
+            If requestedLine < 1 Then
+                requestedLine = 1
+            ElseIf requestedLine > lineCount Then
+                requestedLine = lineCount
+            End If
+
+            Dim charIndex As Integer = Me.tbGeneric.GetFirstCharIndexFromLine(requestedLine - 1)
+
+            If charIndex < 0 Then
+                charIndex = Me.tbGeneric.TextLength
+            End If
+
+            Me.tbGeneric.SelectionStart = charIndex
+            Me.tbGeneric.SelectionLength = 0
+            Me.tbGeneric.Focus()
+            Me.UpdateStatus()
+        End Sub
+
 #End Region
 
 #Region "File Menu"
@@ -416,75 +712,146 @@ Namespace kotor_tool
                 Return
             End If
 
-            Dim streamType As RichTextBoxStreamType
-
-            If StringType.StrCmp(Strings.LCase(Path.GetExtension(selectedPath)), ".rtf", False) = 0 Then
-                streamType = RichTextBoxStreamType.RichText
-            Else
-                streamType = RichTextBoxStreamType.PlainText
-            End If
-
-            Try
-                Me.tbGeneric.Rtf = ""
-                Me.tbGeneric.LoadFile(selectedPath, streamType)
-            Catch ex As System.ArgumentException
-                MessageBox.Show(ex.Message)
-            End Try
+            Me.LoadDocumentFromPath(selectedPath)
         End Sub
 
         Private Sub miSave_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miSave.Click
-            If StringType.StrCmp(Me._EditingFilePath, "", False) = 0 Then
-                Me._EditingFilePath = StringType.FromObject(frmMain.GetFilePath("save", Me.CurrentSettings.TextEditorSavePath, Me.fname, "Save file...", "", False, True))
-
-                If StringType.StrCmp(Me._EditingFilePath, "", False) = 0 Then
-                    Return
-                End If
-            End If
-
-            Dim fileStream As FileStream = New FileStream(Me._EditingFilePath, FileMode.Create)
-            Dim streamWriter As StreamWriter = New StreamWriter(fileStream, Encoding.ASCII)
-
-            streamWriter.Write(Strings.Replace(Me.tbGeneric.Text, vbLf, vbCrLf, 1, -1, CompareMethod.Binary))
-            streamWriter.Close()
-
-            Me.CurrentSettings.TextEditorSavePath = Path.GetDirectoryName(Me._EditingFilePath)
-            UserSettings.SaveSettings(Me.CurrentSettings)
-
-            Me.Filename = Path.GetFileName(Me._EditingFilePath)
+            Me.SaveDocument(False)
         End Sub
 
         Private Sub miSaveAs_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miSaveAs.Click
+            Me.SaveDocument(True)
+        End Sub
+
+        Private Function SaveDocument(ByVal forceSaveAs As Boolean) As Boolean
             Dim saveDirectory As String
 
-            If Me._IsDirectEdit Then
+            If Me._IsDirectEdit AndAlso Me._EditingFilePath IsNot Nothing AndAlso Me._EditingFilePath.Length > 0 Then
                 saveDirectory = Path.GetDirectoryName(Me._EditingFilePath)
             Else
                 saveDirectory = Me.CurrentSettings.TextEditorSavePath
             End If
 
-            Dim selectedPath As String = StringType.FromObject(frmMain.GetFilePath("save", saveDirectory, Me.fname, "Save file...", "", False, True))
+            Dim selectedPath As String = Me._EditingFilePath
 
-            If StringType.StrCmp(selectedPath, "", False) = 0 Then
-                Return
+            If forceSaveAs OrElse selectedPath Is Nothing OrElse selectedPath.Length = 0 Then
+                selectedPath = StringType.FromObject(frmMain.GetFilePath("save", saveDirectory, Me.fname, "Save file...", "", False, True))
+
+                If StringType.StrCmp(selectedPath, "", False) = 0 Then
+                    Return False
+                End If
             End If
 
-            Me.CurrentSettings.TextEditorSavePath = Path.GetDirectoryName(selectedPath)
-            UserSettings.SaveSettings(Me.CurrentSettings)
+            Try
+                If Me.m_rtfMode Then
+                    Dim fileStream As FileStream = New FileStream(selectedPath, FileMode.Create, FileAccess.Write)
+                    Try
+                        Dim streamWriter As StreamWriter = New StreamWriter(fileStream, If(Me._currentEncoding Is Nothing, Encoding.ASCII, Me._currentEncoding))
+                        Try
+                            streamWriter.Write(Me.tbGeneric.Rtf)
+                        Finally
+                            streamWriter.Close()
+                        End Try
+                    Finally
+                        fileStream.Close()
+                    End Try
+                Else
+                    Dim textToWrite As String = Me.NormalizeCrLf(Me.tbGeneric.Text)
+                    Dim saveEncoding As Encoding = If(Me._currentEncoding Is Nothing, Encoding.ASCII, Me._currentEncoding)
+                    Dim fileStream As FileStream = New FileStream(selectedPath, FileMode.Create, FileAccess.Write)
+                    Try
+                        Dim streamWriter As StreamWriter = New StreamWriter(fileStream, saveEncoding)
+                        Try
+                            streamWriter.Write(textToWrite)
+                        Finally
+                            streamWriter.Close()
+                        End Try
+                    Finally
+                        fileStream.Close()
+                    End Try
+                End If
 
-            Dim fileStream As FileStream = New FileStream(selectedPath, FileMode.Create)
-            Dim streamWriter As StreamWriter = New StreamWriter(fileStream, Encoding.ASCII)
+                Me.CurrentSettings.TextEditorSavePath = Path.GetDirectoryName(selectedPath)
+                UserSettings.SaveSettings(Me.CurrentSettings)
 
-            If Me.m_rtfMode Then
-                streamWriter.Write(Me.tbGeneric.Rtf)
-            Else
-                streamWriter.Write(Strings.Replace(Me.tbGeneric.Text, vbLf, vbCrLf, 1, -1, CompareMethod.Binary))
-            End If
+                Me._EditingFilePath = selectedPath
+                Me.Filename = Path.GetFileName(selectedPath)
+                Me.SetDirty(False)
+                Return True
+            Catch ex As System.Exception
+                MessageBox.Show(Me, "Unable to save file:" & vbCrLf & ex.Message, "Save file", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            End Try
 
-            streamWriter.Close()
+            Return False
+        End Function
 
-            Me._EditingFilePath = selectedPath
-            Me.Filename = Path.GetFileName(selectedPath)
+        Private Sub LoadDocumentFromPath(ByVal selectedPath As String)
+            Try
+                Me._loadingDocument = True
+                Me.tbGeneric.Clear()
+
+                If StringType.StrCmp(Strings.LCase(Path.GetExtension(selectedPath)), ".rtf", False) = 0 Then
+                    Me.RTFMode = True
+                    Me.tbGeneric.LoadFile(selectedPath, RichTextBoxStreamType.RichText)
+                    Me._currentEncoding = Encoding.ASCII
+                Else
+                    Me.RTFMode = False
+                    Me._currentEncoding = Me.DetectTextEncoding(selectedPath)
+                    Dim streamReader As StreamReader = New StreamReader(selectedPath, Me._currentEncoding)
+                    Try
+                        Me.tbGeneric.Text = streamReader.ReadToEnd()
+                    Finally
+                        streamReader.Close()
+                    End Try
+                End If
+
+                Me._EditingFilePath = selectedPath
+                Me.Filename = Path.GetFileName(selectedPath)
+                Me.tbGeneric.SelectionStart = 0
+                Me.tbGeneric.SelectionLength = 0
+                Me.SetDirty(False)
+            Catch ex As System.Exception
+                MessageBox.Show(Me, "Unable to open file:" & vbCrLf & ex.Message, "Open file", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Finally
+                Me._loadingDocument = False
+                Me.UpdateStatus()
+            End Try
         End Sub
+
+        Private Function DetectTextEncoding(ByVal selectedPath As String) As Encoding
+            Dim bom(3) As Byte
+            Dim bytesRead As Integer = 0
+            Dim fileStream As FileStream = Nothing
+
+            Try
+                fileStream = New FileStream(selectedPath, FileMode.Open, FileAccess.Read, FileShare.Read)
+                bytesRead = fileStream.Read(bom, 0, bom.Length)
+            Finally
+                If fileStream IsNot Nothing Then
+                    fileStream.Close()
+                End If
+            End Try
+
+            If bytesRead >= 3 AndAlso bom(0) = &HEF AndAlso bom(1) = &HBB AndAlso bom(2) = &HBF Then
+                Return Encoding.UTF8
+            End If
+
+            If bytesRead >= 2 AndAlso bom(0) = &HFF AndAlso bom(1) = &HFE Then
+                Return Encoding.Unicode
+            End If
+
+            If bytesRead >= 2 AndAlso bom(0) = &HFE AndAlso bom(1) = &HFF Then
+                Return Encoding.BigEndianUnicode
+            End If
+
+            Return Encoding.ASCII
+        End Function
+
+        Private Function NormalizeCrLf(ByVal value As String) As String
+            Dim text As String = value.Replace(vbCrLf, vbLf)
+            text = text.Replace(vbCr, vbLf)
+            Return text.Replace(vbLf, vbCrLf)
+        End Function
 
         Private Sub miQuit_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miQuit.Click
             Me.Close()
@@ -644,38 +1011,72 @@ Namespace kotor_tool
 #Region "Script Compile And Function Browser"
 
         Private Function CompileNSS() As String
-            If Me._EditingFilePath IsNot Nothing AndAlso StringType.StrCmp(Me._EditingFilePath, "", False) <> 0 Then
-                Dim gameArg As String = "-g " & Convert.ToString(Me._KotorVersionIndex + 1)
-                Dim outputPath As String = Path.ChangeExtension(Me._EditingFilePath, ".ncs")
+            If Me._EditingFilePath Is Nothing OrElse StringType.StrCmp(Me._EditingFilePath, "", False) = 0 OrElse File.Exists(Me._EditingFilePath) = False Then
+                If Me.SaveDocument(False) = False Then
+                    Return String.Empty
+                End If
+            End If
 
+            Dim compilerPath As String = Path.Combine(frmMain.gRootPath, "nwnnsscomp.exe")
+
+            If File.Exists(compilerPath) = False Then
+                MessageBox.Show(Me, "The NSS compiler could not be found:" & vbCrLf & compilerPath, "Compile NSS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Return String.Empty
+            End If
+
+            Dim gameArg As String = "-g " & Convert.ToString(Me._KotorVersionIndex + 1)
+            Dim outputPath As String = Path.ChangeExtension(Me._EditingFilePath, ".ncs")
+
+            Try
                 If File.Exists(outputPath) Then
                     File.Delete(outputPath)
                 End If
 
                 Dim process As Process = New Process()
 
-                process.StartInfo.FileName = frmMain.gRootPath & "nwnnsscomp.exe"
+                process.StartInfo.FileName = compilerPath
                 process.StartInfo.UseShellExecute = False
                 process.StartInfo.CreateNoWindow = True
                 process.StartInfo.Arguments = String.Concat(New String() {"-c ", gameArg, " -o ", """", outputPath, """", " ", """", Me._EditingFilePath, """"})
                 process.StartInfo.RedirectStandardOutput = True
+                process.StartInfo.RedirectStandardError = True
 
                 process.Start()
 
+                Dim exited As Boolean = process.WaitForExit(8000)
                 Dim compilerOutput As String = process.StandardOutput.ReadToEnd()
+                Dim compilerError As String = process.StandardError.ReadToEnd()
 
-                process.WaitForExit(4000)
+                If compilerError IsNot Nothing AndAlso compilerError.Length > 0 Then
+                    compilerOutput = compilerOutput & vbCrLf & compilerError
+                End If
+
+                If exited = False Then
+                    Try
+                        process.Kill()
+                    Catch ex As System.Exception
+                    End Try
+
+                    compilerOutput = compilerOutput & vbCrLf & "Compiler timed out."
+                Else
+                    compilerOutput = compilerOutput & vbCrLf & "Exit code: " & process.ExitCode.ToString()
+                End If
 
                 Interaction.MsgBox(compilerOutput, MsgBoxStyle.Information, "Compiler output")
 
                 Return compilerOutput
-            End If
+            Catch ex As System.Exception
+                MessageBox.Show(Me, "Unable to compile NSS:" & vbCrLf & ex.Message, "Compile NSS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            End Try
 
             Return String.Empty
         End Function
 
         Private Sub miCompile_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miCompile.Click
-            Me.miSave_Click(Nothing, Nothing)
+            If Me.SaveDocument(False) = False Then
+                Return
+            End If
+
             Me.CompileNSS()
         End Sub
 
@@ -684,6 +1085,7 @@ Namespace kotor_tool
             Me.miScriptIsK2.Checked = False
             Me.miCompile.Enabled = True
             Me.PrepareForScriptEditing()
+            Me.UpdateStatus()
         End Sub
 
         Private Sub miScriptIsK2_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miScriptIsK2.Click
@@ -691,6 +1093,7 @@ Namespace kotor_tool
             Me.miScriptIsK1.Checked = False
             Me.miCompile.Enabled = True
             Me.PrepareForScriptEditing()
+            Me.UpdateStatus()
         End Sub
 
         Public Sub PrepareForScriptEditing()
@@ -699,14 +1102,28 @@ Namespace kotor_tool
 
             If Not Me.pnlFunctions.Visible Then
                 Me.pnlFunctions.Visible = True
-                Me.tbGeneric.Size = New Size(Me.tbGeneric.Size.Width, Me.tbGeneric.Size.Height - 128)
             End If
+
+            Me.UpdateStatus()
         End Sub
 
         Private Sub LoadNWScript(ByVal index As Integer)
+            If index < 0 OrElse index > 1 Then
+                MessageBox.Show(Me, "Select a KotOR script target before loading script functions.", "Script functions", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Me.funcs = New frmTextEditor.func(0) {}
+                Return
+            End If
+
             Dim scriptPath As String = Path.Combine(frmMain.CurrentSettings.KotorLocation(index), "override\nwscript.nss")
-            Dim fileStream As FileStream = New FileStream(scriptPath, FileMode.Open)
-            Dim streamReader As StreamReader = New StreamReader(fileStream)
+
+            If File.Exists(scriptPath) = False Then
+                MessageBox.Show(Me, "Unable to load the script function list. nwscript.nss was not found at:" & vbCrLf & scriptPath, "Script functions", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Me.funcs = New frmTextEditor.func(0) {}
+                Return
+            End If
+
+            Dim fileStream As FileStream = Nothing
+            Dim streamReader As StreamReader = Nothing
 
             Dim startLine As Integer = 0
             Dim endLine As Integer = 0
@@ -722,52 +1139,72 @@ Namespace kotor_tool
                     Me.funcs = New frmTextEditor.func(876) {}
             End Select
 
-            For i As Integer = 1 To startLine
-                streamReader.ReadLine()
-            Next
+            Try
+                fileStream = New FileStream(scriptPath, FileMode.Open, FileAccess.Read, FileShare.Read)
+                streamReader = New StreamReader(fileStream, Encoding.ASCII)
 
-            Dim functionIndex As Integer = 0
-
-            For i As Integer = 1 To endLine
-                Dim line As String = streamReader.ReadLine()
-
-                If line Is Nothing Then
-                    Exit For
-                End If
-
-                If line.StartsWith("//") Then
-                    If functionIndex >= 0 AndAlso functionIndex <= Me.funcs.GetUpperBound(0) Then
-                        Me.funcs(functionIndex).comment = Me.funcs(functionIndex).comment & line & vbCrLf
+                For i As Integer = 1 To startLine
+                    If streamReader.ReadLine() Is Nothing Then
+                        Exit For
                     End If
-                ElseIf line.Length <> 0 Then
-                    If functionIndex > Me.funcs.GetUpperBound(0) Then
+                Next
+
+                Dim functionIndex As Integer = 0
+
+                For i As Integer = 1 To endLine
+                    Dim line As String = streamReader.ReadLine()
+
+                    If line Is Nothing Then
                         Exit For
                     End If
 
-                    Me.funcs(functionIndex).decl = line
+                    If line.StartsWith("//") Then
+                        If functionIndex >= 0 AndAlso functionIndex <= Me.funcs.GetUpperBound(0) Then
+                            Me.funcs(functionIndex).comment = Me.funcs(functionIndex).comment & line & vbCrLf
+                        End If
+                    ElseIf line.Length <> 0 Then
+                        If functionIndex > Me.funcs.GetUpperBound(0) Then
+                            Exit For
+                        End If
 
-                    Dim parts As String() = Strings.Split(line.Replace("(", " "), " ", -1, CompareMethod.Binary)
-                    Dim nameIndex As Integer = 1
+                        Me.funcs(functionIndex).decl = line
 
-                    While nameIndex < parts.Length AndAlso StringType.StrCmp(parts(nameIndex), "", False) = 0
-                        nameIndex += 1
-                    End While
+                        Dim parts As String() = Strings.Split(line.Replace("(", " "), " ", -1, CompareMethod.Binary)
+                        Dim nameIndex As Integer = 1
 
-                    If nameIndex < parts.Length Then
-                        Me.funcs(functionIndex).name = parts(nameIndex)
+                        While nameIndex < parts.Length AndAlso StringType.StrCmp(parts(nameIndex), "", False) = 0
+                            nameIndex += 1
+                        End While
+
+                        If nameIndex < parts.Length Then
+                            Me.funcs(functionIndex).name = parts(nameIndex)
+                        End If
+
+                        functionIndex += 1
                     End If
-
-                    functionIndex += 1
+                Next
+            Catch ex As System.Exception
+                MessageBox.Show(Me, "Unable to load the script function list:" & vbCrLf & ex.Message, "Script functions", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Me.funcs = New frmTextEditor.func(0) {}
+            Finally
+                If streamReader IsNot Nothing Then
+                    streamReader.Close()
                 End If
-            Next
 
-            streamReader.Close()
-            fileStream.Close()
+                If fileStream IsNot Nothing Then
+                    fileStream.Close()
+                End If
+            End Try
         End Sub
 
         Private Sub ShowFilterMatches()
             Me.lbFunctions.Items.Clear()
             Me.lbFunctions.Sorted = True
+
+            If Me.funcs Is Nothing OrElse Me.funcs.Length = 0 Then
+                Me.lblMatches.Text = "Matches: 0"
+                Return
+            End If
 
             Dim matches As String() = New String(Me.funcs.GetUpperBound(0)) {}
             Dim matchCount As Integer = 0
@@ -811,6 +1248,10 @@ Namespace kotor_tool
                 Return
             End If
 
+            If Me.funcs Is Nothing OrElse Me.funcs.Length = 0 Then
+                Return
+            End If
+
             For i As Integer = 0 To Me.funcs.GetUpperBound(0)
                 If StringType.StrCmp(Me.funcs(i).name, CStr(Me.lbFunctions.SelectedItem), False) = 0 Then
                     Me.tbFuncDecl.Text = Me.funcs(i).comment & vbCrLf & Me.funcs(i).decl
@@ -821,6 +1262,10 @@ Namespace kotor_tool
 
         Private Sub lbFunctions_DoubleClick(ByVal sender As Object, ByVal e As EventArgs) Handles lbFunctions.DoubleClick
             If Me.lbFunctions.SelectedItem Is Nothing Then
+                Return
+            End If
+
+            If Me.funcs Is Nothing OrElse Me.funcs.Length = 0 Then
                 Return
             End If
 
@@ -868,15 +1313,68 @@ Namespace kotor_tool
 
         Private Sub tbGeneric_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles tbGeneric.MouseDown
             If e.Button = MouseButtons.Right Then
-                If Me.tbGeneric.SelectionLength = 0 Then
-                    Return
-                End If
-
                 Dim targetControl As Control = CType(sender, Control)
                 Dim showPoint As Point = targetControl.PointToClient(Control.MousePosition)
 
+                Me.UpdateContextMenuState()
                 Me.cmText.Show(targetControl, showPoint)
             End If
+        End Sub
+
+        Private Sub cmText_Popup(ByVal sender As Object, ByVal e As EventArgs) Handles cmText.Popup
+            Me.UpdateContextMenuState()
+        End Sub
+
+        Private Sub UpdateContextMenuState()
+            Dim hasSelection As Boolean = Me.tbGeneric.SelectionLength > 0
+            Dim hasClipboardText As Boolean = False
+
+            Try
+                hasClipboardText = Clipboard.ContainsText() OrElse Clipboard.ContainsData(DataFormats.Rtf)
+            Catch ex As System.Exception
+                hasClipboardText = False
+            End Try
+
+            Me.cmiUndo.Enabled = Me.tbGeneric.CanUndo
+            Me.cmiCut.Enabled = hasSelection
+            Me.cmiCopy.Enabled = hasSelection
+            Me.cmiPaste.Enabled = hasClipboardText
+            Me.cmiSelectAll.Enabled = Me.tbGeneric.TextLength > 0
+            Me.cmiFindSelection.Enabled = hasSelection
+            Me.cmiShowDefinition.Enabled = hasSelection
+        End Sub
+
+        Private Sub cmiUndo_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiUndo.Click
+            Me.miUndo_Click(sender, e)
+        End Sub
+
+        Private Sub cmiCut_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiCut.Click
+            Me.miCut_Click(sender, e)
+        End Sub
+
+        Private Sub cmiCopy_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiCopy.Click
+            Me.miCopy_Click(sender, e)
+        End Sub
+
+        Private Sub cmiPaste_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiPaste.Click
+            Me.miPaste_Click(sender, e)
+        End Sub
+
+        Private Sub cmiSelectAll_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiSelectAll.Click
+            Me.miSelectAll_Click(sender, e)
+        End Sub
+
+        Private Sub cmiFindSelection_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiFindSelection.Click
+            If Me.tbGeneric.SelectionLength = 0 Then
+                Return
+            End If
+
+            Me.g_findString = Me.tbGeneric.SelectedText
+            Me.g_searchoptions = RichTextBoxFinds.None
+            Me.g_matchcase = False
+            Me.g_matchwholeword = False
+            Me.g_searchup = False
+            Me.FindNext(True, True)
         End Sub
 
         Private Sub cmiShowDefinition_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmiShowDefinition.Click

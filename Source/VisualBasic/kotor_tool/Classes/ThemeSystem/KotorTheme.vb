@@ -84,6 +84,15 @@ Namespace kotor_tool
 
         Public ValidationErrorBack As Color
 
+        Public ErrorTitleText As Color
+        Public ErrorSubtitleText As Color
+        Public ErrorAccent As Color
+        Public ErrorSummaryBack As Color
+        Public ErrorSummaryBorder As Color
+        Public ErrorSummaryText As Color
+        Public ErrorFieldLabelText As Color
+        Public ErrorValueText As Color
+
         Public TabControlBack As Color
         Public TabStripBack As Color
         Public TabPageBack As Color
@@ -194,6 +203,15 @@ Namespace kotor_tool
             theme.ProgressSweep = Color.FromArgb(255, 245, 180)
 
             theme.ValidationErrorBack = Color.MistyRose
+
+            theme.ErrorTitleText = theme.TextPrimary
+            theme.ErrorSubtitleText = theme.HeaderSubtitleText
+            theme.ErrorAccent = theme.HeaderSeparator
+            theme.ErrorSummaryBack = theme.InputBackAlt
+            theme.ErrorSummaryBorder = theme.BorderDark
+            theme.ErrorSummaryText = theme.TextPrimary
+            theme.ErrorFieldLabelText = theme.AccentGoldLight
+            theme.ErrorValueText = theme.TextPrimary
 
             theme.TabControlBack = Color.FromArgb(22, 27, 34)
             theme.TabStripBack = Color.FromArgb(22, 27, 34)

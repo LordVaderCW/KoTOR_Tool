@@ -561,21 +561,43 @@ Namespace kotor_tool
             '
             'tabctrlModule
             '
+            Me.tabctrlModule.AccentColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
             Me.tabctrlModule.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+            Me.tabctrlModule.ControlBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tabctrlModule.Controls.Add(Me.tabpagModuleElements)
             Me.tabctrlModule.Controls.Add(Me.tabpagScripts)
             Me.tabctrlModule.Controls.Add(Me.tabpagDialogs)
+            Me.tabctrlModule.DarkBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.tabctrlModule.DividerColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.tabctrlModule.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
             Me.tabctrlModule.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.tabctrlModule.ItemSize = New System.Drawing.Size(93, 20)
             Me.tabctrlModule.Location = New System.Drawing.Point(3, 9)
             Me.tabctrlModule.Multiline = True
             Me.tabctrlModule.Name = "tabctrlModule"
+            Me.tabctrlModule.NormalTabBackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.tabctrlModule.NormalTextColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.tabctrlModule.OuterNativeBorderBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.tabctrlModule.Padding = New System.Drawing.Point(8, 3)
+            Me.tabctrlModule.PageChromeBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.tabctrlModule.PageEdgeArtifactBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.tabctrlModule.PageInsetBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.tabctrlModule.SelectedIndex = 0
+            Me.tabctrlModule.SelectedTabBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.tabctrlModule.SelectedTabBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.tabctrlModule.SelectedTabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.tabctrlModule.SelectedTextColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabctrlModule.Size = New System.Drawing.Size(202, 335)
             Me.tabctrlModule.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
+            Me.tabctrlModule.TabBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
+            Me.tabctrlModule.TabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
+            Me.tabctrlModule.TabChromeBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.tabctrlModule.TabIndex = 13
+            Me.tabctrlModule.TabNativeBorderBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.tabctrlModule.TabNativeInsetBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.tabctrlModule.TabPageBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.tabctrlModule.TabStripBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             '
             'tabpagModuleElements
             '
@@ -619,7 +641,7 @@ Namespace kotor_tool
             Me.tabpagScripts.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabpagScripts.Location = New System.Drawing.Point(4, 44)
             Me.tabpagScripts.Name = "tabpagScripts"
-            Me.tabpagScripts.Size = New System.Drawing.Size(184, 161)
+            Me.tabpagScripts.Size = New System.Drawing.Size(194, 287)
             Me.tabpagScripts.TabIndex = 1
             Me.tabpagScripts.Text = "Scripts"
             '
@@ -633,7 +655,7 @@ Namespace kotor_tool
             Me.lbScripts.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.lbScripts.Location = New System.Drawing.Point(0, 0)
             Me.lbScripts.Name = "lbScripts"
-            Me.lbScripts.Size = New System.Drawing.Size(184, 161)
+            Me.lbScripts.Size = New System.Drawing.Size(194, 287)
             Me.lbScripts.Sorted = True
             Me.lbScripts.TabIndex = 0
             '
@@ -644,7 +666,7 @@ Namespace kotor_tool
             Me.tabpagDialogs.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabpagDialogs.Location = New System.Drawing.Point(4, 44)
             Me.tabpagDialogs.Name = "tabpagDialogs"
-            Me.tabpagDialogs.Size = New System.Drawing.Size(184, 161)
+            Me.tabpagDialogs.Size = New System.Drawing.Size(194, 287)
             Me.tabpagDialogs.TabIndex = 2
             Me.tabpagDialogs.Text = "Dialogs"
             '
@@ -658,7 +680,7 @@ Namespace kotor_tool
             Me.lbDialogs.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.lbDialogs.Location = New System.Drawing.Point(0, 0)
             Me.lbDialogs.Name = "lbDialogs"
-            Me.lbDialogs.Size = New System.Drawing.Size(184, 161)
+            Me.lbDialogs.Size = New System.Drawing.Size(194, 287)
             Me.lbDialogs.Sorted = True
             Me.lbDialogs.TabIndex = 1
             '
@@ -732,7 +754,6 @@ Namespace kotor_tool
             '
             Me.chkbUseFactors.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.chkbUseFactors.BackColor = System.Drawing.Color.Transparent
-            Me.chkbUseFactors.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbUseFactors.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbUseFactors.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.chkbUseFactors.Location = New System.Drawing.Point(3, 502)
@@ -766,7 +787,6 @@ Namespace kotor_tool
             Me.chkbShowTags.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.chkbShowTags.BackColor = System.Drawing.Color.Transparent
             Me.chkbShowTags.Enabled = False
-            Me.chkbShowTags.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbShowTags.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbShowTags.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.chkbShowTags.Location = New System.Drawing.Point(11, 357)
@@ -856,7 +876,6 @@ Namespace kotor_tool
             '
             Me.chkbFine.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.chkbFine.BackColor = System.Drawing.Color.Transparent
-            Me.chkbFine.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbFine.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbFine.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.chkbFine.Location = New System.Drawing.Point(143, 502)
@@ -908,17 +927,43 @@ Namespace kotor_tool
             '
             'tabctrlPalette
             '
+            Me.tabctrlPalette.AccentColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
             Me.tabctrlPalette.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+            Me.tabctrlPalette.ControlBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tabctrlPalette.Controls.Add(Me.TabPage1)
             Me.tabctrlPalette.Controls.Add(Me.tabpagUserPalette)
+            Me.tabctrlPalette.DarkBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.tabctrlPalette.DividerColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.tabctrlPalette.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
             Me.tabctrlPalette.Enabled = False
             Me.tabctrlPalette.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.tabctrlPalette.ItemSize = New System.Drawing.Size(88, 31)
             Me.tabctrlPalette.Location = New System.Drawing.Point(6, 9)
+            Me.tabctrlPalette.Multiline = True
             Me.tabctrlPalette.Name = "tabctrlPalette"
+            Me.tabctrlPalette.NormalTabBackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.tabctrlPalette.NormalTextColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
+            Me.tabctrlPalette.OuterNativeBorderBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.tabctrlPalette.Padding = New System.Drawing.Point(10, 3)
+            Me.tabctrlPalette.PageChromeBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.tabctrlPalette.PageEdgeArtifactBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.tabctrlPalette.PageInsetBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.tabctrlPalette.SelectedIndex = 0
+            Me.tabctrlPalette.SelectedTabBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.tabctrlPalette.SelectedTabBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.tabctrlPalette.SelectedTabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.tabctrlPalette.SelectedTextColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabctrlPalette.Size = New System.Drawing.Size(265, 362)
+            Me.tabctrlPalette.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
+            Me.tabctrlPalette.TabBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
+            Me.tabctrlPalette.TabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
+            Me.tabctrlPalette.TabChromeBackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.tabctrlPalette.TabIndex = 12
+            Me.tabctrlPalette.TabNativeBorderBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.tabctrlPalette.TabNativeInsetBorderColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.tabctrlPalette.TabPageBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
+            Me.tabctrlPalette.TabStripBackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             '
             'TabPage1
             '
@@ -936,9 +981,9 @@ Namespace kotor_tool
             Me.TabPage1.Controls.Add(Me.chkbShowNames)
             Me.TabPage1.Controls.Add(Me.btnPalItem)
             Me.TabPage1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+            Me.TabPage1.Location = New System.Drawing.Point(4, 35)
             Me.TabPage1.Name = "TabPage1"
-            Me.TabPage1.Size = New System.Drawing.Size(257, 336)
+            Me.TabPage1.Size = New System.Drawing.Size(257, 323)
             Me.TabPage1.TabIndex = 0
             Me.TabPage1.Text = "Standard"
             '
@@ -1081,17 +1126,16 @@ Namespace kotor_tool
             Me.tvPalette.LineColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
             Me.tvPalette.Location = New System.Drawing.Point(8, 41)
             Me.tvPalette.Name = "tvPalette"
-            Me.tvPalette.Size = New System.Drawing.Size(237, 256)
+            Me.tvPalette.Size = New System.Drawing.Size(237, 243)
             Me.tvPalette.TabIndex = 9
             '
             'chkbShowResRefs
             '
             Me.chkbShowResRefs.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
             Me.chkbShowResRefs.BackColor = System.Drawing.Color.Transparent
-            Me.chkbShowResRefs.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbShowResRefs.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbShowResRefs.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.chkbShowResRefs.Location = New System.Drawing.Point(147, 300)
+            Me.chkbShowResRefs.Location = New System.Drawing.Point(147, 287)
             Me.chkbShowResRefs.Name = "chkbShowResRefs"
             Me.chkbShowResRefs.Size = New System.Drawing.Size(98, 28)
             Me.chkbShowResRefs.TabIndex = 11
@@ -1104,10 +1148,9 @@ Namespace kotor_tool
             Me.chkbShowNames.BackColor = System.Drawing.Color.Transparent
             Me.chkbShowNames.Checked = True
             Me.chkbShowNames.CheckState = System.Windows.Forms.CheckState.Checked
-            Me.chkbShowNames.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbShowNames.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbShowNames.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.chkbShowNames.Location = New System.Drawing.Point(11, 300)
+            Me.chkbShowNames.Location = New System.Drawing.Point(11, 287)
             Me.chkbShowNames.Name = "chkbShowNames"
             Me.chkbShowNames.Size = New System.Drawing.Size(96, 28)
             Me.chkbShowNames.TabIndex = 11
@@ -1137,9 +1180,9 @@ Namespace kotor_tool
             Me.tabpagUserPalette.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tabpagUserPalette.Controls.Add(Me.tvUserPalette)
             Me.tabpagUserPalette.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tabpagUserPalette.Location = New System.Drawing.Point(4, 22)
+            Me.tabpagUserPalette.Location = New System.Drawing.Point(4, 35)
             Me.tabpagUserPalette.Name = "tabpagUserPalette"
-            Me.tabpagUserPalette.Size = New System.Drawing.Size(254, 336)
+            Me.tabpagUserPalette.Size = New System.Drawing.Size(257, 323)
             Me.tabpagUserPalette.TabIndex = 1
             Me.tabpagUserPalette.Text = "User"
             '
@@ -1169,7 +1212,7 @@ Namespace kotor_tool
             TreeNode7.Name = ""
             TreeNode7.Text = "Triggers"
             Me.tvUserPalette.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode1, TreeNode2, TreeNode3, TreeNode4, TreeNode5, TreeNode6, TreeNode7})
-            Me.tvUserPalette.Size = New System.Drawing.Size(200, 297)
+            Me.tvUserPalette.Size = New System.Drawing.Size(200, 284)
             Me.tvUserPalette.TabIndex = 9
             '
             'btnTest

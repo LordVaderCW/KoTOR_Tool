@@ -117,4 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="tbMsg.Text" xml:space="preserve">
+    <value>============================================================
+ERROR OVERVIEW
+============================================================
+Category: General application exception
+Summary: Exception details will appear here at runtime.</value>
+  </data>
 </root>

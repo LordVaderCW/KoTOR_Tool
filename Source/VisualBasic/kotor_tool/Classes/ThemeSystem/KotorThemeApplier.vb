@@ -52,8 +52,48 @@ Namespace kotor_tool
                 Return
             End If
 
+            If TypeOf form Is frmErrorMessage Then
+                ApplyErrorMessageForm(CType(form, frmErrorMessage), _theme)
+                _appliedForms(form) = _themeStamp
+                Return
+            End If
+
             ApplyControl(form, _theme)
             _appliedForms(form) = _themeStamp
+        End Sub
+
+        Private Shared Sub ApplyErrorMessageForm(ByVal form As frmErrorMessage, ByVal theme As KotorTheme)
+            If form Is Nothing OrElse theme Is Nothing Then
+                Return
+            End If
+
+            ApplyControl(form, theme)
+
+            form.lblTitle.ForeColor = theme.ErrorTitleText
+            ApplyFont(form.lblTitle, New Font(theme.TitleFontName, theme.TitleFontSize, FontStyle.Bold, GraphicsUnit.Point))
+            form.lblSubtitle.ForeColor = theme.ErrorSubtitleText
+            form.lblSeparatorTop.BackColor = theme.ErrorAccent
+
+            form.pnlSummary.BackColor = theme.ErrorSummaryBack
+            form.pnlSummary.ForeColor = theme.ErrorSummaryText
+            form.pnlSummary.BorderStyle = BorderStyle.None
+            form.SetSummaryBorderColor(theme.ErrorSummaryBorder)
+            form.lblSummaryAccent.BackColor = theme.ErrorAccent
+
+            form.lblMsg.ForeColor = theme.ErrorSummaryText
+            form.lblCategory.ForeColor = theme.ErrorFieldLabelText
+            form.lblImpact.ForeColor = theme.ErrorFieldLabelText
+            form.lblNextStep.ForeColor = theme.ErrorFieldLabelText
+            form.lblTechnicalHeading.ForeColor = theme.ErrorFieldLabelText
+
+            form.lblCategoryValue.ForeColor = theme.ErrorValueText
+            form.lblImpactValue.ForeColor = theme.ErrorValueText
+            form.lblNextStepValue.ForeColor = theme.ErrorValueText
+
+            ApplyFont(form.lblCategory, New Font(theme.BodyFontName, theme.BodyFontSize, FontStyle.Bold, GraphicsUnit.Point))
+            ApplyFont(form.lblImpact, New Font(theme.BodyFontName, theme.BodyFontSize, FontStyle.Bold, GraphicsUnit.Point))
+            ApplyFont(form.lblNextStep, New Font(theme.BodyFontName, theme.BodyFontSize, FontStyle.Bold, GraphicsUnit.Point))
+            ApplyFont(form.lblTechnicalHeading, New Font(theme.BodyFontName, theme.BodyFontSize, FontStyle.Bold, GraphicsUnit.Point))
         End Sub
 
         Private Shared Sub Application_Idle(ByVal sender As Object, ByVal e As EventArgs)
@@ -155,6 +195,8 @@ Namespace kotor_tool
                 ApplyDataGridView(CType(control, DataGridView), theme)
             ElseIf TypeOf control Is NumericUpDown Then
                 ApplyNumericUpDown(CType(control, NumericUpDown), theme)
+            ElseIf TypeOf control Is ToolStrip Then
+                ApplyToolStrip(CType(control, ToolStrip), theme)
             ElseIf TypeOf control Is CheckBox OrElse TypeOf control Is RadioButton Then
                 control.BackColor = Color.Transparent
                 control.ForeColor = theme.TextSecondary
@@ -199,6 +241,9 @@ Namespace kotor_tool
             ElseIf IsFooterControl(control) Then
                 control.BackColor = theme.PanelFooter
                 control.ForeColor = theme.TextPrimary
+            ElseIf IsSummaryControl(control) Then
+                control.BackColor = theme.InputBackAlt
+                control.ForeColor = theme.TextPrimary
             ElseIf IsRootControl(control) Then
                 control.BackColor = theme.PanelRoot
                 control.ForeColor = theme.TextPrimary
@@ -224,6 +269,12 @@ Namespace kotor_tool
             ElseIf IsTitleControl(label) Then
                 label.ForeColor = theme.HeaderTitleText
                 ApplyFont(label, theme.CreateTitleFont())
+            ElseIf IsAccentLabel(label) OrElse IsFieldLabel(label) Then
+                label.ForeColor = theme.AccentGoldLight
+                ApplyFont(label, New Font(theme.BodyFontName, theme.BodyFontSize, FontStyle.Bold, GraphicsUnit.Point))
+            ElseIf IsValueLabel(label) Then
+                label.ForeColor = theme.TextPrimary
+                ApplyFont(label, theme.CreateBodyFont())
             ElseIf IsMutedControl(label) Then
                 label.ForeColor = theme.TextMuted
                 ApplyFont(label, theme.CreateBodyFont())
@@ -342,6 +393,18 @@ Namespace kotor_tool
             ApplyFont(numericUpDown, theme.CreateBodyFont())
         End Sub
 
+        Private Shared Sub ApplyToolStrip(ByVal toolStrip As ToolStrip, ByVal theme As KotorTheme)
+            toolStrip.BackColor = theme.PanelFooter
+            toolStrip.ForeColor = theme.TextSecondary
+            ApplyFont(toolStrip, theme.CreateBodyFont())
+
+            For Each item As ToolStripItem In toolStrip.Items
+                item.BackColor = theme.PanelFooter
+                item.ForeColor = theme.TextSecondary
+                item.Font = theme.CreateBodyFont()
+            Next
+        End Sub
+
         Private Shared Sub ApplyTabControl(ByVal tabControl As TabControl, ByVal theme As KotorTheme)
             tabControl.BackColor = theme.TabControlBack
             tabControl.ForeColor = theme.TextPrimary
@@ -391,6 +454,10 @@ Namespace kotor_tool
             Return ContainsName(control, "root")
         End Function
 
+        Private Shared Function IsSummaryControl(ByVal control As Control) As Boolean
+            Return ContainsName(control, "summary")
+        End Function
+
         Private Shared Function IsSeparatorControl(ByVal control As Control) As Boolean
             Return ContainsName(control, "separator") OrElse (TypeOf control Is Label AndAlso control.Height <= 3)
         End Function
@@ -405,6 +472,18 @@ Namespace kotor_tool
 
         Private Shared Function IsMutedControl(ByVal control As Control) As Boolean
             Return ContainsName(control, "credit") OrElse ContainsName(control, "note")
+        End Function
+
+        Private Shared Function IsAccentLabel(ByVal control As Control) As Boolean
+            Return ContainsName(control, "accent")
+        End Function
+
+        Private Shared Function IsFieldLabel(ByVal control As Control) As Boolean
+            Return ContainsName(control, "fieldlabel")
+        End Function
+
+        Private Shared Function IsValueLabel(ByVal control As Control) As Boolean
+            Return ContainsName(control, "valuelabel")
         End Function
 
         Private Shared Function IsMonoControl(ByVal control As Control) As Boolean
