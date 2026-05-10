@@ -64,6 +64,16 @@ Namespace kotor_tool
         Private _highlightHighAsciiBytes As Boolean = False
         Private _highlightNonPrintableBytes As Boolean = False
 
+        Private _headerColor As Color = Color.FromArgb(210, 184, 112)
+        Private _mutedTextColor As Color = Color.FromArgb(188, 198, 210)
+        Private _alternateRowColor As Color = Color.FromArgb(16, 22, 31)
+        Private _selectionBackColor As Color = Color.FromArgb(70, 90, 120)
+        Private _currentBackColor As Color = Color.FromArgb(92, 70, 34)
+        Private _nullBackColor As Color = Color.FromArgb(44, 32, 32)
+        Private _controlBackColor As Color = Color.FromArgb(44, 38, 28)
+        Private _highAsciiBackColor As Color = Color.FromArgb(28, 42, 46)
+        Private _nonPrintableBackColor As Color = Color.FromArgb(38, 30, 46)
+
         Private _xOffset As Integer = 8
         Private _xHex As Integer = 92
         Private _xAscii As Integer = 430
@@ -143,6 +153,96 @@ Namespace kotor_tool
             End Get
             Set(ByVal value As Boolean)
                 Me._highlightNonPrintableBytes = value
+                Me.Invalidate()
+            End Set
+        End Property
+
+        Public Property HeaderColor() As Color
+            Get
+                Return Me._headerColor
+            End Get
+            Set(ByVal value As Color)
+                Me._headerColor = value
+                Me.Invalidate()
+            End Set
+        End Property
+
+        Public Property MutedTextColor() As Color
+            Get
+                Return Me._mutedTextColor
+            End Get
+            Set(ByVal value As Color)
+                Me._mutedTextColor = value
+                Me.Invalidate()
+            End Set
+        End Property
+
+        Public Property AlternateRowColor() As Color
+            Get
+                Return Me._alternateRowColor
+            End Get
+            Set(ByVal value As Color)
+                Me._alternateRowColor = value
+                Me.Invalidate()
+            End Set
+        End Property
+
+        Public Property SelectionBackColor() As Color
+            Get
+                Return Me._selectionBackColor
+            End Get
+            Set(ByVal value As Color)
+                Me._selectionBackColor = value
+                Me.Invalidate()
+            End Set
+        End Property
+
+        Public Property CurrentBackColor() As Color
+            Get
+                Return Me._currentBackColor
+            End Get
+            Set(ByVal value As Color)
+                Me._currentBackColor = value
+                Me.Invalidate()
+            End Set
+        End Property
+
+        Public Property NullBackColor() As Color
+            Get
+                Return Me._nullBackColor
+            End Get
+            Set(ByVal value As Color)
+                Me._nullBackColor = value
+                Me.Invalidate()
+            End Set
+        End Property
+
+        Public Property ControlByteBackColor() As Color
+            Get
+                Return Me._controlBackColor
+            End Get
+            Set(ByVal value As Color)
+                Me._controlBackColor = value
+                Me.Invalidate()
+            End Set
+        End Property
+
+        Public Property HighAsciiBackColor() As Color
+            Get
+                Return Me._highAsciiBackColor
+            End Get
+            Set(ByVal value As Color)
+                Me._highAsciiBackColor = value
+                Me.Invalidate()
+            End Set
+        End Property
+
+        Public Property NonPrintableBackColor() As Color
+            Get
+                Return Me._nonPrintableBackColor
+            End Get
+            Set(ByVal value As Color)
+                Me._nonPrintableBackColor = value
                 Me.Invalidate()
             End Set
         End Property
@@ -622,16 +722,16 @@ Namespace kotor_tool
 
         Private Sub PaintHexdump(ByVal g As Graphics)
             Dim fontMain As Font = Me.Font
-            Dim brushText As New SolidBrush(Color.FromArgb(238, 238, 230))
-            Dim brushMuted As New SolidBrush(Color.FromArgb(188, 198, 210))
-            Dim brushGold As New SolidBrush(Color.FromArgb(210, 184, 112))
-            Dim brushAltRow As New SolidBrush(Color.FromArgb(16, 22, 31))
-            Dim brushSelected As New SolidBrush(Color.FromArgb(70, 90, 120))
-            Dim brushCurrent As New SolidBrush(Color.FromArgb(92, 70, 34))
-            Dim brushNull As New SolidBrush(Color.FromArgb(44, 32, 32))
-            Dim brushControl As New SolidBrush(Color.FromArgb(44, 38, 28))
-            Dim brushHighAscii As New SolidBrush(Color.FromArgb(28, 42, 46))
-            Dim brushNonPrintable As New SolidBrush(Color.FromArgb(38, 30, 46))
+            Dim brushText As New SolidBrush(Me.ForeColor)
+            Dim brushMuted As New SolidBrush(Me._mutedTextColor)
+            Dim brushGold As New SolidBrush(Me._headerColor)
+            Dim brushAltRow As New SolidBrush(Me._alternateRowColor)
+            Dim brushSelected As New SolidBrush(Me._selectionBackColor)
+            Dim brushCurrent As New SolidBrush(Me._currentBackColor)
+            Dim brushNull As New SolidBrush(Me._nullBackColor)
+            Dim brushControl As New SolidBrush(Me._controlBackColor)
+            Dim brushHighAscii As New SolidBrush(Me._highAsciiBackColor)
+            Dim brushNonPrintable As New SolidBrush(Me._nonPrintableBackColor)
 
             Dim y As Integer = Me._headerY
 
@@ -713,9 +813,9 @@ Namespace kotor_tool
         End Sub
 
         Private Sub PaintAnsi(ByVal g As Graphics)
-            Dim brushText As New SolidBrush(Color.FromArgb(238, 238, 230))
-            Dim brushGold As New SolidBrush(Color.FromArgb(210, 184, 112))
-            Dim brushAltRow As New SolidBrush(Color.FromArgb(16, 22, 31))
+            Dim brushText As New SolidBrush(Me.ForeColor)
+            Dim brushGold As New SolidBrush(Me._headerColor)
+            Dim brushAltRow As New SolidBrush(Me._alternateRowColor)
             Dim y As Integer = 8
             Dim charsPerLine As Integer = 80
 
@@ -757,9 +857,9 @@ Namespace kotor_tool
         End Sub
 
         Private Sub PaintUnicode(ByVal g As Graphics)
-            Dim brushText As New SolidBrush(Color.FromArgb(238, 238, 230))
-            Dim brushGold As New SolidBrush(Color.FromArgb(210, 184, 112))
-            Dim brushAltRow As New SolidBrush(Color.FromArgb(16, 22, 31))
+            Dim brushText As New SolidBrush(Me.ForeColor)
+            Dim brushGold As New SolidBrush(Me._headerColor)
+            Dim brushAltRow As New SolidBrush(Me._alternateRowColor)
             Dim y As Integer = 8
             Dim charsPerLine As Integer = 80
             Dim text As String = ""

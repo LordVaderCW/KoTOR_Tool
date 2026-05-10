@@ -1,15 +1,101 @@
 # ------------------------------------------------------------
-# Visual Studio / VB.NET build output
 # KoTOR Tool Restoration Project
+# Visual Studio / VB.NET ignore rules
 # ------------------------------------------------------------
 
-# Exclude compiled build output
-Source/VisualBasic/kotor_tool/bin/
 
-# Exclude intermediate object files
-Source/VisualBasic/kotor_tool/obj/
-Source/VisualBasic/.vs/kotor_tool/FileContentIndex/40d28436-b121-46eb-a6ad-e4fcdc2cb7d5.vsidx
-Source/VisualBasic/.vs/kotor_tool/FileContentIndex/50815bf3-f328-49fa-b3fb-48c3b29d2331.vsidx
+# ------------------------------------------------------------
+# Visual Studio local workspace state
+# ------------------------------------------------------------
+# These files are machine/user-specific and must not be committed.
+.vs/
+Source/VisualBasic/.vs/
+
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+
+# ------------------------------------------------------------
+# Visual Studio file index / cache files
+# ------------------------------------------------------------
 *.vsidx
-Source/VisualBasic/.vs/kotor_tool/v17/.suo
-/Source/VisualBasic/.vs
+*.vssscc
+*.scc
+*.cache
+*.dbmdl
+*.opendb
+
+
+# ------------------------------------------------------------
+# VB.NET / Visual Studio project user files
+# ------------------------------------------------------------
+*.vbproj.user
+*.csproj.user
+*.vbproj.vspscc
+*.csproj.vspscc
+
+
+# ------------------------------------------------------------
+# Build output
+# ------------------------------------------------------------
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+
+Source/VisualBasic/kotor_tool/bin/
+Source/VisualBasic/kotor_tool/obj/
+
+
+# ------------------------------------------------------------
+# Build logs and generated file lists
+# ------------------------------------------------------------
+*.log
+*.tlog
+*.lastbuildstate
+*.FileListAbsolute.txt
+
+
+# ------------------------------------------------------------
+# Test / coverage output
+# ------------------------------------------------------------
+TestResults/
+*.coverage
+*.coveragexml
+
+
+# ------------------------------------------------------------
+# NuGet / package restore output
+# ------------------------------------------------------------
+packages/
+*.nupkg
+
+
+# ------------------------------------------------------------
+# ReSharper / Rider / IDE tooling
+# ------------------------------------------------------------
+_ReSharper*/
+*.DotSettings.user
+.idea/
+
+
+# ------------------------------------------------------------
+# Windows junk
+# ------------------------------------------------------------
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
+
+
+# ------------------------------------------------------------
+# Temporary files
+# ------------------------------------------------------------
+*.tmp
+*.temp
+*.bak
+*.backup
+*.swp
+*.old

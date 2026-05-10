@@ -6,8 +6,8 @@ Rebuild and rebirth of the original **KoTOR Tool**, originally developed by Fred
 
 # KoTOR Tool Restoration Project
 
-**Version:** v1.0.3.3
-**Patch Date:** 29.04.26
+**Version:** v1.0.3.4
+**Patch Date:** 10.05.26
 **Project Status:** Restored source build confirmed
 **Target IDE:** Visual Studio 2010
 **Target Framework:** .NET Framework 2.0
@@ -25,6 +25,49 @@ This release represents a major turning point in the project — transitioning f
 ---
 
 # Current Release
+
+## v1.0.3.4 - Sound Editor Playback Stabilisation
+
+This release focuses on the Sound Editor and the reliability of preview playback for sound objects found inside game levels.
+
+Focus areas for this patch:
+
+* Sound Editor playback stability
+* Safer RIFF/WAVE sound metadata parsing
+* FMOD resource lifecycle cleanup
+* Crash prevention when closing the Sound Editor after playback
+
+---
+
+## Sound Editor Fixes
+
+### RIFF/WAVE Parser Repair
+
+* Reworked `GetKotorSoundInfo` to read RIFF FourCC chunk identifiers as raw ASCII bytes instead of UTF-8 decoded characters
+* Fixed an unhandled `System.ArgumentException` caused by `BinaryReader.ReadChars(4)` decoding binary chunk data as UTF-8
+* Added safer validation for RIFF and WAVE headers
+* Added support for skipping unknown RIFF chunks without desynchronising the parser
+* Preserved existing KoTOR WAVE and embedded MPEG offset handling used by FMOD playback
+
+---
+
+### FMOD Shutdown Stability
+
+* Fixed a double-release path where finished sounds could be released by the playback timer and then released again during form close
+* Centralised sound cleanup through shared stop/release helpers in the Sound Editor
+* Cleared stale FMOD `Sound`, `Channel`, and `System` references after release
+* Hardened `IsSoundPlaying` against invalid or stolen FMOD channel handles
+* Prevented intermittent application termination when clicking Cancel or closing the Sound Editor after a preview sound completes
+
+---
+
+## Result
+
+Version **1.0.3.4** stabilises the restored Sound Editor preview workflow. Level sound objects can now be previewed without the UTF-8 RIFF parsing crash, and the editor can be closed safely after playback completes.
+
+---
+
+## Previous Release
 
 ## v1.0.3.3 — GUI Overhaul & Structural Stabilisation
 

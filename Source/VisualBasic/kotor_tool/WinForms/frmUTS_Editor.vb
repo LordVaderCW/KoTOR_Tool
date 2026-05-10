@@ -412,49 +412,63 @@ Namespace kotor_tool
         End Sub
 
 		' Token: 0x0600163A RID: 5690 RVA: 0x002C5B50 File Offset: 0x002C4B50
-        Private Sub Timer1_Tick(ByVal sender As Object, ByVal e As EventArgs) Handles Timer1.Tick
-            If Me.IsSoundPlaying() Then
-                Dim num As UInteger
-                Me.result = Me.channel.getPosition(num, TIMEUNIT.MS)
-                Dim sound As Sound = Nothing
-                Me.channel.getCurrentSound(sound)
-                Dim num2 As UInteger
-                If sound IsNot Nothing Then
-                    Me.result = sound.getLength(num2, TIMEUNIT.MS)
-                    If Me.result <> result.OK AndAlso Me.result <> result.ERR_INVALID_HANDLE AndAlso Me.result <> result.ERR_CHANNEL_STOLEN Then
-                        Me.ERRCHECK(Me.result)
-                    End If
-                End If
-                Dim num3 As Integer = Convert.ToInt32(num2)
-                Dim num4 As Integer = Convert.ToInt32(num)
-                Me.tbSoundStatus.Text = String.Concat(New String() {(CLng(Math.Round(CDbl(num4) / 1000.0)) / 60L).ToString().PadLeft(2, "0"c), ":", Conversion.Int(CDbl(num4) / 1000.0 Mod 60.0).ToString().PadLeft(2, "0"c), ":", Conversion.Int(CDbl(num4) / 10.0 Mod 100.0).ToString().PadLeft(2, "0"c), "/", (CLng(Math.Round(CDbl(num3) / 1000.0)) / 60L).ToString().PadLeft(2, "0"c), ":", Conversion.Int(CDbl(num3) / 1000.0 Mod 60.0).ToString().PadLeft(2, "0"c), ":", Conversion.Int(CDbl(num3) / 10.0 Mod 100.0).ToString().PadLeft(2, "0"c)})
-            Else
-                Me.btnStopSound.Enabled = False
-                If Me.IsItemSelected Then
-                    Me.btnPlaySound.Enabled = True
-                End If
-                Me.Timer1.Enabled = False
-                If Me.sound1 IsNot Nothing Then
-                    Me.sound1.release()
-                End If
-                If Me.StoppedPlayingEvent IsNot Nothing Then
-                    Me.StoppedPlayingEvent()
-                End If
-            End If
-        End Sub
+		Private Sub Timer1_Tick(ByVal sender As Object, ByVal e As EventArgs) Handles Timer1.Tick
+			If Me.IsSoundPlaying() Then
+				Dim num As UInteger
+				Me.result = Me.channel.getPosition(num, TIMEUNIT.MS)
+				Dim sound As Sound = Nothing
+				Me.channel.getCurrentSound(sound)
+				Dim num2 As UInteger
+				If sound IsNot Nothing Then
+					Me.result = sound.getLength(num2, TIMEUNIT.MS)
+					If Me.result <> RESULT.OK AndAlso Me.result <> RESULT.ERR_INVALID_HANDLE AndAlso Me.result <> RESULT.ERR_CHANNEL_STOLEN Then
+						Me.ERRCHECK(Me.result)
+					End If
+				End If
+				Dim num3 As Integer = Convert.ToInt32(num2)
+				Dim num4 As Integer = Convert.ToInt32(num)
+				Me.tbSoundStatus.Text = String.Concat(New String() {(CLng(Math.Round(CDbl(num4) / 1000.0)) / 60L).ToString().PadLeft(2, "0"c), ":", Conversion.Int(CDbl(num4) / 1000.0 Mod 60.0).ToString().PadLeft(2, "0"c), ":", Conversion.Int(CDbl(num4) / 10.0 Mod 100.0).ToString().PadLeft(2, "0"c), "/", (CLng(Math.Round(CDbl(num3) / 1000.0)) / 60L).ToString().PadLeft(2, "0"c), ":", Conversion.Int(CDbl(num3) / 1000.0 Mod 60.0).ToString().PadLeft(2, "0"c), ":", Conversion.Int(CDbl(num3) / 10.0 Mod 100.0).ToString().PadLeft(2, "0"c)})
+			Else
+				Me.btnStopSound.Enabled = False
+				If Me.IsItemSelected Then
+					Me.btnPlaySound.Enabled = True
+				End If
+				Me.Timer1.Enabled = False
+				Me.ReleaseCurrentSound()
+				If Me.StoppedPlayingEvent IsNot Nothing Then
+					Me.StoppedPlayingEvent()
+				End If
+			End If
+		End Sub
 
 		' Token: 0x0600163B RID: 5691 RVA: 0x002C5D98 File Offset: 0x002C4D98
 		Private Sub ClosedownSound()
-			If Me.channel IsNot Nothing Then
-				Me.channel.[stop]()
-			End If
-			If Me.sound1 IsNot Nothing Then
-				Me.sound1.release()
-			End If
+			Me.Timer1.Enabled = False
+			Me.StopCurrentChannel()
+			Me.ReleaseCurrentSound()
 			If Me.fmSystem IsNot Nothing Then
 				Me.result = Me.fmSystem.close()
 				Me.result = Me.fmSystem.release()
+				Me.fmSystem = Nothing
 			End If
+		End Sub
+
+		Private Sub StopCurrentChannel()
+			If Me.channel Is Nothing Then
+				Return
+			End If
+
+			Me.result = Me.channel.[stop]()
+			Me.channel = Nothing
+		End Sub
+
+		Private Sub ReleaseCurrentSound()
+			If Me.sound1 Is Nothing Then
+				Return
+			End If
+
+			Me.result = Me.sound1.release()
+			Me.sound1 = Nothing
 		End Sub
 
 		' Token: 0x0600163C RID: 5692 RVA: 0x002C5DF8 File Offset: 0x002C4DF8
@@ -479,7 +493,7 @@ Namespace kotor_tool
 
 		' Token: 0x0600163E RID: 5694 RVA: 0x002C5E84 File Offset: 0x002C4E84
 		Public Function PlaySound(filename As String) As Boolean
-            Dim biffvarRsrcEntryInfo As BIFFVarRsrcEntryInfo = Nothing
+			Dim biffvarRsrcEntryInfo As BIFFVarRsrcEntryInfo = Nothing
 			Dim flag As Boolean
 			If Me.htBIFSounds.ContainsKey(filename) Then
 				biffvarRsrcEntryInfo = Me.SoundsResInfo(IntegerType.FromObject(Me.htBIFSounds(filename)))
@@ -509,21 +523,29 @@ Namespace kotor_tool
 				createsoundexinfo.length = Convert.ToUInt32(biffvarRsrcEntryInfo.FileSize)
 				createsoundexinfo.fileoffset = Convert.ToUInt32(biffvarRsrcEntryInfo.Offset)
 			End If
+			Me.StopCurrentChannel()
+			Me.ReleaseCurrentSound()
 			Me.result = Me.fmSystem.createSound(filename, CType(32936, MODE), createsoundexinfo, Me.sound1)
+			If Me.result <> RESULT.OK Then
+				Me.sound1 = Nothing
+				Return False
+			End If
 			Me.result = Me.fmSystem.playSound(CHANNELINDEX.FREE, Me.sound1, False, Me.channel)
+			If Me.result <> RESULT.OK Then
+				Me.ReleaseCurrentSound()
+				Return False
+			End If
 			Me.Timer1.Enabled = True
 			Return True
 		End Function
 
 		' Token: 0x0600163F RID: 5695 RVA: 0x002C60C4 File Offset: 0x002C50C4
 		Public Sub StopSound()
-			Me.channel.[stop]()
 			Me.Timer1.Enabled = False
 			Me.btnStopSound.Enabled = False
 			Me.btnPlaySound.Enabled = True
-			If Me.sound1 IsNot Nothing Then
-				Me.sound1.release()
-			End If
+			Me.StopCurrentChannel()
+			Me.ReleaseCurrentSound()
 		End Sub
 
 		' Token: 0x06001640 RID: 5696 RVA: 0x002C6118 File Offset: 0x002C5118
@@ -531,6 +553,10 @@ Namespace kotor_tool
 			Dim flag As Boolean = False
 			If Me.channel IsNot Nothing Then
 				Me.result = Me.channel.isPlaying(flag)
+				If Me.result = RESULT.ERR_INVALID_HANDLE OrElse Me.result = RESULT.ERR_CHANNEL_STOLEN Then
+					Me.channel = Nothing
+					flag = False
+				End If
 			End If
 			Return flag
 		End Function

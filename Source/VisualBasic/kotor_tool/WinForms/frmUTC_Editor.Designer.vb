@@ -508,7 +508,7 @@ Namespace kotor_tool
             Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
             Me.pnlRoot.Name = "pnlRoot"
-            Me.pnlRoot.Size = New System.Drawing.Size(469, 813)
+            Me.pnlRoot.Size = New System.Drawing.Size(469, 788)
             Me.pnlRoot.TabIndex = 0
             '
             'pnlBody
@@ -519,7 +519,7 @@ Namespace kotor_tool
             Me.pnlBody.Location = New System.Drawing.Point(0, 76)
             Me.pnlBody.Name = "pnlBody"
             Me.pnlBody.Padding = New System.Windows.Forms.Padding(12)
-            Me.pnlBody.Size = New System.Drawing.Size(467, 675)
+            Me.pnlBody.Size = New System.Drawing.Size(467, 650)
             Me.pnlBody.TabIndex = 1
             '
             'tabCtrl1
@@ -559,7 +559,7 @@ Namespace kotor_tool
             Me.tabCtrl1.SelectedTextColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabCtrl1.ShowPageChromeErase = False
             Me.tabCtrl1.ShowPageEdgeArtifactErase = False
-            Me.tabCtrl1.Size = New System.Drawing.Size(443, 651)
+            Me.tabCtrl1.Size = New System.Drawing.Size(443, 626)
             Me.tabCtrl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
             Me.tabCtrl1.TabBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
             Me.tabCtrl1.TabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
@@ -580,7 +580,7 @@ Namespace kotor_tool
             Me.tpBasic.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tpBasic.Location = New System.Drawing.Point(4, 66)
             Me.tpBasic.Name = "tpBasic"
-            Me.tpBasic.Size = New System.Drawing.Size(435, 581)
+            Me.tpBasic.Size = New System.Drawing.Size(435, 556)
             Me.tpBasic.TabIndex = 0
             Me.tpBasic.Text = "Basic"
             '
@@ -866,9 +866,9 @@ Namespace kotor_tool
             Me.tpStatistics.Controls.Add(Me.GroupBox6)
             Me.tpStatistics.Controls.Add(Me.GroupBox5)
             Me.tpStatistics.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tpStatistics.Location = New System.Drawing.Point(4, 68)
+            Me.tpStatistics.Location = New System.Drawing.Point(4, 66)
             Me.tpStatistics.Name = "tpStatistics"
-            Me.tpStatistics.Size = New System.Drawing.Size(435, 579)
+            Me.tpStatistics.Size = New System.Drawing.Size(435, 556)
             Me.tpStatistics.TabIndex = 1
             Me.tpStatistics.Text = "Statistics"
             '
@@ -889,7 +889,6 @@ Namespace kotor_tool
             '
             Me.cmbxMovementRate.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxMovementRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxMovementRate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxMovementRate.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxMovementRate.Location = New System.Drawing.Point(138, 18)
             Me.cmbxMovementRate.Name = "cmbxMovementRate"
@@ -967,7 +966,7 @@ Namespace kotor_tool
             Me.nudWillBonus.Name = "nudWillBonus"
             Me.nudWillBonus.Size = New System.Drawing.Size(48, 22)
             Me.nudWillBonus.TabIndex = 2
-            Me.nudWillBonus.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudWillBonus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'nudFortBonus
             '
@@ -978,7 +977,7 @@ Namespace kotor_tool
             Me.nudFortBonus.Name = "nudFortBonus"
             Me.nudFortBonus.Size = New System.Drawing.Size(48, 22)
             Me.nudFortBonus.TabIndex = 0
-            Me.nudFortBonus.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudFortBonus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'nudRefBonus
             '
@@ -989,7 +988,7 @@ Namespace kotor_tool
             Me.nudRefBonus.Name = "nudRefBonus"
             Me.nudRefBonus.Size = New System.Drawing.Size(48, 22)
             Me.nudRefBonus.TabIndex = 1
-            Me.nudRefBonus.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudRefBonus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'Label22
             '
@@ -1035,7 +1034,7 @@ Namespace kotor_tool
             Me.nudStrength.Name = "nudStrength"
             Me.nudStrength.Size = New System.Drawing.Size(48, 22)
             Me.nudStrength.TabIndex = 0
-            Me.nudStrength.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudStrength.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudStrength.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'Label14
@@ -1123,7 +1122,7 @@ Namespace kotor_tool
             Me.nudDexterity.Name = "nudDexterity"
             Me.nudDexterity.Size = New System.Drawing.Size(48, 22)
             Me.nudDexterity.TabIndex = 1
-            Me.nudDexterity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudDexterity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudDexterity.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'nudConstitution
@@ -1135,7 +1134,7 @@ Namespace kotor_tool
             Me.nudConstitution.Name = "nudConstitution"
             Me.nudConstitution.Size = New System.Drawing.Size(48, 22)
             Me.nudConstitution.TabIndex = 2
-            Me.nudConstitution.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudConstitution.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudConstitution.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'nudIntelligence
@@ -1147,7 +1146,7 @@ Namespace kotor_tool
             Me.nudIntelligence.Name = "nudIntelligence"
             Me.nudIntelligence.Size = New System.Drawing.Size(48, 22)
             Me.nudIntelligence.TabIndex = 3
-            Me.nudIntelligence.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudIntelligence.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudIntelligence.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'nudWisdom
@@ -1159,7 +1158,7 @@ Namespace kotor_tool
             Me.nudWisdom.Name = "nudWisdom"
             Me.nudWisdom.Size = New System.Drawing.Size(48, 22)
             Me.nudWisdom.TabIndex = 4
-            Me.nudWisdom.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudWisdom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudWisdom.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'nudCharisma
@@ -1171,7 +1170,7 @@ Namespace kotor_tool
             Me.nudCharisma.Name = "nudCharisma"
             Me.nudCharisma.Size = New System.Drawing.Size(48, 22)
             Me.nudCharisma.TabIndex = 5
-            Me.nudCharisma.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudCharisma.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudCharisma.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'GroupBox6
@@ -1207,7 +1206,7 @@ Namespace kotor_tool
             Me.nudNaturalAC.Name = "nudNaturalAC"
             Me.nudNaturalAC.Size = New System.Drawing.Size(56, 22)
             Me.nudNaturalAC.TabIndex = 0
-            Me.nudNaturalAC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudNaturalAC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudNaturalAC.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'GroupBox5
@@ -1248,7 +1247,7 @@ Namespace kotor_tool
             Me.nudBaseHP.Name = "nudBaseHP"
             Me.nudBaseHP.Size = New System.Drawing.Size(56, 22)
             Me.nudBaseHP.TabIndex = 0
-            Me.nudBaseHP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudBaseHP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudBaseHP.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'Label49
@@ -1272,7 +1271,7 @@ Namespace kotor_tool
             Me.nudCurrentHP.Name = "nudCurrentHP"
             Me.nudCurrentHP.Size = New System.Drawing.Size(56, 22)
             Me.nudCurrentHP.TabIndex = 1
-            Me.nudCurrentHP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudCurrentHP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudCurrentHP.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'nudMaxHP
@@ -1285,7 +1284,7 @@ Namespace kotor_tool
             Me.nudMaxHP.Name = "nudMaxHP"
             Me.nudMaxHP.Size = New System.Drawing.Size(56, 22)
             Me.nudMaxHP.TabIndex = 2
-            Me.nudMaxHP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudMaxHP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudMaxHP.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'Label50
@@ -1319,9 +1318,9 @@ Namespace kotor_tool
             Me.tpSkills.Controls.Add(Me.nudTreatInjury)
             Me.tpSkills.Controls.Add(Me.Label31)
             Me.tpSkills.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tpSkills.Location = New System.Drawing.Point(4, 68)
+            Me.tpSkills.Location = New System.Drawing.Point(4, 66)
             Me.tpSkills.Name = "tpSkills"
-            Me.tpSkills.Size = New System.Drawing.Size(435, 579)
+            Me.tpSkills.Size = New System.Drawing.Size(435, 556)
             Me.tpSkills.TabIndex = 4
             Me.tpSkills.Text = "Skills"
             '
@@ -1333,7 +1332,7 @@ Namespace kotor_tool
             Me.nudComputerUse.Name = "nudComputerUse"
             Me.nudComputerUse.Size = New System.Drawing.Size(48, 22)
             Me.nudComputerUse.TabIndex = 0
-            Me.nudComputerUse.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudComputerUse.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudComputerUse.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'Label24
@@ -1410,7 +1409,7 @@ Namespace kotor_tool
             Me.nudDemolitions.Name = "nudDemolitions"
             Me.nudDemolitions.Size = New System.Drawing.Size(48, 22)
             Me.nudDemolitions.TabIndex = 1
-            Me.nudDemolitions.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudDemolitions.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudDemolitions.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'nudStealth
@@ -1421,7 +1420,7 @@ Namespace kotor_tool
             Me.nudStealth.Name = "nudStealth"
             Me.nudStealth.Size = New System.Drawing.Size(48, 22)
             Me.nudStealth.TabIndex = 2
-            Me.nudStealth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudStealth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudStealth.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'nudAwareness
@@ -1432,7 +1431,7 @@ Namespace kotor_tool
             Me.nudAwareness.Name = "nudAwareness"
             Me.nudAwareness.Size = New System.Drawing.Size(48, 22)
             Me.nudAwareness.TabIndex = 3
-            Me.nudAwareness.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudAwareness.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudAwareness.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'nudPersuade
@@ -1443,7 +1442,7 @@ Namespace kotor_tool
             Me.nudPersuade.Name = "nudPersuade"
             Me.nudPersuade.Size = New System.Drawing.Size(48, 22)
             Me.nudPersuade.TabIndex = 4
-            Me.nudPersuade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudPersuade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudPersuade.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'nudRepair
@@ -1454,7 +1453,7 @@ Namespace kotor_tool
             Me.nudRepair.Name = "nudRepair"
             Me.nudRepair.Size = New System.Drawing.Size(48, 22)
             Me.nudRepair.TabIndex = 5
-            Me.nudRepair.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudRepair.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudRepair.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'Label30
@@ -1476,7 +1475,7 @@ Namespace kotor_tool
             Me.nudSecurity.Name = "nudSecurity"
             Me.nudSecurity.Size = New System.Drawing.Size(48, 22)
             Me.nudSecurity.TabIndex = 6
-            Me.nudSecurity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudSecurity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudSecurity.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'nudTreatInjury
@@ -1487,7 +1486,7 @@ Namespace kotor_tool
             Me.nudTreatInjury.Name = "nudTreatInjury"
             Me.nudTreatInjury.Size = New System.Drawing.Size(48, 22)
             Me.nudTreatInjury.TabIndex = 7
-            Me.nudTreatInjury.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudTreatInjury.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudTreatInjury.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'Label31
@@ -1511,9 +1510,9 @@ Namespace kotor_tool
             Me.tpAdvanced.Controls.Add(Me.GroupBox15)
             Me.tpAdvanced.Controls.Add(Me.GroupBox18)
             Me.tpAdvanced.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tpAdvanced.Location = New System.Drawing.Point(4, 68)
+            Me.tpAdvanced.Location = New System.Drawing.Point(4, 66)
             Me.tpAdvanced.Name = "tpAdvanced"
-            Me.tpAdvanced.Size = New System.Drawing.Size(435, 579)
+            Me.tpAdvanced.Size = New System.Drawing.Size(435, 556)
             Me.tpAdvanced.TabIndex = 6
             Me.tpAdvanced.Text = "Advanced"
             '
@@ -1561,7 +1560,7 @@ Namespace kotor_tool
             Me.GroupBox11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
             Me.GroupBox11.Location = New System.Drawing.Point(12, 125)
             Me.GroupBox11.Name = "GroupBox11"
-            Me.GroupBox11.Size = New System.Drawing.Size(406, 260)
+            Me.GroupBox11.Size = New System.Drawing.Size(406, 264)
             Me.GroupBox11.TabIndex = 2
             Me.GroupBox11.TabStop = False
             Me.GroupBox11.Text = "Special"
@@ -1570,17 +1569,17 @@ Namespace kotor_tool
             '
             Me.nudMultiplierSet.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.nudMultiplierSet.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.nudMultiplierSet.Location = New System.Drawing.Point(320, 178)
+            Me.nudMultiplierSet.Location = New System.Drawing.Point(317, 146)
             Me.nudMultiplierSet.Name = "nudMultiplierSet"
             Me.nudMultiplierSet.Size = New System.Drawing.Size(56, 22)
             Me.nudMultiplierSet.TabIndex = 9
-            Me.nudMultiplierSet.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudMultiplierSet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudMultiplierSet.Visible = False
             '
             'Label51
             '
             Me.Label51.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label51.Location = New System.Drawing.Point(30, 217)
+            Me.Label51.Location = New System.Drawing.Point(27, 185)
             Me.Label51.Name = "Label51"
             Me.Label51.Size = New System.Drawing.Size(100, 21)
             Me.Label51.TabIndex = 1
@@ -1619,7 +1618,7 @@ Namespace kotor_tool
             'Label52
             '
             Me.Label52.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label52.Location = New System.Drawing.Point(30, 242)
+            Me.Label52.Location = New System.Drawing.Point(27, 210)
             Me.Label52.Name = "Label52"
             Me.Label52.Size = New System.Drawing.Size(100, 21)
             Me.Label52.TabIndex = 1
@@ -1631,7 +1630,7 @@ Namespace kotor_tool
             Me.tbDeity.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.tbDeity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbDeity.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbDeity.Location = New System.Drawing.Point(144, 240)
+            Me.tbDeity.Location = New System.Drawing.Point(141, 208)
             Me.tbDeity.Name = "tbDeity"
             Me.tbDeity.Size = New System.Drawing.Size(144, 22)
             Me.tbDeity.TabIndex = 11
@@ -1651,9 +1650,8 @@ Namespace kotor_tool
             '
             Me.cmbxSubrace.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxSubrace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxSubrace.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxSubrace.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.cmbxSubrace.Location = New System.Drawing.Point(144, 215)
+            Me.cmbxSubrace.Location = New System.Drawing.Point(141, 183)
             Me.cmbxSubrace.Name = "cmbxSubrace"
             Me.cmbxSubrace.Size = New System.Drawing.Size(144, 21)
             Me.cmbxSubrace.TabIndex = 10
@@ -1694,7 +1692,7 @@ Namespace kotor_tool
             'lblMultiplierSet
             '
             Me.lblMultiplierSet.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.lblMultiplierSet.Location = New System.Drawing.Point(210, 180)
+            Me.lblMultiplierSet.Location = New System.Drawing.Point(207, 148)
             Me.lblMultiplierSet.Name = "lblMultiplierSet"
             Me.lblMultiplierSet.Size = New System.Drawing.Size(100, 21)
             Me.lblMultiplierSet.TabIndex = 1
@@ -1705,7 +1703,7 @@ Namespace kotor_tool
             'lblBlindSpot
             '
             Me.lblBlindSpot.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.lblBlindSpot.Location = New System.Drawing.Point(30, 180)
+            Me.lblBlindSpot.Location = New System.Drawing.Point(27, 148)
             Me.lblBlindSpot.Name = "lblBlindSpot"
             Me.lblBlindSpot.Size = New System.Drawing.Size(100, 21)
             Me.lblBlindSpot.TabIndex = 1
@@ -1718,19 +1716,19 @@ Namespace kotor_tool
             Me.nudBlindSpot.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.nudBlindSpot.DecimalPlaces = 1
             Me.nudBlindSpot.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.nudBlindSpot.Location = New System.Drawing.Point(144, 178)
+            Me.nudBlindSpot.Location = New System.Drawing.Point(141, 146)
             Me.nudBlindSpot.Maximum = New Decimal(New Integer() {3599, 0, 0, 65536})
             Me.nudBlindSpot.Name = "nudBlindSpot"
             Me.nudBlindSpot.Size = New System.Drawing.Size(56, 22)
             Me.nudBlindSpot.TabIndex = 8
-            Me.nudBlindSpot.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudBlindSpot.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudBlindSpot.Visible = False
             '
             'chkbMin1HP
             '
             Me.chkbMin1HP.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbMin1HP.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.chkbMin1HP.Location = New System.Drawing.Point(30, 145)
+            Me.chkbMin1HP.Location = New System.Drawing.Point(190, 118)
             Me.chkbMin1HP.Name = "chkbMin1HP"
             Me.chkbMin1HP.Size = New System.Drawing.Size(108, 21)
             Me.chkbMin1HP.TabIndex = 4
@@ -1752,7 +1750,6 @@ Namespace kotor_tool
             '
             Me.cmbxSoundSet.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxSoundSet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxSoundSet.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxSoundSet.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxSoundSet.Location = New System.Drawing.Point(20, 25)
             Me.cmbxSoundSet.Name = "cmbxSoundSet"
@@ -1775,7 +1772,6 @@ Namespace kotor_tool
             '
             Me.cmbxPerceptionRange.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxPerceptionRange.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxPerceptionRange.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxPerceptionRange.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxPerceptionRange.Items.AddRange(New Object() {"Short", "Medium", "Long", "Default", "Player", "Monster"})
             Me.cmbxPerceptionRange.Location = New System.Drawing.Point(20, 25)
@@ -1799,7 +1795,6 @@ Namespace kotor_tool
             '
             Me.cmbxFaction.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxFaction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxFaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxFaction.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxFaction.Location = New System.Drawing.Point(20, 25)
             Me.cmbxFaction.Name = "cmbxFaction"
@@ -1858,7 +1853,6 @@ Namespace kotor_tool
             '
             Me.cmbxTreasureModel.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxTreasureModel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxTreasureModel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxTreasureModel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxTreasureModel.Items.AddRange(New Object() {"Short", "Medium", "Long", "Default", "Player", "Monster"})
             Me.cmbxTreasureModel.Location = New System.Drawing.Point(154, 63)
@@ -1873,9 +1867,9 @@ Namespace kotor_tool
             Me.tpFeats.Controls.Add(Me.GroupBox10)
             Me.tpFeats.Controls.Add(Me.chklbFeats)
             Me.tpFeats.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tpFeats.Location = New System.Drawing.Point(4, 68)
+            Me.tpFeats.Location = New System.Drawing.Point(4, 66)
             Me.tpFeats.Name = "tpFeats"
-            Me.tpFeats.Size = New System.Drawing.Size(435, 579)
+            Me.tpFeats.Size = New System.Drawing.Size(435, 556)
             Me.tpFeats.TabIndex = 7
             Me.tpFeats.Text = "Feats"
             '
@@ -1922,9 +1916,9 @@ Namespace kotor_tool
             Me.toForcePowers.Controls.Add(Me.GroupBox17)
             Me.toForcePowers.Controls.Add(Me.GroupBox16)
             Me.toForcePowers.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.toForcePowers.Location = New System.Drawing.Point(4, 68)
+            Me.toForcePowers.Location = New System.Drawing.Point(4, 66)
             Me.toForcePowers.Name = "toForcePowers"
-            Me.toForcePowers.Size = New System.Drawing.Size(435, 579)
+            Me.toForcePowers.Size = New System.Drawing.Size(435, 556)
             Me.toForcePowers.TabIndex = 8
             Me.toForcePowers.Text = "Force Powers"
             '
@@ -2027,6 +2021,7 @@ Namespace kotor_tool
             Me.nudForcePoints.Name = "nudForcePoints"
             Me.nudForcePoints.Size = New System.Drawing.Size(56, 22)
             Me.nudForcePoints.TabIndex = 0
+            Me.nudForcePoints.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudForcePoints.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'Label54
@@ -2058,6 +2053,7 @@ Namespace kotor_tool
             Me.nudCurrentForce.Name = "nudCurrentForce"
             Me.nudCurrentForce.Size = New System.Drawing.Size(56, 22)
             Me.nudCurrentForce.TabIndex = 1
+            Me.nudCurrentForce.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudCurrentForce.Value = New Decimal(New Integer() {100, 0, 0, 0})
             '
             'tpClasses
@@ -2066,9 +2062,9 @@ Namespace kotor_tool
             Me.tpClasses.Controls.Add(Me.GroupBox9)
             Me.tpClasses.Controls.Add(Me.GroupBox8)
             Me.tpClasses.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tpClasses.Location = New System.Drawing.Point(4, 68)
+            Me.tpClasses.Location = New System.Drawing.Point(4, 66)
             Me.tpClasses.Name = "tpClasses"
-            Me.tpClasses.Size = New System.Drawing.Size(435, 579)
+            Me.tpClasses.Size = New System.Drawing.Size(435, 556)
             Me.tpClasses.TabIndex = 3
             Me.tpClasses.Text = "Class"
             '
@@ -2106,12 +2102,12 @@ Namespace kotor_tool
             Me.nudClassLevel.Name = "nudClassLevel"
             Me.nudClassLevel.Size = New System.Drawing.Size(56, 22)
             Me.nudClassLevel.TabIndex = 1
+            Me.nudClassLevel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'cmbxClass
             '
             Me.cmbxClass.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxClass.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxClass.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxClass.Location = New System.Drawing.Point(90, 32)
             Me.cmbxClass.Name = "cmbxClass"
@@ -2152,7 +2148,7 @@ Namespace kotor_tool
             Me.nudAlignment.RightToLeft = System.Windows.Forms.RightToLeft.No
             Me.nudAlignment.Size = New System.Drawing.Size(48, 22)
             Me.nudAlignment.TabIndex = 1
-            Me.nudAlignment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudAlignment.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'Label47
             '
@@ -2187,9 +2183,9 @@ Namespace kotor_tool
             Me.tpSpecialAbilities.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tpSpecialAbilities.Controls.Add(Me.GroupBox20)
             Me.tpSpecialAbilities.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tpSpecialAbilities.Location = New System.Drawing.Point(4, 68)
+            Me.tpSpecialAbilities.Location = New System.Drawing.Point(4, 66)
             Me.tpSpecialAbilities.Name = "tpSpecialAbilities"
-            Me.tpSpecialAbilities.Size = New System.Drawing.Size(435, 579)
+            Me.tpSpecialAbilities.Size = New System.Drawing.Size(435, 556)
             Me.tpSpecialAbilities.TabIndex = 9
             Me.tpSpecialAbilities.Text = "Special Abilities"
             '
@@ -2262,9 +2258,9 @@ Namespace kotor_tool
             Me.tpScripts.Controls.Add(Me.btnEditOnRested)
             Me.tpScripts.Controls.Add(Me.btnEditOnEndRound)
             Me.tpScripts.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tpScripts.Location = New System.Drawing.Point(4, 68)
+            Me.tpScripts.Location = New System.Drawing.Point(4, 66)
             Me.tpScripts.Name = "tpScripts"
-            Me.tpScripts.Size = New System.Drawing.Size(435, 579)
+            Me.tpScripts.Size = New System.Drawing.Size(435, 556)
             Me.tpScripts.TabIndex = 5
             Me.tpScripts.Text = "Scripts"
             '
@@ -2721,9 +2717,9 @@ Namespace kotor_tool
             Me.tpComments.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.tpComments.Controls.Add(Me.tbComments)
             Me.tpComments.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tpComments.Location = New System.Drawing.Point(4, 68)
+            Me.tpComments.Location = New System.Drawing.Point(4, 66)
             Me.tpComments.Name = "tpComments"
-            Me.tpComments.Size = New System.Drawing.Size(435, 579)
+            Me.tpComments.Size = New System.Drawing.Size(435, 556)
             Me.tpComments.TabIndex = 10
             Me.tpComments.Text = "Comments"
             '
@@ -2748,7 +2744,7 @@ Namespace kotor_tool
             Me.pnlFooter.Controls.Add(Me.btnCancel)
             Me.pnlFooter.Controls.Add(Me.btnDebug)
             Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.pnlFooter.Location = New System.Drawing.Point(0, 751)
+            Me.pnlFooter.Location = New System.Drawing.Point(0, 726)
             Me.pnlFooter.Name = "pnlFooter"
             Me.pnlFooter.Padding = New System.Windows.Forms.Padding(12, 10, 12, 12)
             Me.pnlFooter.Size = New System.Drawing.Size(467, 60)
@@ -2864,7 +2860,7 @@ Namespace kotor_tool
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 15)
             Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.CancelButton = Me.btnCancel
-            Me.ClientSize = New System.Drawing.Size(469, 813)
+            Me.ClientSize = New System.Drawing.Size(469, 788)
             Me.Controls.Add(Me.pnlRoot)
             Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
             Me.MinimumSize = New System.Drawing.Size(460, 762)

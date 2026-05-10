@@ -329,7 +329,7 @@ Namespace kotor_tool
             Me.tvConversation.ItemHeight = 16
             Me.tvConversation.Location = New System.Drawing.Point(5, 124)
             Me.tvConversation.Name = "tvConversation"
-            Me.tvConversation.Size = New System.Drawing.Size(944, 198)
+            Me.tvConversation.Size = New System.Drawing.Size(944, 159)
             Me.tvConversation.TabIndex = 0
             '
             'tbConversationText
@@ -337,7 +337,7 @@ Namespace kotor_tool
             Me.tbConversationText.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
             Me.tbConversationText.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.tbConversationText.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbConversationText.Location = New System.Drawing.Point(5, 394)
+            Me.tbConversationText.Location = New System.Drawing.Point(5, 355)
             Me.tbConversationText.Multiline = True
             Me.tbConversationText.Name = "tbConversationText"
             Me.tbConversationText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -349,7 +349,7 @@ Namespace kotor_tool
             Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
             Me.Label1.BackColor = System.Drawing.Color.Transparent
             Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label1.Location = New System.Drawing.Point(5, 328)
+            Me.Label1.Location = New System.Drawing.Point(5, 289)
             Me.Label1.Name = "Label1"
             Me.Label1.Size = New System.Drawing.Size(273, 18)
             Me.Label1.TabIndex = 3
@@ -360,7 +360,7 @@ Namespace kotor_tool
             Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
             Me.Label2.BackColor = System.Drawing.Color.Transparent
             Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label2.Location = New System.Drawing.Point(5, 378)
+            Me.Label2.Location = New System.Drawing.Point(5, 339)
             Me.Label2.Name = "Label2"
             Me.Label2.Size = New System.Drawing.Size(267, 19)
             Me.Label2.TabIndex = 3
@@ -386,7 +386,7 @@ Namespace kotor_tool
             Me.TabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
             Me.TabControl1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold)
             Me.TabControl1.ItemSize = New System.Drawing.Size(88, 31)
-            Me.TabControl1.Location = New System.Drawing.Point(280, 328)
+            Me.TabControl1.Location = New System.Drawing.Point(280, 289)
             Me.TabControl1.Multiline = True
             Me.TabControl1.Name = "TabControl1"
             Me.TabControl1.NormalTabBackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
@@ -401,7 +401,7 @@ Namespace kotor_tool
             Me.TabControl1.SelectedTabBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
             Me.TabControl1.SelectedTabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
             Me.TabControl1.SelectedTextColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.TabControl1.Size = New System.Drawing.Size(669, 268)
+            Me.TabControl1.Size = New System.Drawing.Size(669, 249)
             Me.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight
             Me.TabControl1.TabBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
             Me.TabControl1.TabButtonBorderColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(115, Byte), Integer))
@@ -426,7 +426,7 @@ Namespace kotor_tool
             Me.tabpagActionsTaken.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabpagActionsTaken.Location = New System.Drawing.Point(4, 66)
             Me.tabpagActionsTaken.Name = "tabpagActionsTaken"
-            Me.tabpagActionsTaken.Size = New System.Drawing.Size(661, 198)
+            Me.tabpagActionsTaken.Size = New System.Drawing.Size(661, 179)
             Me.tabpagActionsTaken.TabIndex = 0
             Me.tabpagActionsTaken.Text = "Node Scripts"
             '
@@ -549,7 +549,7 @@ Namespace kotor_tool
             Me.tabpagCamera.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabpagCamera.Location = New System.Drawing.Point(4, 66)
             Me.tabpagCamera.Name = "tabpagCamera"
-            Me.tabpagCamera.Size = New System.Drawing.Size(661, 198)
+            Me.tabpagCamera.Size = New System.Drawing.Size(661, 179)
             Me.tabpagCamera.TabIndex = 5
             Me.tabpagCamera.Text = "Camera"
             '
@@ -857,7 +857,7 @@ Namespace kotor_tool
             Me.tabpagAnimationSound.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabpagAnimationSound.Location = New System.Drawing.Point(4, 66)
             Me.tabpagAnimationSound.Name = "tabpagAnimationSound"
-            Me.tabpagAnimationSound.Size = New System.Drawing.Size(661, 198)
+            Me.tabpagAnimationSound.Size = New System.Drawing.Size(661, 179)
             Me.tabpagAnimationSound.TabIndex = 1
             Me.tabpagAnimationSound.Text = "Animation/Sound"
             '
@@ -971,7 +971,7 @@ Namespace kotor_tool
             Me.tabpagPlot.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabpagPlot.Location = New System.Drawing.Point(4, 66)
             Me.tabpagPlot.Name = "tabpagPlot"
-            Me.tabpagPlot.Size = New System.Drawing.Size(661, 198)
+            Me.tabpagPlot.Size = New System.Drawing.Size(661, 179)
             Me.tabpagPlot.TabIndex = 6
             Me.tabpagPlot.Text = "Plot/Quest"
             '
@@ -1067,7 +1067,7 @@ Namespace kotor_tool
             Me.tabpagComment.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabpagComment.Location = New System.Drawing.Point(4, 66)
             Me.tabpagComment.Name = "tabpagComment"
-            Me.tabpagComment.Size = New System.Drawing.Size(661, 198)
+            Me.tabpagComment.Size = New System.Drawing.Size(661, 179)
             Me.tabpagComment.TabIndex = 2
             Me.tabpagComment.Text = "Comments"
             '
@@ -1082,7 +1082,7 @@ Namespace kotor_tool
             Me.tbComments.Multiline = True
             Me.tbComments.Name = "tbComments"
             Me.tbComments.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.tbComments.Size = New System.Drawing.Size(637, 150)
+            Me.tbComments.Size = New System.Drawing.Size(637, 131)
             Me.tbComments.TabIndex = 1
             '
             'tabpagThisFile1
@@ -1113,7 +1113,7 @@ Namespace kotor_tool
             Me.tabpagThisFile1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabpagThisFile1.Location = New System.Drawing.Point(4, 66)
             Me.tabpagThisFile1.Name = "tabpagThisFile1"
-            Me.tabpagThisFile1.Size = New System.Drawing.Size(661, 198)
+            Me.tabpagThisFile1.Size = New System.Drawing.Size(661, 179)
             Me.tabpagThisFile1.TabIndex = 3
             Me.tabpagThisFile1.Text = "This File (1)"
             '
@@ -1121,7 +1121,7 @@ Namespace kotor_tool
             '
             Me.chkbAnimatedCut.BackColor = System.Drawing.Color.Transparent
             Me.chkbAnimatedCut.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.chkbAnimatedCut.Location = New System.Drawing.Point(16, 157)
+            Me.chkbAnimatedCut.Location = New System.Drawing.Point(320, 92)
             Me.chkbAnimatedCut.Name = "chkbAnimatedCut"
             Me.chkbAnimatedCut.Size = New System.Drawing.Size(128, 28)
             Me.chkbAnimatedCut.TabIndex = 16
@@ -1133,7 +1133,7 @@ Namespace kotor_tool
             Me.tbCameraModel.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.tbCameraModel.Enabled = False
             Me.tbCameraModel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbCameraModel.Location = New System.Drawing.Point(160, 165)
+            Me.tbCameraModel.Location = New System.Drawing.Point(464, 100)
             Me.tbCameraModel.MaxLength = 16
             Me.tbCameraModel.Name = "tbCameraModel"
             Me.tbCameraModel.Size = New System.Drawing.Size(120, 22)
@@ -1144,7 +1144,7 @@ Namespace kotor_tool
             '
             Me.Label31.BackColor = System.Drawing.Color.Transparent
             Me.Label31.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label31.Location = New System.Drawing.Point(160, 148)
+            Me.Label31.Location = New System.Drawing.Point(461, 79)
             Me.Label31.Name = "Label31"
             Me.Label31.Size = New System.Drawing.Size(80, 18)
             Me.Label31.TabIndex = 15
@@ -1301,7 +1301,7 @@ Namespace kotor_tool
             '
             Me.Label26.BackColor = System.Drawing.Color.Transparent
             Me.Label26.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label26.Location = New System.Drawing.Point(307, 102)
+            Me.Label26.Location = New System.Drawing.Point(418, 9)
             Me.Label26.Name = "Label26"
             Me.Label26.Size = New System.Drawing.Size(64, 18)
             Me.Label26.TabIndex = 9
@@ -1311,7 +1311,7 @@ Namespace kotor_tool
             '
             Me.nudDelayEntry.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.nudDelayEntry.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.nudDelayEntry.Location = New System.Drawing.Point(304, 120)
+            Me.nudDelayEntry.Location = New System.Drawing.Point(418, 28)
             Me.nudDelayEntry.Maximum = New Decimal(New Integer() {100000, 0, 0, 0})
             Me.nudDelayEntry.Name = "nudDelayEntry"
             Me.nudDelayEntry.Size = New System.Drawing.Size(64, 22)
@@ -1322,7 +1322,7 @@ Namespace kotor_tool
             '
             Me.nudDelayReply.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.nudDelayReply.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.nudDelayReply.Location = New System.Drawing.Point(400, 120)
+            Me.nudDelayReply.Location = New System.Drawing.Point(514, 28)
             Me.nudDelayReply.Maximum = New Decimal(New Integer() {100000, 0, 0, 0})
             Me.nudDelayReply.Name = "nudDelayReply"
             Me.nudDelayReply.Size = New System.Drawing.Size(64, 22)
@@ -1333,7 +1333,7 @@ Namespace kotor_tool
             '
             Me.Label27.BackColor = System.Drawing.Color.Transparent
             Me.Label27.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label27.Location = New System.Drawing.Point(400, 102)
+            Me.Label27.Location = New System.Drawing.Point(511, 9)
             Me.Label27.Name = "Label27"
             Me.Label27.Size = New System.Drawing.Size(72, 18)
             Me.Label27.TabIndex = 9
@@ -1359,7 +1359,7 @@ Namespace kotor_tool
             Me.tabpagThisFile2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabpagThisFile2.Location = New System.Drawing.Point(4, 66)
             Me.tabpagThisFile2.Name = "tabpagThisFile2"
-            Me.tabpagThisFile2.Size = New System.Drawing.Size(661, 198)
+            Me.tabpagThisFile2.Size = New System.Drawing.Size(661, 179)
             Me.tabpagThisFile2.TabIndex = 8
             Me.tabpagThisFile2.Text = "This File (2)"
             '
@@ -1370,7 +1370,7 @@ Namespace kotor_tool
             Me.dgStuntList.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.dgStuntList.HeaderBackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
             Me.dgStuntList.HeaderForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.dgStuntList.Location = New System.Drawing.Point(3, 42)
+            Me.dgStuntList.Location = New System.Drawing.Point(3, 27)
             Me.dgStuntList.Name = "dgStuntList"
             Me.dgStuntList.Size = New System.Drawing.Size(655, 141)
             Me.dgStuntList.TabIndex = 0
@@ -1380,7 +1380,7 @@ Namespace kotor_tool
             Me.Label30.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
             Me.Label30.BackColor = System.Drawing.Color.Transparent
             Me.Label30.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label30.Location = New System.Drawing.Point(11, 12)
+            Me.Label30.Location = New System.Drawing.Point(7, 6)
             Me.Label30.Name = "Label30"
             Me.Label30.Size = New System.Drawing.Size(647, 18)
             Me.Label30.TabIndex = 3
@@ -1392,7 +1392,7 @@ Namespace kotor_tool
             Me.tabpagThisFile3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabpagThisFile3.Location = New System.Drawing.Point(4, 66)
             Me.tabpagThisFile3.Name = "tabpagThisFile3"
-            Me.tabpagThisFile3.Size = New System.Drawing.Size(661, 198)
+            Me.tabpagThisFile3.Size = New System.Drawing.Size(661, 179)
             Me.tabpagThisFile3.TabIndex = 9
             Me.tabpagThisFile3.Text = "This File (3)"
             '
@@ -1416,14 +1416,14 @@ Namespace kotor_tool
             Me.tabpagDebug.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tabpagDebug.Location = New System.Drawing.Point(4, 66)
             Me.tabpagDebug.Name = "tabpagDebug"
-            Me.tabpagDebug.Size = New System.Drawing.Size(649, 179)
+            Me.tabpagDebug.Size = New System.Drawing.Size(661, 179)
             Me.tabpagDebug.TabIndex = 7
             Me.tabpagDebug.Text = "Debug information/Options"
             '
             'trkbTVIndent
             '
             Me.trkbTVIndent.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
-            Me.trkbTVIndent.Location = New System.Drawing.Point(280, 46)
+            Me.trkbTVIndent.Location = New System.Drawing.Point(215, 39)
             Me.trkbTVIndent.Maximum = 30
             Me.trkbTVIndent.Minimum = 15
             Me.trkbTVIndent.Name = "trkbTVIndent"
@@ -1435,7 +1435,7 @@ Namespace kotor_tool
             '
             Me.Label17.BackColor = System.Drawing.Color.Transparent
             Me.Label17.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label17.Location = New System.Drawing.Point(56, 37)
+            Me.Label17.Location = New System.Drawing.Point(23, 25)
             Me.Label17.Name = "Label17"
             Me.Label17.Size = New System.Drawing.Size(100, 18)
             Me.Label17.TabIndex = 8
@@ -1445,7 +1445,7 @@ Namespace kotor_tool
             '
             Me.tbLinkID.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.tbLinkID.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbLinkID.Location = New System.Drawing.Point(168, 35)
+            Me.tbLinkID.Location = New System.Drawing.Point(135, 23)
             Me.tbLinkID.Name = "tbLinkID"
             Me.tbLinkID.Size = New System.Drawing.Size(56, 22)
             Me.tbLinkID.TabIndex = 7
@@ -1454,7 +1454,7 @@ Namespace kotor_tool
             '
             Me.tbLinkedCnt.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.tbLinkedCnt.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbLinkedCnt.Location = New System.Drawing.Point(168, 74)
+            Me.tbLinkedCnt.Location = New System.Drawing.Point(135, 62)
             Me.tbLinkedCnt.Name = "tbLinkedCnt"
             Me.tbLinkedCnt.Size = New System.Drawing.Size(56, 22)
             Me.tbLinkedCnt.TabIndex = 7
@@ -1463,7 +1463,7 @@ Namespace kotor_tool
             '
             Me.tbSharedCnt.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.tbSharedCnt.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbSharedCnt.Location = New System.Drawing.Point(168, 111)
+            Me.tbSharedCnt.Location = New System.Drawing.Point(135, 99)
             Me.tbSharedCnt.Name = "tbSharedCnt"
             Me.tbSharedCnt.Size = New System.Drawing.Size(56, 22)
             Me.tbSharedCnt.TabIndex = 7
@@ -1472,7 +1472,7 @@ Namespace kotor_tool
             '
             Me.Label18.BackColor = System.Drawing.Color.Transparent
             Me.Label18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label18.Location = New System.Drawing.Point(56, 76)
+            Me.Label18.Location = New System.Drawing.Point(23, 64)
             Me.Label18.Name = "Label18"
             Me.Label18.Size = New System.Drawing.Size(80, 19)
             Me.Label18.TabIndex = 8
@@ -1482,7 +1482,7 @@ Namespace kotor_tool
             '
             Me.Label19.BackColor = System.Drawing.Color.Transparent
             Me.Label19.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label19.Location = New System.Drawing.Point(56, 113)
+            Me.Label19.Location = New System.Drawing.Point(23, 101)
             Me.Label19.Name = "Label19"
             Me.Label19.Size = New System.Drawing.Size(100, 19)
             Me.Label19.TabIndex = 8
@@ -1496,7 +1496,7 @@ Namespace kotor_tool
             Me.btnDebug.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
             Me.btnDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnDebug.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnDebug.Location = New System.Drawing.Point(280, 166)
+            Me.btnDebug.Location = New System.Drawing.Point(351, 39)
             Me.btnDebug.Name = "btnDebug"
             Me.btnDebug.Size = New System.Drawing.Size(120, 27)
             Me.btnDebug.TabIndex = 6
@@ -1507,7 +1507,7 @@ Namespace kotor_tool
             '
             Me.Label32.BackColor = System.Drawing.Color.Transparent
             Me.Label32.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label32.Location = New System.Drawing.Point(288, 28)
+            Me.Label32.Location = New System.Drawing.Point(223, 21)
             Me.Label32.Name = "Label32"
             Me.Label32.Size = New System.Drawing.Size(112, 18)
             Me.Label32.TabIndex = 8
@@ -1517,7 +1517,7 @@ Namespace kotor_tool
             '
             Me.Label33.BackColor = System.Drawing.Color.Transparent
             Me.Label33.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label33.Location = New System.Drawing.Point(288, 102)
+            Me.Label33.Location = New System.Drawing.Point(223, 95)
             Me.Label33.Name = "Label33"
             Me.Label33.Size = New System.Drawing.Size(112, 18)
             Me.Label33.TabIndex = 8
@@ -1526,7 +1526,7 @@ Namespace kotor_tool
             'trkbTVItemHeight
             '
             Me.trkbTVItemHeight.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
-            Me.trkbTVItemHeight.Location = New System.Drawing.Point(280, 120)
+            Me.trkbTVItemHeight.Location = New System.Drawing.Point(215, 113)
             Me.trkbTVItemHeight.Maximum = 21
             Me.trkbTVItemHeight.Minimum = 7
             Me.trkbTVItemHeight.Name = "trkbTVItemHeight"
@@ -1538,7 +1538,7 @@ Namespace kotor_tool
             '
             Me.tbLinkDesc.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.tbLinkDesc.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbLinkDesc.Location = New System.Drawing.Point(168, 148)
+            Me.tbLinkDesc.Location = New System.Drawing.Point(135, 136)
             Me.tbLinkDesc.Name = "tbLinkDesc"
             Me.tbLinkDesc.Size = New System.Drawing.Size(56, 22)
             Me.tbLinkDesc.TabIndex = 7
@@ -1547,7 +1547,7 @@ Namespace kotor_tool
             '
             Me.Label34.BackColor = System.Drawing.Color.Transparent
             Me.Label34.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label34.Location = New System.Drawing.Point(56, 148)
+            Me.Label34.Location = New System.Drawing.Point(23, 136)
             Me.Label34.Name = "Label34"
             Me.Label34.Size = New System.Drawing.Size(100, 18)
             Me.Label34.TabIndex = 8
@@ -1561,7 +1561,7 @@ Namespace kotor_tool
             Me.btnShowLists.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
             Me.btnShowLists.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnShowLists.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnShowLists.Location = New System.Drawing.Point(448, 166)
+            Me.btnShowLists.Location = New System.Drawing.Point(519, 39)
             Me.btnShowLists.Name = "btnShowLists"
             Me.btnShowLists.Size = New System.Drawing.Size(24, 27)
             Me.btnShowLists.TabIndex = 6
@@ -1683,7 +1683,7 @@ Namespace kotor_tool
             Me.tbSpeaker.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.tbSpeaker.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
             Me.tbSpeaker.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbSpeaker.Location = New System.Drawing.Point(5, 353)
+            Me.tbSpeaker.Location = New System.Drawing.Point(5, 314)
             Me.tbSpeaker.Name = "tbSpeaker"
             Me.tbSpeaker.Size = New System.Drawing.Size(267, 22)
             Me.tbSpeaker.TabIndex = 9
@@ -1792,7 +1792,7 @@ Namespace kotor_tool
             Me.AcceptButton = Me.btnTest
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 15)
             Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
-            Me.ClientSize = New System.Drawing.Size(961, 596)
+            Me.ClientSize = New System.Drawing.Size(961, 557)
             Me.Controls.Add(Me.pnlHeader)
             Me.Controls.Add(Me.tbSpeaker)
             Me.Controls.Add(Me.tbConversationText)

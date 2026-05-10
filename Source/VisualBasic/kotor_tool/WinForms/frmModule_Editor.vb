@@ -2482,7 +2482,7 @@ Namespace kotor_tool
         Private Sub btnLogFactors_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnLogFactors.Click
             Dim stringBuilder As StringBuilder = New StringBuilder()
             Dim stringWriter As StringWriter = New StringWriter(stringBuilder)
-            Dim frmErrorMessageWithCopyableText As frmErrorMessageWithCopyableText = New frmErrorMessageWithCopyableText()
+            Dim frmErrorMessageWithCopyableText As frmErrorMessage = New frmErrorMessage()
             stringWriter.WriteLine("mie = New MapInfo.Map")
             stringWriter.WriteLine("mie.MapName = """ + Me.g_MapName + """")
             stringWriter.WriteLine("mie.MapAssembler = ""Fred Tetra""")

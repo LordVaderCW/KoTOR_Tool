@@ -17,11 +17,13 @@ Namespace kotor_tool
         Private _detailsVisible As Boolean
         Private _startedAt As DateTime
         Private _elapsedTimer As Timer
+        Private _theme As KotorTheme
 
         Public Event CancelRequested(ByVal sender As Object, ByVal e As EventArgs)
 
         Public Sub New()
             Me.InitializeComponent()
+            Me.LoadAndApplyTheme()
 
             Me._cancelRequested = False
             Me._detailsVisible = True
@@ -41,6 +43,15 @@ Namespace kotor_tool
         Protected Overrides Sub OnFormClosed(ByVal e As FormClosedEventArgs)
             Me.CleanupRuntimeObjects()
             MyBase.OnFormClosed(e)
+        End Sub
+
+        Protected Overrides Sub OnShown(ByVal e As EventArgs)
+            MyBase.OnShown(e)
+            Me.LoadAndApplyTheme()
+        End Sub
+
+        Public Sub ApplyActiveTheme()
+            Me.LoadAndApplyTheme()
         End Sub
 
         Public ReadOnly Property CancelWasRequested() As Boolean
@@ -233,6 +244,76 @@ Namespace kotor_tool
             Me._detailsVisible = True
             Me.pnlDetailsHost.Visible = True
             Application.DoEvents()
+        End Sub
+
+        Private Sub LoadAndApplyTheme()
+            Try
+                Me._theme = KotorThemeManager.LoadTheme(KotorThemeManager.GetActiveThemeName())
+            Catch ex As System.Exception
+                Me._theme = KotorTheme.CreateDefault()
+            End Try
+
+            Me.ApplyProgressMeterTheme()
+        End Sub
+
+        Private Sub ApplyProgressMeterTheme()
+            If Me._theme Is Nothing Then
+                Me._theme = KotorTheme.CreateDefault()
+            End If
+
+            Me.BackColor = Me._theme.WindowBack
+            Me.ForeColor = Me._theme.TextPrimary
+            Me.Font = Me._theme.CreateBodyFont()
+
+            Me.pnlRoot.BackColor = Me._theme.PanelRoot
+            Me.pnlHeader.BackColor = Me._theme.PanelHeader
+            Me.pnlBody.BackColor = Me._theme.PanelBody
+            Me.pnlDetailsHost.BackColor = Me._theme.PanelRoot
+            Me.pnlFooter.BackColor = Me._theme.PanelFooter
+
+            Me.lblHeaderSeparator.BackColor = Me._theme.HeaderSeparator
+            Me.lblFooterSeparator.BackColor = Me._theme.FooterSeparator
+            Me.lblDetailsSeparator.BackColor = Me._theme.FooterSeparator
+
+            Me.lblTitle.ForeColor = Me._theme.HeaderTitleText
+            Me.lblTitle.Font = Me._theme.CreateTitleFont()
+
+            Me.lblSubtitle.ForeColor = Me._theme.HeaderSubtitleText
+            Me.lblSubtitle.Font = Me._theme.CreateBodyFont()
+
+            Me.lblMsg.ForeColor = Me._theme.HeaderTitleText
+            Me.lblMsg.Font = New Font(Me._theme.BodyFontName, Me._theme.BodyFontSize, FontStyle.Bold, GraphicsUnit.Point)
+
+            Me.lblStatus.ForeColor = Me._theme.TextSecondary
+            Me.lblStatus.Font = Me._theme.CreateBodyFont()
+
+            Me.lblPercent.ForeColor = Me._theme.HeaderTitleText
+            Me.lblPercent.Font = New Font(Me._theme.MonoFontName, Me._theme.MonoFontSize, FontStyle.Bold, GraphicsUnit.Point)
+
+            Me.lblOperation.ForeColor = Me._theme.TextMuted
+            Me.lblOperation.Font = Me._theme.CreateBodyFont()
+
+            Me.lblElapsed.ForeColor = Me._theme.TextMuted
+            Me.lblElapsed.Font = Me._theme.CreateMonoFont()
+
+            Me.lblDetailsCaption.ForeColor = Me._theme.HeaderTitleText
+            Me.lblDetailsCaption.Font = New Font(Me._theme.BodyFontName, Me._theme.BodyFontSize, FontStyle.Bold, GraphicsUnit.Point)
+
+            Me.tbDetails.BackColor = Me._theme.ByteViewerBack
+            Me.tbDetails.ForeColor = Me._theme.InputText
+            Me.tbDetails.Font = Me._theme.CreateMonoFont()
+            Me.tbDetails.BorderStyle = BorderStyle.FixedSingle
+
+            Me.btnCancel.UseVisualStyleBackColor = False
+            Me.btnCancel.BackColor = Me._theme.ControlDark
+            Me.btnCancel.ForeColor = Me._theme.TextPrimary
+            Me.btnCancel.FlatStyle = FlatStyle.Flat
+            Me.btnCancel.FlatAppearance.BorderColor = Me._theme.AccentGold
+            Me.btnCancel.FlatAppearance.MouseOverBackColor = Me._theme.ControlHover
+            Me.btnCancel.FlatAppearance.MouseDownBackColor = Me._theme.ControlDown
+            Me.btnCancel.Font = New Font(Me._theme.BodyFontName, Me._theme.BodyFontSize, FontStyle.Bold, GraphicsUnit.Point)
+
+            Me._theme.ApplyToCustomProgressBar(Me.pbar)
         End Sub
 
         Private Sub UpdatePercentLabel()

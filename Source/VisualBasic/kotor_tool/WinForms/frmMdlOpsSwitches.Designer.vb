@@ -69,14 +69,17 @@ Namespace kotor_tool
         Private Sub InitializeComponent()
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlBody = New System.Windows.Forms.Panel()
+            Me.Label4 = New System.Windows.Forms.Label()
+            Me.Panel1 = New System.Windows.Forms.Panel()
+            Me.Label3 = New System.Windows.Forms.Label()
+            Me.nudNumberToExtract = New System.Windows.Forms.NumericUpDown()
+            Me.Label2 = New System.Windows.Forms.Label()
             Me.pnlOptions = New System.Windows.Forms.Panel()
             Me.Label1 = New System.Windows.Forms.Label()
             Me.chkbExtractAnimations = New System.Windows.Forms.CheckBox()
             Me.chkbCleanWorkingDir = New System.Windows.Forms.CheckBox()
             Me.chkbConvertSkin = New System.Windows.Forms.CheckBox()
             Me.chkbEachModelInOwnDir = New System.Windows.Forms.CheckBox()
-            Me.Label2 = New System.Windows.Forms.Label()
-            Me.nudNumberToExtract = New System.Windows.Forms.NumericUpDown()
             Me.chkbExportMdlAlignData = New System.Windows.Forms.CheckBox()
             Me.chkbMdlAlignDataOnly = New System.Windows.Forms.CheckBox()
             Me.pnlPath = New System.Windows.Forms.Panel()
@@ -91,17 +94,14 @@ Namespace kotor_tool
             Me.lblSeparatorTop = New System.Windows.Forms.Label()
             Me.lblSubtitle = New System.Windows.Forms.Label()
             Me.lblTitle = New System.Windows.Forms.Label()
-            Me.Panel1 = New System.Windows.Forms.Panel()
-            Me.Label3 = New System.Windows.Forms.Label()
-            Me.Label4 = New System.Windows.Forms.Label()
             Me.pnlRoot.SuspendLayout()
             Me.pnlBody.SuspendLayout()
-            Me.pnlOptions.SuspendLayout()
+            Me.Panel1.SuspendLayout()
             CType(Me.nudNumberToExtract, System.ComponentModel.ISupportInitialize).BeginInit()
+            Me.pnlOptions.SuspendLayout()
             Me.pnlPath.SuspendLayout()
             Me.pnlFooter.SuspendLayout()
             Me.pnlHeader.SuspendLayout()
-            Me.Panel1.SuspendLayout()
             Me.SuspendLayout()
             '
             'pnlRoot
@@ -132,10 +132,73 @@ Namespace kotor_tool
             Me.pnlBody.Size = New System.Drawing.Size(561, 431)
             Me.pnlBody.TabIndex = 1
             '
+            'Label4
+            '
+            Me.Label4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.Label4.BackColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
+            Me.Label4.Location = New System.Drawing.Point(14, 334)
+            Me.Label4.Name = "Label4"
+            Me.Label4.Size = New System.Drawing.Size(533, 2)
+            Me.Label4.TabIndex = 4
+            '
+            'Panel1
+            '
+            Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
+            Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.Panel1.Controls.Add(Me.Label3)
+            Me.Panel1.Controls.Add(Me.nudNumberToExtract)
+            Me.Panel1.Controls.Add(Me.Label2)
+            Me.Panel1.Location = New System.Drawing.Point(287, 14)
+            Me.Panel1.Name = "Panel1"
+            Me.Panel1.Size = New System.Drawing.Size(260, 309)
+            Me.Panel1.TabIndex = 3
+            '
+            'Label3
+            '
+            Me.Label3.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.Label3.Dock = System.Windows.Forms.DockStyle.Top
+            Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.Label3.Location = New System.Drawing.Point(0, 0)
+            Me.Label3.Name = "Label3"
+            Me.Label3.Size = New System.Drawing.Size(258, 30)
+            Me.Label3.TabIndex = 0
+            Me.Label3.Text = "Extra Options:"
+            Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+            '
+            'nudNumberToExtract
+            '
+            Me.nudNumberToExtract.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
+            Me.nudNumberToExtract.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.nudNumberToExtract.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.nudNumberToExtract.Location = New System.Drawing.Point(23, 65)
+            Me.nudNumberToExtract.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
+            Me.nudNumberToExtract.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+            Me.nudNumberToExtract.Name = "nudNumberToExtract"
+            Me.nudNumberToExtract.Size = New System.Drawing.Size(215, 20)
+            Me.nudNumberToExtract.TabIndex = 4
+            Me.nudNumberToExtract.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+            Me.nudNumberToExtract.Value = New Decimal(New Integer() {1, 0, 0, 0})
+            '
+            'Label2
+            '
+            Me.Label2.BackColor = System.Drawing.Color.Transparent
+            Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.Label2.Location = New System.Drawing.Point(20, 42)
+            Me.Label2.Name = "Label2"
+            Me.Label2.Size = New System.Drawing.Size(215, 20)
+            Me.Label2.TabIndex = 4
+            Me.Label2.Text = "Number of Models To Extract:"
+            Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+            '
             'pnlOptions
             '
             Me.pnlOptions.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                        Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
             Me.pnlOptions.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.pnlOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.pnlOptions.Controls.Add(Me.Label1)
@@ -169,7 +232,6 @@ Namespace kotor_tool
             Me.chkbExtractAnimations.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
             Me.chkbExtractAnimations.Checked = True
             Me.chkbExtractAnimations.CheckState = System.Windows.Forms.CheckState.Checked
-            Me.chkbExtractAnimations.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbExtractAnimations.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbExtractAnimations.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.chkbExtractAnimations.Location = New System.Drawing.Point(22, 42)
@@ -183,7 +245,6 @@ Namespace kotor_tool
             '
             Me.chkbCleanWorkingDir.BackColor = System.Drawing.Color.Transparent
             Me.chkbCleanWorkingDir.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-            Me.chkbCleanWorkingDir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbCleanWorkingDir.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbCleanWorkingDir.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.chkbCleanWorkingDir.Location = New System.Drawing.Point(22, 124)
@@ -199,7 +260,6 @@ Namespace kotor_tool
             Me.chkbConvertSkin.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
             Me.chkbConvertSkin.Checked = True
             Me.chkbConvertSkin.CheckState = System.Windows.Forms.CheckState.Checked
-            Me.chkbConvertSkin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbConvertSkin.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbConvertSkin.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.chkbConvertSkin.Location = New System.Drawing.Point(22, 70)
@@ -215,7 +275,6 @@ Namespace kotor_tool
             Me.chkbEachModelInOwnDir.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
             Me.chkbEachModelInOwnDir.Checked = True
             Me.chkbEachModelInOwnDir.CheckState = System.Windows.Forms.CheckState.Checked
-            Me.chkbEachModelInOwnDir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbEachModelInOwnDir.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbEachModelInOwnDir.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.chkbEachModelInOwnDir.Location = New System.Drawing.Point(22, 98)
@@ -225,37 +284,10 @@ Namespace kotor_tool
             Me.chkbEachModelInOwnDir.Text = "Directory Per .MDL Model:"
             Me.chkbEachModelInOwnDir.UseVisualStyleBackColor = False
             '
-            'Label2
-            '
-            Me.Label2.BackColor = System.Drawing.Color.Transparent
-            Me.Label2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.Label2.Location = New System.Drawing.Point(20, 42)
-            Me.Label2.Name = "Label2"
-            Me.Label2.Size = New System.Drawing.Size(215, 20)
-            Me.Label2.TabIndex = 4
-            Me.Label2.Text = "Number of Models To Extract:"
-            Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-            '
-            'nudNumberToExtract
-            '
-            Me.nudNumberToExtract.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
-            Me.nudNumberToExtract.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.nudNumberToExtract.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.nudNumberToExtract.Location = New System.Drawing.Point(23, 65)
-            Me.nudNumberToExtract.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
-            Me.nudNumberToExtract.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-            Me.nudNumberToExtract.Name = "nudNumberToExtract"
-            Me.nudNumberToExtract.Size = New System.Drawing.Size(215, 20)
-            Me.nudNumberToExtract.TabIndex = 4
-            Me.nudNumberToExtract.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-            Me.nudNumberToExtract.Value = New Decimal(New Integer() {1, 0, 0, 0})
-            '
             'chkbExportMdlAlignData
             '
             Me.chkbExportMdlAlignData.BackColor = System.Drawing.Color.Transparent
             Me.chkbExportMdlAlignData.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-            Me.chkbExportMdlAlignData.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbExportMdlAlignData.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbExportMdlAlignData.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.chkbExportMdlAlignData.Location = New System.Drawing.Point(22, 152)
@@ -270,7 +302,6 @@ Namespace kotor_tool
             '
             Me.chkbMdlAlignDataOnly.BackColor = System.Drawing.Color.Transparent
             Me.chkbMdlAlignDataOnly.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-            Me.chkbMdlAlignDataOnly.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbMdlAlignDataOnly.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbMdlAlignDataOnly.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.chkbMdlAlignDataOnly.Location = New System.Drawing.Point(22, 176)
@@ -284,7 +315,7 @@ Namespace kotor_tool
             'pnlPath
             '
             Me.pnlPath.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.pnlPath.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.pnlPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.pnlPath.Controls.Add(Me.Label15)
@@ -309,7 +340,7 @@ Namespace kotor_tool
             'tbModelExtractionPath
             '
             Me.tbModelExtractionPath.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.tbModelExtractionPath.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
             Me.tbModelExtractionPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.tbModelExtractionPath.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -416,7 +447,7 @@ Namespace kotor_tool
             'lblSubtitle
             '
             Me.lblSubtitle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.lblSubtitle.AutoEllipsis = True
             Me.lblSubtitle.BackColor = System.Drawing.Color.Transparent
             Me.lblSubtitle.Font = New System.Drawing.Font("Segoe UI", 8.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -431,7 +462,7 @@ Namespace kotor_tool
             'lblTitle
             '
             Me.lblTitle.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.lblTitle.AutoEllipsis = True
             Me.lblTitle.BackColor = System.Drawing.Color.Transparent
             Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -442,43 +473,6 @@ Namespace kotor_tool
             Me.lblTitle.TabIndex = 0
             Me.lblTitle.Text = "Model Extraction Options"
             Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-            '
-            'Panel1
-            '
-            Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
-            Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-            Me.Panel1.Controls.Add(Me.Label3)
-            Me.Panel1.Controls.Add(Me.nudNumberToExtract)
-            Me.Panel1.Controls.Add(Me.Label2)
-            Me.Panel1.Location = New System.Drawing.Point(287, 14)
-            Me.Panel1.Name = "Panel1"
-            Me.Panel1.Size = New System.Drawing.Size(260, 309)
-            Me.Panel1.TabIndex = 3
-            '
-            'Label3
-            '
-            Me.Label3.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
-            Me.Label3.Dock = System.Windows.Forms.DockStyle.Top
-            Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
-            Me.Label3.Location = New System.Drawing.Point(0, 0)
-            Me.Label3.Name = "Label3"
-            Me.Label3.Size = New System.Drawing.Size(258, 30)
-            Me.Label3.TabIndex = 0
-            Me.Label3.Text = "Extra Options:"
-            Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-            '
-            'Label4
-            '
-            Me.Label4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                        Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.Label4.BackColor = System.Drawing.Color.FromArgb(CType(CType(62, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(82, Byte), Integer))
-            Me.Label4.Location = New System.Drawing.Point(14, 334)
-            Me.Label4.Name = "Label4"
-            Me.Label4.Size = New System.Drawing.Size(533, 2)
-            Me.Label4.TabIndex = 4
             '
             'frmMdlOpsSwitches
             '
@@ -496,13 +490,13 @@ Namespace kotor_tool
             Me.Text = "Model Extraction Options"
             Me.pnlRoot.ResumeLayout(False)
             Me.pnlBody.ResumeLayout(False)
-            Me.pnlOptions.ResumeLayout(False)
+            Me.Panel1.ResumeLayout(False)
             CType(Me.nudNumberToExtract, System.ComponentModel.ISupportInitialize).EndInit()
+            Me.pnlOptions.ResumeLayout(False)
             Me.pnlPath.ResumeLayout(False)
             Me.pnlPath.PerformLayout()
             Me.pnlFooter.ResumeLayout(False)
             Me.pnlHeader.ResumeLayout(False)
-            Me.Panel1.ResumeLayout(False)
             Me.ResumeLayout(False)
 
         End Sub

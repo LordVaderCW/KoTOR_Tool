@@ -14,16 +14,30 @@ Namespace kotor_tool
 		Inherits Form
 
 		' Token: 0x06000EDA RID: 3802 RVA: 0x002911A0 File Offset: 0x002901A0
-		Public Sub New()
+        Public Sub New()
 			AddHandler MyBase.Load, AddressOf Me.frmSoundChooser_Load
 			Me.FilterList = New ArrayList()
 			Me.InitializeComponent()
 			Me.SetUpcmbxFilter()
 		End Sub
 
+        Private Function SoundEditorOwner() As frmUTS_Editor
+            If TypeOf Me.Owner Is frmUTS_Editor Then
+                Return CType(Me.Owner, frmUTS_Editor)
+            End If
+
+            Return Nothing
+        End Function
+
         ' Token: 0x06000EF7 RID: 3831 RVA: 0x00291DE0 File Offset: 0x00290DE0
         Private Sub btnPlaySound_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnPlaySound.Click
-            If CType(Me.Owner, frmUTS_Editor).PlaySound(StringType.FromObject(ObjectType.StrCatObj(Me.lbSounds.SelectedItem, ".wav"))) Then
+            Dim ownerEditor As frmUTS_Editor = Me.SoundEditorOwner()
+
+            If ownerEditor Is Nothing Then
+                Return
+            End If
+
+            If ownerEditor.PlaySound(StringType.FromObject(ObjectType.StrCatObj(Me.lbSounds.SelectedItem, ".wav"))) Then
                 Me.btnPlaySound.Enabled = False
                 Me.btnStopSound.Enabled = True
             End If
@@ -31,7 +45,9 @@ Namespace kotor_tool
 
         ' Token: 0x06000EF8 RID: 3832 RVA: 0x00291E34 File Offset: 0x00290E34
         Private Sub lbSounds_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles lbSounds.SelectedIndexChanged
-            Me.btnPlaySound.Enabled = Not CType(Me.Owner, frmUTS_Editor).IsSoundPlaying() AndAlso Me.lbSounds.SelectedIndices.Count > 0
+            Dim ownerEditor As frmUTS_Editor = Me.SoundEditorOwner()
+
+            Me.btnPlaySound.Enabled = ownerEditor IsNot Nothing AndAlso Not ownerEditor.IsSoundPlaying() AndAlso Me.lbSounds.SelectedIndices.Count > 0
         End Sub
 
         ' Token: 0x17000542 RID: 1346
@@ -145,13 +161,27 @@ Namespace kotor_tool
 
         ' Token: 0x06000F04 RID: 3844 RVA: 0x002923B4 File Offset: 0x002913B4
         Private Sub btnStopSound_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnStopSound.Click
-            CType(Me.Owner, frmUTS_Editor).StopSound()
+            Dim ownerEditor As frmUTS_Editor = Me.SoundEditorOwner()
+
+            If ownerEditor Is Nothing Then
+                Return
+            End If
+
+            ownerEditor.StopSound()
             Me.OwnerStoppedPlaying()
         End Sub
 
         ' Token: 0x06000F05 RID: 3845 RVA: 0x002923CC File Offset: 0x002913CC
         Private Sub frmSoundChooser_Load(ByVal sender As Object, ByVal e As EventArgs)
-            AddHandler CType(Me.Owner, frmUTS_Editor).StoppedPlaying, AddressOf Me.OwnerStoppedPlaying
+            Dim ownerEditor As frmUTS_Editor = Me.SoundEditorOwner()
+
+            If ownerEditor Is Nothing Then
+                Me.btnPlaySound.Enabled = False
+                Me.btnStopSound.Enabled = False
+                Return
+            End If
+
+            AddHandler ownerEditor.StoppedPlaying, AddressOf Me.OwnerStoppedPlaying
         End Sub
 
         ' Token: 0x04000744 RID: 1860

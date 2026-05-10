@@ -21,13 +21,6 @@ Namespace kotor_tool
             Me.InitializeComponent()
 
 
-            ' -------------------------------------------------------------
-            ' Event bindings restored from decompiled synchronized
-            ' AccessedThroughProperty wrappers.
-            ' -------------------------------------------------------------
-            AddHandler Me.btnOK.Click, AddressOf Me.btnOK_Click
-
-
         End Sub
 
         ' Token: 0x06000307 RID: 775 RVA: 0x00230AC4 File Offset: 0x0022FAC4

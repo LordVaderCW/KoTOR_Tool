@@ -121,13 +121,14 @@
     <AppDesigner Include="My Project\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\AnimListEntry.vb" />
-    <Compile Include="Classes\BIFFArchive.vb" />
-    <Compile Include="Classes\BIFFEntry.vb" />
-    <Compile Include="Classes\BIFFVarRsrcEntry.vb" />
-    <Compile Include="Classes\BIFFVarRsrcEntryInfo.vb" />
-    <Compile Include="Classes\KotorTheme.vb" />
-    <Compile Include="Classes\NCS\clsNCS.vb" />
+    <Compile Include="Classes\AnimSystem\AnimListEntry.vb" />
+    <Compile Include="Classes\BIFFSystem\BIFFArchive.vb" />
+    <Compile Include="Classes\BIFFSystem\BIFFEntry.vb" />
+    <Compile Include="Classes\BIFFSystem\BIFFVarRsrcEntry.vb" />
+    <Compile Include="Classes\BIFFSystem\BIFFVarRsrcEntryInfo.vb" />
+    <Compile Include="Classes\ThemeSystem\KotorTheme.vb" />
+    <Compile Include="Classes\ThemeSystem\KotorThemeApplier.vb" />
+    <Compile Include="Classes\NCSSystem\clsNCS.vb" />
     <Compile Include="Classes\PluginSystem\clsDownloadPlugin.vb" />
     <Compile Include="Classes\PluginSystem\clsInstallPlugin.vb" />
     <Compile Include="Classes\PluginSystem\clsPluginCommand.vb" />
@@ -136,47 +137,47 @@
     <Compile Include="Classes\PluginSystem\clsPluginHandle.vb" />
     <Compile Include="Classes\PluginSystem\clsPluginManager.vb" />
     <Compile Include="Classes\Shared\clsPluginProgressEventArgs.vb" />
-    <Compile Include="Classes\ThemeManager.vb" />
-    <Compile Include="Classes\cls2DA.vb" />
-    <Compile Include="Classes\clsBaseItems2DA.vb" />
-    <Compile Include="Classes\clsBWM.vb" />
-    <Compile Include="Classes\clsChitinKey.vb" />
-    <Compile Include="Classes\clsDialogTlk.vb" />
-    <Compile Include="Classes\clsDLG.vb" />
-    <Compile Include="Classes\clsERF.vb" />
-    <Compile Include="Classes\clsGFF.vb" />
-    <Compile Include="Classes\clsGlobalVars.vb" />
-    <Compile Include="Classes\clsGridDisplay.vb">
+    <Compile Include="Classes\ThemeSystem\ThemeManager.vb" />
+    <Compile Include="Classes\2DASystem\cls2DA.vb" />
+    <Compile Include="Classes\2DASystem\clsBaseItems2DA.vb" />
+    <Compile Include="Classes\BWMSystem\clsBWM.vb" />
+    <Compile Include="Classes\Security\clsChitinKey.vb" />
+    <Compile Include="Classes\DLGSystem\clsDialogTlk.vb" />
+    <Compile Include="Classes\DLGSystem\clsDLG.vb" />
+    <Compile Include="Classes\ERFSystem\clsERF.vb" />
+    <Compile Include="Classes\GFFSystem\clsGFF.vb" />
+    <Compile Include="Classes\GlobalSystem\clsGlobalVars.vb" />
+    <Compile Include="Classes\StandardUI\clsGridDisplay.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Classes\clsMapInfoCreator.vb" />
-    <Compile Include="Classes\clsProject.vb" />
-    <Compile Include="Classes\clsProjectManager.vb" />
-    <Compile Include="Classes\clsRIM.vb" />
-    <Compile Include="Classes\clsSSF.vb" />
-    <Compile Include="Classes\clsUTC.vb" />
-    <Compile Include="Classes\clsUTD.vb" />
-    <Compile Include="Classes\clsUTI.vb" />
-    <Compile Include="Classes\clsUTM.vb" />
-    <Compile Include="Classes\clsUTP.vb" />
-    <Compile Include="Classes\clsUTS.vb" />
-    <Compile Include="Classes\clsUTT.vb" />
-    <Compile Include="Classes\clsUTW.vb" />
-    <Compile Include="Classes\ColumnEntry.vb" />
-    <Compile Include="Classes\ColumnEntryList.vb" />
-    <Compile Include="Classes\ColumnSortEntry.vb" />
-    <Compile Include="Classes\ColumnSortEntryList.vb" />
-    <Compile Include="Classes\ColumnVOEntry.vb" />
-    <Compile Include="Classes\ColumnVOEntryList.vb" />
-    <Compile Include="Classes\ComboBoxListItem.vb" />
-    <Compile Include="Classes\Crypt.vb" />
-    <Compile Include="Classes\DataGridEnableTextBoxColumn.vb">
+    <Compile Include="Classes\MAPSystem\clsMapInfoCreator.vb" />
+    <Compile Include="Classes\ProjectSystem\clsProject.vb" />
+    <Compile Include="Classes\ProjectSystem\clsProjectManager.vb" />
+    <Compile Include="Classes\RIMSystem\clsRIM.vb" />
+    <Compile Include="Classes\SoundSystem\clsSSF.vb" />
+    <Compile Include="Classes\UTCSystem\clsUTC.vb" />
+    <Compile Include="Classes\UTDSystem\clsUTD.vb" />
+    <Compile Include="Classes\UTISystem\clsUTI.vb" />
+    <Compile Include="Classes\UTMSystem\clsUTM.vb" />
+    <Compile Include="Classes\UTPSystem\clsUTP.vb" />
+    <Compile Include="Classes\UTSSytem\clsUTS.vb" />
+    <Compile Include="Classes\UTTSystem\clsUTT.vb" />
+    <Compile Include="Classes\UTWSystem\clsUTW.vb" />
+    <Compile Include="Classes\StandardUI\ColumnEntry.vb" />
+    <Compile Include="Classes\StandardUI\ColumnEntryList.vb" />
+    <Compile Include="Classes\StandardUI\ColumnSortEntry.vb" />
+    <Compile Include="Classes\StandardUI\ColumnSortEntryList.vb" />
+    <Compile Include="Classes\StandardUI\ColumnVOEntry.vb" />
+    <Compile Include="Classes\StandardUI\ColumnVOEntryList.vb" />
+    <Compile Include="Classes\StandardUI\ComboBoxListItem.vb" />
+    <Compile Include="Classes\Security\Crypt.vb" />
+    <Compile Include="Classes\StandardUI\DataGridEnableTextBoxColumn.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Classes\DialogTlkStrDataElement.vb" />
-    <Compile Include="Classes\DLGConvListNode.vb" />
-    <Compile Include="Classes\ERFKeyEntry.vb" />
-    <Compile Include="Classes\ERFLocalizedString.vb" />
+    <Compile Include="Classes\DLGSystem\DialogTlkStrDataElement.vb" />
+    <Compile Include="Classes\DLGSystem\DLGConvListNode.vb" />
+    <Compile Include="Classes\ERFSystem\ERFKeyEntry.vb" />
+    <Compile Include="Classes\ERFSystem\ERFLocalizedString.vb" />
     <Compile Include="CustomControls\CustomPictureBoxControl.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -266,10 +267,10 @@
     <Compile Include="WinForms\frmERFManager.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinForms\frmErrorMessageWithCopyableText.Designer.vb">
-      <DependentUpon>frmErrorMessageWithCopyableText.vb</DependentUpon>
+    <Compile Include="WinForms\frmErrorMessage.Designer.vb">
+      <DependentUpon>frmErrorMessage.vb</DependentUpon>
     </Compile>
-    <Compile Include="WinForms\frmErrorMessageWithCopyableText.vb">
+    <Compile Include="WinForms\frmErrorMessage.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WinForms\frmFilterDesigner.Designer.vb">
@@ -470,6 +471,12 @@
     <Compile Include="WinForms\frmTextEditorFind.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="WinForms\frmThemeEditor.Designer.vb">
+      <DependentUpon>frmThemeEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WinForms\frmThemeEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="WinForms\frmTPCFileSaveType.Designer.vb">
       <DependentUpon>frmTPCFileSaveType.vb</DependentUpon>
     </Compile>
@@ -530,52 +537,52 @@
     <Compile Include="WinForms\frmUTW_Editor.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Classes\GFFExoLocString.vb" />
-    <Compile Include="Classes\GFFExoLocSubString.vb" />
-    <Compile Include="Classes\GFFField.vb" />
-    <Compile Include="Classes\GFFFieldEntry.vb" />
-    <Compile Include="Classes\GFFList.vb" />
-    <Compile Include="Classes\GFFStructEntry.vb" />
-    <Compile Include="Classes\GFFType16.vb" />
-    <Compile Include="Classes\GFFType17.vb" />
-    <Compile Include="Classes\GFFVoid.vb" />
-    <Compile Include="Classes\GFF_Field.vb" />
-    <Compile Include="Classes\GFF_Struct.vb" />
-    <Compile Include="Classes\InventoryItem.vb" />
-    <Compile Include="Classes\InventoryPanel.vb">
+    <Compile Include="Classes\GFFSystem\GFFExoLocString.vb" />
+    <Compile Include="Classes\GFFSystem\GFFExoLocSubString.vb" />
+    <Compile Include="Classes\GFFSystem\GFFField.vb" />
+    <Compile Include="Classes\GFFSystem\GFFFieldEntry.vb" />
+    <Compile Include="Classes\GFFSystem\GFFList.vb" />
+    <Compile Include="Classes\GFFSystem\GFFStructEntry.vb" />
+    <Compile Include="Classes\GFFSystem\GFFType16.vb" />
+    <Compile Include="Classes\GFFSystem\GFFType17.vb" />
+    <Compile Include="Classes\GFFSystem\GFFVoid.vb" />
+    <Compile Include="Classes\GFFSystem\GFF_Field.vb" />
+    <Compile Include="Classes\GFFSystem\GFF_Struct.vb" />
+    <Compile Include="Classes\ItemSystem\InventoryItem.vb" />
+    <Compile Include="Classes\StandardUI\InventoryPanel.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Classes\KeyEntry.vb" />
-    <Compile Include="Classes\KotorTreeNode.vb" />
-    <Compile Include="Classes\KTSoundInfo.vb" />
-    <Compile Include="Classes\KT_Launch.vb" />
-    <Compile Include="Classes\MapInfo.vb" />
-    <Compile Include="Classes\ModItem.vb" />
-    <Compile Include="Classes\ModItemTvNode.vb" />
-    <Compile Include="Classes\ModuleEditorProjectOptions.vb" />
-    <Compile Include="Classes\ModuleEditorProjectSettings.vb" />
-    <Compile Include="Classes\ModuleFileEntry.vb" />
+    <Compile Include="Classes\Security\KeyEntry.vb" />
+    <Compile Include="Classes\StandardUI\KotorTreeNode.vb" />
+    <Compile Include="Classes\SoundSystem\KTSoundInfo.vb" />
+    <Compile Include="Classes\GlobalSystem\KT_Launch.vb" />
+    <Compile Include="Classes\MAPSystem\MapInfo.vb" />
+    <Compile Include="Classes\ItemSystem\ModItem.vb" />
+    <Compile Include="Classes\ItemSystem\ModItemTvNode.vb" />
+    <Compile Include="Classes\UtilitySystem\ModuleEditorProjectOptions.vb" />
+    <Compile Include="Classes\UtilitySystem\ModuleEditorProjectSettings.vb" />
+    <Compile Include="Classes\UtilitySystem\ModuleFileEntry.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="Classes\MyMapInfoSurrogate.vb" />
-    <Compile Include="Classes\Options.vb" />
-    <Compile Include="Classes\ProjectFileItemTreeNode.vb" />
+    <Compile Include="Classes\MAPSystem\MyMapInfoSurrogate.vb" />
+    <Compile Include="Classes\GlobalSystem\Options.vb" />
+    <Compile Include="Classes\ItemSystem\ProjectFileItemTreeNode.vb" />
     <Compile Include="WinForms\RegReminder.Designer.vb">
       <DependentUpon>RegReminder.vb</DependentUpon>
     </Compile>
     <Compile Include="WinForms\RegReminder.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Classes\RepeatButton.vb">
+    <Compile Include="Classes\StandardUI\RepeatButton.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Classes\RIMKeyEntry.vb" />
-    <Compile Include="Classes\RowFilter.vb" />
-    <Compile Include="Classes\RowFilterPart.vb" />
-    <Compile Include="Classes\TreeBaseItem.vb" />
-    <Compile Include="Classes\UserSettings.vb" />
-    <Compile Include="Classes\utilFileValidator.vb" />
-    <Compile Include="Classes\Utils.vb" />
-    <Compile Include="Classes\utilWindowRelativePositioner.vb" />
+    <Compile Include="Classes\RIMSystem\RIMKeyEntry.vb" />
+    <Compile Include="Classes\FilterSystem\RowFilter.vb" />
+    <Compile Include="Classes\FilterSystem\RowFilterPart.vb" />
+    <Compile Include="Classes\ItemSystem\TreeBaseItem.vb" />
+    <Compile Include="Classes\GlobalSystem\UserSettings.vb" />
+    <Compile Include="Classes\UtilitySystem\utilFileValidator.vb" />
+    <Compile Include="Classes\GlobalSystem\Utils.vb" />
+    <Compile Include="Classes\UtilitySystem\utilWindowRelativePositioner.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -631,8 +638,8 @@
       <DependentUpon>frmERFManager.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmErrorMessageWithCopyableText.resx">
-      <DependentUpon>frmErrorMessageWithCopyableText.vb</DependentUpon>
+    <EmbeddedResource Include="WinForms\frmErrorMessage.resx">
+      <DependentUpon>frmErrorMessage.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmFilterDesigner.resx">
@@ -766,6 +773,10 @@
       <DependentUpon>frmTextEditorFind.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\frmThemeEditor.resx">
+      <DependentUpon>frmThemeEditor.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinForms\frmTPCFileSaveType.resx">
       <DependentUpon>frmTPCFileSaveType.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -824,9 +835,30 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="My Project\app.manifest" />
+    <Content Include="fmodex.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Plugins\DeNCS\command.ini" />
     <None Include="Themes\DarkSaber.ini">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Themes\JediConsular.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Themes\JediKnight.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Themes\JediSentinal.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Themes\SithAssasain.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Themes\SithLord.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Themes\SithMarauder.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>

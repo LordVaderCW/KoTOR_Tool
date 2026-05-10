@@ -392,25 +392,7 @@ Namespace kotor_tool
 
             grid.SuspendLayout()
 
-            grid.BackColor = Color.FromArgb(18, 22, 28)
-            grid.BackgroundColor = Color.FromArgb(10, 14, 20)
-            grid.AlternatingBackColor = Color.FromArgb(26, 31, 38)
-            grid.ForeColor = Color.FromArgb(238, 238, 230)
-
-            grid.GridLineColor = Color.FromArgb(74, 84, 98)
-            grid.HeaderBackColor = Color.FromArgb(28, 35, 44)
-            grid.HeaderForeColor = Color.FromArgb(238, 238, 230)
-
-            grid.CaptionBackColor = Color.FromArgb(28, 35, 44)
-            grid.CaptionForeColor = Color.FromArgb(210, 184, 112)
-
-            grid.ParentRowsBackColor = Color.FromArgb(22, 27, 34)
-            grid.ParentRowsForeColor = Color.FromArgb(188, 198, 210)
-
-            grid.SelectionBackColor = Color.FromArgb(82, 65, 32)
-            grid.SelectionForeColor = Color.FromArgb(238, 238, 230)
-
-            grid.LinkColor = Color.FromArgb(210, 184, 112)
+            KotorThemeApplier.ApplyToForm(Me)
 
             ' Important:
             ' False gives the old WinForms DataGrid its proper raised/header edge lines.
@@ -427,16 +409,7 @@ Namespace kotor_tool
                 Return
             End If
 
-            tableStyle.BackColor = Color.FromArgb(18, 22, 28)
-            tableStyle.AlternatingBackColor = Color.FromArgb(26, 31, 38)
-            tableStyle.ForeColor = Color.FromArgb(238, 238, 230)
-            tableStyle.GridLineColor = Color.FromArgb(74, 84, 98)
-            tableStyle.HeaderBackColor = Color.FromArgb(28, 35, 44)
-            tableStyle.HeaderForeColor = Color.FromArgb(238, 238, 230)
-
-            tableStyle.LinkColor = Color.FromArgb(210, 184, 112)
-            tableStyle.SelectionBackColor = Color.FromArgb(82, 65, 32)
-            tableStyle.SelectionForeColor = Color.FromArgb(238, 238, 230)
+            KotorThemeApplier.ApplyDataGridTableStyle(tableStyle, KotorThemeManager.LoadTheme(KotorThemeManager.GetActiveThemeName()))
         End Sub
 
 

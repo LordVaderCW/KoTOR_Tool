@@ -19,8 +19,12 @@ Namespace kotor_tool
         Friend WithEvents lblFooterSeparator As Global.System.Windows.Forms.Label
 
         Friend WithEvents tbFindText As Global.System.Windows.Forms.TextBox
+        Friend WithEvents tbReplaceText As Global.System.Windows.Forms.TextBox
         Friend WithEvents btnFind As Global.System.Windows.Forms.Button
+        Friend WithEvents btnReplace As Global.System.Windows.Forms.Button
+        Friend WithEvents btnReplaceAll As Global.System.Windows.Forms.Button
         Friend WithEvents Label1 As Global.System.Windows.Forms.Label
+        Friend WithEvents lblReplaceText As Global.System.Windows.Forms.Label
         Friend WithEvents btnCancel As Global.System.Windows.Forms.Button
         Friend WithEvents chkbMatchCase As Global.System.Windows.Forms.CheckBox
         Friend WithEvents chkbMatchWholeWord As Global.System.Windows.Forms.CheckBox
@@ -42,10 +46,14 @@ Namespace kotor_tool
             Me.chkbSearchUp = New System.Windows.Forms.CheckBox()
             Me.chkbMatchWholeWord = New System.Windows.Forms.CheckBox()
             Me.chkbMatchCase = New System.Windows.Forms.CheckBox()
+            Me.tbReplaceText = New System.Windows.Forms.TextBox()
+            Me.lblReplaceText = New System.Windows.Forms.Label()
             Me.tbFindText = New System.Windows.Forms.TextBox()
             Me.Label1 = New System.Windows.Forms.Label()
             Me.pnlFooter = New System.Windows.Forms.Panel()
             Me.btnCancel = New System.Windows.Forms.Button()
+            Me.btnReplaceAll = New System.Windows.Forms.Button()
+            Me.btnReplace = New System.Windows.Forms.Button()
             Me.btnFind = New System.Windows.Forms.Button()
             Me.lblFooterSeparator = New System.Windows.Forms.Label()
             Me.pnlHeader = New System.Windows.Forms.Panel()
@@ -67,7 +75,7 @@ Namespace kotor_tool
             Me.pnlRoot.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
             Me.pnlRoot.Name = "pnlRoot"
-            Me.pnlRoot.Size = New System.Drawing.Size(512, 230)
+            Me.pnlRoot.Size = New System.Drawing.Size(552, 278)
             Me.pnlRoot.TabIndex = 0
             '
             'pnlBody
@@ -76,13 +84,15 @@ Namespace kotor_tool
             Me.pnlBody.Controls.Add(Me.chkbSearchUp)
             Me.pnlBody.Controls.Add(Me.chkbMatchWholeWord)
             Me.pnlBody.Controls.Add(Me.chkbMatchCase)
+            Me.pnlBody.Controls.Add(Me.tbReplaceText)
+            Me.pnlBody.Controls.Add(Me.lblReplaceText)
             Me.pnlBody.Controls.Add(Me.tbFindText)
             Me.pnlBody.Controls.Add(Me.Label1)
             Me.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlBody.Location = New System.Drawing.Point(0, 76)
             Me.pnlBody.Name = "pnlBody"
             Me.pnlBody.Padding = New System.Windows.Forms.Padding(26, 20, 26, 18)
-            Me.pnlBody.Size = New System.Drawing.Size(512, 92)
+            Me.pnlBody.Size = New System.Drawing.Size(552, 140)
             Me.pnlBody.TabIndex = 1
             '
             'chkbSearchUp
@@ -90,7 +100,7 @@ Namespace kotor_tool
             Me.chkbSearchUp.BackColor = System.Drawing.Color.Transparent
             Me.chkbSearchUp.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbSearchUp.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.chkbSearchUp.Location = New System.Drawing.Point(281, 62)
+            Me.chkbSearchUp.Location = New System.Drawing.Point(281, 108)
             Me.chkbSearchUp.Name = "chkbSearchUp"
             Me.chkbSearchUp.Size = New System.Drawing.Size(104, 18)
             Me.chkbSearchUp.TabIndex = 4
@@ -102,7 +112,7 @@ Namespace kotor_tool
             Me.chkbMatchWholeWord.BackColor = System.Drawing.Color.Transparent
             Me.chkbMatchWholeWord.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbMatchWholeWord.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.chkbMatchWholeWord.Location = New System.Drawing.Point(133, 62)
+            Me.chkbMatchWholeWord.Location = New System.Drawing.Point(133, 108)
             Me.chkbMatchWholeWord.Name = "chkbMatchWholeWord"
             Me.chkbMatchWholeWord.Size = New System.Drawing.Size(142, 18)
             Me.chkbMatchWholeWord.TabIndex = 3
@@ -114,12 +124,36 @@ Namespace kotor_tool
             Me.chkbMatchCase.BackColor = System.Drawing.Color.Transparent
             Me.chkbMatchCase.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbMatchCase.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.chkbMatchCase.Location = New System.Drawing.Point(31, 62)
+            Me.chkbMatchCase.Location = New System.Drawing.Point(31, 108)
             Me.chkbMatchCase.Name = "chkbMatchCase"
             Me.chkbMatchCase.Size = New System.Drawing.Size(96, 18)
             Me.chkbMatchCase.TabIndex = 2
             Me.chkbMatchCase.Text = "Match case"
             Me.chkbMatchCase.UseVisualStyleBackColor = False
+            '
+            'tbReplaceText
+            '
+            Me.tbReplaceText.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.tbReplaceText.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.tbReplaceText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.tbReplaceText.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.tbReplaceText.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.tbReplaceText.Location = New System.Drawing.Point(100, 64)
+            Me.tbReplaceText.Name = "tbReplaceText"
+            Me.tbReplaceText.Size = New System.Drawing.Size(420, 22)
+            Me.tbReplaceText.TabIndex = 5
+            '
+            'lblReplaceText
+            '
+            Me.lblReplaceText.BackColor = System.Drawing.Color.Transparent
+            Me.lblReplaceText.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblReplaceText.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.lblReplaceText.Location = New System.Drawing.Point(28, 67)
+            Me.lblReplaceText.Name = "lblReplaceText"
+            Me.lblReplaceText.Size = New System.Drawing.Size(72, 18)
+            Me.lblReplaceText.TabIndex = 6
+            Me.lblReplaceText.Text = "Replace:"
             '
             'tbFindText
             '
@@ -131,7 +165,7 @@ Namespace kotor_tool
             Me.tbFindText.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tbFindText.Location = New System.Drawing.Point(100, 24)
             Me.tbFindText.Name = "tbFindText"
-            Me.tbFindText.Size = New System.Drawing.Size(380, 22)
+            Me.tbFindText.Size = New System.Drawing.Size(420, 22)
             Me.tbFindText.TabIndex = 1
             '
             'Label1
@@ -149,12 +183,14 @@ Namespace kotor_tool
             '
             Me.pnlFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.pnlFooter.Controls.Add(Me.btnCancel)
+            Me.pnlFooter.Controls.Add(Me.btnReplaceAll)
+            Me.pnlFooter.Controls.Add(Me.btnReplace)
             Me.pnlFooter.Controls.Add(Me.btnFind)
             Me.pnlFooter.Controls.Add(Me.lblFooterSeparator)
             Me.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.pnlFooter.Location = New System.Drawing.Point(0, 168)
+            Me.pnlFooter.Location = New System.Drawing.Point(0, 216)
             Me.pnlFooter.Name = "pnlFooter"
-            Me.pnlFooter.Size = New System.Drawing.Size(512, 62)
+            Me.pnlFooter.Size = New System.Drawing.Size(552, 62)
             Me.pnlFooter.TabIndex = 2
             '
             'btnCancel
@@ -168,25 +204,58 @@ Namespace kotor_tool
             Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnCancel.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.btnCancel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnCancel.Location = New System.Drawing.Point(404, 20)
+            Me.btnCancel.Location = New System.Drawing.Point(444, 20)
             Me.btnCancel.Name = "btnCancel"
             Me.btnCancel.Size = New System.Drawing.Size(76, 26)
             Me.btnCancel.TabIndex = 1
             Me.btnCancel.Text = "Close"
             Me.btnCancel.UseVisualStyleBackColor = False
             '
+            'btnReplaceAll
+            '
+            Me.btnReplaceAll.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.btnReplaceAll.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnReplaceAll.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnReplaceAll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnReplaceAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnReplaceAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnReplaceAll.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.btnReplaceAll.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnReplaceAll.Location = New System.Drawing.Point(336, 20)
+            Me.btnReplaceAll.Name = "btnReplaceAll"
+            Me.btnReplaceAll.Size = New System.Drawing.Size(100, 26)
+            Me.btnReplaceAll.TabIndex = 3
+            Me.btnReplaceAll.Text = "Replace All"
+            Me.btnReplaceAll.UseVisualStyleBackColor = False
+            '
+            'btnReplace
+            '
+            Me.btnReplace.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.btnReplace.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnReplace.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnReplace.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnReplace.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnReplace.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnReplace.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.btnReplace.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnReplace.Location = New System.Drawing.Point(244, 20)
+            Me.btnReplace.Name = "btnReplace"
+            Me.btnReplace.Size = New System.Drawing.Size(84, 26)
+            Me.btnReplace.TabIndex = 2
+            Me.btnReplace.Text = "Replace"
+            Me.btnReplace.UseVisualStyleBackColor = False
+            '
             'btnFind
             '
             Me.btnFind.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.btnFind.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
-            Me.btnFind.DialogResult = System.Windows.Forms.DialogResult.OK
             Me.btnFind.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
             Me.btnFind.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
             Me.btnFind.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
             Me.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnFind.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.btnFind.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnFind.Location = New System.Drawing.Point(320, 20)
+            Me.btnFind.Location = New System.Drawing.Point(160, 20)
             Me.btnFind.Name = "btnFind"
             Me.btnFind.Size = New System.Drawing.Size(76, 26)
             Me.btnFind.TabIndex = 0
@@ -199,7 +268,7 @@ Namespace kotor_tool
             Me.lblFooterSeparator.Dock = System.Windows.Forms.DockStyle.Top
             Me.lblFooterSeparator.Location = New System.Drawing.Point(0, 0)
             Me.lblFooterSeparator.Name = "lblFooterSeparator"
-            Me.lblFooterSeparator.Size = New System.Drawing.Size(512, 1)
+            Me.lblFooterSeparator.Size = New System.Drawing.Size(552, 1)
             Me.lblFooterSeparator.TabIndex = 2
             '
             'pnlHeader
@@ -211,7 +280,7 @@ Namespace kotor_tool
             Me.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top
             Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
             Me.pnlHeader.Name = "pnlHeader"
-            Me.pnlHeader.Size = New System.Drawing.Size(512, 76)
+            Me.pnlHeader.Size = New System.Drawing.Size(552, 76)
             Me.pnlHeader.TabIndex = 0
             '
             'lblSubtitle
@@ -221,9 +290,9 @@ Namespace kotor_tool
             Me.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(186, Byte), Integer), CType(CType(198, Byte), Integer))
             Me.lblSubtitle.Location = New System.Drawing.Point(24, 42)
             Me.lblSubtitle.Name = "lblSubtitle"
-            Me.lblSubtitle.Size = New System.Drawing.Size(464, 18)
+            Me.lblSubtitle.Size = New System.Drawing.Size(504, 18)
             Me.lblSubtitle.TabIndex = 1
-            Me.lblSubtitle.Text = "Search within the active text editor document."
+            Me.lblSubtitle.Text = "Search and replace within the active text editor document."
             '
             'lblTitle
             '
@@ -232,9 +301,9 @@ Namespace kotor_tool
             Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
             Me.lblTitle.Location = New System.Drawing.Point(22, 15)
             Me.lblTitle.Name = "lblTitle"
-            Me.lblTitle.Size = New System.Drawing.Size(464, 24)
+            Me.lblTitle.Size = New System.Drawing.Size(504, 24)
             Me.lblTitle.TabIndex = 0
-            Me.lblTitle.Text = "Find"
+            Me.lblTitle.Text = "Find and Replace"
             '
             'lblHeaderSeparator
             '
@@ -242,7 +311,7 @@ Namespace kotor_tool
             Me.lblHeaderSeparator.Dock = System.Windows.Forms.DockStyle.Bottom
             Me.lblHeaderSeparator.Location = New System.Drawing.Point(0, 74)
             Me.lblHeaderSeparator.Name = "lblHeaderSeparator"
-            Me.lblHeaderSeparator.Size = New System.Drawing.Size(512, 2)
+            Me.lblHeaderSeparator.Size = New System.Drawing.Size(552, 2)
             Me.lblHeaderSeparator.TabIndex = 2
             '
             'frmTextEditorFind
@@ -251,15 +320,15 @@ Namespace kotor_tool
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
             Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.CancelButton = Me.btnCancel
-            Me.ClientSize = New System.Drawing.Size(512, 230)
+            Me.ClientSize = New System.Drawing.Size(552, 278)
             Me.ControlBox = False
             Me.Controls.Add(Me.pnlRoot)
-            Me.MaximumSize = New System.Drawing.Size(528, 269)
-            Me.MinimumSize = New System.Drawing.Size(528, 269)
+            Me.MaximumSize = New System.Drawing.Size(568, 317)
+            Me.MinimumSize = New System.Drawing.Size(568, 317)
             Me.Name = "frmTextEditorFind"
             Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
             Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-            Me.Text = "Find"
+            Me.Text = "Find and Replace"
             Me.pnlRoot.ResumeLayout(False)
             Me.pnlBody.ResumeLayout(False)
             Me.pnlBody.PerformLayout()

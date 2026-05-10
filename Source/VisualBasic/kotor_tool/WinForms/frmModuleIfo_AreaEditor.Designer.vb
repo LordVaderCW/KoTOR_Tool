@@ -710,7 +710,7 @@ Namespace kotor_tool
             Me.nudModEntryX.Name = "nudModEntryX"
             Me.nudModEntryX.Size = New System.Drawing.Size(104, 22)
             Me.nudModEntryX.TabIndex = 4
-            Me.nudModEntryX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudModEntryX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'Label12
             '
@@ -734,7 +734,7 @@ Namespace kotor_tool
             Me.nudModEntryY.Name = "nudModEntryY"
             Me.nudModEntryY.Size = New System.Drawing.Size(104, 22)
             Me.nudModEntryY.TabIndex = 5
-            Me.nudModEntryY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudModEntryY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'Label13
             '
@@ -758,7 +758,7 @@ Namespace kotor_tool
             Me.nudModEntryZ.Name = "nudModEntryZ"
             Me.nudModEntryZ.Size = New System.Drawing.Size(104, 22)
             Me.nudModEntryZ.TabIndex = 6
-            Me.nudModEntryZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudModEntryZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'btnSetModNameLang
             '
@@ -908,7 +908,7 @@ Namespace kotor_tool
             Me.nudMinutesPerHour.Name = "nudMinutesPerHour"
             Me.nudMinutesPerHour.Size = New System.Drawing.Size(56, 22)
             Me.nudMinutesPerHour.TabIndex = 0
-            Me.nudMinutesPerHour.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudMinutesPerHour.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudMinutesPerHour.Value = New Decimal(New Integer() {1, 0, 0, 0})
             '
             'Label1
@@ -931,7 +931,7 @@ Namespace kotor_tool
             Me.nudDawnStartHour.Name = "nudDawnStartHour"
             Me.nudDawnStartHour.Size = New System.Drawing.Size(56, 22)
             Me.nudDawnStartHour.TabIndex = 1
-            Me.nudDawnStartHour.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudDawnStartHour.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'Label2
             '
@@ -953,7 +953,7 @@ Namespace kotor_tool
             Me.nudDuskStartHour.Name = "nudDuskStartHour"
             Me.nudDuskStartHour.Size = New System.Drawing.Size(56, 22)
             Me.nudDuskStartHour.TabIndex = 2
-            Me.nudDuskStartHour.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudDuskStartHour.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'Label3
             '
@@ -975,7 +975,7 @@ Namespace kotor_tool
             Me.nudStartHour.Name = "nudStartHour"
             Me.nudStartHour.Size = New System.Drawing.Size(56, 22)
             Me.nudStartHour.TabIndex = 3
-            Me.nudStartHour.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudStartHour.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'Label4
             '
@@ -998,7 +998,7 @@ Namespace kotor_tool
             Me.nudStartDay.Name = "nudStartDay"
             Me.nudStartDay.Size = New System.Drawing.Size(56, 22)
             Me.nudStartDay.TabIndex = 4
-            Me.nudStartDay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudStartDay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudStartDay.Value = New Decimal(New Integer() {1, 0, 0, 0})
             '
             'Label5
@@ -1022,7 +1022,7 @@ Namespace kotor_tool
             Me.nudStartMonth.Name = "nudStartMonth"
             Me.nudStartMonth.Size = New System.Drawing.Size(56, 22)
             Me.nudStartMonth.TabIndex = 5
-            Me.nudStartMonth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudStartMonth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.nudStartMonth.Value = New Decimal(New Integer() {1, 0, 0, 0})
             '
             'Label6
@@ -1045,7 +1045,7 @@ Namespace kotor_tool
             Me.nudStartYear.Name = "nudStartYear"
             Me.nudStartYear.Size = New System.Drawing.Size(56, 22)
             Me.nudStartYear.TabIndex = 6
-            Me.nudStartYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudStartYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'Label7
             '
@@ -1518,7 +1518,6 @@ Namespace kotor_tool
             '
             'chkbUnescapable
             '
-            Me.chkbUnescapable.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbUnescapable.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbUnescapable.Location = New System.Drawing.Point(132, 166)
             Me.chkbUnescapable.Name = "chkbUnescapable"
@@ -1540,7 +1539,6 @@ Namespace kotor_tool
             '
             Me.cmbxCameraStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxCameraStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxCameraStyle.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxCameraStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxCameraStyle.Location = New System.Drawing.Point(132, 125)
             Me.cmbxCameraStyle.Name = "cmbxCameraStyle"
@@ -1571,7 +1569,7 @@ Namespace kotor_tool
             Me.NumericUpDown10.Name = "NumericUpDown10"
             Me.NumericUpDown10.Size = New System.Drawing.Size(96, 22)
             Me.NumericUpDown10.TabIndex = 16
-            Me.NumericUpDown10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.NumericUpDown10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.NumericUpDown10.Visible = False
             '
             'Label15
@@ -1598,7 +1596,7 @@ Namespace kotor_tool
             Me.NumericUpDown11.Name = "NumericUpDown11"
             Me.NumericUpDown11.Size = New System.Drawing.Size(96, 22)
             Me.NumericUpDown11.TabIndex = 15
-            Me.NumericUpDown11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.NumericUpDown11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.NumericUpDown11.Visible = False
             '
             'Label16
@@ -1625,7 +1623,7 @@ Namespace kotor_tool
             Me.NumericUpDown12.Name = "NumericUpDown12"
             Me.NumericUpDown12.Size = New System.Drawing.Size(96, 22)
             Me.NumericUpDown12.TabIndex = 17
-            Me.NumericUpDown12.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.NumericUpDown12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             Me.NumericUpDown12.Visible = False
             '
             'btnSetAreaNameLang
@@ -1699,7 +1697,6 @@ Namespace kotor_tool
             '
             'chkbDisableTransit
             '
-            Me.chkbDisableTransit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbDisableTransit.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbDisableTransit.Location = New System.Drawing.Point(132, 205)
             Me.chkbDisableTransit.Name = "chkbDisableTransit"
@@ -1743,7 +1740,6 @@ Namespace kotor_tool
             '
             Me.cmbxWindPower.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(47, Byte), Integer))
             Me.cmbxWindPower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.cmbxWindPower.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.cmbxWindPower.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.cmbxWindPower.Items.AddRange(New Object() {"Calm", "Light", "Heavy"})
             Me.cmbxWindPower.Location = New System.Drawing.Point(347, 426)
@@ -1788,7 +1784,7 @@ Namespace kotor_tool
             Me.nudChanceSnow.Name = "nudChanceSnow"
             Me.nudChanceSnow.Size = New System.Drawing.Size(56, 22)
             Me.nudChanceSnow.TabIndex = 0
-            Me.nudChanceSnow.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudChanceSnow.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'Label50
             '
@@ -1809,7 +1805,7 @@ Namespace kotor_tool
             Me.nudChanceRain.Name = "nudChanceRain"
             Me.nudChanceRain.Size = New System.Drawing.Size(56, 22)
             Me.nudChanceRain.TabIndex = 1
-            Me.nudChanceRain.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudChanceRain.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'Label51
             '
@@ -1830,7 +1826,7 @@ Namespace kotor_tool
             Me.nudChanceLightning.Name = "nudChanceLightning"
             Me.nudChanceLightning.Size = New System.Drawing.Size(56, 22)
             Me.nudChanceLightning.TabIndex = 2
-            Me.nudChanceLightning.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudChanceLightning.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'rbDayNightCycle
             '
@@ -1958,7 +1954,6 @@ Namespace kotor_tool
             '
             'chkbAreaMoonShadows
             '
-            Me.chkbAreaMoonShadows.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbAreaMoonShadows.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbAreaMoonShadows.Location = New System.Drawing.Point(112, 129)
             Me.chkbAreaMoonShadows.Name = "chkbAreaMoonShadows"
@@ -1978,7 +1973,6 @@ Namespace kotor_tool
             '
             'chkbMoonFogOn
             '
-            Me.chkbMoonFogOn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbMoonFogOn.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbMoonFogOn.Location = New System.Drawing.Point(112, 74)
             Me.chkbMoonFogOn.Name = "chkbMoonFogOn"
@@ -2061,7 +2055,6 @@ Namespace kotor_tool
             '
             'chkbAreaSunShadows
             '
-            Me.chkbAreaSunShadows.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbAreaSunShadows.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbAreaSunShadows.Location = New System.Drawing.Point(112, 129)
             Me.chkbAreaSunShadows.Name = "chkbAreaSunShadows"
@@ -2212,7 +2205,6 @@ Namespace kotor_tool
             '
             'chkbSunFogOn
             '
-            Me.chkbSunFogOn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.chkbSunFogOn.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
             Me.chkbSunFogOn.Location = New System.Drawing.Point(112, 74)
             Me.chkbSunFogOn.Name = "chkbSunFogOn"
@@ -2289,7 +2281,7 @@ Namespace kotor_tool
             Me.nudShadowOpacity.Name = "nudShadowOpacity"
             Me.nudShadowOpacity.Size = New System.Drawing.Size(56, 22)
             Me.nudShadowOpacity.TabIndex = 0
-            Me.nudShadowOpacity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+            Me.nudShadowOpacity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
             '
             'Label84
             '
