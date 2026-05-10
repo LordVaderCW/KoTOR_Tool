@@ -471,35 +471,6 @@ Namespace kotor_tool
         End Sub
 
         Private Sub frmModuleIfo_AreaEditor_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
-            AddHandler Me.nudXPScale.ValueChanged, AddressOf Me.nudXPScale_ValueChanged
-            AddHandler Me.trkbarXPScale.Scroll, AddressOf Me.trkbarXPScale_Scroll
-            AddHandler Me.btnSetDescriptionLang.Click, AddressOf Me.btnSetDescriptionLang_Click
-            AddHandler Me.btnGrassDiffuseColor.Click, AddressOf Me.SetColor_Click
-            AddHandler Me.btnGrassAmbientColor.Click, AddressOf Me.SetColor_Click
-            AddHandler Me.btnGrassEmissiveColor.Click, AddressOf Me.SetColor_Click
-            AddHandler Me.btnSunDiffuseColor.Click, AddressOf Me.SetColor_Click
-            AddHandler Me.btnSunAmbientColor.Click, AddressOf Me.SetColor_Click
-            AddHandler Me.btnMoonDiffuseColor.Click, AddressOf Me.SetColor_Click
-            AddHandler Me.btnMoonAmbientColor.Click, AddressOf Me.SetColor_Click
-            AddHandler Me.rbDayNightCycle.CheckedChanged, AddressOf Me.DayNight_CheckedChanged
-            AddHandler Me.rbAlwaysDay.CheckedChanged, AddressOf Me.DayNight_CheckedChanged
-            AddHandler Me.btnMoonFogColor.Click, AddressOf Me.SetColor_Click
-            AddHandler Me.btnSunFogColor.Click, AddressOf Me.SetColor_Click
-            AddHandler Me.rbAlwaysNight.CheckedChanged, AddressOf Me.DayNight_CheckedChanged
-            AddHandler Me.chkbSunFogOn.CheckedChanged, AddressOf Me.SunFogEnabled
-            AddHandler Me.chkbMoonFogOn.CheckedChanged, AddressOf Me.MoonFogEnabled
-            AddHandler Me.btnDynAmbientColor.Click, AddressOf Me.SetColor_Click
-            AddHandler Me.trkbarGrassDensityX10.Scroll, AddressOf Me.trkbarGrassDensityX10_Scroll
-            AddHandler Me.nudGrassDensity.ValueChanged, AddressOf Me.nudGrassDensity_ValueChanged
-            AddHandler Me.nudGrassProbUL.ValueChanged, AddressOf Me.nudGrassProbXX_ValueChanged
-            AddHandler Me.nudGrassProbLL.ValueChanged, AddressOf Me.nudGrassProbXX_ValueChanged
-            AddHandler Me.nudGrassProbUR.ValueChanged, AddressOf Me.nudGrassProbXX_ValueChanged
-            AddHandler Me.nudGrassProbLR.ValueChanged, AddressOf Me.nudGrassProbXX_ValueChanged
-            AddHandler Me.lbRooms.SelectedIndexChanged, AddressOf Me.lbRooms_SelectedIndexChanged
-            AddHandler Me.btnSetModNameLang.Click, AddressOf Me.btnSetModNameLang_Click
-            AddHandler Me.btnSetAreaNameLang.Click, AddressOf Me.btnSetAreaNameLang_Click
-            AddHandler Me.nudXY.ValueChanged, AddressOf Me.nudXY_ValueChanged
-            AddHandler Me.nudXY.KeyUp, AddressOf Me.nudXY_KeyUp
         End Sub
 
 

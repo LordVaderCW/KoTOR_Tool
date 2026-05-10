@@ -27,37 +27,6 @@ Namespace kotor_tool
             Me.InitializeComponent()
 
 
-            '' ALWAYS PUT BINDINGS AFTER COMPONENTS HAVE BEEN INITIALISED. OR YOU WILL CRASH THE EDITOR. :) 
-
-            ' -------------------------------------------------------------
-            ' Event bindings restored from decompiled synchronized
-            ' AccessedThroughProperty wrappers.
-            ' -------------------------------------------------------------
-            AddHandler Me.trkbarAlignment.Scroll, AddressOf Me.trkbarAlignment_Scroll
-            AddHandler Me.nudAlignment.ValueChanged, AddressOf Me.nudAlignment_ValueChanged
-            AddHandler Me.chklbFeats.MouseMove, AddressOf Me.chklbFeats_MouseMove
-            AddHandler Me.chklbForcePowers.MouseMove, AddressOf Me.chklbForcePowers_MouseMove
-            AddHandler Me.btnCancel.Click, AddressOf Me.btnCancel_Click
-            AddHandler Me.btnWriteFile.Click, AddressOf Me.btnWriteFile_Click
-            AddHandler Me.btnClearAllPowers.Click, AddressOf Me.btnClearAllPowers_Click
-            AddHandler Me.btnSelectAllPowers.Click, AddressOf Me.btnSelectAllPowers_Click
-            AddHandler Me.btnInventory.Click, AddressOf Me.btnInventory_Click
-            'AddHandler Me.btnDebug.Click, AddressOf Me.btnDebug_Click (This one already exists somewhere). 
-            AddHandler Me.btnEditOnEndDialogu.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnDialogue.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnUserDefine.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnHeartbeat.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnDisturbed.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnDamaged.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnAttacked.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnNotice.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnSpellAt.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnSpawn.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnDeath.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnBlocked.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnRested.Click, AddressOf Me.btnEditScript_Click
-            AddHandler Me.btnEditOnEndRound.Click, AddressOf Me.btnEditScript_Click
-
         End Sub
 
         ' Token: 0x06001286 RID: 4742 RVA: 0x002A8C44 File Offset: 0x002A7C44

@@ -56,14 +56,6 @@ Namespace kotor_tool
             Me.ApplyApplicationIcon()
 
             ' -------------------------------------------------------------
-            ' Legacy display mode buttons.
-            ' -------------------------------------------------------------
-            AddHandler Me.rbHex.Click, AddressOf Me.rbHex_Click
-            AddHandler Me.rbANSI.Click, AddressOf Me.rbANSI_Click
-            AddHandler Me.rbUnicode.Click, AddressOf Me.rbUnicode_Click
-            AddHandler Me.Button1.Click, AddressOf Me.Button1_Click
-
-            ' -------------------------------------------------------------
             ' Toolbar bindings.
             ' -------------------------------------------------------------
             AddHandler Me.btnFind.Click, AddressOf Me.btnFind_Click

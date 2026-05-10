@@ -25,14 +25,6 @@ Namespace kotor_tool
             Me.Button1.FlatStyle = Global.System.Windows.Forms.FlatStyle.Flat
             Me.InitializeComponent()
 
-            ' -------------------------------------------------------------
-            ' Event bindings restored from decompiled synchronized
-            ' AccessedThroughProperty wrappers.
-            ' -------------------------------------------------------------
-            AddHandler Me.cmbxModelNaming.SelectedIndexChanged, AddressOf Me.cmbxModelNaming_SelectedIndexChanged
-            AddHandler Me.TabControl1.SelectedIndexChanged, AddressOf Me.TabControl1_SelectedIndexChanged
-            AddHandler Me.chkbAutoCreateSeqEntries.CheckedChanged, AddressOf Me.chkbAutoCreateSeqEntires_CheckedChanged
-
         End Sub
 
         ' Token: 0x0600025C RID: 604 RVA: 0x0022BE9C File Offset: 0x0022AE9C
