@@ -122,6 +122,7 @@ Namespace kotor_tool
             Me.ApplyApplicationIcon()
             Me.WireModernToolbar()
             Me.LoadModernToolbarImages()
+            Me.InitialiseResourceBrowser()
 
             Me.CmdArgs = CmdArgs
         End Sub
@@ -144,6 +145,7 @@ Namespace kotor_tool
             Me.ApplyApplicationIcon()
             Me.WireModernToolbar()
             Me.LoadModernToolbarImages()
+            Me.InitialiseResourceBrowser()
         End Sub
 
         ' Token: 0x060006E8 RID: 1768 RVA: 0x0024EC68 File Offset: 0x0024DC68
@@ -565,7 +567,7 @@ Namespace kotor_tool
             If frmRefSearchCriteria.DialogResult <> DialogResult.OK Then
                 Return
             End If
-            Dim cursor As Cursor = cursor.Current
+            Dim cursor As Cursor = Cursor.Current
             Dim num As Integer
             If frmRefSearchCriteria.rbSearchKotor1.Checked Then
                 num = 0
@@ -573,7 +575,7 @@ Namespace kotor_tool
                 num = 1
             End If
             If (frmRefSearchCriteria.chkbAllBifs.Checked Or frmRefSearchCriteria.chkbScripts.Checked Or frmRefSearchCriteria.chkbTemplates.Checked) AndAlso ObjectType.ObjTst(Me.TreeView.Nodes(num).Nodes(0).Nodes(0).Tag, "dummy", False) = 0 Then
-                cursor.Current = Cursors.WaitCursor
+                Cursor.Current = Cursors.WaitCursor
                 Me.BuildTreeView(CType(Me.TreeView.Nodes(num), KotorTreeNode), True)
             End If
             If frmRefSearchCriteria.chkbAllBifs.Checked Then
@@ -612,7 +614,7 @@ Namespace kotor_tool
                 frmRefSearchResults.Size = frmRefSearchResults.MinimumSize
                 frmRefSearchResults.lbMatches.Enabled = False
             End If
-            cursor.Current = cursor
+            Cursor.Current = cursor
             Dim utilWindowRelativePositioner As utilWindowRelativePositioner = New utilWindowRelativePositioner(Me, frmRefSearchResults)
             frmRefSearchResults.Location = utilWindowRelativePositioner.getConcentric()
             frmRefSearchResults.Show()
@@ -1322,7 +1324,7 @@ Namespace kotor_tool
 
         ' Token: 0x06000702 RID: 1794 RVA: 0x002513BC File Offset: 0x002503BC
         Private Sub SearchAllModuleRimsForText(ByVal KotorVerIndex As Integer, ByVal searchText As String, ByVal CaseSensitive As Boolean, ByVal FileTypes As Hashtable, ByVal ResultsForm As frmRefSearchResults)
-            Dim cursor As Cursor = cursor.Current
+            Dim cursor As Cursor = Cursor.Current
             Dim text As String = frmMain.CurrentSettings.KotorLocation(KotorVerIndex) + "\Modules"
             Dim directoryInfo As DirectoryInfo = New DirectoryInfo(text)
             Dim files As FileInfo() = directoryInfo.GetFiles("*.rim")
@@ -1336,21 +1338,21 @@ Namespace kotor_tool
                 Dim num As Integer
                 Select Case num
                     Case 0
-                        cursor.Current = Cursors.PanNorth
+                        Cursor.Current = Cursors.PanNorth
                     Case 1
-                        cursor.Current = Cursors.PanNE
+                        Cursor.Current = Cursors.PanNE
                     Case 2
-                        cursor.Current = Cursors.PanEast
+                        Cursor.Current = Cursors.PanEast
                     Case 3
-                        cursor.Current = Cursors.PanSE
+                        Cursor.Current = Cursors.PanSE
                     Case 4
-                        cursor.Current = Cursors.PanSouth
+                        Cursor.Current = Cursors.PanSouth
                     Case 5
-                        cursor.Current = Cursors.PanSW
+                        Cursor.Current = Cursors.PanSW
                     Case 6
-                        cursor.Current = Cursors.PanWest
+                        Cursor.Current = Cursors.PanWest
                     Case 7
-                        cursor.Current = Cursors.PanNW
+                        Cursor.Current = Cursors.PanNW
                         num = -1
                 End Select
                 num += 1
@@ -1376,7 +1378,7 @@ Namespace kotor_tool
                     End If
                 Next
             Next
-            cursor.Current = cursor
+            Cursor.Current = cursor
         End Sub
 
         ' Token: 0x06000703 RID: 1795 RVA: 0x002515C8 File Offset: 0x002505C8
@@ -2938,6 +2940,762 @@ Namespace kotor_tool
             Return utilFileValidator.Validate(filePath, signature)
         End Function
 
+        Private Sub InitialiseResourceBrowser()
+            If Me.cmbViewMode Is Nothing OrElse Me.lvResourceBrowser Is Nothing Then
+                Return
+            End If
+
+            Me.cmbViewMode.Items.Clear()
+            Me.cmbViewMode.Items.Add("Tree")
+            Me.cmbViewMode.Items.Add("List")
+            Me.cmbViewMode.Items.Add("Small Icons")
+            Me.cmbViewMode.Items.Add("Large Icons")
+            Me.cmbViewMode.Items.Add("Tiles")
+            Me.cmbViewMode.Items.Add("Thumbnail Placeholders")
+            Me.cmbViewMode.SelectedIndex = 0
+
+            Me.lvResourceBrowser.Columns.Clear()
+            Me.lvResourceBrowser.Columns.Add("Name", 220, HorizontalAlignment.Left)
+            Me.lvResourceBrowser.Columns.Add("Type", 70, HorizontalAlignment.Left)
+            Me.lvResourceBrowser.Columns.Add("Source", 110, HorizontalAlignment.Left)
+            Me.lvResourceBrowser.MultiSelect = False
+            Me.lvResourceBrowser.FullRowSelect = True
+            Me.lvResourceBrowser.HideSelection = False
+            Me.lvResourceBrowser.ShowItemToolTips = True
+            Me.lvResourceBrowser.Padding = New Padding(8)
+
+            If Me.lvResourceDetails IsNot Nothing Then
+                Me.lvResourceDetails.Columns.Clear()
+                Me.lvResourceDetails.Columns.Add("Name", 260, HorizontalAlignment.Left)
+                Me.lvResourceDetails.Columns.Add("Type", 70, HorizontalAlignment.Left)
+                Me.lvResourceDetails.Columns.Add("Source", 120, HorizontalAlignment.Left)
+                Me.lvResourceDetails.MultiSelect = False
+                Me.lvResourceDetails.FullRowSelect = True
+                Me.lvResourceDetails.HideSelection = False
+                Me.lvResourceDetails.ShowItemToolTips = True
+                Me.lvResourceDetails.View = View.Details
+            End If
+
+            RemoveHandler Me.cmbViewMode.SelectedIndexChanged, AddressOf Me.cmbViewMode_SelectedIndexChanged
+            AddHandler Me.cmbViewMode.SelectedIndexChanged, AddressOf Me.cmbViewMode_SelectedIndexChanged
+            RemoveHandler Me.txtResourceFilter.TextChanged, AddressOf Me.txtResourceFilter_TextChanged
+            AddHandler Me.txtResourceFilter.TextChanged, AddressOf Me.txtResourceFilter_TextChanged
+            RemoveHandler Me.lvResourceBrowser.DoubleClick, AddressOf Me.lvResourceBrowser_DoubleClick
+            AddHandler Me.lvResourceBrowser.DoubleClick, AddressOf Me.lvResourceBrowser_DoubleClick
+            RemoveHandler Me.lvResourceBrowser.KeyDown, AddressOf Me.lvResourceBrowser_KeyDown
+            AddHandler Me.lvResourceBrowser.KeyDown, AddressOf Me.lvResourceBrowser_KeyDown
+            If Me.lvResourceDetails IsNot Nothing Then
+                RemoveHandler Me.lvResourceDetails.DoubleClick, AddressOf Me.lvResourceDetails_DoubleClick
+                AddHandler Me.lvResourceDetails.DoubleClick, AddressOf Me.lvResourceDetails_DoubleClick
+                RemoveHandler Me.lvResourceDetails.KeyDown, AddressOf Me.lvResourceDetails_KeyDown
+                AddHandler Me.lvResourceDetails.KeyDown, AddressOf Me.lvResourceDetails_KeyDown
+            End If
+            RemoveHandler Me.btnViewBack.Click, AddressOf Me.btnViewBack_Click
+            AddHandler Me.btnViewBack.Click, AddressOf Me.btnViewBack_Click
+            RemoveHandler Me.btnViewForward.Click, AddressOf Me.btnViewForward_Click
+            AddHandler Me.btnViewForward.Click, AddressOf Me.btnViewForward_Click
+
+            Me.ResourceViewHistory = New ArrayList()
+            Me.ResourceViewHistoryIndex = -1
+            Me.SuppressResourceViewHistory = False
+            Me.EnsureResourceBrowserImageLists()
+            Me.SetMainResourceViewMode("Tree")
+            Me.ApplyResourceBrowserTheme()
+        End Sub
+
+        Private Sub ApplyResourceBrowserTheme()
+            If _theme Is Nothing Then
+                _theme = KotorTheme.CreateDefault()
+            End If
+
+            If Me.pnlBrowserContainer IsNot Nothing Then
+                Me.pnlBrowserContainer.BackColor = _theme.LogoBack
+            End If
+
+            If Me.pnlResourceArea IsNot Nothing Then
+                Me.pnlResourceArea.BackColor = _theme.PanelBody
+            End If
+
+            If Me.pnlBrowserBody IsNot Nothing Then
+                Me.pnlBrowserBody.BackColor = _theme.LogoBack
+            End If
+
+            If Me.pnlViewHeader IsNot Nothing Then
+                Me.pnlViewHeader.BackColor = _theme.PanelHeader
+            End If
+
+            If Me.lblViewTitle IsNot Nothing Then
+                Me.lblViewTitle.ForeColor = _theme.AccentGoldLight
+                Me.lblViewTitle.BorderStyle = BorderStyle.None
+                Me.lblViewTitle.TextAlign = ContentAlignment.MiddleLeft
+            End If
+
+            If Me.lblResourceCount IsNot Nothing Then
+                Me.lblResourceCount.ForeColor = _theme.TextMuted
+            End If
+
+            If Me.txtResourceFilter IsNot Nothing Then
+                Me.txtResourceFilter.BackColor = _theme.LogoBack
+                Me.txtResourceFilter.ForeColor = _theme.TextPrimary
+                Try
+                    Me.txtResourceFilter.Font = _theme.CreateBodyFont()
+                Catch
+                    Me.txtResourceFilter.Font = New Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point)
+                End Try
+            End If
+
+            If Me.cmbViewMode IsNot Nothing Then
+                Me.cmbViewMode.BackColor = _theme.ControlDark
+                Me.cmbViewMode.ForeColor = _theme.TextPrimary
+                Try
+                    Me.cmbViewMode.Font = _theme.CreateBodyFont()
+                Catch
+                    Me.cmbViewMode.Font = New Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point)
+                End Try
+            End If
+
+            If Me.lvResourceBrowser IsNot Nothing Then
+                Me.lvResourceBrowser.BackColor = _theme.LogoBack
+                Me.lvResourceBrowser.ForeColor = _theme.TextPrimary
+                Try
+                    Me.lvResourceBrowser.Font = _theme.CreateBodyFont()
+                Catch
+                    Me.lvResourceBrowser.Font = New Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point)
+                End Try
+            End If
+
+            If Me.pnlResourceDetails IsNot Nothing Then
+                Me.pnlResourceDetails.BackColor = _theme.LogoBack
+                Me.pnlResourceDetails.Visible = True
+            End If
+
+            If Me.lvResourceDetails IsNot Nothing Then
+                Me.lvResourceDetails.BackColor = _theme.LogoBack
+                Me.lvResourceDetails.ForeColor = _theme.TextPrimary
+                Try
+                    Me.lvResourceDetails.Font = _theme.CreateBodyFont()
+                Catch
+                    Me.lvResourceDetails.Font = New Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point)
+                End Try
+            End If
+
+            Me.ApplyNavigationButtonTheme(Me.btnViewBack)
+            Me.ApplyNavigationButtonTheme(Me.btnViewForward)
+            Me.InvalidateResourceBrowserIconsIfThemeChanged()
+        End Sub
+
+        Private Sub SetMainResourceViewMode(ByVal viewMode As String)
+            If Me.TreeView Is Nothing OrElse Me.lvResourceBrowser Is Nothing Then
+                Return
+            End If
+
+            Dim requestedMode As String = viewMode
+            If requestedMode Is Nothing OrElse requestedMode.Length = 0 Then
+                requestedMode = "Tree"
+            End If
+
+            Me.SelectResourceViewModeCombo(requestedMode)
+            If Me.pnlResourceDetails IsNot Nothing Then
+                Me.pnlResourceDetails.Visible = True
+            End If
+
+            If StringType.StrCmp(requestedMode, "Tree", False) = 0 Then
+                Me.ClearResourceBrowserHistory()
+                Me.TreeView.Dock = DockStyle.Fill
+                Me.TreeView.Visible = True
+                Me.TreeView.BringToFront()
+                Me.lvResourceBrowser.Visible = False
+                If Me.lblResourceCount IsNot Nothing Then
+                    Me.lblResourceCount.Text = ""
+                End If
+                Return
+            End If
+
+            If (Me.ResourceViewHistory Is Nothing OrElse Me.ResourceViewHistory.Count = 0) AndAlso TypeOf Me.TreeView.SelectedNode Is KotorTreeNode Then
+                Me.ResetResourceBrowserHistory(CType(Me.TreeView.SelectedNode, KotorTreeNode))
+            End If
+
+            Me.lvResourceBrowser.Visible = True
+
+            If Not Object.ReferenceEquals(Me.lvResourceBrowser.Parent, Me.pnlBrowserBody) Then
+                Me.lvResourceBrowser.Parent.Controls.Remove(Me.lvResourceBrowser)
+                Me.pnlBrowserBody.Controls.Add(Me.lvResourceBrowser)
+            End If
+
+            Me.TreeView.Visible = False
+            Me.lvResourceBrowser.Dock = DockStyle.Fill
+            Me.lvResourceBrowser.BringToFront()
+
+            If StringType.StrCmp(requestedMode, "List", False) = 0 Then
+                Me.lvResourceBrowser.View = View.List
+            ElseIf StringType.StrCmp(requestedMode, "Small Icons", False) = 0 Then
+                Me.lvResourceBrowser.View = View.SmallIcon
+            ElseIf StringType.StrCmp(requestedMode, "Large Icons", False) = 0 Then
+                Me.lvResourceBrowser.View = View.LargeIcon
+            ElseIf StringType.StrCmp(requestedMode, "Tiles", False) = 0 Then
+                Me.lvResourceBrowser.View = View.Tile
+                Me.lvResourceBrowser.TileSize = New Size(180, 72)
+            ElseIf StringType.StrCmp(requestedMode, "Thumbnail Placeholders", False) = 0 Then
+                Me.lvResourceBrowser.View = View.LargeIcon
+            Else
+                Me.lvResourceBrowser.View = View.List
+            End If
+
+            Me.EnsureResourceBrowserImageLists()
+
+            If TypeOf Me.TreeView.SelectedNode Is KotorTreeNode Then
+                Me.PopulateResourceBrowserFromNode(CType(Me.TreeView.SelectedNode, KotorTreeNode))
+            End If
+        End Sub
+
+        Private Sub PopulateResourceBrowserFromNode(ByVal sourceNode As KotorTreeNode)
+            If Me.lvResourceBrowser Is Nothing Then
+                Return
+            End If
+
+            Me.lvResourceBrowser.BeginUpdate()
+            Me.lvResourceBrowser.Items.Clear()
+            If Me.lvResourceDetails IsNot Nothing Then
+                Me.lvResourceDetails.BeginUpdate()
+                Me.lvResourceDetails.Items.Clear()
+            End If
+
+            Dim itemCount As Integer = 0
+            Dim filterText As String = ""
+            If Me.txtResourceFilter IsNot Nothing AndAlso Me.txtResourceFilter.Text IsNot Nothing Then
+                filterText = Me.txtResourceFilter.Text.Trim().ToLower()
+            End If
+
+            If sourceNode IsNot Nothing Then
+                For Each obj As Object In sourceNode.Nodes
+                    If TypeOf obj Is KotorTreeNode Then
+                        Dim childNode As KotorTreeNode = CType(obj, KotorTreeNode)
+                        Dim itemText As String = childNode.Text
+
+                        If filterText.Length = 0 OrElse itemText.ToLower().IndexOf(filterText) >= 0 Then
+                            Dim typeText As String = Me.GetShortResourceTypeText(childNode)
+                            Dim iconKey As String = Me.GetResourceIconKey(childNode)
+                            Dim sourceText As String = ""
+
+                            If childNode.Tag IsNot Nothing Then
+                                sourceText = childNode.Tag.ToString()
+                            End If
+
+                            Me.EnsureResourceBrowserIcon(iconKey, typeText, Me.IsFolderStyleResourceNode(childNode))
+
+                            Dim item As ListViewItem = New ListViewItem(itemText)
+                            item.Tag = childNode
+                            item.ImageKey = iconKey
+                            item.ToolTipText = childNode.FullPath
+                            item.SubItems.Add(typeText)
+                            item.SubItems.Add(sourceText)
+                            Me.lvResourceBrowser.Items.Add(item)
+
+                            If Me.lvResourceDetails IsNot Nothing Then
+                                Dim detailsItem As ListViewItem = New ListViewItem(itemText)
+                                detailsItem.Tag = childNode
+                                detailsItem.ImageKey = iconKey
+                                detailsItem.ToolTipText = childNode.FullPath
+                                detailsItem.SubItems.Add(typeText)
+                                detailsItem.SubItems.Add(sourceText)
+                                Me.lvResourceDetails.Items.Add(detailsItem)
+                            End If
+
+                            itemCount += 1
+                        End If
+                    End If
+                Next
+            End If
+
+            If Me.lblResourceCount IsNot Nothing Then
+                If itemCount = 1 Then
+                    Me.lblResourceCount.Text = "1 item"
+                Else
+                    Me.lblResourceCount.Text = itemCount.ToString() & " items"
+                End If
+            End If
+
+            Me.lvResourceBrowser.EndUpdate()
+            If Me.lvResourceDetails IsNot Nothing Then
+                Me.lvResourceDetails.EndUpdate()
+            End If
+        End Sub
+
+        Private Function GetResourceIconKey(ByVal node As KotorTreeNode) As String
+            If node Is Nothing Then
+                Return "folder"
+            End If
+
+            Dim typeText As String = Me.GetShortResourceTypeText(node).ToLower()
+            If typeText.Length = 0 Then
+                typeText = "res"
+            End If
+
+            If Me.IsFolderStyleResourceNode(node) Then
+                Return "folder_" & typeText
+            End If
+
+            Return "doc_" & typeText
+        End Function
+
+        Private Sub EnsureResourceBrowserImageLists()
+            If Me.imgResourceSmall Is Nothing OrElse Me.imgResourceLarge Is Nothing Then
+                Return
+            End If
+
+            Me.InvalidateResourceBrowserIconsIfThemeChanged()
+
+            Dim desiredLargeSize As Size = New Size(48, 48)
+            Dim selectedMode As String = ""
+
+            If Me.cmbViewMode IsNot Nothing AndAlso Me.cmbViewMode.SelectedItem IsNot Nothing Then
+                selectedMode = Me.cmbViewMode.SelectedItem.ToString()
+            End If
+
+            If StringType.StrCmp(selectedMode, "Tiles", False) = 0 Then
+                desiredLargeSize = New Size(64, 64)
+            ElseIf StringType.StrCmp(selectedMode, "Thumbnail Placeholders", False) = 0 Then
+                desiredLargeSize = New Size(96, 64)
+            End If
+
+            If Not Me.imgResourceSmall.ImageSize.Equals(New Size(16, 16)) Then
+                Me.imgResourceSmall.Images.Clear()
+                Me.imgResourceSmall.ImageSize = New Size(16, 16)
+                Me.imgResourceSmall.ColorDepth = ColorDepth.Depth32Bit
+            End If
+
+            If Not Me.imgResourceLarge.ImageSize.Equals(desiredLargeSize) Then
+                Me.imgResourceLarge.Images.Clear()
+                Me.imgResourceLarge.ImageSize = desiredLargeSize
+                Me.imgResourceLarge.ColorDepth = ColorDepth.Depth32Bit
+            End If
+
+            If Me.lvResourceBrowser IsNot Nothing Then
+                Me.lvResourceBrowser.SmallImageList = Me.imgResourceSmall
+                Me.lvResourceBrowser.LargeImageList = Me.imgResourceLarge
+            End If
+            If Me.lvResourceDetails IsNot Nothing Then
+                Me.lvResourceDetails.SmallImageList = Me.imgResourceSmall
+                Me.lvResourceDetails.LargeImageList = Me.imgResourceLarge
+            End If
+        End Sub
+
+        Private Function CreatePlaceholderIcon(ByVal width As Integer, ByVal height As Integer, ByVal labelText As String, ByVal folderStyle As Boolean) As Bitmap
+            Dim bitmap As Bitmap = New Bitmap(width, height)
+            Dim g As Graphics = Graphics.FromImage(bitmap)
+
+            Try
+                g.Clear(Color.Transparent)
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias
+
+                Dim backColor As Color = Color.FromArgb(46, 55, 66)
+                Dim borderColor As Color = Color.FromArgb(174, 136, 58)
+                Dim textColor As Color = Color.FromArgb(238, 238, 230)
+                Dim accentColor As Color = Color.FromArgb(210, 184, 112)
+
+                If _theme IsNot Nothing Then
+                    backColor = _theme.ControlDark
+                    borderColor = _theme.AccentGold
+                    textColor = _theme.TextPrimary
+                    accentColor = _theme.AccentGoldLight
+                End If
+
+                If labelText Is Nothing OrElse labelText.Length = 0 Then
+                    labelText = "RES"
+                End If
+
+                If folderStyle Then
+                    Dim tabHeight As Integer = Math.Max(4, height \ 5)
+                    Dim tabWidth As Integer = Math.Max(10, width \ 2)
+                    Dim folderTop As Integer = Math.Max(2, height \ 5)
+                    Dim tabRect As Rectangle = New Rectangle(2, folderTop - tabHeight + 1, tabWidth, tabHeight + 2)
+                    Dim bodyRect As Rectangle = New Rectangle(2, folderTop, width - 4, height - folderTop - 3)
+                    Dim accentBrush As SolidBrush = New SolidBrush(accentColor)
+                    Dim backBrush As SolidBrush = New SolidBrush(backColor)
+                    Dim borderPen As Pen = New Pen(borderColor)
+                    g.FillRectangle(accentBrush, tabRect)
+                    g.FillRectangle(backBrush, bodyRect)
+                    g.DrawRectangle(borderPen, tabRect)
+                    g.DrawRectangle(borderPen, bodyRect)
+                    accentBrush.Dispose()
+                    backBrush.Dispose()
+                    borderPen.Dispose()
+                Else
+                    Dim docRect As Rectangle = New Rectangle(3, 2, width - 6, height - 5)
+                    Dim backBrush As SolidBrush = New SolidBrush(backColor)
+                    Dim accentBrush As SolidBrush = New SolidBrush(accentColor)
+                    Dim borderPen As Pen = New Pen(borderColor)
+                    g.FillRectangle(backBrush, docRect)
+                    g.DrawRectangle(borderPen, docRect)
+                    If width >= 32 AndAlso height >= 32 Then
+                        Dim foldSize As Integer = Math.Min(12, Math.Min(width, height) \ 4)
+                        Dim points As Point() = New Point() {New Point(docRect.Right - foldSize, docRect.Top), New Point(docRect.Right, docRect.Top + foldSize), New Point(docRect.Right - foldSize, docRect.Top + foldSize)}
+                        g.FillPolygon(accentBrush, points)
+                        g.DrawPolygon(borderPen, points)
+                    End If
+                    backBrush.Dispose()
+                    accentBrush.Dispose()
+                    borderPen.Dispose()
+                End If
+
+                Dim fontSize As Single = 7.0F
+                If width >= 48 Then
+                    fontSize = 9.0F
+                End If
+                If width >= 90 Then
+                    fontSize = 10.0F
+                End If
+
+                Dim fontName As String = "Segoe UI"
+                If _theme IsNot Nothing AndAlso _theme.BodyFontName IsNot Nothing AndAlso _theme.BodyFontName.Length > 0 Then
+                    fontName = _theme.BodyFontName
+                End If
+
+                Dim labelFont As Font = New Font(fontName, fontSize, FontStyle.Bold, GraphicsUnit.Point)
+                Dim textRect As Rectangle = New Rectangle(1, 1, width - 2, height - 2)
+                TextRenderer.DrawText(g, labelText.ToUpper(), labelFont, textRect, textColor, TextFormatFlags.HorizontalCenter Or TextFormatFlags.VerticalCenter Or TextFormatFlags.EndEllipsis)
+                labelFont.Dispose()
+
+            Finally
+                g.Dispose()
+            End Try
+
+            Return bitmap
+        End Function
+
+        Private Sub EnsureResourceBrowserIcon(ByVal iconKey As String, ByVal labelText As String, ByVal folderStyle As Boolean)
+            If iconKey Is Nothing OrElse iconKey.Length = 0 Then
+                Return
+            End If
+
+            Me.EnsureResourceBrowserImageLists()
+
+            If Not Me.imgResourceSmall.Images.ContainsKey(iconKey) Then
+                Me.imgResourceSmall.Images.Add(iconKey, Me.CreatePlaceholderIcon(16, 16, labelText, folderStyle))
+            End If
+
+            If Not Me.imgResourceLarge.Images.ContainsKey(iconKey) Then
+                Me.imgResourceLarge.Images.Add(iconKey, Me.CreatePlaceholderIcon(Me.imgResourceLarge.ImageSize.Width, Me.imgResourceLarge.ImageSize.Height, labelText, folderStyle))
+            End If
+        End Sub
+
+        Private Sub InvalidateResourceBrowserIconsIfThemeChanged()
+            If Me.imgResourceSmall Is Nothing OrElse Me.imgResourceLarge Is Nothing Then
+                Return
+            End If
+
+            Dim signature As String = Me.GetResourceBrowserThemeSignature()
+
+            If Me.ResourceBrowserIconThemeSignature IsNot Nothing AndAlso
+               StringType.StrCmp(Me.ResourceBrowserIconThemeSignature, signature, False) = 0 Then
+                Return
+            End If
+
+            Me.ResourceBrowserIconThemeSignature = signature
+            Me.imgResourceSmall.Images.Clear()
+            Me.imgResourceLarge.Images.Clear()
+        End Sub
+
+        Private Function GetResourceBrowserThemeSignature() As String
+            If _theme Is Nothing Then
+                Return "default"
+            End If
+
+            Return _theme.Name & "|" &
+                   _theme.ControlDark.ToArgb().ToString() & "|" &
+                   _theme.AccentGold.ToArgb().ToString() & "|" &
+                   _theme.AccentGoldLight.ToArgb().ToString() & "|" &
+                   _theme.TextPrimary.ToArgb().ToString() & "|" &
+                   _theme.BodyFontName
+        End Function
+
+        Private Function GetShortResourceTypeText(ByVal node As KotorTreeNode) As String
+            If node Is Nothing Then
+                Return "DIR"
+            End If
+
+            If Me.IsFolderStyleResourceNode(node) Then
+                If node.Tag IsNot Nothing Then
+                    Dim tagText As String = node.Tag.ToString().ToUpper()
+                    If tagText.IndexOf("RIM") >= 0 Then
+                        Return "RIM"
+                    End If
+                    If tagText.IndexOf("ERF") >= 0 Then
+                        Return "ERF"
+                    End If
+                    If tagText.IndexOf("BIFF") >= 0 OrElse tagText.IndexOf("BIF") >= 0 Then
+                        Return "BIF"
+                    End If
+                End If
+                Return "DIR"
+            End If
+
+            Dim typeText As String = ""
+            Try
+                typeText = node.ResTypeStr
+            Catch
+                typeText = ""
+            End Try
+
+            If typeText Is Nothing OrElse typeText.Length = 0 Then
+                typeText = Path.GetExtension(node.Filename)
+                If typeText IsNot Nothing AndAlso typeText.StartsWith(".") Then
+                    typeText = typeText.Substring(1)
+                End If
+            End If
+
+            If typeText Is Nothing OrElse typeText.Length = 0 Then
+                typeText = "RES"
+            End If
+
+            typeText = typeText.ToUpper()
+            If typeText.Length > 4 Then
+                typeText = typeText.Substring(0, 4)
+            End If
+
+            Return typeText
+        End Function
+
+        Private Function IsFolderStyleResourceNode(ByVal node As KotorTreeNode) As Boolean
+            If node Is Nothing Then
+                Return True
+            End If
+
+            If node.Tag Is Nothing Then
+                Return node.Nodes.Count > 0
+            End If
+
+            Dim tagText As String = node.Tag.ToString()
+            If ObjectType.ObjTst(tagText, "BIFF_Res", False) = 0 OrElse
+               ObjectType.ObjTst(tagText, "RIM_Res", False) = 0 OrElse
+               ObjectType.ObjTst(tagText, "ERF_Res", False) = 0 Then
+                Return False
+            End If
+
+            Return True
+        End Function
+
+        Private Sub OpenSelectedResourceBrowserItem()
+            Me.OpenSelectedResourceListItem(Me.lvResourceBrowser)
+        End Sub
+
+        Private Sub OpenSelectedResourceDetailsItem()
+            Me.OpenSelectedResourceListItem(Me.lvResourceDetails)
+        End Sub
+
+        Private Sub OpenSelectedResourceListItem(ByVal listView As ListView)
+            If listView Is Nothing OrElse listView.SelectedItems.Count = 0 Then
+                Return
+            End If
+
+            Dim item As ListViewItem = listView.SelectedItems(0)
+            If item Is Nothing OrElse Not TypeOf item.Tag Is KotorTreeNode Then
+                Return
+            End If
+
+            Dim node As KotorTreeNode = CType(item.Tag, KotorTreeNode)
+
+            If Not Me.IsTreeResourceViewMode() AndAlso Me.IsFolderStyleResourceNode(node) Then
+                Me.NavigateResourceBrowserToNode(node, True)
+            Else
+                Me.TreeView.SelectedNode = node
+                Me.HandleDataByNodeType(node, listView)
+            End If
+        End Sub
+
+        Private Sub cmbViewMode_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+            If Me.cmbViewMode Is Nothing OrElse Me.cmbViewMode.SelectedItem Is Nothing Then
+                Me.SetMainResourceViewMode("Tree")
+            Else
+                Me.SetMainResourceViewMode(Me.cmbViewMode.SelectedItem.ToString())
+            End If
+        End Sub
+
+        Private Sub btnViewBack_Click(ByVal sender As Object, ByVal e As EventArgs)
+            If Me.ResourceViewHistory Is Nothing OrElse Me.ResourceViewHistoryIndex <= 0 Then
+                Return
+            End If
+
+            Me.ResourceViewHistoryIndex -= 1
+            Me.NavigateResourceBrowserToNode(CType(Me.ResourceViewHistory(Me.ResourceViewHistoryIndex), KotorTreeNode), False)
+            Me.UpdateResourceViewNavigationButtons()
+        End Sub
+
+        Private Sub btnViewForward_Click(ByVal sender As Object, ByVal e As EventArgs)
+            If Me.ResourceViewHistory Is Nothing OrElse Me.ResourceViewHistoryIndex >= Me.ResourceViewHistory.Count - 1 Then
+                Return
+            End If
+
+            Me.ResourceViewHistoryIndex += 1
+            Me.NavigateResourceBrowserToNode(CType(Me.ResourceViewHistory(Me.ResourceViewHistoryIndex), KotorTreeNode), False)
+            Me.UpdateResourceViewNavigationButtons()
+        End Sub
+
+        Private Sub ResetResourceBrowserHistory(ByVal node As KotorTreeNode)
+            If Me.SuppressResourceViewHistory Then
+                Return
+            End If
+
+            Me.ResourceViewHistory = New ArrayList()
+            Me.ResourceViewHistoryIndex = -1
+
+            If node IsNot Nothing Then
+                Me.ResourceViewHistory.Add(node)
+                Me.ResourceViewHistoryIndex = 0
+            End If
+
+            Me.UpdateResourceViewNavigationButtons()
+        End Sub
+
+        Private Sub AddResourceViewHistory(ByVal node As KotorTreeNode)
+            If Me.SuppressResourceViewHistory Then
+                Return
+            End If
+
+            If node Is Nothing Then
+                Return
+            End If
+
+            If Me.ResourceViewHistory Is Nothing Then
+                Me.ResourceViewHistory = New ArrayList()
+                Me.ResourceViewHistoryIndex = -1
+            End If
+
+            If Me.ResourceViewHistoryIndex >= 0 AndAlso
+               Me.ResourceViewHistoryIndex < Me.ResourceViewHistory.Count AndAlso
+               Object.ReferenceEquals(Me.ResourceViewHistory(Me.ResourceViewHistoryIndex), node) Then
+                Me.UpdateResourceViewNavigationButtons()
+                Return
+            End If
+
+            While Me.ResourceViewHistory.Count - 1 > Me.ResourceViewHistoryIndex
+                Me.ResourceViewHistory.RemoveAt(Me.ResourceViewHistory.Count - 1)
+            End While
+
+            Me.ResourceViewHistory.Add(node)
+            Me.ResourceViewHistoryIndex = Me.ResourceViewHistory.Count - 1
+            Me.UpdateResourceViewNavigationButtons()
+        End Sub
+
+        Private Sub ClearResourceBrowserHistory()
+            If Me.ResourceViewHistory IsNot Nothing Then
+                Me.ResourceViewHistory.Clear()
+            End If
+
+            Me.ResourceViewHistoryIndex = -1
+            Me.UpdateResourceViewNavigationButtons()
+        End Sub
+
+        Private Sub SelectResourceViewModeCombo(ByVal viewMode As String)
+            If Me.cmbViewMode Is Nothing Then
+                Return
+            End If
+
+            Dim i As Integer
+            For i = 0 To Me.cmbViewMode.Items.Count - 1
+                If StringType.StrCmp(Me.cmbViewMode.Items(i).ToString(), viewMode, False) = 0 Then
+                    If Me.cmbViewMode.SelectedIndex <> i Then
+                        Me.SuppressResourceViewHistory = True
+                        Me.cmbViewMode.SelectedIndex = i
+                        Me.SuppressResourceViewHistory = False
+                    End If
+                    Return
+                End If
+            Next
+        End Sub
+
+        Private Sub UpdateResourceViewNavigationButtons()
+            Dim enableNavigation As Boolean = Not Me.IsTreeResourceViewMode()
+
+            If Me.btnViewBack IsNot Nothing Then
+                Me.btnViewBack.Enabled = enableNavigation AndAlso Me.ResourceViewHistory IsNot Nothing AndAlso Me.ResourceViewHistoryIndex > 0
+            End If
+
+            If Me.btnViewForward IsNot Nothing Then
+                Me.btnViewForward.Enabled = enableNavigation AndAlso Me.ResourceViewHistory IsNot Nothing AndAlso Me.ResourceViewHistoryIndex < Me.ResourceViewHistory.Count - 1
+            End If
+        End Sub
+
+        Private Function IsTreeResourceViewMode() As Boolean
+            If Me.cmbViewMode Is Nothing OrElse Me.cmbViewMode.SelectedItem Is Nothing Then
+                Return True
+            End If
+
+            Return StringType.StrCmp(Me.cmbViewMode.SelectedItem.ToString(), "Tree", False) = 0
+        End Function
+
+        Private Sub NavigateResourceBrowserToNode(ByVal node As KotorTreeNode, ByVal addToHistory As Boolean)
+            If node Is Nothing Then
+                Return
+            End If
+
+            Me.EnsureResourceBrowserNodeChildren(node)
+            Me.TreeView.SelectedNode = node
+            Me.PopulateResourceBrowserFromNode(node)
+
+            If addToHistory Then
+                Me.AddResourceViewHistory(node)
+            End If
+        End Sub
+
+        Private Sub EnsureResourceBrowserNodeChildren(ByVal node As KotorTreeNode)
+            If node Is Nothing OrElse node.Nodes.Count = 0 Then
+                Return
+            End If
+
+            Try
+                If node.Nodes.Count = 1 AndAlso node.Nodes(0).Tag IsNot Nothing AndAlso ObjectType.ObjTst(node.Nodes(0).Tag, "dummy", False) = 0 Then
+                    node.Expand()
+                End If
+            Catch
+            End Try
+        End Sub
+
+        Private Sub ApplyNavigationButtonTheme(ByVal button As Button)
+            If button Is Nothing Then
+                Return
+            End If
+
+            button.BackColor = _theme.ControlDark
+            button.ForeColor = _theme.AccentGoldLight
+            button.FlatStyle = FlatStyle.Flat
+            button.UseVisualStyleBackColor = False
+            button.FlatAppearance.BorderColor = _theme.BorderDark
+            button.FlatAppearance.MouseOverBackColor = _theme.ControlHover
+            button.FlatAppearance.MouseDownBackColor = _theme.ControlDown
+            button.Font = New Font("Segoe UI", 7.0F, FontStyle.Bold, GraphicsUnit.Point)
+        End Sub
+
+        Private Sub txtResourceFilter_TextChanged(ByVal sender As Object, ByVal e As EventArgs)
+            If TypeOf Me.TreeView.SelectedNode Is KotorTreeNode Then
+                Me.PopulateResourceBrowserFromNode(CType(Me.TreeView.SelectedNode, KotorTreeNode))
+            Else
+                Me.PopulateResourceBrowserFromNode(Nothing)
+            End If
+        End Sub
+
+        Private Sub lvResourceBrowser_DoubleClick(ByVal sender As Object, ByVal e As EventArgs)
+            Me.OpenSelectedResourceBrowserItem()
+        End Sub
+
+        Private Sub lvResourceBrowser_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs)
+            If e.KeyCode = Keys.Enter Then
+                e.Handled = True
+                Me.OpenSelectedResourceBrowserItem()
+            End If
+        End Sub
+
+        Private Sub lvResourceDetails_DoubleClick(ByVal sender As Object, ByVal e As EventArgs)
+            Me.OpenSelectedResourceDetailsItem()
+        End Sub
+
+        Private Sub lvResourceDetails_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs)
+            If e.KeyCode = Keys.Enter Then
+                e.Handled = True
+                Me.OpenSelectedResourceDetailsItem()
+            End If
+        End Sub
+
 
         Private Sub LoadAndApplyTheme()
             Try
@@ -2978,6 +3736,7 @@ Namespace kotor_tool
             End If
 
             ApplyTreeViewTheme()
+            ApplyResourceBrowserTheme()
             ApplyToolBarTheme()
             ApplyButtonTheme(Me.btnExtract)
             ApplyButtonTheme(Me.btnExtractForModuleEditing)
@@ -3846,7 +4605,7 @@ Namespace kotor_tool
                 frmProgressMeter.Close()
                 Interaction.MsgBox("Extraction Complete", MsgBoxStyle.Information, "Model Extraction")
             ElseIf StringType.StrCmp(resTypeStr, "2da", False) = 0 Then
-                cursor.Current = Cursors.WaitCursor
+                Cursor.Current = Cursors.WaitCursor
                 Dim frm2DAEditor As frm2DAEditor = New frm2DAEditor(node.Filename, array, Me.NodeTreeRootIndex(node))
                 frm2DAEditor.Show()
             ElseIf StringType.StrCmp(resTypeStr, "pwk", False) = 0 OrElse StringType.StrCmp(resTypeStr, "dwk", False) = 0 OrElse StringType.StrCmp(resTypeStr, "wok", False) = 0 Then
@@ -3888,20 +4647,20 @@ Namespace kotor_tool
                 End If
 
 
-                If StringType.StrCmp(resTypeStr, "are", False) = 0 OrElse _
-                   StringType.StrCmp(resTypeStr, "fac", False) = 0 OrElse _
-                   StringType.StrCmp(resTypeStr, "jrl", False) = 0 OrElse _
-                   StringType.StrCmp(resTypeStr, "git", False) = 0 OrElse _
-                   StringType.StrCmp(resTypeStr, "gui", False) = 0 OrElse _
-                   StringType.StrCmp(resTypeStr, "ifo", False) = 0 OrElse _
-                   StringType.StrCmp(resTypeStr, "itp", False) = 0 OrElse _
-                   StringType.StrCmp(resTypeStr, "pth", False) = 0 OrElse _
-                   StringType.StrCmp(resTypeStr, "ptm", False) = 0 OrElse _
-                   StringType.StrCmp(resTypeStr, "ptt", False) = 0 OrElse _
-                   StringType.StrCmp(resTypeStr, "res", False) = 0 OrElse _
+                If StringType.StrCmp(resTypeStr, "are", False) = 0 OrElse
+                   StringType.StrCmp(resTypeStr, "fac", False) = 0 OrElse
+                   StringType.StrCmp(resTypeStr, "jrl", False) = 0 OrElse
+                   StringType.StrCmp(resTypeStr, "git", False) = 0 OrElse
+                   StringType.StrCmp(resTypeStr, "gui", False) = 0 OrElse
+                   StringType.StrCmp(resTypeStr, "ifo", False) = 0 OrElse
+                   StringType.StrCmp(resTypeStr, "itp", False) = 0 OrElse
+                   StringType.StrCmp(resTypeStr, "pth", False) = 0 OrElse
+                   StringType.StrCmp(resTypeStr, "ptm", False) = 0 OrElse
+                   StringType.StrCmp(resTypeStr, "ptt", False) = 0 OrElse
+                   StringType.StrCmp(resTypeStr, "res", False) = 0 OrElse
                    StringType.StrCmp(resTypeStr, "ute", False) = 0 Then
 
-                    cursor.Current = Cursors.WaitCursor
+                    Cursor.Current = Cursors.WaitCursor
 
                     If (Control.ModifierKeys And Keys.Shift) > Keys.None Then
                         Dim clsGFF As clsGFF = New clsGFF(Me.NodeTreeRootIndex(node))
@@ -3998,11 +4757,11 @@ Namespace kotor_tool
                     Dim num6 As Integer = 0
                     Do
                         'Console.WriteLine(String.Concat(New String() {"Index: ", StringType.FromInteger(num6), "  StringRef: ", StringType.FromInteger(clsSSF.get_RefArray(num6)), "  SoundResRef: '", clsSSF.get_RefArraySoundResRef(num6)}) + "'  String: '" + clsSSF.get_RefArrayString(num6) + "'")
-                        Console.WriteLine( _
-                                "Index: " & num6.ToString() & _
-                                "  StringRef: " & clsSSF.RefArray(num6).ToString() & _
-                                "  SoundResRef: '" & clsSSF.RefArraySoundResRef(num6) & _
-                                "'  String: '" & clsSSF.RefArrayString(num6) & "'" _
+                        Console.WriteLine(
+                                "Index: " & num6.ToString() &
+                                "  StringRef: " & clsSSF.RefArray(num6).ToString() &
+                                "  SoundResRef: '" & clsSSF.RefArraySoundResRef(num6) &
+                                "'  String: '" & clsSSF.RefArrayString(num6) & "'"
                             )
                         num6 += 1
                     Loop While num6 <= 39
@@ -4010,7 +4769,7 @@ Namespace kotor_tool
                 End If
             End If
 IL_12BE:
-            cursor.Current = cursor
+            Cursor.Current = cursor
         End Sub
 
         ' Token: 0x06000733 RID: 1843 RVA: 0x00256988 File Offset: 0x00255988
@@ -4072,8 +4831,9 @@ IL_12BE:
             End If
 
             Dim kotorTreeNode As KotorTreeNode = CType(e.Node, KotorTreeNode)
+            Me.PopulateResourceBrowserFromNode(kotorTreeNode)
 
-            If ((Me.NodeTreeRootIndex(kotorTreeNode) = 0) AndAlso Me.hasK1) OrElse _
+            If ((Me.NodeTreeRootIndex(kotorTreeNode) = 0) AndAlso Me.hasK1) OrElse
                ((Me.NodeTreeRootIndex(kotorTreeNode) = 1) AndAlso Me.hasK2) Then
 
                 If kotorTreeNode.Parent Is Nothing OrElse kotorTreeNode.Tag Is Nothing Then
@@ -4088,11 +4848,11 @@ IL_12BE:
 
                 Dim tag As Object = kotorTreeNode.Tag
 
-                If ObjectType.ObjTst(tag, "RIM_Modules", False) = 0 OrElse _
-                   ObjectType.ObjTst(tag, "RIM_Rims", False) = 0 OrElse _
-                   ObjectType.ObjTst(tag, "ERF_Root", False) = 0 OrElse _
-                   ObjectType.ObjTst(tag, "ERF_TexturePacks", False) = 0 OrElse _
-                   ObjectType.ObjTst(tag, "ERF_Modules", False) = 0 OrElse _
+                If ObjectType.ObjTst(tag, "RIM_Modules", False) = 0 OrElse
+                   ObjectType.ObjTst(tag, "RIM_Rims", False) = 0 OrElse
+                   ObjectType.ObjTst(tag, "ERF_Root", False) = 0 OrElse
+                   ObjectType.ObjTst(tag, "ERF_TexturePacks", False) = 0 OrElse
+                   ObjectType.ObjTst(tag, "ERF_Modules", False) = 0 OrElse
                    ObjectType.ObjTst(tag, "globalvar", False) = 0 Then
 
                     Me.miExtract.Enabled = False
@@ -4113,9 +4873,9 @@ IL_12BE:
                 ElseIf ObjectType.ObjTst(tag2, "RIM", False) = 0 Then
                     Me.btnExtract.Text = "Extract entire RIM file"
 
-                    If kotorTreeNode.Parent IsNot Nothing AndAlso _
-                       kotorTreeNode.Filename IsNot Nothing AndAlso _
-                       ObjectType.ObjTst(kotorTreeNode.Tag, "RIM", False) = 0 AndAlso _
+                    If kotorTreeNode.Parent IsNot Nothing AndAlso
+                       kotorTreeNode.Filename IsNot Nothing AndAlso
+                       ObjectType.ObjTst(kotorTreeNode.Tag, "RIM", False) = 0 AndAlso
                        ObjectType.ObjTst(kotorTreeNode.Parent.Tag, "RIM_Modules", False) = 0 Then
 
                         If Not kotorTreeNode.Filename.Replace(".rim", "").EndsWith("_s") Then
@@ -4126,8 +4886,8 @@ IL_12BE:
                 ElseIf ObjectType.ObjTst(tag2, "ERF", False) = 0 Then
                     Me.btnExtract.Text = "Extract entire ERF file"
 
-                ElseIf ObjectType.ObjTst(tag2, "BIFF_Res", False) = 0 OrElse _
-                       ObjectType.ObjTst(tag2, "RIM_Res", False) = 0 OrElse _
+                ElseIf ObjectType.ObjTst(tag2, "BIFF_Res", False) = 0 OrElse
+                       ObjectType.ObjTst(tag2, "RIM_Res", False) = 0 OrElse
                        ObjectType.ObjTst(tag2, "ERF_Res", False) = 0 Then
 
                     Me.btnExtract.Text = "Extract file"
@@ -4818,7 +5578,7 @@ IL_12BE:
                         memoryStream.Seek(CLng((num7 + num14)), SeekOrigin.Begin)
                         Dim num15 As Integer = binaryReader.ReadInt32()
                         Dim array As Byte() = New Byte(num15 - 1 + 1 - 1) {}
-                        Dim encoding As Encoding = encoding.GetEncoding(1252)
+                        Dim encoding As Encoding = Encoding.GetEncoding(1252)
                         array = binaryReader.ReadBytes(num15)
                         Return encoding.GetString(array)
                     End If
@@ -4925,7 +5685,7 @@ IL_12BE:
 
         ' Token: 0x0600075F RID: 1887 RVA: 0x00258808 File Offset: 0x00257808
         Private Sub ReadTreeBFD_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button1.Click
-            Dim assembly As Assembly = assembly.LoadFrom("G:\My Documents\Visual Studio Projects\kotor_tool\MapInfo Generator\bin\MapInfo Generator.exe")
+            Dim assembly As Assembly = Assembly.LoadFrom("G:\My Documents\Visual Studio Projects\kotor_tool\MapInfo Generator\bin\MapInfo Generator.exe")
             Dim version As Version = assembly.GetName().Version
             Console.WriteLine(String.Concat(New String() {StringType.FromInteger(version.Major), ".", StringType.FromInteger(version.Minor), ".", StringType.FromInteger(version.Build), ".", StringType.FromInteger(version.Revision)}))
         End Sub
@@ -5100,6 +5860,10 @@ IL_12BE:
         Private g_abbbIndex As Integer
 
         Private _theme As KotorTheme
+        Private ResourceViewHistory As ArrayList
+        Private ResourceViewHistoryIndex As Integer
+        Private SuppressResourceViewHistory As Boolean
+        Private ResourceBrowserIconThemeSignature As String
 
         ' Token: 0x02000055 RID: 85
         ' (Invoke) Token: 0x06000765 RID: 1893
@@ -5139,6 +5903,10 @@ IL_12BE:
             frmThemeEditor.StartPosition = FormStartPosition.CenterParent
             frmThemeEditor.ShowDialog(Me)
             frmThemeEditor.Dispose()
+            Me.LoadAndApplyTheme()
+            If TypeOf Me.TreeView.SelectedNode Is KotorTreeNode Then
+                Me.PopulateResourceBrowserFromNode(CType(Me.TreeView.SelectedNode, KotorTreeNode))
+            End If
         End Sub
     End Class
 End Namespace

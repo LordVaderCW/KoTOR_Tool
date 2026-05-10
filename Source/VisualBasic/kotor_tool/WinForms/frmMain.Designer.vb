@@ -79,6 +79,21 @@ Namespace kotor_tool
 
         Friend WithEvents pnlRoot As Global.System.Windows.Forms.Panel
         Friend WithEvents pnlMainArea As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlResourceArea As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlBrowserContainer As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlBrowserBody As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlResourceDetails As Global.System.Windows.Forms.Panel
+        Friend WithEvents pnlViewHeader As Global.System.Windows.Forms.Panel
+        Friend WithEvents lblViewTitle As Global.System.Windows.Forms.Label
+        Friend WithEvents btnViewBack As Global.System.Windows.Forms.Button
+        Friend WithEvents btnViewForward As Global.System.Windows.Forms.Button
+        Friend WithEvents cmbViewMode As Global.System.Windows.Forms.ComboBox
+        Friend WithEvents txtResourceFilter As Global.System.Windows.Forms.TextBox
+        Friend WithEvents lblResourceCount As Global.System.Windows.Forms.Label
+        Friend WithEvents lvResourceBrowser As Global.System.Windows.Forms.ListView
+        Friend WithEvents lvResourceDetails As Global.System.Windows.Forms.ListView
+        Friend WithEvents imgResourceSmall As Global.System.Windows.Forms.ImageList
+        Friend WithEvents imgResourceLarge As Global.System.Windows.Forms.ImageList
         Friend WithEvents pnlActionPanel As Global.System.Windows.Forms.Panel
         Friend WithEvents lblActionHeader As Global.System.Windows.Forms.Label
         Friend WithEvents lblMainSeparator As Global.System.Windows.Forms.Label
@@ -100,9 +115,25 @@ Namespace kotor_tool
 
         <Global.System.Diagnostics.DebuggerStepThrough()> _
         Private Sub InitializeComponent()
+            Me.components = New System.ComponentModel.Container()
             Me.pnlRoot = New System.Windows.Forms.Panel()
             Me.pnlMainArea = New System.Windows.Forms.Panel()
+            Me.pnlResourceArea = New System.Windows.Forms.Panel()
+            Me.pnlBrowserContainer = New System.Windows.Forms.Panel()
+            Me.pnlBrowserBody = New System.Windows.Forms.Panel()
             Me.TreeView = New System.Windows.Forms.TreeView()
+            Me.lvResourceBrowser = New System.Windows.Forms.ListView()
+            Me.imgResourceLarge = New System.Windows.Forms.ImageList(Me.components)
+            Me.imgResourceSmall = New System.Windows.Forms.ImageList(Me.components)
+            Me.pnlViewHeader = New System.Windows.Forms.Panel()
+            Me.lblResourceCount = New System.Windows.Forms.Label()
+            Me.txtResourceFilter = New System.Windows.Forms.TextBox()
+            Me.cmbViewMode = New System.Windows.Forms.ComboBox()
+            Me.btnViewForward = New System.Windows.Forms.Button()
+            Me.btnViewBack = New System.Windows.Forms.Button()
+            Me.lblViewTitle = New System.Windows.Forms.Label()
+            Me.pnlResourceDetails = New System.Windows.Forms.Panel()
+            Me.lvResourceDetails = New System.Windows.Forms.ListView()
             Me.pnlActionPanel = New System.Windows.Forms.Panel()
             Me.Button4 = New System.Windows.Forms.Button()
             Me.btnCreateMapInfoBFD = New System.Windows.Forms.Button()
@@ -117,8 +148,8 @@ Namespace kotor_tool
             Me.btnToolText = New System.Windows.Forms.Button()
             Me.btnToolConversation = New System.Windows.Forms.Button()
             Me.btnTool2DA = New System.Windows.Forms.Button()
-            Me.ToolTip1 = New System.Windows.Forms.ToolTip()
-            Me.MainMenu1 = New System.Windows.Forms.MainMenu()
+            Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+            Me.MainMenu1 = New System.Windows.Forms.MainMenu(Me.components)
             Me.miFile = New System.Windows.Forms.MenuItem()
             Me.miManagePaths = New System.Windows.Forms.MenuItem()
             Me.miOpenGFFFile = New System.Windows.Forms.MenuItem()
@@ -155,17 +186,22 @@ Namespace kotor_tool
             Me.miOptions = New System.Windows.Forms.MenuItem()
             Me.miPlugins = New System.Windows.Forms.MenuItem()
             Me.miOpenPluginManager = New System.Windows.Forms.MenuItem()
+            Me.miCustomise = New System.Windows.Forms.MenuItem()
+            Me.miThemeEditor = New System.Windows.Forms.MenuItem()
             Me.miHelp = New System.Windows.Forms.MenuItem()
             Me.miBasicHelp = New System.Windows.Forms.MenuItem()
             Me.miCheckForUpdates = New System.Windows.Forms.MenuItem()
             Me.miRegisterSoftware = New System.Windows.Forms.MenuItem()
             Me.miAbout = New System.Windows.Forms.MenuItem()
-            Me.miCustomise = New System.Windows.Forms.MenuItem()
-            Me.miThemeEditor = New System.Windows.Forms.MenuItem()
             Me.tvCMenu = New System.Windows.Forms.ContextMenu()
             Me.cmiExtractForModuleEditing = New System.Windows.Forms.MenuItem()
             Me.pnlRoot.SuspendLayout()
             Me.pnlMainArea.SuspendLayout()
+            Me.pnlResourceArea.SuspendLayout()
+            Me.pnlBrowserContainer.SuspendLayout()
+            Me.pnlBrowserBody.SuspendLayout()
+            Me.pnlViewHeader.SuspendLayout()
+            Me.pnlResourceDetails.SuspendLayout()
             Me.pnlActionPanel.SuspendLayout()
             Me.pnlToolBar.SuspendLayout()
             Me.SuspendLayout()
@@ -180,21 +216,56 @@ Namespace kotor_tool
             Me.pnlRoot.Location = New System.Drawing.Point(0, 0)
             Me.pnlRoot.Name = "pnlRoot"
             Me.pnlRoot.Padding = New System.Windows.Forms.Padding(10)
-            Me.pnlRoot.Size = New System.Drawing.Size(610, 500)
+            Me.pnlRoot.Size = New System.Drawing.Size(854, 650)
             Me.pnlRoot.TabIndex = 0
             '
             'pnlMainArea
             '
             Me.pnlMainArea.BackColor = System.Drawing.Color.FromArgb(CType(CType(22, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(34, Byte), Integer))
             Me.pnlMainArea.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-            Me.pnlMainArea.Controls.Add(Me.TreeView)
+            Me.pnlMainArea.Controls.Add(Me.pnlResourceArea)
             Me.pnlMainArea.Controls.Add(Me.pnlActionPanel)
             Me.pnlMainArea.Dock = System.Windows.Forms.DockStyle.Fill
             Me.pnlMainArea.Location = New System.Drawing.Point(10, 48)
             Me.pnlMainArea.Name = "pnlMainArea"
             Me.pnlMainArea.Padding = New System.Windows.Forms.Padding(10)
-            Me.pnlMainArea.Size = New System.Drawing.Size(590, 442)
+            Me.pnlMainArea.Size = New System.Drawing.Size(834, 592)
             Me.pnlMainArea.TabIndex = 5
+            '
+            'pnlResourceArea
+            '
+            Me.pnlResourceArea.BackColor = System.Drawing.Color.Transparent
+            Me.pnlResourceArea.Controls.Add(Me.pnlBrowserContainer)
+            Me.pnlResourceArea.Controls.Add(Me.pnlResourceDetails)
+            Me.pnlResourceArea.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.pnlResourceArea.Location = New System.Drawing.Point(10, 10)
+            Me.pnlResourceArea.Name = "pnlResourceArea"
+            Me.pnlResourceArea.Size = New System.Drawing.Size(682, 570)
+            Me.pnlResourceArea.TabIndex = 8
+            '
+            'pnlBrowserContainer
+            '
+            Me.pnlBrowserContainer.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
+            Me.pnlBrowserContainer.Controls.Add(Me.pnlBrowserBody)
+            Me.pnlBrowserContainer.Controls.Add(Me.pnlViewHeader)
+            Me.pnlBrowserContainer.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.pnlBrowserContainer.Location = New System.Drawing.Point(0, 0)
+            Me.pnlBrowserContainer.Name = "pnlBrowserContainer"
+            Me.pnlBrowserContainer.Padding = New System.Windows.Forms.Padding(6, 0, 6, 6)
+            Me.pnlBrowserContainer.Size = New System.Drawing.Size(682, 438)
+            Me.pnlBrowserContainer.TabIndex = 7
+            '
+            'pnlBrowserBody
+            '
+            Me.pnlBrowserBody.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
+            Me.pnlBrowserBody.Controls.Add(Me.TreeView)
+            Me.pnlBrowserBody.Controls.Add(Me.lvResourceBrowser)
+            Me.pnlBrowserBody.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.pnlBrowserBody.Location = New System.Drawing.Point(6, 62)
+            Me.pnlBrowserBody.Name = "pnlBrowserBody"
+            Me.pnlBrowserBody.Padding = New System.Windows.Forms.Padding(4)
+            Me.pnlBrowserBody.Size = New System.Drawing.Size(670, 370)
+            Me.pnlBrowserBody.TabIndex = 5
             '
             'TreeView
             '
@@ -203,10 +274,160 @@ Namespace kotor_tool
             Me.TreeView.Dock = System.Windows.Forms.DockStyle.Fill
             Me.TreeView.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.TreeView.HideSelection = False
-            Me.TreeView.Location = New System.Drawing.Point(10, 10)
+            Me.TreeView.Location = New System.Drawing.Point(4, 4)
             Me.TreeView.Name = "TreeView"
-            Me.TreeView.Size = New System.Drawing.Size(438, 420)
+            Me.TreeView.Size = New System.Drawing.Size(662, 362)
             Me.TreeView.TabIndex = 1
+            '
+            'lvResourceBrowser
+            '
+            Me.lvResourceBrowser.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
+            Me.lvResourceBrowser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.lvResourceBrowser.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.lvResourceBrowser.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.lvResourceBrowser.FullRowSelect = True
+            Me.lvResourceBrowser.HideSelection = False
+            Me.lvResourceBrowser.LargeImageList = Me.imgResourceLarge
+            Me.lvResourceBrowser.Location = New System.Drawing.Point(4, 4)
+            Me.lvResourceBrowser.MultiSelect = False
+            Me.lvResourceBrowser.Name = "lvResourceBrowser"
+            Me.lvResourceBrowser.ShowItemToolTips = True
+            Me.lvResourceBrowser.Size = New System.Drawing.Size(662, 362)
+            Me.lvResourceBrowser.SmallImageList = Me.imgResourceSmall
+            Me.lvResourceBrowser.TabIndex = 3
+            Me.lvResourceBrowser.UseCompatibleStateImageBehavior = False
+            Me.lvResourceBrowser.View = System.Windows.Forms.View.List
+            Me.lvResourceBrowser.Visible = False
+            '
+            'imgResourceLarge
+            '
+            Me.imgResourceLarge.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit
+            Me.imgResourceLarge.ImageSize = New System.Drawing.Size(48, 48)
+            Me.imgResourceLarge.TransparentColor = System.Drawing.Color.Transparent
+            '
+            'imgResourceSmall
+            '
+            Me.imgResourceSmall.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit
+            Me.imgResourceSmall.ImageSize = New System.Drawing.Size(16, 16)
+            Me.imgResourceSmall.TransparentColor = System.Drawing.Color.Transparent
+            '
+            'pnlViewHeader
+            '
+            Me.pnlViewHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(44, Byte), Integer))
+            Me.pnlViewHeader.Controls.Add(Me.lblResourceCount)
+            Me.pnlViewHeader.Controls.Add(Me.txtResourceFilter)
+            Me.pnlViewHeader.Controls.Add(Me.cmbViewMode)
+            Me.pnlViewHeader.Controls.Add(Me.btnViewForward)
+            Me.pnlViewHeader.Controls.Add(Me.btnViewBack)
+            Me.pnlViewHeader.Controls.Add(Me.lblViewTitle)
+            Me.pnlViewHeader.Dock = System.Windows.Forms.DockStyle.Top
+            Me.pnlViewHeader.Location = New System.Drawing.Point(6, 0)
+            Me.pnlViewHeader.Name = "pnlViewHeader"
+            Me.pnlViewHeader.Padding = New System.Windows.Forms.Padding(0, 4, 0, 4)
+            Me.pnlViewHeader.Size = New System.Drawing.Size(670, 62)
+            Me.pnlViewHeader.TabIndex = 2
+            '
+            'lblResourceCount
+            '
+            Me.lblResourceCount.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.lblResourceCount.BackColor = System.Drawing.Color.Transparent
+            Me.lblResourceCount.ForeColor = System.Drawing.Color.FromArgb(CType(CType(175, Byte), Integer), CType(CType(185, Byte), Integer), CType(CType(196, Byte), Integer))
+            Me.lblResourceCount.Location = New System.Drawing.Point(602, 30)
+            Me.lblResourceCount.Name = "lblResourceCount"
+            Me.lblResourceCount.Size = New System.Drawing.Size(64, 19)
+            Me.lblResourceCount.TabIndex = 3
+            Me.lblResourceCount.Text = "0 items"
+            Me.lblResourceCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+            '
+            'txtResourceFilter
+            '
+            Me.txtResourceFilter.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.txtResourceFilter.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
+            Me.txtResourceFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.txtResourceFilter.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.txtResourceFilter.Location = New System.Drawing.Point(360, 31)
+            Me.txtResourceFilter.Name = "txtResourceFilter"
+            Me.txtResourceFilter.Size = New System.Drawing.Size(236, 20)
+            Me.txtResourceFilter.TabIndex = 2
+            '
+            'cmbViewMode
+            '
+            Me.cmbViewMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+            Me.cmbViewMode.FormattingEnabled = True
+            Me.cmbViewMode.Location = New System.Drawing.Point(111, 31)
+            Me.cmbViewMode.Name = "cmbViewMode"
+            Me.cmbViewMode.Size = New System.Drawing.Size(243, 21)
+            Me.cmbViewMode.TabIndex = 1
+            '
+            'btnViewForward
+            '
+            Me.btnViewForward.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnViewForward.Enabled = False
+            Me.btnViewForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnViewForward.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnViewForward.Location = New System.Drawing.Point(58, 31)
+            Me.btnViewForward.Name = "btnViewForward"
+            Me.btnViewForward.Size = New System.Drawing.Size(47, 21)
+            Me.btnViewForward.TabIndex = 5
+            Me.btnViewForward.Text = ">"
+            Me.btnViewForward.UseVisualStyleBackColor = False
+            '
+            'btnViewBack
+            '
+            Me.btnViewBack.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnViewBack.Enabled = False
+            Me.btnViewBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnViewBack.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnViewBack.Location = New System.Drawing.Point(5, 31)
+            Me.btnViewBack.Name = "btnViewBack"
+            Me.btnViewBack.Size = New System.Drawing.Size(47, 21)
+            Me.btnViewBack.TabIndex = 4
+            Me.btnViewBack.Text = "<"
+            Me.btnViewBack.UseVisualStyleBackColor = False
+            '
+            'lblViewTitle
+            '
+            Me.lblViewTitle.BackColor = System.Drawing.Color.Transparent
+            Me.lblViewTitle.Font = New System.Drawing.Font("Segoe UI", 12.75!)
+            Me.lblViewTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(210, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(112, Byte), Integer))
+            Me.lblViewTitle.Location = New System.Drawing.Point(1, 5)
+            Me.lblViewTitle.Name = "lblViewTitle"
+            Me.lblViewTitle.Size = New System.Drawing.Size(545, 23)
+            Me.lblViewTitle.TabIndex = 0
+            Me.lblViewTitle.Text = "Resources"
+            Me.lblViewTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+            '
+            'pnlResourceDetails
+            '
+            Me.pnlResourceDetails.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
+            Me.pnlResourceDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.pnlResourceDetails.Controls.Add(Me.lvResourceDetails)
+            Me.pnlResourceDetails.Dock = System.Windows.Forms.DockStyle.Bottom
+            Me.pnlResourceDetails.Location = New System.Drawing.Point(0, 438)
+            Me.pnlResourceDetails.Name = "pnlResourceDetails"
+            Me.pnlResourceDetails.Padding = New System.Windows.Forms.Padding(6)
+            Me.pnlResourceDetails.Size = New System.Drawing.Size(682, 132)
+            Me.pnlResourceDetails.TabIndex = 4
+            '
+            'lvResourceDetails
+            '
+            Me.lvResourceDetails.BackColor = System.Drawing.Color.FromArgb(CType(CType(10, Byte), Integer), CType(CType(14, Byte), Integer), CType(CType(20, Byte), Integer))
+            Me.lvResourceDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.lvResourceDetails.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.lvResourceDetails.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.lvResourceDetails.FullRowSelect = True
+            Me.lvResourceDetails.HideSelection = False
+            Me.lvResourceDetails.LargeImageList = Me.imgResourceLarge
+            Me.lvResourceDetails.Location = New System.Drawing.Point(6, 6)
+            Me.lvResourceDetails.MultiSelect = False
+            Me.lvResourceDetails.Name = "lvResourceDetails"
+            Me.lvResourceDetails.ShowItemToolTips = True
+            Me.lvResourceDetails.Size = New System.Drawing.Size(668, 118)
+            Me.lvResourceDetails.SmallImageList = Me.imgResourceSmall
+            Me.lvResourceDetails.TabIndex = 0
+            Me.lvResourceDetails.UseCompatibleStateImageBehavior = False
+            Me.lvResourceDetails.View = System.Windows.Forms.View.Details
             '
             'pnlActionPanel
             '
@@ -220,10 +441,10 @@ Namespace kotor_tool
             Me.pnlActionPanel.Controls.Add(Me.btnExtract)
             Me.pnlActionPanel.Controls.Add(Me.lblActionHeader)
             Me.pnlActionPanel.Dock = System.Windows.Forms.DockStyle.Right
-            Me.pnlActionPanel.Location = New System.Drawing.Point(448, 10)
+            Me.pnlActionPanel.Location = New System.Drawing.Point(692, 10)
             Me.pnlActionPanel.Name = "pnlActionPanel"
             Me.pnlActionPanel.Padding = New System.Windows.Forms.Padding(10)
-            Me.pnlActionPanel.Size = New System.Drawing.Size(130, 420)
+            Me.pnlActionPanel.Size = New System.Drawing.Size(130, 570)
             Me.pnlActionPanel.TabIndex = 6
             '
             'Button4
@@ -323,7 +544,7 @@ Namespace kotor_tool
             Me.lblMainSeparator.Dock = System.Windows.Forms.DockStyle.Top
             Me.lblMainSeparator.Location = New System.Drawing.Point(10, 46)
             Me.lblMainSeparator.Name = "lblMainSeparator"
-            Me.lblMainSeparator.Size = New System.Drawing.Size(590, 2)
+            Me.lblMainSeparator.Size = New System.Drawing.Size(834, 2)
             Me.lblMainSeparator.TabIndex = 10
             '
             'pnlToolBar
@@ -336,7 +557,7 @@ Namespace kotor_tool
             Me.pnlToolBar.Dock = System.Windows.Forms.DockStyle.Top
             Me.pnlToolBar.Location = New System.Drawing.Point(10, 10)
             Me.pnlToolBar.Name = "pnlToolBar"
-            Me.pnlToolBar.Size = New System.Drawing.Size(590, 36)
+            Me.pnlToolBar.Size = New System.Drawing.Size(834, 36)
             Me.pnlToolBar.TabIndex = 4
             '
             'btnToolERF
@@ -603,6 +824,17 @@ Namespace kotor_tool
             Me.miOpenPluginManager.Index = 0
             Me.miOpenPluginManager.Text = "Open &Manager"
             '
+            'miCustomise
+            '
+            Me.miCustomise.Index = 3
+            Me.miCustomise.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miThemeEditor})
+            Me.miCustomise.Text = "&Customize"
+            '
+            'miThemeEditor
+            '
+            Me.miThemeEditor.Index = 0
+            Me.miThemeEditor.Text = "Theme Editor"
+            '
             'miHelp
             '
             Me.miHelp.Index = 4
@@ -630,17 +862,6 @@ Namespace kotor_tool
             Me.miAbout.Index = 3
             Me.miAbout.Text = "&About..."
             '
-            'miCustomise
-            '
-            Me.miCustomise.Index = 3
-            Me.miCustomise.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miThemeEditor})
-            Me.miCustomise.Text = "&Customize"
-            '
-            'miThemeEditor
-            '
-            Me.miThemeEditor.Index = 0
-            Me.miThemeEditor.Text = "Theme Editor"
-            '
             'tvCMenu
             '
             Me.tvCMenu.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.cmiExtractForModuleEditing})
@@ -654,15 +875,21 @@ Namespace kotor_tool
             '
             Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
             Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
-            Me.ClientSize = New System.Drawing.Size(610, 500)
+            Me.ClientSize = New System.Drawing.Size(854, 650)
             Me.Controls.Add(Me.pnlRoot)
             Me.Menu = Me.MainMenu1
-            Me.MinimumSize = New System.Drawing.Size(430, 380)
+            Me.MinimumSize = New System.Drawing.Size(870, 710)
             Me.Name = "frmMain"
             Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show
             Me.Text = "Kotor Tool"
             Me.pnlRoot.ResumeLayout(False)
             Me.pnlMainArea.ResumeLayout(False)
+            Me.pnlResourceArea.ResumeLayout(False)
+            Me.pnlBrowserContainer.ResumeLayout(False)
+            Me.pnlBrowserBody.ResumeLayout(False)
+            Me.pnlViewHeader.ResumeLayout(False)
+            Me.pnlViewHeader.PerformLayout()
+            Me.pnlResourceDetails.ResumeLayout(False)
             Me.pnlActionPanel.ResumeLayout(False)
             Me.pnlToolBar.ResumeLayout(False)
             Me.ResumeLayout(False)
