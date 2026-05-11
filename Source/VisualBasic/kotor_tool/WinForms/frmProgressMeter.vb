@@ -18,6 +18,7 @@ Namespace kotor_tool
         Private _startedAt As DateTime
         Private _elapsedTimer As Timer
         Private _theme As KotorTheme
+        Private _isClosed As Boolean
 
         Public Event CancelRequested(ByVal sender As Object, ByVal e As EventArgs)
 
@@ -27,6 +28,7 @@ Namespace kotor_tool
 
             Me._cancelRequested = False
             Me._detailsVisible = True
+            Me._isClosed = False
             Me._startedAt = DateTime.Now
 
             Me.pnlDetailsHost.Visible = True
@@ -41,6 +43,7 @@ Namespace kotor_tool
         End Sub
 
         Protected Overrides Sub OnFormClosed(ByVal e As FormClosedEventArgs)
+            Me._isClosed = True
             Me.CleanupRuntimeObjects()
             MyBase.OnFormClosed(e)
         End Sub
@@ -81,13 +84,17 @@ Namespace kotor_tool
                 Return Me.lblTitle.Text
             End Get
             Set(ByVal value As String)
+                If Not Me.CanUpdateControls() Then
+                    Return
+                End If
+
                 If value Is Nothing Then
                     value = String.Empty
                 End If
 
                 Me.lblTitle.Text = value
                 Me.Text = value
-                Application.DoEvents()
+                Me.SafeDoEvents()
             End Set
         End Property
 
@@ -96,17 +103,25 @@ Namespace kotor_tool
                 Return Me.lblSubtitle.Text
             End Get
             Set(ByVal value As String)
+                If Not Me.CanUpdateControls() Then
+                    Return
+                End If
+
                 If value Is Nothing Then
                     value = String.Empty
                 End If
 
                 Me.lblSubtitle.Text = value
-                Application.DoEvents()
+                Me.SafeDoEvents()
             End Set
         End Property
 
         Public WriteOnly Property Operation() As String
             Set(ByVal value As String)
+                If Not Me.CanUpdateControls() Then
+                    Return
+                End If
+
                 If value Is Nothing Then
                     value = String.Empty
                 End If
@@ -116,13 +131,17 @@ Namespace kotor_tool
                 If value.Length > 0 Then
                     Me.AppendDetail("Operation: " & value)
                 Else
-                    Application.DoEvents()
+                    Me.SafeDoEvents()
                 End If
             End Set
         End Property
 
         Public WriteOnly Property progress() As Integer
             Set(ByVal value As Integer)
+                If Not Me.CanUpdateControls() Then
+                    Return
+                End If
+
                 If value < Me.pbar.Minimum Then
                     value = Me.pbar.Minimum
                 End If
@@ -133,42 +152,58 @@ Namespace kotor_tool
 
                 Me.pbar.Value = value
                 Me.UpdatePercentLabel()
-                Application.DoEvents()
+                Me.SafeDoEvents()
             End Set
         End Property
 
         Public WriteOnly Property stepAmount() As Integer
             Set(ByVal value As Integer)
+                If Not Me.CanUpdateControls() Then
+                    Return
+                End If
+
                 Me.pbar.[Step] = value
             End Set
         End Property
 
         Public WriteOnly Property message() As String
             Set(ByVal value As String)
+                If Not Me.CanUpdateControls() Then
+                    Return
+                End If
+
                 Me.lblMsg.Text = value
 
                 If value IsNot Nothing AndAlso value.Length > 0 Then
                     Me.AppendDetail("Message: " & value)
                 Else
-                    Application.DoEvents()
+                    Me.SafeDoEvents()
                 End If
             End Set
         End Property
 
         Public WriteOnly Property status() As String
             Set(ByVal value As String)
+                If Not Me.CanUpdateControls() Then
+                    Return
+                End If
+
                 Me.lblStatus.Text = value
 
                 If value IsNot Nothing AndAlso value.Length > 0 Then
                     Me.AppendDetail("Status: " & value)
                 Else
-                    Application.DoEvents()
+                    Me.SafeDoEvents()
                 End If
             End Set
         End Property
 
         Public WriteOnly Property maxvalue() As Integer
             Set(ByVal value As Integer)
+                If Not Me.CanUpdateControls() Then
+                    Return
+                End If
+
                 If value < 1 Then
                     value = 1
                 End If
@@ -180,11 +215,15 @@ Namespace kotor_tool
                 End If
 
                 Me.UpdatePercentLabel()
-                Application.DoEvents()
+                Me.SafeDoEvents()
             End Set
         End Property
 
         Public Sub stepUp()
+            If Not Me.CanUpdateControls() Then
+                Return
+            End If
+
             If Me.pbar.Value + Me.pbar.[Step] > Me.pbar.Maximum Then
                 Me.pbar.Value = Me.pbar.Maximum
             Else
@@ -192,10 +231,14 @@ Namespace kotor_tool
             End If
 
             Me.UpdatePercentLabel()
-            Application.DoEvents()
+            Me.SafeDoEvents()
         End Sub
 
         Public Sub AppendDetail(ByVal text As String)
+            If Not Me.CanUpdateControls() OrElse Me.tbDetails Is Nothing OrElse Me.tbDetails.IsDisposed Then
+                Return
+            End If
+
             If text Is Nothing Then
                 text = String.Empty
             End If
@@ -207,12 +250,16 @@ Namespace kotor_tool
             Me.tbDetails.AppendText("[" & DateTime.Now.ToString("HH:mm:ss") & "] " & text)
             Me.tbDetails.SelectionStart = Me.tbDetails.TextLength
             Me.tbDetails.ScrollToCaret()
-            Application.DoEvents()
+            Me.SafeDoEvents()
         End Sub
 
         Public Sub ClearDetails()
+            If Not Me.CanUpdateControls() OrElse Me.tbDetails Is Nothing OrElse Me.tbDetails.IsDisposed Then
+                Return
+            End If
+
             Me.tbDetails.Clear()
-            Application.DoEvents()
+            Me.SafeDoEvents()
         End Sub
 
         Public Sub ShowDetailsPanel()
@@ -237,13 +284,21 @@ Namespace kotor_tool
         End Sub
 
         Private Sub ElapsedTimer_Tick(ByVal sender As Object, ByVal e As EventArgs)
+            If Not Me.CanUpdateControls() Then
+                Return
+            End If
+
             Me.UpdateElapsedLabel()
         End Sub
 
         Private Sub SetDetailsVisible(ByVal visible As Boolean)
+            If Not Me.CanUpdateControls() Then
+                Return
+            End If
+
             Me._detailsVisible = True
             Me.pnlDetailsHost.Visible = True
-            Application.DoEvents()
+            Me.SafeDoEvents()
         End Sub
 
         Private Sub LoadAndApplyTheme()
@@ -317,6 +372,10 @@ Namespace kotor_tool
         End Sub
 
         Private Sub UpdatePercentLabel()
+            If Not Me.CanUpdateControls() Then
+                Return
+            End If
+
             Dim range As Integer = Me.pbar.Maximum - Me.pbar.Minimum
             Dim percent As Integer = 0
 
@@ -336,6 +395,10 @@ Namespace kotor_tool
         End Sub
 
         Private Sub UpdateElapsedLabel()
+            If Not Me.CanUpdateControls() Then
+                Return
+            End If
+
             Dim elapsed As TimeSpan = DateTime.Now.Subtract(Me._startedAt)
 
             If elapsed.TotalHours >= 1.0R Then
@@ -352,6 +415,25 @@ Namespace kotor_tool
                 Me._elapsedTimer.Dispose()
                 Me._elapsedTimer = Nothing
             End If
+        End Sub
+
+        Private Function CanUpdateControls() As Boolean
+            If Me._isClosed OrElse Me.IsDisposed OrElse Me.Disposing Then
+                Return False
+            End If
+
+            Return True
+        End Function
+
+        Private Sub SafeDoEvents()
+            If Not Me.CanUpdateControls() Then
+                Return
+            End If
+
+            Try
+                Application.DoEvents()
+            Catch ex As ObjectDisposedException
+            End Try
         End Sub
 
     End Class

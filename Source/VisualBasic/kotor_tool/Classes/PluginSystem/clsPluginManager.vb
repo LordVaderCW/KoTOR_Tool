@@ -56,6 +56,7 @@ Namespace kotor_tool
             Public ResRef As String
             Public ExtensionValue As String
             Public ActionValue As String
+            Public ExtraArguments As String
         End Class
 
         Public Sub New()
@@ -435,7 +436,8 @@ Namespace kotor_tool
                                       ByVal filename As String,
                                       ByVal resref As String,
                                       ByVal extensionValue As String,
-                                      Optional ByVal actionValue As String = "") As clsPluginExecutionResult
+                                      Optional ByVal actionValue As String = "",
+                                      Optional ByVal extraArguments As String = "") As clsPluginExecutionResult
 
             Dim request As clsPluginExecutionRequest = New clsPluginExecutionRequest()
             request.Plugin = plugin
@@ -446,6 +448,7 @@ Namespace kotor_tool
             request.ResRef = resref
             request.ExtensionValue = extensionValue
             request.ActionValue = actionValue
+            request.ExtraArguments = extraArguments
 
             Dim worker As BackgroundWorker = New BackgroundWorker()
             Dim completed As AutoResetEvent = New AutoResetEvent(False)
@@ -499,6 +502,7 @@ Namespace kotor_tool
             Dim resref As String = request.ResRef
             Dim extensionValue As String = request.ExtensionValue
             Dim actionValue As String = request.ActionValue
+            Dim extraArguments As String = request.ExtraArguments
 
             Dim result As clsPluginExecutionResult = New clsPluginExecutionResult()
             result.InputPath = inputPath
@@ -559,7 +563,8 @@ Namespace kotor_tool
                                                                          filename,
                                                                          resref,
                                                                          extensionValue,
-                                                                         actionValue)
+                                                                         actionValue,
+                                                                         extraArguments)
 
             result.ExecutablePath = resolvedExecutable
             result.Arguments = resolvedArguments
@@ -738,10 +743,15 @@ Namespace kotor_tool
                                                  ByVal filename As String,
                                                  ByVal resref As String,
                                                  ByVal extensionValue As String,
-                                                 ByVal actionValue As String) As String
+                                                 ByVal actionValue As String,
+                                                 Optional ByVal extraArguments As String = "") As String
 
             If arguments Is Nothing Then
                 arguments = ""
+            End If
+
+            If extraArguments Is Nothing Then
+                extraArguments = ""
             End If
 
             Dim gameName As String = "k1"
@@ -758,20 +768,27 @@ Namespace kotor_tool
             End If
 
             Dim result As String = arguments
+            Dim hadExtraArgumentsPlaceholder As Boolean = (result.IndexOf("{extra_args}", StringComparison.OrdinalIgnoreCase) >= 0)
             result = result.Replace("{input}", inputPath)
             result = result.Replace("{output}", outputPath)
             result = result.Replace("{game}", gameNumber.ToString())
+            result = result.Replace("{game_number}", gameNumber.ToString())
             result = result.Replace("{game_name}", gameName)
             result = result.Replace("{filename}", filename)
             result = result.Replace("{resref}", resref)
             result = result.Replace("{extension}", normalizedExtension)
             result = result.Replace("{action}", normalizedAction)
+            result = result.Replace("{extra_args}", extraArguments.Trim())
             result = result.Replace("{plugin_dir}", plugin.PluginDirectory)
             result = result.Replace("{working_dir}", plugin.PluginDirectory)
             result = result.Replace("{app_dir}", plugin.AppDirectory)
             result = result.Replace("{config_dir}", plugin.ConfigDirectory)
             result = result.Replace("{runtime_dir}", plugin.RuntimeDirectory)
             result = result.Replace("{tools_dir}", plugin.ToolsDirectory)
+
+            If Not hadExtraArgumentsPlaceholder AndAlso extraArguments.Trim().Length > 0 Then
+                result = extraArguments.Trim() & " " & result
+            End If
 
             Return result
         End Function

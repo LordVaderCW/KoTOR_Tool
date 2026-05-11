@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Plugin>
+	<Id>mdlops</Id>
+	<Name>MDLOps</Name>
+	<Author>Chuck Chargin Jr. / JdNoa / VP / Fair Strides / ndix UR</Author>
+	<Version>1.0.2</Version>
+	<Type>ExternalTool</Type>
+	<Enabled>True</Enabled>
+
+	<Description>
+		Compiles and decompiles KotOR and TSL MDL/MDX models and supported walkmesh files using MDLOps.
+	</Description>
+
+	<Compatibility>
+		<Application>KoTOR Tool Restoration Project</Application>
+		<MinimumAppVersion>1.0.3.3</MinimumAppVersion>
+		<Framework>NET20</Framework>
+		<Platform>Windows</Platform>
+	</Compatibility>
+
+	<Project>
+		<GitHubRepo>https://github.com/ndixUR/mdlops</GitHubRepo>
+		<GitHubBranch>v1.0.2</GitHubBranch>
+		<Website>https://github.com/ndixUR/mdlops</Website>
+		<DownloadUrl>https://github.com/ndixUR/mdlops/releases/download/v1.0.2/mdlops-1.0.2.7z</DownloadUrl>
+	</Project>
+
+	<Layout>
+		<Folder name="app">.</Folder>
+		<Folder name="config">.</Folder>
+		<Folder name="runtime">.</Folder>
+		<Folder name="tools">.</Folder>
+	</Layout>
+
+	<Handles>
+		<Resource extension="mdl" action="decompile" description="Convert binary MDL/MDX model files to ASCII MDL." />
+		<Resource extension="mdl" action="compile" description="Compile ASCII MDL files back to binary MDL/MDX." />
+		<Resource extension="wok" action="decompile" description="Convert walkmesh files supported by MDLOps." />
+		<Resource extension="wok" action="compile" description="Compile walkmesh files supported by MDLOps." />
+		<Resource extension="pwk" action="decompile" description="Convert placeable walkmesh files supported by MDLOps." />
+		<Resource extension="pwk" action="compile" description="Compile placeable walkmesh files supported by MDLOps." />
+		<Resource extension="dwk" action="decompile" description="Convert door walkmesh files supported by MDLOps." />
+		<Resource extension="dwk" action="compile" description="Compile door walkmesh files supported by MDLOps." />
+	</Handles>
+
+	<Files>
+		<File required="true">plugin.xml</File>
+		<File required="true">command.ini</File>
+		<File required="true">mdlops.exe</File>
+		<File required="true">defaults.json</File>
+		<File required="true">MDLOpsM.pm</File>
+		<File required="true">LICENSE</File>
+		<File required="true">readme_MDLOps.txt</File>
+
+		<File required="false">mdlops.pl</File>
+		<File required="false">icon.bmp</File>
+		<File required="false">README.md</File>
+		<File required="false">KotOR_Tutorial.txt</File>
+		<File required="false">Quick_tutorial.txt</File>
+		<File required="false">replacer_tutorial.txt</File>
+	</Files>
+
+	<CommandIni>command.ini</CommandIni>
+</Plugin>

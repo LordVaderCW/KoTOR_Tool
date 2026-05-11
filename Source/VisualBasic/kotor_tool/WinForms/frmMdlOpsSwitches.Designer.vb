@@ -42,6 +42,10 @@ Namespace kotor_tool
         Friend WithEvents Label15 As Global.System.Windows.Forms.Label
         Friend WithEvents chkbMdlAlignDataOnly As Global.System.Windows.Forms.CheckBox
         Friend WithEvents chkbExportMdlAlignData As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkbExportTextures As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents chkbKeepIntermediateFiles As Global.System.Windows.Forms.CheckBox
+        Friend WithEvents cmbxOutputFormat As Global.System.Windows.Forms.ComboBox
+        Friend WithEvents lblDetectedModelCount As Global.System.Windows.Forms.Label
 
         Friend WithEvents pnlRoot As Global.System.Windows.Forms.Panel
         Friend WithEvents pnlHeader As Global.System.Windows.Forms.Panel
@@ -71,6 +75,9 @@ Namespace kotor_tool
             Me.pnlBody = New System.Windows.Forms.Panel()
             Me.Label4 = New System.Windows.Forms.Label()
             Me.Panel1 = New System.Windows.Forms.Panel()
+            Me.lblDetectedModelCount = New System.Windows.Forms.Label()
+            Me.cmbxOutputFormat = New System.Windows.Forms.ComboBox()
+            Me.Label5 = New System.Windows.Forms.Label()
             Me.Label3 = New System.Windows.Forms.Label()
             Me.nudNumberToExtract = New System.Windows.Forms.NumericUpDown()
             Me.Label2 = New System.Windows.Forms.Label()
@@ -80,6 +87,8 @@ Namespace kotor_tool
             Me.chkbCleanWorkingDir = New System.Windows.Forms.CheckBox()
             Me.chkbConvertSkin = New System.Windows.Forms.CheckBox()
             Me.chkbEachModelInOwnDir = New System.Windows.Forms.CheckBox()
+            Me.chkbExportTextures = New System.Windows.Forms.CheckBox()
+            Me.chkbKeepIntermediateFiles = New System.Windows.Forms.CheckBox()
             Me.chkbExportMdlAlignData = New System.Windows.Forms.CheckBox()
             Me.chkbMdlAlignDataOnly = New System.Windows.Forms.CheckBox()
             Me.pnlPath = New System.Windows.Forms.Panel()
@@ -148,6 +157,9 @@ Namespace kotor_tool
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
             Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(22, Byte), Integer), CType(CType(28, Byte), Integer))
             Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.Panel1.Controls.Add(Me.lblDetectedModelCount)
+            Me.Panel1.Controls.Add(Me.cmbxOutputFormat)
+            Me.Panel1.Controls.Add(Me.Label5)
             Me.Panel1.Controls.Add(Me.Label3)
             Me.Panel1.Controls.Add(Me.nudNumberToExtract)
             Me.Panel1.Controls.Add(Me.Label2)
@@ -155,6 +167,38 @@ Namespace kotor_tool
             Me.Panel1.Name = "Panel1"
             Me.Panel1.Size = New System.Drawing.Size(260, 309)
             Me.Panel1.TabIndex = 3
+            '
+            'lblDetectedModelCount
+            '
+            Me.lblDetectedModelCount.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.lblDetectedModelCount.ForeColor = System.Drawing.SystemColors.Control
+            Me.lblDetectedModelCount.Location = New System.Drawing.Point(23, 90)
+            Me.lblDetectedModelCount.Name = "lblDetectedModelCount"
+            Me.lblDetectedModelCount.Size = New System.Drawing.Size(215, 20)
+            Me.lblDetectedModelCount.TabIndex = 7
+            Me.lblDetectedModelCount.Text = "Detected models: 1"
+            Me.lblDetectedModelCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+            '
+            'cmbxOutputFormat
+            '
+            Me.cmbxOutputFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+            Me.cmbxOutputFormat.FormattingEnabled = True
+            Me.cmbxOutputFormat.Items.AddRange(New Object() {"MDLOps ASCII MDL", "Binary MDL/MDX only", "OBJ Export (planned)"})
+            Me.cmbxOutputFormat.Location = New System.Drawing.Point(23, 145)
+            Me.cmbxOutputFormat.Name = "cmbxOutputFormat"
+            Me.cmbxOutputFormat.Size = New System.Drawing.Size(215, 21)
+            Me.cmbxOutputFormat.TabIndex = 6
+            '
+            'Label5
+            '
+            Me.Label5.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label5.ForeColor = System.Drawing.SystemColors.Control
+            Me.Label5.Location = New System.Drawing.Point(20, 122)
+            Me.Label5.Name = "Label5"
+            Me.Label5.Size = New System.Drawing.Size(215, 20)
+            Me.Label5.TabIndex = 5
+            Me.Label5.Text = "Output Format:"
+            Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
             '
             'Label3
             '
@@ -206,6 +250,8 @@ Namespace kotor_tool
             Me.pnlOptions.Controls.Add(Me.chkbCleanWorkingDir)
             Me.pnlOptions.Controls.Add(Me.chkbConvertSkin)
             Me.pnlOptions.Controls.Add(Me.chkbEachModelInOwnDir)
+            Me.pnlOptions.Controls.Add(Me.chkbExportTextures)
+            Me.pnlOptions.Controls.Add(Me.chkbKeepIntermediateFiles)
             Me.pnlOptions.Controls.Add(Me.chkbExportMdlAlignData)
             Me.pnlOptions.Controls.Add(Me.chkbMdlAlignDataOnly)
             Me.pnlOptions.Location = New System.Drawing.Point(14, 14)
@@ -284,16 +330,42 @@ Namespace kotor_tool
             Me.chkbEachModelInOwnDir.Text = "Directory Per .MDL Model:"
             Me.chkbEachModelInOwnDir.UseVisualStyleBackColor = False
             '
+            'chkbExportTextures
+            '
+            Me.chkbExportTextures.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+            Me.chkbExportTextures.Checked = True
+            Me.chkbExportTextures.CheckState = System.Windows.Forms.CheckState.Checked
+            Me.chkbExportTextures.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.chkbExportTextures.ForeColor = System.Drawing.SystemColors.Control
+            Me.chkbExportTextures.Location = New System.Drawing.Point(22, 152)
+            Me.chkbExportTextures.Name = "chkbExportTextures"
+            Me.chkbExportTextures.Size = New System.Drawing.Size(215, 20)
+            Me.chkbExportTextures.TabIndex = 4
+            Me.chkbExportTextures.Text = "Export Related Textures:"
+            Me.chkbExportTextures.UseVisualStyleBackColor = True
+            '
+            'chkbKeepIntermediateFiles
+            '
+            Me.chkbKeepIntermediateFiles.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+            Me.chkbKeepIntermediateFiles.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.chkbKeepIntermediateFiles.ForeColor = System.Drawing.SystemColors.Control
+            Me.chkbKeepIntermediateFiles.Location = New System.Drawing.Point(22, 180)
+            Me.chkbKeepIntermediateFiles.Name = "chkbKeepIntermediateFiles"
+            Me.chkbKeepIntermediateFiles.Size = New System.Drawing.Size(215, 20)
+            Me.chkbKeepIntermediateFiles.TabIndex = 7
+            Me.chkbKeepIntermediateFiles.Text = "Keep Intermediate Files:"
+            Me.chkbKeepIntermediateFiles.UseVisualStyleBackColor = True
+            '
             'chkbExportMdlAlignData
             '
             Me.chkbExportMdlAlignData.BackColor = System.Drawing.Color.Transparent
             Me.chkbExportMdlAlignData.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
             Me.chkbExportMdlAlignData.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbExportMdlAlignData.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.chkbExportMdlAlignData.Location = New System.Drawing.Point(22, 152)
+            Me.chkbExportMdlAlignData.Location = New System.Drawing.Point(22, 224)
             Me.chkbExportMdlAlignData.Name = "chkbExportMdlAlignData"
             Me.chkbExportMdlAlignData.Size = New System.Drawing.Size(215, 20)
-            Me.chkbExportMdlAlignData.TabIndex = 5
+            Me.chkbExportMdlAlignData.TabIndex = 8
             Me.chkbExportMdlAlignData.Text = "Extract Model Alignment Data:"
             Me.chkbExportMdlAlignData.UseVisualStyleBackColor = False
             Me.chkbExportMdlAlignData.Visible = False
@@ -304,10 +376,10 @@ Namespace kotor_tool
             Me.chkbMdlAlignDataOnly.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
             Me.chkbMdlAlignDataOnly.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbMdlAlignDataOnly.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.chkbMdlAlignDataOnly.Location = New System.Drawing.Point(22, 176)
+            Me.chkbMdlAlignDataOnly.Location = New System.Drawing.Point(22, 248)
             Me.chkbMdlAlignDataOnly.Name = "chkbMdlAlignDataOnly"
             Me.chkbMdlAlignDataOnly.Size = New System.Drawing.Size(215, 20)
-            Me.chkbMdlAlignDataOnly.TabIndex = 6
+            Me.chkbMdlAlignDataOnly.TabIndex = 9
             Me.chkbMdlAlignDataOnly.Text = "Alignment Data Only:"
             Me.chkbMdlAlignDataOnly.UseVisualStyleBackColor = False
             Me.chkbMdlAlignDataOnly.Visible = False
@@ -503,6 +575,7 @@ Namespace kotor_tool
         Friend WithEvents Label4 As System.Windows.Forms.Label
         Friend WithEvents Panel1 As System.Windows.Forms.Panel
         Friend WithEvents Label3 As System.Windows.Forms.Label
+        Friend WithEvents Label5 As System.Windows.Forms.Label
 
     End Class
 

@@ -3479,18 +3479,155 @@ Namespace kotor_tool
                 Return True
             End If
 
-            If node.Tag Is Nothing Then
-                Return node.Nodes.Count > 0
-            End If
-
-            Dim tagText As String = node.Tag.ToString()
-            If ObjectType.ObjTst(tagText, "BIFF_Res", False) = 0 OrElse
-               ObjectType.ObjTst(tagText, "RIM_Res", False) = 0 OrElse
-               ObjectType.ObjTst(tagText, "ERF_Res", False) = 0 Then
+            If Me.IsResourceLeafNode(node) Then
                 Return False
             End If
 
-            Return True
+            If Me.IsResourceBrowserContainerNode(node) Then
+                Return node.Nodes.Count > 0
+            End If
+
+            If Me.HasResourceBrowserFileExtension(node) Then
+                Return False
+            End If
+
+            If Me.IsConcreteResourceNode(node) Then
+                Return False
+            End If
+
+            Return node.Nodes.Count > 0
+        End Function
+
+        Private Function IsResourceLeafNode(ByVal node As KotorTreeNode) As Boolean
+            If node Is Nothing OrElse node.Tag Is Nothing Then
+                Return False
+            End If
+
+            Dim tagText As String = node.Tag.ToString()
+            Return ObjectType.ObjTst(tagText, "BIFF_Res", False) = 0 OrElse
+                   ObjectType.ObjTst(tagText, "RIM_Res", False) = 0 OrElse
+                   ObjectType.ObjTst(tagText, "ERF_Res", False) = 0 OrElse
+                   ObjectType.ObjTst(tagText, "globalvar", False) = 0
+        End Function
+
+        Private Function IsResourceBrowserContainerNode(ByVal node As KotorTreeNode) As Boolean
+            If node Is Nothing Then
+                Return False
+            End If
+
+            If node.Tag IsNot Nothing Then
+                Dim tagText As String = node.Tag.ToString()
+                If ObjectType.ObjTst(tagText, "NodeCategory", False) = 0 OrElse
+                   tagText.IndexOf("Root") >= 0 OrElse
+                   tagText.IndexOf("Modules") >= 0 OrElse
+                   tagText.IndexOf("TexturePacks") >= 0 OrElse
+                   tagText.IndexOf("Rims") >= 0 OrElse
+                   ObjectType.ObjTst(tagText, "BIFF", False) = 0 OrElse
+                   ObjectType.ObjTst(tagText, "RIM", False) = 0 OrElse
+                   ObjectType.ObjTst(tagText, "ERF", False) = 0 Then
+                    Return True
+                End If
+            End If
+
+            If node.Parent IsNot Nothing AndAlso TypeOf node.Parent Is KotorTreeNode Then
+                Dim parentNode As KotorTreeNode = CType(node.Parent, KotorTreeNode)
+                If parentNode.Tag IsNot Nothing AndAlso ObjectType.ObjTst(parentNode.Tag, "Saves_Root", False) = 0 Then
+                    Return True
+                End If
+            End If
+
+            If node.Nodes.Count = 1 AndAlso node.Nodes(0).Tag IsNot Nothing AndAlso ObjectType.ObjTst(node.Nodes(0).Tag, "dummy", False) = 0 Then
+                Return True
+            End If
+
+            Dim nameText As String = node.Text
+            Try
+                If node.Filename IsNot Nothing AndAlso node.Filename.Trim().Length > 0 Then
+                    nameText = node.Filename
+                End If
+            Catch
+            End Try
+
+            If nameText Is Nothing Then
+                Return False
+            End If
+
+            Dim extension As String = Path.GetExtension(nameText.Trim()).ToLower()
+            Return StringType.StrCmp(extension, ".bif", False) = 0 OrElse
+                   StringType.StrCmp(extension, ".biff", False) = 0 OrElse
+                   StringType.StrCmp(extension, ".rim", False) = 0 OrElse
+                   StringType.StrCmp(extension, ".erf", False) = 0 OrElse
+                   StringType.StrCmp(extension, ".mod", False) = 0 OrElse
+                   StringType.StrCmp(extension, ".sav", False) = 0
+        End Function
+
+        Private Function IsConcreteResourceNode(ByVal node As KotorTreeNode) As Boolean
+            If node Is Nothing Then
+                Return False
+            End If
+
+            If node.Tag IsNot Nothing Then
+                Dim tagText As String = node.Tag.ToString()
+                If ObjectType.ObjTst(tagText, "BIFF_Res", False) = 0 OrElse
+                   ObjectType.ObjTst(tagText, "RIM_Res", False) = 0 OrElse
+                   ObjectType.ObjTst(tagText, "ERF_Res", False) = 0 Then
+                    Return True
+                End If
+            End If
+
+            Try
+                If node.ResRef IsNot Nothing AndAlso node.ResRef.Trim().Length > 0 Then
+                    Dim resTypeText As String = node.ResTypeStr
+                    If resTypeText IsNot Nothing AndAlso resTypeText.Trim().Length > 0 Then
+                        Return True
+                    End If
+                End If
+            Catch
+            End Try
+
+            Return False
+        End Function
+
+        Private Function HasResourceBrowserFileExtension(ByVal node As KotorTreeNode) As Boolean
+            If node Is Nothing Then
+                Return False
+            End If
+
+            If Me.TextLooksLikeFileName(node.Text) Then
+                Return True
+            End If
+
+            If node.Tag IsNot Nothing AndAlso ObjectType.ObjTst(node.Tag, "NodeCategory", False) = 0 Then
+                Return False
+            End If
+
+            Try
+                If node.Filename IsNot Nothing AndAlso Me.TextLooksLikeFileName(node.Filename) Then
+                    Return True
+                End If
+            Catch
+            End Try
+
+            Return False
+        End Function
+
+        Private Function TextLooksLikeFileName(ByVal value As String) As Boolean
+            If value Is Nothing Then
+                Return False
+            End If
+
+            value = value.Trim()
+            If value.Length = 0 Then
+                Return False
+            End If
+
+            Dim sizeIndex As Integer = value.IndexOf(" (")
+            If sizeIndex > 0 Then
+                value = value.Substring(0, sizeIndex)
+            End If
+
+            Dim extension As String = Path.GetExtension(value)
+            Return extension IsNot Nothing AndAlso extension.Length > 1
         End Function
 
         Private Sub OpenSelectedResourceBrowserItem()
@@ -3516,7 +3653,14 @@ Namespace kotor_tool
             If Not Me.IsTreeResourceViewMode() AndAlso Me.IsFolderStyleResourceNode(node) Then
                 Me.NavigateResourceBrowserToNode(node, True)
             Else
-                Me.TreeView.SelectedNode = node
+                If Not Me.IsTreeResourceViewMode() Then
+                    Me.SuppressResourceBrowserAfterSelect = True
+                End If
+                Try
+                    Me.TreeView.SelectedNode = node
+                Finally
+                    Me.SuppressResourceBrowserAfterSelect = False
+                End Try
                 Me.HandleDataByNodeType(node, listView)
             End If
         End Sub
@@ -3647,6 +3791,10 @@ Namespace kotor_tool
                 Return
             End If
 
+            If Not Me.IsFolderStyleResourceNode(node) Then
+                Return
+            End If
+
             Me.EnsureResourceBrowserNodeChildren(node)
             Me.TreeView.SelectedNode = node
             Me.PopulateResourceBrowserFromNode(node)
@@ -3658,6 +3806,10 @@ Namespace kotor_tool
 
         Private Sub EnsureResourceBrowserNodeChildren(ByVal node As KotorTreeNode)
             If node Is Nothing OrElse node.Nodes.Count = 0 Then
+                Return
+            End If
+
+            If Not Me.IsFolderStyleResourceNode(node) Then
                 Return
             End If
 
@@ -4419,34 +4571,326 @@ Namespace kotor_tool
 
         ' Token: 0x06000730 RID: 1840 RVA: 0x002555AC File Offset: 0x002545AC
         Private Function GetMDLRoomBaseName(ByVal node As KotorTreeNode) As String
+            If node Is Nothing OrElse node.ResRef Is Nothing Then
+                Return ""
+            End If
+
             Select Case Me.NodeTreeRootIndex(node)
                 Case 0
-                    Return node.ResRef.Substring(0, 5)
+                    If node.ResRef.Length >= 5 Then
+                        Return node.ResRef.Substring(0, 5)
+                    End If
                 Case 1
-                    Return node.ResRef.Substring(0, 6)
-                Case Else
-                    Dim text As String
-                    Return text
+                    If node.ResRef.Length >= 6 Then
+                        Return node.ResRef.Substring(0, 6)
+                    End If
             End Select
+
+            Return node.ResRef
         End Function
 
         ' Token: 0x06000731 RID: 1841 RVA: 0x002555F0 File Offset: 0x002545F0
         Private Function GetMDLRoomCount(ByVal node As KotorTreeNode) As Integer
-            Dim num As Integer = -1
+            Dim num As Integer = 1
             Dim num2 As Integer = Me.NodeTreeRootIndex(node)
             Dim mdlroomBaseName As String = Me.GetMDLRoomBaseName(node)
             Dim biffresourceData As Byte() = frmMain.GetBIFFResourceData(num2, mdlroomBaseName, 3000)
             If biffresourceData IsNot Nothing Then
-                Dim memoryStream As MemoryStream = New MemoryStream(biffresourceData)
-                Dim streamReader As StreamReader = New StreamReader(memoryStream)
-                streamReader.ReadLine()
-                streamReader.ReadLine()
-                streamReader.ReadLine()
-                num = Convert.ToInt32(streamReader.ReadLine().Replace(" ", "").Replace("roomcount", ""))
-                streamReader.Close()
+                Try
+                    Dim memoryStream As MemoryStream = New MemoryStream(biffresourceData)
+                    Dim streamReader As StreamReader = New StreamReader(memoryStream)
+                    streamReader.ReadLine()
+                    streamReader.ReadLine()
+                    streamReader.ReadLine()
+                    Dim roomCountLine As String = streamReader.ReadLine()
+                    If roomCountLine IsNot Nothing Then
+                        roomCountLine = roomCountLine.Replace(" ", "").Replace("roomcount", "")
+                        If roomCountLine.Trim().Length > 0 Then
+                            num = Convert.ToInt32(roomCountLine)
+                        End If
+                    End If
+                    streamReader.Close()
+                Catch ex As System.Exception
+                    num = 1
+                End Try
+            End If
+            If num < 1 Then
+                num = 1
             End If
             Return num
         End Function
+
+        Private Function GetAvailableModelExtractionCount(ByVal node As KotorTreeNode) As Integer
+            Dim availableCount As Integer = Me.GetMDLRoomCount(node)
+            Dim siblingCount As Integer = Me.CountSiblingModelResources(node)
+
+            If siblingCount > availableCount Then
+                availableCount = siblingCount
+            End If
+
+            If availableCount < 1 Then
+                availableCount = 1
+            End If
+
+            Return availableCount
+        End Function
+
+        Private Function CountSiblingModelResources(ByVal node As KotorTreeNode) As Integer
+            If node Is Nothing OrElse node.Parent Is Nothing Then
+                Return 1
+            End If
+
+            Dim count As Integer = 0
+            Dim obj As Object
+
+            For Each obj In node.Parent.Nodes
+                If TypeOf obj Is KotorTreeNode Then
+                    Dim sibling As KotorTreeNode = CType(obj, KotorTreeNode)
+                    If Me.IsModelResourceNode(sibling) Then
+                        count += 1
+                    End If
+                End If
+            Next
+
+            If count < 1 Then
+                count = 1
+            End If
+
+            Return count
+        End Function
+
+        Private Function IsModelResourceNode(ByVal node As KotorTreeNode) As Boolean
+            If node Is Nothing Then
+                Return False
+            End If
+
+            Try
+                If node.ResRef Is Nothing OrElse node.ResRef.Trim().Length = 0 Then
+                    Return False
+                End If
+
+                Return StringType.StrCmp(node.ResTypeStr, "mdl", False) = 0
+            Catch
+            End Try
+
+            Return False
+        End Function
+
+        Private Function BuildModelExtractionResRefList(ByVal node As KotorTreeNode, ByVal maxCount As Integer) As ArrayList
+            Dim resRefs As ArrayList = New ArrayList()
+
+            If maxCount < 1 Then
+                maxCount = 1
+            End If
+
+            If node Is Nothing Then
+                Return resRefs
+            End If
+
+            Me.AddModelExtractionResRef(resRefs, node.ResRef)
+
+            If maxCount = 1 Then
+                Return resRefs
+            End If
+
+            Try
+                Dim rootIndex As Integer = Me.NodeTreeRootIndex(node)
+                Dim mdlroomBaseName As String = Me.GetMDLRoomBaseName(node)
+                Dim lytData As Byte() = frmMain.GetBIFFResourceData(rootIndex, mdlroomBaseName, 3000)
+
+                If lytData IsNot Nothing Then
+                    Dim memoryStream As MemoryStream = New MemoryStream(lytData)
+                    Dim streamReader As StreamReader = New StreamReader(memoryStream)
+
+                    streamReader.ReadLine()
+                    streamReader.ReadLine()
+                    streamReader.ReadLine()
+                    streamReader.ReadLine()
+
+                    Dim roomLine As String = streamReader.ReadLine()
+                    While roomLine IsNot Nothing AndAlso resRefs.Count < maxCount
+                        roomLine = roomLine.Trim()
+                        If roomLine.Length > 0 Then
+                            Dim parts As String() = Regex.Split(roomLine, "\s+")
+                            If parts IsNot Nothing AndAlso parts.Length > 0 Then
+                                Me.AddModelExtractionResRef(resRefs, parts(0))
+                            End If
+                        End If
+                        roomLine = streamReader.ReadLine()
+                    End While
+
+                    streamReader.Close()
+                End If
+            Catch ex As System.Exception
+            End Try
+
+            If resRefs.Count < maxCount Then
+                Me.AddSiblingModelExtractionResRefs(resRefs, node, maxCount)
+            End If
+
+            If resRefs.Count = 0 AndAlso node.ResRef IsNot Nothing Then
+                Me.AddModelExtractionResRef(resRefs, node.ResRef)
+            End If
+
+            Return resRefs
+        End Function
+
+        Private Sub AddSiblingModelExtractionResRefs(ByVal resRefs As ArrayList, ByVal node As KotorTreeNode, ByVal maxCount As Integer)
+            If resRefs Is Nothing OrElse node Is Nothing OrElse node.Parent Is Nothing Then
+                Return
+            End If
+
+            Dim startAdding As Boolean = False
+            Dim obj As Object
+
+            For Each obj In node.Parent.Nodes
+                If resRefs.Count >= maxCount Then
+                    Return
+                End If
+
+                If TypeOf obj Is KotorTreeNode Then
+                    Dim sibling As KotorTreeNode = CType(obj, KotorTreeNode)
+                    If Object.ReferenceEquals(sibling, node) Then
+                        startAdding = True
+                    End If
+
+                    If startAdding AndAlso Me.IsModelResourceNode(sibling) Then
+                        Me.AddModelExtractionResRef(resRefs, sibling.ResRef)
+                    End If
+                End If
+            Next
+
+            For Each obj In node.Parent.Nodes
+                If resRefs.Count >= maxCount Then
+                    Return
+                End If
+
+                If TypeOf obj Is KotorTreeNode Then
+                    Dim sibling As KotorTreeNode = CType(obj, KotorTreeNode)
+                    If Me.IsModelResourceNode(sibling) Then
+                        Me.AddModelExtractionResRef(resRefs, sibling.ResRef)
+                    End If
+                End If
+            Next
+        End Sub
+
+        Private Sub AddModelExtractionResRef(ByVal resRefs As ArrayList, ByVal resRef As String)
+            If resRefs Is Nothing OrElse resRef Is Nothing Then
+                Return
+            End If
+
+            resRef = resRef.Trim()
+            If resRef.Length = 0 Then
+                Return
+            End If
+
+            Dim existing As Object
+            For Each existing In resRefs
+                If StringType.StrCmp(CStr(existing), resRef, False) = 0 Then
+                    Return
+                End If
+            Next
+
+            resRefs.Add(resRef)
+        End Sub
+
+        Private Sub ShowModelExtractionError(ByVal message As String)
+            frmErrorMessage.ShowException(Me, New ApplicationException(message), False)
+        End Sub
+
+        Private Function TryGetTextureDataFromCommonPacks(ByVal rootIndex As Integer, ByVal textureName As String) As Byte()
+            If textureName Is Nothing OrElse textureName.Trim().Length = 0 Then
+                Return Nothing
+            End If
+
+            Dim texturePacks As String() = New String() {"swpc_tex_tpa.erf", "swpc_tex_tpb.erf", "swpc_tex_tpc.erf"}
+            Dim packName As String
+
+            For Each packName In texturePacks
+                Try
+                    Dim erfPath As String = Path.Combine(Path.Combine(frmMain.CurrentSettings.KotorLocation(rootIndex), "TexturePacks"), packName)
+                    If File.Exists(erfPath) Then
+                        Dim data As Byte() = Me.GetERFResource(erfPath, textureName, 3007)
+                        If data IsNot Nothing Then
+                            Return data
+                        End If
+                    End If
+                Catch ex As System.Exception
+                End Try
+            Next
+
+            Return Nothing
+        End Function
+
+        Private Sub ExportModelTexturesFromList(ByVal rootIndex As Integer, ByVal texturesListPath As String, ByVal outputDirectory As String, ByVal frmProgressMeter As frmProgressMeter)
+            If Not File.Exists(texturesListPath) Then
+                Return
+            End If
+
+            Dim exportedTextures As ArrayList = New ArrayList()
+            Dim streamReader As StreamReader = Nothing
+
+            Try
+                streamReader = New StreamReader(New FileStream(texturesListPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                Dim textureName As String = streamReader.ReadLine()
+
+                While textureName IsNot Nothing
+                    textureName = textureName.Trim()
+
+                    If textureName.Length > 0 AndAlso StringType.StrCmp(textureName, "null", False) <> 0 Then
+                        textureName = Path.GetFileName(textureName)
+                        If textureName Is Nothing OrElse textureName.Trim().Length = 0 Then
+                            textureName = streamReader.ReadLine()
+                            Continue While
+                        End If
+
+                        Dim alreadyExported As Boolean = False
+                        Dim existing As Object
+                        For Each existing In exportedTextures
+                            If StringType.StrCmp(CStr(existing), textureName, False) = 0 Then
+                                alreadyExported = True
+                                Exit For
+                            End If
+                        Next
+
+                        If Not alreadyExported Then
+                            exportedTextures.Add(textureName)
+                            If frmProgressMeter IsNot Nothing Then
+                                frmProgressMeter.status = "Extracting texture " + textureName
+                            End If
+
+                            Try
+                                Dim textureData As Byte() = Me.TryGetTextureDataFromCommonPacks(rootIndex, textureName)
+                                If textureData IsNot Nothing Then
+                                    Dim frmImageViewer As frmImageViewer = New frmImageViewer()
+                                    frmImageViewer.SetupTPCData(textureData, "foo")
+                                    frmImageViewer.DecodeImage()
+                                    frmImageViewer.WriteTGAFile(Path.Combine(outputDirectory, textureName + ".tga"))
+                                ElseIf frmProgressMeter IsNot Nothing Then
+                                    frmProgressMeter.status = "Texture not found: " + textureName
+                                End If
+                            Catch ex As System.Exception
+                                If frmProgressMeter IsNot Nothing Then
+                                    frmProgressMeter.status = "Texture export failed: " + textureName
+                                End If
+                            End Try
+                        End If
+                    End If
+
+                    textureName = streamReader.ReadLine()
+                End While
+            Finally
+                If streamReader IsNot Nothing Then
+                    streamReader.Close()
+                End If
+            End Try
+        End Sub
+
+        Private Sub DeleteFileIfExists(ByVal filePath As String)
+            If filePath IsNot Nothing AndAlso File.Exists(filePath) Then
+                File.Delete(filePath)
+            End If
+        End Sub
 
         ' Token: 0x06000732 RID: 1842 RVA: 0x00255680 File Offset: 0x00254680
         Public Sub HandleDataByNodeType(ByVal node As KotorTreeNode, ByVal sender As Object)
@@ -4487,13 +4931,14 @@ Namespace kotor_tool
                     frmPathManager.ShowDialog(Me)
                     frmMain.CurrentSettings = UserSettings.GetSettings()
                 End If
-                Dim mdlroomCount As Integer = Me.GetMDLRoomCount(node)
+                Dim mdlroomCount As Integer = Me.GetAvailableModelExtractionCount(node)
                 Dim frmMdlOpsSwitches As frmMdlOpsSwitches = New frmMdlOpsSwitches()
                 frmMdlOpsSwitches.chkbExtractAnimations.Checked = frmMain.CurrentSettings.bModelExtraction_ExtractAnimations
                 frmMdlOpsSwitches.chkbConvertSkin.Checked = frmMain.CurrentSettings.bModelExtraction_ConvertSkinToTrimesh
                 frmMdlOpsSwitches.chkbEachModelInOwnDir.Checked = frmMain.CurrentSettings.bModelExtraction_EachModelInOwnDirectory
                 frmMdlOpsSwitches.chkbCleanWorkingDir.Checked = frmMain.CurrentSettings.bModelExtraction_CleanWorkingDirectoryBeforeExport
                 frmMdlOpsSwitches.tbModelExtractionPath.Text = frmMain.CurrentSettings.ModelExportLocation
+                frmMdlOpsSwitches.ConfigureModelContext(node.ResRef, mdlroomCount)
                 If frmMdlOpsSwitches.ShowDialog(Me) <> DialogResult.OK Then
                     Return
                 End If
@@ -4509,9 +4954,10 @@ Namespace kotor_tool
                 End If
                 Dim checked As Boolean = frmMdlOpsSwitches.chkbEachModelInOwnDir.Checked
                 Dim checked2 As Boolean = frmMdlOpsSwitches.chkbCleanWorkingDir.Checked
+                Dim modelResRefs As ArrayList = Me.BuildModelExtractionResRefList(node, Convert.ToInt32(frmMdlOpsSwitches.nudNumberToExtract.Value))
                 Dim frmProgressMeter As frmProgressMeter = New frmProgressMeter()
                 frmProgressMeter.stepAmount = 1
-                frmProgressMeter.maxvalue = Convert.ToInt32(frmMdlOpsSwitches.nudNumberToExtract.Value)
+                frmProgressMeter.maxvalue = modelResRefs.Count
                 frmProgressMeter.message = "Extracting models"
                 frmProgressMeter.Location = New utilWindowRelativePositioner(Me, frmProgressMeter).getConcentric()
                 frmProgressMeter.Show()
@@ -4525,13 +4971,17 @@ Namespace kotor_tool
                     frmMain.CleanDirectory(frmMdlOpsSwitches.tbModelExtractionPath.Text)
                 End If
                 If frmMdlOpsSwitches.chkbExportMdlAlignData.Checked Or frmMdlOpsSwitches.chkbMdlAlignDataOnly.Checked Then
-                    Dim text As String
-                    If Me.NodeTreeRootIndex(node) = 1 Then
-                        text = node.ResRef.Substring(0, 6)
-                    End If
+                    Dim text As String = Me.GetMDLRoomBaseName(node)
+                    ' TODO: Move the alignment-data export destination into settings/path manager.
                     Dim fileStream As FileStream = New FileStream("C:\3dsmax7\scripts\NWmax\plugins\test.txt", FileMode.Create)
                     Dim streamWriter As StreamWriter = New StreamWriter(fileStream)
                     array = frmMain.GetBIFFResourceData(Me.NodeTreeRootIndex(node), text, 3000)
+                    If array Is Nothing Then
+                        streamWriter.Close()
+                        frmProgressMeter.Close()
+                        Me.ShowModelExtractionError("Alignment data could not be exported because LYT data was not found for '" + text + "'.")
+                        Return
+                    End If
                     Dim memoryStream As MemoryStream = New MemoryStream(array)
                     Dim streamReader As StreamReader = New StreamReader(memoryStream)
                     streamReader.ReadLine()
@@ -4555,68 +5005,134 @@ Namespace kotor_tool
                     streamReader.Close()
                 End If
                 If Not frmMdlOpsSwitches.chkbMdlAlignDataOnly.Checked Then
-                    Dim num4 As Integer = 1
-                    Dim num5 As Integer = Convert.ToInt32(frmMdlOpsSwitches.nudNumberToExtract.Value)
-                    For j As Integer = num4 To num5
-                        frmProgressMeter.status = "Getting data for " + node.ResRef
-                        array = Me.GetBIFFResource(node.FilePath, node.LocalResID).data
-                        Dim text2 As String = frmMdlOpsSwitches.tbModelExtractionPath.Text + "\" + node.ResRef
+                    Dim mdlOpsPluginManager As clsPluginManager = Nothing
+                    Dim mdlOpsPlugin As clsPluginDefinition = Nothing
+                    Dim mdlOpsPluginMissingMessageShown As Boolean = False
+
+                    If frmMdlOpsSwitches.RequiresMdlOps Then
+                        mdlOpsPluginManager = New clsPluginManager()
+                        mdlOpsPluginManager.LoadPlugins()
+                        mdlOpsPlugin = mdlOpsPluginManager.FindPluginForResource("mdl", "decompile")
+                    End If
+
+                    Dim modelResRefObject As Object
+                    For Each modelResRefObject In modelResRefs
+                        Dim modelResRef As String = CStr(modelResRefObject)
+                        frmProgressMeter.status = "Getting data for " + modelResRef
+
+                        Dim modelData As Byte() = frmMain.GetBIFFResourceData(Me.NodeTreeRootIndex(node), modelResRef, 2002)
+                        If modelData Is Nothing AndAlso StringType.StrCmp(modelResRef, node.ResRef, False) = 0 Then
+                            Try
+                                modelData = Me.GetBIFFResource(node.FilePath, node.LocalResID).data
+                            Catch ex As System.Exception
+                                modelData = Nothing
+                            End Try
+                        End If
+
+                        If modelData Is Nothing Then
+                            frmProgressMeter.status = "MDL data not found for " + modelResRef
+                            Me.ShowModelExtractionError("MDL data could not be found for model '" + modelResRef + "'. This model was skipped.")
+                            frmProgressMeter.stepUp()
+                            Continue For
+                        End If
+
+                        Dim text2 As String = frmMdlOpsSwitches.tbModelExtractionPath.Text + "\" + modelResRef
                         If checked Then
                             If Not Directory.Exists(text2) Then
                                 Directory.CreateDirectory(text2)
                             End If
-                            text2 = text2 + "\" + node.ResRef
+                            text2 = text2 + "\" + modelResRef
                         End If
-                        frmMain.WriteByteArray(text2 + ".mdl", array)
-                        frmMain.ExportBiffResource(Me.NodeTreeRootIndex(node), node.ResRef, 3008, text2 + ".mdx")
-                        frmProgressMeter.status = "Exporting model " + node.ResRef
-                        Dim text3 As String = frmMain.gRootPath + "mdlops.exe"
+
+                        frmMain.WriteByteArray(text2 + ".mdl", modelData)
+
                         Try
-                            Dim process As Process = New Process()
-                            process.StartInfo.FileName = text3
-                            process.StartInfo.CreateNoWindow = True
-                            Dim processStartInfo As ProcessStartInfo
+                            frmMain.ExportBiffResource(Me.NodeTreeRootIndex(node), modelResRef, 3008, text2 + ".mdx")
+                        Catch ex As System.Exception
+                            frmProgressMeter.status = "MDX data not found for " + modelResRef
+                            Me.ShowModelExtractionError("MDX data could not be found for model '" + modelResRef + "'. This model was skipped.")
+                            Me.DeleteFileIfExists(text2 + ".mdl")
+                            frmProgressMeter.stepUp()
+                            Continue For
+                        End Try
+
+                        If frmMdlOpsSwitches.BinaryMdlMdxOnly Then
+                            frmProgressMeter.status = "Extracted " + modelResRef
+                            frmProgressMeter.stepUp()
+                            Continue For
+                        End If
+
+                        If frmMdlOpsSwitches.RequiresMdlOps AndAlso mdlOpsPlugin Is Nothing Then
+                            frmProgressMeter.status = "MDLOps not found for " + modelResRef
+                            If Not mdlOpsPluginMissingMessageShown Then
+                                Me.ShowModelExtractionError("MDLOps ASCII export was skipped because no installed plugin is registered for MDL decompile. The binary MDL and MDX files were extracted and left in place. Check Plugins\InstalledPlugins.xml, Plugins\MDLOps\plugin.xml, and Plugins\MDLOps\command.ini.")
+                                mdlOpsPluginMissingMessageShown = True
+                            End If
+                            frmProgressMeter.stepUp()
+                            Continue For
+                        End If
+
+                        frmProgressMeter.status = "Exporting model " + modelResRef
+                        Try
+                            Dim mdlOpsExtraArguments As String = ""
                             If Not frmMdlOpsSwitches.ExtractAnimations Then
-                                processStartInfo = process.StartInfo
-                                processStartInfo.Arguments += "-a "
+                                mdlOpsExtraArguments += "-a "
                             End If
                             If frmMdlOpsSwitches.ConvertSkin Then
-                                processStartInfo = process.StartInfo
-                                processStartInfo.Arguments += "-s "
+                                mdlOpsExtraArguments += "-s "
                             End If
-                            processStartInfo = process.StartInfo
-                            processStartInfo.Arguments = String.Concat(New String() {processStartInfo.Arguments, """", text2, ".mdl", """"})
-                            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden
-                            process.StartInfo.UseShellExecute = False
-                            process.StartInfo.RedirectStandardOutput = True
-                            process.Start()
-                            Dim text4 As String = process.StandardOutput.ReadToEnd()
-                            process.WaitForExit(15000)
-                            frmProgressMeter.status = "Extracting textures for " + node.ResRef
-                            Dim fileStream2 As FileStream = New FileStream(text2 + "-textures.txt", FileMode.Open)
-                            Dim streamReader2 As StreamReader = New StreamReader(fileStream2)
-                            Dim frmImageViewer As frmImageViewer = New frmImageViewer()
-                            Dim text5 As String = streamReader2.ReadLine()
-                            While text5 IsNot Nothing
-                                text5 = text5.Trim()
-                                If (text5.Length > 0) And (StringType.StrCmp(text5, "null", False) <> 0) Then
-                                    array = Me.GetERFResource(frmMain.CurrentSettings.KotorLocation(Me.NodeTreeRootIndex(node)) + "\TexturePacks\swpc_tex_tpa.erf", text5, 3007)
-                                    frmImageViewer.SetupTPCData(array, "foo")
-                                    frmImageViewer.DecodeImage()
-                                    frmImageViewer.WriteTGAFile(text2.Substring(0, text2.LastIndexOf("\") + 1) + text5 + ".tga")
+
+                            Dim asciiOutputPath As String = text2 + "-ascii.mdl"
+                            Dim result As clsPluginExecutionResult = mdlOpsPluginManager.ExecutePlugin(
+                                mdlOpsPlugin,
+                                text2 + ".mdl",
+                                asciiOutputPath,
+                                Me.NodeTreeRootIndex(node) + 1,
+                                modelResRef + ".mdl",
+                                modelResRef,
+                                "mdl",
+                                "decompile",
+                                mdlOpsExtraArguments.Trim()
+                            )
+
+                            If result Is Nothing Then
+                                Me.ShowModelExtractionError("MDLOps failed while processing model '" + modelResRef + "'. No plugin execution result was returned.")
+                            ElseIf result.TimedOut Then
+                                Me.ShowModelExtractionError("MDLOps timed out while processing model '" + modelResRef + "'. This model was skipped.")
+                            ElseIf Not result.Success Then
+                                Dim detailText As String = result.ErrorMessage
+                                If detailText Is Nothing OrElse detailText.Trim().Length = 0 Then
+                                    detailText = "exit code " + result.ExitCode.ToString()
                                 End If
-                                text5 = streamReader2.ReadLine()
-                            End While
-                            streamReader2.Close()
-                            fileStream2.Close()
-                            File.Delete(text2 + ".mdl")
-                            File.Delete(text2 + ".mdx")
-                            File.Delete(text2 + "-textures.txt")
+                                Me.ShowModelExtractionError("MDLOps failed while processing model '" + modelResRef + "': " + detailText)
+                            Else
+                                If Not File.Exists(asciiOutputPath) Then
+                                    Me.ShowModelExtractionError("MDLOps finished for model '" + modelResRef + "', but the expected ASCII MDL was not produced.")
+                                End If
+
+                                If frmMdlOpsSwitches.ExportTextures Then
+                                    frmProgressMeter.status = "Extracting textures for " + modelResRef
+                                    Dim textureOutputDirectory As String = text2.Substring(0, text2.LastIndexOf("\") + 1)
+                                    Me.ExportModelTexturesFromList(Me.NodeTreeRootIndex(node), text2 + "-textures.txt", textureOutputDirectory, frmProgressMeter)
+                                End If
+
+                                ' Future OBJ export should hook in here after MDLOps has produced ASCII MDL.
+                                ' The pipeline now has access to binary MDL/MDX, ASCII MDL, and exported textures.
+                            End If
+
+                            If Not frmMdlOpsSwitches.KeepIntermediateFiles Then
+                                Me.DeleteFileIfExists(text2 + ".mdl")
+                                Me.DeleteFileIfExists(text2 + ".mdx")
+                                Me.DeleteFileIfExists(text2 + "-textures.txt")
+                            End If
                         Catch ex As System.Exception
-                            If StringType.StrCmp(ex.Message, "", False) <> 0 Then
+                            Me.ShowModelExtractionError("Model extraction failed for '" + modelResRef + "': " + ex.Message)
+                            If Not frmMdlOpsSwitches.KeepIntermediateFiles Then
+                                Me.DeleteFileIfExists(text2 + ".mdl")
+                                Me.DeleteFileIfExists(text2 + ".mdx")
+                                Me.DeleteFileIfExists(text2 + "-textures.txt")
                             End If
                         End Try
-                        node = CType(node.NextNode, KotorTreeNode)
                         frmProgressMeter.stepUp()
                     Next
                 End If
@@ -4849,7 +5365,9 @@ IL_12BE:
             End If
 
             Dim kotorTreeNode As KotorTreeNode = CType(e.Node, KotorTreeNode)
-            Me.PopulateResourceBrowserFromNode(kotorTreeNode)
+            If Not Me.SuppressResourceBrowserAfterSelect Then
+                Me.PopulateResourceBrowserFromNode(kotorTreeNode)
+            End If
 
             If ((Me.NodeTreeRootIndex(kotorTreeNode) = 0) AndAlso Me.hasK1) OrElse
                ((Me.NodeTreeRootIndex(kotorTreeNode) = 1) AndAlso Me.hasK2) Then
@@ -5915,6 +6433,7 @@ IL_12BE:
         Private ResourceViewHistory As ArrayList
         Private ResourceViewHistoryIndex As Integer
         Private SuppressResourceViewHistory As Boolean
+        Private SuppressResourceBrowserAfterSelect As Boolean
         Private ResourceBrowserIconThemeSignature As String
 
         ' Token: 0x02000055 RID: 85

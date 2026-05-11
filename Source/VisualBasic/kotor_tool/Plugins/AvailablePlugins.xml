@@ -13,4 +13,21 @@
 		<DownloadUrl>https://github.com/OpenKotOR/DeNCS/releases/download/v1.0.2/DeNCS-v1.0.2-Windows.zip</DownloadUrl>
 		<Description>Decompiles compiled KotOR NCS scripts into readable NSS source using NCSDecompCLI.</Description>
 	</AvailablePlugin>
+
+
+	<AvailablePlugin>
+		<Id>mdlops</Id>
+		<Name>MDLOps</Name>
+		<Version>1.0.2</Version>
+		<Type>ExternalTool</Type>
+		<Enabled>True</Enabled>
+		<Directory>MDLOps</Directory>
+		<GitHubRepo>https://github.com/ndixUR/mdlops</GitHubRepo>
+		<GitHubBranch>v1.0.2</GitHubBranch>
+		<Website>https://github.com/ndixUR/mdlops</Website>
+		<DownloadUrl>https://github.com/ndixUR/mdlops/releases/download/v1.0.2/mdlops-1.0.2.7z</DownloadUrl>
+		<Description>Compiles and decompiles KotOR and TSL MDL/MDX models and supported walkmesh files using MDLOps.</Description>
+	</AvailablePlugin>
+
+	
 </PluginLibrary>

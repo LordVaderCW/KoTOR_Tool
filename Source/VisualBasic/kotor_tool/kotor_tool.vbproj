@@ -823,6 +823,15 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Tools\7Zip\7-zip.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\7Zip\7z.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\7Zip\7z.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="app.config" />
     <None Include="ConfigurationFiles\app.config" />
     <None Include="GFFEditor.ini">
@@ -839,6 +848,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Plugins\DeNCS\command.ini" />
+    <None Include="Plugins\MDLOps\command.ini" />
     <None Include="Themes\DarkSaber.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -898,6 +908,7 @@
     <Content Include="Plugins\InstalledPlugins.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Plugins\MDLOps\plugin.xml" />
     <Content Include="ProjectManager.Readme.txt" />
     <Content Include="Licence.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
