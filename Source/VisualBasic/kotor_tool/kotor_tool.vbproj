@@ -160,6 +160,7 @@
     <Compile Include="Classes\ProjectSystem\clsProject.vb" />
     <Compile Include="Classes\ProjectSystem\clsProjectManager.vb" />
     <Compile Include="Classes\RIMSystem\clsRIM.vb" />
+    <Compile Include="Classes\SoundSystem\clsAnimationSoundPlayer.vb" />
     <Compile Include="Classes\SoundSystem\clsSSF.vb" />
     <Compile Include="Classes\UTCSystem\clsUTC.vb" />
     <Compile Include="Classes\UTDSystem\clsUTD.vb" />

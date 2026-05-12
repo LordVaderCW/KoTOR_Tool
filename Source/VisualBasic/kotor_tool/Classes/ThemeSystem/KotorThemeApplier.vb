@@ -327,6 +327,11 @@ Namespace kotor_tool
         End Sub
 
         Private Shared Sub ApplyTreeView(ByVal treeView As TreeView, ByVal theme As KotorTheme)
+            If String.Compare(treeView.Name, "tvConversation", True, CultureInfo.InvariantCulture) = 0 AndAlso _
+               TypeOf treeView.FindForm() Is frmDialogEditor Then
+                Return
+            End If
+
             treeView.BackColor = theme.LogoBack
             treeView.ForeColor = theme.TextPrimary
             treeView.LineColor = theme.BorderDark

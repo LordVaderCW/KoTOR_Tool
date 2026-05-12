@@ -288,6 +288,20 @@ Namespace kotor_tool
             kotorTreeNode2.Tag = "dummy"
             kotorTreeNode.Nodes.Add(kotorTreeNode2)
             Root.Nodes.Add(kotorTreeNode)
+            Dim kotorVersionIndex As Integer = Me.TreeView.Nodes.IndexOf(Root)
+            If kotorVersionIndex = 0 Then
+                kotorTreeNode = New KotorTreeNode("STREAMWAVs")
+                kotorTreeNode.Tag = "StreamWaves_Root"
+                kotorTreeNode.FilePath = frmMain.CurrentSettings.KotorLocation(kotorVersionIndex) + "\streamwaves"
+            Else
+                kotorTreeNode = New KotorTreeNode("StreamVoice")
+                kotorTreeNode.Tag = "StreamVoice_Root"
+                kotorTreeNode.FilePath = frmMain.CurrentSettings.KotorLocation(kotorVersionIndex) + "\StreamVoice"
+            End If
+            kotorTreeNode2 = New KotorTreeNode("")
+            kotorTreeNode2.Tag = "dummy"
+            kotorTreeNode.Nodes.Add(kotorTreeNode2)
+            Root.Nodes.Add(kotorTreeNode)
         End Sub
 
         ' Token: 0x060006F0 RID: 1776 RVA: 0x0024F0D0 File Offset: 0x0024E0D0
@@ -511,6 +525,53 @@ Namespace kotor_tool
                 node.Nodes.Add(kotorTreeNode)
             Next
         End Sub
+
+        Private Sub ScanForStreamAudioAndBuildTree(ByVal path As String, ByVal node As KotorTreeNode)
+            If path Is Nothing OrElse Not Directory.Exists(path) Then
+                Return
+            End If
+
+            Dim directoryInfo As DirectoryInfo = New DirectoryInfo(path)
+            Dim containingFileType As String = "StreamWaves"
+
+            If node.Tag IsNot Nothing AndAlso node.Tag.ToString().IndexOf("StreamVoice") >= 0 Then
+                containingFileType = "StreamVoice"
+            ElseIf node.ContainingFileType IsNot Nothing AndAlso node.ContainingFileType.Length > 0 Then
+                containingFileType = node.ContainingFileType
+            End If
+
+            For Each directoryInfo2 As DirectoryInfo In directoryInfo.GetDirectories()
+                Dim directoryNode As KotorTreeNode = New KotorTreeNode(directoryInfo2.Name)
+                directoryNode.Tag = containingFileType & "_Dir"
+                directoryNode.FilePath = directoryInfo2.FullName
+                directoryNode.ContainingFileType = containingFileType
+
+                If Me.StreamAudioDirectoryHasChildren(directoryInfo2.FullName) Then
+                    Dim dummyNode As KotorTreeNode = New KotorTreeNode("")
+                    dummyNode.Tag = "dummy"
+                    directoryNode.Nodes.Add(dummyNode)
+                End If
+
+                node.Nodes.Add(directoryNode)
+            Next
+
+            For Each fileInfo As FileInfo In directoryInfo.GetFiles("*.wav")
+                Dim fileNode As KotorTreeNode = New KotorTreeNode(fileInfo.Name)
+                fileNode.Tag = containingFileType & "_File"
+                fileNode.FilePath = fileInfo.DirectoryName
+                fileNode.Filename = fileInfo.Name
+                fileNode.ContainingFileType = containingFileType
+                node.Nodes.Add(fileNode)
+            Next
+        End Sub
+
+        Private Function StreamAudioDirectoryHasChildren(ByVal path As String) As Boolean
+            If path Is Nothing OrElse Not Directory.Exists(path) Then
+                Return False
+            End If
+
+            Return Directory.GetDirectories(path).Length > 0 OrElse Directory.GetFiles(path, "*.wav").Length > 0
+        End Function
 
         ' Token: 0x060006F6 RID: 1782 RVA: 0x0024FA28 File Offset: 0x0024EA28
         Public Shared Sub ExportBiffResource(ByVal biffPath As String, ByVal outputPath As String, ByVal resourceID As Integer)
@@ -3507,6 +3568,8 @@ Namespace kotor_tool
             Return ObjectType.ObjTst(tagText, "BIFF_Res", False) = 0 OrElse
                    ObjectType.ObjTst(tagText, "RIM_Res", False) = 0 OrElse
                    ObjectType.ObjTst(tagText, "ERF_Res", False) = 0 OrElse
+                   ObjectType.ObjTst(tagText, "StreamWaves_File", False) = 0 OrElse
+                   ObjectType.ObjTst(tagText, "StreamVoice_File", False) = 0 OrElse
                    ObjectType.ObjTst(tagText, "globalvar", False) = 0
         End Function
 
@@ -3522,6 +3585,8 @@ Namespace kotor_tool
                    tagText.IndexOf("Modules") >= 0 OrElse
                    tagText.IndexOf("TexturePacks") >= 0 OrElse
                    tagText.IndexOf("Rims") >= 0 OrElse
+                   tagText.IndexOf("StreamWaves") >= 0 OrElse
+                   tagText.IndexOf("StreamVoice") >= 0 OrElse
                    ObjectType.ObjTst(tagText, "BIFF", False) = 0 OrElse
                    ObjectType.ObjTst(tagText, "RIM", False) = 0 OrElse
                    ObjectType.ObjTst(tagText, "ERF", False) = 0 Then
@@ -5389,6 +5454,12 @@ IL_12BE:
                    ObjectType.ObjTst(tag, "ERF_Root", False) = 0 OrElse
                    ObjectType.ObjTst(tag, "ERF_TexturePacks", False) = 0 OrElse
                    ObjectType.ObjTst(tag, "ERF_Modules", False) = 0 OrElse
+                   ObjectType.ObjTst(tag, "StreamWaves_Root", False) = 0 OrElse
+                   ObjectType.ObjTst(tag, "StreamWaves_Dir", False) = 0 OrElse
+                   ObjectType.ObjTst(tag, "StreamWaves_File", False) = 0 OrElse
+                   ObjectType.ObjTst(tag, "StreamVoice_Root", False) = 0 OrElse
+                   ObjectType.ObjTst(tag, "StreamVoice_Dir", False) = 0 OrElse
+                   ObjectType.ObjTst(tag, "StreamVoice_File", False) = 0 OrElse
                    ObjectType.ObjTst(tag, "globalvar", False) = 0 Then
 
                     Me.miExtract.Enabled = False
@@ -5518,6 +5589,19 @@ IL_12BE:
                     kotorTreeNode.Nodes.Clear()
                     Dim text As String = kotorTreeNode.FilePath
                     Me.ScanForSavesAndBuildTree(text, kotorTreeNode)
+                End If
+            ElseIf ObjectType.ObjTst(tag, "StreamWaves_Root", False) = 0 OrElse
+                   ObjectType.ObjTst(tag, "StreamWaves_Dir", False) = 0 OrElse
+                   ObjectType.ObjTst(tag, "StreamVoice_Root", False) = 0 OrElse
+                   ObjectType.ObjTst(tag, "StreamVoice_Dir", False) = 0 Then
+                If kotorTreeNode.Nodes.Count > 0 AndAlso ObjectType.ObjTst(kotorTreeNode.Nodes(0).Tag, "dummy", False) = 0 Then
+                    Dim text As String = kotorTreeNode.FilePath
+                    Me.ScanForStreamAudioAndBuildTree(text, kotorTreeNode)
+                    kotorTreeNode.Nodes(0).Remove()
+                Else
+                    kotorTreeNode.Nodes.Clear()
+                    Dim text As String = kotorTreeNode.FilePath
+                    Me.ScanForStreamAudioAndBuildTree(text, kotorTreeNode)
                 End If
             End If
         End Sub
