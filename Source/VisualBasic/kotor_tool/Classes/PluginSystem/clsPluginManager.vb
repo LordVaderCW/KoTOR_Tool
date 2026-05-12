@@ -401,6 +401,20 @@ Namespace kotor_tool
             Return Nothing
         End Function
 
+        Public Function GetNWScriptPath(ByVal plugin As clsPluginDefinition, ByVal gameNumber As Integer) As String
+            If plugin Is Nothing Then
+                Return ""
+            End If
+
+            Dim nwscriptFileName As String = "k1_nwscript.nss"
+
+            If gameNumber = 2 Then
+                nwscriptFileName = "tsl_nwscript.nss"
+            End If
+
+            Return Path.Combine(plugin.ToolsDirectory, nwscriptFileName)
+        End Function
+
         Public Function LoadPluginCommand(ByVal plugin As clsPluginDefinition) As clsPluginCommand
             If plugin Is Nothing Then
                 Throw New ArgumentNullException("plugin")
@@ -774,6 +788,7 @@ Namespace kotor_tool
             result = result.Replace("{game}", gameNumber.ToString())
             result = result.Replace("{game_number}", gameNumber.ToString())
             result = result.Replace("{game_name}", gameName)
+            result = result.Replace("{nwscript}", Me.GetNWScriptPath(plugin, gameNumber))
             result = result.Replace("{filename}", filename)
             result = result.Replace("{resref}", resref)
             result = result.Replace("{extension}", normalizedExtension)

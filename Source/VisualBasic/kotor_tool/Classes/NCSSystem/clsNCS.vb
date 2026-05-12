@@ -213,7 +213,7 @@ Namespace kotor_tool
         End Function
 
         Private Shared Function NormalizeGameNumber(ByVal kotorVersionIndex As Integer) As Integer
-            If kotorVersionIndex = 2 Then
+            If kotorVersionIndex = 1 OrElse kotorVersionIndex = 2 Then
                 Return 2
             End If
 

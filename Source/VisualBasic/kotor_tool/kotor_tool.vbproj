@@ -126,6 +126,12 @@
     <Compile Include="Classes\BIFFSystem\BIFFEntry.vb" />
     <Compile Include="Classes\BIFFSystem\BIFFVarRsrcEntry.vb" />
     <Compile Include="Classes\BIFFSystem\BIFFVarRsrcEntryInfo.vb" />
+    <Compile Include="Classes\ImageSystem\clsImageSystem.vb" />
+    <Compile Include="Classes\ImageSystem\clsJPGSystem.vb" />
+    <Compile Include="Classes\ImageSystem\clsPNGSystem.vb" />
+    <Compile Include="Classes\ImageSystem\clsTGASystem.vb" />
+    <Compile Include="Classes\ImageSystem\clsTPCSystem.vb" />
+    <Compile Include="Classes\ImageSystem\clsTXISystem.vb" />
     <Compile Include="Classes\ThemeSystem\KotorTheme.vb" />
     <Compile Include="Classes\ThemeSystem\KotorThemeApplier.vb" />
     <Compile Include="Classes\NCSSystem\clsNCS.vb" />
@@ -559,9 +565,9 @@
     <Compile Include="Classes\MAPSystem\MapInfo.vb" />
     <Compile Include="Classes\ItemSystem\ModItem.vb" />
     <Compile Include="Classes\ItemSystem\ModItemTvNode.vb" />
-    <Compile Include="Classes\UtilitySystem\ModuleEditorProjectOptions.vb" />
-    <Compile Include="Classes\UtilitySystem\ModuleEditorProjectSettings.vb" />
-    <Compile Include="Classes\UtilitySystem\ModuleFileEntry.vb" />
+    <Compile Include="Classes\ModuleSystem\ModuleEditorProjectOptions.vb" />
+    <Compile Include="Classes\ModuleSystem\ModuleEditorProjectSettings.vb" />
+    <Compile Include="Classes\ModuleSystem\ModuleFileEntry.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="Classes\MAPSystem\MyMapInfoSurrogate.vb" />
     <Compile Include="Classes\GlobalSystem\Options.vb" />
@@ -581,7 +587,7 @@
     <Compile Include="Classes\ItemSystem\TreeBaseItem.vb" />
     <Compile Include="Classes\GlobalSystem\UserSettings.vb" />
     <Compile Include="Classes\UtilitySystem\utilFileValidator.vb" />
-    <Compile Include="Classes\GlobalSystem\Utils.vb" />
+    <Compile Include="Classes\UtilitySystem\Utils.vb" />
     <Compile Include="Classes\UtilitySystem\utilWindowRelativePositioner.vb" />
   </ItemGroup>
   <ItemGroup>
