@@ -193,43 +193,71 @@ Partial Class frmPluginSystem
         End Try
     End Sub
 
+    'Private Sub DownloadPluginWorker(ByVal stateObject As Object)
+    '    Dim state As PluginInstallState = CType(stateObject, PluginInstallState)
+    '    Dim downloader As clsDownloadPlugin = Nothing
+    '    Dim installer As clsInstallPlugin = Nothing
+
+    '    Try
+    '        downloader = New clsDownloadPlugin()
+    '        AddHandler downloader.ProgressChanged, AddressOf Me.PluginProgressChanged
+
+    '        Dim zipPath As String = downloader.DownloadPlugin(state.Plugin, state.DownloadRoot)
+
+    '        RemoveHandler downloader.ProgressChanged, AddressOf Me.PluginProgressChanged
+    '        downloader = Nothing
+
+    '        installer = New clsInstallPlugin()
+    '        AddHandler installer.ProgressChanged, AddressOf Me.PluginProgressChanged
+
+    '        state.InstalledPath = installer.InstallPlugin(state.Plugin, zipPath, state.PluginsRoot)
+
+    '        RemoveHandler installer.ProgressChanged, AddressOf Me.PluginProgressChanged
+    '        installer = Nothing
+
+    '    Catch ex As System.Exception
+    '        state.ErrorObject = ex
+
+    '        Try
+    '            If downloader IsNot Nothing Then
+    '                RemoveHandler downloader.ProgressChanged, AddressOf Me.PluginProgressChanged
+    '            End If
+    '        Catch exRemoveDownloader As System.Exception
+    '        End Try
+
+    '        Try
+    '            If installer IsNot Nothing Then
+    '                RemoveHandler installer.ProgressChanged, AddressOf Me.PluginProgressChanged
+    '            End If
+    '        Catch exRemoveInstaller As System.Exception
+    '        End Try
+    '    End Try
+
+    '    Me.PluginInstallCompleted(state)
+    'End Sub
+
+
     Private Sub DownloadPluginWorker(ByVal stateObject As Object)
         Dim state As PluginInstallState = CType(stateObject, PluginInstallState)
-        Dim downloader As clsDownloadPlugin = Nothing
-        Dim installer As clsInstallPlugin = Nothing
+        Dim manager As clsPluginManager = Nothing
 
         Try
-            downloader = New clsDownloadPlugin()
-            AddHandler downloader.ProgressChanged, AddressOf Me.PluginProgressChanged
+            manager = New clsPluginManager(state.PluginsRoot)
+            AddHandler manager.ProgressChanged, AddressOf Me.PluginProgressChanged
 
-            Dim zipPath As String = downloader.DownloadPlugin(state.Plugin, state.DownloadRoot)
+            state.InstalledPath = manager.InstallAvailablePlugin(state.Plugin, state.DownloadRoot)
 
-            RemoveHandler downloader.ProgressChanged, AddressOf Me.PluginProgressChanged
-            downloader = Nothing
-
-            installer = New clsInstallPlugin()
-            AddHandler installer.ProgressChanged, AddressOf Me.PluginProgressChanged
-
-            state.InstalledPath = installer.InstallPlugin(state.Plugin, zipPath, state.PluginsRoot)
-
-            RemoveHandler installer.ProgressChanged, AddressOf Me.PluginProgressChanged
-            installer = Nothing
+            RemoveHandler manager.ProgressChanged, AddressOf Me.PluginProgressChanged
+            manager = Nothing
 
         Catch ex As System.Exception
             state.ErrorObject = ex
 
             Try
-                If downloader IsNot Nothing Then
-                    RemoveHandler downloader.ProgressChanged, AddressOf Me.PluginProgressChanged
+                If manager IsNot Nothing Then
+                    RemoveHandler manager.ProgressChanged, AddressOf Me.PluginProgressChanged
                 End If
-            Catch exRemoveDownloader As System.Exception
-            End Try
-
-            Try
-                If installer IsNot Nothing Then
-                    RemoveHandler installer.ProgressChanged, AddressOf Me.PluginProgressChanged
-                End If
-            Catch exRemoveInstaller As System.Exception
+            Catch exRemoveManager As System.Exception
             End Try
         End Try
 
@@ -783,8 +811,14 @@ Partial Class frmPluginSystem
                     canDownload = False
                 End If
 
-                If Me._selectedPlugin.DownloadUrl Is Nothing OrElse Me._selectedPlugin.DownloadUrl.Trim().Length = 0 Then
-                    canDownload = False
+                If Me._selectedPlugin.SourceOnly OrElse Me._selectedPlugin.BuildRequired Then
+                    If Me._selectedPlugin.SourceZipUrl Is Nothing OrElse Me._selectedPlugin.SourceZipUrl.Trim().Length = 0 Then
+                        canDownload = False
+                    End If
+                Else
+                    If Me._selectedPlugin.DownloadUrl Is Nothing OrElse Me._selectedPlugin.DownloadUrl.Trim().Length = 0 Then
+                        canDownload = False
+                    End If
                 End If
             End If
         End If

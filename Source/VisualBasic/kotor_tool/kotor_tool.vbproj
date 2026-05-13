@@ -132,6 +132,12 @@
     <Compile Include="Classes\ImageSystem\clsTGASystem.vb" />
     <Compile Include="Classes\ImageSystem\clsTPCSystem.vb" />
     <Compile Include="Classes\ImageSystem\clsTXISystem.vb" />
+    <Compile Include="Classes\PluginSystem\SourceOnlyPlugins\clsCleanupSourcePlugin.vb" />
+    <Compile Include="Classes\PluginSystem\SourceOnlyPlugins\clsCompileSourcePlugin.vb" />
+    <Compile Include="Classes\PluginSystem\SourceOnlyPlugins\clsDownloadSourcePlugin.vb" />
+    <Compile Include="Classes\PluginSystem\SourceOnlyPlugins\clsExtractSourcePlugin.vb" />
+    <Compile Include="Classes\PluginSystem\SourceOnlyPlugins\clsInstallSourcePlugin.vb" />
+    <Compile Include="Classes\PluginSystem\SourceOnlyPlugins\clsSourcePluginContext.vb" />
     <Compile Include="Classes\ThemeSystem\KotorTheme.vb" />
     <Compile Include="Classes\ThemeSystem\KotorThemeApplier.vb" />
     <Compile Include="Classes\NCSSystem\clsNCS.vb" />
@@ -830,6 +836,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Plugins\GhostRigger\plugin.xml" />
     <Content Include="Tools\7Zip\7-zip.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -855,6 +862,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Plugins\DeNCS\command.ini" />
+    <None Include="Plugins\GhostRigger\commandline.ini" />
     <None Include="Plugins\MDLOps\command.ini" />
     <None Include="Themes\DarkSaber.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

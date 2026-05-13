@@ -29,5 +29,25 @@
 		<Description>Compiles and decompiles KotOR and TSL MDL/MDX models and supported walkmesh files using MDLOps.</Description>
 	</AvailablePlugin>
 
+	<AvailablePlugin>
+		<Id>ghostrigger</Id>
+		<Name>GhostRigger / KotOR 3D Model Converter</Name>
+		<Version>source-genspark_ai_developer</Version>
+		<Type>ExternalTool</Type>
+		<SourceOnly>True</SourceOnly>
+		<BuildRequired>True</BuildRequired>
+		<SourceBuildProfile>GhostRigger</SourceBuildProfile>
+		<BuildScriptName>build.bat</BuildScriptName>
+		<BuiltExecutableName>GhostRigger-K1-K2.exe</BuiltExecutableName>
+		<Description>Source-built KotOR 1 / TSL model pipeline for inspecting, editing, and exporting MDL/MDX model assets.</Description>
+		<GitHubRepo>https://github.com/CrispyW0nton/Kotor-3D-Model-Converter</GitHubRepo>
+		<GitHubBranch>genspark_ai_developer</GitHubBranch>
+		<SourceZipUrl>https://github.com/CrispyW0nton/Kotor-3D-Model-Converter/archive/refs/heads/genspark_ai_developer.zip</SourceZipUrl>
+		<DownloadUrl>https://github.com/CrispyW0nton/Kotor-3D-Model-Converter</DownloadUrl>
+		<Website>https://github.com/CrispyW0nton/Kotor-3D-Model-Converter</Website>
+		<Directory>GhostRigger</Directory>
+		<Enabled>True</Enabled>
+	</AvailablePlugin>
+
 	
 </PluginLibrary>

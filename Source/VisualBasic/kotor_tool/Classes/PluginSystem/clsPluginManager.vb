@@ -41,6 +41,8 @@ Namespace kotor_tool
 
     Public Class clsPluginManager
 
+        Public Event ProgressChanged(ByVal sender As Object, ByVal e As clsPluginProgressEventArgs)
+
         Private _pluginsRoot As String
         Private _installedPluginsPath As String
         Private _availablePluginsPath As String
@@ -57,6 +59,8 @@ Namespace kotor_tool
             Public ExtensionValue As String
             Public ActionValue As String
             Public ExtraArguments As String
+            Public CommandSection As String
+            Public ForceNoWait As Boolean
         End Class
 
         Public Sub New()
@@ -171,6 +175,12 @@ Namespace kotor_tool
                     plugin.GitHubBranch = Me.GetXmlNodeText(availableNode, "GitHubBranch", "")
                     plugin.Website = Me.GetXmlNodeText(availableNode, "Website", "")
                     plugin.DownloadUrl = Me.GetXmlNodeText(availableNode, "DownloadUrl", "")
+                    plugin.SourceOnly = Me.ParseBoolean(Me.GetXmlNodeText(availableNode, "SourceOnly", "False"), False)
+                    plugin.BuildRequired = Me.ParseBoolean(Me.GetXmlNodeText(availableNode, "BuildRequired", "False"), False)
+                    plugin.SourceZipUrl = Me.GetXmlNodeText(availableNode, "SourceZipUrl", "")
+                    plugin.SourceBuildProfile = Me.GetXmlNodeText(availableNode, "SourceBuildProfile", "")
+                    plugin.BuildScriptName = Me.GetXmlNodeText(availableNode, "BuildScriptName", "build.bat")
+                    plugin.BuiltExecutableName = Me.GetXmlNodeText(availableNode, "BuiltExecutableName", "")
                     plugin.InstalledDirectory = Me.GetXmlNodeText(availableNode, "Directory", "")
                     plugin.Enabled = Me.ParseBoolean(Me.GetXmlNodeText(availableNode, "Enabled", "True"), True)
 
@@ -260,6 +270,13 @@ Namespace kotor_tool
             plugin.Website = Me.GetXmlNodeText(pluginNode, "Project/Website", Me.GetXmlNodeText(pluginNode, "Website", ""))
             plugin.DownloadUrl = Me.GetXmlNodeText(pluginNode, "Project/DownloadUrl", Me.GetXmlNodeText(pluginNode, "DownloadUrl", ""))
 
+            plugin.SourceOnly = Me.ParseBoolean(Me.GetXmlNodeText(pluginNode, "SourceOnly", "False"), False)
+            plugin.BuildRequired = Me.ParseBoolean(Me.GetXmlNodeText(pluginNode, "BuildRequired", "False"), False)
+            plugin.SourceZipUrl = Me.GetXmlNodeText(pluginNode, "SourceZipUrl", Me.GetXmlNodeText(pluginNode, "Project/SourceZipUrl", ""))
+            plugin.SourceBuildProfile = Me.GetXmlNodeText(pluginNode, "SourceBuildProfile", Me.GetXmlNodeText(pluginNode, "Project/SourceBuildProfile", ""))
+            plugin.BuildScriptName = Me.GetXmlNodeText(pluginNode, "BuildScriptName", "build.bat")
+            plugin.BuiltExecutableName = Me.GetXmlNodeText(pluginNode, "BuiltExecutableName", "")
+
             plugin.AppFolderName = Me.GetXmlNodeText(pluginNode, "Layout/Folder[@name='app']", "app")
             plugin.ConfigFolderName = Me.GetXmlNodeText(pluginNode, "Layout/Folder[@name='config']", "config")
             plugin.RuntimeFolderName = Me.GetXmlNodeText(pluginNode, "Layout/Folder[@name='runtime']", "runtime")
@@ -289,6 +306,7 @@ Namespace kotor_tool
                 Dim extensionValue As String = ""
                 Dim actionValue As String = ""
                 Dim descriptionValue As String = ""
+                Dim commandSectionValue As String = "Command"
 
                 If handleNode.Attributes IsNot Nothing Then
                     If handleNode.Attributes("extension") IsNot Nothing Then
@@ -302,10 +320,16 @@ Namespace kotor_tool
                     If handleNode.Attributes("description") IsNot Nothing Then
                         descriptionValue = handleNode.Attributes("description").Value
                     End If
+
+                    If handleNode.Attributes("command") IsNot Nothing Then
+                        commandSectionValue = handleNode.Attributes("command").Value
+                    ElseIf handleNode.Attributes("commandSection") IsNot Nothing Then
+                        commandSectionValue = handleNode.Attributes("commandSection").Value
+                    End If
                 End If
 
                 If extensionValue.Length > 0 AndAlso actionValue.Length > 0 Then
-                    plugin.ResourceHandles.Add(New clsPluginHandle(extensionValue, actionValue, descriptionValue))
+                    plugin.ResourceHandles.Add(New clsPluginHandle(extensionValue, actionValue, descriptionValue, commandSectionValue))
                 End If
             Next
         End Sub
@@ -416,8 +440,18 @@ Namespace kotor_tool
         End Function
 
         Public Function LoadPluginCommand(ByVal plugin As clsPluginDefinition) As clsPluginCommand
+            Return Me.LoadPluginCommand(plugin, "Command")
+        End Function
+
+        Public Function LoadPluginCommand(ByVal plugin As clsPluginDefinition,
+                                          ByVal sectionName As String) As clsPluginCommand
+
             If plugin Is Nothing Then
                 Throw New ArgumentNullException("plugin")
+            End If
+
+            If sectionName Is Nothing OrElse sectionName.Trim().Length = 0 Then
+                sectionName = "Command"
             End If
 
             If Not File.Exists(plugin.CommandIniPath) Then
@@ -425,7 +459,19 @@ Namespace kotor_tool
             End If
 
             Dim command As clsPluginCommand = New clsPluginCommand()
-            Dim values As Hashtable = Me.ReadIniSection(plugin.CommandIniPath, "Command")
+            command.SectionName = sectionName.Trim()
+
+            Dim values As Hashtable = Me.ReadIniSection(plugin.CommandIniPath, command.SectionName)
+
+            If values Is Nothing OrElse values.Count = 0 Then
+                If String.Compare(command.SectionName, "Command", True) <> 0 Then
+                    values = Me.ReadIniSection(plugin.CommandIniPath, "Command")
+                    command.SectionName = "Command"
+                End If
+            End If
+
+            command.Enabled = Me.ParseBoolean(Me.GetIniValue(values, "Enabled", command.Enabled.ToString()), command.Enabled)
+            command.DisabledReason = Me.GetIniValue(values, "Reason", command.DisabledReason)
 
             command.Executable = Me.GetIniValue(values, "Executable", command.Executable)
             command.Arguments = Me.GetIniValue(values, "Arguments", command.Arguments)
@@ -435,12 +481,58 @@ Namespace kotor_tool
             command.CaptureStdOut = Me.ParseBoolean(Me.GetIniValue(values, "CaptureStdOut", command.CaptureStdOut.ToString()), command.CaptureStdOut)
             command.CaptureStdErr = Me.ParseBoolean(Me.GetIniValue(values, "CaptureStdErr", command.CaptureStdErr.ToString()), command.CaptureStdErr)
             command.TimeoutMS = Me.ParseInteger(Me.GetIniValue(values, "TimeoutMS", command.TimeoutMS.ToString()), command.TimeoutMS)
+            Dim timeoutSecondsText As String = Me.GetIniValue(values, "TimeoutSeconds", "")
+            If timeoutSecondsText IsNot Nothing AndAlso timeoutSecondsText.Trim().Length > 0 Then
+                command.TimeoutMS = Me.ParseInteger(timeoutSecondsText, command.TimeoutMS \ 1000) * 1000
+            End If
+            command.WaitForExit = Me.ParseBoolean(Me.GetIniValue(values, "WaitForExit", command.WaitForExit.ToString()), command.WaitForExit)
             command.ShowWindow = Me.ParseBoolean(Me.GetIniValue(values, "ShowWindow", command.ShowWindow.ToString()), command.ShowWindow)
             command.OverwriteOutput = Me.ParseBoolean(Me.GetIniValue(values, "OverwriteOutput", command.OverwriteOutput.ToString()), command.OverwriteOutput)
             command.SuccessExitCode = Me.ParseInteger(Me.GetIniValue(values, "SuccessExitCode", command.SuccessExitCode.ToString()), command.SuccessExitCode)
             command.TreatStdErrAsFailure = Me.ParseBoolean(Me.GetIniValue(values, "TreatStdErrAsFailure", command.TreatStdErrAsFailure.ToString()), command.TreatStdErrAsFailure)
 
             Return command
+        End Function
+
+        Public Function HasCommandSection(ByVal plugin As clsPluginDefinition,
+                                          ByVal sectionName As String) As Boolean
+
+            If plugin Is Nothing Then
+                Return False
+            End If
+
+            If sectionName Is Nothing OrElse sectionName.Trim().Length = 0 Then
+                Return False
+            End If
+
+            If plugin.CommandIniPath Is Nothing OrElse Not File.Exists(plugin.CommandIniPath) Then
+                Return False
+            End If
+
+            Dim values As Hashtable = Me.ReadIniSection(plugin.CommandIniPath, sectionName.Trim())
+
+            Return values IsNot Nothing AndAlso values.Count > 0
+        End Function
+
+        Public Function ExecutePluginCommand(ByVal plugin As clsPluginDefinition,
+                                             ByVal commandSection As String,
+                                             Optional ByVal extraArguments As String = "",
+                                             Optional ByVal forceNoWait As Boolean = False) As clsPluginExecutionResult
+
+            Dim request As clsPluginExecutionRequest = New clsPluginExecutionRequest()
+            request.Plugin = plugin
+            request.InputPath = ""
+            request.OutputPath = ""
+            request.GameNumber = 0
+            request.Filename = ""
+            request.ResRef = ""
+            request.ExtensionValue = ""
+            request.ActionValue = ""
+            request.ExtraArguments = extraArguments
+            request.CommandSection = commandSection
+            request.ForceNoWait = forceNoWait
+
+            Return Me.ExecutePluginInternal(request)
         End Function
 
         Public Function ExecutePlugin(ByVal plugin As clsPluginDefinition,
@@ -463,6 +555,8 @@ Namespace kotor_tool
             request.ExtensionValue = extensionValue
             request.ActionValue = actionValue
             request.ExtraArguments = extraArguments
+            request.CommandSection = ""
+            request.ForceNoWait = False
 
             Dim worker As BackgroundWorker = New BackgroundWorker()
             Dim completed As AutoResetEvent = New AutoResetEvent(False)
@@ -507,6 +601,34 @@ Namespace kotor_tool
             Return workerResult
         End Function
 
+        Private Function ResolveCommandSectionForAction(ByVal plugin As clsPluginDefinition,
+                                                        ByVal extensionValue As String,
+                                                        ByVal actionValue As String) As String
+
+            If plugin Is Nothing Then
+                Return "Command"
+            End If
+
+            Dim normalizedExtension As String = Me.NormalizeExtension(extensionValue)
+            Dim normalizedAction As String = ""
+
+            If actionValue IsNot Nothing Then
+                normalizedAction = actionValue.Trim().ToLower()
+            End If
+
+            For Each handleObj As Object In plugin.ResourceHandles
+                Dim handle As clsPluginHandle = CType(handleObj, clsPluginHandle)
+
+                If handle.Matches(normalizedExtension, normalizedAction) Then
+                    If handle.CommandSection IsNot Nothing AndAlso handle.CommandSection.Trim().Length > 0 Then
+                        Return handle.CommandSection.Trim()
+                    End If
+                End If
+            Next
+
+            Return "Command"
+        End Function
+
         Private Function ExecutePluginInternal(ByVal request As clsPluginExecutionRequest) As clsPluginExecutionResult
             Dim plugin As clsPluginDefinition = request.Plugin
             Dim inputPath As String = request.InputPath
@@ -540,7 +662,7 @@ Namespace kotor_tool
                 Return result
             End If
 
-            If Not File.Exists(inputPath) Then
+            If inputPath IsNot Nothing AndAlso inputPath.Trim().Length > 0 AndAlso Not File.Exists(inputPath) Then
                 result.ErrorMessage = "Input file could not be found."
                 result.DiagnosticMessage = inputPath
                 Return result
@@ -553,14 +675,44 @@ Namespace kotor_tool
             End If
 
             Dim command As clsPluginCommand = Nothing
+            Dim commandSection As String = request.CommandSection
+
+            If commandSection Is Nothing OrElse commandSection.Trim().Length = 0 Then
+                commandSection = Me.ResolveCommandSectionForAction(plugin, extensionValue, actionValue)
+            Else
+                commandSection = commandSection.Trim()
+            End If
+
+            result.CommandSection = commandSection
 
             Try
-                command = Me.LoadPluginCommand(plugin)
+                command = Me.LoadPluginCommand(plugin, commandSection)
+                result.CommandSection = command.SectionName
+                result.OutputMode = command.OutputMode
+
+                If request.ForceNoWait Then
+                    command.WaitForExit = False
+                    command.CaptureStdOut = False
+                    command.CaptureStdErr = False
+                    command.TimeoutMS = 0
+                End If
             Catch ex As System.Exception
                 result.ErrorMessage = ex.Message
                 result.DiagnosticMessage = ex.ToString()
                 Return result
             End Try
+
+            If Not command.Enabled Then
+                result.CommandDisabled = True
+                result.DisabledReason = command.DisabledReason
+
+                If result.DisabledReason Is Nothing OrElse result.DisabledReason.Trim().Length = 0 Then
+                    result.DisabledReason = "Plugin command is disabled."
+                End If
+
+                result.ErrorMessage = result.DisabledReason
+                Return result
+            End If
 
             Dim resolvedExecutable As String = Me.ResolvePluginPath(plugin, command.Executable)
             Dim resolvedWorkingDirectory As String = Me.ResolvePluginPath(plugin, command.WorkingDirectory)
@@ -615,8 +767,8 @@ Namespace kotor_tool
             startInfo.Arguments = resolvedArguments
             startInfo.WorkingDirectory = resolvedWorkingDirectory
             startInfo.UseShellExecute = False
-            startInfo.RedirectStandardOutput = command.CaptureStdOut
-            startInfo.RedirectStandardError = command.CaptureStdErr
+            startInfo.RedirectStandardOutput = command.CaptureStdOut AndAlso command.WaitForExit
+            startInfo.RedirectStandardError = command.CaptureStdErr AndAlso command.WaitForExit
             startInfo.CreateNoWindow = Not command.ShowWindow
 
             Dim process As Process = New Process()
@@ -625,11 +777,13 @@ Namespace kotor_tool
 
             Dim stdoutBuilder As StringBuilder = New StringBuilder()
             Dim stderrBuilder As StringBuilder = New StringBuilder()
-            Dim stdoutClosed As AutoResetEvent = New AutoResetEvent(Not command.CaptureStdOut)
-            Dim stderrClosed As AutoResetEvent = New AutoResetEvent(Not command.CaptureStdErr)
+            Dim captureStdOut As Boolean = command.CaptureStdOut AndAlso command.WaitForExit
+            Dim captureStdErr As Boolean = command.CaptureStdErr AndAlso command.WaitForExit
+            Dim stdoutClosed As AutoResetEvent = New AutoResetEvent(Not captureStdOut)
+            Dim stderrClosed As AutoResetEvent = New AutoResetEvent(Not captureStdErr)
 
             Try
-                If command.CaptureStdOut Then
+                If captureStdOut Then
                     AddHandler process.OutputDataReceived, Sub(ByVal sender As Object, ByVal e As DataReceivedEventArgs)
                                                                If e.Data Is Nothing Then
                                                                    stdoutClosed.Set()
@@ -641,7 +795,7 @@ Namespace kotor_tool
                                                            End Sub
                 End If
 
-                If command.CaptureStdErr Then
+                If captureStdErr Then
                     AddHandler process.ErrorDataReceived, Sub(ByVal sender As Object, ByVal e As DataReceivedEventArgs)
                                                               If e.Data Is Nothing Then
                                                                   stderrClosed.Set()
@@ -655,11 +809,17 @@ Namespace kotor_tool
 
                 process.Start()
 
-                If command.CaptureStdOut Then
+                If Not command.WaitForExit Then
+                    result.Success = True
+                    result.ExitCode = 0
+                    Return result
+                End If
+
+                If captureStdOut Then
                     process.BeginOutputReadLine()
                 End If
 
-                If command.CaptureStdErr Then
+                If captureStdErr Then
                     process.BeginErrorReadLine()
                 End If
 
@@ -700,6 +860,10 @@ Namespace kotor_tool
 
                     If Not result.Success AndAlso result.ErrorMessage.Trim().Length = 0 Then
                         result.ErrorMessage = "Plugin process failed with exit code " & result.ExitCode.ToString() & "."
+                    End If
+
+                    If result.Success Then
+                        Me.FinalizePluginOutput(command, result, outputPath)
                     End If
                 Else
                     SyncLock stdoutBuilder
@@ -781,6 +945,28 @@ Namespace kotor_tool
                 normalizedAction = actionValue.Trim().ToLower()
             End If
 
+            Dim sidecarMdx As String = ""
+            Dim sidecarMdl As String = ""
+            Dim textureOutput As String = ""
+            Dim outputMdl As String = ""
+            Dim outputMdx As String = ""
+
+            If inputPath IsNot Nothing AndAlso inputPath.Trim().Length > 0 Then
+                sidecarMdx = Path.ChangeExtension(inputPath, ".mdx")
+                sidecarMdl = Path.ChangeExtension(inputPath, ".mdl")
+            End If
+
+            If outputPath IsNot Nothing AndAlso outputPath.Trim().Length > 0 Then
+                outputMdl = Path.ChangeExtension(outputPath, ".mdl")
+                outputMdx = Path.ChangeExtension(outputPath, ".mdx")
+
+                Dim outputDirectory As String = Path.GetDirectoryName(outputPath)
+
+                If outputDirectory IsNot Nothing AndAlso outputDirectory.Trim().Length > 0 Then
+                    textureOutput = Path.Combine(outputDirectory, "textures")
+                End If
+            End If
+
             Dim result As String = arguments
             Dim hadExtraArgumentsPlaceholder As Boolean = (result.IndexOf("{extra_args}", StringComparison.OrdinalIgnoreCase) >= 0)
             result = result.Replace("{input}", inputPath)
@@ -800,6 +986,11 @@ Namespace kotor_tool
             result = result.Replace("{config_dir}", plugin.ConfigDirectory)
             result = result.Replace("{runtime_dir}", plugin.RuntimeDirectory)
             result = result.Replace("{tools_dir}", plugin.ToolsDirectory)
+            result = result.Replace("{sidecar_mdx}", sidecarMdx)
+            result = result.Replace("{sidecar_mdl}", sidecarMdl)
+            result = result.Replace("{texture_output}", textureOutput)
+            result = result.Replace("{output_mdl}", outputMdl)
+            result = result.Replace("{output_mdx}", outputMdx)
 
             If Not hadExtraArgumentsPlaceholder AndAlso extraArguments.Trim().Length > 0 Then
                 result = extraArguments.Trim() & " " & result
@@ -818,6 +1009,163 @@ Namespace kotor_tool
 
             Return builder.ToString()
         End Function
+
+
+        Public Function InstallAvailablePlugin(ByVal plugin As clsPluginDefinition,
+                                                ByVal downloadRoot As String) As String
+
+            If plugin Is Nothing Then
+                Throw New ArgumentNullException("plugin")
+            End If
+
+            If Me.IsSourceOnlyPlugin(plugin) Then
+                Return Me.InstallSourceOnlyPlugin(plugin, downloadRoot)
+            End If
+
+            Dim downloader As clsDownloadPlugin = Nothing
+            Dim installer As clsInstallPlugin = Nothing
+
+            Try
+                downloader = New clsDownloadPlugin()
+                AddHandler downloader.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
+
+                Dim packagePath As String = downloader.DownloadPlugin(plugin, downloadRoot)
+
+                RemoveHandler downloader.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
+                downloader = Nothing
+
+                installer = New clsInstallPlugin()
+                AddHandler installer.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
+
+                Dim installedPath As String = installer.InstallPlugin(plugin, packagePath, Me._pluginsRoot)
+
+                RemoveHandler installer.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
+                installer = Nothing
+
+                Return installedPath
+
+            Finally
+                Try
+                    If downloader IsNot Nothing Then
+                        RemoveHandler downloader.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
+                    End If
+                Catch exDownloader As System.Exception
+                End Try
+
+                Try
+                    If installer IsNot Nothing Then
+                        RemoveHandler installer.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
+                    End If
+                Catch exInstaller As System.Exception
+                End Try
+            End Try
+        End Function
+
+        Private Function InstallSourceOnlyPlugin(ByVal plugin As clsPluginDefinition,
+                                                 ByVal downloadRoot As String) As String
+
+            Dim context As clsSourcePluginContext = Nothing
+
+            Dim sourceDownloader As clsDownloadSourcePlugin = Nothing
+            Dim sourceExtractor As clsExtractSourcePlugin = Nothing
+            Dim sourceCompiler As clsCompileSourcePlugin = Nothing
+            Dim sourceInstaller As clsInstallSourcePlugin = Nothing
+            Dim sourceCleaner As clsCleanupSourcePlugin = Nothing
+
+            Try
+                context = clsSourcePluginContext.CreateGhostRiggerContext(plugin, downloadRoot, Me._pluginsRoot)
+
+                If plugin.SourceZipUrl IsNot Nothing AndAlso plugin.SourceZipUrl.Trim().Length > 0 Then
+                    context.SourceZipUrl = plugin.SourceZipUrl.Trim()
+                End If
+
+                sourceDownloader = New clsDownloadSourcePlugin()
+                sourceExtractor = New clsExtractSourcePlugin()
+                sourceCompiler = New clsCompileSourcePlugin()
+                sourceInstaller = New clsInstallSourcePlugin()
+                sourceCleaner = New clsCleanupSourcePlugin()
+
+                AddHandler sourceDownloader.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
+                AddHandler sourceExtractor.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
+                AddHandler sourceCompiler.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
+                AddHandler sourceInstaller.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
+                AddHandler sourceCleaner.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
+
+                context = sourceDownloader.DownloadSource(context)
+                context = sourceExtractor.ExtractSource(context)
+                context = sourceCompiler.CompileSource(context)
+                context = sourceInstaller.InstallSourcePlugin(context)
+
+                Try
+                    If sourceCleaner IsNot Nothing Then
+                        sourceCleaner.Cleanup(context)
+                    End If
+                Catch exCleanupSuccess As System.Exception
+                End Try
+
+                Return context.InstallDirectory
+
+            Finally
+                Try
+                    If sourceDownloader IsNot Nothing Then
+                        RemoveHandler sourceDownloader.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
+                    End If
+                Catch exSourceDownloader As System.Exception
+                End Try
+
+                Try
+                    If sourceExtractor IsNot Nothing Then
+                        RemoveHandler sourceExtractor.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
+                    End If
+                Catch exSourceExtractor As System.Exception
+                End Try
+
+                Try
+                    If sourceCompiler IsNot Nothing Then
+                        RemoveHandler sourceCompiler.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
+                    End If
+                Catch exSourceCompiler As System.Exception
+                End Try
+
+                Try
+                    If sourceInstaller IsNot Nothing Then
+                        RemoveHandler sourceInstaller.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
+                    End If
+                Catch exSourceInstaller As System.Exception
+                End Try
+
+                Try
+                    If sourceCleaner IsNot Nothing Then
+                        RemoveHandler sourceCleaner.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
+                    End If
+                Catch exSourceCleaner As System.Exception
+                End Try
+            End Try
+        End Function
+
+        Private Function IsSourceOnlyPlugin(ByVal plugin As clsPluginDefinition) As Boolean
+            If plugin Is Nothing Then
+                Return False
+            End If
+
+            If plugin.SourceOnly OrElse plugin.BuildRequired Then
+                Return True
+            End If
+
+            If plugin.SourceZipUrl IsNot Nothing AndAlso plugin.SourceZipUrl.Trim().Length > 0 Then
+                Return True
+            End If
+
+            If plugin.Id IsNot Nothing AndAlso String.Compare(plugin.Id.Trim(), "ghostrigger", True) = 0 Then
+                Return True
+            End If
+
+            Return False
+        End Function
+
+        Private Sub ChildPluginProgressChanged(ByVal sender As Object, ByVal e As clsPluginProgressEventArgs)
+            RaiseEvent ProgressChanged(Me, e)
+        End Sub
 
         Private Function ReadIniSection(ByVal iniPath As String, ByVal sectionName As String) As Hashtable
             Dim values As Hashtable = New Hashtable(StringComparer.OrdinalIgnoreCase)
@@ -942,6 +1290,41 @@ Namespace kotor_tool
                    "<PluginLibrary>" & vbCrLf &
                    "</PluginLibrary>" & vbCrLf
         End Function
+
+        Private Sub FinalizePluginOutput(ByVal command As clsPluginCommand,
+                                 ByVal result As clsPluginExecutionResult,
+                                 ByVal outputPath As String)
+
+            If command Is Nothing Then
+                Return
+            End If
+
+            If outputPath Is Nothing OrElse outputPath.Trim().Length = 0 Then
+                Return
+            End If
+
+            Dim outputMode As String = ""
+
+            If command.OutputMode IsNot Nothing Then
+                outputMode = command.OutputMode.Trim().ToLower()
+            End If
+
+            If outputMode = "none" Then
+                Return
+            End If
+
+            If File.Exists(outputPath) Then
+                result.OutputCreated = True
+                Return
+            End If
+
+            If result.StandardOutput IsNot Nothing AndAlso result.StandardOutput.Length > 0 Then
+                If outputMode = "file" OrElse outputMode = "stdoutfile" OrElse outputMode = "stdout" Then
+                    File.WriteAllText(outputPath, result.StandardOutput, Encoding.UTF8)
+                    result.OutputCreated = True
+                End If
+            End If
+        End Sub
 
     End Class
 

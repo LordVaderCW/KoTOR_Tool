@@ -138,6 +138,7 @@ Namespace kotor_tool
             Me.ApplyApplicationIcon()
             Me.WireOtherWindowsMenu()
             Me.WireModernToolbar()
+            Me.WireInstalledPluginsMenu()
             Me.LoadModernToolbarImages()
             Me.InitialiseResourceBrowser()
 
@@ -162,6 +163,7 @@ Namespace kotor_tool
             Me.ApplyApplicationIcon()
             Me.WireOtherWindowsMenu()
             Me.WireModernToolbar()
+            Me.WireInstalledPluginsMenu()
             Me.LoadModernToolbarImages()
             Me.InitialiseResourceBrowser()
         End Sub
@@ -6377,6 +6379,160 @@ IL_12BE:
             frmPluginSystem.StartPosition = FormStartPosition.CenterParent
             frmPluginSystem.ShowDialog(Me)
             frmPluginSystem.Dispose()
+            Me.RefreshInstalledPluginsMenu()
+        End Sub
+
+        Private Sub WireInstalledPluginsMenu()
+            If Me.miPlugins Is Nothing Then
+                Return
+            End If
+
+            RemoveHandler Me.miPlugins.Popup, AddressOf Me.miPlugins_Popup
+            AddHandler Me.miPlugins.Popup, AddressOf Me.miPlugins_Popup
+
+            Me.RefreshInstalledPluginsMenu()
+        End Sub
+
+        Private Sub miPlugins_Popup(ByVal sender As Object, ByVal e As EventArgs)
+            Me.RefreshInstalledPluginsMenu()
+        End Sub
+
+        Private Sub RefreshInstalledPluginsMenu()
+            If Me.miPlugins Is Nothing Then
+                Return
+            End If
+
+            Me.miPlugins.MenuItems.Clear()
+            Me.miOpenPluginManager.Index = 0
+            Me.miPlugins.MenuItems.Add(Me.miOpenPluginManager)
+            Me.miPlugins.MenuItems.Add(New MenuItem("-"))
+
+            Dim installedPluginsMenu As MenuItem = New MenuItem("Installed &Plugins")
+            Me.miPlugins.MenuItems.Add(installedPluginsMenu)
+
+            Dim pluginManager As clsPluginManager = New clsPluginManager()
+
+            Try
+                pluginManager.LoadPlugins()
+            Catch ex As System.Exception
+                Dim errorItem As MenuItem = New MenuItem("Unable to load installed plugins")
+                errorItem.Enabled = False
+                installedPluginsMenu.MenuItems.Add(errorItem)
+                Return
+            End Try
+
+            Dim externalToolsMenu As MenuItem = New MenuItem("&External Tools")
+            Dim headlessToolsMenu As MenuItem = New MenuItem("&Headless / Internal")
+
+            installedPluginsMenu.MenuItems.Add(externalToolsMenu)
+            installedPluginsMenu.MenuItems.Add(headlessToolsMenu)
+
+            For Each pluginObj As Object In pluginManager.Plugins
+                Dim plugin As clsPluginDefinition = CType(pluginObj, clsPluginDefinition)
+
+                If Me.IsInteractiveExternalPlugin(pluginManager, plugin) Then
+                    Me.AddInstalledPluginMenuItem(externalToolsMenu, plugin)
+                Else
+                    Me.AddHeadlessPluginMenuItem(headlessToolsMenu, plugin)
+                End If
+            Next
+
+            If externalToolsMenu.MenuItems.Count = 0 Then
+                Dim noneExternal As MenuItem = New MenuItem("(none installed)")
+                noneExternal.Enabled = False
+                externalToolsMenu.MenuItems.Add(noneExternal)
+            End If
+
+            If headlessToolsMenu.MenuItems.Count = 0 Then
+                Dim noneHeadless As MenuItem = New MenuItem("(none installed)")
+                noneHeadless.Enabled = False
+                headlessToolsMenu.MenuItems.Add(noneHeadless)
+            End If
+        End Sub
+
+        Private Sub AddInstalledPluginMenuItem(ByVal parentMenu As MenuItem, ByVal plugin As clsPluginDefinition)
+            Dim pluginCopy As clsPluginDefinition = plugin
+            Dim item As MenuItem = New MenuItem(Me.GetPluginMenuText(pluginCopy))
+            AddHandler item.Click, Sub(ByVal sender As Object, ByVal e As EventArgs)
+                                       Me.LaunchInstalledPlugin(pluginCopy)
+                                   End Sub
+            parentMenu.MenuItems.Add(item)
+        End Sub
+
+        Private Sub AddHeadlessPluginMenuItem(ByVal parentMenu As MenuItem, ByVal plugin As clsPluginDefinition)
+            Dim item As MenuItem = New MenuItem(Me.GetPluginMenuText(plugin) & " (used internally)")
+            item.Enabled = False
+            parentMenu.MenuItems.Add(item)
+        End Sub
+
+        Private Function IsInteractiveExternalPlugin(ByVal pluginManager As clsPluginManager,
+                                                     ByVal plugin As clsPluginDefinition) As Boolean
+            If plugin Is Nothing OrElse pluginManager Is Nothing Then
+                Return False
+            End If
+
+            If pluginManager.HasCommandSection(plugin, "LaunchUI") Then
+                Return True
+            End If
+
+            If plugin.Id IsNot Nothing AndAlso String.Compare(plugin.Id.Trim(), "ghostrigger", True) = 0 Then
+                Return pluginManager.HasCommandSection(plugin, "Command")
+            End If
+
+            Return False
+        End Function
+
+        Private Function GetPluginLaunchCommandSection(ByVal pluginManager As clsPluginManager,
+                                                       ByVal plugin As clsPluginDefinition) As String
+            If plugin IsNot Nothing AndAlso pluginManager IsNot Nothing Then
+                If pluginManager.HasCommandSection(plugin, "LaunchUI") Then
+                    Return "LaunchUI"
+                End If
+
+                If plugin.Id IsNot Nothing AndAlso String.Compare(plugin.Id.Trim(), "ghostrigger", True) = 0 Then
+                    If pluginManager.HasCommandSection(plugin, "Command") Then
+                        Return "Command"
+                    End If
+                End If
+            End If
+
+            Return "LaunchUI"
+        End Function
+
+        Private Function GetPluginMenuText(ByVal plugin As clsPluginDefinition) As String
+            If plugin Is Nothing Then
+                Return "(unknown plugin)"
+            End If
+
+            If plugin.Name IsNot Nothing AndAlso plugin.Name.Trim().Length > 0 Then
+                Return plugin.Name.Trim()
+            End If
+
+            If plugin.InstalledName IsNot Nothing AndAlso plugin.InstalledName.Trim().Length > 0 Then
+                Return plugin.InstalledName.Trim()
+            End If
+
+            Return plugin.Id
+        End Function
+
+        Private Sub LaunchInstalledPlugin(ByVal plugin As clsPluginDefinition)
+            Dim pluginManager As clsPluginManager = New clsPluginManager()
+            Dim commandSection As String = Me.GetPluginLaunchCommandSection(pluginManager, plugin)
+            Dim result As clsPluginExecutionResult = pluginManager.ExecutePluginCommand(plugin, commandSection, "", True)
+
+            If result Is Nothing OrElse Not result.Success Then
+                Dim messageText As String = "The plugin could not be launched."
+
+                If result IsNot Nothing AndAlso result.ErrorMessage IsNot Nothing AndAlso result.ErrorMessage.Trim().Length > 0 Then
+                    messageText &= vbCrLf & vbCrLf & result.ErrorMessage
+                End If
+
+                If result IsNot Nothing AndAlso result.DiagnosticMessage IsNot Nothing AndAlso result.DiagnosticMessage.Trim().Length > 0 Then
+                    messageText &= vbCrLf & vbCrLf & result.DiagnosticMessage
+                End If
+
+                MessageBox.Show(Me, messageText, "Plugin Launch Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
         End Sub
 
         Private Sub miThemeEditor_Click(sender As Object, e As EventArgs) Handles miThemeEditor.Click

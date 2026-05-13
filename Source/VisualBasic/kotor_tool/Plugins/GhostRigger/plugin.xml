@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Plugin>
+	<Id>ghostrigger</Id>
+	<Name>GhostRigger / KotOR 3D Model Converter</Name>
+	<Author>CrispyW0nton</Author>
+	<Version>6.0.0-dev</Version>
+	<Type>ExternalTool</Type>
+	<Enabled>True</Enabled>
+
+	<Description>
+		Launches and integrates GhostRigger, a KotOR 1 / TSL model pipeline for
+		viewing, inspecting, editing, validating, and eventually converting MDL/MDX
+		model assets to and from modern 3D formats.
+	</Description>
+
+	<Compatibility>
+		<Application>KoTOR Tool Restoration Project</Application>
+		<MinimumVersion>1.0.3.4</MinimumVersion>
+		<Game>K1</Game>
+		<Game>TSL</Game>
+	</Compatibility>
+
+	<Repository>
+		<Url>https://github.com/CrispyW0nton/Kotor-3D-Model-Converter</Url>
+		<Branch>genspark_ai_developer</Branch>
+	</Repository>
+
+	<Commands>
+		<Command Id="LaunchUI">
+			<Name>Launch GhostRigger</Name>
+			<Mode>ExternalProcess</Mode>
+			<Executable>GhostRigger-K1-K2.exe</Executable>
+			<Arguments></Arguments>
+			<WorkingDirectory>{plugin_dir}</WorkingDirectory>
+			<OutputMode>None</OutputMode>
+		</Command>
+
+		<Command Id="InspectMDL">
+			<Name>Inspect MDL / MDX</Name>
+			<Mode>ExternalProcess</Mode>
+			<Executable>py.exe</Executable>
+			<Arguments>-3.12 -m tools.model_inspector --mdl "{input}" --mdx "{sidecar_mdx}" --json -o "{output}"</Arguments>
+			<WorkingDirectory>{plugin_dir}</WorkingDirectory>
+			<OutputMode>File</OutputMode>
+			<OutputExtension>json</OutputExtension>
+		</Command>
+	</Commands>
+
+	<CommandIni>commandline.ini</CommandIni>
+</Plugin>

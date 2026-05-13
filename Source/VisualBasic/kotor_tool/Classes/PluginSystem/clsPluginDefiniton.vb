@@ -37,6 +37,16 @@ Namespace kotor_tool
         Public ManifestPath As String
 
         ' -------------------------------------------------------------
+        ' Source-only plugin metadata
+        ' -------------------------------------------------------------
+        Public SourceOnly As Boolean
+        Public BuildRequired As Boolean
+        Public SourceZipUrl As String
+        Public SourceBuildProfile As String
+        Public BuildScriptName As String
+        Public BuiltExecutableName As String
+
+        ' -------------------------------------------------------------
         ' plugin.xml manifest data
         ' -------------------------------------------------------------
         Public Id As String
@@ -123,6 +133,13 @@ Namespace kotor_tool
             Me.ConfigDirectory = ""
             Me.RuntimeDirectory = ""
             Me.ToolsDirectory = ""
+
+            Me.SourceOnly = False
+            Me.BuildRequired = False
+            Me.SourceZipUrl = ""
+            Me.SourceBuildProfile = ""
+            Me.BuildScriptName = "build.bat"
+            Me.BuiltExecutableName = ""
 
             Me.ResourceHandles = New ArrayList()
             Me.RequiredFiles = New ArrayList()
