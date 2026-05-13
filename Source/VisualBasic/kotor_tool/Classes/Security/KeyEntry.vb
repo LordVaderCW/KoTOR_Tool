@@ -43,33 +43,24 @@ Namespace kotor_tool
 
         ' Token: 0x06000015 RID: 21 RVA: 0x00217B0C File Offset: 0x00216B0C
         Public Sub New(ByVal index As Integer, ByVal data As Byte(), ByVal offset As Integer)
-            Dim array As Byte() = New Byte(15) {}
-            Dim asciiencoding As ASCIIEncoding = New ASCIIEncoding()
             Me.index = index
-            Dim stringBuilder As StringBuilder = New StringBuilder(asciiencoding.GetString(data, offset, 16))
             Dim num As Integer = 0
-            While stringBuilder(num) <> vbNullChar
+            While num < 16 AndAlso data(offset + num) <> 0
                 num += 1
-                If num > 15 Then
-                    Exit While
-                End If
             End While
-            stringBuilder.Length = num
-            Me.ResRef = stringBuilder.ToString()
+            Me.ResRef = Encoding.ASCII.GetString(data, offset, num)
             Me.ResourceType = Me.GetInt16FromArray(data, offset + 16)
             Me.ResID = Me.GetInt32FromArray(data, offset + 18)
         End Sub
 
         ' Token: 0x06000016 RID: 22 RVA: 0x00217B90 File Offset: 0x00216B90
         Private Function GetInt16FromArray(ByVal Arr As Byte(), ByVal offset As Integer) As Short
-            ' The following expression was wrapped in a checked-statement
-            Return CShort(Math.Round(CDbl(Arr(offset)) + CDbl(Arr(offset + 1)) * 256.0))
+            Return CShort(Arr(offset) Or (CInt(Arr(offset + 1)) << 8))
         End Function
 
         ' Token: 0x06000017 RID: 23 RVA: 0x00217BB8 File Offset: 0x00216BB8
         Private Function GetInt32FromArray(ByVal Arr As Byte(), ByVal offset As Integer) As Integer
-            ' The following expression was wrapped in a checked-statement
-            Return CInt(Math.Round(CDbl(Arr(offset)) + CDbl(Arr(offset + 1)) * 256.0 + CDbl(Arr(offset + 2)) * 65536.0 + CDbl(Arr(offset + 3)) * 16777216.0))
+            Return CInt(Arr(offset)) Or (CInt(Arr(offset + 1)) << 8) Or (CInt(Arr(offset + 2)) << 16) Or (CInt(Arr(offset + 3)) << 24)
         End Function
 
         ' Token: 0x06000018 RID: 24 RVA: 0x00217C04 File Offset: 0x00216C04

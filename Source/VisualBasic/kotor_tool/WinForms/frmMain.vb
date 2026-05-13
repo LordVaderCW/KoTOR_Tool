@@ -353,19 +353,19 @@ Namespace kotor_tool
             End Try
             fileStream.Seek(CLng(num5), SeekOrigin.Begin)
             dateTime = DateAndTime.Now
-            Dim array As Byte() = New Byte(CInt(fileStream.Length) + 1 - 1) {}
+            Dim array As Byte() = New Byte(CInt(fileStream.Length) - 1) {}
             fileStream.Position = 0L
-            fileStream.Read(array, 0, CInt((fileStream.Length - 1L)))
+            fileStream.Read(array, 0, CInt(fileStream.Length))
             If Not noProgressIndication Then
                 frmProgressMeter.Show()
             End If
-            Dim num10 As Integer = num3 / 20
+            Dim num10 As Integer = Math.Max(1, num3 \ 20)
             Dim num11 As Integer = 0
             Dim num12 As Integer = num3 - 1
             For i As Integer = num11 To num12
                 Dim keyEntry As KeyEntry = New KeyEntry(i, array, num5 + 22 * i)
                 Me.BiffEntryListArray(num, keyEntry.ResID >> 20).Add(keyEntry)
-                If CDbl((i / num10)) = CDbl(i) / CDbl(num10) Then
+                If i Mod num10 = 0 Then
                     frmProgressMeter.stepUp()
                 End If
             Next
@@ -386,7 +386,7 @@ Namespace kotor_tool
                         kotorTreeNode.ContainingFileType = "BIF"
                         kotorTreeNode.FilePath = filePath + "\" + CType(Me.biffEntries(num)(i), BIFFEntry).filename
                         Me.OrganizeNodesByResType(CType(treeNode, KotorTreeNode), kotorTreeNode)
-                        If CDbl((num13 / num10)) = CDbl(num13) / CDbl(num10) Then
+                        If num13 Mod num10 = 0 Then
                             frmProgressMeter.stepUp()
                         End If
                         num13 += 1
@@ -394,6 +394,7 @@ Namespace kotor_tool
                     Me.AttachNodeParentsSortedByDesc(CType(Root.Nodes(0).Nodes(i), KotorTreeNode), CType(treeNode, KotorTreeNode))
                 End If
             Next
+            binaryReader.Close()
             Me.TreeView.EndUpdate()
             frmProgressMeter.Hide()
         End Sub
@@ -1987,274 +1988,99 @@ Namespace kotor_tool
 
         ' Token: 0x0600070C RID: 1804 RVA: 0x002523E8 File Offset: 0x002513E8
         Public Shared Function GetRsrcTypeForID(ByVal id As Integer) As String
-            If id = 0 Then
-                Return "res"
-            End If
-            If id = 1 Then
-                Return "bmp"
-            End If
-            If id = 2 Then
-                Return "mve"
-            End If
-            If id = 3 Then
-                Return "tga"
-            End If
-            If id = 4 Then
-                Return "wav"
-            End If
-            If id = 6 Then
-                Return "plt"
-            End If
-            If id = 7 Then
-                Return "ini"
-            End If
-            If id = 8 Then
-                Return "mp3"
-            End If
-            If id = 9 Then
-                Return "mpg"
-            End If
-            If id = 10 Then
-                Return "txt"
-            End If
-            If id = 11 Then
-                Return "wma"
-            End If
-            If id = 12 Then
-                Return "wmv"
-            End If
-            If id = 13 Then
-                Return "xmv"
-            End If
-            If id = 2000 Then
-                Return "plh"
-            End If
-            If id = 2001 Then
-                Return "tex"
-            End If
-            If id = 2002 Then
-                Return "mdl"
-            End If
-            If id = 2003 Then
-                Return "thg"
-            End If
-            If id = 2005 Then
-                Return "fnt"
-            End If
-            If id = 2007 Then
-                Return "lua"
-            End If
-            If id = 2008 Then
-                Return "slt"
-            End If
-            If id = 2009 Then
-                Return "nss"
-            End If
-            If id = 2010 Then
-                Return "ncs"
-            End If
-            If id = 2011 Then
-                Return "mod"
-            End If
-            If id = 2012 Then
-                Return "are"
-            End If
-            If id = 2013 Then
-                Return "set"
-            End If
-            If id = 2014 Then
-                Return "ifo"
-            End If
-            If id = 2015 Then
-                Return "bic"
-            End If
-            If id = 2016 Then
-                Return "wok"
-            End If
-            If id = 2017 Then
-                Return "2da"
-            End If
-            If id = 2018 Then
-                Return "tlk"
-            End If
-            If id = 2022 Then
-                Return "txi"
-            End If
-            If id = 2023 Then
-                Return "git"
-            End If
-            If id = 2024 Then
-                Return "bti"
-            End If
-            If id = 2025 Then
-                Return "uti"
-            End If
-            If id = 2026 Then
-                Return "btc"
-            End If
-            If id = 2027 Then
-                Return "utc"
-            End If
-            If id = 2029 Then
-                Return "dlg"
-            End If
-            If id = 2030 Then
-                Return "itp"
-            End If
-            If id = 2031 Then
-                Return "btt"
-            End If
-            If id = 2032 Then
-                Return "utt"
-            End If
-            If id = 2033 Then
-                Return "dds"
-            End If
-            If id = 2034 Then
-                Return "bts"
-            End If
-            If id = 2035 Then
-                Return "uts"
-            End If
-            If id = 2036 Then
-                Return "ltr"
-            End If
-            If id = 2037 Then
-                Return "gff"
-            End If
-            If id = 2038 Then
-                Return "fac"
-            End If
-            If id = 2039 Then
-                Return "bts"
-            End If
-            If id = 2040 Then
-                Return "ute"
-            End If
-            If id = 2041 Then
-                Return "btd"
-            End If
-            If id = 2042 Then
-                Return "utd"
-            End If
-            If id = 2043 Then
-                Return "btp"
-            End If
-            If id = 2044 Then
-                Return "utp"
-            End If
-            If id = 2045 Then
-                Return "dft"
-            End If
-            If id = 2046 Then
-                Return "gic"
-            End If
-            If id = 2047 Then
-                Return "gui"
-            End If
-            If id = 2048 Then
-                Return "css"
-            End If
-            If id = 2049 Then
-                Return "ccs"
-            End If
-            If id = 2050 Then
-                Return "btm"
-            End If
-            If id = 2051 Then
-                Return "utm"
-            End If
-            If id = 2052 Then
-                Return "dwk"
-            End If
-            If id = 2053 Then
-                Return "pwk"
-            End If
-            If id = 2054 Then
-                Return "btg"
-            End If
-            If id = 2055 Then
-                Return "utg"
-            End If
-            If id = 2056 Then
-                Return "jrl"
-            End If
-            If id = 2057 Then
-                Return "sav"
-            End If
-            If id = 2058 Then
-                Return "utw"
-            End If
-            If id = 2059 Then
-                Return "4pc"
-            End If
-            If id = 2060 Then
-                Return "ssf"
-            End If
-            If id = 2061 Then
-                Return "hak"
-            End If
-            If id = 2062 Then
-                Return "nwm"
-            End If
-            If id = 2063 Then
-                Return "bik"
-            End If
-            If id = 2064 Then
-                Return "ndb"
-            End If
-            If id = 2065 Then
-                Return "ptm"
-            End If
-            If id = 2066 Then
-                Return "ptt"
-            End If
-            If id = 3000 Then
-                Return "lyt"
-            End If
-            If id = 3001 Then
-                Return "vis"
-            End If
-            If id = 3002 Then
-                Return "rim"
-            End If
-            If id = 3003 Then
-                Return "pth"
-            End If
-            If id = 3004 Then
-                Return "lip"
-            End If
-            If id = 3005 Then
-                Return "bwm"
-            End If
-            If id = 3006 Then
-                Return "txb"
-            End If
-            If id = 3007 Then
-                Return "tpc"
-            End If
-            If id = 3008 Then
-                Return "mdx"
-            End If
-            If id = 3009 Then
-                Return "rsv"
-            End If
-            If id = 3010 Then
-                Return "sig"
-            End If
-            If id = 3011 Then
-                Return "xbx"
-            End If
-            If id = 9997 Then
-                Return "erf"
-            End If
-            If id = 9998 Then
-                Return "bif"
-            End If
-            If id = 9999 Then
-                Return "key"
-            End If
-            Return "Unk (" + StringType.FromInteger(id) + ")"
+            Select Case id
+                Case 0 : Return "res"
+                Case 1 : Return "bmp"
+                Case 2 : Return "mve"
+                Case 3 : Return "tga"
+                Case 4 : Return "wav"
+                Case 6 : Return "plt"
+                Case 7 : Return "ini"
+                Case 8 : Return "mp3"
+                Case 9 : Return "mpg"
+                Case 10 : Return "txt"
+                Case 11 : Return "wma"
+                Case 12 : Return "wmv"
+                Case 13 : Return "xmv"
+                Case 2000 : Return "plh"
+                Case 2001 : Return "tex"
+                Case 2002 : Return "mdl"
+                Case 2003 : Return "thg"
+                Case 2005 : Return "fnt"
+                Case 2007 : Return "lua"
+                Case 2008 : Return "slt"
+                Case 2009 : Return "nss"
+                Case 2010 : Return "ncs"
+                Case 2011 : Return "mod"
+                Case 2012 : Return "are"
+                Case 2013 : Return "set"
+                Case 2014 : Return "ifo"
+                Case 2015 : Return "bic"
+                Case 2016 : Return "wok"
+                Case 2017 : Return "2da"
+                Case 2018 : Return "tlk"
+                Case 2022 : Return "txi"
+                Case 2023 : Return "git"
+                Case 2024 : Return "bti"
+                Case 2025 : Return "uti"
+                Case 2026 : Return "btc"
+                Case 2027 : Return "utc"
+                Case 2029 : Return "dlg"
+                Case 2030 : Return "itp"
+                Case 2031 : Return "btt"
+                Case 2032 : Return "utt"
+                Case 2033 : Return "dds"
+                Case 2034 : Return "bts"
+                Case 2035 : Return "uts"
+                Case 2036 : Return "ltr"
+                Case 2037 : Return "gff"
+                Case 2038 : Return "fac"
+                Case 2039 : Return "bts"
+                Case 2040 : Return "ute"
+                Case 2041 : Return "btd"
+                Case 2042 : Return "utd"
+                Case 2043 : Return "btp"
+                Case 2044 : Return "utp"
+                Case 2045 : Return "dft"
+                Case 2046 : Return "gic"
+                Case 2047 : Return "gui"
+                Case 2048 : Return "css"
+                Case 2049 : Return "ccs"
+                Case 2050 : Return "btm"
+                Case 2051 : Return "utm"
+                Case 2052 : Return "dwk"
+                Case 2053 : Return "pwk"
+                Case 2054 : Return "btg"
+                Case 2055 : Return "utg"
+                Case 2056 : Return "jrl"
+                Case 2057 : Return "sav"
+                Case 2058 : Return "utw"
+                Case 2059 : Return "4pc"
+                Case 2060 : Return "ssf"
+                Case 2061 : Return "hak"
+                Case 2062 : Return "nwm"
+                Case 2063 : Return "bik"
+                Case 2064 : Return "ndb"
+                Case 2065 : Return "ptm"
+                Case 2066 : Return "ptt"
+                Case 3000 : Return "lyt"
+                Case 3001 : Return "vis"
+                Case 3002 : Return "rim"
+                Case 3003 : Return "pth"
+                Case 3004 : Return "lip"
+                Case 3005 : Return "bwm"
+                Case 3006 : Return "txb"
+                Case 3007 : Return "tpc"
+                Case 3008 : Return "mdx"
+                Case 3009 : Return "rsv"
+                Case 3010 : Return "sig"
+                Case 3011 : Return "xbx"
+                Case 9997 : Return "erf"
+                Case 9998 : Return "bif"
+                Case 9999 : Return "key"
+                Case Else
+                    Return "Unk (" + StringType.FromInteger(id) + ")"
+            End Select
         End Function
 
         ' Token: 0x0600070D RID: 1805 RVA: 0x002528BC File Offset: 0x002518BC
