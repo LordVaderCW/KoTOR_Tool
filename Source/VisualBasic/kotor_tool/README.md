@@ -5,7 +5,7 @@ Rebuild and rebirth of the original **KoTOR Tool**, originally developed by Fred
 **Current version:** v1.0.3.4  
 **Patch date:** 10.05.26  
 **Target IDE:** Visual Studio 2010  
-**Target framework:** .NET Framework 2.0  
+**Target framework:** .NET Framework 4.6.2  
 **Platform:** x86  
 **Language:** VB.NET
 

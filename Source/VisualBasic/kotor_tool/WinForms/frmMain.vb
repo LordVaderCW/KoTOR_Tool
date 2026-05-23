@@ -8,6 +8,7 @@ Imports System.Net
 Imports System.Reflection
 Imports System.Resources
 Imports System.Runtime.CompilerServices
+Imports System.Runtime.InteropServices
 Imports System.Runtime.Serialization.Formatters.Binary
 Imports System.Text
 Imports System.Text.RegularExpressions
@@ -3938,10 +3939,14 @@ Namespace kotor_tool
             Dim registryKey As RegistryKey = Registry.LocalMachine.OpenSubKey("software\SCM\Kotor Tool")
 
             If registryKey Is Nothing Then
-                Dim registryErrorMessage As String = "Kotor Tool cannot find its key in the registry at HKLM\software\SCM\Kotor Tool." & vbLf & vbLf & "Please reinstall Kotor Tool."
-                Interaction.MsgBox(registryErrorMessage, MsgBoxStyle.Critical, Nothing)
-                System.Environment.Exit(0)
-                Return
+                If Not frmMain.IsRunningUnderWine() Then
+                    Dim registryErrorMessage As String = "Kotor Tool cannot find its key in the registry at HKLM\software\SCM\Kotor Tool." & vbLf & vbLf & "Please reinstall Kotor Tool."
+                    Interaction.MsgBox(registryErrorMessage, MsgBoxStyle.Critical, Nothing)
+                    System.Environment.Exit(0)
+                    Return
+                End If
+            Else
+                registryKey.Close()
             End If
 
             'frmMain.gRootPath = StringType.FromObject(registryKey.GetValue("path"))
@@ -5825,7 +5830,7 @@ IL_12BE:
             Dim text3 As String = "Unsupported"
             Dim text5 As String
             If mapInfo IsNot Nothing Then
-                Dim text4 As String = Path.Combine(StringType.FromObject(Registry.LocalMachine.OpenSubKey("software\SCM\Kotor Tool").GetValue("path")), "maps\")
+                Dim text4 As String = Path.Combine(frmMain.GetApplicationRootPath(), "maps\")
                 Try
                     For Each obj As Object In mapInfo.MapList
                         Dim map As MapInfo.Map = CType(obj, MapInfo.Map)
@@ -6258,6 +6263,37 @@ IL_12BE:
             End If
 
             Return path
+        End Function
+
+        Public Shared Function IsRunningUnderWine() As Boolean
+            Try
+                Dim wineKey As RegistryKey = Registry.CurrentUser.OpenSubKey("Software\Wine")
+
+                If wineKey IsNot Nothing Then
+                    wineKey.Close()
+                    Return True
+                End If
+            Catch ex As System.Exception
+            End Try
+
+            Try
+                Dim ntdllModule As IntPtr = GetModuleHandle("ntdll.dll")
+
+                If ntdllModule <> IntPtr.Zero AndAlso GetProcAddress(ntdllModule, "wine_get_version") <> IntPtr.Zero Then
+                    Return True
+                End If
+            Catch ex As System.Exception
+            End Try
+
+            Return False
+        End Function
+
+        <DllImport("kernel32.dll", CharSet:=CharSet.Auto, SetLastError:=True)> _
+        Private Shared Function GetModuleHandle(ByVal moduleName As String) As IntPtr
+        End Function
+
+        <DllImport("kernel32.dll", CharSet:=CharSet.Ansi, SetLastError:=True)> _
+        Private Shared Function GetProcAddress(ByVal moduleHandle As IntPtr, ByVal procName As String) As IntPtr
         End Function
 
         Public Shared Function GetWorkingDirectoryPath() As String
