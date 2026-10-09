@@ -6511,10 +6511,6 @@ IL_12BE:
                 Return True
             End If
 
-            If plugin.Id IsNot Nothing AndAlso String.Compare(plugin.Id.Trim(), "ghostrigger", True) = 0 Then
-                Return pluginManager.HasCommandSection(plugin, "Command")
-            End If
-
             Return False
         End Function
 
@@ -6525,11 +6521,6 @@ IL_12BE:
                     Return "LaunchUI"
                 End If
 
-                If plugin.Id IsNot Nothing AndAlso String.Compare(plugin.Id.Trim(), "ghostrigger", True) = 0 Then
-                    If pluginManager.HasCommandSection(plugin, "Command") Then
-                        Return "Command"
-                    End If
-                End If
             End If
 
             Return "LaunchUI"

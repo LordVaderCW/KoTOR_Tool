@@ -175,12 +175,6 @@ Namespace kotor_tool
                     plugin.GitHubBranch = Me.GetXmlNodeText(availableNode, "GitHubBranch", "")
                     plugin.Website = Me.GetXmlNodeText(availableNode, "Website", "")
                     plugin.DownloadUrl = Me.GetXmlNodeText(availableNode, "DownloadUrl", "")
-                    plugin.SourceOnly = Me.ParseBoolean(Me.GetXmlNodeText(availableNode, "SourceOnly", "False"), False)
-                    plugin.BuildRequired = Me.ParseBoolean(Me.GetXmlNodeText(availableNode, "BuildRequired", "False"), False)
-                    plugin.SourceZipUrl = Me.GetXmlNodeText(availableNode, "SourceZipUrl", "")
-                    plugin.SourceBuildProfile = Me.GetXmlNodeText(availableNode, "SourceBuildProfile", "")
-                    plugin.BuildScriptName = Me.GetXmlNodeText(availableNode, "BuildScriptName", "build.bat")
-                    plugin.BuiltExecutableName = Me.GetXmlNodeText(availableNode, "BuiltExecutableName", "")
                     plugin.InstalledDirectory = Me.GetXmlNodeText(availableNode, "Directory", "")
                     plugin.Enabled = Me.ParseBoolean(Me.GetXmlNodeText(availableNode, "Enabled", "True"), True)
 
@@ -269,13 +263,6 @@ Namespace kotor_tool
             plugin.GitHubBranch = Me.GetXmlNodeText(pluginNode, "Project/GitHubBranch", Me.GetXmlNodeText(pluginNode, "GitHubBranch", ""))
             plugin.Website = Me.GetXmlNodeText(pluginNode, "Project/Website", Me.GetXmlNodeText(pluginNode, "Website", ""))
             plugin.DownloadUrl = Me.GetXmlNodeText(pluginNode, "Project/DownloadUrl", Me.GetXmlNodeText(pluginNode, "DownloadUrl", ""))
-
-            plugin.SourceOnly = Me.ParseBoolean(Me.GetXmlNodeText(pluginNode, "SourceOnly", "False"), False)
-            plugin.BuildRequired = Me.ParseBoolean(Me.GetXmlNodeText(pluginNode, "BuildRequired", "False"), False)
-            plugin.SourceZipUrl = Me.GetXmlNodeText(pluginNode, "SourceZipUrl", Me.GetXmlNodeText(pluginNode, "Project/SourceZipUrl", ""))
-            plugin.SourceBuildProfile = Me.GetXmlNodeText(pluginNode, "SourceBuildProfile", Me.GetXmlNodeText(pluginNode, "Project/SourceBuildProfile", ""))
-            plugin.BuildScriptName = Me.GetXmlNodeText(pluginNode, "BuildScriptName", "build.bat")
-            plugin.BuiltExecutableName = Me.GetXmlNodeText(pluginNode, "BuiltExecutableName", "")
 
             plugin.AppFolderName = Me.GetXmlNodeText(pluginNode, "Layout/Folder[@name='app']", "app")
             plugin.ConfigFolderName = Me.GetXmlNodeText(pluginNode, "Layout/Folder[@name='config']", "config")
@@ -1018,10 +1005,6 @@ Namespace kotor_tool
                 Throw New ArgumentNullException("plugin")
             End If
 
-            If Me.IsSourceOnlyPlugin(plugin) Then
-                Return Me.InstallSourceOnlyPlugin(plugin, downloadRoot)
-            End If
-
             Dim downloader As clsDownloadPlugin = Nothing
             Dim installer As clsInstallPlugin = Nothing
 
@@ -1059,108 +1042,6 @@ Namespace kotor_tool
                 Catch exInstaller As System.Exception
                 End Try
             End Try
-        End Function
-
-        Private Function InstallSourceOnlyPlugin(ByVal plugin As clsPluginDefinition,
-                                                 ByVal downloadRoot As String) As String
-
-            Dim context As clsSourcePluginContext = Nothing
-
-            Dim sourceDownloader As clsDownloadSourcePlugin = Nothing
-            Dim sourceExtractor As clsExtractSourcePlugin = Nothing
-            Dim sourceCompiler As clsCompileSourcePlugin = Nothing
-            Dim sourceInstaller As clsInstallSourcePlugin = Nothing
-            Dim sourceCleaner As clsCleanupSourcePlugin = Nothing
-
-            Try
-                context = clsSourcePluginContext.CreateGhostRiggerContext(plugin, downloadRoot, Me._pluginsRoot)
-
-                If plugin.SourceZipUrl IsNot Nothing AndAlso plugin.SourceZipUrl.Trim().Length > 0 Then
-                    context.SourceZipUrl = plugin.SourceZipUrl.Trim()
-                End If
-
-                sourceDownloader = New clsDownloadSourcePlugin()
-                sourceExtractor = New clsExtractSourcePlugin()
-                sourceCompiler = New clsCompileSourcePlugin()
-                sourceInstaller = New clsInstallSourcePlugin()
-                sourceCleaner = New clsCleanupSourcePlugin()
-
-                AddHandler sourceDownloader.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
-                AddHandler sourceExtractor.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
-                AddHandler sourceCompiler.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
-                AddHandler sourceInstaller.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
-                AddHandler sourceCleaner.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
-
-                context = sourceDownloader.DownloadSource(context)
-                context = sourceExtractor.ExtractSource(context)
-                context = sourceCompiler.CompileSource(context)
-                context = sourceInstaller.InstallSourcePlugin(context)
-
-                Try
-                    If sourceCleaner IsNot Nothing Then
-                        sourceCleaner.Cleanup(context)
-                    End If
-                Catch exCleanupSuccess As System.Exception
-                End Try
-
-                Return context.InstallDirectory
-
-            Finally
-                Try
-                    If sourceDownloader IsNot Nothing Then
-                        RemoveHandler sourceDownloader.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
-                    End If
-                Catch exSourceDownloader As System.Exception
-                End Try
-
-                Try
-                    If sourceExtractor IsNot Nothing Then
-                        RemoveHandler sourceExtractor.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
-                    End If
-                Catch exSourceExtractor As System.Exception
-                End Try
-
-                Try
-                    If sourceCompiler IsNot Nothing Then
-                        RemoveHandler sourceCompiler.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
-                    End If
-                Catch exSourceCompiler As System.Exception
-                End Try
-
-                Try
-                    If sourceInstaller IsNot Nothing Then
-                        RemoveHandler sourceInstaller.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
-                    End If
-                Catch exSourceInstaller As System.Exception
-                End Try
-
-                Try
-                    If sourceCleaner IsNot Nothing Then
-                        RemoveHandler sourceCleaner.ProgressChanged, AddressOf Me.ChildPluginProgressChanged
-                    End If
-                Catch exSourceCleaner As System.Exception
-                End Try
-            End Try
-        End Function
-
-        Private Function IsSourceOnlyPlugin(ByVal plugin As clsPluginDefinition) As Boolean
-            If plugin Is Nothing Then
-                Return False
-            End If
-
-            If plugin.SourceOnly OrElse plugin.BuildRequired Then
-                Return True
-            End If
-
-            If plugin.SourceZipUrl IsNot Nothing AndAlso plugin.SourceZipUrl.Trim().Length > 0 Then
-                Return True
-            End If
-
-            If plugin.Id IsNot Nothing AndAlso String.Compare(plugin.Id.Trim(), "ghostrigger", True) = 0 Then
-                Return True
-            End If
-
-            Return False
         End Function
 
         Private Sub ChildPluginProgressChanged(ByVal sender As Object, ByVal e As clsPluginProgressEventArgs)

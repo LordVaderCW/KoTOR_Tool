@@ -1,5 +1,7 @@
 # KoTOR Tool Restoration Project
 
+> Treya engineering documentation starts at [`../project.md`](../project.md), including architecture, dependencies and per-directory heuristics.
+
 Rebuild and rebirth of the original **KoTOR Tool**, originally developed by Fred Tetra in 2005.
 
 **Current version:** v1.0.3.4  
@@ -34,6 +36,10 @@ Version **v1.0.3.3** established the restored application baseline, including:
 
 ## Build Notes
 
-The restored project is maintained as a VB.NET WinForms application targeting x86. The source has been verified with modern MSBuild while preserving compatibility expectations for the restored Visual Studio project format.
+The restored project is maintained as a VB.NET WinForms application targeting x86. Acceptance uses full Visual Studio MSBuild; SDK-style `dotnet build` is incompatible with the current legacy non-string WinForms resources.
 
 See `Changelog.txt` for full release history and detailed patch notes.
+
+## Treya source tree
+
+`Classes` contains codecs plus image/model/plugin pipelines; `WinForms` contains the browser/editors. `Plugins` describes DeNCS and MDLOps, while `Tools/7Zip` supports generic `.7z` and RAR plugin package extraction. `Lib` and root helper binaries are checked-in dependencies. `ProjectManager.py` is a separate Tk `.vbproj` utility, not part of the executable.

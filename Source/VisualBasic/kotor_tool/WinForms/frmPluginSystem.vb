@@ -811,14 +811,8 @@ Partial Class frmPluginSystem
                     canDownload = False
                 End If
 
-                If Me._selectedPlugin.SourceOnly OrElse Me._selectedPlugin.BuildRequired Then
-                    If Me._selectedPlugin.SourceZipUrl Is Nothing OrElse Me._selectedPlugin.SourceZipUrl.Trim().Length = 0 Then
-                        canDownload = False
-                    End If
-                Else
-                    If Me._selectedPlugin.DownloadUrl Is Nothing OrElse Me._selectedPlugin.DownloadUrl.Trim().Length = 0 Then
-                        canDownload = False
-                    End If
+                If Me._selectedPlugin.DownloadUrl Is Nothing OrElse Me._selectedPlugin.DownloadUrl.Trim().Length = 0 Then
+                    canDownload = False
                 End If
             End If
         End If
