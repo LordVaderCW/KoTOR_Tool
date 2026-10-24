@@ -1,5 +1,6 @@
 Imports System
 Imports System.Collections
+Imports System.Collections.Generic
 Imports System.ComponentModel
 Imports System.Diagnostics
 Imports System.Drawing
@@ -1396,7 +1397,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000701 RID: 1793 RVA: 0x0025136C File Offset: 0x0025036C
-        Private Function GetRIMResource(ByVal RimFilePath As String, ByVal ktn As KotorTreeNode) As Byte()
+        Friend Function GetRIMResource(ByVal RimFilePath As String, ByVal ktn As KotorTreeNode) As Byte()
             Dim fileStream As FileStream = New FileStream(RimFilePath, FileMode.Open, FileAccess.Read)
             Dim binaryReader As BinaryReader = New BinaryReader(fileStream, Encoding.ASCII)
             Dim array As Byte() = binaryReader.ReadBytes(CInt(fileStream.Length))
@@ -1517,7 +1518,7 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000704 RID: 1796 RVA: 0x0025176C File Offset: 0x0025076C
-        Private Function GetERFResource(ByVal ERFFilePath As String, ByVal ktn As KotorTreeNode) As Byte()
+        Friend Function GetERFResource(ByVal ERFFilePath As String, ByVal ktn As KotorTreeNode) As Byte()
             Dim fileStream As FileStream = New FileStream(ERFFilePath, FileMode.Open, FileAccess.Read)
             Dim clsERF As clsERF = New clsERF(fileStream)
             Return clsERF.getERFResource(ktn.RIMorERFindex)
@@ -2866,7 +2867,7 @@ Namespace kotor_tool
             Me.lvResourceBrowser.Columns.Add("Name", 220, HorizontalAlignment.Left)
             Me.lvResourceBrowser.Columns.Add("Type", 70, HorizontalAlignment.Left)
             Me.lvResourceBrowser.Columns.Add("Source", 110, HorizontalAlignment.Left)
-            Me.lvResourceBrowser.MultiSelect = False
+            Me.lvResourceBrowser.MultiSelect = True
             Me.lvResourceBrowser.FullRowSelect = True
             Me.lvResourceBrowser.HideSelection = False
             Me.lvResourceBrowser.ShowItemToolTips = True
@@ -4240,30 +4241,323 @@ Namespace kotor_tool
 
         ' Token: 0x0600072C RID: 1836 RVA: 0x00254A64 File Offset: 0x00253A64
         Private Sub btnExtract_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnExtract.Click
-            Me.ExtractSelectedKotorFile(CType(Me.TreeView.SelectedNode, KotorTreeNode), "", "", Nothing)
+            'Me.ExtractSelectedKotorFile(CType(Me.TreeView.SelectedNode, KotorTreeNode), "", "", Nothing)
+
+
+            'check if you have multiple items selected in the list on the right, and trigger the batch export if so
+
+
+            ' If the Resource Browser has focus and multiple items are selected, do a batch export
+            If Me.lvResourceBrowser.SelectedItems.Count > 1 Then
+                Me.BatchExportSelectedResources()
+            ElseIf Me.lvResourceBrowser.SelectedItems.Count = 1 Then
+                Dim node As KotorTreeNode = CType(Me.lvResourceBrowser.SelectedItems(0).Tag, KotorTreeNode)
+                Me.ExtractSelectedKotorFile(node, "", "", Nothing)
+            Else
+                ' Fallback to the TreeView selection if the list view has no selection
+                Me.ExtractSelectedKotorFile(CType(Me.TreeView.SelectedNode, KotorTreeNode), "", "", Nothing)
+            End If
+
+
+
         End Sub
 
+
+        Private Sub BatchExportSelectedResources()
+            If Me.lvResourceBrowser.SelectedItems.Count = 0 Then Return
+
+            ' 1. Ask for the output folder
+            Dim outputPath As String = StringType.FromObject(frmMain.GetFilePath("", frmMain.CurrentSettings.defaultSaveLocation, "", "Select Folder to batch export to...", "", False, True))
+            If StringType.StrCmp(outputPath, "", False) = 0 Then Return
+
+            ' 2. Ask for the format
+            Dim exportFormat As String = "TGA"
+            Using frmFormat As New frmTPCFileSaveType()
+                If frmFormat.ShowDialog(Me) <> DialogResult.OK Then
+                    Return
+                End If
+                exportFormat = frmFormat.saveType
+            End Using
+
+            Dim exportCount As Integer = 0
+            Dim frmProgressMeter As New frmProgressMeter()
+            frmProgressMeter.stepAmount = 1
+            frmProgressMeter.maxvalue = Me.lvResourceBrowser.SelectedItems.Count
+            frmProgressMeter.message = "Batch exporting resources"
+            frmProgressMeter.Show()
+
+            For Each item As ListViewItem In Me.lvResourceBrowser.SelectedItems
+                Dim node As KotorTreeNode = CType(item.Tag, KotorTreeNode)
+                If node IsNot Nothing Then
+                    frmProgressMeter.status = "Exporting " & node.Filename
+                    Try
+                        ' Get the raw data for the file
+                        Dim data As Byte() = Nothing
+                        If ObjectType.ObjTst(node.Tag, "RIM_Res", False) = 0 Then
+                            data = Me.GetRIMResource(node.FilePath, node)
+                        ElseIf ObjectType.ObjTst(node.Tag, "BIFF_Res", False) = 0 Then
+                            data = Me.GetBIFFResource(node.FilePath, node.LocalResID).data
+                        ElseIf ObjectType.ObjTst(node.Tag, "ERF_Res", False) = 0 Then
+                            data = Me.GetERFResource(node.FilePath, node)
+                        End If
+
+                        If data IsNot Nothing Then
+                            ' Check if it's a texture file
+                            If StringType.StrCmp(node.ResTypeStr, "tpc", False) = 0 Then
+                                Dim outFile As String = Path.Combine(outputPath, node.ResRef & "." & exportFormat.ToLower())
+                                clsImageExtraction.ExportTPC(data, outFile, exportFormat)
+                                exportCount += 1
+                            Else
+                                ' If it's not a TPC (e.g. a 2DA or NSS file), just dump the raw bytes with its original extension
+                                Dim outFile As String = Path.Combine(outputPath, node.ResRef & "." & node.ResTypeStr)
+                                frmMain.WriteByteArray(outFile, data)
+                                exportCount += 1
+                            End If
+                        End If
+                    Catch ex As System.Exception
+                        MessageBox.Show(ex.ToString())
+                        ' Optionally log error
+                    End Try
+                End If
+                frmProgressMeter.stepUp()
+            Next
+
+            frmProgressMeter.Close()
+            Interaction.MsgBox("Batch export complete. Exported " & exportCount.ToString() & " files.", MsgBoxStyle.Information, "Batch Export")
+        End Sub
         ' Token: 0x0600072D RID: 1837 RVA: 0x00254A88 File Offset: 0x00253A88
+        'Private Function ExtractSelectedKotorFile(ByVal node As KotorTreeNode, Optional ByVal outputpath As String = "", Optional ByVal SaveMsg As String = "", Optional ByVal ResTypes As Hashtable = Nothing) As Object
+        '    Dim tag As Object = node.Tag
+        '    If ObjectType.ObjTst(tag, "RIM", False) = 0 Then
+        '        If StringType.StrCmp(SaveMsg, "", False) = 0 Then
+        '            SaveMsg = "Select Folder to extract RIM to..."
+        '        End If
+        '        If StringType.StrCmp(outputpath, "", False) = 0 Then
+        '            outputpath = StringType.FromObject(ObjectType.StrCatObj(frmMain.GetFilePath("", frmMain.CurrentSettings.defaultSaveLocation, "", SaveMsg, "", False, True), "\"))
+        '        End If
+        '        If StringType.StrCmp(outputpath, "\", False) = 0 Then
+        '            Dim obj As Object
+        '            Return obj
+        '        End If
+        '        Dim cursor As Cursor = Cursor.Current
+        '        Cursor.Current = Cursors.WaitCursor
+        '        Dim fileStream As FileStream = New FileStream(node.FilePath + "\" + node.Filename, FileMode.Open, FileAccess.Read)
+        '        Dim binaryReader As BinaryReader = New BinaryReader(fileStream, Encoding.ASCII)
+        '        Dim array As Byte() = binaryReader.ReadBytes(CInt(fileStream.Length))
+        '        binaryReader.Close()
+        '        Dim clsRIM As clsRIM = New clsRIM(array)
+        '        If ResTypes Is Nothing Then
+        '            Dim num As Integer = 0
+        '            Dim num2 As Integer = clsRIM.EntryCount - 1
+        '            For i As Integer = num To num2
+        '                frmMain.WriteByteArray(outputpath + CType(clsRIM.KeyEntryList(i), RIMKeyEntry)._ResourceName + "." + CType(clsRIM.KeyEntryList(i), RIMKeyEntry)._ResTypeStr, clsRIM.GetRIMResource(i))
+        '            Next
+        '        Else
+        '            Dim num3 As Integer = 0
+        '            Dim num4 As Integer = clsRIM.EntryCount - 1
+        '            For i As Integer = num3 To num4
+        '                If ResTypes.Contains(CType(clsRIM.KeyEntryList(i), RIMKeyEntry)._ResType) Then
+        '                    frmMain.WriteByteArray(outputpath + CType(clsRIM.KeyEntryList(i), RIMKeyEntry)._ResourceName + "." + CType(clsRIM.KeyEntryList(i), RIMKeyEntry)._ResTypeStr, clsRIM.GetRIMResource(i))
+        '                End If
+        '            Next
+        '        End If
+        '        Cursor.Current = cursor
+        '    ElseIf ObjectType.ObjTst(tag, "RIM_Res", False) = 0 Then
+        '        outputpath = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, node.Filename, "Save " + node.Filename + " file...", node.ResTypeStr, False, True))
+        '        If StringType.StrCmp(outputpath, "", False) = 0 Then
+        '            Dim obj As Object
+        '            Return obj
+        '        End If
+        '        Dim array As Byte() = Me.GetRIMResource(node.FilePath, node)
+        '        frmMain.WriteByteArray(outputpath, array)
+        '    ElseIf ObjectType.ObjTst(tag, "BIFF", False) = 0 Then
+        '        If StringType.StrCmp(outputpath, "", False) = 0 Then
+        '            outputpath = StringType.FromObject(ObjectType.StrCatObj(frmMain.GetFilePath("", frmMain.CurrentSettings.defaultSaveLocation, "", "Select Folder to extract BIF to...", "", False, True), "\"))
+        '        End If
+        '        If StringType.StrCmp(outputpath, "\", False) = 0 Then
+        '            Dim obj As Object
+        '            Return obj
+        '        End If
+        '        Dim cursor2 As Cursor = Cursor.Current
+        '        Cursor.Current = Cursors.WaitCursor
+        '        Try
+        '            For Each obj2 As Object In node.Nodes
+        '                Dim kotorTreeNode As KotorTreeNode = CType(obj2, KotorTreeNode)
+        '                Dim num5 As Integer = 0
+        '                Dim num6 As Integer = kotorTreeNode.GetNodeCount(False) - 1
+        '                For j As Integer = num5 To num6
+        '                    frmMain.ExportBiffResource(node.FilePath + "\" + node.Filename, outputpath + CType(kotorTreeNode.Nodes(j), KotorTreeNode).ResRef + "." + CType(kotorTreeNode.Nodes(j), KotorTreeNode).ResTypeStr, CType(kotorTreeNode.Nodes(j), KotorTreeNode).LocalResID)
+        '                Next
+        '            Next
+        '        Finally
+        '            Dim enumerator As IEnumerator
+        '            If TypeOf enumerator Is IDisposable Then
+        '                CType(enumerator, IDisposable).Dispose()
+        '            End If
+        '        End Try
+        '        Cursor.Current = cursor2
+        '    ElseIf ObjectType.ObjTst(tag, "BIFF_Res", False) = 0 Then
+        '        outputpath = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, node.Filename, "Save " + node.Filename + " file...", node.ResTypeStr, False, True))
+        '        If StringType.StrCmp(outputpath, "", False) = 0 Then
+        '            Dim obj As Object
+        '            Return obj
+        '        End If
+        '        frmMain.ExportBiffResource(node.FilePath, outputpath, node.LocalResID)
+        '    ElseIf ObjectType.ObjTst(tag, "ERF", False) = 0 Then
+        '        outputpath = StringType.FromObject(ObjectType.StrCatObj(frmMain.GetFilePath("", frmMain.CurrentSettings.defaultSaveLocation, "", "Select Folder to extract ERF to...", "", False, True), "\"))
+        '        If StringType.StrCmp(outputpath, "\", False) = 0 Then
+        '            Dim obj As Object
+        '            Return obj
+        '        End If
+        '        Dim fileStream2 As FileStream = New FileStream(node.FilePath + "\" + node.Filename, FileMode.Open, FileAccess.Read)
+        '        Dim clsERF As clsERF = New clsERF(fileStream2)
+        '        Dim frmProgressMeter As frmProgressMeter = New frmProgressMeter()
+        '        frmProgressMeter.stepAmount = 1
+        '        frmProgressMeter.maxvalue = clsERF.EntryCount
+        '        frmProgressMeter.message = "Extracting files from " + node.Filename
+        '        frmProgressMeter.Location = New utilWindowRelativePositioner(Me, frmProgressMeter).getConcentric()
+        '        frmProgressMeter.Show()
+        '        Dim num7 As Integer = 0
+        '        Dim num8 As Integer = clsERF.EntryCount - 1
+        '        For k As Integer = num7 To num8
+        '            Dim array As Byte() = clsERF.getERFResource(k)
+        '            Dim erfkeyEntry As ERFKeyEntry = CType(clsERF.KeyEntryList(k), ERFKeyEntry)
+        '            frmProgressMeter.status = "Writing " + erfkeyEntry._ResourceName + "." + erfkeyEntry._ResTypeStr
+        '            Dim fileStream3 As FileStream = New FileStream(outputpath + erfkeyEntry._ResourceName + "." + erfkeyEntry._ResTypeStr, FileMode.Create)
+        '            fileStream3.Write(array, 0, array.Length)
+        '            fileStream3.Close()
+        '            frmProgressMeter.stepUp()
+        '        Next
+        '        fileStream2.Close()
+        '        frmProgressMeter.Close()
+        '    ElseIf ObjectType.ObjTst(tag, "ERF_Res", False) = 0 Then
+        '        Dim obj As Object
+        '        Dim text As String
+        '        If StringType.StrCmp(node.ResTypeStr, "tpc", False) = 0 Then
+        '            If Not frmMain.CurrentSettings.bAlwaysConvertTPC2TGA Then
+        '                Dim frmTPCFileSaveType As frmTPCFileSaveType = New frmTPCFileSaveType()
+        '                If frmTPCFileSaveType.ShowDialog(Me) = DialogResult.Cancel Then
+        '                    Return obj
+        '                End If
+        '                text = frmTPCFileSaveType.saveType
+        '            Else
+        '                text = "tga"
+        '            End If
+        '            If StringType.StrCmp(text, "tga", False) = 0 Then
+        '                outputpath = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, node.ResRef + ".tga", "Save " + node.ResRef + ".tga file...", "tga", False, True))
+        '            Else
+        '                outputpath = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, node.Filename, "Save " + node.Filename + " file...", "tpc", False, True))
+        '            End If
+        '        Else
+        '            outputpath = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, node.Filename + "", "Save " + node.Filename + " file...", "", False, True))
+        '        End If
+        '        If StringType.StrCmp(outputpath, "", False) = 0 Then
+        '            Return obj
+        '        End If
+        '        Dim array As Byte() = Me.GetERFResource(node.FilePath, node)
+        '        If StringType.StrCmp(text, "tga", False) = 0 Then
+        '            Dim frmImageViewer As frmImageViewer = New frmImageViewer()
+        '            frmImageViewer.SetupTPCData(array, "foo")
+        '            frmImageViewer.DecodeImage()
+        '            frmImageViewer.WriteTGAFile(outputpath)
+        '        Else
+        '            frmMain.WriteByteArray(outputpath, array)
+        '        End If
+        '    ElseIf ObjectType.ObjTst(tag, "NodeCategory", False) = 0 Then
+        '        Dim containingFileType As String = CType(node.Parent, KotorTreeNode).ContainingFileType
+        '        Dim kotorTreeNode2 As KotorTreeNode = CType(node.Parent, KotorTreeNode)
+        '        If StringType.StrCmp(containingFileType, "BIF", False) = 0 OrElse StringType.StrCmp(containingFileType, "rim", False) = 0 Then
+        '            If StringType.StrCmp(SaveMsg, "", False) = 0 Then
+        '                SaveMsg = "Select Folder to extract entire subtype to..."
+        '            End If
+        '            If StringType.StrCmp(outputpath, "", False) = 0 Then
+        '                outputpath = StringType.FromObject(ObjectType.StrCatObj(frmMain.GetFilePath("", frmMain.CurrentSettings.defaultSaveLocation, "", SaveMsg, "", False, True), "\"))
+        '            End If
+        '            If StringType.StrCmp(outputpath, "\", False) = 0 Then
+        '                Dim obj As Object
+        '                Return obj
+        '            End If
+        '        End If
+        '        Dim text2 As String = containingFileType
+        '        If StringType.StrCmp(text2, "BIF", False) = 0 Then
+        '            Dim cursor3 As Cursor = Cursor.Current
+        '            Cursor.Current = Cursors.WaitCursor
+        '            Try
+        '                For Each obj3 As Object In node.Nodes
+        '                    Dim kotorTreeNode3 As KotorTreeNode = CType(obj3, KotorTreeNode)
+        '                    frmMain.ExportBiffResource(kotorTreeNode2.FilePath + "\" + kotorTreeNode2.Filename, outputpath + kotorTreeNode3.ResRef + "." + kotorTreeNode3.ResTypeStr, kotorTreeNode3.LocalResID)
+        '                Next
+        '            Finally
+        '                Dim enumerator2 As IEnumerator
+        '                If TypeOf enumerator2 Is IDisposable Then
+        '                    CType(enumerator2, IDisposable).Dispose()
+        '                End If
+        '            End Try
+        '            Cursor.Current = cursor3
+        '        ElseIf StringType.StrCmp(text2, "rim", False) = 0 Then
+        '            Dim cursor4 As Cursor = Cursor.Current
+        '            Cursor.Current = Cursors.WaitCursor
+        '            Dim fileStream4 As FileStream = New FileStream(kotorTreeNode2.FilePath + "\" + kotorTreeNode2.Filename, FileMode.Open, FileAccess.Read)
+        '            Dim binaryReader2 As BinaryReader = New BinaryReader(fileStream4, Encoding.ASCII)
+        '            Dim array As Byte() = binaryReader2.ReadBytes(CInt(fileStream4.Length))
+        '            binaryReader2.Close()
+        '            Dim clsRIM2 As clsRIM = New clsRIM(array)
+        '            Dim num9 As Integer = 0
+        '            Dim num10 As Integer = clsRIM2.EntryCount - 1
+        '            For l As Integer = num9 To num10
+        '                If CInt(CType(clsRIM2.KeyEntryList(l), RIMKeyEntry)._ResType) = node.ResType Then
+        '                    frmMain.WriteByteArray(outputpath + CType(clsRIM2.KeyEntryList(l), RIMKeyEntry)._ResourceName + "." + CType(clsRIM2.KeyEntryList(l), RIMKeyEntry)._ResTypeStr, clsRIM2.GetRIMResource(l))
+        '                End If
+        '            Next
+        '            Cursor.Current = cursor4
+        '        End If
+        '    End If
+        '    Return outputpath
+        'End Function
+
+        ' Token: 0x0600072E RID: 1838 RVA: 0x00255474 File Offset: 0x00254474
+
+        ''' <summary>
+        ''' Extracts a selected file or group of files based on the node type and user selection.
+        ''' </summary>
+        ''' <param name="node">The KotorTreeNode representing the file, archive, or category to extract.</param>
+        ''' <param name="outputpath">Optional. The pre-determined output directory or file path.</param>
+        ''' <param name="SaveMsg">Optional. The custom message to display in the file/folder save dialog.</param>
+        ''' <param name="ResTypes">Optional. A Hashtable containing specific resource type IDs to extract (used for module editing).</param>
+        ''' <returns>The final output path selected by the user, or an empty object if cancelled.</returns>
+
         Private Function ExtractSelectedKotorFile(ByVal node As KotorTreeNode, Optional ByVal outputpath As String = "", Optional ByVal SaveMsg As String = "", Optional ByVal ResTypes As Hashtable = Nothing) As Object
+
+            ' Grab the underlying tag of the node to determine what kind of resource we are dealing with
             Dim tag As Object = node.Tag
+
+            ' =================================================================================
+            ' BLOCK 1: EXTRACTING AN ENTIRE RIM FILE
+            ' =================================================================================
             If ObjectType.ObjTst(tag, "RIM", False) = 0 Then
                 If StringType.StrCmp(SaveMsg, "", False) = 0 Then
                     SaveMsg = "Select Folder to extract RIM to..."
                 End If
+
                 If StringType.StrCmp(outputpath, "", False) = 0 Then
                     outputpath = StringType.FromObject(ObjectType.StrCatObj(frmMain.GetFilePath("", frmMain.CurrentSettings.defaultSaveLocation, "", SaveMsg, "", False, True), "\"))
                 End If
+
                 If StringType.StrCmp(outputpath, "\", False) = 0 Then
                     Dim obj As Object
                     Return obj
                 End If
+
                 Dim cursor As Cursor = Cursor.Current
                 Cursor.Current = Cursors.WaitCursor
+
                 Dim fileStream As FileStream = New FileStream(node.FilePath + "\" + node.Filename, FileMode.Open, FileAccess.Read)
                 Dim binaryReader As BinaryReader = New BinaryReader(fileStream, Encoding.ASCII)
                 Dim array As Byte() = binaryReader.ReadBytes(CInt(fileStream.Length))
                 binaryReader.Close()
+
                 Dim clsRIM As clsRIM = New clsRIM(array)
+
                 If ResTypes Is Nothing Then
                     Dim num As Integer = 0
                     Dim num2 As Integer = clsRIM.EntryCount - 1
@@ -4279,15 +4573,30 @@ Namespace kotor_tool
                         End If
                     Next
                 End If
+
                 Cursor.Current = cursor
+
+                ' =================================================================================
+                ' BLOCK 2: EXTRACTING A SINGLE FILE FROM A RIM
+                ' =================================================================================
             ElseIf ObjectType.ObjTst(tag, "RIM_Res", False) = 0 Then
+                If StringType.StrCmp(node.ResTypeStr, "tpc", False) = 0 Then
+                    Me.ExtractTPCBatch(node)
+                    Return outputpath
+                End If
+
                 outputpath = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, node.Filename, "Save " + node.Filename + " file...", node.ResTypeStr, False, True))
                 If StringType.StrCmp(outputpath, "", False) = 0 Then
                     Dim obj As Object
                     Return obj
                 End If
+
                 Dim array As Byte() = Me.GetRIMResource(node.FilePath, node)
                 frmMain.WriteByteArray(outputpath, array)
+
+                ' =================================================================================
+                ' BLOCK 3: EXTRACTING AN ENTIRE BIF FILE
+                ' =================================================================================
             ElseIf ObjectType.ObjTst(tag, "BIFF", False) = 0 Then
                 If StringType.StrCmp(outputpath, "", False) = 0 Then
                     outputpath = StringType.FromObject(ObjectType.StrCatObj(frmMain.GetFilePath("", frmMain.CurrentSettings.defaultSaveLocation, "", "Select Folder to extract BIF to...", "", False, True), "\"))
@@ -4296,6 +4605,7 @@ Namespace kotor_tool
                     Dim obj As Object
                     Return obj
                 End If
+
                 Dim cursor2 As Cursor = Cursor.Current
                 Cursor.Current = Cursors.WaitCursor
                 Try
@@ -4314,33 +4624,55 @@ Namespace kotor_tool
                     End If
                 End Try
                 Cursor.Current = cursor2
+
+                ' =================================================================================
+                ' BLOCK 4: EXTRACTING A SINGLE FILE FROM A BIF
+                ' =================================================================================
             ElseIf ObjectType.ObjTst(tag, "BIFF_Res", False) = 0 Then
+                Dim obj As Object
+
+                ' Check if the file is a texture (TPC). If so, route to the batch extractor.
+                If StringType.StrCmp(node.ResTypeStr, "tpc", False) = 0 Then
+                    Me.ExtractTPCBatch(node)
+                    Return outputpath
+                End If
+
+                ' Standard non-texture extraction
                 outputpath = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, node.Filename, "Save " + node.Filename + " file...", node.ResTypeStr, False, True))
                 If StringType.StrCmp(outputpath, "", False) = 0 Then
-                    Dim obj As Object
                     Return obj
                 End If
-                frmMain.ExportBiffResource(node.FilePath, outputpath, node.LocalResID)
+
+                Dim array As Byte() = Me.GetBIFFResource(node.FilePath, node.LocalResID).data
+                frmMain.WriteByteArray(outputpath, array)
+
+                ' =================================================================================
+                ' BLOCK 5: EXTRACTING AN ENTIRE ERF FILE
+                ' =================================================================================
             ElseIf ObjectType.ObjTst(tag, "ERF", False) = 0 Then
                 outputpath = StringType.FromObject(ObjectType.StrCatObj(frmMain.GetFilePath("", frmMain.CurrentSettings.defaultSaveLocation, "", "Select Folder to extract ERF to...", "", False, True), "\"))
                 If StringType.StrCmp(outputpath, "\", False) = 0 Then
                     Dim obj As Object
                     Return obj
                 End If
+
                 Dim fileStream2 As FileStream = New FileStream(node.FilePath + "\" + node.Filename, FileMode.Open, FileAccess.Read)
                 Dim clsERF As clsERF = New clsERF(fileStream2)
+
                 Dim frmProgressMeter As frmProgressMeter = New frmProgressMeter()
                 frmProgressMeter.stepAmount = 1
                 frmProgressMeter.maxvalue = clsERF.EntryCount
                 frmProgressMeter.message = "Extracting files from " + node.Filename
                 frmProgressMeter.Location = New utilWindowRelativePositioner(Me, frmProgressMeter).getConcentric()
                 frmProgressMeter.Show()
+
                 Dim num7 As Integer = 0
                 Dim num8 As Integer = clsERF.EntryCount - 1
                 For k As Integer = num7 To num8
                     Dim array As Byte() = clsERF.getERFResource(k)
                     Dim erfkeyEntry As ERFKeyEntry = CType(clsERF.KeyEntryList(k), ERFKeyEntry)
                     frmProgressMeter.status = "Writing " + erfkeyEntry._ResourceName + "." + erfkeyEntry._ResTypeStr
+
                     Dim fileStream3 As FileStream = New FileStream(outputpath + erfkeyEntry._ResourceName + "." + erfkeyEntry._ResTypeStr, FileMode.Create)
                     fileStream3.Write(array, 0, array.Length)
                     fileStream3.Close()
@@ -4348,42 +4680,35 @@ Namespace kotor_tool
                 Next
                 fileStream2.Close()
                 frmProgressMeter.Close()
+
+                ' =================================================================================
+                ' BLOCK 6: EXTRACTING A SINGLE FILE FROM AN ERF
+                ' =================================================================================
             ElseIf ObjectType.ObjTst(tag, "ERF_Res", False) = 0 Then
                 Dim obj As Object
-                Dim text As String
+
+                ' Check if the file is a texture (TPC). If so, route to the batch extractor.
                 If StringType.StrCmp(node.ResTypeStr, "tpc", False) = 0 Then
-                    If Not frmMain.CurrentSettings.bAlwaysConvertTPC2TGA Then
-                        Dim frmTPCFileSaveType As frmTPCFileSaveType = New frmTPCFileSaveType()
-                        If frmTPCFileSaveType.ShowDialog(Me) = DialogResult.Cancel Then
-                            Return obj
-                        End If
-                        text = frmTPCFileSaveType.saveType
-                    Else
-                        text = "tga"
-                    End If
-                    If StringType.StrCmp(text, "tga", False) = 0 Then
-                        outputpath = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, node.ResRef + ".tga", "Save " + node.ResRef + ".tga file...", "tga", False, True))
-                    Else
-                        outputpath = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, node.Filename, "Save " + node.Filename + " file...", "tpc", False, True))
-                    End If
-                Else
-                    outputpath = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, node.Filename + "", "Save " + node.Filename + " file...", "", False, True))
+                    Me.ExtractTPCBatch(node)
+                    Return outputpath
                 End If
+
+                ' Standard non-texture extraction
+                outputpath = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, node.Filename + "", "Save " + node.Filename + " file...", "", False, True))
                 If StringType.StrCmp(outputpath, "", False) = 0 Then
                     Return obj
                 End If
+
                 Dim array As Byte() = Me.GetERFResource(node.FilePath, node)
-                If StringType.StrCmp(text, "tga", False) = 0 Then
-                    Dim frmImageViewer As frmImageViewer = New frmImageViewer()
-                    frmImageViewer.SetupTPCData(array, "foo")
-                    frmImageViewer.DecodeImage()
-                    frmImageViewer.WriteTGAFile(outputpath)
-                Else
-                    frmMain.WriteByteArray(outputpath, array)
-                End If
+                frmMain.WriteByteArray(outputpath, array)
+
+                ' =================================================================================
+                ' BLOCK 7: EXTRACTING AN ENTIRE CATEGORY OF FILES (e.g. all .utc files in a BIF)
+                ' =================================================================================
             ElseIf ObjectType.ObjTst(tag, "NodeCategory", False) = 0 Then
                 Dim containingFileType As String = CType(node.Parent, KotorTreeNode).ContainingFileType
                 Dim kotorTreeNode2 As KotorTreeNode = CType(node.Parent, KotorTreeNode)
+
                 If StringType.StrCmp(containingFileType, "BIF", False) = 0 OrElse StringType.StrCmp(containingFileType, "rim", False) = 0 Then
                     If StringType.StrCmp(SaveMsg, "", False) = 0 Then
                         SaveMsg = "Select Folder to extract entire subtype to..."
@@ -4396,6 +4721,7 @@ Namespace kotor_tool
                         Return obj
                     End If
                 End If
+
                 Dim text2 As String = containingFileType
                 If StringType.StrCmp(text2, "BIF", False) = 0 Then
                     Dim cursor3 As Cursor = Cursor.Current
@@ -4412,6 +4738,7 @@ Namespace kotor_tool
                         End If
                     End Try
                     Cursor.Current = cursor3
+
                 ElseIf StringType.StrCmp(text2, "rim", False) = 0 Then
                     Dim cursor4 As Cursor = Cursor.Current
                     Cursor.Current = Cursors.WaitCursor
@@ -4430,10 +4757,69 @@ Namespace kotor_tool
                     Cursor.Current = cursor4
                 End If
             End If
+
             Return outputpath
         End Function
 
-        ' Token: 0x0600072E RID: 1838 RVA: 0x00255474 File Offset: 0x00254474
+
+
+        Private Sub ExtractTPCBatch(ByVal startNode As KotorTreeNode)
+            ' 1. Find all TPC siblings in the same container
+            Dim tpcNodes As New List(Of KotorTreeNode)
+            If startNode.Parent IsNot Nothing Then
+                For Each sibling As KotorTreeNode In startNode.Parent.Nodes
+                    If sibling.ResTypeStr.ToLower() = "tpc" Then
+                        tpcNodes.Add(sibling)
+                    End If
+                Next
+            End If
+
+            If tpcNodes.Count = 0 Then tpcNodes.Add(startNode)
+
+            ' 2. Show the format dialog
+            Dim exportFormat As String = "TGA"
+            Dim count As Integer = 1
+            Using frmFormat As New frmTPCFileSaveType()
+                frmFormat.ConfigureTextureContext(tpcNodes.Count)
+                If frmFormat.ShowDialog(Me) <> DialogResult.OK Then Return
+                exportFormat = frmFormat.saveType
+                count = frmFormat.NumberOfTexturesToExtract
+            End Using
+
+            ' 3. Determine output path
+            Dim outputPath As String = ""
+            If count > 1 Then
+                ' Batch: Ask for a Folder
+                outputPath = StringType.FromObject(frmMain.GetFilePath("", frmMain.CurrentSettings.defaultSaveLocation, "", "Select Folder to batch export textures to...", "", False, True))
+                If StringType.StrCmp(outputPath, "", False) = 0 Then Return
+            Else
+                ' Single: Ask for a File
+                Dim ext As String = exportFormat.ToLower()
+                outputPath = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, startNode.ResRef & "." & ext, "Save " & startNode.ResRef & "." & ext & " file...", ext, False, True))
+                If StringType.StrCmp(outputPath, "", False) = 0 Then Return
+            End If
+
+            ' 4. Setup the Progress Meter (Only if we are extracting multiple files)
+            Dim frmProgressMeter As frmProgressMeter = Nothing
+            If count > 1 Then
+                frmProgressMeter = New frmProgressMeter()
+                frmProgressMeter.stepAmount = 1
+                frmProgressMeter.maxvalue = count
+                frmProgressMeter.message = "Extracting textures"
+                frmProgressMeter.Location = New utilWindowRelativePositioner(Me, frmProgressMeter).getConcentric()
+                frmProgressMeter.Show()
+            End If
+
+            ' 5. Hand off to the extraction class, passing the progress meter
+            clsImageExtraction.ExtractTextureBatch(startNode, tpcNodes, count, exportFormat, outputPath, Me, frmProgressMeter)
+
+            ' 6. Close the progress meter when done
+            If frmProgressMeter IsNot Nothing Then
+                frmProgressMeter.Close()
+            End If
+        End Sub
+
+
         Private Sub btnHexViewer_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnHexViewer.Click
             Dim kotorTreeNode As KotorTreeNode = CType(Me.TreeView.SelectedNode, KotorTreeNode)
             If kotorTreeNode IsNot Nothing Then

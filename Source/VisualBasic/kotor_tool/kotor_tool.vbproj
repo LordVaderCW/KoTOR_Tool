@@ -126,6 +126,7 @@
     <Compile Include="Classes\BIFFSystem\BIFFEntry.vb" />
     <Compile Include="Classes\BIFFSystem\BIFFVarRsrcEntry.vb" />
     <Compile Include="Classes\BIFFSystem\BIFFVarRsrcEntryInfo.vb" />
+    <Compile Include="Classes\ImageSystem\clsImageExtraction.vb" />
     <Compile Include="Classes\ImageSystem\clsImageSystem.vb" />
     <Compile Include="Classes\ImageSystem\clsJPGSystem.vb" />
     <Compile Include="Classes\ImageSystem\clsPNGSystem.vb" />
