@@ -440,3 +440,38 @@ See `Licence.txt` for licensing terms.
 ## Changelog
 
 See `Changelog.txt` for the full release history and detailed patch notes.
+
+## Legal Status & Defense of Interoperability
+
+This repository ("Rebuild and Rebirth of the KoTOR Tool") serves as a completely rewritten, modernized, and open-source utility platform. Because the original utility (created by Fred Tetra in 2005) was permanently abandoned in a closed-source compiled state, and because game file specifications remain hidden within a proprietary file structure, this project operates under established statutory and judicial protections for software preservation and interoperability.
+
+Third-party claims regarding unverified "denials of permission" or standard End User License Agreements (EULAs) trying to forbid decompilation or reverse engineering are superseded by federal copyright exceptions. 
+
+The legal architecture protecting this repository rests upon the following core federal precedents:
+
+### 1. The Right to Intermediate Reverse Engineering for Interoperability
+Under United States copyright law, decompiling a closed-source binary is protected as **Fair Use** if it is the only viable technological pathway to access non-copyrightable, functional data formats required to achieve compatibility with an external program.
+
+* **Sega Enterprises Ltd. v. Accolade, Inc., 977 F.2d 1510 (9th Cir. 1992)**
+  * **The Ruling:** The Ninth Circuit Court of Appeals ruled that disassembly or intermediate copying of copyrighted object code is a protected fair use under 17 U.S.C. § 107 when it is necessary to isolate the non-copyrightable, functional specifications required to make an independent program compatible. The court explicitly held that copyright cannot be used to gain a de facto monopoly over the purely functional interface elements of software.
+  * **Application:** Because the original software was abandoned in a closed, compiled `.exe` bottleneck that broke on modern operating systems, intermediate extraction of the file-parsing, registry-mapping, and directory-unpacking schemas was the *only* way to engineer a working utility for modern computing environments.
+
+### 2. Freedom of Alternative Implementation and Platform Emulation
+Copyright protects the original *expressive* elements of a software package (story, music, art), but it cannot be weaponized to prevent external developers from creating updated platforms that handle the same files.
+
+* **Sony Computer Entertainment, Inc. v. Connectix Corp., 203 F.3d 596 (9th Cir. 2000)**
+  * **The Ruling:** Building upon the *Sega* precedent, the court ruled that Connectix’s reverse engineering of the Sony PlayStation BIOS to create a functional software emulator was protected fair use. The court rejected the claim that standard license restrictions could freeze out third-party developers, stating that a copyright holder does not possess the exclusive right to monopolize the functional environments where their data runs.
+  * **Application:** This tool does not ship with, redistribute, or pirate the protected expressive assets of *Star Wars: Knights of the Old Republic*. It provides an independent functional lens through which users can access legally purchased game files on modern machines. Contractual EULA bans attempting to bar reverse engineering are legally overridden by this federal precedent.
+
+### 3. Absolute Lack of Commercial Harm
+The foundational pillar of the Fair Use doctrine (17 U.S.C. § 107(4)) evaluates the effect of the use upon the potential market value of the copyrighted work.
+
+* **The Reality:** 
+  1. **Fred Tetra’s Original Tool:** Has spent roughly two decades pulled from commercial channels, has a commercial market value of zero, and features an absent owner. No market damage can be inflicted upon a non-existent marketplace.
+  2. **The Game Ecosystem:** By modernizing these archival modding workflows, this repository directly encourages continued consumer engagement and sales of the game on current digital platforms (Steam, GOG).
+
+### 4. Rebuttal to Hearsay Restrictions & Equitable Estoppel
+Unsubstantiated, undocumented third-party claims that a missing author privately "reiterated a denial of permission" hold zero legal or evidentiary weight. Under the doctrine of **Equitable Estoppel by Silence**, an IP owner who abandons a product publicly, shuts down their communications, and permits third-party repositories to host their tool for decades cannot suddenly utilize hearsay proxies to strike down community-led preservation.
+
+Furthermore, copyright law protects functional utility, not a developer's "wishes." When software enters a state of de facto abandonment, the community acts as a custodian of necessity. By shifting this architecture into an open, collaborative GitHub repository, we guarantee the toolset can never be locked down or orphaned by a single point of failure again.
+
