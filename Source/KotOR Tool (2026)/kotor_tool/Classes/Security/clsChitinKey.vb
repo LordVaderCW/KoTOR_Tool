@@ -20,12 +20,8 @@ Namespace kotor_tool
 			Me.rdr.Close()
 			Me.g_ms = New MemoryStream(array)
 			Me.rdr = New BinaryReader(Me.g_ms, Encoding.ASCII)
-			Me.g_ms.Seek(0L, SeekOrigin.Begin)
-			Dim num As Long = 0L
-			Dim num2 As Long = Me.g_ms.Length - 1L
-			For num3 As Long = num To num2
-				' The following expression was wrapped in a unchecked-expression
-				Me.Lsum += CLng(Me.g_ms.ReadByte())
+			For Each value As Byte In array
+				Me.Lsum += CLng(value)
 			Next
 			Console.WriteLine("chitin.key sum = " + StringType.FromLong(Me.Lsum))
 			Me.g_ms.Seek(8L, SeekOrigin.Begin)

@@ -13,13 +13,13 @@ Namespace kotor_tool
 	Public Partial Class frmSoundChooser
 		Inherits Form
 
-		' Token: 0x06000EDA RID: 3802 RVA: 0x002911A0 File Offset: 0x002901A0
+        ' Token: 0x06000EDA RID: 3802 RVA: 0x002911A0 File Offset: 0x002901A0
         Public Sub New()
-			AddHandler MyBase.Load, AddressOf Me.frmSoundChooser_Load
-			Me.FilterList = New ArrayList()
-			Me.InitializeComponent()
-			Me.SetUpcmbxFilter()
-		End Sub
+            AddHandler MyBase.Load, AddressOf Me.frmSoundChooser_Load
+            Me.FilterList = New ArrayList()
+            Me.InitializeComponent()
+            Me.SetUpcmbxFilter()
+        End Sub
 
         Private Function SoundEditorOwner() As frmUTS_Editor
             If TypeOf Me.Owner Is frmUTS_Editor Then
@@ -169,6 +169,15 @@ Namespace kotor_tool
 
             ownerEditor.StopSound()
             Me.OwnerStoppedPlaying()
+        End Sub
+
+        Private Sub btnOK_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnOK.Click
+            Me.DialogResult = DialogResult.OK
+            Me.Close()
+        End Sub
+
+        Private Sub btnCancel_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnCancel.Click
+            Me.Close()
         End Sub
 
         ' Token: 0x06000F05 RID: 3845 RVA: 0x002923CC File Offset: 0x002913CC

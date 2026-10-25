@@ -13,29 +13,34 @@ Imports Microsoft.VisualBasic
 Imports Microsoft.VisualBasic.CompilerServices
 
 Namespace kotor_tool
-	' Token: 0x0200004E RID: 78
-	Public Partial Class frmImageViewer
-		Inherits Form
+    ' Token: 0x0200004E RID: 78
+    Partial Public Class frmImageViewer
+        Inherits Form
+        Private ReadOnly ImageSystem As clsImageSystem
+        Private Const CustomPreviewMode As String = "Custom Zoom"
+        Private Const MinPreviewZoom As Double = 0.1
+        Private Const MaxPreviewZoom As Double = 16.0
+        Private PreviewZoom As Double = 1.0
+        Private SuppressPreviewModeChange As Boolean
 
-		' Token: 0x06000552 RID: 1362 RVA: 0x00242FAC File Offset: 0x00241FAC
-		Public Sub New()
-			AddHandler MyBase.Load, AddressOf Me.frmImageViewer_Load
-			AddHandler MyBase.Closing, AddressOf Me.frmImageViewer_Closing
+        ' Token: 0x06000552 RID: 1362 RVA: 0x00242FAC File Offset: 0x00241FAC
+        Public Sub New()
+            AddHandler MyBase.Load, AddressOf Me.frmImageViewer_Load
+            AddHandler MyBase.Closing, AddressOf Me.frmImageViewer_Closing
+            Me.ImageSystem = New clsImageSystem()
             Me.InitializeComponent()
             Me.ApplyApplicationIcon()
+            Me.InitializeViewerControls()
         End Sub
 
         ' Token: 0x0600056F RID: 1391 RVA: 0x00243B00 File Offset: 0x00242B00
         Public Sub SetupPixelArray(ByVal data As Array)
-            Me.PxData = CType(Array.CreateInstance(GetType(Byte), data.Length), Byte())
-            Array.Copy(data, Me.PxData, data.Length)
+            Me.ImageSystem.SetupPixelArray(data)
         End Sub
 
         ' Token: 0x06000570 RID: 1392 RVA: 0x00243B34 File Offset: 0x00242B34
         Public Sub SetupTPCData(ByVal data As Array, ByVal filename As String)
-            Me.TPCData = CType(Array.CreateInstance(GetType(Byte), data.Length), Byte())
-            Array.Copy(data, Me.TPCData, data.Length)
-            Me.fname = filename
+            Me.ImageSystem.SetupTPCData(data, filename)
         End Sub
 
         ' Token: 0x06000571 RID: 1393 RVA: 0x00243B70 File Offset: 0x00242B70
@@ -43,19 +48,21 @@ Namespace kotor_tool
             If Me.ghImage.IsAllocated Then
                 Me.ghImage.Free()
             End If
-            Me.ghImage = GCHandle.Alloc(Me.Pixeldata, GCHandleType.Pinned)
+            Me.ghImage = GCHandle.Alloc(Me.ImageSystem.PixelData, GCHandleType.Pinned)
             Dim intPtr As IntPtr = Me.ghImage.AddrOfPinnedObject()
             Try
-                Dim bitmap As Bitmap = New Bitmap(CInt(Me._xSize), CInt(Me._ySize), BytesPerPixel * CInt(Me._xSize), pxFormat, intPtr)
+                Dim bitmap As Bitmap = New Bitmap(CInt(Me.ImageSystem.XSize), CInt(Me.ImageSystem.YSize), BytesPerPixel * CInt(Me.ImageSystem.XSize), pxFormat, intPtr)
                 Me.pbox.Image = bitmap
             Catch ex As System.Exception
                 Interaction.MsgBox("Cannot view this image", MsgBoxStyle.Critical, "Weirdness Alert")
             End Try
             Dim pbox As Control = Me.pbox
-            Dim size As Size = New Size(CInt(Me._xSize), CInt(Me._ySize))
+            Dim size As Size = New Size(CInt(Me.ImageSystem.XSize), CInt(Me.ImageSystem.YSize))
             pbox.Size = size
-            Me._BitsPerPixel = CShort((BytesPerPixel * 8))
-            Me.Text = "Image Viewer: " + Me.fname
+            Me.ImageSystem.BitsPerPixel = CShort((BytesPerPixel * 8))
+            Me.Text = "Image Viewer: " + Me.ImageSystem.FileName
+            Me.Label2.Text = Me.ImageSystem.ImageSummary()
+            Me.ApplyPreviewMode()
         End Sub
 
         Private Sub ApplyApplicationIcon()
@@ -66,352 +73,174 @@ Namespace kotor_tool
             End Try
         End Sub
 
-        ' Token: 0x06000572 RID: 1394 RVA: 0x00243C4C File Offset: 0x00242C4C
-        'Public Sub DecodeImage()
-        '    ' The following expression was wrapped in a checked-statement
-        '    Me.dataSize = CInt(Math.Round(CDbl(Me.TPCData(0)) + CDbl(Me.TPCData(1)) * 256.0 + CDbl(Me.TPCData(2)) * 65536.0 + CDbl(Me.TPCData(3)) * 16777216.0))
-        '    Me.flag1 = Me.TPCData(4)
-        '    Me.flag2 = Me.TPCData(5)
-        '    Me.flag3 = Me.TPCData(6)
-        '    Me.flag4 = Me.TPCData(7)
-        '    Me._xSize = CShort((CInt(Me.TPCData(8)) + CInt(Me.TPCData(9)) * 256))
-        '    Me._ySize = CShort((CInt(Me.TPCData(10)) + CInt(Me.TPCData(11)) * 256))
-        '    Me.encoding1 = CInt(Me.TPCData(12))
-        '    Me.mipmapCnt = CInt(Me.TPCData(13))
-        '    Array.Copy(Me.TPCData, 128, Me.TPCData, 0, Me.TPCData.Length - 128)
-        '    Dim num7 As Integer
-        '    If (Me.dataSize = 0) And (Me.encoding1 = 2) And (Me.mipmapCnt = 1) Then
-        '        Me.bNeedToFlipForWriting = False
-        '        Dim num As Integer = 0
-        '        Dim num2 As Integer = CInt((Me._xSize * Me._ySize - 1S))
-        '        For i As Integer = num To num2
-        '            Dim b As Byte = Me.TPCData(i * 3)
-        '            Me.TPCData(i * 3) = Me.TPCData(i * 3 + 2)
-        '            Me.TPCData(i * 3 + 2) = b
-        '        Next
-        '        Me.Pixeldata = CType(array.CreateInstance(GetType(Byte), Me.TPCData.Length), Byte())
-        '        array.Copy(Me.TPCData, Me.Pixeldata, Me.TPCData.Length)
-        '        Dim array As Array = Me.Pixeldata
-        '        Me.FlipImageVertically(array, CInt((3S * Me._xSize)), CInt(Me._ySize))
-        '        Me.Pixeldata = CType(array, Byte())
-        '    ElseIf (Me.dataSize = 0) And (Me.encoding1 = 4) And (Me.mipmapCnt = 1) Then
-        '        Me.bNeedToFlipForWriting = False
-        '        Dim num3 As Integer = CInt(Me._xSize)
-        '        num3 *= CInt(Me._ySize)
-        '        Dim num4 As Integer = 0
-        '        Dim num5 As Integer = num3 - 1
-        '        For j As Integer = num4 To num5
-        '            Dim b2 As Byte = Me.TPCData(j * 4)
-        '            Me.TPCData(j * 4) = Me.TPCData(j * 4 + 2)
-        '            Me.TPCData(j * 4 + 2) = b2
-        '        Next
-        '        Me.Pixeldata = CType(array.CreateInstance(GetType(Byte), Me.TPCData.Length), Byte())
-        '        array.Copy(Me.TPCData, Me.Pixeldata, Me.TPCData.Length)
-        '        Dim array As Array = Me.Pixeldata
-        '        Me.FlipImageVertically(array, CInt((4S * Me._xSize)), CInt(Me._ySize))
-        '        Me.Pixeldata = CType(array, Byte())
-        '    ElseIf (Me.encoding1 = 2) Or (Me.encoding1 = 4) Then
-        '        Me.bNeedToFlipForWriting = True
-        '        Dim array2 As Long() = New Long() {CLng(Me._xSize)}
-        '        Dim array3 As Long() = array2
-        '        Dim num6 As Integer = 0
-        '        array3(num6) = array2(num6) * CLng(Me._ySize)
-        '        Dim array4 As Long() = array2
-        '        num6 = 0
-        '        array4(num6) = array2(num6) * 4L
-        '        Me.Pixeldata = CType(Array.CreateInstance(GetType(Byte), array2), Byte())
-        '        If Me.encoding1 = 2 Then
-        '            num7 = 1
-        '        ElseIf Me.encoding1 = 4 Then
-        '            num7 = 5
-        '        End If
-        '    End If
-        '    If (Me.dataSize > 0) And ((Me.encoding1 = 2) Or (Me.encoding1 = 4)) Then
-        '        Dim tpcTool As TpcTool = New TpcTool()
-        '        Dim gchandle As GCHandle = gchandle.Alloc(Me.TPCData, GCHandleType.Pinned)
-        '        Dim gchandle2 As GCHandle = gchandle.Alloc(Me.Pixeldata, GCHandleType.Pinned)
-        '        Dim intPtr As IntPtr = gchandle.AddrOfPinnedObject()
-        '        Dim intPtr2 As IntPtr = gchandle2.AddrOfPinnedObject()
-        '        tpcTool.foo(intPtr, intPtr2, CInt(Me._xSize), CInt(Me._ySize), num7)
-        '        gchandle.Free()
-        '        gchandle2.Free()
-        '    End If
-        '    If (Me.dataSize = 0) And (Me.encoding1 = 2) And (Me.mipmapCnt = 1) Then
-        '        Me.ShowImage(3, PixelFormat.Format24bppRgb)
-        '    ElseIf (Me.dataSize = 0) And (Me.encoding1 = 4) And (Me.mipmapCnt = 1) Then
-        '        Me.ShowImage(4, PixelFormat.Format32bppArgb)
-        '    Else
-        '        Me.ShowImage(4, PixelFormat.Format32bppArgb)
-        '        Dim num8 As Integer = 128 + Me.MipLevel2Bytes(Me.mipmapCnt, Me.encoding1 * 4)
-        '        Dim asciiencoding As ASCIIEncoding = New ASCIIEncoding()
-        '        Dim obj As Object = Me.TPCData.Length - num8
-        '        If ObjectType.ObjTst(obj, 0, False) > 0 Then
-        '            Dim [string] As String = asciiencoding.GetString(Me.TPCData, num8, IntegerType.FromObject(obj))
-        '            Me.tbImageInfo.Text = [string]
-        '        Else
-        '            Me.tbImageInfo.Text = ""
-        '        End If
-        '    End If
-        '    Me.lblMipMapCount.Text = StringType.FromInteger(Me.mipmapCnt)
-        '    Me.lblFlag1.Text = Strings.Format(Me.flag1, "x")
-        '    Me.lblFlag2.Text = Strings.Format(Me.flag2, "x")
-        '    Me.lblFlag3.Text = Strings.Format(Me.flag3, "x")
-        '    Me.lblFlag4.Text = Strings.Format(Me.flag4, "x")
-        'End Sub
+        Private Sub InitializeViewerControls()
+            If Not Me.cmbPreviewSize.Items.Contains(CustomPreviewMode) Then
+                Me.cmbPreviewSize.Items.Add(CustomPreviewMode)
+            End If
 
+            Me.cmbExportFormat.SelectedItem = "TGA"
+            Me.cmbPreviewSize.SelectedItem = "Actual"
+            Me.Label2.Text = ""
+            Me.Panel1.TabStop = True
+        End Sub
 
         ' Token: 0x06000572 RID: 1394 RVA: 0x00243C4C File Offset: 0x00242C4C
         Public Sub DecodeImage()
-            ' The following expression was wrapped in a checked-statement
+            Dim decodedImage As clsImageDecodeResult = Me.ImageSystem.DecodeImage()
 
-            Me.dataSize = CInt(Math.Round(CDbl(Me.TPCData(0)) + CDbl(Me.TPCData(1)) * 256.0 + CDbl(Me.TPCData(2)) * 65536.0 + CDbl(Me.TPCData(3)) * 16777216.0))
-            Me.flag1 = Me.TPCData(4)
-            Me.flag2 = Me.TPCData(5)
-            Me.flag3 = Me.TPCData(6)
-            Me.flag4 = Me.TPCData(7)
-
-            Me._xSize = CShort((CInt(Me.TPCData(8)) + CInt(Me.TPCData(9)) * 256))
-            Me._ySize = CShort((CInt(Me.TPCData(10)) + CInt(Me.TPCData(11)) * 256))
-
-            Me.encoding1 = CInt(Me.TPCData(12))
-            Me.mipmapCnt = CInt(Me.TPCData(13))
-
-            System.Array.Copy(Me.TPCData, 128, Me.TPCData, 0, Me.TPCData.Length - 128)
-
-            Dim num7 As Integer = 0
-
-            If (Me.dataSize = 0) And (Me.encoding1 = 2) And (Me.mipmapCnt = 1) Then
-
-                Me.bNeedToFlipForWriting = False
-
-                Dim num As Integer = 0
-                Dim num2 As Integer = CInt((Me._xSize * Me._ySize - 1S))
-
-                For i As Integer = num To num2
-                    Dim b As Byte = Me.TPCData(i * 3)
-                    Me.TPCData(i * 3) = Me.TPCData(i * 3 + 2)
-                    Me.TPCData(i * 3 + 2) = b
-                Next
-
-                Me.Pixeldata = CType(System.Array.CreateInstance(GetType(Byte), Me.TPCData.Length), Byte())
-                System.Array.Copy(Me.TPCData, Me.Pixeldata, Me.TPCData.Length)
-
-                Dim pixelArray As Array = Me.Pixeldata
-                Me.FlipImageVertically(pixelArray, CInt((3S * Me._xSize)), CInt(Me._ySize))
-                Me.Pixeldata = CType(pixelArray, Byte())
-
-            ElseIf (Me.dataSize = 0) And (Me.encoding1 = 4) And (Me.mipmapCnt = 1) Then
-
-                Me.bNeedToFlipForWriting = False
-
-                Dim num3 As Integer = CInt(Me._xSize)
-                num3 *= CInt(Me._ySize)
-
-                Dim num4 As Integer = 0
-                Dim num5 As Integer = num3 - 1
-
-                For j As Integer = num4 To num5
-                    Dim b2 As Byte = Me.TPCData(j * 4)
-                    Me.TPCData(j * 4) = Me.TPCData(j * 4 + 2)
-                    Me.TPCData(j * 4 + 2) = b2
-                Next
-
-                Me.Pixeldata = CType(System.Array.CreateInstance(GetType(Byte), Me.TPCData.Length), Byte())
-                System.Array.Copy(Me.TPCData, Me.Pixeldata, Me.TPCData.Length)
-
-                Dim pixelArray As Array = Me.Pixeldata
-                Me.FlipImageVertically(pixelArray, CInt((4S * Me._xSize)), CInt(Me._ySize))
-                Me.Pixeldata = CType(pixelArray, Byte())
-
-            ElseIf (Me.encoding1 = 2) Or (Me.encoding1 = 4) Then
-
-                Me.bNeedToFlipForWriting = True
-
-                Dim array2 As Long() = New Long() {CLng(Me._xSize)}
-                Dim array3 As Long() = array2
-
-                Dim num6 As Integer = 0
-                array3(num6) = array2(num6) * CLng(Me._ySize)
-
-                Dim array4 As Long() = array2
-                num6 = 0
-                array4(num6) = array2(num6) * 4L
-
-                Me.Pixeldata = CType(System.Array.CreateInstance(GetType(Byte), array2), Byte())
-
-                If Me.encoding1 = 2 Then
-                    num7 = 1
-                ElseIf Me.encoding1 = 4 Then
-                    num7 = 5
-                End If
-
-            End If
-
-            If (Me.dataSize > 0) And ((Me.encoding1 = 2) Or (Me.encoding1 = 4)) Then
-
-                Dim tpcTool As TpcTool = New TpcTool()
-
-                Dim gchandle As GCHandle = GCHandle.Alloc(Me.TPCData, GCHandleType.Pinned)
-                Dim gchandle2 As GCHandle = GCHandle.Alloc(Me.Pixeldata, GCHandleType.Pinned)
-
-                Dim intPtr As IntPtr = gchandle.AddrOfPinnedObject()
-                Dim intPtr2 As IntPtr = gchandle2.AddrOfPinnedObject()
-
-                tpcTool.foo(intPtr, intPtr2, CInt(Me._xSize), CInt(Me._ySize), num7)
-
-                gchandle.Free()
-                gchandle2.Free()
-
-            End If
-
-            If (Me.dataSize = 0) And (Me.encoding1 = 2) And (Me.mipmapCnt = 1) Then
-
-                Me.ShowImage(3, PixelFormat.Format24bppRgb)
-
-            ElseIf (Me.dataSize = 0) And (Me.encoding1 = 4) And (Me.mipmapCnt = 1) Then
-
-                Me.ShowImage(4, PixelFormat.Format32bppArgb)
-
-            Else
-
-                Me.ShowImage(4, PixelFormat.Format32bppArgb)
-
-                Dim num8 As Integer = 128 + Me.MipLevel2Bytes(Me.mipmapCnt, Me.encoding1 * 4)
-                Dim asciiencoding As ASCIIEncoding = New ASCIIEncoding()
-                Dim obj As Object = Me.TPCData.Length - num8
-
-                If ObjectType.ObjTst(obj, 0, False) > 0 Then
-                    Dim imageInfoText As String = asciiencoding.GetString(Me.TPCData, num8, IntegerType.FromObject(obj))
-                    Me.tbImageInfo.Text = imageInfoText
-                Else
-                    Me.tbImageInfo.Text = ""
-                End If
-
-            End If
-
-            Me.lblMipMapCount.Text = StringType.FromInteger(Me.mipmapCnt)
-            Me.lblFlag1.Text = Strings.Format(Me.flag1, "x")
-            Me.lblFlag2.Text = Strings.Format(Me.flag2, "x")
-            Me.lblFlag3.Text = Strings.Format(Me.flag3, "x")
-            Me.lblFlag4.Text = Strings.Format(Me.flag4, "x")
-
+            Me.ShowImage(decodedImage.BytesPerPixel, decodedImage.PixelFormat)
+            Me.tbImageInfo.Text = decodedImage.ImageInfoText
+            Me.lblMipMapCount.Text = StringType.FromInteger(decodedImage.MipMapCount)
+            Me.lblFlag1.Text = Strings.Format(decodedImage.Flag1, "x")
+            Me.lblFlag2.Text = Strings.Format(decodedImage.Flag2, "x")
+            Me.lblFlag3.Text = Strings.Format(decodedImage.Flag3, "x")
+            Me.lblFlag4.Text = Strings.Format(decodedImage.Flag4, "x")
         End Sub
 
         ' Token: 0x06000573 RID: 1395 RVA: 0x002441D8 File Offset: 0x002431D8
         Public Function MipLevel2Bytes(ByVal miplevel As Integer, ByVal dxtBytesPerTexel As Integer) As Integer
-            Dim num As Integer
-            Select Case miplevel
-                Case 1
-                    num = 16
-                Case 2
-                    num = 32
-                Case 3
-                    num = 48
-                Case 4
-                    num = 112
-                Case 5
-                    num = 368
-                Case 6
-                    num = 1392
-                Case 7
-                    num = 5488
-                Case 8
-                    num = 21872
-                Case 9
-                    num = 87408
-                Case 10
-                    num = 349552
-                Case 11
-                    num = 1398128
-            End Select
-            Return CInt(Math.Round(CDbl(num) / (16.0 / CDbl(dxtBytesPerTexel))))
+            Return New clsTPCSystem().MipLevel2Bytes(miplevel, dxtBytesPerTexel)
         End Function
-
-        '' Token: 0x06000574 RID: 1396 RVA: 0x0024427C File Offset: 0x0024327C
-        'Public Sub FlipImageVertically(ByRef PixelData As Array, ByVal stride As Integer, ByVal ySize As Integer)
-        '    Dim array As Array = array.CreateInstance(GetType(Byte), stride)
-        '    Dim num As Integer = 0
-        '    Dim num2 As Integer = CInt(Math.Round(CDbl(ySize) / 2.0 - 1.0))
-        '    For i As Integer = num To num2
-        '        array.Copy(PixelData, i * stride, array, 0, stride)
-        '        array.Copy(PixelData, (ySize - i - 1) * stride, PixelData, i * stride, stride)
-        '        array.Copy(array, 0, PixelData, (ySize - i - 1) * stride, stride)
-        '    Next
-        'End Sub
 
         ' Token: 0x06000574 RID: 1396 RVA: 0x0024427C File Offset: 0x0024327C
         Public Sub FlipImageVertically(ByRef PixelData As Array, ByVal stride As Integer, ByVal ySize As Integer)
-
-            Dim tempRow As Array = System.Array.CreateInstance(GetType(Byte), stride)
-
-            Dim num As Integer = 0
-            Dim num2 As Integer = CInt(Math.Round(CDbl(ySize) / 2.0 - 1.0))
-
-            For i As Integer = num To num2
-                System.Array.Copy(PixelData, i * stride, tempRow, 0, stride)
-                System.Array.Copy(PixelData, (ySize - i - 1) * stride, PixelData, i * stride, stride)
-                System.Array.Copy(tempRow, 0, PixelData, (ySize - i - 1) * stride, stride)
-            Next
-
+            clsImageSystem.FlipImageVertically(PixelData, stride, ySize)
         End Sub
 
         ' Token: 0x06000575 RID: 1397 RVA: 0x002442F8 File Offset: 0x002432F8
         Private Sub btnWriteFile_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnWriteFile.Click
-            Dim text As String = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, Strings.Mid(Me.fname, 1, Me.fname.IndexOf(".")) + ".tga", "Save TGA file...", "tga", False, True))
+            Dim exportFormat As String = CStr(If(Me.cmbExportFormat.SelectedItem, "TGA"))
+            Dim extension As String = Me.ImageSystem.ExportExtension(exportFormat)
+            Dim defaultName As String = Me.ImageSystem.DefaultExportName(exportFormat)
+            Dim text As String = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, defaultName, "Save " + exportFormat + " file...", extension, False, True))
             If StringType.StrCmp(text, "", False) = 0 Then
                 Return
             End If
-            Dim fileStream As FileStream = New FileStream(text, FileMode.Create)
-            Dim binaryWriter As BinaryWriter = New BinaryWriter(fileStream, Encoding.ASCII)
-            binaryWriter.Write(0)
-            binaryWriter.Write(0)
-            binaryWriter.Write(2)
-            binaryWriter.Write(0)
-            binaryWriter.Write(0)
-            binaryWriter.Write(0)
-            binaryWriter.Write(Me._xSize)
-            binaryWriter.Write(Me._ySize)
-            binaryWriter.Write(Me._BitsPerPixel)
-            If Me.dataSize > 0 Then
-                Dim pixeldata As Array = Me.Pixeldata
-                Me.FlipImageVertically(pixeldata, CInt((4S * Me._xSize)), CInt(Me._ySize))
-                Me.Pixeldata = CType(pixeldata, Byte())
-                binaryWriter.Write(Me.Pixeldata)
-            Else
-                binaryWriter.Write(Me.TPCData)
-            End If
-            binaryWriter.Close()
+            Me.ImageSystem.ExportImage(text, exportFormat)
             If Me.tbImageInfo.SelectionLength > 0 AndAlso Me.chkbExportSelectionToTXIfile.Checked Then
-                text = Strings.Replace(text, ".tga", ".txi", 1, -1, CompareMethod.Binary)
-                fileStream = New FileStream(text, FileMode.Create)
-                Dim streamWriter As StreamWriter = New StreamWriter(fileStream, Encoding.ASCII)
-                streamWriter.Write(Me.tbImageInfo.SelectedText)
-                streamWriter.Close()
+                Me.ImageSystem.WriteTXIFile(Path.ChangeExtension(text, ".txi"), Me.tbImageInfo.SelectedText)
             End If
         End Sub
 
         ' Token: 0x06000576 RID: 1398 RVA: 0x00244474 File Offset: 0x00243474
         Public Sub WriteTGAFile(ByVal outputPath As String)
-            Dim fileStream As FileStream = New FileStream(outputPath, FileMode.Create)
-            Dim binaryWriter As BinaryWriter = New BinaryWriter(fileStream, Encoding.ASCII)
-            binaryWriter.Write(0)
-            binaryWriter.Write(0)
-            binaryWriter.Write(2)
-            binaryWriter.Write(0)
-            binaryWriter.Write(0)
-            binaryWriter.Write(0)
-            binaryWriter.Write(Me._xSize)
-            binaryWriter.Write(Me._ySize)
-            binaryWriter.Write(Me._BitsPerPixel)
-            If Me.dataSize > 0 Then
-                Dim pixeldata As Array = Me.Pixeldata
-                Me.FlipImageVertically(pixeldata, CInt((4S * Me._xSize)), CInt(Me._ySize))
-                Me.Pixeldata = CType(pixeldata, Byte())
-                binaryWriter.Write(Me.Pixeldata)
-            Else
-                binaryWriter.Write(Me.TPCData)
+            Me.ImageSystem.WriteTGAFile(outputPath)
+        End Sub
+
+        Private Sub cmbPreviewSize_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbPreviewSize.SelectedIndexChanged
+            If Me.SuppressPreviewModeChange Then
+                Return
             End If
-            binaryWriter.Close()
+
+            Me.ApplyPreviewMode()
+        End Sub
+
+        Private Sub Panel1_Resize(ByVal sender As Object, ByVal e As EventArgs) Handles Panel1.Resize
+            Dim previewMode As String = CStr(If(Me.cmbPreviewSize.SelectedItem, ""))
+            If StringType.StrCmp(previewMode, "Fit", False) = 0 Then
+                Me.ApplyPreviewMode()
+            Else
+                Me.CenterPreviewImage()
+            End If
+        End Sub
+
+        Private Sub Panel1_MouseEnter(ByVal sender As Object, ByVal e As EventArgs) Handles Panel1.MouseEnter, pbox.MouseEnter
+            Me.Panel1.Focus()
+        End Sub
+
+        Private Sub Preview_MouseWheel(ByVal sender As Object, ByVal e As MouseEventArgs) Handles Panel1.MouseWheel, pbox.MouseWheel
+            If Me.pbox.Image Is Nothing Then
+                Return
+            End If
+
+            If (Control.ModifierKeys And Keys.Control) <> Keys.Control Then
+                Return
+            End If
+
+            Dim handledEventArgs As HandledMouseEventArgs = TryCast(e, HandledMouseEventArgs)
+            If handledEventArgs IsNot Nothing Then
+                handledEventArgs.Handled = True
+            End If
+
+            If e.Delta > 0 Then
+                Me.PreviewZoom *= 1.1
+            Else
+                Me.PreviewZoom /= 1.1
+            End If
+
+            Me.PreviewZoom = Math.Max(MinPreviewZoom, Math.Min(MaxPreviewZoom, Me.PreviewZoom))
+            Me.SuppressPreviewModeChange = True
+            Me.cmbPreviewSize.SelectedItem = CustomPreviewMode
+            Me.SuppressPreviewModeChange = False
+            Me.ApplyZoomPreview()
+        End Sub
+
+        Private Sub ApplyPreviewMode()
+            If Me.pbox.Image Is Nothing Then
+                Return
+            End If
+
+            Dim previewMode As String = CStr(If(Me.cmbPreviewSize.SelectedItem, "Actual"))
+            If StringType.StrCmp(previewMode, "Fit", False) = 0 Then
+                Me.PreviewZoom = 1.0
+                Me.pbox.SizeMode = PictureBoxSizeMode.Zoom
+                Me.pbox.Size = Me.Panel1.ClientSize
+            ElseIf StringType.StrCmp(previewMode, "Actual", False) = 0 Then
+                Me.PreviewZoom = 1.0
+                Me.pbox.SizeMode = PictureBoxSizeMode.Normal
+                Me.pbox.Size = Me.pbox.Image.Size
+            ElseIf StringType.StrCmp(previewMode, CustomPreviewMode, False) = 0 Then
+                Me.ApplyZoomPreview()
+                Return
+            Else
+                Dim previewSize As Size = Me.ParsePreviewSize(previewMode)
+                If Not previewSize.IsEmpty Then
+                    Me.PreviewZoom = 1.0
+                    Me.pbox.SizeMode = PictureBoxSizeMode.Zoom
+                    Me.pbox.Size = previewSize
+                End If
+            End If
+
+            Me.CenterPreviewImage()
+        End Sub
+
+        Private Sub ApplyZoomPreview()
+            Dim width As Integer = Math.Max(1, CInt(Math.Round(CDbl(Me.pbox.Image.Width) * Me.PreviewZoom)))
+            Dim height As Integer = Math.Max(1, CInt(Math.Round(CDbl(Me.pbox.Image.Height) * Me.PreviewZoom)))
+
+            Me.pbox.SizeMode = PictureBoxSizeMode.Zoom
+            Me.pbox.Size = New Size(width, height)
+            Me.CenterPreviewImage()
+        End Sub
+
+        Private Function ParsePreviewSize(ByVal previewMode As String) As Size
+            Dim parts As String() = previewMode.Split(New String() {" x "}, StringSplitOptions.None)
+            If parts.Length <> 2 Then
+                Return Size.Empty
+            End If
+
+            Return New Size(Integer.Parse(parts(0)), Integer.Parse(parts(1)))
+        End Function
+
+        Private Sub CenterPreviewImage()
+            If Me.pbox.Image Is Nothing Then
+                Return
+            End If
+
+            Dim x As Integer = 0
+            Dim y As Integer = 0
+
+            Me.Panel1.AutoScrollMinSize = Me.pbox.Size
+
+            If Me.pbox.Width < Me.Panel1.ClientSize.Width Then
+                x = CInt(Math.Floor(CDbl(Me.Panel1.ClientSize.Width - Me.pbox.Width) / 2.0))
+            End If
+
+            If Me.pbox.Height < Me.Panel1.ClientSize.Height Then
+                y = CInt(Math.Floor(CDbl(Me.Panel1.ClientSize.Height - Me.pbox.Height) / 2.0))
+            End If
+
+            Me.pbox.Location = New Point(x, y)
         End Sub
 
         ' Token: 0x06000577 RID: 1399 RVA: 0x00244538 File Offset: 0x00243538
@@ -488,55 +317,7 @@ Namespace kotor_tool
             Me.SaveSettings()
         End Sub
 
-        ' Token: 0x040002E2 RID: 738
-        Public PxData As Byte()
-
-        ' Token: 0x040002E3 RID: 739
-        Public TPCData As Byte()
-
-        ' Token: 0x040002E4 RID: 740
-        Public Pixeldata As Byte()
-
-        ' Token: 0x040002E5 RID: 741
-        Private _xSize As Short
-
-        ' Token: 0x040002E6 RID: 742
-        Private _ySize As Short
-
-        ' Token: 0x040002E7 RID: 743
-        Private _BitsPerPixel As Short
-
-        ' Token: 0x040002E8 RID: 744
-        Private fname As String
-
         ' Token: 0x040002E9 RID: 745
         Private ghImage As GCHandle
-
-        ' Token: 0x040002EA RID: 746
-        Private bNeedToFlipForWriting As Boolean
-
-        ' Token: 0x040002EB RID: 747
-        Private dataSize As Integer
-
-        ' Token: 0x040002EC RID: 748
-        Private encoding1 As Integer
-
-        ' Token: 0x040002ED RID: 749
-        Private mipmapCnt As Integer
-
-        ' Token: 0x040002EE RID: 750
-        Private decode_cmd As Integer
-
-        ' Token: 0x040002EF RID: 751
-        Private flag1 As Byte
-
-        ' Token: 0x040002F0 RID: 752
-        Private flag2 As Byte
-
-        ' Token: 0x040002F1 RID: 753
-        Private flag3 As Byte
-
-        ' Token: 0x040002F2 RID: 754
-        Private flag4 As Byte
     End Class
 End Namespace

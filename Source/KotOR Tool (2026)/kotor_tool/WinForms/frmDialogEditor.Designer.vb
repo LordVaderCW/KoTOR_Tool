@@ -20,6 +20,10 @@ Namespace kotor_tool
         Friend WithEvents Label5 As Global.System.Windows.Forms.Label
         Friend WithEvents tbSound As Global.System.Windows.Forms.TextBox
         Friend WithEvents Label6 As Global.System.Windows.Forms.Label
+        Friend WithEvents btnPlayDialogue As Global.System.Windows.Forms.Button
+        Friend WithEvents btnStopDialogue As Global.System.Windows.Forms.Button
+        Friend WithEvents btnPlayNodeSound As Global.System.Windows.Forms.Button
+        Friend WithEvents btnStopNodeSound As Global.System.Windows.Forms.Button
         Friend WithEvents tbComments As Global.System.Windows.Forms.TextBox
         Friend WithEvents btnCollapseAll As Global.System.Windows.Forms.Button
         Friend WithEvents btnExpandAll As Global.System.Windows.Forms.Button
@@ -203,6 +207,10 @@ Namespace kotor_tool
             Me.Label6 = New System.Windows.Forms.Label()
             Me.tbVoiceOverResRef = New System.Windows.Forms.TextBox()
             Me.Label10 = New System.Windows.Forms.Label()
+            Me.btnPlayDialogue = New System.Windows.Forms.Button()
+            Me.btnStopDialogue = New System.Windows.Forms.Button()
+            Me.btnPlayNodeSound = New System.Windows.Forms.Button()
+            Me.btnStopNodeSound = New System.Windows.Forms.Button()
             Me.btnDeleteAnimListEntry = New System.Windows.Forms.Button()
             Me.btnAddAnimListEntry = New System.Windows.Forms.Button()
             Me.tabpagPlot = New System.Windows.Forms.TabPage()
@@ -322,7 +330,7 @@ Namespace kotor_tool
             Me.tvConversation.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.tvConversation.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
+            Me.tvConversation.BackColor = System.Drawing.Color.Black
             Me.tvConversation.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.tvConversation.HideSelection = False
             Me.tvConversation.Indent = 16
@@ -852,6 +860,10 @@ Namespace kotor_tool
             Me.tabpagAnimationSound.Controls.Add(Me.Label6)
             Me.tabpagAnimationSound.Controls.Add(Me.tbVoiceOverResRef)
             Me.tabpagAnimationSound.Controls.Add(Me.Label10)
+            Me.tabpagAnimationSound.Controls.Add(Me.btnPlayDialogue)
+            Me.tabpagAnimationSound.Controls.Add(Me.btnStopDialogue)
+            Me.tabpagAnimationSound.Controls.Add(Me.btnPlayNodeSound)
+            Me.tabpagAnimationSound.Controls.Add(Me.btnStopNodeSound)
             Me.tabpagAnimationSound.Controls.Add(Me.btnDeleteAnimListEntry)
             Me.tabpagAnimationSound.Controls.Add(Me.btnAddAnimListEntry)
             Me.tabpagAnimationSound.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
@@ -869,62 +881,127 @@ Namespace kotor_tool
             Me.dgAnimList.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
             Me.dgAnimList.HeaderBackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
             Me.dgAnimList.HeaderForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.dgAnimList.Location = New System.Drawing.Point(225, 31)
+            Me.dgAnimList.Location = New System.Drawing.Point(224, 34)
             Me.dgAnimList.Name = "dgAnimList"
-            Me.dgAnimList.Size = New System.Drawing.Size(248, 94)
+            Me.dgAnimList.Size = New System.Drawing.Size(283, 134)
             Me.dgAnimList.TabIndex = 8
             '
             'Label5
             '
             Me.Label5.BackColor = System.Drawing.Color.Transparent
             Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label5.Location = New System.Drawing.Point(222, 9)
+            Me.Label5.Location = New System.Drawing.Point(224, 12)
             Me.Label5.Name = "Label5"
-            Me.Label5.Size = New System.Drawing.Size(100, 19)
+            Me.Label5.Size = New System.Drawing.Size(283, 19)
             Me.Label5.TabIndex = 7
             Me.Label5.Text = "Play Animation"
+            Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
             '
             'tbSound
             '
             Me.tbSound.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.tbSound.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
             Me.tbSound.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbSound.Location = New System.Drawing.Point(32, 103)
+            Me.tbSound.Location = New System.Drawing.Point(24, 116)
             Me.tbSound.MaxLength = 16
             Me.tbSound.Name = "tbSound"
-            Me.tbSound.Size = New System.Drawing.Size(120, 22)
+            Me.tbSound.Size = New System.Drawing.Size(184, 22)
             Me.tbSound.TabIndex = 2
             '
             'Label6
             '
             Me.Label6.BackColor = System.Drawing.Color.Transparent
             Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label6.Location = New System.Drawing.Point(32, 74)
+            Me.Label6.Location = New System.Drawing.Point(24, 98)
             Me.Label6.Name = "Label6"
-            Me.Label6.Size = New System.Drawing.Size(136, 18)
+            Me.Label6.Size = New System.Drawing.Size(184, 15)
             Me.Label6.TabIndex = 7
             Me.Label6.Text = "Play this sound (ResRef)"
+            Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
             '
             'tbVoiceOverResRef
             '
             Me.tbVoiceOverResRef.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(39, Byte), Integer))
             Me.tbVoiceOverResRef.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower
             Me.tbVoiceOverResRef.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.tbVoiceOverResRef.Location = New System.Drawing.Point(32, 37)
+            Me.tbVoiceOverResRef.Location = New System.Drawing.Point(24, 34)
             Me.tbVoiceOverResRef.MaxLength = 16
             Me.tbVoiceOverResRef.Name = "tbVoiceOverResRef"
-            Me.tbVoiceOverResRef.Size = New System.Drawing.Size(120, 22)
+            Me.tbVoiceOverResRef.Size = New System.Drawing.Size(184, 22)
             Me.tbVoiceOverResRef.TabIndex = 3
             '
             'Label10
             '
             Me.Label10.BackColor = System.Drawing.Color.Transparent
             Me.Label10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(198, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.Label10.Location = New System.Drawing.Point(32, 9)
+            Me.Label10.Location = New System.Drawing.Point(24, 12)
             Me.Label10.Name = "Label10"
             Me.Label10.Size = New System.Drawing.Size(184, 19)
             Me.Label10.TabIndex = 7
             Me.Label10.Text = "Play this Voice Over (ResRef)"
+            Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+            '
+            'btnPlayDialogue
+            '
+            Me.btnPlayDialogue.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnPlayDialogue.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnPlayDialogue.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnPlayDialogue.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnPlayDialogue.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnPlayDialogue.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnPlayDialogue.Location = New System.Drawing.Point(24, 62)
+            Me.btnPlayDialogue.Name = "btnPlayDialogue"
+            Me.btnPlayDialogue.Size = New System.Drawing.Size(88, 25)
+            Me.btnPlayDialogue.TabIndex = 9
+            Me.btnPlayDialogue.Text = "Play Dialogue"
+            Me.btnPlayDialogue.UseVisualStyleBackColor = False
+            '
+            'btnStopDialogue
+            '
+            Me.btnStopDialogue.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnStopDialogue.Enabled = False
+            Me.btnStopDialogue.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnStopDialogue.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnStopDialogue.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnStopDialogue.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnStopDialogue.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnStopDialogue.Location = New System.Drawing.Point(120, 62)
+            Me.btnStopDialogue.Name = "btnStopDialogue"
+            Me.btnStopDialogue.Size = New System.Drawing.Size(88, 25)
+            Me.btnStopDialogue.TabIndex = 10
+            Me.btnStopDialogue.Text = "Stop Dialogue"
+            Me.btnStopDialogue.UseVisualStyleBackColor = False
+            '
+            'btnPlayNodeSound
+            '
+            Me.btnPlayNodeSound.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnPlayNodeSound.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnPlayNodeSound.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnPlayNodeSound.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnPlayNodeSound.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnPlayNodeSound.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnPlayNodeSound.Location = New System.Drawing.Point(24, 143)
+            Me.btnPlayNodeSound.Name = "btnPlayNodeSound"
+            Me.btnPlayNodeSound.Size = New System.Drawing.Size(88, 25)
+            Me.btnPlayNodeSound.TabIndex = 11
+            Me.btnPlayNodeSound.Text = "Play Sound"
+            Me.btnPlayNodeSound.UseVisualStyleBackColor = False
+            '
+            'btnStopNodeSound
+            '
+            Me.btnStopNodeSound.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(66, Byte), Integer))
+            Me.btnStopNodeSound.Enabled = False
+            Me.btnStopNodeSound.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(174, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(58, Byte), Integer))
+            Me.btnStopNodeSound.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(82, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(32, Byte), Integer))
+            Me.btnStopNodeSound.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
+            Me.btnStopNodeSound.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+            Me.btnStopNodeSound.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
+            Me.btnStopNodeSound.Location = New System.Drawing.Point(120, 143)
+            Me.btnStopNodeSound.Name = "btnStopNodeSound"
+            Me.btnStopNodeSound.Size = New System.Drawing.Size(88, 25)
+            Me.btnStopNodeSound.TabIndex = 12
+            Me.btnStopNodeSound.Text = "Stop Sound"
+            Me.btnStopNodeSound.UseVisualStyleBackColor = False
             '
             'btnDeleteAnimListEntry
             '
@@ -935,9 +1012,9 @@ Namespace kotor_tool
             Me.btnDeleteAnimListEntry.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
             Me.btnDeleteAnimListEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnDeleteAnimListEntry.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnDeleteAnimListEntry.Location = New System.Drawing.Point(479, 98)
+            Me.btnDeleteAnimListEntry.Location = New System.Drawing.Point(513, 67)
             Me.btnDeleteAnimListEntry.Name = "btnDeleteAnimListEntry"
-            Me.btnDeleteAnimListEntry.Size = New System.Drawing.Size(93, 27)
+            Me.btnDeleteAnimListEntry.Size = New System.Drawing.Size(60, 27)
             Me.btnDeleteAnimListEntry.TabIndex = 6
             Me.btnDeleteAnimListEntry.Text = "Delete"
             Me.btnDeleteAnimListEntry.UseVisualStyleBackColor = False
@@ -950,9 +1027,9 @@ Namespace kotor_tool
             Me.btnAddAnimListEntry.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(84, Byte), Integer))
             Me.btnAddAnimListEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat
             Me.btnAddAnimListEntry.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.btnAddAnimListEntry.Location = New System.Drawing.Point(479, 31)
+            Me.btnAddAnimListEntry.Location = New System.Drawing.Point(513, 34)
             Me.btnAddAnimListEntry.Name = "btnAddAnimListEntry"
-            Me.btnAddAnimListEntry.Size = New System.Drawing.Size(93, 27)
+            Me.btnAddAnimListEntry.Size = New System.Drawing.Size(60, 27)
             Me.btnAddAnimListEntry.TabIndex = 6
             Me.btnAddAnimListEntry.Text = "Add"
             Me.btnAddAnimListEntry.UseVisualStyleBackColor = False

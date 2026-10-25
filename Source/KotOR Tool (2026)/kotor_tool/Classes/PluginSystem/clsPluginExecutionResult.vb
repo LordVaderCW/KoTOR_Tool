@@ -43,6 +43,14 @@ Namespace kotor_tool
         Public ErrorMessage As String
         Public DiagnosticMessage As String
 
+
+        Public CommandSection As String
+        Public OutputMode As String
+        Public OutputCreated As Boolean
+        Public CommandDisabled As Boolean
+        Public DisabledReason As String
+
+
         Public Sub New()
             Me.Success = False
             Me.TimedOut = False
@@ -65,11 +73,25 @@ Namespace kotor_tool
 
             Me.ErrorMessage = ""
             Me.DiagnosticMessage = ""
+
+            Me.CommandSection = "Command"
+            Me.OutputMode = ""
+            Me.OutputCreated = False
+            Me.CommandDisabled = False
+            Me.DisabledReason = ""
         End Sub
 
         Public Overrides Function ToString() As String
             If Me.Success Then
                 Return "Success"
+            End If
+
+            If Me.CommandDisabled Then
+                If Me.DisabledReason IsNot Nothing AndAlso Me.DisabledReason.Trim().Length > 0 Then
+                    Return Me.DisabledReason
+                End If
+
+                Return "Command Disabled"
             End If
 
             If Me.TimedOut Then

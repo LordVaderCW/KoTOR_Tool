@@ -1,6 +1,10 @@
 # KoTOR Tool Restoration Project
 
+<<<<<<< HEAD:Source/KotOR Tool (2026)/kotor_tool/README.md
 > Engineering documentation starts at [`../project.md`](../project.md), including architecture, build requirements, dependency boundaries, language guides and per-directory operating heuristics.
+=======
+> Treya engineering documentation starts at [`../project.md`](../project.md), including architecture, dependencies and per-directory heuristics.
+>>>>>>> treya/v.1.0.3.4:Source/VisualBasic/kotor_tool/README.md
 
 Rebuild and rebirth of the original **KoTOR Tool**, originally developed by Fred Tetra in 2005.
 
@@ -36,6 +40,7 @@ Version **v1.0.3.3** established the restored application baseline, including:
 
 ## Build Notes
 
+<<<<<<< HEAD:Source/KotOR Tool (2026)/kotor_tool/README.md
 The restored project is maintained as a VB.NET WinForms application targeting x86. The acceptance build uses full Visual Studio MSBuild; `dotnet build` is not compatible with the legacy non-string WinForms resource pipeline in its present form.
 
 See `Changelog.txt` for full release history and detailed patch notes.
@@ -49,3 +54,12 @@ See `Changelog.txt` for full release history and detailed patch notes.
 - `Plugins/` contains plugin catalogs and descriptors; the DeNCS binary payload is installed separately and is not complete in this source snapshot.
 - `My Project/`, `app.config` and `kotor_tool.vbproj` define the VB assembly/build contract.
 - `ProjectManager.py` is a separate Tk-based `.vbproj` organization/repair utility. It creates backups on save and is not part of the KoTOR Tool executable.
+=======
+The restored project is maintained as a VB.NET WinForms application targeting x86. Acceptance uses full Visual Studio MSBuild; SDK-style `dotnet build` is incompatible with the current legacy non-string WinForms resources.
+
+See `Changelog.txt` for full release history and detailed patch notes.
+
+## Treya source tree
+
+`Classes` contains codecs plus image/model/plugin pipelines; `WinForms` contains the browser/editors. `Plugins` describes DeNCS and MDLOps, while `Tools/7Zip` supports generic `.7z` and RAR plugin package extraction. `Lib` and root helper binaries are checked-in dependencies. `ProjectManager.py` is a separate Tk `.vbproj` utility, not part of the executable.
+>>>>>>> treya/v.1.0.3.4:Source/VisualBasic/kotor_tool/README.md

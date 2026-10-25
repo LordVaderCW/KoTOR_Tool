@@ -1,5 +1,6 @@
 # Core Classes
 
+<<<<<<< HEAD:Source/KotOR Tool (2026)/kotor_tool/Classes/README.md
 This directory contains parsers, persistence models, resource-tree data and shared UI infrastructure. The classes are organized by recovered subsystem rather than by strict architectural layer; several depend directly on `frmMain` or WinForms.
 
 ## Resource and format layers
@@ -20,3 +21,6 @@ This directory contains parsers, persistence models, resource-tree data and shar
 ## Coupling heuristic
 
 Do not assume a class is a pure library because it is under `Classes`. `clsGFF`, `clsNCS`, theme classes, utility helpers and many models reference forms/controls or static state on `frmMain`. Extract those dependencies behind explicit interfaces before attempting reuse in tests or another language.
+=======
+Parsers, persistence models, image/model/plugin pipelines and shared UI infrastructure live here. Directory placement does not imply purity: many classes reference WinForms or `frmMain`. Archive flow is KEY → BIFF/RIM/ERF bytes → type codec/editor. Read the subsystem guide before changing it.
+>>>>>>> treya/v.1.0.3.4:Source/VisualBasic/kotor_tool/Classes/README.md

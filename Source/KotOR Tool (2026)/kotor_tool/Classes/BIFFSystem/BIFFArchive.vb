@@ -40,15 +40,16 @@ Namespace kotor_tool
 			binaryReader.ReadInt32()
 			Dim num2 As Integer = binaryReader.ReadInt32()
             Dim array As BIFFVarRsrcEntryInfo() = CType(System.Array.CreateInstance(GetType(BIFFVarRsrcEntryInfo), num), BIFFVarRsrcEntryInfo())
+			fileStream.Seek(CLng(num2), SeekOrigin.Begin)
 			Dim num3 As Integer = 0
 			Dim num4 As Integer = num - 1
 			For i As Integer = num3 To num4
 
 					' The following expression was wrapped in a checked-expression
-					fileStream.Seek(CLng((num2 + 16 * i)), SeekOrigin.Begin)
 					array(i) = New BIFFVarRsrcEntryInfo(binaryReader.ReadInt32(), binaryReader.ReadInt32(), binaryReader.ReadInt32(), binaryReader.ReadInt32())
 
 			Next
+			binaryReader.Close()
 			Return array
 		End Function
 
@@ -65,7 +66,9 @@ Namespace kotor_tool
 		' Token: 0x0600001F RID: 31 RVA: 0x00217DD0 File Offset: 0x00216DD0
 		Public Shared Function getBIFFResource(biffPath As String, resourceID As Integer) As BIFFVarRsrcEntry
 			Dim fileStream As FileStream = New FileStream(biffPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 200000)
-			Return New BIFFArchive(fileStream).getBIFFResource(resourceID)
+			Dim biffvarRsrcEntry As BIFFVarRsrcEntry = New BIFFArchive(fileStream).getBIFFResource(resourceID)
+			fileStream.Close()
+			Return biffvarRsrcEntry
 		End Function
 
 		' Token: 0x17000006 RID: 6

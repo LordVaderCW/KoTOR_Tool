@@ -1,5 +1,6 @@
 # Permission and Trust Boundaries
 
+<<<<<<< HEAD:Source/KotOR Tool (2026)/permissions.md
 This document describes access the application needs or exercises. It does not grant OS, repository or network permission.
 
 ## Runtime filesystem access
@@ -37,3 +38,13 @@ Plugin download/install and legacy updater code can access remote URLs. Network 
 ## Contributor permissions
 
 Documentation and code changes inside this solution are normal scoped writes. Running the application, external helpers, installers, downloaders, or tests against a real game directory is a separate side effect and should only occur when it is part of the requested task and the target paths are verified.
+=======
+This describes access; it grants nothing.
+
+- Game directories: read, except explicit user-selected outputs.
+- Application directory: read/write for settings, working, themes and plugins.
+- Network: plugin downloads and legacy updater only.
+- Processes: GFFEditor, NSS compiler, configured plugin commands, 7-Zip and MDLOps.
+
+Canonicalize plugin staging paths beneath the plugin directory before cleanup. Reject archive traversal, validate expected files and never execute a download solely because catalog metadata names it. Avoid elevation and never clean repository, application or game roots.
+>>>>>>> treya/v.1.0.3.4:Source/VisualBasic/permissions.md

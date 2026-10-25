@@ -1114,10 +1114,15 @@ Namespace kotor_tool
                 Return
             End If
 
-            Dim scriptPath As String = Path.Combine(frmMain.CurrentSettings.KotorLocation(index), "override\nwscript.nss")
+            Dim scriptPath As String = Me.GetDeNCSNWScriptPath(index)
+
+            If scriptPath.Trim().Length = 0 Then
+                Me.funcs = New frmTextEditor.func(0) {}
+                Return
+            End If
 
             If File.Exists(scriptPath) = False Then
-                MessageBox.Show(Me, "Unable to load the script function list. nwscript.nss was not found at:" & vbCrLf & scriptPath, "Script functions", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                MessageBox.Show(Me, "Unable to load the script function list. The DeNCS nwscript file was not found at:" & vbCrLf & scriptPath, "Script functions", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Me.funcs = New frmTextEditor.func(0) {}
                 Return
             End If
@@ -1196,6 +1201,81 @@ Namespace kotor_tool
                 End If
             End Try
         End Sub
+
+        Private Function GetDeNCSNWScriptPath(ByVal index As Integer) As String
+            Dim pluginManager As clsPluginManager = New clsPluginManager()
+            pluginManager.LoadPlugins()
+
+            Dim plugin As clsPluginDefinition = Nothing
+
+            For Each pluginObj As Object In pluginManager.Plugins
+                Dim installedPlugin As clsPluginDefinition = CType(pluginObj, clsPluginDefinition)
+
+                If String.Compare(installedPlugin.Name, "DeNCS", True) = 0 OrElse _
+                   String.Compare(installedPlugin.InstalledName, "DeNCS", True) = 0 OrElse _
+                   String.Compare(installedPlugin.Id, "ncsdecomp", True) = 0 Then
+                    plugin = installedPlugin
+                    Exit For
+                End If
+            Next
+
+            If plugin Is Nothing Then
+                MessageBox.Show(Me,
+                                "Unable to load the script function list because the DeNCS plugin is not installed or enabled." & vbCrLf & vbCrLf &
+                                "Install or enable the DeNCS plugin in the Plugins folder, then try again.",
+                                "Script functions",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation)
+                Return ""
+            End If
+
+            Dim missingFiles As System.Collections.ArrayList = pluginManager.GetMissingRequiredFiles(plugin)
+            Dim k1NWScriptPath As String = pluginManager.GetNWScriptPath(plugin, 1)
+            Dim tslNWScriptPath As String = pluginManager.GetNWScriptPath(plugin, 2)
+
+            If Not File.Exists(k1NWScriptPath) AndAlso Not missingFiles.Contains("tools\k1_nwscript.nss") Then
+                missingFiles.Add("tools\k1_nwscript.nss")
+            End If
+
+            If Not File.Exists(tslNWScriptPath) AndAlso Not missingFiles.Contains("tools\tsl_nwscript.nss") Then
+                missingFiles.Add("tools\tsl_nwscript.nss")
+            End If
+
+            If missingFiles IsNot Nothing AndAlso missingFiles.Count > 0 Then
+                MessageBox.Show(Me,
+                                "Unable to load the script function list because the DeNCS plugin is installed but incomplete." & vbCrLf & vbCrLf &
+                                "Missing required file(s):" & vbCrLf &
+                                Me.JoinArrayList(missingFiles, vbCrLf),
+                                "Script functions",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation)
+                Return ""
+            End If
+
+            If index = 1 Then
+                Return tslNWScriptPath
+            End If
+
+            Return k1NWScriptPath
+        End Function
+
+        Private Function JoinArrayList(ByVal values As System.Collections.ArrayList, ByVal separator As String) As String
+            Dim builder As StringBuilder = New StringBuilder()
+
+            If values Is Nothing Then
+                Return ""
+            End If
+
+            For Each value As Object In values
+                If builder.Length > 0 Then
+                    builder.Append(separator)
+                End If
+
+                builder.Append(CStr(value))
+            Next
+
+            Return builder.ToString()
+        End Function
 
         Private Sub ShowFilterMatches()
             Me.lbFunctions.Items.Clear()

@@ -1,5 +1,6 @@
 # Versioning
 
+<<<<<<< HEAD:Source/KotOR Tool (2026)/versioning.md
 ## Current application version
 
 The authoritative compiled version is currently the assembly version in `My Project/AssemblyInfo.vb`: `1.0.3.04`. .NET displays this numerically as `1.0.3.4`, matching `README.md` and `Changelog.txt` (`v1.0.3.4`). `Application.ProductVersion` is used in the title/about/error UI and written into some GFF/BWM metadata.
@@ -29,3 +30,10 @@ Historical changelog labels are not all normalized (for example `v1.0.23`). Pres
 ## Recommended future source of truth
 
 Move the application version into one generated/shared MSBuild property and derive assembly, documentation and packaging values from it. Until that work is intentional, `AssemblyInfo.vb` remains the runtime source of truth.
+=======
+`My Project/AssemblyInfo.vb` is the runtime source: `1.0.3.04`, displayed as `1.0.3.4`. README/changelog should match it; ClickOnce `ApplicationVersion` remains stale at `1.0.0.*`.
+
+Plugin versions are independent: DeNCS `1.0.2` and MDLOps `1.0.2`. Theme schema versions are independent.
+
+Update assembly/README/changelog together, align deployment metadata if revived, build Debug/Release x86, smoke-test changed workflows, tag with the display version and publish hashes/provenance for opaque binaries.
+>>>>>>> treya/v.1.0.3.4:Source/VisualBasic/versioning.md

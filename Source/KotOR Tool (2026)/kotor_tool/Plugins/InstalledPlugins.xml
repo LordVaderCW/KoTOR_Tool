@@ -8,4 +8,14 @@
 		<Manifest>plugin.xml</Manifest>
 		<InstalledVersion>1.0.2</InstalledVersion>
 	</InstalledPlugin>
+	
+	<InstalledPlugin>
+		<Id>mdlops</Id>
+		<Name>MDLOps</Name>
+		<Directory>MDLOps</Directory>
+		<Enabled>True</Enabled>
+		<Manifest>plugin.xml</Manifest>
+		<InstalledVersion>1.0.2</InstalledVersion>
+	</InstalledPlugin>
+	
 </PluginLibrary>

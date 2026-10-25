@@ -1,3 +1,4 @@
+<<<<<<< HEAD:Source/KotOR Tool (2026)/kotor_tool/WinForms/README.md
 # WinForms Application and Editors
 
 This directory is the application layer: 58 form code-behind files, matching designer files and resources. Forms orchestrate parsers, game data, file dialogs, settings and external tools; a large amount of format schema is encoded directly in control bindings and event handlers.
@@ -27,3 +28,12 @@ Keep `GetIDForRsrcType` and `GetRsrcTypeForID` symmetric. A new format normally 
 ## Verification matrix
 
 Build with full-framework MSBuild, open changed forms in the Visual Studio designer, then exercise standalone-file and archive-resource entry paths. Test both games, save/cancel, corrupt/missing data, theme switching, high DPI and repeated open/close. For module/template editors, reopen the saved GFF and compare unedited fields as well as visible values.
+=======
+# WinForms Application
+
+Fifty-eight forms implement the main resource browser, generic/archive/text/image/dialog/SSF editors, all UT editors, module/project workflows and support dialogs.
+
+`frmMain` owns game indexes, resource maps/tree/extraction/dispatch, settings, themes and plugin menus. `frmImageViewer` uses `ImageSystem`; model extraction uses `frmMdlOpsSwitches`, MDLOps and sidecar MDX/textures; NCS uses DeNCS. New formats generally require symmetric ID mapping, grouping, extraction naming, dispatch and search/filter support.
+
+Keep behavior in code-behind and layout/resources in designer triplets. All constructors must initialize controls before use; avoid duplicate event subscriptions; dispose streams/images/FMOD/processes on success/cancel/failure/close. Test standalone and archive entry paths, both games, save/cancel, theme/DPI and reopen saved data.
+>>>>>>> treya/v.1.0.3.4:Source/VisualBasic/kotor_tool/WinForms/README.md

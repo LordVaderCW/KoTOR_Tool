@@ -34,11 +34,16 @@ Namespace kotor_tool
         Public CaptureStdErr As Boolean
 
         Public TimeoutMS As Integer
+        Public WaitForExit As Boolean
         Public ShowWindow As Boolean
         Public OverwriteOutput As Boolean
 
         Public SuccessExitCode As Integer
         Public TreatStdErrAsFailure As Boolean
+
+        Public SectionName As String
+        Public Enabled As Boolean
+        Public DisabledReason As String
 
         Public Sub New()
             Me.Executable = ""
@@ -52,11 +57,16 @@ Namespace kotor_tool
             Me.CaptureStdErr = True
 
             Me.TimeoutMS = 15000
+            Me.WaitForExit = True
             Me.ShowWindow = False
             Me.OverwriteOutput = True
 
             Me.SuccessExitCode = 0
             Me.TreatStdErrAsFailure = False
+
+            Me.SectionName = "Command"
+            Me.Enabled = True
+            Me.DisabledReason = ""
         End Sub
 
         Public Overrides Function ToString() As String

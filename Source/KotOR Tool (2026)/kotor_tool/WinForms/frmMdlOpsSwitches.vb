@@ -11,10 +11,14 @@ Namespace kotor_tool
 	Public Partial Class frmMdlOpsSwitches
 		Inherits Form
 
+        Private _selectedResRef As String = ""
+        Private _availableModelCount As Integer = 1
+
 		' Token: 0x0600077D RID: 1917 RVA: 0x0025960C File Offset: 0x0025860C
 		Public Sub New()
 			AddHandler MyBase.Load, AddressOf Me.frmMdlOpsSwitches_Load
 			Me.InitializeComponent()
+            AddHandler Me.cmbxOutputFormat.SelectedIndexChanged, AddressOf Me.cmbxOutputFormat_SelectedIndexChanged
 		End Sub
 
         ' Token: 0x1700023D RID: 573
@@ -32,6 +36,67 @@ Namespace kotor_tool
                 Return Me.chkbConvertSkin.Checked
             End Get
         End Property
+
+        Public ReadOnly Property ExportTextures() As Boolean
+            Get
+                Return Me.chkbExportTextures.Checked
+            End Get
+        End Property
+
+        Public ReadOnly Property KeepIntermediateFiles() As Boolean
+            Get
+                Return Me.chkbKeepIntermediateFiles.Checked
+            End Get
+        End Property
+
+        Public ReadOnly Property BinaryMdlMdxOnly() As Boolean
+            Get
+                Return Me.cmbxOutputFormat.SelectedIndex = 1
+            End Get
+        End Property
+
+        Public ReadOnly Property RequiresMdlOps() As Boolean
+            Get
+                Return Not Me.BinaryMdlMdxOnly
+            End Get
+        End Property
+
+        Public ReadOnly Property SelectedResRef() As String
+            Get
+                Return Me._selectedResRef
+            End Get
+        End Property
+
+        Public Sub ConfigureModelContext(ByVal selectedResRef As String, ByVal availableModelCount As Integer)
+            If selectedResRef Is Nothing Then
+                Me._selectedResRef = ""
+            Else
+                Me._selectedResRef = selectedResRef.Trim()
+            End If
+
+            If availableModelCount < 1 Then
+                availableModelCount = 1
+            End If
+
+            Me._availableModelCount = availableModelCount
+
+            If Me.nudNumberToExtract IsNot Nothing Then
+                Me.nudNumberToExtract.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+                Me.nudNumberToExtract.Maximum = New Decimal(New Integer() {availableModelCount, 0, 0, 0})
+
+                If Me.nudNumberToExtract.Value < Me.nudNumberToExtract.Minimum Then
+                    Me.nudNumberToExtract.Value = Me.nudNumberToExtract.Minimum
+                End If
+
+                If Me.nudNumberToExtract.Value > Me.nudNumberToExtract.Maximum Then
+                    Me.nudNumberToExtract.Value = Me.nudNumberToExtract.Maximum
+                End If
+            End If
+
+            If Me.lblDetectedModelCount IsNot Nothing Then
+                Me.lblDetectedModelCount.Text = "Detected models: " + availableModelCount.ToString()
+            End If
+        End Sub
 
         ' Token: 0x0600079E RID: 1950 RVA: 0x0025A268 File Offset: 0x00259268
         Private Sub btnModuleExportPath_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnModuleExportPath.Click
@@ -56,6 +121,28 @@ Namespace kotor_tool
 
         ' Token: 0x060007A1 RID: 1953 RVA: 0x0025A2F0 File Offset: 0x002592F0
         Private Sub frmMdlOpsSwitches_Load(ByVal sender As Object, ByVal e As EventArgs)
+            If Me.cmbxOutputFormat.SelectedIndex < 0 Then
+                Me.cmbxOutputFormat.SelectedIndex = 0
+            End If
+            Me.UpdateMdlOpsDependentOptions()
+        End Sub
+
+        Private Sub cmbxOutputFormat_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+            Me.UpdateMdlOpsDependentOptions()
+        End Sub
+
+        Private Sub UpdateMdlOpsDependentOptions()
+            Dim mdlOpsRequired As Boolean = Me.RequiresMdlOps
+
+            Me.chkbExtractAnimations.Enabled = mdlOpsRequired
+            Me.chkbConvertSkin.Enabled = mdlOpsRequired
+            Me.chkbExportTextures.Enabled = mdlOpsRequired
+            Me.chkbKeepIntermediateFiles.Enabled = mdlOpsRequired
+
+            If Not mdlOpsRequired Then
+                Me.chkbExportTextures.Checked = False
+                Me.chkbKeepIntermediateFiles.Checked = True
+            End If
         End Sub
     End Class
 End Namespace

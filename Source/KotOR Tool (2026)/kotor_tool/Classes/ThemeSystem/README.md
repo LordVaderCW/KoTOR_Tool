@@ -1,5 +1,6 @@
 # Theme System
 
+<<<<<<< HEAD:Source/KotOR Tool (2026)/kotor_tool/Classes/ThemeSystem/README.md
 `ThemeManager` loads/saves named INI themes, remembers the active theme in `Themes/ActiveTheme.txt`, searches deployed and source-tree theme directories, and falls back to `KotorTheme.CreateDefault`. `KotorTheme` is the typed color/font model. `KotorThemeApplier` recursively applies a theme to forms, grids and custom controls and installs global hooks.
 
 ## Heuristics
@@ -11,3 +12,6 @@
 - Source-directory fallback is development convenience; packaged behavior should be verified from output alone.
 
 Test every bundled theme, missing/malformed values, out-of-range font sizes/colors, runtime switching, newly opened and already open forms, custom controls and high-DPI layout.
+=======
+`ThemeManager` loads/saves INI themes and `ActiveTheme.txt`; `KotorTheme` is the typed model and `KotorThemeApplier` recursively styles open/new forms. Missing keys fall back to defaults. Sanitize names, manage GDI object ownership, avoid reentrant hooks and test every theme at high DPI.
+>>>>>>> treya/v.1.0.3.4:Source/VisualBasic/kotor_tool/Classes/ThemeSystem/README.md

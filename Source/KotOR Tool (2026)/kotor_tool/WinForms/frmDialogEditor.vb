@@ -9,21 +9,34 @@ Imports System.Resources
 Imports System.Runtime.CompilerServices
 Imports System.Windows.Forms
 Imports Microsoft.VisualBasic.CompilerServices
+Imports Microsoft.VisualBasic
 
 Namespace kotor_tool
-	' Token: 0x02000047 RID: 71
-	Public Partial Class frmDialogEditor
-		Inherits frmParent
+    ' Token: 0x02000047 RID: 71
+    Partial Public Class frmDialogEditor
+        Inherits frmParent
 
-		' Token: 0x0600030E RID: 782 RVA: 0x00231058 File Offset: 0x00230058
-		Public Sub New()
-			Me.dtStunt = New DataTable()
-			Me.dtAnim = New DataTable()
-			Me.InitializeComponent()
-			Me.m_defaultTitleText = "Conversation Editor - KotOR "
-			Me.Text = Me.m_defaultTitleText
-			Me.BuildStuntDataGrid()
+        Private Shared ReadOnly ConversationTreeBackColor As Color = Color.Black
+        Private Shared ReadOnly ConversationTreeChromeColor As Color = Color.FromArgb(188, 188, 188)
+        Private Shared ReadOnly ConversationPlayerColor As Color = Color.FromArgb(57, 188, 255)
+        Private Shared ReadOnly ConversationPlayerHoverColor As Color = Color.FromArgb(255, 232, 40)
+        Private Shared ReadOnly ConversationNpcColor As Color = Color.FromArgb(238, 232, 204)
+        Private Shared ReadOnly ConversationLinkColor As Color = Color.FromArgb(150, 150, 150)
+        Private Shared ReadOnly ConversationSelectionBackColor As Color = Color.FromArgb(32, 62, 92)
+        Private _hoveredConversationNode As TreeNode
+        Private _animationSoundPlayer As clsAnimationSoundPlayer
+
+        ' Token: 0x0600030E RID: 782 RVA: 0x00231058 File Offset: 0x00230058
+        Public Sub New()
+            Me.dtStunt = New DataTable()
+            Me.dtAnim = New DataTable()
+            Me.InitializeComponent()
+            Me.m_defaultTitleText = "Conversation Editor - KotOR "
+            Me.Text = Me.m_defaultTitleText
+            Me.BuildStuntDataGrid()
             Me.BuildAnimDataGrid()
+            Me.ConfigureConversationTree()
+            Me.UpdateDialogueSoundButtons()
 
 
             ' -------------------------------------------------------------
@@ -70,6 +83,7 @@ Namespace kotor_tool
         ' Token: 0x0600040D RID: 1037 RVA: 0x002374C8 File Offset: 0x002364C8
         Public Sub New(ByVal EditingPath As String, ByVal KotorVerIndex As Integer)
             Me.New()
+            Me.KotorVersionIndex = KotorVerIndex
             Dim tvConversation As TreeView = Me.tvConversation
             Dim clsDLG As clsDLG = New clsDLG(EditingPath, tvConversation, KotorVerIndex)
             Me.tvConversation = tvConversation
@@ -83,6 +97,7 @@ Namespace kotor_tool
         ' Token: 0x0600040E RID: 1038 RVA: 0x00237524 File Offset: 0x00236524
         Public Sub New(ByVal fs As FileStream, ByVal KotorVerIndex As Integer)
             Me.New()
+            Me.KotorVersionIndex = KotorVerIndex
             Dim tvConversation As TreeView = Me.tvConversation
             Dim clsDLG As clsDLG = New clsDLG(fs, tvConversation, KotorVerIndex)
             Me.tvConversation = tvConversation
@@ -95,6 +110,7 @@ Namespace kotor_tool
         ' Token: 0x0600040F RID: 1039 RVA: 0x0023757C File Offset: 0x0023657C
         Public Sub New(ByVal bytes As Byte(), ByVal file_name As String, ByVal KotorVerIndex As Integer)
             Me.New()
+            Me.KotorVersionIndex = KotorVerIndex
             Dim tvConversation As TreeView = Me.tvConversation
             Dim clsDLG As clsDLG = New clsDLG(bytes, tvConversation, KotorVerIndex)
             Me.tvConversation = tvConversation
@@ -106,6 +122,7 @@ Namespace kotor_tool
 
         ' Token: 0x06000410 RID: 1040 RVA: 0x002375CC File Offset: 0x002365CC
         Public Sub SetupForNewDialog()
+            Me.StopDialogueSound()
             Me.tvConversation.Nodes.Clear()
             Dim tvConversation As TreeView = Me.tvConversation
             Dim clsDLG As clsDLG = New clsDLG(tvConversation, Me.KotorVersionIndex)
@@ -128,10 +145,22 @@ Namespace kotor_tool
             Me.gff.AddFieldToStruct("", "UnequipHItem", 0, 0)
         End Sub
 
+        Protected Overrides Sub OnFormClosing(ByVal e As FormClosingEventArgs)
+            Me.StopDialogueSound()
+
+            If Me._animationSoundPlayer IsNot Nothing Then
+                RemoveHandler Me._animationSoundPlayer.StoppedPlaying, AddressOf Me.DialogueSoundPlayer_StoppedPlaying
+                Me._animationSoundPlayer.Dispose()
+                Me._animationSoundPlayer = Nothing
+            End If
+
+            MyBase.OnFormClosing(e)
+        End Sub
+
         ' Token: 0x06000411 RID: 1041 RVA: 0x002377A4 File Offset: 0x002367A4
         Private Sub SaveFile()
-            Dim cursor As Cursor = cursor.Current
-            cursor.Current = Cursors.WaitCursor
+            Dim cursor As Cursor = Cursor.Current
+            Cursor.Current = Cursors.WaitCursor
             Me.EntryList = New ArrayList()
             Me.ReplyList = New ArrayList()
             Me.gff.ClearListElements("EntryList")
@@ -215,7 +244,7 @@ Namespace kotor_tool
                 End If
             End Try
             Me.SetDLGRootItemsValues()
-            cursor.Current = cursor
+            Cursor.Current = cursor
             Dim text2 As String
             If StringType.StrCmp(Me.EditingFilePath, "", False) <> 0 Then
                 text2 = Me.EditingFilePath
@@ -316,6 +345,7 @@ Namespace kotor_tool
 
         ' Token: 0x06000413 RID: 1043 RVA: 0x002382F4 File Offset: 0x002372F4
         Private Sub SetFormToDLGRootItems()
+            Me.ApplyConversationTreeStyle()
             Me.gff.SetNumericUpDownToUIntNodeValue(Me.nudDelayEntry, "DelayEntry", 0.0F)
             Me.gff.SetNumericUpDownToUIntNodeValue(Me.nudDelayReply, "DelayReply", 0.0F)
             Me.gff.SetTextBoxToNodeValue(Me.tbEndConversation, "EndConversation")
@@ -341,6 +371,131 @@ Namespace kotor_tool
                     Me.dtStunt.Rows.Add(dataRow)
                 Next
             End If
+        End Sub
+
+        Private Sub ConfigureConversationTree()
+            Me.tvConversation.BackColor = ConversationTreeBackColor
+            Me.tvConversation.ForeColor = ConversationTreeChromeColor
+            Me.tvConversation.LineColor = ConversationTreeChromeColor
+            Me.tvConversation.DrawMode = TreeViewDrawMode.OwnerDrawText
+            Me.tvConversation.HideSelection = False
+            Me.ApplyConversationTreeStyle()
+        End Sub
+
+        Private Sub ApplyConversationTreeStyle()
+            If Me.tvConversation Is Nothing Then
+                Return
+            End If
+
+            Me.tvConversation.BackColor = ConversationTreeBackColor
+            Me.tvConversation.ForeColor = ConversationTreeChromeColor
+            Me.tvConversation.LineColor = ConversationTreeChromeColor
+
+            For Each node As TreeNode In Me.tvConversation.Nodes
+                Me.ApplyConversationNodeStyle(node)
+            Next
+
+            Me.tvConversation.Invalidate()
+        End Sub
+
+        Private Sub ApplyConversationNodeStyle(ByVal node As TreeNode)
+            If node Is Nothing Then
+                Return
+            End If
+
+            node.BackColor = ConversationTreeBackColor
+            node.ForeColor = Me.GetConversationNodeTextColor(node, False)
+
+            For Each childNode As TreeNode In node.Nodes
+                Me.ApplyConversationNodeStyle(childNode)
+            Next
+        End Sub
+
+        Private Function GetConversationNodeTextColor(ByVal node As TreeNode, ByVal isHovered As Boolean) As Color
+            If node Is Nothing Then
+                Return ConversationTreeChromeColor
+            End If
+
+            Dim dlgNode As DLGConvListNode = TryCast(node, DLGConvListNode)
+
+            If dlgNode Is Nothing Then
+                Return ConversationTreeChromeColor
+            End If
+
+            If dlgNode.IsLink > 0 Then
+                Return ConversationLinkColor
+            End If
+
+            If dlgNode.IsReply AndAlso node.Parent IsNot Nothing Then
+                If isHovered Then
+                    Return ConversationPlayerHoverColor
+                End If
+
+                Return ConversationPlayerColor
+            End If
+
+            If dlgNode.IsEntry Then
+                Return ConversationNpcColor
+            End If
+
+            Return ConversationTreeChromeColor
+        End Function
+
+        Private Sub tvConversation_DrawNode(ByVal sender As Object, ByVal e As DrawTreeNodeEventArgs) Handles tvConversation.DrawNode
+            If e.Node Is Nothing Then
+                Return
+            End If
+
+            Dim bounds As Rectangle = e.Bounds
+
+            If bounds.Width <= 0 OrElse bounds.Height <= 0 Then
+                Return
+            End If
+
+            Dim isSelected As Boolean = ((e.State And TreeNodeStates.Selected) = TreeNodeStates.Selected)
+            Dim isHovered As Boolean = (e.Node Is Me._hoveredConversationNode)
+            Dim backColor As Color = If(isSelected, ConversationSelectionBackColor, ConversationTreeBackColor)
+            Dim foreColor As Color = Me.GetConversationNodeTextColor(e.Node, isHovered)
+            Dim textFlags As TextFormatFlags = TextFormatFlags.NoPrefix Or TextFormatFlags.SingleLine Or TextFormatFlags.VerticalCenter Or TextFormatFlags.Left
+
+            Using backBrush As SolidBrush = New SolidBrush(backColor)
+                e.Graphics.FillRectangle(backBrush, bounds)
+            End Using
+
+            TextRenderer.DrawText(e.Graphics, e.Node.Text, Me.tvConversation.Font, bounds, foreColor, backColor, textFlags)
+        End Sub
+
+        Private Sub tvConversation_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles tvConversation.MouseMove
+            Dim node As TreeNode = Me.tvConversation.GetNodeAt(e.X, e.Y)
+            Dim hoverNode As TreeNode = Nothing
+            Dim dlgNode As DLGConvListNode = TryCast(node, DLGConvListNode)
+
+            If dlgNode IsNot Nothing AndAlso dlgNode.IsReply AndAlso dlgNode.IsLink = 0 AndAlso node.Parent IsNot Nothing Then
+                hoverNode = node
+            End If
+
+            If hoverNode IsNot Me._hoveredConversationNode Then
+                Dim oldNode As TreeNode = Me._hoveredConversationNode
+                Me._hoveredConversationNode = hoverNode
+
+                If oldNode IsNot Nothing Then
+                    Me.tvConversation.Invalidate(oldNode.Bounds)
+                End If
+
+                If Me._hoveredConversationNode IsNot Nothing Then
+                    Me.tvConversation.Invalidate(Me._hoveredConversationNode.Bounds)
+                End If
+            End If
+        End Sub
+
+        Private Sub tvConversation_MouseLeave(ByVal sender As Object, ByVal e As EventArgs) Handles tvConversation.MouseLeave
+            If Me._hoveredConversationNode Is Nothing Then
+                Return
+            End If
+
+            Dim oldNode As TreeNode = Me._hoveredConversationNode
+            Me._hoveredConversationNode = Nothing
+            Me.tvConversation.Invalidate(oldNode.Bounds)
         End Sub
 
         ' Token: 0x06000414 RID: 1044 RVA: 0x00238534 File Offset: 0x00237534
@@ -875,6 +1030,7 @@ Namespace kotor_tool
         Private Sub tbSound_TextChanged(ByVal sender As Object, ByVal e As EventArgs)
             Dim dlgconvListNode As DLGConvListNode = CType(Me.tvConversation.SelectedNode, DLGConvListNode)
             dlgconvListNode.Sound = Me.tbSound.Text.Trim()
+            Me.UpdateDialogueSoundButtons()
         End Sub
 
         ' Token: 0x06000433 RID: 1075 RVA: 0x0023A150 File Offset: 0x00239150
@@ -888,6 +1044,79 @@ Namespace kotor_tool
         Private Sub tbVoiceOverResRef_TextChanged(ByVal sender As Object, ByVal e As EventArgs)
             Dim dlgconvListNode As DLGConvListNode = CType(Me.tvConversation.SelectedNode, DLGConvListNode)
             dlgconvListNode.VO_ResRef = Me.tbVoiceOverResRef.Text.Trim()
+            Me.UpdateDialogueSoundButtons()
+        End Sub
+
+        Private Sub btnPlayDialogue_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnPlayDialogue.Click
+            Me.PlayDialogueSound(Me.tbVoiceOverResRef.Text.Trim(), True)
+        End Sub
+
+        Private Sub btnStopDialogue_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnStopDialogue.Click
+            Me.StopDialogueSound()
+        End Sub
+
+        Private Sub btnPlayNodeSound_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnPlayNodeSound.Click
+            Me.PlayDialogueSound(Me.tbSound.Text.Trim(), False)
+        End Sub
+
+        Private Sub btnStopNodeSound_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnStopNodeSound.Click
+            Me.StopDialogueSound()
+        End Sub
+
+        Private Function DialogueSoundPlayer() As clsAnimationSoundPlayer
+            If Me._animationSoundPlayer Is Nothing Then
+                Me._animationSoundPlayer = New clsAnimationSoundPlayer()
+                AddHandler Me._animationSoundPlayer.StoppedPlaying, AddressOf Me.DialogueSoundPlayer_StoppedPlaying
+            End If
+
+            Return Me._animationSoundPlayer
+        End Function
+
+        Private Sub PlayDialogueSound(ByVal resRef As String, ByVal isVoiceOver As Boolean)
+            If resRef.Trim().Length = 0 Then
+                Return
+            End If
+
+            If Me.DialogueSoundPlayer().PlayResRef(resRef, Me.KotorVersionIndex) Then
+                Me.btnPlayDialogue.Enabled = False
+                Me.btnPlayNodeSound.Enabled = False
+                Me.btnStopDialogue.Enabled = isVoiceOver
+                Me.btnStopNodeSound.Enabled = Not isVoiceOver
+            Else
+                MessageBox.Show(Me,
+                                "Unable to play the dialogue sound resource:" & vbCrLf & resRef,
+                                "Conversation Editor",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation)
+                Me.UpdateDialogueSoundButtons()
+            End If
+        End Sub
+
+        Private Sub StopDialogueSound()
+            If Me._animationSoundPlayer Is Nothing Then
+                Me.UpdateDialogueSoundButtons()
+                Return
+            End If
+
+            Me._animationSoundPlayer.StopSound()
+            Me.UpdateDialogueSoundButtons()
+        End Sub
+
+        Private Sub DialogueSoundPlayer_StoppedPlaying()
+            Me.UpdateDialogueSoundButtons()
+        End Sub
+
+        Private Sub UpdateDialogueSoundButtons()
+            Dim isPlaying As Boolean = False
+
+            If Me._animationSoundPlayer IsNot Nothing Then
+                isPlaying = Me._animationSoundPlayer.IsSoundPlaying()
+            End If
+
+            Me.btnPlayDialogue.Enabled = Not isPlaying AndAlso Me.tbVoiceOverResRef.Text.Trim().Length > 0
+            Me.btnPlayNodeSound.Enabled = Not isPlaying AndAlso Me.tbSound.Text.Trim().Length > 0
+            Me.btnStopDialogue.Enabled = isPlaying
+            Me.btnStopNodeSound.Enabled = isPlaying
         End Sub
 
         ' Token: 0x06000435 RID: 1077 RVA: 0x0023A1C4 File Offset: 0x002391C4
@@ -971,6 +1200,10 @@ Namespace kotor_tool
             Dim dlgconvListNode As DLGConvListNode = CType(CType(sender, TreeView).SelectedNode, DLGConvListNode)
             Me.AdjustTabPagesEnabledState(dlgconvListNode)
             If dlgconvListNode Is Me.tvConversation.Nodes(0) Then
+                Me.btnPlayDialogue.Enabled = False
+                Me.btnPlayNodeSound.Enabled = False
+                Me.btnStopDialogue.Enabled = Me._animationSoundPlayer IsNot Nothing AndAlso Me._animationSoundPlayer.IsSoundPlaying()
+                Me.btnStopNodeSound.Enabled = Me.btnStopDialogue.Enabled
                 Return
             End If
             Me.tbLinkID.Text = StringType.FromInteger(dlgconvListNode.LinkID)
@@ -1053,6 +1286,7 @@ IL_01DA:
                 Me.nudCamFieldOfView.Value = dlgconvListNode.CamFieldOfView
             End If
             Me.WireUpEventHandlers()
+            Me.UpdateDialogueSoundButtons()
         End Sub
 
         ' Token: 0x0600043E RID: 1086 RVA: 0x0023A89C File Offset: 0x0023989C
@@ -1228,6 +1462,7 @@ IL_01DA:
             End If
             Dim gfffileKotorVersionIndex As Integer = frmMain.GetGFFFileKotorVersionIndex(text)
             Dim fileStream As FileStream = New FileStream(text, FileMode.Open, FileAccess.Read)
+            Me.KotorVersionIndex = gfffileKotorVersionIndex
             Me.SetupForNewDialog()
             Me.tvConversation.Nodes.Clear()
             Dim fileStream2 As FileStream = fileStream

@@ -1,3 +1,4 @@
+<<<<<<< HEAD:Source/KotOR Tool (2026)/vb.md
 # VB.NET Implementation Guide
 
 VB.NET is the only compiled source language in the current solution.
@@ -48,3 +49,12 @@ Keep partial-class names and `DependentUpon` metadata synchronized. Use the desi
 ## Modernization priorities
 
 High-value seams are extracting codecs from forms, replacing global caches with injected services, introducing typed resource identifiers, adding fixture tests, and then enabling strict typing one subsystem at a time. A wholesale syntax conversion before those seams exist would preserve the current coupling in another language.
+=======
+# VB.NET Guide
+
+VB.NET is the only compiled language: 223 files under explicit `Namespace kotor_tool`, empty project `RootNamespace`, and `KT_Launch.Main` startup. Defaults are `Option Explicit On`, `Option Strict Off`, `Option Infer Off`, `Option Compare Binary`; every configuration targets x86.
+
+Token/RVA comments, compiler helpers, late-bound `Object` and possible uninitialized locals are decompiler artifacts. Do not mechanically rewrite them. New code should use explicit conversions, binary bounds and clear resource ownership.
+
+Keep WinForms code-behind, `.Designer.vb`, `.resx` and `DependentUpon` aligned. Codecs may retain streams or depend on `frmMain`, so check ownership before adding `Using`. Safe work captures fixtures, preserves game/byte semantics, builds full-framework Debug/Release x86, round-trips data and smoke-tests designer/runtime behavior.
+>>>>>>> treya/v.1.0.3.4:Source/VisualBasic/vb.md

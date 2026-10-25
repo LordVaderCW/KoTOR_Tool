@@ -92,8 +92,13 @@ Namespace kotor_tool
                     Throw New ApplicationException("Plugin download completed, but the downloaded file is empty.")
                 End If
 
-                If Not Me.IsZipFile(tempPath) Then
-                    Throw New ApplicationException("Plugin download completed, but the downloaded file is not a valid ZIP package. The GitHub release may be returning a non-ZIP asset, HTML page, EXE, 7Z, or unsupported package type.")
+                'If Not Me.IsZipFile(tempPath) Then
+                'Throw New ApplicationException("Plugin download completed, but the downloaded file is not a valid ZIP package. The GitHub release may be returning a non-ZIP asset, HTML page, EXE, 7Z, or unsupported package type.")
+                'End If
+
+                ' Patch v.1.0.3.5 - 11.05.26 - Patched to include, .7z github repo archives, rar, and zip
+                If Not Me.IsSupportedPluginPackage(tempPath, outputPath) Then
+                    Throw New ApplicationException("Plugin download completed, but the downloaded file is not a supported plugin archive. Supported package formats are ZIP, 7Z, and RAR.")
                 End If
 
                 File.Move(tempPath, outputPath)
@@ -223,10 +228,18 @@ Namespace kotor_tool
                     Return ""
                 End If
 
-                Dim zipMatch As Match = Regex.Match(json, """browser_download_url""\s*:\s*""(?<url>[^""]+\.zip)""", RegexOptions.IgnoreCase)
+                'Dim zipMatch As Match = Regex.Match(json, """browser_download_url""\s*:\s*""(?<url>[^""]+\.zip)""", RegexOptions.IgnoreCase)
 
-                If zipMatch.Success Then
-                    Return Me.UnescapeJsonUrl(zipMatch.Groups("url").Value)
+                'If zipMatch.Success Then
+                'Return Me.UnescapeJsonUrl(zipMatch.Groups("url").Value)
+                'End If
+
+                ' Patch v.1.0.3.5 - 11.05.26 - Patched to include, .7z github repo archives, rar, and zip
+
+                Dim packageMatch As Match = Regex.Match(json, """browser_download_url""\s*:\s*""(?<url>[^""]+\.(zip|7z|rar))""", RegexOptions.IgnoreCase)
+
+                If packageMatch.Success Then
+                    Return Me.UnescapeJsonUrl(packageMatch.Groups("url").Value)
                 End If
 
                 Dim anyMatch As Match = Regex.Match(json, """browser_download_url""\s*:\s*""(?<url>[^""]+)""", RegexOptions.IgnoreCase)
@@ -415,6 +428,7 @@ Namespace kotor_tool
             Return byteCount.ToString() & " bytes"
         End Function
 
+        'No longer used, but kept for archival. could be useful for something else later. LordVaderCW. 
         Private Function IsZipFile(ByVal filePath As String) As Boolean
             If filePath Is Nothing OrElse filePath.Trim().Length = 0 Then
                 Return False
@@ -452,6 +466,74 @@ Namespace kotor_tool
                     End If
                 End If
             End Using
+
+            Return False
+        End Function
+
+        Private Function IsSupportedPluginPackage(ByVal filePath As String,
+                                          ByVal finalPath As String) As Boolean
+
+            If filePath Is Nothing OrElse filePath.Trim().Length = 0 Then
+                Return False
+            End If
+
+            If Not File.Exists(filePath) Then
+                Return False
+            End If
+
+            Dim extensionText As String = ""
+
+            If finalPath IsNot Nothing Then
+                extensionText = Path.GetExtension(finalPath).ToLowerInvariant()
+            End If
+
+            Using fs As FileStream = New FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read)
+                If fs.Length < 6 Then
+                    Return False
+                End If
+
+                Dim b0 As Integer = fs.ReadByte()
+                Dim b1 As Integer = fs.ReadByte()
+                Dim b2 As Integer = fs.ReadByte()
+                Dim b3 As Integer = fs.ReadByte()
+                Dim b4 As Integer = fs.ReadByte()
+                Dim b5 As Integer = fs.ReadByte()
+
+                ' ZIP signatures:
+                ' PK 03 04 = normal zip
+                ' PK 05 06 = empty zip
+                ' PK 07 08 = spanned zip descriptor
+                If b0 = &H50 AndAlso b1 = &H4B Then
+                    If b2 = &H3 AndAlso b3 = &H4 Then
+                        Return True
+                    End If
+
+                    If b2 = &H5 AndAlso b3 = &H6 Then
+                        Return True
+                    End If
+
+                    If b2 = &H7 AndAlso b3 = &H8 Then
+                        Return True
+                    End If
+                End If
+
+                ' 7Z signature:
+                ' 37 7A BC AF 27 1C
+                If b0 = &H37 AndAlso b1 = &H7A AndAlso b2 = &HBC AndAlso b3 = &HAF AndAlso b4 = &H27 AndAlso b5 = &H1C Then
+                    Return True
+                End If
+
+                ' RAR signature:
+                ' Rar! 1A 07 ...
+                If b0 = &H52 AndAlso b1 = &H61 AndAlso b2 = &H72 AndAlso b3 = &H21 AndAlso b4 = &H1A AndAlso b5 = &H7 Then
+                    Return True
+                End If
+            End Using
+
+            ' Fallback: allow known archive extensions where signature checking is inconclusive.
+            If extensionText = ".zip" OrElse extensionText = ".7z" OrElse extensionText = ".rar" Then
+                Return True
+            End If
 
             Return False
         End Function

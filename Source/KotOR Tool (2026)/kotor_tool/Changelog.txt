@@ -6,11 +6,11 @@ Rebuild and rebirth of the original **KoTOR Tool**, originally developed by Fred
 
 # KoTOR Tool Restoration Project
 
-**Version:** v1.0.3.4
+**Version:** v1.0.3.5
 **Patch Date:** 10.05.26
 **Project Status:** Restored source build confirmed
 **Target IDE:** Visual Studio 2010
-**Target Framework:** .NET Framework 2.0
+**Target Framework:** .NET Framework 4.6.2
 **Platform:** x86
 **Language:** VB.NET
 
@@ -25,6 +25,18 @@ This release represents a major turning point in the project — transitioning f
 ---
 
 # Current Release
+
+## v1.0.3.5 - Sound Editor Playback Stabilisation
+
+This release adds in batch conversion for textures and jpg, png export support in BATCHES.
+
+* Fixed TGA Export reporting as corrupted when opening TGA exports in photoshop or other third party applications.
+
+FOUND A BUG? REPORT IT. SO I CAN FIX IT. THANKS. 
+
+---
+
+# Previous Release
 
 ## v1.0.3.4 - Sound Editor Playback Stabilisation
 

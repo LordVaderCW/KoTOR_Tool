@@ -26,7 +26,7 @@ Namespace kotor_tool
 			Me.bModuleLoadedOK = False
 			Me.g_ShowPaletteNames = True
 			Me.g_CurrentPaletteModItemType = -1
-			Me.g_mapsPath = Path.Combine(StringType.FromObject(Registry.LocalMachine.OpenSubKey("software\SCM\Kotor Tool").GetValue("path")), "maps\")
+			Me.g_mapsPath = Path.Combine(frmMain.GetApplicationRootPath(), "maps\")
 			Me.bPaletteVisible = True
 			Me.bModElementsVisible = True
 			Me.bConfirmDeletes = True

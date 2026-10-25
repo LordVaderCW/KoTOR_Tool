@@ -22,7 +22,7 @@ Namespace kotor_tool
 		' Token: 0x0600076B RID: 1899 RVA: 0x00258B40 File Offset: 0x00257B40
 		Public Sub New()
 			Me.dt = New DataTable()
-			Me.g_mapsPath = Path.Combine(StringType.FromObject(Registry.LocalMachine.OpenSubKey("software\SCM\Kotor Tool").GetValue("path")), "maps\")
+			Me.g_mapsPath = Path.Combine(frmMain.GetApplicationRootPath(), "maps\")
 			Me.InitializeComponent()
 			Me.BuildDataGrid()
 			Me.Map_Info = frmMapInfoStatus.ReadMapInfoFile()
