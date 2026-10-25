@@ -8,9 +8,9 @@ This repository contains the restored, repaired, and actively modernised source-
 
 ## Current Release
 
->**Version:** v1.0.3.4
+>**Version:** v1.0.3.5
 >
->**Patch date:** 10.05.26
+>**Patch date:** 25.10.26
 >
 >**Project status:** Active restoration / modernisation
 >
