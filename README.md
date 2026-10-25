@@ -224,6 +224,191 @@ KoTOR Tool remains an important part of the *Knights of the Old Republic* moddin
 
 ---
 
+---
+
+## Why This Matters
+
+### A Brief History of Copyright (Why Restoration Matters Legally and Culturally)
+
+Copyright did not begin as a permanent or near-permanent control over creative works.
+
+It began as a **limited, balanced protection** between creator and public:
+
+* **Statute of Anne (1710, Great Britain)** — the first modern copyright law
+
+  * 14-year protection
+  * Renewable once (maximum 28 years) if the author was still alive
+
+* **U.S. Copyright Act (1790)** — mirrored the same structure
+
+  * 14 years + optional 14-year renewal
+
+The original intent was clear:
+
+> Grant creators a temporary monopoly, then return the work to the public domain.
+
+---
+
+### Expansion Over Time
+
+Over the centuries, copyright terms expanded significantly:
+
+* 1814 (UK): Extended to 28 years or life of the author
+* 1831 (US): Initial term increased to 28 years
+* 1976 Copyright Act: Shifted to **life of the author + 50 years**
+* 1998 Copyright Term Extension Act (CTEA): Extended to
+
+  * **Life + 70 years** (individual works)
+  * **95 years** (corporate works / works for hire)
+
+---
+
+### Corporate Influence and the “Mickey Mouse Effect”
+
+The 1998 extension is widely associated with lobbying efforts by major corporations, most notably **The Walt Disney Company**.
+
+* The act was informally dubbed the **“Mickey Mouse Protection Act”**
+* It extended corporate copyright from 75 to 95 years
+* It delayed the public domain release of *Steamboat Willie* (1928)
+
+Despite these extensions:
+
+* The original *Steamboat Willie* finally entered the public domain on **January 1, 2024**
+
+---
+
+### Why This Matters for KoTOR Tool
+
+This historical shift has real consequences:
+
+* Tools and software remain locked away far longer than originally intended
+* Communities lose access to foundational infrastructure
+* Preservation becomes legally and technically difficult
+
+KoTOR Tool sits in that gap:
+
+* Not actively maintained
+* Not commercially supported
+* Yet still essential to a living modding ecosystem
+
+---
+
+### The Core Argument
+
+The original philosophy of copyright was **temporary stewardship — not permanent control**.
+
+When software is abandoned for decades, the balance shifts:
+
+* The creator is no longer maintaining it
+* The community still depends on it
+
+At that point, restoration becomes not just practical — but justified.
+
+---
+
+### A Personal Statement — LordVaderCW
+
+Efforts were made to locate and contact **Fred Tetra**, the original author of KoTOR Tool, regarding the restoration and continuation of the project. These efforts were unsuccessful. No active presence, point of contact, or ongoing stewardship of the original tool could be established.
+
+In the absence of the original maintainer, and given the **clear, long-term abandonment of the software and its codebase**, I, **LordVaderCW**, have taken it upon myself to continue the work.
+
+This decision was not made lightly. It is grounded in:
+
+* The demonstrable lack of maintenance or support over an extended period
+* The continued reliance of the modding community on this tool
+* The risk of permanent loss if no action was taken
+
+Where a tool has been abandoned, yet remains essential, responsibility does not vanish — it transfers to those willing to preserve it.
+
+This restoration is therefore both:
+
+* A continuation of the original vision
+* And a necessary act of preservation in the absence of its creator
+
+---
+
+### A Personal Statement — LordVaderCW
+
+This project is more than a technical restoration — it is a statement of principle.
+
+Abandoned software is, in practice, **abandoned property**.
+
+When a tool is no longer maintained, supported, or distributed by its original creators, it does not cease to have value. Instead, it becomes dependent on the community that continues to rely on it. If that community does nothing, the software dies. If it steps in, the software lives.
+
+This restoration exists because KoTOR Tool was too important to be left to decay.
+
+---
+
+### The Right to Repair — Applied to Software
+
+The philosophy behind this work aligns directly with the **Right to Repair** movement.
+
+Traditionally applied to hardware, the principle is simple:
+
+> If you own it, you should be able to fix it.
+
+That same logic applies to software:
+
+* If a tool is essential, it should not become unusable due to neglect
+* If source code is recoverable, it should be restorable
+* If systems break, they should be repairable — not discarded
+
+KoTOR Tool represents exactly this situation — a critical modding utility that was effectively lost due to time, tooling changes, and lack of maintenance.
+
+This project restores that right.
+
+---
+
+### #StopKillingGames — Preservation of Digital Culture
+
+There is also a broader issue at play.
+
+The **#StopKillingGames** argument highlights a growing problem in the industry:
+
+> Software, tools, and even entire games are being rendered unusable over time — not because they must be, but because they are abandoned.
+
+Modding tools like KoTOR Tool are part of that ecosystem.
+
+Without them:
+
+* Modding communities collapse
+* Knowledge disappears
+* Digital history is lost
+
+By restoring this tool, we are not just fixing software — we are preserving:
+
+* A modding pipeline
+* A community standard
+* A piece of gaming history
+
+---
+
+### The Real Outcome
+
+This project proves something important:
+
+* Legacy software **can** be restored
+* Decompiled code **can** be made maintainable
+* Abandoned tools **do not have to die**
+
+KoTOR Tool is no longer a relic.
+
+It is now a **living platform**, ready for extension, improvement, and future development.
+
+---
+
+## Forward Direction
+
+The next phases will focus on:
+
+* Completing UI overhaul across all remaining forms
+* Enhancing editor functionality (GFF, UTC, UTP, etc.)
+* Improving tool responsiveness and usability
+* Expanding modding capabilities while preserving legacy behaviour
+
+---
+
+
 ## Credits
 
 ### Original KoTOR Tool
