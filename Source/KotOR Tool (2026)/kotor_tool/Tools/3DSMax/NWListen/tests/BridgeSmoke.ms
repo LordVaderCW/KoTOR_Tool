@@ -55,6 +55,29 @@ try
    if classOf n.position.controller != Linear_Position or classOf n.rotation.controller != Linear_Rotation or classOf n.scale.controller != Linear_Scale then throw "Imported controllers were not reset"
   format "PASS % nodes=%\n" fixture objects.count to:report
  )
+ -- Explicit animation modes use the same copied fixture; inspect only added nodes.
+ for mode in #(0,1) do
+ (
+  delete (for n in objects where n != sentinel collect n)
+  local job = NWlistenRoot + "jobs\\mode" + (mode as string) + "\\"
+  dirs.CreateDirectory job
+  local fixture = io.ReadAllText (here + "tsl_fields.mdl.ascii")
+  local clip = "newanim test nx_tsl_test\nlength 1\ntranstime 0.25\nanimroot nx_tsl_test\nnode trimesh nx_tsl_test_mesh\nparent nx_tsl_test\npositionkey 2\n0 0 0 0\n1 1 0 0\nendnode\ndoneanim test nx_tsl_test\n"
+  io.WriteAllText (job + "model-ascii.mdl") (substituteString fixture "donemodel nx_tsl_test" (clip + "donemodel nx_tsl_test"))
+  local existing = objects as array
+  io.WriteAllText (job + "request.ready") ("NWlisten/1\nanimations=" + (mode as string))
+  NWlistenTick()
+  local result = io.ReadAllText (job + "result.txt")
+  if not (matchPattern result pattern:"OK*") then throw result
+  local keyed = false
+  for n in objects where (findItem existing n) == 0 do
+  (
+   if (numKeys n.position.controller) > 0 or (numKeys n.rotation.controller) > 0 then keyed = true
+  )
+  if mode == 0 and keyed then throw "Geometry-only import contains animation keys"
+  if mode == 1 and not keyed then throw "Animated import lost its keys"
+  format "PASS animation option %\n" mode to:report
+ )
  local bad = NWlistenRoot + "jobs\\bad\\"
  dirs.CreateDirectory bad
  io.WriteAllText (bad + "request.ready") "NWlisten/1"

@@ -24,3 +24,5 @@ Do not assume a class is a pure library because it is under `Classes`. `clsGFF`,
 =======
 Parsers, persistence models, image/model/plugin pipelines and shared UI infrastructure live here. Directory placement does not imply purity: many classes reference WinForms or `frmMain`. Archive flow is KEY → BIFF/RIM/ERF bytes → type codec/editor. Read the subsystem guide before changing it.
 >>>>>>> treya/v.1.0.3.4:Source/VisualBasic/kotor_tool/Classes/README.md
+
+[MetaDataSystem](MetaDataSystem/README.md) contains the initial K1/K2 model naming register and tree grouping adapter. The broader metadata system remains future work.

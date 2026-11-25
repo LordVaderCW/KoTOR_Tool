@@ -30,6 +30,7 @@
     <Compile Include="AsciiAnimations.cs"/>
     <Compile Include="LoadingBar.cs"><SubType>Component</SubType></Compile>
     <Compile Include="PreviewController.cs"/>
+    <Compile Include="ViewerBottomBar.cs"/>
     <Content Include="vendor\GhostRigger-LICENSE.txt"><Link>ModelPreview\GhostRigger-LICENSE.txt</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
     <Content Include="web\*"><Link>ModelPreview\%(Filename)%(Extension)</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
     <Content Include="vendor\WebView2Loader.dll"><Link>WebView2Loader.dll</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>

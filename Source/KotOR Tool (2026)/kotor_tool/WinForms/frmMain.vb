@@ -396,6 +396,7 @@ Namespace kotor_tool
                         num13 += 1
                     Next
                     Me.AttachNodeParentsSortedByDesc(CType(Root.Nodes(0).Nodes(i), KotorTreeNode), CType(treeNode, KotorTreeNode))
+                    ModelTreeGroups.Apply(CType(Root.Nodes(0).Nodes(i), KotorTreeNode), num)
                 End If
             Next
             binaryReader.Close()
@@ -4544,13 +4545,8 @@ Namespace kotor_tool
                 Dim cursor2 As Cursor = Cursor.Current
                 Cursor.Current = Cursors.WaitCursor
                 Try
-                    For Each obj2 As Object In node.Nodes
-                        Dim kotorTreeNode As KotorTreeNode = CType(obj2, KotorTreeNode)
-                        Dim num5 As Integer = 0
-                        Dim num6 As Integer = kotorTreeNode.GetNodeCount(False) - 1
-                        For j As Integer = num5 To num6
-                            frmMain.ExportBiffResource(node.FilePath + "\" + node.Filename, outputpath + CType(kotorTreeNode.Nodes(j), KotorTreeNode).ResRef + "." + CType(kotorTreeNode.Nodes(j), KotorTreeNode).ResTypeStr, CType(kotorTreeNode.Nodes(j), KotorTreeNode).LocalResID)
-                        Next
+                    For Each resource As KotorTreeNode In ModelTreeGroups.ResourceLeaves(node)
+                        frmMain.ExportBiffResource(resource.FilePath, Path.Combine(outputpath, resource.ResRef & "." & resource.ResTypeStr), resource.LocalResID)
                     Next
                 Finally
                     Dim enumerator As IEnumerator
@@ -4641,8 +4637,9 @@ Namespace kotor_tool
                 ' BLOCK 7: EXTRACTING AN ENTIRE CATEGORY OF FILES (e.g. all .utc files in a BIF)
                 ' =================================================================================
             ElseIf ObjectType.ObjTst(tag, "NodeCategory", False) = 0 Then
-                Dim containingFileType As String = CType(node.Parent, KotorTreeNode).ContainingFileType
-                Dim kotorTreeNode2 As KotorTreeNode = CType(node.Parent, KotorTreeNode)
+                Dim kotorTreeNode2 As KotorTreeNode = ModelTreeGroups.FindArchive(node)
+                If kotorTreeNode2 Is Nothing Then Return outputpath
+                Dim containingFileType As String = kotorTreeNode2.ContainingFileType
 
                 If StringType.StrCmp(containingFileType, "BIF", False) = 0 OrElse StringType.StrCmp(containingFileType, "rim", False) = 0 Then
                     If StringType.StrCmp(SaveMsg, "", False) = 0 Then
@@ -4662,9 +4659,8 @@ Namespace kotor_tool
                     Dim cursor3 As Cursor = Cursor.Current
                     Cursor.Current = Cursors.WaitCursor
                     Try
-                        For Each obj3 As Object In node.Nodes
-                            Dim kotorTreeNode3 As KotorTreeNode = CType(obj3, KotorTreeNode)
-                            frmMain.ExportBiffResource(kotorTreeNode2.FilePath + "\" + kotorTreeNode2.Filename, outputpath + kotorTreeNode3.ResRef + "." + kotorTreeNode3.ResTypeStr, kotorTreeNode3.LocalResID)
+                        For Each resource As KotorTreeNode In ModelTreeGroups.ResourceLeaves(node)
+                            frmMain.ExportBiffResource(resource.FilePath, Path.Combine(outputpath, resource.ResRef & "." & resource.ResTypeStr), resource.LocalResID)
                         Next
                     Finally
                         Dim enumerator2 As IEnumerator
@@ -5647,10 +5643,11 @@ IL_12BE:
                     Me.btnExtract.Text = "Extract file"
 
                 ElseIf ObjectType.ObjTst(tag2, "NodeCategory", False) = 0 Then
-                    Dim containingFileType As String = CType(kotorTreeNode.Parent, KotorTreeNode).ContainingFileType
+                    Dim archive As KotorTreeNode = ModelTreeGroups.FindArchive(kotorTreeNode)
+                    Dim containingFileType As String = If(archive Is Nothing, "", archive.ContainingFileType)
 
                     If StringType.StrCmp(containingFileType, "BIF", False) = 0 Then
-                        Me.btnExtract.Text = "Extract entire BIFF subtype"
+                        Me.btnExtract.Text = If(kotorTreeNode.Name.StartsWith("mdl-group:", StringComparison.Ordinal), "Extract model group", "Extract entire BIFF subtype")
                     ElseIf StringType.StrCmp(containingFileType, "rim", False) = 0 Then
                         Me.btnExtract.Text = "Extract entire RIM subtype"
                     End If

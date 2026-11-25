@@ -26,23 +26,24 @@ Namespace kotor_tool
 
             Dim decodeCommand As Integer = 0
 
-            If (result.DataSize = 0) And (result.Encoding = 2) And (result.MipMapCount = 1) Then
+            ' Uncompressed base pixels precede any mip levels; mip count does not imply DXT.
+            If (result.DataSize = 0) And (result.Encoding = 2) Then
                 result.NeedToFlipForWriting = False
-                Me.SwapRedBlueChannels(tpcData, CInt(result.XSize * result.YSize), 3)
+                Me.SwapRedBlueChannels(tpcData, CInt(result.XSize) * CInt(result.YSize), 3)
                 result.PixelData = CType(Array.CreateInstance(GetType(Byte), tpcData.Length), Byte())
                 Array.Copy(tpcData, result.PixelData, tpcData.Length)
 
                 Dim pixelArray As Array = result.PixelData
-                clsImageSystem.FlipImageVertically(pixelArray, CInt((3S * result.XSize)), CInt(result.YSize))
+                clsImageSystem.FlipImageVertically(pixelArray, (3 * CInt(result.XSize)), CInt(result.YSize))
                 result.PixelData = CType(pixelArray, Byte())
-            ElseIf (result.DataSize = 0) And (result.Encoding = 4) And (result.MipMapCount = 1) Then
+            ElseIf (result.DataSize = 0) And (result.Encoding = 4) Then
                 result.NeedToFlipForWriting = False
                 Me.SwapRedBlueChannels(tpcData, CInt(result.XSize) * CInt(result.YSize), 4)
                 result.PixelData = CType(Array.CreateInstance(GetType(Byte), tpcData.Length), Byte())
                 Array.Copy(tpcData, result.PixelData, tpcData.Length)
 
                 Dim pixelArray As Array = result.PixelData
-                clsImageSystem.FlipImageVertically(pixelArray, CInt((4S * result.XSize)), CInt(result.YSize))
+                clsImageSystem.FlipImageVertically(pixelArray, (4 * CInt(result.XSize)), CInt(result.YSize))
                 result.PixelData = CType(pixelArray, Byte())
             ElseIf (result.Encoding = 2) Or (result.Encoding = 4) Then
                 result.NeedToFlipForWriting = True
@@ -72,10 +73,10 @@ Namespace kotor_tool
                 End Try
             End If
 
-            If (result.DataSize = 0) And (result.Encoding = 2) And (result.MipMapCount = 1) Then
+            If (result.DataSize = 0) And (result.Encoding = 2) Then
                 result.BytesPerPixel = 3
                 result.PixelFormat = PixelFormat.Format24bppRgb
-            ElseIf (result.DataSize = 0) And (result.Encoding = 4) And (result.MipMapCount = 1) Then
+            ElseIf (result.DataSize = 0) And (result.Encoding = 4) Then
                 result.BytesPerPixel = 4
                 result.PixelFormat = PixelFormat.Format32bppArgb
             Else

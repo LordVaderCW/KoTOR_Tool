@@ -31,7 +31,7 @@ Namespace kotor_tool
             AddHandler Me.timer.Tick, AddressOf Me.Timer_Tick
         End Sub
 
-        Public Function PlayResRef(ByVal resRef As String, ByVal gameIndex As Integer) As Boolean
+        Public Function PlayResRef(ByVal resRef As String, ByVal gameIndex As Integer, Optional ByVal loopAudio As Boolean = False) As Boolean
             Dim fileName As String = Me.NormalizeSoundFileName(resRef)
 
             If fileName.Length = 0 Then
@@ -74,6 +74,7 @@ Namespace kotor_tool
                 Return False
             End If
 
+            Me.sound.setMode(If(loopAudio, MODE.LOOP_NORMAL, MODE.LOOP_OFF))
             Me.result = Me.fmSystem.playSound(CHANNELINDEX.FREE, Me.sound, False, Me.channel)
 
             If Me.result <> RESULT.OK Then
@@ -84,6 +85,10 @@ Namespace kotor_tool
             Me.timer.Enabled = True
             Return True
         End Function
+
+        Public Sub PauseSound(ByVal paused As Boolean)
+            If Me.channel IsNot Nothing Then Me.channel.setPaused(paused)
+        End Sub
 
         Public Sub StopSound()
             Me.timer.Enabled = False
@@ -118,7 +123,9 @@ Namespace kotor_tool
 
             If Me.kotorVersionIndex <> gameIndex OrElse Me.soundBifFilesHash Is Nothing Then
                 Me.kotorVersionIndex = gameIndex
-                Me.soundBifFilesHash = frmMain.KxChitinKey(gameIndex).GetBIFFileHash("sounds")
+                ' Resource references are case-insensitive; 2DA door names often use mixed case.
+                ' Copy the index so this player does not change the shared KEY cache.
+                Me.soundBifFilesHash = New Hashtable(frmMain.KxChitinKey(gameIndex).GetBIFFileHash("sounds"), StringComparer.OrdinalIgnoreCase)
                 Me.soundsBifPath = Path.Combine(frmMain.CurrentSettings.KotorLocation(gameIndex), CType(frmMain.KxChitinKey(gameIndex).BiffListInfo("sounds"), BIFFEntry).filename)
                 Me.soundsResInfo = BIFFArchive.GetBIFFResourceInfoList(Me.soundsBifPath)
             End If

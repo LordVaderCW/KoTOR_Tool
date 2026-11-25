@@ -1,4 +1,4 @@
-Imports System
+﻿Imports System
 Imports System.IO
 Imports System.Text
 Imports Microsoft.VisualBasic
@@ -11,15 +11,18 @@ Namespace kotor_tool
         Private nwSendBusy As Boolean
 
         Private Async Sub SendModelToMax(ByVal sender As Object, ByVal e As EventArgs)
-            If nwSendBusy OrElse modelPreviewBusy OrElse modelPreviewNode Is Nothing Then Return
-            Dim node As KotorTreeNode = modelPreviewNode
+            Await SendModelToMaxAsync(modelPreviewNode, True)
+        End Sub
+
+        Private Async Function SendModelToMaxAsync(ByVal node As KotorTreeNode, ByVal includeAnimations As Boolean) As Task
+            If nwSendBusy OrElse modelPreviewBusy OrElse node Is Nothing Then Return
             nwSendBusy = True
             modelPreviewBusy = True
             Dim meter As New frmProgressMeter()
             Dim job As String = Nothing
             Try
-                meter.OperationTitle = "Send to 3DS Max (2021)"
-                meter.message = node.ResRef
+                meter.OperationTitle = "Send to 3DS Max"
+                meter.message = node.ResRef & If(includeAnimations, " (with animations)", " (without animations)")
                 meter.maxvalue = 100
                 meter.AllowCancel = False
                 meter.ControlBox = True
@@ -87,7 +90,7 @@ Namespace kotor_tool
                 If meter.IsDisposed OrElse IsDisposed Then Return
                 meter.progress = 65
                 meter.status = "Waiting for NWlisten to import into the current scene"
-                File.WriteAllText(Path.Combine(job, "request.tmp"), "NWlisten/1", New UTF8Encoding(False))
+                File.WriteAllText(Path.Combine(job, "request.tmp"), "NWlisten/1" & vbLf & "animations=" & If(includeAnimations, "1", "0"), New UTF8Encoding(False))
                 File.Move(Path.Combine(job, "request.tmp"), Path.Combine(job, "request.ready"))
                 Dim deadline As DateTime = DateTime.UtcNow.AddMinutes(10)
                 Do
@@ -124,7 +127,7 @@ Namespace kotor_tool
                 modelPreviewBusy = False
                 nwSendBusy = False
             End Try
-        End Sub
+        End Function
 
         Private Shared Function NWRegisterApplicationDirectory(ByVal applicationDirectory As String) As String
             Dim folder As String = Path.GetFullPath(applicationDirectory)

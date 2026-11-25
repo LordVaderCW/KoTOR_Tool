@@ -38,6 +38,21 @@ const fs=require('fs'),path=require('path'),http=require('http'),assert=require(
    const command=(command,index,loop=true)=>sendPlayback({command,index,loop,revision:1});
    const equal=(a,b)=>a.length===b.length&&a.every((v,i)=>Number.isFinite(v)&&Math.abs(v-b[i])<0.00001);
    command('stop',0);const rest=pose(),baseline=[];
+   const root=testMixer.getRoot();root.updateMatrixWorld(true);
+   let skins=0;
+   root.traverse(mesh=>{if(!mesh.isSkinnedMesh)return;skins++;mesh.skeleton.update();
+    for(let i=0;i<mesh.geometry.attributes.position.count;i++){
+     const p=new THREE.Vector3().fromBufferAttribute(mesh.geometry.attributes.position,i),q=mesh.boneTransform(i,p.clone());
+     if(!q.toArray().every(Number.isFinite)||p.distanceTo(q)>0.001)throw Error('Skin rest pose displaced: '+mesh.name);
+    }
+   });
+   if(clips.length===1&&clips[0].name==='move'&&skins===1){
+    command('select',0);stepPlayback(0.25);root.updateMatrixWorld(true);
+    root.traverse(mesh=>{if(!mesh.isSkinnedMesh)return;mesh.skeleton.update();
+     const p=new THREE.Vector3().fromBufferAttribute(mesh.geometry.attributes.position,0),q=mesh.boneTransform(0,p.clone());
+     if(Math.abs(p.distanceTo(q)-0.25)>0.0001)throw Error('Weighted bone animation did not deform mesh by expected amount');
+    });command('stop',0);
+   }
    for(const clip of clips){command('select',clip.index);stepPlayback(Math.max(clip.duration*0.4,0.01));
     if(testMixer._actions.some(a=>!Number.isFinite(a.time)))throw Error("Non-finite animation clock: "+clip.name);baseline.push(pose());command('stop',clip.index);}
    for(let cycle=0;cycle<30;cycle++)for(const clip of clips){
@@ -55,7 +70,7 @@ const fs=require('fs'),path=require('path'),http=require('http'),assert=require(
     if(!equal(pose(),baseline[clip.index]))throw Error('Replay completed clip failed: '+clip.name);
     command('stop',clip.index);
    }
-   return {clips:clips.map(c=>c.name),selections:clips.length*30};
+   return {clips:clips.map(c=>c.name),skins,selections:clips.length*30};
   });
   assert.deepStrictEqual(errors,[]);
   console.log('PASS: '+JSON.stringify(result));

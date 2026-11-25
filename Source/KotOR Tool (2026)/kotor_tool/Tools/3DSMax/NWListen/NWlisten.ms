@@ -213,7 +213,15 @@ fn NWlistenTick =
                         local elapsed = now.Subtract written
                         local age = elapsed.TotalSeconds
                         if age > 120 then throw "Request expired. Send the model again."
-                        if (io.ReadAllText (job + "request.working")) != "NWlisten/1" then throw "Unsupported request version."
+                        local request = io.ReadAllText (job + "request.working")
+                        local includeAnimations = true
+                        case request of
+                        (
+                            "NWlisten/1": ()
+                            "NWlisten/1\nanimations=1": ()
+                            "NWlisten/1\nanimations=0": (includeAnimations = false)
+                            default: throw "Unsupported request version or animation option."
+                        )
                         local mdl = job + "model-ascii.mdl"
                         if not (io.Exists mdl) then throw "ASCII model is missing."
                         if ImportNWNmdl == undefined do fileIn ((getDir #scripts) + "\\NWmax\\nwmax.ms")
@@ -222,16 +230,19 @@ fn NWlistenTick =
                         mapPaths.add job
                         if nx_refreshMapPaths != undefined do nx_refreshMapPaths()
                         local existingNodes = objects as array
-                        local imported = ImportNWNmdl mdl true false showprogress:false
+                        local imported = ImportNWNmdl mdl includeAnimations false showprogress:false
                         local addedNodes = for n in objects where (findItem existingNodes n) == 0 collect n
                         if imported == false or addedNodes.count == 0 then throw "NWmax reported an import failure."
-                        NWlistenStatus = "Resetting imported controllers..."
-                        NWlistenResetControllers addedNodes
-                        NWlistenJoinClipGaps addedNodes
+                        if includeAnimations do
+                        (
+                            NWlistenStatus = "Resetting imported controllers..."
+                            NWlistenResetControllers addedNodes
+                            NWlistenJoinClipGaps addedNodes
+                        )
                         NWlistenHideSkeleton addedNodes
                         NWlistenPrepareHairMaterials addedNodes
                         redrawViews()
-                        NWlistenResult job "OK" "Imported into the current scene; controllers reset."
+                        NWlistenResult job "OK" (if includeAnimations then "Imported with animations; controllers reset." else "Imported without animations.")
                         NWlistenStatus = "Model imported"
                     )
                     catch
@@ -294,7 +305,7 @@ rollout NWlistenConnectionRollout "Listener" width:240
 rollout NWlistenImportRollout "Model Import" width:240
 (
     label instructions "In KoTOR Tool, right-click an MDL and choose Send to 3DS Max (2021)." width:220 height:44 align:#left
-    label mode "Imports geometry and animations with NWmax, then resets the imported controllers." width:220 height:44 align:#left
+    label mode "Imports geometry with optional animations. Animated imports reset controllers." width:220 height:44 align:#left
     label assets "Exported textures stay in the job folder for your scene to reference." width:220 height:44 align:#left
 )
 

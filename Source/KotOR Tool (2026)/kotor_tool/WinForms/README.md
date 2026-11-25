@@ -51,3 +51,11 @@ The standalone frmModelPreview form is defined in frmMain.ModelPreview.vb, with 
 Working-directory cleanup has been removed from the Tools menu and model-export options, including its deletion routine. Open Working Directory remains available. Model extraction no longer clears the export directory before writing its output.
 
 The MDL context menu also calls frmMain.NWlisten.vb. It shares archive-aware resource reads with preview, stages ASCII MDL and textures under `Application.StartupPath\working\NWlisten\jobs`, and waits asynchronously for NWlisten import acknowledgement in frmProgressMeter. The sender registers its application directory in the 64-bit HKCU registry view so Max can discover it. Success closes automatically; failure stays readable with a close button, including an unwritable application folder (no user-profile fallback). Export assets persist for Max texture references. See ../Tools/3DSMax/NWListen/README.md for installation, queue lifecycle and validation.
+
+## K1/K2 model groups
+
+BuildTreeView applies `ModelTreeGroups` after attaching each K1/K2 BIF's resource-type folders. Aurora Model gains counted naming-category folders; Each game uses its own naming rules; module trees retain their existing layout. Extraction traverses resource descendants and finds archive ancestors, so grouped and whole-subtype exports operate on the same original leaf nodes. See [MetaDataSystem](../Classes/MetaDataSystem/README.md) for rules, evidence and inventory coverage.
+
+Map model leaves append the compiled area name to display text only (`filename.mdl | area name`). Resource identity and export filenames remain unchanged; unavailable names have an explicit fallback. See `MapModuleMetadata` in MetaDataSystem.
+
+For both games, Maps now nests location and level folders above the original model leaves. Nested folders use the existing NodeCategory/mdl-group contract, so selecting any location or level enables recursive group extraction with unchanged filenames. Unresolved areas are grouped by code under Unidentified levels.

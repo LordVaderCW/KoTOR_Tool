@@ -584,6 +584,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Classes\Security\KeyEntry.vb" />
+    <Compile Include="Classes\MetaDataSystem\ModelMetadataRegistry.vb" />
+    <Compile Include="Classes\MetaDataSystem\MapModuleMetadata.vb" />
+    <Compile Include="Classes\MetaDataSystem\ModelTreeGroups.vb" />
     <Compile Include="Classes\StandardUI\KotorTreeNode.vb" />
     <Compile Include="Classes\SoundSystem\KTSoundInfo.vb" />
     <Compile Include="Classes\GlobalSystem\KT_Launch.vb" />

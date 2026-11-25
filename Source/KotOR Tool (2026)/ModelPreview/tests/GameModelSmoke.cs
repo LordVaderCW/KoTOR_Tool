@@ -38,11 +38,21 @@ class GameModelSmoke
         var start=new ProcessStartInfo(mdlops,"-k"+args[3]+" \""+Path.Combine(output,"model.mdl")+"\"") {UseShellExecute=false,CreateNoWindow=true,WorkingDirectory=Path.GetDirectoryName(mdlops)};
         using(var process=Process.Start(start)){if(!process.WaitForExit(60000)){process.Kill();throw new Exception("MDLOps timeout");}if(process.ExitCode!=0)throw new Exception("MDLOps exit "+process.ExitCode);}
         int textures=0;
+        int supermodels=0;
         string gltf=ModelPreview.AsciiModel.Convert(Path.Combine(output,"model-ascii.mdl"),tex=>{
             byte[] tpc=Resource(game,key,tex,3007)??Texture(game,tex);if(tpc==null)return null;
             string png=Path.Combine(output,tex+".png");kotor_tool.clsImageExtraction.ExportTPC(tpc,png,"PNG");textures++;return File.ReadAllBytes(png);
+        },super=>{
+            byte[] parent=Resource(game,key,super,2002);if(parent==null)return null;
+            byte[] parentMdx=Resource(game,key,super,3008)??new byte[0];
+            string stage=Path.Combine(output,"supermodel-"+(supermodels++));Directory.CreateDirectory(stage);
+            string parentInput=Path.Combine(stage,"model.mdl");
+            File.WriteAllBytes(parentInput,parent);File.WriteAllBytes(Path.Combine(stage,"model.mdx"),parentMdx);
+            var parentStart=new ProcessStartInfo(mdlops,"-k"+args[3]+" \""+parentInput+"\"") {UseShellExecute=false,CreateNoWindow=true,WorkingDirectory=Path.GetDirectoryName(mdlops)};
+            using(var process=Process.Start(parentStart)){if(!process.WaitForExit(60000)){process.Kill();throw new IOException("Supermodel MDLOps timeout");}if(process.ExitCode!=0)throw new IOException("Supermodel MDLOps failed");}
+            return Path.Combine(stage,"model-ascii.mdl");
         });
         File.WriteAllText(Path.Combine(output,"model.gltf"),gltf);
-        Console.WriteLine("PASS: K"+args[3]+" "+name+" converted from copied MDL/MDX; "+textures+" embedded textures; "+gltf.Length+" glTF characters.");
+        Console.WriteLine("PASS: K"+args[3]+" "+name+" converted from copied MDL/MDX; "+supermodels+" supermodels; "+textures+" embedded textures; "+gltf.Length+" glTF characters.");
     }
 }

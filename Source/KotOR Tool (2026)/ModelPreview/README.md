@@ -1,6 +1,6 @@
-# Model preview
+# MDL Viewer
 
-Right-click an MDL resource in the tree, list, or details pane and choose **Preview 3D model**. Double-click and Enter retain the existing extraction workflow.
+Right-click an MDL resource in the tree, list, or details pane and choose **Open MDL Viewer**. Double-click and Enter retain the existing extraction workflow.
 
 Only one preview window is owned by the main browser. While it is open, changing the focused tree/list/details selection (including Up/Down) automatically replaces its model without activating the viewer or moving keyboard focus. Selection changes are debounced for 180 ms; if conversion is already running, only the newest pending selection is retained. A request version prevents stale results from replacing a later selection. Closing the viewer cancels pending updates and an in-flight conversion cannot reopen it. Non-model selections leave the previous model visible. Conversion errors appear in the existing viewer instead of interrupting keyboard browsing with modal dialogs.
 
@@ -10,7 +10,7 @@ Replacement keeps the same WebView2 instance, reloads the local page with a fres
 
 `frmMain.ModelPreviewIntegration.vb` reads the selected archive entry, resolves its MDX in the same archive before falling back to that game's KEY, and runs the installed MDLOps decompile plugin with the corresponding K1/K2 game number. Each request gets a unique temporary directory. No game files are modified. The existing plugin runner supplies timeout and error handling; the main form guards against reentrant preview requests while it pumps messages.
 
-`AsciiModel` reads static ASCII geometry into a self-contained glTF 2.0 file. It preserves hierarchy/axis-angle transforms, converts Z-up to Y-up, expands face-specific UVs, flips V for glTF, and embeds decoded TPC textures as PNG. Textures are resolved in the selected archive/game KEY then the game's common texture packs. Missing textures produce a visible warning. Unknown ASCII fields are ignored without changing source bytes. Malformed indices, cycles, duplicate nodes, non-finite coordinates and unsafe resource names are rejected.
+`AsciiModel` reads ASCII geometry into a self-contained glTF 2.0 file. It preserves hierarchy/axis-angle transforms, converts Z-up to Y-up, expands face-specific UVs, flips V for glTF, and embeds decoded TPC textures as PNG. Textures are resolved in the selected archive/game KEY then the game's common texture packs. Missing textures produce a visible warning. Unknown ASCII fields are ignored without changing source bytes. Malformed indices, cycles, duplicate nodes, non-finite coordinates and unsafe resource names are rejected.
 
 `PreviewController` hosts local HTML in WebView2 with a private virtual hostname; no localhost server or runtime CDN is used. The page offers turntable rotation, axis selection, pause, orbit, zoom, pan, wireframe and reset. Export writes a single portable `.gltf`. Dispose closes WebView2 and removes only that preview's temporary directory. The shared browser profile lives in LocalAppData/KotorTool/WebView2. A missing runtime displays an actionable error.
 
@@ -51,3 +51,59 @@ The parser/controller separation, named-node matching and sidebar playback struc
 
 Validation on 2026-11-17: 25 converter checks passed, including both keyframe grammars and invalid times. Copied K1/K2 `plc_footlker` fixtures converted with textures and animation tracks. A WinForms DesignSurface loaded the actual VB preview form, found its sidebar controls and did not start WebView2. The embedded host test populated the clip list and exercised select, pause, stop, restart, model replacement and cleanup. Opening/saving the layout inside Visual Studio itself and high-DPI manual acceptance remain to be checked.
 Animation playback regression (2026-11-17): zero-duration MDL clips are treated as poses, sampled at time zero and held paused. LoopRepeat on these clips produced a non-finite action time in the bundled Three.js runtime. Pose selection/replay now avoids looping and the sidebar labels them as poses. AnimationPlaybackSmoke.js runs the production viewport with copied fixtures, controls time deterministically and checks repeat selections, pause/resume, stop/rest-pose restoration, completed-clip replay and finite action clocks. Copied DOR_LMA07 (210 selections) and K1/K2 plc_footlker (180 each) passed; the door fixture reproduced the invalid clock before the fix. The embedded Release WebView2 smoke test also passed on the copied door fixture.
+
+## Smoothing groups
+
+Face smoothing masks generate area-weighted corner normals. Overlapping masks share normals across original vertex indices, including UV seams; zero/disjoint masks retain hard edges. Masks accept signed or unsigned 32-bit serialization. Positions are not welded, and degenerate faces retain finite fallback normals.
+
+## Supermodels and Send to Max
+
+Preview resolves each `setsupermodel` through the selected archive/game, stages copied MDL/MDX beside the preview, and converts it with the same game-specific MDLOps command. Animation-only supermodels may have no MDX. Local clip names override the whole inherited clip case-insensitively; nearer ancestors override farther ancestors. Tracks match the selected model's node names, with ancestor model-root names mapped onto the selected root. The clip list shows the source supermodel for inherited clips. Missing/malformed ancestors produce warnings while preserving usable clips; cycles and chains longer than 32 models stop safely. Selection changes and window closure invalidate pending conversion work.
+
+Skin weights are normalized and expanded with the face corners into glTF joint/weight attributes. Inverse bind matrices derive from the selected model's rest hierarchy, retaining weighted skeletal deformation under inherited clips. No game files or NWMax importer code are modified.
+
+The preview sidebar offers **Send to 3DS Max (2021)** and **Include animations**, checked by default. The request is bound to the displayed archive resource, independent of subsequent context-menu selection. Loading disables the button; replacing a model updates its source. This uses the existing NWListen extraction/progress workflow. The checkbox controls NWMax's import of the exported ASCII model's own animation blocks; preview-only merged supermodel clips are not baked into the Max transfer. Unchecked requests import geometry and skip controller reset/clip-gap processing. Export glTF continues to include the preview's merged clips regardless of this checkbox.
+
+Validated 2026-11-25: full-framework Release/x86 build, 53 converter checks, synthetic weighted skin deformation, and copied K1 `p_bastilabb` (five ancestors, 268 clips) / K2 `p_handmaidenba` (six ancestors, 457 clips). Browser tests checked skin rest poses and 30 playback/pause/stop/restart cycles per clip. These checks establish hierarchy and playback stability, not exact game shader or animation-retargeting parity.
+
+## Audio audition sidebar
+
+The rightmost native sidebar has category and definition selectors. The Creatures category lists the selected game's `soundset.2da` entries and the 28 KotOR SSF event slots. SSF headers/table bounds are checked, StrRefs resolve through that game's `dialog.tlk`, and missing or silent events remain visibly unavailable. Soundset tables and SSFs resolve from enabled Override files, the selected archive, then the selected game's KEY. Sound playback uses the shared FMOD player (sounds BIFF and stream/voice files); archive-local WAV overrides are not staged by this feature. The player retains its existing audio lookup order.
+
+An MDL does not contain the creature's `SoundSetFile` assignment: the [creature soundset lookup](https://github.com/seedhartha/reone/blob/master/src/libs/game/object/creature.cpp) uses UTC -> soundset.2da -> SSF. A soundset whose resource name exactly matches the displayed model is suggested, explicitly as a name match. Otherwise the user chooses one. No creature assignment is inferred from animation names, and no UTC/SSF/game files are edited.
+
+Select an event to audition with **Play sound**, or enable **Play with animation**. The chosen event plays on clip selection/restart and at loop boundaries, pauses/resumes with animation playback, and stops on clip stop/completion. Selection changes, model loading/replacement and form disposal stop audio. This is manual paired audition, not automatic combat-event selection, exact authored-event timing, surface footsteps, weapon impacts or an audio-bearing glTF export. Sound controls are designer-owned; WebView2 sends only revision-checked playback state/reason messages to the native host.
+
+Validated 2026-11-25: full-framework Release/x86 build; native DesignSurface/sidebar and WebView2 replacement/lifecycle checks; 150 inherited clip playback cycles; copied K1 (89 soundsets) and K2 (65 soundsets) SSF/TLK/WAV fixtures exercised playback, pause/resume, repeated stop and clearing on model replacement. Test harness files remain outside the application project/build payload.
+
+### Additional audio categories
+
+- Doors: `genericdoors.modelname` and `soundapptype` into `placeableobjsnds`.
+- Containers / placeables: `placeables.modelname` and `soundapptype` into the same event table.
+- Items / weapons: `baseitems.defaultmodel`, `invsoundtype` into `inventorysnds`, `weaponmattype` into `weaponsounds`, and direct powered-item sound columns.
+- Environments / music: `ambientsound.resource` and `ambientmusic.resource`/stingers, with TLK descriptions where available.
+- Menus / UI: `guisounds.soundresref`.
+
+Only exact model references select a category automatically, and only a unique matching definition is selected. Missing sound mappings remain empty with an explanation. The complete event tables remain manually browsable, including definitions without model mappings; both Doors and Containers expose the shared placeable sound table. Referenced row labels are resolved through the table's row labels, not assumed to equal array offsets. Unknown columns remain untouched. Surface/material selection, event timing, pitch offsets and arbitrary scripted/UTS sounds are not simulated.
+
+**Loop audio** repeats an independently auditioned sound through FMOD. It is disabled while **Play with animation** is enabled, which retains clip-start/loop pairing. Category changes and direct model replacement also stop audio. The player's new optional loop argument defaults to false, preserving existing dialogue playback callers.
+
+The viewport no longer displays camera instructions, renderer limitations or parser/controller warning dumps beneath the model. Conversion warnings remain in exported glTF metadata; loading failures still display an error. Tests use viewport loading state rather than instructional text to detect readiness.
+
+Validated with copied K1/K2 table/audio fixtures: all six categories populated and played audio; door and default-item exact mappings passed; missing tables cleared old choices; pause/resume and repeated stop passed. Full-framework Release/x86 build and native/WebView2 lifecycle smoke passed. The viewport capture confirms no diagnostic footer after successful load.
+
+## VFX preview
+
+Emitter-only MDLs now open in MDL Viewer. The ASCII converter retains emitter transforms and bounded numeric properties in glTF node `extras.auroraEmitter`, embedding their resolved textures. `web/vfx.js` renders textured Explosion, Fountain and Single particles with lifespan, velocity/spread, gravity/drag, size/color/opacity interpolation and texture atlas frames. The VFX toolbar supplies pause/play, replay and loop. Ordinary mesh models keep the existing toolbar only. Both meshes and emitters can coexist.
+
+This is a development approximation: billboard alignment and motion blur are approximate; lightning, collision, point-to-point emitters, animated emitter parameter controllers and script/detonation timing are not reproduced. Export retains emitter metadata but standard glTF viewers do not simulate these particles. No game scripts execute. Limits are 128 emitters, 256 particles per emitter and 2,048 particles total; sprites are pooled and textures/materials disposed on navigation. Source files are unchanged.
+
+Validation: Debug/x86 and Release/x86 full-framework builds; 60 converter checks including meshless emitters, modes, texture embedding and malformed properties; copied K1/K2 `v_blaster_imp` fixtures load with three textured emitters and pass browser pause/replay, bounded allocation and disposal checks. Existing inherited-animation browser smoke passes. Test fixtures and temporary harnesses remain outside the application payload.
+
+## Bottom controls and animation timeline
+
+The native MDL Viewer places Export glTF directly below Send to 3DS Max in the animation sidebar. `ViewerBottomBar` occupies the full-width `bottomControls` designer panel beneath both sidebars and the viewport. It supplies rotation, axis, reset, wireframe and conditional VFX controls, followed by a key track and transport controls. The embedded page hides its duplicate toolbar when opened with `native=1`; standalone browser fixtures retain their HTML controls.
+
+The selected clip is displayed at 30 preview frames per second (MDL/glTF times remain seconds). Red, green and blue markers represent the actual position, rotation and scale track key times, including inherited clips. Shared key times are consolidated. Dragging the track or entering a frame pauses and samples the animation; arrow keys, Home/End, frame stepping, previous/next key and playback buttons are available. Key jumps preserve exact source times even for subframe keys. This is a read-only preview, not a keyframe editor. Pose-only clips remain at frame zero; models without transform clips disable the timeline. Particle simulation has its own controls and is not rewound by animation scrubbing. Scrubbing stops linked audio rather than playing it out of sync.
+
+Browser messages carry the current model revision, key metadata on clip selection, and throttled time/control state updates. Loading disables native controls; replacement resets the timeline and VFX state. No timer or additional browser process is created for the timeline. Validation covers native layout, frame seek/step/start/end, key markers, VFX-only replacement, disposal and synthetic skinned/inherited pose sampling at scrubbed times.

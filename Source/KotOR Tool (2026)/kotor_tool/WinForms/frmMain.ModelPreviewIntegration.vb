@@ -1,4 +1,4 @@
-Imports System
+﻿Imports System
 Imports System.IO
 Imports System.Windows.Forms
 
@@ -16,8 +16,8 @@ Namespace kotor_tool
             AddHandler TreeView.AfterSelect, AddressOf PreviewTreeSelectionChanged
             AddHandler lvResourceBrowser.SelectedIndexChanged, AddressOf PreviewListSelectionChanged
             If lvResourceDetails IsNot Nothing Then AddHandler lvResourceDetails.SelectedIndexChanged, AddressOf PreviewListSelectionChanged
-            modelPreviewMenu.MenuItems.Add(New MenuItem("Preview 3D model", AddressOf PreviewModelMenuClick))
-            modelPreviewMenu.MenuItems.Add(New MenuItem("Send to 3DS Max (2021)", AddressOf SendModelToMax))
+            modelPreviewMenu.MenuItems.Add(New MenuItem("Open MDL Viewer", AddressOf PreviewModelMenuClick))
+            modelPreviewMenu.MenuItems.Add(New MenuItem("Send to 3DS Max", AddressOf SendModelToMax))
             AddHandler TreeView.MouseUp, AddressOf ShowModelPreviewMenu
             AddHandler lvResourceBrowser.MouseUp, AddressOf ShowModelPreviewMenu
             If lvResourceDetails IsNot Nothing Then AddHandler lvResourceDetails.MouseUp, AddressOf ShowModelPreviewMenu
@@ -26,6 +26,7 @@ Namespace kotor_tool
 
         Private modelPreviewBusy As Boolean
         Private modelPreviewNode As KotorTreeNode
+        Private displayedPreviewNode As KotorTreeNode
         Private activeModelPreview As frmModelPreview
         Private pendingPreviewNode As KotorTreeNode
         Private previewSelectionVersion As Integer
@@ -63,11 +64,19 @@ Namespace kotor_tool
             If node IsNot Nothing AndAlso activeModelPreview IsNot Nothing AndAlso Not activeModelPreview.IsDisposed Then PreviewModel(node, True)
         End Sub
 
+        Private Async Sub PreviewSendToMax(ByVal includeAnimations As Boolean)
+            Await SendModelToMaxAsync(displayedPreviewNode, includeAnimations)
+        End Sub
+
         Private Sub ModelPreviewClosed(ByVal sender As Object, ByVal e As FormClosedEventArgs)
             previewSelectionVersion += 1
             previewSelectionTimer.Stop()
             pendingPreviewNode = Nothing
-            If Object.ReferenceEquals(activeModelPreview, sender) Then activeModelPreview = Nothing
+            RemoveHandler CType(sender, frmModelPreview).SendToMax, AddressOf PreviewSendToMax
+            If Object.ReferenceEquals(activeModelPreview, sender) Then
+                activeModelPreview = Nothing
+                displayedPreviewNode = Nothing
+            End If
         End Sub
 
         Private Sub InitialiseModelPreviewMenu()
@@ -131,12 +140,15 @@ Namespace kotor_tool
                 If Not result.Success Then Throw New InvalidOperationException("MDLOps preview conversion failed: " & result.ErrorMessage)
                 If Not File.Exists(ascii) Then Throw New InvalidDataException("MDLOps did not produce an ASCII model.")
                 If IsDisposed OrElse Disposing OrElse requestVersion <> previewSelectionVersion Then Return
-                Dim gltf As String = ModelPreview.AsciiModel.Convert(ascii, Function(name As String) PreviewTexture(node, game, directory, name))
+                Dim gltf As String = ModelPreview.AsciiModel.Convert(ascii, Function(name As String) PreviewTexture(node, game, directory, name),
+                    Function(name As String) ResolvePreviewSupermodel(node, game, directory, name, manager, plugin, requestVersion))
+                If IsDisposed OrElse Disposing OrElse requestVersion <> previewSelectionVersion Then Return
                 File.WriteAllText(Path.Combine(directory, "model.gltf"), gltf)
                 For Each asset As String In IO.Directory.GetFiles(Path.Combine(Application.StartupPath, "ModelPreview"))
                     File.Copy(asset, Path.Combine(directory, Path.GetFileName(asset)), True)
                 Next
                 If activeModelPreview IsNot Nothing AndAlso Not activeModelPreview.IsDisposed Then
+                    displayedPreviewNode = node
                     activeModelPreview.ReplaceModel(directory, node.ResRef)
                     window = activeModelPreview
                     If Not followSelection Then
@@ -146,15 +158,24 @@ Namespace kotor_tool
                 ElseIf Not followSelection Then
                     window = New frmModelPreview(directory, node.ResRef)
                     activeModelPreview = window
+                    displayedPreviewNode = node
+                    AddHandler window.SendToMax, AddressOf PreviewSendToMax
                     AddHandler window.FormClosed, AddressOf ModelPreviewClosed
                     window.Show(Me)
+                End If
+                If window IsNot Nothing Then
+                    Try
+                        window.ConfigureAudio(game, node.ResRef, Function(name As String, resourceType As Integer) ReadPreviewSoundResource(node, name, resourceType))
+                    Catch ex As System.Exception
+                        window.ConfigureSoundsets(game, node.ResRef, Nothing, Nothing)
+                    End Try
                 End If
             Catch ex As System.Exception
                 If Not IsDisposed AndAlso requestVersion = previewSelectionVersion Then
                     If activeModelPreview IsNot Nothing AndAlso Not activeModelPreview.IsDisposed Then
                         activeModelPreview.ShowLoadError(ex.Message)
                     ElseIf Not followSelection Then
-                        MessageBox.Show(Me, ex.Message, "Model preview", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        MessageBox.Show(Me, ex.Message, "MDL Viewer", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     End If
                 End If
             Finally
@@ -169,6 +190,37 @@ Namespace kotor_tool
                 End If
             End Try
         End Sub
+
+        Private Function ResolvePreviewSupermodel(ByVal selected As KotorTreeNode, ByVal game As Integer, ByVal directory As String, ByVal name As String,
+                                                 ByVal manager As clsPluginManager, ByVal plugin As clsPluginDefinition, ByVal requestVersion As Integer) As String
+            If IsDisposed OrElse Disposing OrElse requestVersion <> previewSelectionVersion Then Throw New OperationCanceledException("Preview selection changed.")
+            Dim model As Byte() = ReadPreviewResource(selected, name, 2002, False)
+            If model Is Nothing Then Return Nothing
+            Dim mdx As Byte() = ReadPreviewResource(selected, name, 3008, False)
+            ' Animation-only supermodels can have no companion vertex data.
+            If mdx Is Nothing Then mdx = New Byte() {}
+            Dim stage As String = Path.Combine(directory, "supermodel-" & Guid.NewGuid().ToString("N"))
+            IO.Directory.CreateDirectory(stage)
+            Dim input As String = Path.Combine(stage, "model.mdl")
+            Dim ascii As String = Path.Combine(stage, "model-ascii.mdl")
+            File.WriteAllBytes(input, model)
+            File.WriteAllBytes(Path.Combine(stage, "model.mdx"), mdx)
+            Dim result As clsPluginExecutionResult = manager.ExecutePlugin(plugin, input, ascii, game + 1, "model.mdl", "model", "mdl", "decompile", "")
+            If IsDisposed OrElse Disposing OrElse requestVersion <> previewSelectionVersion Then Throw New OperationCanceledException("Preview selection changed.")
+            If result Is Nothing OrElse Not result.Success OrElse result.TimedOut OrElse Not File.Exists(ascii) Then
+                Throw New IOException("Could not decompile inherited animations from " & name & ".")
+            End If
+            Return ascii
+        End Function
+
+        Private Function ReadPreviewSoundResource(ByVal node As KotorTreeNode, ByVal name As String, ByVal resourceType As Integer) As Byte()
+            If Not System.Text.RegularExpressions.Regex.IsMatch(name, "^[a-zA-Z0-9_-]{1,64}$") Then Return Nothing
+            If CurrentSettings.bUseOverrideFiles Then
+                Dim file As String = Path.Combine(CurrentSettings.KotorLocation(NodeTreeRootIndex(node)), "Override", name & "." & GetRsrcTypeForID(resourceType))
+                If IO.File.Exists(file) Then Return IO.File.ReadAllBytes(file)
+            End If
+            Return ReadPreviewResource(node, name, resourceType, False)
+        End Function
 
         Private Function ReadPreviewResource(ByVal selected As KotorTreeNode, ByVal name As String, ByVal resourceType As Integer, ByVal exact As Boolean) As Byte()
             If exact Then

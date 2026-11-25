@@ -12,6 +12,8 @@ namespace ModelPreview
 {
     public sealed class PreviewController : IDisposable
     {
+        public event Action<string,bool> PlaybackChanged;
+        ViewerBottomBar bottomBar;
         WebView2 browser;
         string directory;
         readonly List<string> retiredDirectories = new List<string>();
@@ -20,8 +22,8 @@ namespace ModelPreview
         bool ready, pageReady;
         sealed class ClipItem
         {
-            public int Index; public string Name; public double Duration;
-            public override string ToString() { return Name + (Duration <= 0 ? "  (pose)" : "  (" + Duration.ToString("0.##") + " s)"); }
+            public int Index; public string Name, SourceModel; public double Duration; public bool Inherited;
+            public override string ToString() { return Name + (Duration <= 0 ? "  (pose)" : "  (" + Duration.ToString("0.##") + " s)") + (Inherited ? "  [" + SourceModel + "]" : ""); }
         }
         readonly Form owner;
         readonly Panel viewportPanel;
@@ -34,11 +36,13 @@ namespace ModelPreview
             Label status, Panel loading, ListBox animationList, Label clipSummary,
             Button playButton, Button stopButton, CheckBox loopCheck, Button exportButton)
         {
-            this.owner=owner; this.directory=directory; owner.Text="Model preview � "+name;
+            this.owner=owner; this.directory=directory; owner.Text="MDL Viewer — "+name;
             this.viewportPanel=viewportPanel; this.status=status; this.loading=loading;
             loading.Controls.Add(new LoadingBar { Dock=DockStyle.Fill });
             this.animationList=animationList; this.clipSummary=clipSummary;
             this.playButton=playButton; this.stopButton=stopButton; this.loopCheck=loopCheck; this.exportButton=exportButton;
+            var bottom = owner.Controls.Find("bottomControls",true);
+            if(bottom.Length>0) { bottomBar=new ViewerBottomBar(SendViewerCommand); bottom[0].Controls.Add(bottomBar); }
             owner.Shown+=Initialize; animationList.SelectedIndexChanged+=AnimationSelected;
             playButton.Click+=PlayClicked; stopButton.Click+=StopClicked;
             loopCheck.CheckedChanged+=LoopChanged; exportButton.Click+=ExportClicked;
@@ -58,15 +62,15 @@ namespace ModelPreview
         {
             if (owner.IsDisposed) throw new ObjectDisposedException(nameof(PreviewController));
             if (directory != newDirectory) retiredDirectories.Add(directory);
-            directory = newDirectory; owner.Text = "Model preview — " + name;
+            directory = newDirectory; owner.Text = "MDL Viewer — " + name;
             if (ready) NavigateModel();
         }
         void NavigateModel()
         {
-            pageReady = false; animationList.Items.Clear(); clipSummary.Text = "Loading clips…";
+            pageReady = false; if(bottomBar!=null)bottomBar.Reset(); animationList.Items.Clear(); clipSummary.Text = "Loading clips…";
             playButton.Text = "Play / Pause"; SetPlaybackEnabled(false);
             browser.CoreWebView2.SetVirtualHostNameToFolderMapping("preview.invalid",directory,CoreWebView2HostResourceAccessKind.DenyCors);
-            browser.CoreWebView2.Navigate("https://preview.invalid/index.html?v=" + (++revision));
+            browser.CoreWebView2.Navigate("https://preview.invalid/index.html?native=1&v=" + (++revision));
             status.Visible = false; loading.Visible = false;
         }
         static void DeletePreviewDirectory(string path)
@@ -105,7 +109,7 @@ namespace ModelPreview
         }
         void ReceivePlaybackState(object sender, CoreWebView2WebMessageReceivedEventArgs e)
         {
-            if (e.Source != "https://preview.invalid/index.html?v=" + revision) return;
+            if (e.Source != "https://preview.invalid/index.html?native=1&v=" + revision) return;
             try
             {
                 var data = json.Deserialize<Dictionary<string,object>>(e.WebMessageAsJson);
@@ -117,18 +121,23 @@ namespace ModelPreview
                     foreach (object item in (IEnumerable)data["clips"])
                     {
                         var clip = (Dictionary<string,object>)item;
-                        animationList.Items.Add(new ClipItem { Index = Convert.ToInt32(clip["index"]), Name = Convert.ToString(clip["name"]), Duration = Convert.ToDouble(clip["duration"]) });
+                        animationList.Items.Add(new ClipItem { Index = Convert.ToInt32(clip["index"]), Name = Convert.ToString(clip["name"]), Duration = Convert.ToDouble(clip["duration"]), SourceModel = clip.ContainsKey("sourceModel") ? Convert.ToString(clip["sourceModel"]) : "", Inherited = clip.ContainsKey("inherited") && Convert.ToBoolean(clip["inherited"]) });
                     }
                     pageReady = true;
                     clipSummary.Text = animationList.Items.Count == 0 ? "No previewable transform clips" : animationList.Items.Count + " animation clips";
                     SetPlaybackEnabled(true);
                 }
-                else if (type == "state") playButton.Text = Convert.ToBoolean(data["playing"]) ? "Pause" : "Play";
+                else if(type=="viewer") { if(bottomBar!=null)bottomBar.UpdateState(data); }
+                else if(type=="state") {
+                    bool playing=Convert.ToBoolean(data["playing"]);playButton.Text=playing?"Pause":"Play";
+                    PlaybackChanged?.Invoke(data.ContainsKey("reason")?Convert.ToString(data["reason"]):"state",playing);
+                }
             }
             catch (Exception ex) when (ex is ArgumentException || ex is InvalidOperationException || ex is KeyNotFoundException || ex is InvalidCastException || ex is FormatException) { ShowLoadError("Invalid animation response."); }
         }
         void SetPlaybackEnabled(bool enabled)
         {
+            if(bottomBar!=null)bottomBar.Enabled=enabled;
             animationList.Enabled = enabled;
             playButton.Enabled = enabled && animationList.SelectedIndex >= 0;
             stopButton.Enabled = enabled && animationList.SelectedIndex >= 0;
@@ -139,6 +148,11 @@ namespace ModelPreview
             if (!pageReady || browser == null || browser.CoreWebView2 == null) return;
             var clip = animationList.SelectedItem as ClipItem;
             browser.CoreWebView2.PostWebMessageAsJson(json.Serialize(new { command, index = clip == null ? -1 : clip.Index, loop = loopCheck.Checked, revision }));
+        }
+        void SendViewerCommand(string command, object value)
+        {
+            if(!pageReady || browser==null || browser.CoreWebView2==null)return;
+            browser.CoreWebView2.PostWebMessageAsJson(json.Serialize(new {command,value,revision}));
         }
         void AnimationSelected(object sender, EventArgs e) { SetPlaybackEnabled(pageReady); SendPlayback("select"); }
         void PlayClicked(object sender, EventArgs e) { SendPlayback("toggle"); }
@@ -157,6 +171,7 @@ namespace ModelPreview
             owner.Shown-=Initialize; animationList.SelectedIndexChanged-=AnimationSelected;
             playButton.Click-=PlayClicked; stopButton.Click-=StopClicked;
             loopCheck.CheckedChanged-=LoopChanged; exportButton.Click-=ExportClicked;
+            if(bottomBar!=null)bottomBar.Dispose();
             if (browser != null) browser.Dispose(); DeletePreviewDirectory(directory);
             foreach (string path in retiredDirectories) DeletePreviewDirectory(path);
             retiredDirectories.Clear();

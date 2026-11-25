@@ -1,2 +1,6 @@
 html,body{margin:0;height:100%;overflow:hidden;background:#10151c;color:#dfe6ed;font:14px system-ui}body{display:flex;flex-direction:column}header{display:flex;align-items:center;gap:15px;padding:12px;background:#1c222a;border-bottom:1px solid #ad913d}strong{color:#dfbd5c;margin-right:auto}button,select{background:#303b49;color:#fff;border:1px solid #697585;border-radius:3px;padding:7px;cursor:pointer}button:focus-visible,select:focus-visible{outline:2px solid #dfbd5c}main{flex:1;min-height:0}canvas{display:block}footer{padding:10px;white-space:pre-line;font-size:12px;max-height:100px;overflow:auto;color:#bac7d5}label{white-space:nowrap}
 #loading{height:6px;flex-shrink:0;background:#14263a;overflow:hidden}#loading[hidden]{display:none}#loading span{display:block;width:30%;height:100%;background:#2d99ff;animation:loading-slide 1.2s linear infinite}@keyframes loading-slide{from{transform:translateX(-100%)}to{transform:translateX(334%)}}@media(prefers-reduced-motion:reduce){#loading span{animation:none;width:100%;opacity:.7}}
+
+#vfx-controls{display:flex;align-items:center;gap:12px;padding:8px 12px;background:#1c222a}#vfx-controls[hidden]{display:none}#vfx-controls strong{margin-right:0}
+
+header[hidden]{display:none}

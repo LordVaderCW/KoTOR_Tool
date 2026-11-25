@@ -8,7 +8,7 @@ using System.Web.Script.Serialization;
 
 namespace ModelPreview
 {
-    // Read-only static geometry conversion. Never writes back to the source model.
+    // Read-only geometry and skin conversion. Never writes back to the source model.
     public static class AsciiModel
     {
         sealed class Node
@@ -17,9 +17,15 @@ namespace ModelPreview
             public double[] Position = { 0, 0, 0 }, Rotation = { 0, 0, 0, 1 };
             public double Scale = 1;
             public bool Render = true;
+            public Dictionary<string,object> Emitter = new Dictionary<string,object>();
             public List<double[]> Vertices = new List<double[]>(), UVs = new List<double[]>();
             public List<int[]> Faces = new List<int[]>();
+            public List<KeyValuePair<string,double>[]> Weights = new List<KeyValuePair<string,double>[]>();
         }
+        static readonly HashSet<string> EmitterScalars = new HashSet<string>((
+            "birthrate lifeexp velocity randvel spread grav drag mass xsize ysize sizestart sizemid sizeend " +
+            "sizestart_y sizemid_y sizeend_y alphastart alphamid alphaend percentstart percentmid percentend " +
+            "xgrid ygrid framestart frameend fps loop particlerot bounce bounce_co blurlength").Split(' '));
         static double Number(string s)
         {
             double v = double.Parse(s, CultureInfo.InvariantCulture);
@@ -51,6 +57,24 @@ namespace ModelPreview
                     }
                     if (key == "endnode") { node = null; continue; }
                     if (node == null) continue;
+                    if(node.Kind == "emitter")
+                    {
+                        if(key == "texture" || key == "update" || key == "blend" || key == "render")
+                        {
+                            if(w.Length<2)throw new InvalidDataException("Incomplete emitter property.");
+                            node.Emitter[key]=w[1];continue;
+                        }
+                        if(EmitterScalars.Contains(key))
+                        {
+                            if(w.Length<2)throw new InvalidDataException("Incomplete emitter value.");
+                            node.Emitter[key]=Number(w[1]);continue;
+                        }
+                        if(key=="colorstart" || key=="colormid" || key=="colorend")
+                        {
+                            if(w.Length<4)throw new InvalidDataException("Incomplete emitter color.");
+                            node.Emitter[key]=w.Skip(1).Take(3).Select(Number).ToArray();continue;
+                        }
+                    }
                     switch (key)
                     {
                         case "parent": node.Parent = w[1]; break;
@@ -64,6 +88,23 @@ namespace ModelPreview
                         case "scale": node.Scale = Number(w[1]); break;
                         case "bitmap": node.Texture = w[1]; break;
                         case "render": node.Render = w[1] != "0"; break;
+                        case "weights":
+                            int weightCount=Count(w);
+                            for(int i=0;i<weightCount;i++)
+                            {
+                                do {line=reader.ReadLine();if(line==null)throw new InvalidDataException("Truncated skin weights.");w=Words(line);} while(w[0]=="");
+                                if(w.Length%2!=0 || w.Length>8)throw new InvalidDataException("Invalid skin weight row.");
+                                var weights=new List<KeyValuePair<string,double>>();
+                                for(int pair=0;pair<w.Length;pair+=2)
+                                {
+                                    double weight=Number(w[pair+1]);
+                                    if(weight<0)throw new InvalidDataException("Negative skin weight.");
+                                    if(weight>0)weights.Add(new KeyValuePair<string,double>(w[pair],weight));
+                                }
+                                if(weights.Count==0)throw new InvalidDataException("Skin vertex has no positive weights.");
+                                node.Weights.Add(weights.ToArray());
+                            }
+                            break;
                         case "verts": case "tverts": case "faces":
                             int count = Count(w);
                             for (int i = 0; i < count; i++)
@@ -71,24 +112,26 @@ namespace ModelPreview
                                 do { line = reader.ReadLine(); if (line == null) throw new InvalidDataException("Truncated geometry array."); w = Words(line); } while (w[0] == "");
                                 int width = key == "faces" ? 8 : key == "verts" ? 3 : 2;
                                 if (w.Length < width) throw new InvalidDataException("Incomplete geometry row.");
-                                if (key == "faces") node.Faces.Add(w.Take(8).Select(s => int.Parse(s, CultureInfo.InvariantCulture)).ToArray());
+                                if (key == "faces") node.Faces.Add(w.Take(8).Select((s, column) => column == 3 ? SmoothingMask(s) : int.Parse(s, CultureInfo.InvariantCulture)).ToArray());
                                 else (key == "verts" ? node.Vertices : node.UVs).Add(w.Take(width).Select(Number).ToArray());
                             }
                             break;
-                        // Animation, skin weights, lightmaps and unknown properties are intentionally not rewritten.
+                        // Lightmaps and unknown properties are intentionally not rewritten.
                     }
                 }
             }
             if (node != null || nodes.Count == 0) throw new InvalidDataException("Incomplete or empty ASCII model.");
             return nodes;
         }
-        public static string Convert(string file, Func<string, byte[]> texturePng)
+        public static string Convert(string file, Func<string, byte[]> texturePng, Func<string, string> supermodelAscii = null)
         {
             var source = Read(file);
             var nodes = new List<Dictionary<string, object>>(); var roots = new List<int>();
             var meshes = new List<object>(); var materials = new List<object>(); var images = new List<object>(); var textures = new List<object>();
-            var views = new List<object>(); var accessors = new List<object>(); var warnings = new List<string>();
+            var views = new List<object>(); var accessors = new List<object>(); var warnings = new List<string>(); var skins = new List<object>();
             var names = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+            int emitterCount = 0;
+            var emitterTextures = new Dictionary<string,string>(StringComparer.OrdinalIgnoreCase);
             var materialIds = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
             using (var binary = new MemoryStream()) using (var writer = new BinaryWriter(binary))
             {
@@ -112,10 +155,32 @@ namespace ModelPreview
                         var p = source[current].Parent;
                         if (string.IsNullOrEmpty(p) || p.Equals("null", StringComparison.OrdinalIgnoreCase) || !names.TryGetValue(p, out current)) break;
                     }
+                    if(n.Kind == "emitter")
+                    {
+                        if(++emitterCount>128)throw new InvalidDataException("Model exceeds the 128 emitter preview limit.");
+                        object value;
+                        string emitterTexture=n.Emitter.TryGetValue("texture",out value)?(string)value:"null";
+                        if(!emitterTexture.Equals("null",StringComparison.OrdinalIgnoreCase))
+                        {
+                            if(!Regex.IsMatch(emitterTexture,@"^[a-zA-Z0-9_\-]{1,64}$"))throw new InvalidDataException("Unsafe emitter texture name.");
+                            string uri;
+                            if(!emitterTextures.TryGetValue(emitterTexture,out uri))
+                            {
+                                byte[] png=texturePng(emitterTexture);
+                                uri=png==null?null:"data:image/png;base64,"+System.Convert.ToBase64String(png);
+                                emitterTextures.Add(emitterTexture,uri);
+                            }
+                            if(uri!=null)n.Emitter["textureData"]=uri;
+                            else warnings.Add("Missing emitter texture: "+emitterTexture);
+                        }
+                        nodes[i].Add("extras",new {auroraEmitter=n.Emitter});
+                        continue;
+                    }
                     if (!n.Render || n.Kind == "aabb" || n.Faces.Count == 0) continue;
                     if (n.Kind != "trimesh" && n.Kind != "skin" && n.Kind != "danglymesh" && n.Kind != "saber") { warnings.Add("Unsupported geometry: " + n.Kind); continue; }
-                    if (n.Kind != "trimesh") warnings.Add(n.Name + ": static " + n.Kind + " geometry only");
+                    if (n.Kind != "trimesh" && (n.Kind != "skin" || n.Weights.Count==0)) warnings.Add(n.Name + ": static " + n.Kind + " geometry only");
                     var positions = new List<float>(); var uvs = new List<float>();
+                    var normals = MeshNormals(n);
                     foreach (var face in n.Faces)
                         for (int corner = 0; corner < 3; corner++)
                         {
@@ -130,6 +195,12 @@ namespace ModelPreview
                         }
                     var attributes = new Dictionary<string, object> { {"POSITION", AddAccessor(positions,3,writer,views,accessors)} };
                     if (uvs.Count > 0) attributes.Add("TEXCOORD_0", AddAccessor(uvs,2,writer,views,accessors));
+                    attributes.Add("NORMAL", AddAccessor(normals,3,writer,views,accessors));
+                    if(n.Kind=="skin" && n.Weights.Count>0)
+                    {
+                        AddSkin(i,source,names,attributes,writer,views,accessors,skins);
+                        nodes[i].Add("skin",skins.Count-1);
+                    }
                     string texture = n.Texture ?? "null"; int material;
                     if (!materialIds.TryGetValue(texture, out material))
                     {
@@ -151,14 +222,142 @@ namespace ModelPreview
                     }
                     meshes.Add(new { primitives = new[] { new { attributes, material } } }); nodes[i].Add("mesh",meshes.Count-1);
                 }
-                if (meshes.Count == 0) throw new InvalidDataException("No visible triangle geometry in this model.");
+                if (meshes.Count == 0 && emitterCount == 0) throw new InvalidDataException("No visible geometry or particle emitters in this model.");
                 // Aurora is Z-up; glTF is Y-up. Rotate the entire hierarchy, preserving local transforms.
                 int root = nodes.Count;
                 nodes.Add(new Dictionary<string, object> { {"name","Aurora Z-up to glTF Y-up"}, {"rotation",new[] {-Math.Sqrt(0.5),0,0,Math.Sqrt(0.5)}}, {"children",roots} });
-                var animations = AsciiAnimations.Convert(file,names,writer,views,accessors,warnings);
-                var result = new { asset = new { version = "2.0", generator = "KoTOR Tool static preview" }, scene = 0, scenes = new[] { new { nodes = new[] {root} } }, nodes, meshes, materials, textures, images, animations, accessors, bufferViews = views, buffers = new[] { new { byteLength = binary.Length, uri = "data:application/octet-stream;base64," + System.Convert.ToBase64String(binary.ToArray()) } }, extras = new { warnings = warnings.Distinct().ToArray(), preview = "Node transform animation; no skin deformation, lightmaps or TXI effects." } };
+                var animations = AsciiAnimations.Convert(file,names,writer,views,accessors,warnings,supermodelAscii);
+                var result = new { asset = new { version = "2.0", generator = "KoTOR Tool MDL Viewer" }, scene = 0, scenes = new[] { new { nodes = new[] {root} } }, nodes, meshes, skins, materials, textures, images, animations, accessors, bufferViews = views, buffers = new[] { new { byteLength = binary.Length, uri = "data:application/octet-stream;base64," + System.Convert.ToBase64String(binary.ToArray()) } }, extras = new { warnings = warnings.Distinct().ToArray(), preview = "Local and inherited transform/skin animation; no lightmaps or TXI effects." } };
                 return new JavaScriptSerializer { MaxJsonLength = 128*1024*1024, RecursionLimit = 256 }.Serialize(result);
             }
+        }
+        static double[] Multiply(double[] a, double[] b)
+        {
+            var result=new double[16];
+            for(int column=0;column<4;column++)for(int row=0;row<4;row++)for(int k=0;k<4;k++)result[column*4+row]+=a[k*4+row]*b[column*4+k];
+            return result;
+        }
+        static double[] WorldMatrix(int index, List<Node> nodes, Dictionary<string,int> names)
+        {
+            var chain=new HashSet<int>(); var result=new double[]{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1};
+            while(true)
+            {
+                if(!chain.Add(index))throw new InvalidDataException("Cyclic skin hierarchy.");
+                Node n=nodes[index];double x=n.Rotation[0],y=n.Rotation[1],z=n.Rotation[2],w=n.Rotation[3],s=n.Scale;
+                var local=new[]{(1-2*y*y-2*z*z)*s,(2*x*y+2*z*w)*s,(2*x*z-2*y*w)*s,0,
+                    (2*x*y-2*z*w)*s,(1-2*x*x-2*z*z)*s,(2*y*z+2*x*w)*s,0,
+                    (2*x*z+2*y*w)*s,(2*y*z-2*x*w)*s,(1-2*x*x-2*y*y)*s,0,
+                    n.Position[0],n.Position[1],n.Position[2],1};
+                result=Multiply(local,result);
+                if(string.IsNullOrEmpty(n.Parent)||n.Parent.Equals("null",StringComparison.OrdinalIgnoreCase))break;
+                if(!names.TryGetValue(n.Parent,out index))throw new InvalidDataException("Missing skin parent: "+n.Parent);
+            }
+            return result;
+        }
+        static double[] Inverse(double[] matrix)
+        {
+            var rows=new double[4,8];
+            for(int row=0;row<4;row++){for(int col=0;col<4;col++)rows[row,col]=matrix[col*4+row];rows[row,row+4]=1;}
+            for(int col=0;col<4;col++)
+            {
+                int pivot=col;for(int row=col+1;row<4;row++)if(Math.Abs(rows[row,col])>Math.Abs(rows[pivot,col]))pivot=row;
+                if(Math.Abs(rows[pivot,col])<1e-15)throw new InvalidDataException("Singular skin bind transform.");
+                for(int k=0;k<8;k++){double swap=rows[col,k];rows[col,k]=rows[pivot,k];rows[pivot,k]=swap;}
+                double divisor=rows[col,col];for(int k=0;k<8;k++)rows[col,k]/=divisor;
+                for(int row=0;row<4;row++)if(row!=col){double factor=rows[row,col];for(int k=0;k<8;k++)rows[row,k]-=factor*rows[col,k];}
+            }
+            var result=new double[16];for(int row=0;row<4;row++)for(int col=0;col<4;col++)result[col*4+row]=rows[row,col+4];return result;
+        }
+        static void AddSkin(int nodeIndex,List<Node> source,Dictionary<string,int> names,Dictionary<string,object> attributes,
+            BinaryWriter writer,List<object> views,List<object> accessors,List<object> skins)
+        {
+            Node node=source[nodeIndex];
+            if(node.Weights.Count!=node.Vertices.Count)throw new InvalidDataException("Skin weights do not match vertex count.");
+            var joints=new List<int>();var jointIds=new Dictionary<int,int>();
+            var indices=new List<ushort>();var weights=new List<float>();
+            foreach(var face in node.Faces)for(int corner=0;corner<3;corner++)
+            {
+                var influences=node.Weights[face[corner]];double sum=influences.Sum(pair=>pair.Value);
+                for(int slot=0;slot<4;slot++)
+                {
+                    if(slot>=influences.Length){indices.Add(0);weights.Add(0);continue;}
+                    int bone;if(!names.TryGetValue(influences[slot].Key,out bone))throw new InvalidDataException("Missing skin bone: "+influences[slot].Key);
+                    int id;if(!jointIds.TryGetValue(bone,out id)){id=joints.Count;joints.Add(bone);jointIds.Add(bone,id);}
+                    indices.Add((ushort)id);weights.Add((float)(influences[slot].Value/sum));
+                }
+            }
+            int view=views.Count;long offset=writer.BaseStream.Position;foreach(ushort id in indices)writer.Write(id);
+            views.Add(new {buffer=0,byteOffset=offset,byteLength=indices.Count*2,target=34962});
+            attributes.Add("JOINTS_0",accessors.Count);accessors.Add(new {bufferView=view,componentType=5123,count=indices.Count/4,type="VEC4"});
+            attributes.Add("WEIGHTS_0",AddAccessor(weights,4,writer,views,accessors));
+            var meshWorld=WorldMatrix(nodeIndex,source,names);view=views.Count;offset=writer.BaseStream.Position;
+            foreach(int joint in joints)foreach(double value in Multiply(Inverse(WorldMatrix(joint,source,names)),meshWorld))writer.Write((float)value);
+            views.Add(new {buffer=0,byteOffset=offset,byteLength=joints.Count*64});
+            int inverseBindMatrices=accessors.Count;accessors.Add(new {bufferView=view,componentType=5126,count=joints.Count,type="MAT4"});
+            skins.Add(new {joints,inverseBindMatrices});
+        }
+        static int SmoothingMask(string text)
+        {
+            long mask = long.Parse(text, CultureInfo.InvariantCulture);
+            // ASCII writers may serialize the 32-bit mask as signed or unsigned.
+            if (mask < int.MinValue || mask > uint.MaxValue) throw new InvalidDataException("Invalid smoothing group mask.");
+            return unchecked((int)mask);
+        }
+        static double[] UnitNormal(double[] value, double[] fallback)
+        {
+            double length = Math.Sqrt(value[0]*value[0] + value[1]*value[1] + value[2]*value[2]);
+            if (length > 0) return new[] {value[0]/length, value[1]/length, value[2]/length};
+            if (fallback != null) return UnitNormal(fallback, null);
+            return new[] {0.0, 0.0, 1.0}; // Degenerate triangles still need finite glTF normals.
+        }
+        static List<float> MeshNormals(Node node)
+        {
+            var faceNormals = new double[node.Faces.Count][];
+            var incident = new List<int>[node.Vertices.Count];
+            for (int i = 0; i < node.Faces.Count; i++)
+            {
+                int[] face = node.Faces[i];
+                for (int corner = 0; corner < 3; corner++)
+                {
+                    int vertex = face[corner];
+                    if (vertex < 0 || vertex >= node.Vertices.Count) throw new InvalidDataException("Face vertex index out of range.");
+                    if (incident[vertex] == null) incident[vertex] = new List<int>();
+                    // A degenerate face can reference the same vertex more than once.
+                    if (corner == 0 || (vertex != face[0] && (corner != 2 || vertex != face[1]))) incident[vertex].Add(i);
+                }
+                double[] a = node.Vertices[face[0]], b = node.Vertices[face[1]], c = node.Vertices[face[2]];
+                double x = b[0]-a[0], y = b[1]-a[1], z = b[2]-a[2];
+                double u = c[0]-a[0], v = c[1]-a[1], w = c[2]-a[2];
+                faceNormals[i] = new[] {y*w-z*v, z*u-x*w, x*v-y*u};
+            }
+            var cache = new Dictionary<int, double[]>[node.Vertices.Count];
+            var output = new List<float>(node.Faces.Count*9);
+            for (int i = 0; i < node.Faces.Count; i++)
+            {
+                int[] face = node.Faces[i]; int mask = face[3];
+                for (int corner = 0; corner < 3; corner++)
+                {
+                    int vertex = face[corner]; double[] normal;
+                    if (mask == 0) normal = UnitNormal(faceNormals[i], null);
+                    else
+                    {
+                        if (cache[vertex] == null) cache[vertex] = new Dictionary<int, double[]>();
+                        double[] sum;
+                        if (!cache[vertex].TryGetValue(mask, out sum))
+                        {
+                            sum = new double[3];
+                            // Pairwise bit overlap, not transitive grouping; count each face once.
+                            foreach (int other in incident[vertex])
+                                if ((mask & node.Faces[other][3]) != 0)
+                                    for (int axis = 0; axis < 3; axis++) sum[axis] += faceNormals[other][axis];
+                            cache[vertex].Add(mask, sum);
+                        }
+                        normal = UnitNormal(sum, faceNormals[i]);
+                    }
+                    output.AddRange(normal.Select(component => (float)component));
+                }
+            }
+            return output;
         }
         static int AddAccessor(List<float> values, int width, BinaryWriter writer, List<object> views, List<object> accessors)
         {
