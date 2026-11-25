@@ -120,7 +120,7 @@ Namespace kotor_tool
                 Case 3
                     Return "LRG"
                 Case Else
-                    Dim text As String
+                    Dim text As String = Nothing
                     Return text
             End Select
         End Function
@@ -156,7 +156,7 @@ Namespace kotor_tool
                 Case 10
                     Return "DFAST"
                 Case Else
-                    Dim text As String
+                    Dim text As String = Nothing
                     Return text
             End Select
         End Function

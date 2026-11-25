@@ -113,7 +113,7 @@ Namespace kotor_tool
             Dim fileStream As FileStream = New FileStream(Me.CurrentSettings.KotorLocation(Me.KotorVersionIndex) + "\data\templates.bif", FileMode.Open)
             Dim biffarchive2 As BIFFArchive = New BIFFArchive(fileStream)
             Dim flag As Boolean = True
-            Dim array As Byte()
+            Dim array As Byte() = Nothing
             If Me.CurrentSettings.bUseOverrideFiles Then
                 Dim text As String = Me.CurrentSettings.KotorLocation(Me.KotorVersionIndex) + "\override\baseitems.2da"
                 Try
@@ -137,17 +137,10 @@ Namespace kotor_tool
             End If
             Dim clsBaseItems2DA As clsBaseItems2DA = New clsBaseItems2DA(array)
             Dim itemNamesAndTypesList As ArrayList = clsBaseItems2DA.GetItemNamesAndTypesList(Me.g_clsDialogTlk)
-            Try
                 For Each obj As Object In itemNamesAndTypesList
                     Dim treeBaseItem As TreeBaseItem = CType(obj, TreeBaseItem)
                     Me.cmbxBaseItem.Items.Add(treeBaseItem._name)
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
         End Sub
 
         ' Token: 0x060013E6 RID: 5094 RVA: 0x002B3A70 File Offset: 0x002B2A70
@@ -179,7 +172,6 @@ Namespace kotor_tool
             Else
                 Me.UTI.ClearListElements("PropertiesList")
             End If
-            Try
                 For Each obj As Object In Me.dt.Rows
                     Dim dataRow As DataRow = CType(obj, DataRow)
                     Dim gff_Struct As GFF_Struct = New GFF_Struct()
@@ -214,12 +206,6 @@ Namespace kotor_tool
                     gff_Struct.fields(num) = New GFF_Field(GFFField.GFF_byte, "ChanceAppear", IntegerType.FromObject(dataRow("% Chance of Appearance")))
                     Me.UTI.AddListElement("PropertiesList", gff_Struct)
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
             Me.UTI.SetNodeValue("Identified", Me.chkbIdentified.Checked)
             Me.UTI.SetCExoLocStringNodeValueFromTextBox(Me.tbLocalizedName, "LocalizedName", 0)
             Dim textBox As TextBox = New TextBox()
@@ -233,7 +219,7 @@ Namespace kotor_tool
         ' Token: 0x060013E7 RID: 5095 RVA: 0x002B4004 File Offset: 0x002B3004
         Public Function ReadCls2DA(ByVal TwoDAName As String) As cls2DA
             Dim flag As Boolean = True
-            Dim array As Byte()
+            Dim array As Byte() = Nothing
             If Me.CurrentSettings.bUseOverrideFiles Then
                 Dim text As String = Me.CurrentSettings.KotorLocation(Me.KotorVersionIndex) + "\override\" + TwoDAName + ".2da"
                 Try

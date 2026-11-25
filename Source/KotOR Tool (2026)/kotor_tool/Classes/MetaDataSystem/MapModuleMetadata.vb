@@ -9,7 +9,16 @@ Namespace kotor_tool
     ' Stock English area names from ARE Name/dialog.tlk; exact room overrides from LYT membership.
     ' These are browsing metadata, not resource names or a runtime module resolver.
     Public NotInheritable Class MapModuleMetadata
+        ' Research additions: source URLs and confidence are recorded in README.md (2026-11-25).
+        ' M21AA's location is not established. M44AD shares rooms with stunt_unktemp.
         Private Shared ReadOnly K1Areas As New Dictionary(Of String, String)(StringComparer.OrdinalIgnoreCase) From {
+            {"m19aa", "Tatooine - Temple (cut)"},
+            {"m21aa", "Unknown location - Czerka Office (reported cut area)"},
+            {"m25ab", "Kashyyyk - Lower Shadowlands B (cut)"},
+            {"m31aa", "Sleheyron - Arena A (cut)"},
+            {"m31ab", "Sleheyron - Arena B (cut)"},
+            {"m31ad", "Sleheyron - Arena D (cut)"},
+            {"m44ad", "Unknown World - Temple Summit (revelation / ending scenes)"},
             {"m01aa", "Endar Spire - Command Module"},
             {"m01ab", "Endar Spire - Starboard Section"},
             {"m02aa", "Taris - South Apartments"},
@@ -117,7 +126,19 @@ Namespace kotor_tool
             {"m40ad_08d", "Leviathan - Bridge / m40ad"},
             {"m40ad_25a", "Leviathan - Bridge / m40ad"}
         }
+        ' Research additions: source URLs and confidence are recorded in README.md (2026-11-25).
+        ' DRO area names describe restoration-project usage, not verified original release names.
         Private Shared ReadOnly K2Areas As New Dictionary(Of String, String)(StringComparer.OrdinalIgnoreCase) From {
+            {"298tel", "Telos - Military Base Sub-Level (HK Factory)"},
+            {"299tel", "Telos - HK Manufacturing Plant"},
+            {"352nar", "Nar Shaddaa - Goto's Yacht (cutscene)"},
+            {"801dro", "M4-78 - Landing Pad (restored name)"},
+            {"802dro", "M4-78 - Central Zone (restored name)"},
+            {"803dro", "M4-78 - Environmental Zone (restored name)"},
+            {"804dro", "M4-78 - Industrial Zone (restored name)"},
+            {"805dro", "M4-78 - Archon Chamber (restored name)"},
+            {"806dro", "M4-78 - Archon I Chamber (restored name)"},
+            {"807dro", "M4-78 - Archon II Chamber (restored name)"},
             {"001ebo", "Ebon Hawk - Interior"},
             {"002ebo", "Ebon Hawk - Exterior Hull"},
             {"003ebo", "Ebon Hawk - Interior"},

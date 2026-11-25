@@ -87,7 +87,6 @@ Namespace kotor_tool
             If frmInventoryEditor.ShowDialog() = DialogResult.OK Then
                 Dim i As Integer = 0
                 Me.UTM.ClearListElements("ItemList")
-                Try
                     For Each obj As Object In frmInventoryEditor.GetPackItemsList()
                         Dim inventoryItem As InventoryItem = CType(obj, InventoryItem)
                         Dim num3 As Integer = 1
@@ -108,12 +107,6 @@ Namespace kotor_tool
                             i += 1
                         Next
                     Next
-                Finally
-                    Dim enumerator As IEnumerator
-                    If TypeOf enumerator Is IDisposable Then
-                        CType(enumerator, IDisposable).Dispose()
-                    End If
-                End Try
             End If
         End Sub
 

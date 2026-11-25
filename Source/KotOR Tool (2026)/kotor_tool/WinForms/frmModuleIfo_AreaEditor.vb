@@ -284,7 +284,7 @@ Namespace kotor_tool
         ' Token: 0x06000B1E RID: 2846 RVA: 0x0027A500 File Offset: 0x00279500
         Public Function ReadCls2DA(ByVal TwoDAName As String, ByVal ChitinKey As clsChitinKey) As cls2DA
             Dim flag As Boolean = True
-            Dim array As Byte()
+            Dim array As Byte() = Nothing
             If Me.CurrentSettings.bUseOverrideFiles Then
                 Dim text As String = Me.CurrentSettings.KotorLocation(Me.KotorVersionIndex) + "\override\" + TwoDAName + ".2da"
                 Try
@@ -869,6 +869,7 @@ Namespace kotor_tool
         ' Token: 0x170003D4 RID: 980
         ' (get) Token: 0x06000B70 RID: 2928 RVA: 0x0027B450 File Offset: 0x0027A450
         ' (set) Token: 0x06000B71 RID: 2929 RVA: 0x0027B470 File Offset: 0x0027A470
+        <CLSCompliant(False)> _
         Public Property DynAmbientColor() As UInteger
             Get
                 Return Me.color2bgr(Me.btnDynAmbientColor.BackColor)
@@ -881,6 +882,7 @@ Namespace kotor_tool
         ' Token: 0x170003D5 RID: 981
         ' (get) Token: 0x06000B72 RID: 2930 RVA: 0x0027B484 File Offset: 0x0027A484
         ' (set) Token: 0x06000B73 RID: 2931 RVA: 0x0027B4A4 File Offset: 0x0027A4A4
+        <CLSCompliant(False)> _
         Public Property SunAmbientColor() As UInteger
             Get
                 Return Me.color2bgr(Me.btnSunAmbientColor.BackColor)
@@ -893,6 +895,7 @@ Namespace kotor_tool
         ' Token: 0x170003D6 RID: 982
         ' (get) Token: 0x06000B74 RID: 2932 RVA: 0x0027B4B8 File Offset: 0x0027A4B8
         ' (set) Token: 0x06000B75 RID: 2933 RVA: 0x0027B4D8 File Offset: 0x0027A4D8
+        <CLSCompliant(False)> _
         Public Property SunDiffuseColor() As UInteger
             Get
                 Return Me.color2bgr(Me.btnSunDiffuseColor.BackColor)
@@ -905,6 +908,7 @@ Namespace kotor_tool
         ' Token: 0x170003D7 RID: 983
         ' (get) Token: 0x06000B76 RID: 2934 RVA: 0x0027B4EC File Offset: 0x0027A4EC
         ' (set) Token: 0x06000B77 RID: 2935 RVA: 0x0027B50C File Offset: 0x0027A50C
+        <CLSCompliant(False)> _
         Public Property SunFogColor() As UInteger
             Get
                 Return Me.color2bgr(Me.btnSunFogColor.BackColor)
@@ -917,6 +921,7 @@ Namespace kotor_tool
         ' Token: 0x170003D8 RID: 984
         ' (get) Token: 0x06000B78 RID: 2936 RVA: 0x0027B520 File Offset: 0x0027A520
         ' (set) Token: 0x06000B79 RID: 2937 RVA: 0x0027B540 File Offset: 0x0027A540
+        <CLSCompliant(False)> _
         Public Property MoonAmbientColor() As UInteger
             Get
                 Return Me.color2bgr(Me.btnMoonAmbientColor.BackColor)
@@ -929,6 +934,7 @@ Namespace kotor_tool
         ' Token: 0x170003D9 RID: 985
         ' (get) Token: 0x06000B7A RID: 2938 RVA: 0x0027B554 File Offset: 0x0027A554
         ' (set) Token: 0x06000B7B RID: 2939 RVA: 0x0027B574 File Offset: 0x0027A574
+        <CLSCompliant(False)> _
         Public Property MoonDiffuseColor() As UInteger
             Get
                 Return Me.color2bgr(Me.btnMoonDiffuseColor.BackColor)
@@ -941,6 +947,7 @@ Namespace kotor_tool
         ' Token: 0x170003DA RID: 986
         ' (get) Token: 0x06000B7C RID: 2940 RVA: 0x0027B588 File Offset: 0x0027A588
         ' (set) Token: 0x06000B7D RID: 2941 RVA: 0x0027B5A8 File Offset: 0x0027A5A8
+        <CLSCompliant(False)> _
         Public Property MoonFogColor() As UInteger
             Get
                 Return Me.color2bgr(Me.btnMoonFogColor.BackColor)
@@ -953,6 +960,7 @@ Namespace kotor_tool
         ' Token: 0x170003DB RID: 987
         ' (get) Token: 0x06000B7E RID: 2942 RVA: 0x0027B5BC File Offset: 0x0027A5BC
         ' (set) Token: 0x06000B7F RID: 2943 RVA: 0x0027B5DC File Offset: 0x0027A5DC
+        <CLSCompliant(False)> _
         Public Property Grass_Ambient() As UInteger
             Get
                 Return Me.color2bgr(Me.btnGrassAmbientColor.BackColor)
@@ -965,6 +973,7 @@ Namespace kotor_tool
         ' Token: 0x170003DC RID: 988
         ' (get) Token: 0x06000B80 RID: 2944 RVA: 0x0027B5F0 File Offset: 0x0027A5F0
         ' (set) Token: 0x06000B81 RID: 2945 RVA: 0x0027B610 File Offset: 0x0027A610
+        <CLSCompliant(False)> _
         Public Property Grass_Diffuse() As UInteger
             Get
                 Return Me.color2bgr(Me.btnGrassDiffuseColor.BackColor)
@@ -977,6 +986,7 @@ Namespace kotor_tool
         ' Token: 0x170003DD RID: 989
         ' (get) Token: 0x06000B82 RID: 2946 RVA: 0x0027B624 File Offset: 0x0027A624
         ' (set) Token: 0x06000B83 RID: 2947 RVA: 0x0027B644 File Offset: 0x0027A644
+        <CLSCompliant(False)> _
         Public Property Grass_Emissive() As UInteger
             Get
                 Return Me.color2bgr(Me.btnGrassEmissiveColor.BackColor)

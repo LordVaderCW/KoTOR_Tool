@@ -30,7 +30,6 @@ Namespace kotor_tool
                 Try
                     Dim managementClass As ManagementClass = New ManagementClass("Win32_NetworkAdapterConfiguration")
                     Dim instances As ManagementObjectCollection = managementClass.GetInstances()
-                    Try
                         For Each managementBaseObject As ManagementBaseObject In instances
                             Dim managementObject As ManagementObject = CType(managementBaseObject, ManagementObject)
                             If ObjectType.ObjTst(managementObject("IPEnabled"), True, False) = 0 Then
@@ -40,12 +39,6 @@ Namespace kotor_tool
                                 Console.WriteLine(managementObject("ServiceName").ToString())
                             End If
                         Next
-                    Finally
-                        Dim enumerator As ManagementObjectCollection.ManagementObjectEnumerator
-                        If enumerator IsNot Nothing Then
-                            CType(enumerator, IDisposable).Dispose()
-                        End If
-                    End Try
                 Catch ex As System.Exception
                     Interaction.MsgBox(ex.Message + ex.StackTrace, MsgBoxStyle.OkOnly, Nothing)
                 End Try

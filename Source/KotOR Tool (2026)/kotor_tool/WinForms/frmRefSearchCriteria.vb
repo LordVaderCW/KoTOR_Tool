@@ -25,32 +25,18 @@ Namespace kotor_tool
                 Interaction.MsgBox("Please enter a search string", MsgBoxStyle.Critical, Nothing)
                 Return
             End If
-            Try
                 For Each obj As Object In Me.gboxGFF.Controls
                     Dim control As Control = CType(obj, Control)
                     If ((StringType.StrCmp(control.[GetType]().Name, "CheckBox", False) = 0) And control.Parent.Enabled) AndAlso CType(control, CheckBox).Checked Then
                         Me.htFileTypes.Add(control.Text, "")
                     End If
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
-            Try
                 For Each obj2 As Object In Me.gboxScript.Controls
                     Dim control2 As Control = CType(obj2, Control)
                     If ((StringType.StrCmp(control2.[GetType]().Name, "CheckBox", False) = 0) And control2.Parent.Enabled) AndAlso CType(control2, CheckBox).Checked Then
                         Me.htFileTypes.Add(control2.Text, "")
                     End If
                 Next
-            Finally
-                Dim enumerator2 As IEnumerator
-                If TypeOf enumerator2 Is IDisposable Then
-                    CType(enumerator2, IDisposable).Dispose()
-                End If
-            End Try
             If Me.htFileTypes.Count = 0 Then
                 Interaction.MsgBox("Select at least one file type to search for the string in", MsgBoxStyle.Critical, Nothing)
             Else
@@ -60,62 +46,34 @@ Namespace kotor_tool
 
         ' Token: 0x06000E97 RID: 3735 RVA: 0x0028F76C File Offset: 0x0028E76C
         Private Sub btnSetAll_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSetAll.Click
-            Try
                 For Each obj As Object In Me.gboxGFF.Controls
                     Dim control As Control = CType(obj, Control)
                     If StringType.StrCmp(control.[GetType]().Name, "CheckBox", False) = 0 Then
                         CType(control, CheckBox).Checked = True
                     End If
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
-            Try
                 For Each obj2 As Object In Me.gboxScript.Controls
                     Dim control2 As Control = CType(obj2, Control)
                     If StringType.StrCmp(control2.[GetType]().Name, "CheckBox", False) = 0 Then
                         CType(control2, CheckBox).Checked = True
                     End If
                 Next
-            Finally
-                Dim enumerator2 As IEnumerator
-                If TypeOf enumerator2 Is IDisposable Then
-                    CType(enumerator2, IDisposable).Dispose()
-                End If
-            End Try
         End Sub
 
         ' Token: 0x06000E98 RID: 3736 RVA: 0x0028F85C File Offset: 0x0028E85C
         Private Sub btnClearAll_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnClearAll.Click
-            Try
                 For Each obj As Object In Me.gboxGFF.Controls
                     Dim control As Control = CType(obj, Control)
                     If StringType.StrCmp(control.[GetType]().Name, "CheckBox", False) = 0 Then
                         CType(control, CheckBox).Checked = False
                     End If
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
-            Try
                 For Each obj2 As Object In Me.gboxScript.Controls
                     Dim control2 As Control = CType(obj2, Control)
                     If StringType.StrCmp(control2.[GetType]().Name, "CheckBox", False) = 0 Then
                         CType(control2, CheckBox).Checked = False
                     End If
                 Next
-            Finally
-                Dim enumerator2 As IEnumerator
-                If TypeOf enumerator2 Is IDisposable Then
-                    CType(enumerator2, IDisposable).Dispose()
-                End If
-            End Try
         End Sub
 
         ' Token: 0x06000E99 RID: 3737 RVA: 0x0028F94C File Offset: 0x0028E94C

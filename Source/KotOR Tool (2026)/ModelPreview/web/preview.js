@@ -2,7 +2,7 @@
 (() => {
  const viewport=document.getElementById('viewport'), status=document.getElementById('status');
  let renderer, scene, camera, controls, pivot, model, frame, last=0;
- let rotating=true, axis='y';
+ let rotating=false, axis='y';
  let vfx;
  const nativeControls=new URLSearchParams(location.search).get('native')==='1';
  if(nativeControls){document.querySelector('header').hidden=true;document.getElementById('vfx-controls').hidden=true;}

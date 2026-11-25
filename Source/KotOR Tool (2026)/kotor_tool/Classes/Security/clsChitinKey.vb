@@ -29,7 +29,7 @@ Namespace kotor_tool
 			Me.KeyCount = Me.rdr.ReadInt32()
 			Me.FileTableOff = Me.rdr.ReadInt32()
 			Me.KeyTableOff = Me.rdr.ReadInt32()
-			Me.BiffList = CType(Array.CreateInstance(GetType(BIFFEntry), Me.BIFCount), BIFFEntry())
+			Me.BiffList = CType(System.Array.CreateInstance(GetType(BIFFEntry), Me.BIFCount), BIFFEntry())
 			Dim num4 As Integer = 0
 			Dim num5 As Integer = Me.BIFCount - 1
 			For i As Integer = num4 To num5

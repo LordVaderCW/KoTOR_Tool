@@ -196,7 +196,7 @@ Namespace kotor_tool
                 Case 1
                     Return Me.m_defaultKotORLocation2
                 Case Else
-                    Dim text As String
+                    Dim text As String = Nothing
                     Return text
             End Select
         End Function
@@ -209,7 +209,7 @@ Namespace kotor_tool
                 Case 1
                     Return Me.m_defaultKotORLocation2 + "\chitin.key"
                 Case Else
-                    Dim text As String
+                    Dim text As String = Nothing
                     Return text
             End Select
         End Function

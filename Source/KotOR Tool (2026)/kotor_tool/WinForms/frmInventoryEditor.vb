@@ -180,7 +180,6 @@ Namespace kotor_tool
                 Me.ToolTip1.SetToolTip(inventoryPanel, "(empty)")
                 inventoryPanel.Tag = Nothing
                 inventoryPanel.IsEmpty = True
-                Try
                     For Each obj As Object In Me.TabPage1.Controls
                         Dim control As Control = CType(obj, Control)
                         If StringType.StrCmp(control.Name, inventoryPanel.Name + "Bkgnd", False) = 0 Then
@@ -188,13 +187,6 @@ Namespace kotor_tool
                             Return
                         End If
                     Next
-                Finally
-                    Dim enumerator As IEnumerator
-                    If TypeOf enumerator Is IDisposable Then
-                        CType(enumerator, IDisposable).Dispose()
-                    End If
-                End Try
-                Try
                     For Each obj2 As Object In Me.TabPage2.Controls
                         Dim control As Control = CType(obj2, Control)
                         If StringType.StrCmp(control.Name, inventoryPanel.Name + "Bkgnd", False) = 0 Then
@@ -202,12 +194,6 @@ Namespace kotor_tool
                             Exit For
                         End If
                     Next
-                Finally
-                    Dim enumerator2 As IEnumerator
-                    If TypeOf enumerator2 Is IDisposable Then
-                        CType(enumerator2, IDisposable).Dispose()
-                    End If
-                End Try
             End If
         End Sub
 
@@ -303,7 +289,7 @@ Namespace kotor_tool
             Dim fileStream As FileStream = New FileStream(Me.CurrentSettings.KotorLocation(Me.KotorVersionIndex) + "\data\templates.bif", FileMode.Open)
             Dim biffarchive As BIFFArchive = New BIFFArchive(fileStream)
             Dim flag As Boolean = True
-            Dim array2 As Byte()
+            Dim array2 As Byte() = Nothing
             If Me.CurrentSettings.bUseOverrideFiles Then
                 Dim text As String = Me.CurrentSettings.KotorLocation(Me.KotorVersionIndex) + "\override\baseitems.2da"
                 Try
@@ -329,7 +315,6 @@ Namespace kotor_tool
             Dim itemNamesAndTypesList As ArrayList = clsBaseItems2DA.GetItemNamesAndTypesList(Me.g_clsDialogTlk)
             Dim num2 As Integer = -1
             Dim flag2 As Boolean = False
-            Try
                 For Each obj As Object In itemNamesAndTypesList
                     Dim treeBaseItem As TreeBaseItem = CType(obj, TreeBaseItem)
                     If StringType.StrCmp(treeBaseItem._itemtype, "****", False) <> 0 Then
@@ -339,12 +324,6 @@ Namespace kotor_tool
                         End If
                     End If
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
             num2 += 1
             Me.TreeView.BeginUpdate()
             Me.TreeView.Nodes.Clear()
@@ -353,7 +332,6 @@ Namespace kotor_tool
             For i As Integer = num4 To num5
                 Me.TreeView.Nodes.Add(StringType.FromInteger(i))
             Next
-            Try
                 For Each obj2 As Object In itemNamesAndTypesList
                     Dim treeBaseItem As TreeBaseItem = CType(obj2, TreeBaseItem)
                     If Information.IsNumeric(treeBaseItem._itemtype) Then
@@ -366,12 +344,6 @@ Namespace kotor_tool
                         Me.TreeView.Nodes(num2).Nodes.Add(treeNode)
                     End If
                 Next
-            Finally
-                Dim enumerator2 As IEnumerator
-                If TypeOf enumerator2 Is IDisposable Then
-                    CType(enumerator2, IDisposable).Dispose()
-                End If
-            End Try
             Dim keysforResourceType As ArrayList = clsChitinKey.GetKeysforResourceType(frmMain.GetIDForRsrcType("uti"))
             Dim frmProgressMeter As frmProgressMeter = New frmProgressMeter()
             frmProgressMeter.stepAmount = 1
@@ -379,7 +351,6 @@ Namespace kotor_tool
             frmProgressMeter.message = "Getting Inventory from Warehouse"
             frmProgressMeter.Location = New utilWindowRelativePositioner(Me, frmProgressMeter).getConcentric()
             frmProgressMeter.Show()
-            Try
                 For Each obj3 As Object In keysforResourceType
                     Dim keyEntry As KeyEntry = CType(obj3, KeyEntry)
                     Dim clsGFF As clsGFF = New clsGFF(biffarchive.getBIFFResource(keyEntry.ResID - (keyEntry.ResID >> 20 << 20)).data, Me.KotorVersionIndex, True)
@@ -400,7 +371,6 @@ Namespace kotor_tool
                     Dim num6 As Integer = 0
                     Dim num7 As Integer = num2
                     For i As Integer = num6 To num7
-                        Try
                             For Each obj4 As Object In Me.TreeView.Nodes(i).Nodes
                                 Dim treeNode As TreeNode = CType(obj4, TreeNode)
                                 array = Strings.Split(StringType.FromObject(treeNode.Tag), "|", -1, CompareMethod.Binary)
@@ -412,23 +382,11 @@ Namespace kotor_tool
                                     Exit For
                                 End If
                             Next
-                        Finally
-                            Dim enumerator4 As IEnumerator
-                            If TypeOf enumerator4 Is IDisposable Then
-                                CType(enumerator4, IDisposable).Dispose()
-                            End If
-                        End Try
                         If flag2 Then
                             Exit For
                         End If
                     Next
                 Next
-            Finally
-                Dim enumerator3 As IEnumerator
-                If TypeOf enumerator3 Is IDisposable Then
-                    CType(enumerator3, IDisposable).Dispose()
-                End If
-            End Try
             frmProgressMeter.Close()
             fileStream.Close()
             Me.AssignTreeParentTitles()
@@ -451,10 +409,8 @@ Namespace kotor_tool
 
         ' Token: 0x06000604 RID: 1540 RVA: 0x002489D0 File Offset: 0x002479D0
         Private Sub RemoveGoofyCreatureItems()
-            Try
                 For Each obj As Object In Me.TreeView.Nodes(48).Nodes
                     Dim treeNode As TreeNode = CType(obj, TreeNode)
-                    Try
                         For Each obj2 As Object In treeNode.Nodes
                             Dim treeNode2 As TreeNode = CType(obj2, TreeNode)
                             If treeNode2.Tag.ToString().StartsWith("w_null") Then
@@ -465,19 +421,7 @@ Namespace kotor_tool
                                 treeNode.Nodes.Remove(treeNode2)
                             End If
                         Next
-                    Finally
-                        Dim enumerator2 As IEnumerator
-                        If TypeOf enumerator2 Is IDisposable Then
-                            CType(enumerator2, IDisposable).Dispose()
-                        End If
-                    End Try
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
         End Sub
 
         ' Token: 0x06000605 RID: 1541 RVA: 0x00248AF0 File Offset: 0x00247AF0
@@ -576,7 +520,6 @@ Namespace kotor_tool
             sender.Tag = array(1)
             sender.Dropable = Dropable
             sender.IsEmpty = False
-            Try
                 For Each obj As Object In Me.TabPage1.Controls
                     Dim control As Control = CType(obj, Control)
                     If StringType.StrCmp(control.Name, sender.Name + "Bkgnd", False) = 0 Then
@@ -584,13 +527,6 @@ Namespace kotor_tool
                         Return
                     End If
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
-            Try
                 For Each obj2 As Object In Me.TabPage2.Controls
                     Dim control As Control = CType(obj2, Control)
                     If StringType.StrCmp(control.Name, sender.Name + "Bkgnd", False) = 0 Then
@@ -598,12 +534,6 @@ Namespace kotor_tool
                         Exit For
                     End If
                 Next
-            Finally
-                Dim enumerator2 As IEnumerator
-                If TypeOf enumerator2 Is IDisposable Then
-                    CType(enumerator2, IDisposable).Dispose()
-                End If
-            End Try
         End Sub
 
         ' Token: 0x06000609 RID: 1545 RVA: 0x0024936C File Offset: 0x0024836C
@@ -715,8 +645,7 @@ Namespace kotor_tool
 
         ' Token: 0x0600060E RID: 1550 RVA: 0x00249740 File Offset: 0x00248740
         Private Function FindNameForResRef(ByVal ResRef As String) As String
-            Dim name As String
-            Try
+            Dim name As String = String.Empty
                 For Each obj As Object In Me.ResRef2NameLookupList
                     Dim inventoryItem As InventoryItem = CType(obj, InventoryItem)
                     If StringType.StrCmp(inventoryItem._ResRef, ResRef, False) = 0 Then
@@ -724,12 +653,6 @@ Namespace kotor_tool
                         Exit For
                     End If
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
             Return name
         End Function
 
@@ -830,7 +753,6 @@ Namespace kotor_tool
                 Me.ToolTip1.SetToolTip(panel, "Custom Item (" + Strings.Trim(frmPromptForString.tbValue.Text) + ")")
                 panel.Tag = frmPromptForString.tbValue.Text
                 panel.IsEmpty = False
-                Try
                     For Each obj As Object In Me.TabPage1.Controls
                         Dim control As Control = CType(obj, Control)
                         If StringType.StrCmp(control.Name, panel.Name + "Bkgnd", False) = 0 Then
@@ -838,12 +760,6 @@ Namespace kotor_tool
                             Exit For
                         End If
                     Next
-                Finally
-                    Dim enumerator As IEnumerator
-                    If TypeOf enumerator Is IDisposable Then
-                        CType(enumerator, IDisposable).Dispose()
-                    End If
-                End Try
             End If
         End Sub
 
@@ -878,7 +794,6 @@ Namespace kotor_tool
 
         ' Token: 0x06000618 RID: 1560 RVA: 0x00249EF4 File Offset: 0x00248EF4
         Private Sub dgPackItems_CurrentCellChanged(ByVal sender As Object, ByVal e As EventArgs) Handles dgPackItems.CurrentCellChanged
-            Try
                 For Each obj As Object In Me.dt.Rows
                     Dim dataRow As DataRow = CType(obj, DataRow)
                     dataRow.EndEdit()
@@ -905,12 +820,6 @@ Namespace kotor_tool
                         dataRow.SetColumnError(2, "You must enter a Quantity >=1 for this item")
                     End If
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
         End Sub
 
         ' Token: 0x06000619 RID: 1561 RVA: 0x00249FD0 File Offset: 0x00248FD0

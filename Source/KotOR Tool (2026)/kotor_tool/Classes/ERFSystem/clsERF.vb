@@ -116,6 +116,7 @@ Namespace kotor_tool
         'End Sub
 
         ' Token: 0x06000063 RID: 99 RVA: 0x0021C25C File Offset: 0x0021B25C
+        <CLSCompliant(False)> _
         Public Sub New(ByVal outputFilePath As String, ByVal FileType As String, ByVal DescriptionStrRef As UInteger, ByVal ERFLocalizedStringList As ERFLocalizedString(), ByVal inputFileList As String())
 
             Dim fileStream As FileStream = New FileStream(outputFilePath, FileMode.Create, FileAccess.Write)
@@ -321,7 +322,6 @@ Namespace kotor_tool
 		' Token: 0x06000067 RID: 103 RVA: 0x0021C9A0 File Offset: 0x0021B9A0
 		Public Function FindIndexForResRef(ResRef As String, ResType As Integer) As Integer
 			Dim index As Integer
-			Try
 				For Each obj As Object In Me.KeyEntryList
 					Dim erfkeyEntry As ERFKeyEntry = CType(obj, ERFKeyEntry)
 					If StringType.StrCmp(Strings.LCase(erfkeyEntry._ResourceName), Strings.LCase(ResRef), False) = 0 AndAlso CInt(erfkeyEntry._ResType) = ResType Then
@@ -329,12 +329,6 @@ Namespace kotor_tool
 						Exit For
 					End If
 				Next
-			Finally
-				Dim enumerator As IEnumerator
-				If TypeOf enumerator Is IDisposable Then
-					CType(enumerator, IDisposable).Dispose()
-				End If
-			End Try
 			Return index
 		End Function
 

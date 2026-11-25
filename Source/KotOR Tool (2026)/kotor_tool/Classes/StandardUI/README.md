@@ -5,7 +5,7 @@ This directory contains recovered reusable WinForms infrastructure: sortable/vis
 
 `KotorTreeNode` is especially important: it carries filename, resource type, path, archive index and game index through the main browser. It is both display node and resource locator.
 
-Preserve control lifecycle and event behavior when modernizing. Do not dispose shared images/fonts from individual controls. Column `Copy` methods currently shadow base members and contribute known warnings; fix only with compatibility tests. Validate keyboard/mouse behavior, disabled/edit states, sorting/visibility persistence and resource-node cloning/navigation.
+Preserve control lifecycle and event behavior when modernizing. Do not dispose shared images/fonts from individual controls. Column `Copy` methods declare their typed overloads explicitly; regression checks cover derived and base destination lists. Validate keyboard/mouse behavior, disabled/edit states, sorting/visibility persistence and resource-node cloning/navigation.
 =======
 # Standard UI
 

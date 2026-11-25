@@ -30,18 +30,23 @@ Namespace kotor_tool
         End Property
 
         ' Token: 0x04000330 RID: 816
+        <CLSCompliant(False)> _
         Public _Name As String
 
         ' Token: 0x04000331 RID: 817
+        <CLSCompliant(False)> _
         Public _ResRef As String
 
         ' Token: 0x04000332 RID: 818
+        <CLSCompliant(False)> _
         Public _EquipableSlots As String
 
         ' Token: 0x04000333 RID: 819
+        <CLSCompliant(False)> _
         Public _Quantity As Integer
 
         ' Token: 0x04000334 RID: 820
+        <CLSCompliant(False)> _
         Public _Dropable As Boolean
 
     End Class

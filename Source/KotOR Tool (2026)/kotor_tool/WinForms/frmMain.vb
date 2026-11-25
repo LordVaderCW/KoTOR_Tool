@@ -196,7 +196,7 @@ Namespace kotor_tool
             If KotorVerIndex = 1 Then
                 Return frmMain.K2ChitinKey()
             End If
-            Dim clsChitinKey As clsChitinKey
+            Dim clsChitinKey As clsChitinKey = Nothing
             Return clsChitinKey
         End Function
 
@@ -228,7 +228,7 @@ Namespace kotor_tool
             If KotorVerIndex = 1 Then
                 Return frmMain.K2TemplatesBif()
             End If
-            Dim biffarchive As BIFFArchive
+            Dim biffarchive As BIFFArchive = Nothing
             Return biffarchive
         End Function
 
@@ -338,7 +338,6 @@ Namespace kotor_tool
                 Me.biffEntries(num).Add(New BIFFEntry(i, fileStream, num4 + 12 * i))
                 Me.BiffEntryListArray(num, i) = New ArrayList()
             Next
-            Try
                 For Each obj As Object In Me.biffEntries(num)
                     Dim biffentry As BIFFEntry = CType(obj, BIFFEntry)
                     Dim kotorTreeNode As KotorTreeNode = New KotorTreeNode(Strings.Mid(biffentry.filename, biffentry.filename.LastIndexOf("\") + 2))
@@ -349,12 +348,6 @@ Namespace kotor_tool
                     Root.Nodes(0).Nodes.Add(kotorTreeNode)
                     Console.WriteLine("Bif name: " + biffentry.filename + "  Length: " + StringType.FromInteger(biffentry.filelength))
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
             fileStream.Seek(CLng(num5), SeekOrigin.Begin)
             dateTime = DateAndTime.Now
             Dim array As Byte() = New Byte(CInt(fileStream.Length) - 1) {}
@@ -407,7 +400,6 @@ Namespace kotor_tool
         ' Token: 0x060006F1 RID: 1777 RVA: 0x0024F570 File Offset: 0x0024E570
         Private Sub OrganizeNodesByResType(ByVal Collection As KotorTreeNode, ByVal node As KotorTreeNode)
             Dim kotorTreeNode As KotorTreeNode
-            Try
                 For Each obj As Object In Collection.Nodes
                     kotorTreeNode = CType(obj, KotorTreeNode)
                     If node.ResType = kotorTreeNode.ResType Then
@@ -415,12 +407,6 @@ Namespace kotor_tool
                         Return
                     End If
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
             kotorTreeNode = New KotorTreeNode(Me.ParentDescForResType(node.ResType))
             kotorTreeNode.ResType = node.ResType
             kotorTreeNode.Tag = "NodeCategory"
@@ -432,34 +418,20 @@ Namespace kotor_tool
         Private Sub AttachNodeParentsSortedByDesc(ByVal ContainerNode As KotorTreeNode, ByVal UnsortedNodeCollection As KotorTreeNode)
             Dim num As Integer = 0
             Dim array As String() = New String(UnsortedNodeCollection.Nodes.Count - 1 + 1 - 1) {}
-            Dim kotorTreeNode As KotorTreeNode
-            Try
+            Dim kotorTreeNode As KotorTreeNode = Nothing
                 For Each obj As Object In UnsortedNodeCollection.Nodes
                     kotorTreeNode = CType(obj, KotorTreeNode)
                     array(num) = kotorTreeNode.Text
                     num += 1
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
-            array.Sort(array)
+            System.Array.Sort(array)
             For Each text As String In array
-                Try
                     For Each obj2 As Object In UnsortedNodeCollection.Nodes
                         kotorTreeNode = CType(obj2, KotorTreeNode)
                         If StringType.StrCmp(text, kotorTreeNode.Text, False) = 0 Then
                             Exit For
                         End If
                     Next
-                Finally
-                    Dim enumerator2 As IEnumerator
-                    If TypeOf enumerator2 Is IDisposable Then
-                        CType(enumerator2, IDisposable).Dispose()
-                    End If
-                End Try
                 ContainerNode.Nodes.Add(kotorTreeNode)
             Next
         End Sub
@@ -727,7 +699,6 @@ Namespace kotor_tool
             Dim text As String = frmMain.CurrentSettings.KotorLocation(KotorVerIndex) + "\" + CType(Me.biffEntries(KotorVerIndex)(BiffListIndex), BIFFEntry).filename
             Dim fileStream As FileStream = New FileStream(text, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 200000)
             Dim biffarchive As BIFFArchive = New BIFFArchive(fileStream)
-            Try
                 For Each obj As Object In Me.BiffEntryListArray(KotorVerIndex, BiffListIndex)
                     Dim keyEntry As KeyEntry = CType(obj, KeyEntry)
                     Dim num As Integer
@@ -759,12 +730,6 @@ Namespace kotor_tool
                         End If
                     End If
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
             fileStream.Close()
         End Sub
 
@@ -1281,7 +1246,7 @@ Namespace kotor_tool
             If StringType.StrCmp(text, "907MAL", False) = 0 Then
                 Return "Trayus Core"
             End If
-            Dim text2 As String
+            Dim text2 As String = Nothing
             Return text2
         End Function
 
@@ -1364,7 +1329,7 @@ Namespace kotor_tool
             If StringType.StrCmp(text2, "COR", False) = 0 Then
                 Return " (Ebon Hawk)"
             End If
-            Dim text3 As String
+            Dim text3 As String = Nothing
             Return text3
         End Function
 
@@ -1376,7 +1341,6 @@ Namespace kotor_tool
             Dim clsRIM As clsRIM = New clsRIM(binaryReader.ReadBytes(CInt(fileStream.Length)))
             binaryReader.Close()
             Dim kotorTreeNode As KotorTreeNode = New KotorTreeNode()
-            Try
                 For Each obj As Object In clsRIM.KeyEntryList
                     Dim rimkeyEntry As RIMKeyEntry = CType(obj, RIMKeyEntry)
                     Dim kotorTreeNode2 As KotorTreeNode = New KotorTreeNode(rimkeyEntry, RimFilePath)
@@ -1388,12 +1352,6 @@ Namespace kotor_tool
                         Console.WriteLine(String.Concat(New String() {ktn.Filename, "\", rimkeyEntry._ResourceName, " ", StringType.FromInteger(rimkeyEntry._Length)}))
                     End If
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
             Me.AttachNodeParentsSortedByDesc(ktn, kotorTreeNode)
         End Sub
 
@@ -1481,13 +1439,11 @@ Namespace kotor_tool
             Dim fileStream As FileStream = New FileStream(ERFFilePath, FileMode.Open, FileAccess.Read)
             Dim clsERF As clsERF = New clsERF(fileStream)
             i = 0
-            Try
                 For Each obj As Object In clsERF.KeyEntryList
                     Dim erfkeyEntry As ERFKeyEntry = CType(obj, ERFKeyEntry)
                     Dim kotorTreeNode As KotorTreeNode = New KotorTreeNode(erfkeyEntry, ERFFilePath)
                     kotorTreeNode.ContainingFileType = "ERF"
                     kotorTreeNode.RIMorERFindex = i
-                    Try
                         For Each obj2 As Object In ktn.Nodes
                             Dim kotorTreeNode2 As KotorTreeNode = CType(obj2, KotorTreeNode)
                             If StringType.StrCmp(kotorTreeNode2.Text, StringType.FromChar(Strings.UCase(kotorTreeNode.Text(0))), False) = 0 Then
@@ -1495,20 +1451,8 @@ Namespace kotor_tool
                                 Exit For
                             End If
                         Next
-                    Finally
-                        Dim enumerator2 As IEnumerator
-                        If TypeOf enumerator2 Is IDisposable Then
-                            CType(enumerator2, IDisposable).Dispose()
-                        End If
-                    End Try
                     i += 1
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
             i = ktn.Nodes.Count - 1
             While i >= 1
                 If ktn.Nodes(i).Nodes.Count = 0 Then
@@ -2453,7 +2397,7 @@ Namespace kotor_tool
                 frmDialogTlk.Show()
                 Return frmDialogTlk
             End If
-            Dim form As Form
+            Dim form As Form = Nothing
             Return form
         End Function
 
@@ -2498,7 +2442,7 @@ Namespace kotor_tool
         ' Token: 0x0600071A RID: 1818 RVA: 0x00253550 File Offset: 0x00252550
         Public Function OpenGFFFileInEditor(ByVal filepath As String, Optional ByVal formLocationOffset As Integer = -1) As Form
             Dim gfffileKotorVersionIndex As Integer
-            Dim form As Form
+            Dim form As Form = Nothing
             Try
                 gfffileKotorVersionIndex = frmMain.GetGFFFileKotorVersionIndex(filepath)
             Catch ex As FileNotFoundException
@@ -2605,18 +2549,11 @@ Namespace kotor_tool
         Private Sub ManageMRUMainFileMenu()
             Dim miRecentFiles As MenuItem = Me.miRecentFiles
             miRecentFiles.MenuItems.Clear()
-            Try
                 For Each obj As Object In frmMain.CurrentSettings.MRUMainFiles
                     Dim text As String = StringType.FromObject(obj)
                     Dim menuItem As MenuItem = New MenuItem(Path.GetFileName(text), AddressOf Me.miRecentFiles_Click)
                     miRecentFiles.MenuItems.Add(menuItem)
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
         End Sub
 
         ' Token: 0x06000722 RID: 1826 RVA: 0x00253C30 File Offset: 0x00252C30
@@ -2626,7 +2563,6 @@ Namespace kotor_tool
                 Return
             End If
             If currLevel = 0 Then
-                Try
                     For Each obj As Object In currNode.TreeView.Nodes
                         Dim treeNode As TreeNode = CType(obj, TreeNode)
                         If StringType.StrCmp(treeNode.Text, array(currLevel), False) = 0 Then
@@ -2638,14 +2574,7 @@ Namespace kotor_tool
                         End If
                     Next
                     Return
-                Finally
-                    Dim enumerator As IEnumerator
-                    If TypeOf enumerator Is IDisposable Then
-                        CType(enumerator, IDisposable).Dispose()
-                    End If
-                End Try
             End If
-            Try
                 For Each obj2 As Object In currNode.Nodes
                     Dim treeNode2 As TreeNode = CType(obj2, TreeNode)
                     If StringType.StrCmp(frmMain.TrimAfterDash(treeNode2.Text), frmMain.TrimAfterDash(array(currLevel)), False) = 0 Then
@@ -2654,12 +2583,6 @@ Namespace kotor_tool
                         frmMain.OpenTreeViewToPath(treepath, treeNode2, currLevel + 1, SelectAfterExpand)
                     End If
                 Next
-            Finally
-                Dim enumerator2 As IEnumerator
-                If TypeOf enumerator2 Is IDisposable Then
-                    CType(enumerator2, IDisposable).Dispose()
-                End If
-            End Try
         End Sub
 
         ' Token: 0x06000723 RID: 1827 RVA: 0x00253D68 File Offset: 0x00252D68
@@ -2709,13 +2632,13 @@ Namespace kotor_tool
             If match.Success Then
                 Console.WriteLine("Found title: " + match.Groups("match").Value)
             End If
-            Dim value As String
+            Dim value As String = String.Empty
             If match2.Success Then
                 value = match2.Groups("match").Value
                 Console.WriteLine("Found version: " + value)
             End If
-            Dim value2 As String
-            Dim text7 As String
+            Dim value2 As String = String.Empty
+            Dim text7 As String = String.Empty
             If match3.Success Then
                 Console.WriteLine("Found file name: " + match3.Groups("match").Value)
                 value2 = match3.Groups("match").Value
@@ -4113,18 +4036,10 @@ Namespace kotor_tool
             End If
 
             If frmMain.CurrentSettings.bRememberTreeViewState Then
-                Try
                     For Each obj As Object In frmMain.CurrentSettings.TreeOpenPaths
                         Dim text As String = StringType.FromObject(obj)
                         frmMain.OpenTreeViewToPath(text, Me.TreeView.Nodes(0), 0, True)
                     Next
-                Finally
-                    Dim enumerator As IEnumerator
-
-                    If TypeOf enumerator Is IDisposable Then
-                        CType(enumerator, IDisposable).Dispose()
-                    End If
-                End Try
             End If
 
             If frmMain.CurrentSettings.bCheckForUpdatesAtStartup Then
@@ -4480,7 +4395,7 @@ Namespace kotor_tool
                 End If
 
                 If StringType.StrCmp(outputpath, "\", False) = 0 Then
-                    Dim obj As Object
+                    Dim obj As Object = Nothing
                     Return obj
                 End If
 
@@ -4523,7 +4438,7 @@ Namespace kotor_tool
 
                 outputpath = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, node.Filename, "Save " + node.Filename + " file...", node.ResTypeStr, False, True))
                 If StringType.StrCmp(outputpath, "", False) = 0 Then
-                    Dim obj As Object
+                    Dim obj As Object = Nothing
                     Return obj
                 End If
 
@@ -4538,29 +4453,22 @@ Namespace kotor_tool
                     outputpath = StringType.FromObject(ObjectType.StrCatObj(frmMain.GetFilePath("", frmMain.CurrentSettings.defaultSaveLocation, "", "Select Folder to extract BIF to...", "", False, True), "\"))
                 End If
                 If StringType.StrCmp(outputpath, "\", False) = 0 Then
-                    Dim obj As Object
+                    Dim obj As Object = Nothing
                     Return obj
                 End If
 
                 Dim cursor2 As Cursor = Cursor.Current
                 Cursor.Current = Cursors.WaitCursor
-                Try
                     For Each resource As KotorTreeNode In ModelTreeGroups.ResourceLeaves(node)
                         frmMain.ExportBiffResource(resource.FilePath, Path.Combine(outputpath, resource.ResRef & "." & resource.ResTypeStr), resource.LocalResID)
                     Next
-                Finally
-                    Dim enumerator As IEnumerator
-                    If TypeOf enumerator Is IDisposable Then
-                        CType(enumerator, IDisposable).Dispose()
-                    End If
-                End Try
                 Cursor.Current = cursor2
 
                 ' =================================================================================
                 ' BLOCK 4: EXTRACTING A SINGLE FILE FROM A BIF
                 ' =================================================================================
             ElseIf ObjectType.ObjTst(tag, "BIFF_Res", False) = 0 Then
-                Dim obj As Object
+                Dim obj As Object = Nothing
 
                 ' Check if the file is a texture (TPC). If so, route to the batch extractor.
                 If StringType.StrCmp(node.ResTypeStr, "tpc", False) = 0 Then
@@ -4583,7 +4491,7 @@ Namespace kotor_tool
             ElseIf ObjectType.ObjTst(tag, "ERF", False) = 0 Then
                 outputpath = StringType.FromObject(ObjectType.StrCatObj(frmMain.GetFilePath("", frmMain.CurrentSettings.defaultSaveLocation, "", "Select Folder to extract ERF to...", "", False, True), "\"))
                 If StringType.StrCmp(outputpath, "\", False) = 0 Then
-                    Dim obj As Object
+                    Dim obj As Object = Nothing
                     Return obj
                 End If
 
@@ -4616,7 +4524,7 @@ Namespace kotor_tool
                 ' BLOCK 6: EXTRACTING A SINGLE FILE FROM AN ERF
                 ' =================================================================================
             ElseIf ObjectType.ObjTst(tag, "ERF_Res", False) = 0 Then
-                Dim obj As Object
+                Dim obj As Object = Nothing
 
                 ' Check if the file is a texture (TPC). If so, route to the batch extractor.
                 If StringType.StrCmp(node.ResTypeStr, "tpc", False) = 0 Then
@@ -4649,7 +4557,7 @@ Namespace kotor_tool
                         outputpath = StringType.FromObject(ObjectType.StrCatObj(frmMain.GetFilePath("", frmMain.CurrentSettings.defaultSaveLocation, "", SaveMsg, "", False, True), "\"))
                     End If
                     If StringType.StrCmp(outputpath, "\", False) = 0 Then
-                        Dim obj As Object
+                        Dim obj As Object = Nothing
                         Return obj
                     End If
                 End If
@@ -4658,16 +4566,9 @@ Namespace kotor_tool
                 If StringType.StrCmp(text2, "BIF", False) = 0 Then
                     Dim cursor3 As Cursor = Cursor.Current
                     Cursor.Current = Cursors.WaitCursor
-                    Try
                         For Each resource As KotorTreeNode In ModelTreeGroups.ResourceLeaves(node)
                             frmMain.ExportBiffResource(resource.FilePath, Path.Combine(outputpath, resource.ResRef & "." & resource.ResTypeStr), resource.LocalResID)
                         Next
-                    Finally
-                        Dim enumerator2 As IEnumerator
-                        If TypeOf enumerator2 Is IDisposable Then
-                            CType(enumerator2, IDisposable).Dispose()
-                        End If
-                    End Try
                     Cursor.Current = cursor3
 
                 ElseIf StringType.StrCmp(text2, "rim", False) = 0 Then
@@ -5112,7 +5013,7 @@ Namespace kotor_tool
             Dim cursor As Cursor = Cursor.Current
             frmMain.CurrentSettings = UserSettings.GetSettings()
             Dim tag As Object = node.Tag
-            Dim array As Byte()
+            Dim array As Byte() = Nothing
             If ObjectType.ObjTst(tag, "RIM_Res", False) = 0 Then
                 array = Me.GetRIMResource(node.FilePath, node)
             ElseIf ObjectType.ObjTst(tag, "BIFF_Res", False) = 0 Then
@@ -5657,7 +5558,6 @@ IL_12BE:
 
         ' Token: 0x06000734 RID: 1844 RVA: 0x00256C40 File Offset: 0x00255C40
         Private Sub AddNodeChildrenToTreePaths(ByVal node As KotorTreeNode, ByVal arTreeOpenPaths As ArrayList)
-            Try
                 For Each obj As Object In node.Nodes
                     Dim kotorTreeNode As KotorTreeNode = CType(obj, KotorTreeNode)
                     If kotorTreeNode.IsExpanded Then
@@ -5667,12 +5567,6 @@ IL_12BE:
                         Me.AddNodeChildrenToTreePaths(kotorTreeNode, arTreeOpenPaths)
                     End If
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
         End Sub
 
         ' Token: 0x06000735 RID: 1845 RVA: 0x00256CC0 File Offset: 0x00255CC0
@@ -6132,10 +6026,9 @@ IL_12BE:
             Dim text As String = Path.GetFileNameWithoutExtension(CType(Me.TreeView.SelectedNode, KotorTreeNode).Filename).ToLower()
             Dim text2 As String = "Unsupported"
             Dim text3 As String = "Unsupported"
-            Dim text5 As String
+            Dim text5 As String = String.Empty
             If mapInfo IsNot Nothing Then
                 Dim text4 As String = Path.Combine(frmMain.GetApplicationRootPath(), "maps\")
-                Try
                     For Each obj As Object In mapInfo.MapList
                         Dim map As MapInfo.Map = CType(obj, MapInfo.Map)
                         If StringType.StrCmp(text, map.MapName, False) = 0 Then
@@ -6155,12 +6048,6 @@ IL_12BE:
                             End If
                         End If
                     Next
-                Finally
-                    Dim enumerator As IEnumerator
-                    If TypeOf enumerator Is IDisposable Then
-                        CType(enumerator, IDisposable).Dispose()
-                    End If
-                End Try
                 If StringType.StrCmp(text2, "Unsupported", False) = 0 AndAlso StringType.StrCmp(text3, "Unsupported", False) = 0 Then
                     text5 = "A map is not yet supported for this module." & vbLf & vbLf & "Do you want to proceed with the extraction?"
                 ElseIf (StringType.StrCmp(text2, "Unsupported", False) = 0 AndAlso StringType.StrCmp(text3, "Missing", False) = 0) OrElse (StringType.StrCmp(text2, "Missing", False) = 0 AndAlso StringType.StrCmp(text3, "Unsupported", False) = 0) Then
@@ -6190,7 +6077,7 @@ IL_12BE:
                 End If
                 Me.ExtractSelectedKotorFile(kotorTreeNode, text6, "", frmResourceTypeSelector.SelectedResTypes)
                 Dim files As String() = Directory.GetFiles(text6, "*.git")
-                Dim text7 As String
+                Dim text7 As String = String.Empty
                 If files.Length > 0 Then
                     text7 = files(0)
                 End If
@@ -6342,7 +6229,7 @@ IL_12BE:
                 End If
 
             Next
-            Dim text2 As String
+            Dim text2 As String = Nothing
             Return text2
         End Function
 
@@ -6371,7 +6258,6 @@ IL_12BE:
                     Cursor.Current = Cursors.WaitCursor
                     Me.BuildTreeView(CType(Me.TreeView.Nodes(0), KotorTreeNode), True)
                 End If
-                Try
                     For Each obj As Object In Me.BiffEntryListArray(0, 23)
                         Dim keyEntry As KeyEntry = CType(obj, KeyEntry)
                         If hashtable.ContainsKey(Convert.ToInt32(keyEntry.ResourceType)) Then
@@ -6383,12 +6269,6 @@ IL_12BE:
                             End If
                         End If
                     Next
-                Finally
-                    Dim enumerator As IEnumerator
-                    If TypeOf enumerator Is IDisposable Then
-                        CType(enumerator, IDisposable).Dispose()
-                    End If
-                End Try
                 Dim stream As Stream = File.Create("K1TemplateTags.bfd")
                 binaryFormatter.Serialize(stream, hashtable2)
                 stream.Close()
@@ -6398,7 +6278,6 @@ IL_12BE:
                     Cursor.Current = Cursors.WaitCursor
                     Me.BuildTreeView(CType(Me.TreeView.Nodes(1), KotorTreeNode), True)
                 End If
-                Try
                     For Each obj2 As Object In Me.BiffEntryListArray(1, 2)
                         Dim keyEntry2 As KeyEntry = CType(obj2, KeyEntry)
                         If hashtable.ContainsKey(Convert.ToInt32(keyEntry2.ResourceType)) Then
@@ -6410,12 +6289,6 @@ IL_12BE:
                             End If
                         End If
                     Next
-                Finally
-                    Dim enumerator2 As IEnumerator
-                    If TypeOf enumerator2 Is IDisposable Then
-                        CType(enumerator2, IDisposable).Dispose()
-                    End If
-                End Try
                 Dim stream As Stream = File.Create("K2TemplateTags.bfd")
                 binaryFormatter.Serialize(stream, hashtable3)
                 stream.Close()

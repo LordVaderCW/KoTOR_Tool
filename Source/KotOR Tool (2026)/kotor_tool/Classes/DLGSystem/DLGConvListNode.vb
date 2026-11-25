@@ -43,7 +43,7 @@ Namespace kotor_tool
 		' (get) Token: 0x06000053 RID: 83 RVA: 0x0021BE60 File Offset: 0x0021AE60
 		Public ReadOnly Property NodeDesc As String
 			Get
-				Dim text As String
+				Dim text As String = String.Empty
 				If Me.IsContinueDialog Then
 					text = "[CONTINUE]"
 				Else
@@ -102,18 +102,11 @@ Namespace kotor_tool
 		' Token: 0x06000059 RID: 89 RVA: 0x0021BF6C File Offset: 0x0021AF6C
 		Public Sub UpdateLinkedNodesText()
 			If Me.HasLinkedNodes Then
-				Try
 					For Each obj As Object In Me.LinkedNodesList
 						Dim dlgconvListNode As DLGConvListNode = CType(obj, DLGConvListNode)
 						dlgconvListNode.InternalText = Me.InternalText
 						dlgconvListNode.Text = dlgconvListNode.NodeDesc
 					Next
-				Finally
-					Dim enumerator As IEnumerator
-					If TypeOf enumerator Is IDisposable Then
-						CType(enumerator, IDisposable).Dispose()
-					End If
-				End Try
 			End If
 		End Sub
 
@@ -198,6 +191,7 @@ Namespace kotor_tool
 		Public Comment As String
 
 		' Token: 0x0400007A RID: 122
+		<CLSCompliant(False)> _
 		Public Delay As UInteger
 
 		' Token: 0x0400007B RID: 123
@@ -228,6 +222,7 @@ Namespace kotor_tool
 		Public Quest As String
 
 		' Token: 0x04000084 RID: 132
+		<CLSCompliant(False)> _
 		Public QuestEntry As UInteger
 
 		' Token: 0x04000085 RID: 133

@@ -18,6 +18,8 @@ const fs=require('fs'),path=require('path'),http=require('http');
   await page.waitForFunction(()=>document.getElementById('viewport').getAttribute('aria-busy')==='false');
   const status=await page.locator('#status').textContent();
   if(status.length!==0 || !(await page.locator('#status').evaluate(e=>e.hidden)))throw Error(status+'\n'+errors.join('\n'));
+  if(await page.locator('#rotate').getAttribute('aria-pressed')!=='false')throw Error('Rotation must start paused');
+  await page.getByRole('button',{name:'Resume rotation'}).click();
   await page.getByRole('button',{name:'Pause rotation'}).click();
   if(await page.getByRole('button',{name:'Resume rotation'}).count()!==1)throw Error('Pause failed');
   await page.locator('#axis').selectOption('X');await page.locator('#wire').check();await page.getByRole('button',{name:'Reset view'}).click();await page.locator('#wire').uncheck();

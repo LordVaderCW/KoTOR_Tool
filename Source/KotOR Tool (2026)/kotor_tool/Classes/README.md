@@ -26,3 +26,5 @@ Parsers, persistence models, image/model/plugin pipelines and shared UI infrastr
 >>>>>>> treya/v.1.0.3.4:Source/VisualBasic/kotor_tool/Classes/README.md
 
 [MetaDataSystem](MetaDataSystem/README.md) contains the initial K1/K2 model naming register and tree grouping adapter. The broader metadata system remains future work.
+
+Compiler diagnostics maintenance (2026-11-25): legacy public members with leading underscores or unsigned types retain their existing names/types and are individually marked non-CLS-compliant. Redundant decompiler cleanup blocks that inspected never-assigned enumerators were removed; VB For Each retains responsibility for enumerator disposal. Missing lookup results explicitly retain Nothing, while text accumulators start empty. Full-framework Release/x86 rebuild reports zero warnings; copied K1/K2 KEY/2DA fixtures, column-copy overloads, filter composition and GFF unknown-field round-trips were checked.

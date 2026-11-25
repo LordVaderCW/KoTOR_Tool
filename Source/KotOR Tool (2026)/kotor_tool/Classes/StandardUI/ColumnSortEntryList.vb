@@ -7,7 +7,7 @@ Namespace kotor_tool
 		Inherits ColumnEntryList
 
 		' Token: 0x0600015A RID: 346 RVA: 0x00225788 File Offset: 0x00224788
-        Public Sub Copy(ByVal theCopy As ColumnSortEntryList)
+        Public Overloads Sub Copy(ByVal theCopy As ColumnSortEntryList)
             Try
                 For Each obj As Object In Me
                     Dim columnSortEntry As ColumnSortEntry = CType(obj, ColumnSortEntry)

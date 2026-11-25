@@ -508,7 +508,6 @@ Namespace kotor_tool
         End Sub
 
         Private Sub dgNumericGlobals_CurrentCellChanged(ByVal sender As Object, ByVal e As EventArgs) Handles dgNumericGlobals.CurrentCellChanged
-            Try
                 For Each obj As Object In Me.dtNumeric.Rows
                     Dim dataRow As DataRow = CType(obj, DataRow)
                     dataRow.EndEdit()
@@ -528,12 +527,6 @@ Namespace kotor_tool
                         dataRow.SetColumnError(2, "You must enter a numeric value from 0-255 for this item")
                     End If
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
         End Sub
 
         Private Sub miOpenFirst_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpenFirst.Click

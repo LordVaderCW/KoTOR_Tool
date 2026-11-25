@@ -2,7 +2,7 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self' data: blob:; object-src 'none'; frame-src 'none'">
 <title>MDL Viewer</title><link rel="stylesheet" href="preview.css"></head>
-<body><header><strong>MDL VIEWER</strong><button id="rotate" aria-pressed="true">Pause rotation</button><label>Axis <select id="axis"><option>Y</option><option>X</option><option>Z</option></select></label><button id="reset">Reset view</button><label><input id="wire" type="checkbox">Wireframe</label></header>
+<body><header><strong>MDL VIEWER</strong><button id="rotate" aria-pressed="false">Resume rotation</button><label>Axis <select id="axis"><option>Y</option><option>X</option><option>Z</option></select></label><button id="reset">Reset view</button><label><input id="wire" type="checkbox">Wireframe</label></header>
 <div id="vfx-controls" hidden title="Development particle preview; advanced emitter behaviours may differ from the game."><strong>VFX</strong><button id="vfx-play" aria-pressed="true">Pause VFX</button><button id="vfx-replay">Replay VFX</button><label><input id="vfx-loop" type="checkbox" checked>Loop VFX</label></div>
 <div id="loading" role="progressbar" aria-label="Loading model" aria-valuetext="Loading model and textures"><span></span></div>
 <main id="viewport" aria-label="Interactive 3D model viewport" aria-busy="true"></main><footer id="status" role="status" hidden></footer>

@@ -653,7 +653,6 @@ Namespace kotor_tool
 			fileStream = File.Create("maptable.txt")
 			Dim streamWriter As StreamWriter = New StreamWriter(fileStream)
 			Dim arrayList As ArrayList = New ArrayList()
-			Try
 				For Each obj As Object In Me.mi.MapList
 					Dim map2 As MapInfo.Map = CType(obj, MapInfo.Map)
 					Dim text As String = String.Concat(New String() { map2.MapName, "|", map2.ModuleName, "|", map2.MapAssembler, "|" })
@@ -669,24 +668,11 @@ Namespace kotor_tool
 					End If
 					arrayList.Add(text)
 				Next
-			Finally
-				Dim enumerator As IEnumerator
-				If TypeOf enumerator Is IDisposable Then
-					CType(enumerator, IDisposable).Dispose()
-				End If
-			End Try
 			arrayList.Sort()
-			Try
 				For Each obj2 As Object In arrayList
 					Dim text As String = StringType.FromObject(obj2)
 					streamWriter.WriteLine(text)
 				Next
-			Finally
-				Dim enumerator2 As IEnumerator
-				If TypeOf enumerator2 Is IDisposable Then
-					CType(enumerator2, IDisposable).Dispose()
-				End If
-			End Try
 			streamWriter.Close()
 		End Sub
 

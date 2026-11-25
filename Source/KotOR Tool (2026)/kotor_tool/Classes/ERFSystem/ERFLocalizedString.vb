@@ -11,12 +11,15 @@ Namespace kotor_tool
 		End Sub
 
 		' Token: 0x040000A5 RID: 165
+		<CLSCompliant(False)> _
 		Public _LanguageID As Integer
 
 		' Token: 0x040000A6 RID: 166
+		<CLSCompliant(False)> _
 		Public _StringSize As Integer
 
 		' Token: 0x040000A7 RID: 167
+		<CLSCompliant(False)> _
 		Public _StringText As Char()
 	End Class
 End Namespace

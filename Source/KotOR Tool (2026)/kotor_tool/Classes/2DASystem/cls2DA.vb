@@ -120,7 +120,7 @@ Namespace kotor_tool
 				Next
 				Return array
 			End If
-			Dim array2 As Array
+			Dim array2 As Array = Nothing
 			Return array2
 		End Function
 
@@ -129,14 +129,14 @@ Namespace kotor_tool
 			If Me.ary2daStrings IsNot Nothing Then
 				Return StringType.FromObject(LateBinding.LateIndexGet(Me.ary2daStrings, New Object() { rowNumber, colNumber }, Nothing))
 			End If
-			Dim text As String
+			Dim text As String = Nothing
 			Return text
 		End Function
 
 		' Token: 0x06000009 RID: 9 RVA: 0x00217578 File Offset: 0x00216578
 		Public Function GetIndiceData(rowNumber As Integer, colName As String) As String
 			Dim num As Integer = Array.IndexOf(Me.ColNames, colName)
-			Dim text As String
+			Dim text As String = Nothing
 			Try
 				If Me.ary2daStrings IsNot Nothing AndAlso num <> -1 Then
 					' The following expression was wrapped in a checked-expression
@@ -155,7 +155,7 @@ Namespace kotor_tool
 				' The following expression was wrapped in a checked-expression
 				Return StringType.FromObject(LateBinding.LateIndexGet(Me.ary2daStrings, New Object() { num + 1, colNumber }, Nothing))
 			End If
-			Dim text As String
+			Dim text As String = Nothing
 			Return text
 		End Function
 
@@ -167,7 +167,7 @@ Namespace kotor_tool
 				' The following expression was wrapped in a checked-expression
 				Return StringType.FromObject(LateBinding.LateIndexGet(Me.ary2daStrings, New Object() { num2 + 1, num + 1 }, Nothing))
 			End If
-			Dim text As String
+			Dim text As String = Nothing
 			Return text
 		End Function
 

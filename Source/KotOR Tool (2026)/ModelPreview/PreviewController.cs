@@ -84,10 +84,12 @@ namespace ModelPreview
             try
             {
                 browser = new WebView2 { Dock = DockStyle.Fill }; viewportPanel.Controls.Add(browser); browser.BringToFront();
-                string profile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"KotorTool","WebView2");
-                string runtime = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"WebView2Runtime");
-                if (!File.Exists(Path.Combine(runtime,"msedgewebview2.exe"))) throw new FileNotFoundException("The bundled WebView2Runtime folder is missing. Rebuild or restore the complete application package.");
-                var environment = await CoreWebView2Environment.CreateAsync(runtime,profile);
+                loading.AccessibleName = "Preparing the model viewer";
+                string runtime = await WebView2Runtime.PrepareAsync();
+                if (owner.IsDisposed) return;
+                string profile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"AppData","WebView2Profile");
+                var options = new CoreWebView2EnvironmentOptions { Language = "en-GB" };
+                var environment = await CoreWebView2Environment.CreateAsync(runtime,profile,options);
                 if (owner.IsDisposed) return;
                 await browser.EnsureCoreWebView2Async(environment);
                 if (owner.IsDisposed) return;

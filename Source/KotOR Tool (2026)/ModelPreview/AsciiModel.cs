@@ -17,6 +17,7 @@ namespace ModelPreview
             public double[] Position = { 0, 0, 0 }, Rotation = { 0, 0, 0, 1 };
             public double Scale = 1;
             public bool Render = true;
+            public int InvalidUVCount;
             public Dictionary<string,object> Emitter = new Dictionary<string,object>();
             public List<double[]> Vertices = new List<double[]>(), UVs = new List<double[]>();
             public List<int[]> Faces = new List<int[]>();
@@ -113,7 +114,20 @@ namespace ModelPreview
                                 int width = key == "faces" ? 8 : key == "verts" ? 3 : 2;
                                 if (w.Length < width) throw new InvalidDataException("Incomplete geometry row.");
                                 if (key == "faces") node.Faces.Add(w.Take(8).Select((s, column) => column == 3 ? SmoothingMask(s) : int.Parse(s, CultureInfo.InvariantCulture)).ToArray());
-                                else (key == "verts" ? node.Vertices : node.UVs).Add(w.Take(width).Select(Number).ToArray());
+                                else if (key == "verts") node.Vertices.Add(w.Take(width).Select(Number).ToArray());
+                                else
+                                {
+                                    // Some shipped meshes reference finite UV sentinels such as -1e30.
+                                    // Do not relax coordinate validation for geometry or transforms.
+                                    var uv = w.Take(width).Select(v => double.Parse(v, CultureInfo.InvariantCulture)).ToArray();
+                                    if (uv.Any(v => double.IsNaN(v) || double.IsInfinity(v))) throw new InvalidDataException("Invalid model texture coordinate.");
+                                    if (uv.Any(v => Math.Abs(v) > 1e12))
+                                    {
+                                        uv = new double[] { 0, 0 };
+                                        node.InvalidUVCount++;
+                                    }
+                                    node.UVs.Add(uv);
+                                }
                             }
                             break;
                         // Lightmaps and unknown properties are intentionally not rewritten.
@@ -130,6 +144,21 @@ namespace ModelPreview
             var meshes = new List<object>(); var materials = new List<object>(); var images = new List<object>(); var textures = new List<object>();
             var views = new List<object>(); var accessors = new List<object>(); var warnings = new List<string>(); var skins = new List<object>();
             var names = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+            var duplicateNames = new HashSet<string>(source.GroupBy(n => n.Name, StringComparer.OrdinalIgnoreCase)
+                .Where(g => g.Count() > 1).Select(g => g.Key), StringComparer.OrdinalIgnoreCase);
+            var outputNames = new HashSet<string>(source.Select(n => n.Name), StringComparer.OrdinalIgnoreCase);
+            // ASCII references carry only names. Keep repeated meshes, but never guess which
+            // duplicate a parent, skin joint or animation track was intended to target.
+            foreach (var n in source)
+            {
+                if (n.Parent != null && !n.Parent.Equals("null", StringComparison.OrdinalIgnoreCase) && duplicateNames.Contains(n.Parent))
+                    throw new InvalidDataException("Ambiguous model parent: " + n.Parent);
+                foreach (var row in n.Weights)
+                    foreach (var weight in row)
+                        if (duplicateNames.Contains(weight.Key)) throw new InvalidDataException("Ambiguous skin bone: " + weight.Key);
+            }
+            foreach (string name in duplicateNames)
+                warnings.Add("Repeated node name retained as distinct preview nodes: " + name + ". Name-only animation tracks for this name are omitted.");
             int emitterCount = 0;
             var emitterTextures = new Dictionary<string,string>(StringComparer.OrdinalIgnoreCase);
             var materialIds = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
@@ -138,9 +167,15 @@ namespace ModelPreview
                 for (int i = 0; i < source.Count; i++)
                 {
                     Node n = source[i];
-                    if (names.ContainsKey(n.Name)) throw new InvalidDataException("Duplicate model node: " + n.Name);
-                    names.Add(n.Name, i);
-                    nodes.Add(new Dictionary<string, object> { {"name", n.Name}, {"translation", n.Position}, {"rotation", n.Rotation}, {"scale", new[] {n.Scale,n.Scale,n.Scale}}, {"children",new List<int>()} });
+                    if (n.InvalidUVCount > 0) warnings.Add(n.Name + ": " + n.InvalidUVCount + " out-of-range texture coordinates replaced with (0, 0) for preview.");
+                    string outputName = n.Name;
+                    if (duplicateNames.Contains(n.Name))
+                    {
+                        outputName = n.Name + "__preview_" + i.ToString(CultureInfo.InvariantCulture);
+                        while (!outputNames.Add(outputName)) outputName += "_";
+                    }
+                    else names.Add(n.Name, i);
+                    nodes.Add(new Dictionary<string, object> { {"name", outputName}, {"translation", n.Position}, {"rotation", n.Rotation}, {"scale", new[] {n.Scale,n.Scale,n.Scale}}, {"children",new List<int>()} });
                 }
                 for (int i = 0; i < source.Count; i++)
                 {

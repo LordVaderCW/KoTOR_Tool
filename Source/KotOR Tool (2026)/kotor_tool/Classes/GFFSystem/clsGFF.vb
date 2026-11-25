@@ -486,7 +486,7 @@ Namespace kotor_tool
 					End If
 				Case GFFField.GFF_char
 					Dim c As Char = CharType.FromObject(field.value)
-					Dim text As String
+					Dim text As String = String.Empty
 					If Me.g_bRTF_mode Then
 						text += "\cf2Value:\cf0  "
 					Else
@@ -503,7 +503,7 @@ Namespace kotor_tool
 						Me.PrintMsg("\par", False)
 					End If
 				Case GFFField.GFF_CExoLocString
-					Dim text2 As String
+					Dim text2 As String = String.Empty
 					If CType(field.value, GFFExoLocString).StringRef <> -1 Then
 						If Me.dialogTlk IsNot Nothing Then
 							text2 = Me.dialogTlk.GetString(CType(field.value, GFFExoLocString).StringRef)
@@ -696,7 +696,6 @@ Namespace kotor_tool
 			If i = Me.g_structArr.Length Then
 				Return
 			End If
-			Try
 				For Each obj As Object In Me.g_gff_ListArr
 					Dim gfflist As GFFList = CType(obj, GFFList)
 					If gfflist IsNot Nothing Then
@@ -710,12 +709,6 @@ Namespace kotor_tool
 						Next
 					End If
 				Next
-			Finally
-				Dim enumerator As IEnumerator
-				If TypeOf enumerator Is IDisposable Then
-					CType(enumerator, IDisposable).Dispose()
-				End If
-			End Try
 			Me.CleanupStructArrayAfterDelete()
 			Dim num4 As Integer = 0
 			Dim num5 As Integer = Me.g_structArr.Length - 1
@@ -1206,17 +1199,10 @@ Namespace kotor_tool
 							gff_Field.DataOffset = num27 - num26
 							binaryWriter.Seek(num27, SeekOrigin.Begin)
 							binaryWriter.Write(CType(gff_Field.value, GFFList).structIndices.Count)
-							Try
 								For Each obj5 As Object In CType(gff_Field.value, GFFList).structIndices
 									Dim num33 As Integer = IntegerType.FromObject(obj5)
 									binaryWriter.Write(num33)
 								Next
-							Finally
-								Dim enumerator As IEnumerator
-								If TypeOf enumerator Is IDisposable Then
-									CType(enumerator, IDisposable).Dispose()
-								End If
-							End Try
 							num27 = CInt(fileStream.Position)
 							binaryWriter.Seek(num19, SeekOrigin.Begin)
 							binaryWriter.Write(CInt(gff_Field.Type))
@@ -1259,20 +1245,13 @@ Namespace kotor_tool
 			Dim num34 As Integer = 0
 			Dim num35 As Integer = hashtable.Count - 1
 			For i As Integer = num34 To num35
-				Dim text4 As String
-				Try
+				Dim text4 As String = String.Empty
 					For Each obj6 As Object In hashtable.Keys
 						text4 = StringType.FromObject(obj6)
 						If ObjectType.ObjTst(hashtable(text4), i, False) = 0 Then
 							Exit For
 						End If
 					Next
-				Finally
-					Dim enumerator2 As IEnumerator
-					If TypeOf enumerator2 Is IDisposable Then
-						CType(enumerator2, IDisposable).Dispose()
-					End If
-				End Try
 				Array.Clear(array14, 0, 16)
 				Array.Copy(text4.ToCharArray(), array14, text4.Length)
 				binaryWriter.Write(array14)
@@ -1300,7 +1279,7 @@ Namespace kotor_tool
 			If gffexoLocString.StringCount > 0 Then
 				Return CType(gffexoLocString.subStringArr(0), GFFExoLocSubString).value
 			End If
-			Dim text As String
+			Dim text As String = Nothing
 			Return text
 		End Function
 
@@ -1424,7 +1403,7 @@ Namespace kotor_tool
 			If gffexoLocString.StringCount > 0 Then
 				Return CType(gffexoLocString.subStringArr(0), GFFExoLocSubString).StringID
 			End If
-			Dim obj As Object
+			Dim obj As Object = Nothing
 			Return obj
 		End Function
 

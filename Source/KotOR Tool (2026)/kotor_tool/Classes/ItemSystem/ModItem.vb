@@ -233,7 +233,7 @@ Namespace kotor_tool
 					Case 2058
 						Return ".utw"
 				End Select
-				Dim text As String
+				Dim text As String = Nothing
 				Return text
 			End Get
 		End Property

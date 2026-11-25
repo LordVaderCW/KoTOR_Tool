@@ -19,24 +19,31 @@ Namespace kotor_tool
 		End Sub
 
 		' Token: 0x0400010D RID: 269
+		<CLSCompliant(False)> _
 		Public _ResourceName As String
 
 		' Token: 0x0400010E RID: 270
+		<CLSCompliant(False)> _
 		Public _ResType As Short
 
 		' Token: 0x0400010F RID: 271
+		<CLSCompliant(False)> _
 		Public _ResTypeStr As String
 
 		' Token: 0x04000110 RID: 272
+		<CLSCompliant(False)> _
 		Public _ResourceID As Short
 
 		' Token: 0x04000111 RID: 273
+		<CLSCompliant(False)> _
 		Public _Offset As Integer
 
 		' Token: 0x04000112 RID: 274
+		<CLSCompliant(False)> _
 		Public _Length As Integer
 
 		' Token: 0x04000113 RID: 275
+		<CLSCompliant(False)> _
 		Public _Index As Integer
 	End Class
 End Namespace

@@ -28,18 +28,11 @@ Namespace kotor_tool
 
         ' Token: 0x0600180D RID: 6157 RVA: 0x002CD204 File Offset: 0x002CC204
         Public Function FilterString() As Object
-            Dim text As String
-            Try
+            Dim text As String = String.Empty
                 For Each obj As Object In Me.m_FilterParts
                     Dim rowFilterPart As RowFilterPart = CType(obj, RowFilterPart)
                     text = text + rowFilterPart.filterString + " "
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
             Return text
         End Function
 

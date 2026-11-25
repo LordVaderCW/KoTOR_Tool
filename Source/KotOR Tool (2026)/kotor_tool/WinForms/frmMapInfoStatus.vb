@@ -66,7 +66,6 @@ Namespace kotor_tool
 
 		' Token: 0x06000772 RID: 1906 RVA: 0x00258E68 File Offset: 0x00257E68
 		Public Sub ShowStatus()
-			Try
 				For Each obj As Object In Me.Map_Info.MapList
 					Dim map As MapInfo.Map = CType(obj, MapInfo.Map)
 					Dim dataRow As DataRow = Me.dt.NewRow()
@@ -94,12 +93,6 @@ Namespace kotor_tool
 					dataRow(5) = map.MapCalibrator
 					Me.dt.Rows.Add(dataRow)
 				Next
-			Finally
-				Dim enumerator As IEnumerator
-				If TypeOf enumerator Is IDisposable Then
-					CType(enumerator, IDisposable).Dispose()
-				End If
-			End Try
 		End Sub
 
 		' Token: 0x06000773 RID: 1907 RVA: 0x00258FCC File Offset: 0x00257FCC

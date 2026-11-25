@@ -418,7 +418,7 @@ Namespace kotor_tool
             Dim array As Byte() = New Byte(255) {}
             asciiencoding.GetBytes(str, 0, Strings.Len(str), array, 0)
             wr.Write(array, 0, Strings.Len(str))
-            Dim obj As Object
+            Dim obj As Object = Nothing
             Return obj
         End Function
 
@@ -815,9 +815,10 @@ Private Sub CreateTableStyle()
         ' Token: 0x060001A4 RID: 420 RVA: 0x00227744 File Offset: 0x00226744
         Private Sub GetClipboardDataRow(ByRef DestRow As DataRow)
             Dim dataObject As DataObject = CType(Clipboard.GetDataObject(), DataObject)
-            Dim text As String
+            Dim text As String = Nothing
             If dataObject IsNot Nothing AndAlso dataObject.GetDataPresent(DataFormats.CommaSeparatedValue) Then
                 Dim objectValue As Object = RuntimeHelpers.GetObjectValue(dataObject.GetData(DataFormats.CommaSeparatedValue))
+                If objectValue Is Nothing Then Return
                 If StringType.StrCmp(objectValue.[GetType]().Name, "MemoryStream", False) = 0 Then
                     Dim streamReader As StreamReader = New StreamReader(CType(objectValue, MemoryStream))
                     text = streamReader.ReadLine()
@@ -826,6 +827,7 @@ Private Sub CreateTableStyle()
                     text = CStr(objectValue)
                 End If
             End If
+            If text Is Nothing Then Return
             Dim array As String() = text.Split(New Char() {","c})
             If array.GetLength(0) > Me.dt.Columns.Count Then
                 If Interaction.MsgBox("The clipboard contains more columns of data than are present in the table." & vbLf & "Do you want to paste just the columns that will fit?", MsgBoxStyle.YesNo Or MsgBoxStyle.Question Or MsgBoxStyle.DefaultButton2, "") = MsgBoxResult.No Then
@@ -872,7 +874,7 @@ Private Sub CreateTableStyle()
             Dim num As Integer = 0
             Dim num2 As Integer = Me.dt.Columns.Count - 2
             Dim i As Integer
-            Dim text As String
+            Dim text As String = String.Empty
             i = num
             While i <= num2
                 text = StringType.FromObject(ObjectType.StrCatObj(text, ObjectType.StrCatObj(Me.DView(Me.gClickedRow).Row(i), ",")))

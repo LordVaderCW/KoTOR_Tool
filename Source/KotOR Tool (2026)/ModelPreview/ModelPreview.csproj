@@ -17,9 +17,12 @@
     <OutputPath>bin\Release\</OutputPath><DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize><DefineConstants>TRACE</DefineConstants><WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <Import Project="WebView2Packaging.targets" />
   <ItemGroup>
-    <Content Include="$(FixedWebView2Root)**\*">
-      <Link>WebView2Runtime\%(RecursiveDir)%(Filename)%(Extension)</Link>
+    <None Include="BuildWebView2Cab.ps1" />
+    <None Include="WebView2Packaging.targets" />
+    <Content Include="runtime\webview2.cab">
+      <Link>webview2.cab</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Reference Include="System"/><Reference Include="System.Core"/><Reference Include="System.Drawing"/>
@@ -30,6 +33,7 @@
     <Compile Include="AsciiAnimations.cs"/>
     <Compile Include="LoadingBar.cs"><SubType>Component</SubType></Compile>
     <Compile Include="PreviewController.cs"/>
+    <Compile Include="WebView2Runtime.cs"/>
     <Compile Include="ViewerBottomBar.cs"/>
     <Content Include="vendor\GhostRigger-LICENSE.txt"><Link>ModelPreview\GhostRigger-LICENSE.txt</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
     <Content Include="web\*"><Link>ModelPreview\%(Filename)%(Extension)</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
@@ -37,6 +41,9 @@
     <Content Include="vendor\WebView2-LICENSE.txt"><Link>ModelPreview\WebView2-LICENSE.txt</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+  <Target Name="BuildWebView2Cab" BeforeTargets="PrepareForBuild">
+    <Exec Command="powershell.exe -NoProfile -ExecutionPolicy Bypass -File &quot;$(MSBuildProjectDirectory)\BuildWebView2Cab.ps1&quot; -RuntimeRoot &quot;$(FixedWebView2Root).&quot;" />
+  </Target>
   <Target Name="CheckFixedWebView2Runtime" BeforeTargets="PrepareForBuild">
     <Error Condition="!Exists('$(FixedWebView2Root)msedgewebview2.exe')" Text="Fixed WebView2 x86 runtime is missing. Expand Microsoft.WebView2.FixedVersionRuntime.157.0.4341.60.x86.cab into ModelPreview\runtime (see ModelPreview\README.md)." />
   </Target>

@@ -40,7 +40,7 @@ Namespace kotor_tool
 		Public Function GetRIMResource(index As Integer) As Byte()
 			Dim rimkeyEntry As RIMKeyEntry = CType(Me.KeyEntryList(index), RIMKeyEntry)
 			Dim array As Byte() = New Byte(rimkeyEntry._Length - 1 + 1 - 1) {}
-			Array.Copy(Me.data, rimkeyEntry._Offset, array, 0, rimkeyEntry._Length)
+			System.Array.Copy(Me.data, rimkeyEntry._Offset, array, 0, rimkeyEntry._Length)
 			Return array
 		End Function
 

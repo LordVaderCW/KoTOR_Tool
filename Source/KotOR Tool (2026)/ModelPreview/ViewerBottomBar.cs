@@ -28,7 +28,7 @@ namespace ModelPreview
             tools.Dock=DockStyle.Top;tools.Height=40;tools.Padding=new Padding(8,3,0,0);tools.WrapContents=false;tools.AutoScroll=true;
             transport.Dock=DockStyle.Bottom;transport.Height=34;transport.Padding=new Padding(8,0,0,0);transport.WrapContents=false;
             track.Dock=DockStyle.Fill;Controls.Add(track);Controls.Add(tools);Controls.Add(transport);
-            SetupButton(rotate,"Pause rotation",()=>send("viewRotate",null),115);tools.Controls.Add(rotate);
+            SetupButton(rotate,"Resume rotation",()=>send("viewRotate",null),115);tools.Controls.Add(rotate);
             tools.Controls.Add(new Label {Text="Axis",AutoSize=true,Margin=new Padding(10,7,2,0)});
             axis.DropDownStyle=ComboBoxStyle.DropDownList;axis.Width=48;axis.Items.AddRange(new object[]{"X","Y","Z"});axis.SelectedIndex=1;axis.AccessibleName="Rotation axis";
             axis.SelectedIndexChanged+=(s,e)=>{if(!updating)send("viewAxis",axis.Text);};tools.Controls.Add(axis);

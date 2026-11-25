@@ -309,7 +309,7 @@ Namespace kotor_tool
 
         ' Token: 0x06000493 RID: 1171 RVA: 0x0023D1F0 File Offset: 0x0023C1F0
         Private Sub miOpenExternal_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miOpenExternal.Click
-            Dim text As String
+            Dim text As String = String.Empty
             If frmMain.IsOnly1KotORInstalled() Then
                 If frmMain.hasKotor1() Then
                     text = UserSettings.GetSettings().KotorLocation(0)
@@ -354,7 +354,6 @@ Namespace kotor_tool
                 Return
             End If
             Me.g_dialogtlk.ClearTalkEntryList()
-            Try
                 For Each obj As Object In Me.dt.Rows
                     Dim dataRow As DataRow = CType(obj, DataRow)
                     Dim dialogTlkStrDataElement As DialogTlkStrDataElement = New DialogTlkStrDataElement()
@@ -372,12 +371,6 @@ Namespace kotor_tool
                     End If
                     Me.g_dialogtlk.AddTalkEntry(dialogTlkStrDataElement)
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
             Me.g_dialogtlk.WriteListToFile(text)
             Me.dgDialogTlk.CaptionText = text
         End Sub

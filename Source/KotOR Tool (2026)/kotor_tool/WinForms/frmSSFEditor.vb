@@ -95,7 +95,7 @@ Namespace kotor_tool
 		' Token: 0x06001023 RID: 4131 RVA: 0x00299E38 File Offset: 0x00298E38
 		Private Sub LoadDialogTlk(Optional promptForVersion As Boolean = True)
 			Dim flag As Boolean = False
-			Dim text As String
+			Dim text As String = String.Empty
 			If Me.miUseK1DialogTlk.Checked AndAlso (Me.KotorVersionIndex = 1 OrElse Me.KotorVersionIndex = -1) Then
 				text = Path.Combine(UserSettings.GetSettings().KotorLocation(0), "dialog.tlk")
 				Me.KotorVersionIndex = 0
@@ -136,7 +136,7 @@ Namespace kotor_tool
 
 		' Token: 0x06001024 RID: 4132 RVA: 0x00299FB0 File Offset: 0x00298FB0
 		Private Sub GetExternalDialogTlk()
-			Dim text As String
+			Dim text As String = String.Empty
 			If frmMain.IsOnly1KotORInstalled() Then
 				If frmMain.hasKotor1() Then
 					text = UserSettings.GetSettings().KotorLocation(0)
@@ -168,8 +168,7 @@ Namespace kotor_tool
 
 		' Token: 0x06001026 RID: 4134 RVA: 0x0029A0A8 File Offset: 0x002990A8
 		Private Function FindControlAndSetValue(tagStr As String, value As String) As Control
-			Dim control2 As Control
-			Try
+			Dim control2 As Control = Nothing
 				For Each obj As Object In Me.Panel1.Controls
 					Dim control As Control = CType(obj, Control)
 					If control.Tag IsNot Nothing AndAlso StringType.StrCmp(control.Tag.ToString(), tagStr, False) = 0 Then
@@ -182,12 +181,6 @@ Namespace kotor_tool
 						Exit For
 					End If
 				Next
-			Finally
-				Dim enumerator As IEnumerator
-				If TypeOf enumerator Is IDisposable Then
-					CType(enumerator, IDisposable).Dispose()
-				End If
-			End Try
 			Return control2
 		End Function
 

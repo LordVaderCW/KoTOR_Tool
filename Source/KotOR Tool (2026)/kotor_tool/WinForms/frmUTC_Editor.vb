@@ -213,7 +213,7 @@ Namespace kotor_tool
             If Not Me.UTC.SyncComboBox(Me.cmbxPortrait, "PortraitId") Then
                 Me.ComboBoxSettingError = True
             End If
-            Dim obj As Object
+            Dim obj As Object = Nothing
             Return obj
         End Function
 
@@ -328,35 +328,21 @@ Namespace kotor_tool
         ' Token: 0x06001292 RID: 4754 RVA: 0x002A9C58 File Offset: 0x002A8C58
         Private Sub chklbForcePowers_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles chklbForcePowers.MouseMove
             Me.tbForcePowerSummary.Clear()
-            Try
                 For Each obj As Object In Me.chklbForcePowers.CheckedItems
                     Dim text As String = StringType.FromObject(obj)
                     Dim tbForcePowerSummary As TextBox = Me.tbForcePowerSummary
                     tbForcePowerSummary.Text = tbForcePowerSummary.Text + text + vbCrLf
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
         End Sub
 
         ' Token: 0x06001293 RID: 4755 RVA: 0x002A9CDC File Offset: 0x002A8CDC
         Private Sub chklbFeats_MouseMove(ByVal sender As Object, ByVal e As MouseEventArgs) Handles chklbFeats.MouseMove
             Me.tbFeatSummary.Clear()
-            Try
                 For Each obj As Object In Me.chklbFeats.CheckedItems
                     Dim text As String = StringType.FromObject(obj)
                     Dim tbFeatSummary As TextBox = Me.tbFeatSummary
                     tbFeatSummary.Text = tbFeatSummary.Text + text + vbCrLf
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
         End Sub
 
         ' Token: 0x170006D6 RID: 1750
@@ -430,7 +416,6 @@ Namespace kotor_tool
             Me.SetNodeValueFromTextBox(Me.tbOnSpellAt, "ScriptSpellAt")
             Me.SetNodeValueFromTextBox(Me.tbOnUserDefine, "ScriptUserDefine")
             Me.UTC.ClearListElements("FeatList")
-            Try
                 For Each obj As Object In Me.chklbFeats.CheckedIndices
                     Dim num As Integer = IntegerType.FromObject(obj)
                     Dim gff_Struct As GFF_Struct = New GFF_Struct()
@@ -440,16 +425,9 @@ Namespace kotor_tool
                     gff_Struct.fields(0) = New GFF_Field(GFFField.GFF_word, "Feat", num)
                     Me.UTC.AddListElement("FeatList", gff_Struct)
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
             Me.SetNodeValueFromNumericUpDown(Me.nudForcePoints, "ForcePoints")
             Me.SetNodeValueFromNumericUpDown(Me.nudCurrentForce, "CurrentForce")
             Me.UTC.ClearListElements("ClassList(0).KnownList0")
-            Try
                 For Each obj2 As Object In Me.chklbForcePowers.CheckedIndices
                     Dim num As Integer = IntegerType.FromObject(obj2)
                     Dim gff_Struct As GFF_Struct = New GFF_Struct()
@@ -462,12 +440,6 @@ Namespace kotor_tool
                     gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_byte, "SpellFlags", 1)
                     Me.UTC.AddListElement("ClassList(0).KnownList0", gff_Struct)
                 Next
-            Finally
-                Dim enumerator2 As IEnumerator
-                If TypeOf enumerator2 Is IDisposable Then
-                    CType(enumerator2, IDisposable).Dispose()
-                End If
-            End Try
             If Me.UTC.VerifyNodeExists("TemplateResRef") Then
                 Me.SetNodeValueFromTextBox(Me.tbTemplateResRef, "TemplateResRef")
             End If
@@ -597,7 +569,6 @@ Namespace kotor_tool
             If frmInventoryEditor.ShowDialog() = DialogResult.OK Then
                 Dim i As Integer = 0
                 Me.UTC.ClearListElements("ItemList")
-                Try
                     For Each obj As Object In frmInventoryEditor.GetPackItemsList()
                         Dim inventoryItem As InventoryItem = CType(obj, InventoryItem)
                         Dim num5 As Integer = 1
@@ -624,14 +595,7 @@ Namespace kotor_tool
                             i += 1
                         Next
                     Next
-                Finally
-                    Dim enumerator As IEnumerator
-                    If TypeOf enumerator Is IDisposable Then
-                        CType(enumerator, IDisposable).Dispose()
-                    End If
-                End Try
                 Me.UTC.ClearListElements("Equip_ItemList")
-                Try
                     For Each obj2 As Object In frmInventoryEditor.GetEquippedItemsList()
                         Dim inventoryItem As InventoryItem = CType(obj2, InventoryItem)
                         If inventoryItem._ResRef IsNot Nothing Then
@@ -653,12 +617,6 @@ Namespace kotor_tool
                             Me.UTC.AddListElement("Equip_ItemList", gff_Struct)
                         End If
                     Next
-                Finally
-                    Dim enumerator2 As IEnumerator
-                    If TypeOf enumerator2 Is IDisposable Then
-                        CType(enumerator2, IDisposable).Dispose()
-                    End If
-                End Try
             End If
         End Sub
 
@@ -747,7 +705,7 @@ Namespace kotor_tool
         ' Token: 0x060012A4 RID: 4772 RVA: 0x002AAD3C File Offset: 0x002A9D3C
         Public Function ReadCls2DA(ByVal TwoDAName As String, ByVal ChitinKey As clsChitinKey) As cls2DA
             Dim flag As Boolean = True
-            Dim array As Byte()
+            Dim array As Byte() = Nothing
             If Me.CurrentSettings.bUseOverrideFiles Then
                 Dim text As String = Me.CurrentSettings.KotorLocation(Me.KotorVersionIndex) + "\override\" + TwoDAName + ".2da"
                 Try

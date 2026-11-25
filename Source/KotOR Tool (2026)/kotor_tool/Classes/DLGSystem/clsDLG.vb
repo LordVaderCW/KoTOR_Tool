@@ -245,7 +245,6 @@ Namespace kotor_tool
 
 		' Token: 0x0600004A RID: 74 RVA: 0x0021B9F0 File Offset: 0x0021A9F0
 		Private Sub ScanTVForEntryNodes(innode As DLGConvListNode, CurrNodeType As String)
-			Try
 				For Each obj As Object In innode.Nodes
 					Dim dlgconvListNode As DLGConvListNode = CType(obj, DLGConvListNode)
 					If Not dlgconvListNode.IsLink > 0 Then
@@ -258,69 +257,34 @@ Namespace kotor_tool
 						End If
 					End If
 				Next
-			Finally
-				Dim enumerator As IEnumerator
-				If TypeOf enumerator Is IDisposable Then
-					CType(enumerator, IDisposable).Dispose()
-				End If
-			End Try
 		End Sub
 
 		' Token: 0x0600004B RID: 75 RVA: 0x0021BA98 File Offset: 0x0021AA98
 		Private Sub DumpLists()
-			Try
 				For Each obj As Object In Me.EntryNodeList
 					Dim dlgconvListNode As DLGConvListNode = CType(obj, DLGConvListNode)
 					If dlgconvListNode.LinkedNodesList IsNot Nothing Then
-						Try
 							For Each obj2 As Object In dlgconvListNode.LinkedNodesList
 								Dim dlgconvListNode2 As DLGConvListNode = CType(obj2, DLGConvListNode)
 							Next
-						Finally
-							Dim enumerator2 As IEnumerator
-							If TypeOf enumerator2 Is IDisposable Then
-								CType(enumerator2, IDisposable).Dispose()
-							End If
-						End Try
 					End If
 					If dlgconvListNode.IsLink = 1 Then
 					End If
 				Next
-			Finally
-				Dim enumerator As IEnumerator
-				If TypeOf enumerator Is IDisposable Then
-					CType(enumerator, IDisposable).Dispose()
-				End If
-			End Try
-			Try
 				For Each obj3 As Object In Me.ReplyNodeList
 					Dim dlgconvListNode As DLGConvListNode = CType(obj3, DLGConvListNode)
 					If dlgconvListNode.LinkedNodesList IsNot Nothing Then
-						Try
 							For Each obj4 As Object In dlgconvListNode.LinkedNodesList
 								Dim dlgconvListNode2 As DLGConvListNode = CType(obj4, DLGConvListNode)
 							Next
-						Finally
-							Dim enumerator4 As IEnumerator
-							If TypeOf enumerator4 Is IDisposable Then
-								CType(enumerator4, IDisposable).Dispose()
-							End If
-						End Try
 					End If
 					If dlgconvListNode.IsLink = 1 Then
 					End If
 				Next
-			Finally
-				Dim enumerator3 As IEnumerator
-				If TypeOf enumerator3 Is IDisposable Then
-					CType(enumerator3, IDisposable).Dispose()
-				End If
-			End Try
 		End Sub
 
 		' Token: 0x0600004C RID: 76 RVA: 0x0021BBE8 File Offset: 0x0021ABE8
 		Private Sub ScanTVForLinkNodes(innode As DLGConvListNode, CurrNodeType As String)
-			Try
 				For Each obj As Object In innode.Nodes
 					Dim dlgconvListNode As DLGConvListNode = CType(obj, DLGConvListNode)
 					If StringType.StrCmp(CurrNodeType, "Entry", False) = 0 Then
@@ -347,18 +311,11 @@ Namespace kotor_tool
 						Me.ScanTVForLinkNodes(dlgconvListNode, "Entry")
 					End If
 				Next
-			Finally
-				Dim enumerator As IEnumerator
-				If TypeOf enumerator Is IDisposable Then
-					CType(enumerator, IDisposable).Dispose()
-				End If
-			End Try
 		End Sub
 
 		' Token: 0x0600004D RID: 77 RVA: 0x0021BD28 File Offset: 0x0021AD28
 		Private Function FindNodeInListByLinkID(list As ArrayList, id As Integer) As DLGConvListNode
-			Dim dlgconvListNode2 As DLGConvListNode
-			Try
+			Dim dlgconvListNode2 As DLGConvListNode = Nothing
 				For Each obj As Object In list
 					Dim dlgconvListNode As DLGConvListNode = CType(obj, DLGConvListNode)
 					If dlgconvListNode.LinkID = id Then
@@ -366,12 +323,6 @@ Namespace kotor_tool
 						Exit For
 					End If
 				Next
-			Finally
-				Dim enumerator As IEnumerator
-				If TypeOf enumerator Is IDisposable Then
-					CType(enumerator, IDisposable).Dispose()
-				End If
-			End Try
 			Return dlgconvListNode2
 		End Function
 

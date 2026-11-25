@@ -179,7 +179,6 @@ Namespace kotor_tool
                     End If
 				End Try
 				Dim flag As Boolean = False
-				Try
 					For Each obj As Object In mapInfo.MapList
 						Dim map As MapInfo.Map = CType(obj, MapInfo.Map)
 						If StringType.StrCmp(Me.g_MapName, map.MapName, False) = 0 Then
@@ -214,12 +213,6 @@ Namespace kotor_tool
 							End Select
 						End If
 					Next
-				Finally
-					Dim enumerator As IEnumerator
-					If TypeOf enumerator Is IDisposable Then
-						CType(enumerator, IDisposable).Dispose()
-					End If
-				End Try
 				IL_088F:
 				If Not flag Then
 					Interaction.MsgBox("You have the map for this module, but the MapInfo file appears to be incorrect or out-of date.", MsgBoxStyle.Critical, "Map Info missing")
@@ -735,7 +728,7 @@ Namespace kotor_tool
 							If modItemTag IsNot Nothing AndAlso StringType.StrCmp(modItemTag, "", False) <> 0 Then
 								Graphics.FromImage(Me.bmp).DrawString(modItemTag, Me.labelFont, Me.labelBrush, num + 5F, num2 - 5F)
 							Else
-								Dim text5 As String
+								Dim text5 As String = String.Empty
 								If Directory.Exists(Me.g_ProjectPath + "\recycle") Then
 									Dim files As String() = Directory.GetFiles(Me.g_ProjectPath + "\recycle", StringType.FromObject(ObjectType.StrCatObj(ObjectType.StrCatObj("*", obj2), ".utt")))
 									If files.Length > 0 Then
@@ -828,7 +821,6 @@ Namespace kotor_tool
 					Me.IndicateModItem(Graphics.FromImage(Me.bmp), CInt(Math.Round(CDbl(num))), CInt(Math.Round(CDbl(num2))))
 				End If
 				If Me.gModuleEditorSettings.FilterShowEncounters Then
-					Try
 						For Each obj6 As Object In Me.EncounterArr(i).SpawnPointList
 							Dim point2 As Point = CType((If(obj6, Activator.CreateInstance(GetType(Point)))), Point)
 							Graphics.FromImage(Me.bmp).DrawLine(pen2, CSng(point2.X), CSng(point2.Y), num, num2)
@@ -837,12 +829,6 @@ Namespace kotor_tool
 							Dim num41 As Single = SingleType.FromObject(Me.GITfile.GetNodeValue(String.Concat(New String() { "Encounter List(", StringType.FromInteger(i), ").SpawnPointList(", StringType.FromInteger(Me.EncounterArr(i).SpawnPointList.IndexOf(point2)), ").Orientation" })))
 							Graphics.FromImage(Me.bmp).DrawLine(New Pen(Color.White, 1F), point2.X, point2.Y, point2.X + CInt(Math.Round(Math.Sin(CDbl(num41)) * Convert.ToDouble(Me.nudXmul.Value))), point2.Y - CInt(Math.Round(Math.Cos(CDbl(num41)) * Convert.ToDouble(Me.nudYmul.Value))))
 						Next
-					Finally
-						Dim enumerator As IEnumerator
-						If TypeOf enumerator Is IDisposable Then
-							CType(enumerator, IDisposable).Dispose()
-						End If
-					End Try
 
 						If Me.gModuleEditorSettings.ShowItemLabels Then
 							If Me.gModuleEditorSettings.ShowTagsOnModulePalette Then
@@ -1410,7 +1396,7 @@ Namespace kotor_tool
 			If itemType = 6 Then
 				Return Me.CameraArr(node.ArrayIndex)
 			End If
-			Dim modItem As ModItem
+			Dim modItem As ModItem = Nothing
 			Return modItem
 		End Function
 
@@ -2561,7 +2547,7 @@ Namespace kotor_tool
                 Dim num As Integer = Convert.ToInt32(Strings.Replace(StringType.FromObject(array(0)), "itemtype=", "", 1, -1, CompareMethod.Binary))
                 Me.gCurrentModItemType = num
                 Dim gff_Struct As GFF_Struct = New GFF_Struct()
-                Dim text As String
+                Dim text As String = String.Empty
                 If num <> 6 Then
                     text = Strings.Replace(StringType.FromObject(array(2)), "resref=", "", 1, -1, CompareMethod.Binary)
                     Dim text2 As String = text + "." + frmMain.GetRsrcTypeForID(num)
@@ -2592,7 +2578,7 @@ Namespace kotor_tool
                             If frmPromptForString.DialogResult = dialogResult.Cancel Then
                                 Return
                             End If
-                            Dim text4 As String
+                            Dim text4 As String = String.Empty
                             If ObjectType.ObjTst(array(3), "up", False) = 0 Then
                                 text4 = Me.g_ProjectPath + "\userpalette\" + text2
                             ElseIf ObjectType.ObjTst(array(3), "gt", False) = 0 Then
@@ -2614,7 +2600,7 @@ Namespace kotor_tool
                         gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_float, "ZPosition", 0.0F)
                         gff_Struct.fields(3) = New GFF_Field(GFFField.GFF_float, "XOrientation", 1.0F)
                         gff_Struct.fields(4) = New GFF_Field(GFFField.GFF_float, "YOrientation", 0.0F)
-                        Dim text5 As String
+                        Dim text5 As String = String.Empty
                         gff_Struct.fields(5) = New GFF_Field(GFFField.GFF_CResRef, "TemplateResRef", text + text5)
                         Me.GITfile.AddListElement("Creature List", gff_Struct)
                         Me.gModuleEditorSettings.FilterShowCreatures = True
@@ -2629,7 +2615,7 @@ Namespace kotor_tool
                             Me.gLastMousePos = point2
                             Me.gCurrentRegionSegmentOrigin = Me.gLastMousePos
                             If Not Me.g_IsDrawingRegion Then
-                                Dim text5 As String
+                                Dim text5 As String = String.Empty
                                 Me.g_RegionResRef = text + text5
                                 Me.g_IsDrawingRegion = True
                                 Me.backbuffer = Nothing
@@ -2657,7 +2643,7 @@ Namespace kotor_tool
                         Me.gLastMousePos = point2
                         Me.gCurrentRegionSegmentOrigin = Me.gLastMousePos
                         If Not Me.g_IsDrawingRegion Then
-                            Dim text5 As String
+                            Dim text5 As String = String.Empty
                             Me.g_RegionResRef = text + text5
                             Me.g_IsDrawingRegion = True
                             Me.backbuffer = Nothing
@@ -2673,7 +2659,7 @@ Namespace kotor_tool
                         gff_Struct.type = 8
                         gff_Struct.fieldCount = 12
                         gff_Struct.fields = New GFF_Field(11) {}
-                        Dim text5 As String
+                        Dim text5 As String = String.Empty
                         gff_Struct.fields(0) = New GFF_Field(GFFField.GFF_CResRef, "TemplateResRef", text + text5)
                         gff_Struct.fields(1) = New GFF_Field(GFFField.GFF_CExoString, "Tag", "empty")
                         gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_CResRef, "LinkedToModule", "empty")
@@ -2695,7 +2681,7 @@ Namespace kotor_tool
                         gff_Struct.fields(1) = New GFF_Field(GFFField.GFF_float, "Y", Convert.ToSingle(Decimal.Divide(Decimal.Add(New Decimal(Me.invy(y)), Me.nudYoff.Value), Me.nudYmul.Value)))
                         gff_Struct.fields(2) = New GFF_Field(GFFField.GFF_float, "Z", 0.0F)
                         gff_Struct.fields(3) = New GFF_Field(GFFField.GFF_float, "Bearing", 0.0F)
-                        Dim text5 As String
+                        Dim text5 As String = String.Empty
                         gff_Struct.fields(4) = New GFF_Field(GFFField.GFF_CResRef, "TemplateResRef", text + text5)
                         Me.GITfile.AddListElement("Placeable List", gff_Struct)
                         Me.gModuleEditorSettings.FilterShowPlaceables = True
@@ -3032,17 +3018,10 @@ Namespace kotor_tool
 			Console.WriteLine(StringType.FromInteger(Me.tb) + " " + StringType.FromInteger(Me.lcl))
 			Me.tb = 0
 			Me.lcl = 0
-			Try
 				For Each obj As Object In Me.g_tvModule_TreeOpenPaths
 					Dim text As String = StringType.FromObject(obj)
 					frmMain.OpenTreeViewToPath(text, Me.tvModule.Nodes(0), 0, False)
 				Next
-			Finally
-				Dim enumerator As IEnumerator
-				If TypeOf enumerator Is IDisposable Then
-					CType(enumerator, IDisposable).Dispose()
-				End If
-			End Try
 		End Sub
 
         '' Token: 0x060008F5 RID: 2293 RVA: 0x0026B598 File Offset: 0x0026A598
@@ -3160,7 +3139,7 @@ Namespace kotor_tool
 				Me.tb += 1
 				Return StringType.FromObject(Me.htK2Tags(FileName))
 			End If
-			Dim text As String
+			Dim text As String = Nothing
 			Return text
 		End Function
 
@@ -3314,7 +3293,7 @@ Namespace kotor_tool
 			If File.Exists(Me.g_ProjectPath + "\" + fileName) Then
 				Dim flag As Boolean = False
 				Dim extension As String = Path.GetExtension(fileName)
-				Dim array2 As ModItem()
+				Dim array2 As ModItem() = Nothing
 				If StringType.StrCmp(extension, ".utc", False) = 0 Then
 					array2 = Me.CreatureArr
 				ElseIf StringType.StrCmp(extension, ".utd", False) = 0 Then
@@ -3434,13 +3413,12 @@ Namespace kotor_tool
 				UserSettings.SaveSettings(Me.CurrentSettings)
 				Return folderBrowserDialog.SelectedPath
 			End If
-			Dim text As String
+			Dim text As String = Nothing
 			Return text
 		End Function
 
 		' Token: 0x060008FF RID: 2303 RVA: 0x0026C6D4 File Offset: 0x0026B6D4
 		Private Sub AddNodeChildrenToTreePaths(node As ModItemTvNode, arTreeOpenPaths As ArrayList)
-			Try
 				For Each obj As Object In node.Nodes
 					Dim modItemTvNode As ModItemTvNode = CType(obj, ModItemTvNode)
 					If modItemTvNode.IsExpanded Then
@@ -3450,12 +3428,6 @@ Namespace kotor_tool
 						Me.AddNodeChildrenToTreePaths(modItemTvNode, arTreeOpenPaths)
 					End If
 				Next
-			Finally
-				Dim enumerator As IEnumerator
-				If TypeOf enumerator Is IDisposable Then
-					CType(enumerator, IDisposable).Dispose()
-				End If
-			End Try
 		End Sub
 
 		' Token: 0x06000900 RID: 2304 RVA: 0x0026C754 File Offset: 0x0026B754

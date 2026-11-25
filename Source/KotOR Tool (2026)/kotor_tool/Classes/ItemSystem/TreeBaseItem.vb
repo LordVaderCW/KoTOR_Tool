@@ -13,18 +13,23 @@ Namespace kotor_tool
 		End Sub
 
 		' Token: 0x04000007 RID: 7
+		<CLSCompliant(False)> _
 		Public _itemtype As String
 
 		' Token: 0x04000008 RID: 8
+		<CLSCompliant(False)> _
 		Public _label As String
 
 		' Token: 0x04000009 RID: 9
+		<CLSCompliant(False)> _
 		Public _name As String
 
 		' Token: 0x0400000A RID: 10
+		<CLSCompliant(False)> _
 		Public _slots As String
 
 		' Token: 0x0400000B RID: 11
+		<CLSCompliant(False)> _
 		Public _index As Integer
 	End Class
 End Namespace

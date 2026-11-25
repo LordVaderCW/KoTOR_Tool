@@ -158,6 +158,7 @@ Namespace kotor_tool
 		End Sub
 
 		' Token: 0x06001720 RID: 5920 RVA: 0x002CB428 File Offset: 0x002CA428
+		<CLSCompliant(False)> _
 		Public Sub New(eke As ERFKeyEntry)
 			Me.mKotorVerIndex = -1
 			Me.mResID = eke._ResourceID
@@ -168,6 +169,7 @@ Namespace kotor_tool
 		End Sub
 
 		' Token: 0x06001721 RID: 5921 RVA: 0x002CB490 File Offset: 0x002CA490
+		<CLSCompliant(False)> _
 		Public Sub New(eke As ERFKeyEntry, sourcePath As String)
 			Me.New(eke)
 			Me.mfilepath = sourcePath

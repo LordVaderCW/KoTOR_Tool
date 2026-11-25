@@ -111,7 +111,7 @@ Namespace kotor_tool
 
 		' Token: 0x06001809 RID: 6153 RVA: 0x002CD11C File Offset: 0x002CC11C
 		Private Function quoteFilterText() As String
-			Dim text As String
+			Dim text As String = String.Empty
 			If StringType.StrCmp(Me.m_matchOper, "IN", False) = 0 OrElse StringType.StrCmp(Me.m_matchOper, "NOT IN", False) = 0 OrElse StringType.StrCmp(Me.m_datatype, "Int32", False) = 0 Then
 				text = Me.m_filterText
 			ElseIf StringType.StrCmp(Me.datatype, "Date", False) = 0 Then

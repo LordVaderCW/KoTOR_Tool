@@ -167,17 +167,10 @@ Namespace kotor_tool
                 Me.AddFileNamesToList(text, arrayList, "*.ncs")
                 Me.AddFileNamesToList(text, arrayList, "*.dlg")
             End If
-            Try
                 For Each obj As Object In arrayList
                     Dim text2 As String = StringType.FromObject(obj)
                     Me.ERFContentFiles.Items.Add(text2)
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
         End Sub
 
         ' Token: 0x060004C2 RID: 1218 RVA: 0x0023E8E0 File Offset: 0x0023D8E0
@@ -265,7 +258,7 @@ Namespace kotor_tool
             If folderBrowserDialog.ShowDialog() = DialogResult.OK Then
                 Return folderBrowserDialog.SelectedPath
             End If
-            Dim text As String
+            Dim text As String = Nothing
             Return text
         End Function
 

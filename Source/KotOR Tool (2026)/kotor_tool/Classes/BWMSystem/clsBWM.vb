@@ -449,15 +449,19 @@ Namespace kotor_tool
 		Public unk_singles As Single()
 
 		' Token: 0x04000024 RID: 36
+		<CLSCompliant(False)> _
 		Public vert_count As UInteger
 
 		' Token: 0x04000025 RID: 37
+		<CLSCompliant(False)> _
 		Public verts_offset As UInteger
 
 		' Token: 0x04000026 RID: 38
+		<CLSCompliant(False)> _
 		Public face_count As UInteger
 
 		' Token: 0x04000027 RID: 39
+		<CLSCompliant(False)> _
 		Public faces_offset As UInteger
 
 		' Token: 0x04000028 RID: 40

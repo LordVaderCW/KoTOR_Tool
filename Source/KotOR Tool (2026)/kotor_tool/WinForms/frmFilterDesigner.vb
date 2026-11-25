@@ -85,8 +85,7 @@ Namespace kotor_tool
 
         ' Token: 0x060004F6 RID: 1270 RVA: 0x0023FBD0 File Offset: 0x0023EBD0
         Private Function FindControl(ByVal tagName As String) As Control
-            Dim control2 As Control
-            Try
+            Dim control2 As Control = Nothing
                 For Each obj As Object In Me.Controls
                     Dim control As Control = CType(obj, Control)
                     If ObjectType.ObjTst(control.Tag, tagName, False) = 0 Then
@@ -94,12 +93,6 @@ Namespace kotor_tool
                         Exit For
                     End If
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
             Return control2
         End Function
 
@@ -107,19 +100,12 @@ Namespace kotor_tool
         Private Function FilterControlCount() As Integer
             ' The following expression was wrapped in a checked-statement
             Dim num As Integer
-            Try
                 For Each obj As Object In Me.Controls
                     Dim control As Control = CType(obj, Control)
                     If StringType.StrCmp(Strings.Mid(StringType.FromObject(control.Tag), 1, 2), "cn", False) = 0 Then
                         num += 1
                     End If
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
             Return num
         End Function
 
@@ -162,17 +148,10 @@ Namespace kotor_tool
             control.Location = point
             comboBox.Size = Me.cmbxColumnName1.Size
             comboBox.TabIndex = (num - 1) * 5 + 1
-            Try
                 For Each obj As Object In Me.cmbxColumnName1.Items
                     Dim objectValue As Object = RuntimeHelpers.GetObjectValue(obj)
                     comboBox.Items.Add(RuntimeHelpers.GetObjectValue(objectValue))
                 Next
-            Finally
-                Dim enumerator As IEnumerator
-                If TypeOf enumerator Is IDisposable Then
-                    CType(enumerator, IDisposable).Dispose()
-                End If
-            End Try
             comboBox.DisplayMember = "displayColName"
             comboBox.ValueMember = "nativeColName"
             AddHandler comboBox.SelectedIndexChanged, AddressOf Me.cmbxColumnName_SelectedIndexChanged
