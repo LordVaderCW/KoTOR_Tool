@@ -1,4 +1,4 @@
-﻿Imports System
+Imports System
 Imports System.Collections
 Imports System.Drawing
 Imports System.Xml.Serialization
@@ -29,7 +29,6 @@ Namespace kotor_tool
             Me.m_bModelExtraction_ExtractAnimations = False
             Me.m_bModelExtraction_ConvertSkinToTrimesh = False
             Me.m_bModelExtraction_EachModelInOwnDirectory = True
-            Me.m_bModelExtraction_CleanWorkingDirectoryBeforeExport = True
             Me.m_bUseOverrideFiles = False
         End Sub
 
@@ -114,18 +113,6 @@ Namespace kotor_tool
             End Get
             Set(ByVal value As Boolean)
                 Me.m_bModelExtraction_EachModelInOwnDirectory = value
-            End Set
-        End Property
-
-        ' Token: 0x170008DB RID: 2267
-        ' (get) Token: 0x06001756 RID: 5974 RVA: 0x002CB9E8 File Offset: 0x002CA9E8
-        ' (set) Token: 0x06001757 RID: 5975 RVA: 0x002CB9FC File Offset: 0x002CA9FC
-        Public Property bModelExtraction_CleanWorkingDirectoryBeforeExport() As Boolean
-            Get
-                Return Me.m_bModelExtraction_CleanWorkingDirectoryBeforeExport
-            End Get
-            Set(ByVal value As Boolean)
-                Me.m_bModelExtraction_CleanWorkingDirectoryBeforeExport = value
             End Set
         End Property
 
@@ -1337,9 +1324,6 @@ Namespace kotor_tool
 
         ' Token: 0x04000BAE RID: 2990
         Private m_bModelExtraction_EachModelInOwnDirectory As Boolean
-
-        ' Token: 0x04000BAF RID: 2991
-        Private m_bModelExtraction_CleanWorkingDirectoryBeforeExport As Boolean
 
         ' Token: 0x04000BB0 RID: 2992
         Private m_bUseOverrideFiles As Boolean

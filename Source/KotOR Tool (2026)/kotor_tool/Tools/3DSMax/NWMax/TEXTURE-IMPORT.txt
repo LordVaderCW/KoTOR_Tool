@@ -1,0 +1,34 @@
+Texture import fix - 19 November 2026
+
+The supplied 001ebo1 missing-texture log was caused by incomplete test extraction:
+MDL/MDX had been extracted without their separately stored textures.
+Extracted 17 base textures and 2 lightmaps for 001ebo1, plus 4 character textures
+for p_attonbb and p_kreiabb using the user's KotOR Tool decoding classes.
+Files are beside each model under C:\Users\KingJamesIX\Documents\3dsmax\mdl.
+Existing files were not overwritten. Game files were opened read-only.
+
+Importer changes:
+- Cache materials within one import instead of reusing arbitrary scene materials
+  by name (which could be blank from a previous missing-texture import).
+- Resolve textures in the model folder, its textures subfolder, and configured
+  Max external file paths. Support TGA, PNG, DDS, BMP, JPG and TIF filenames.
+- Assign an explicit file-backed diffuse bitmap on UV channel 1, enable its map,
+  and enable both software and hardware viewport texture display after UV setup.
+- Preserve missing bitmap references for Max asset tracking and explain where
+  textures should be extracted. The importer does not extract game archives.
+
+Validation: tests/texture-results.txt, 166 checks, zero failures.
+Med box: 2 textured meshes; Ebon Hawk room: 19; Mission: 11.
+Checked assigned maps, existing file paths, bitmap decoding, UV channel, enabled
+maps, and that a stale pre-existing matching material remained untouched.
+Live bridge reload confirmed separately; user scene left unchanged.
+These are programmatic material checks, not visual viewport inspection.
+Secondary lightmaps are extracted but blending them remains outside this patch.
+No TXI-driven shaders or animated texture effects are implemented here.
+
+Import 001ebo1-ascii.mdl, not the binary 001ebo1.mdl.
+Reimport a model that was previously imported without textures.
+Backups: backups/textures-20261119
+Patch: texture-import.patch
+Autodesk viewport API reference:
+https://help.autodesk.com/cloudhelp/2018/ENU/MAXScript-Help/files/GUID-BDAD17C6-AC43-4297-8AD3-69F0920ABC59.htm

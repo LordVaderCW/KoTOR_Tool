@@ -1,0 +1,254 @@
+--- a/nwmax.ms
++++ b/nwmax.ms
+@@ -49,7 +49,7 @@
+ global gNX_maxver = (maxversion())[1]
+ 
+ -- Keep earlier Listener output available for diagnosis.
+-global gblVersion = "0.8 b61 - Max 2021 foundation 1"
++global gblVersion = "0.8 b61 - Max 2021 / KotOR import 1"
+ format "--------------------------------------------------------------\r\n"
+ format "\r\n"
+ format "                        NWmax v%\r\n" gblVersion
+@@ -224,6 +224,15 @@
+         (point3 x y z)
+     ),
+ 
++    -- Odyssey ASCII exporters may omit the unused third UV coordinate.
++    fn ReadUVPoint3 =
++    (
++        local u = ReadToken() as float
++        local v = ReadToken() as float
++        local w = if PeekToken() == undefined then 0.0 else (ReadToken() as float)
++        [u,v,w]
++    ),
++
+     fn ReadFloat =
+     (
+         (ReadToken() as float)
+--- a/nw_ie_inc/aurora_fn_import.ms
++++ b/nw_ie_inc/aurora_fn_import.ms
+@@ -844,7 +844,15 @@
+     -- Open up the file and check to see if its a binary file
+     local binMdlStream = fopen pFile "rb"
+     local isNotBinary = ReadByte binMdlStream
++    local geometrySignature = 0
++    if isNotBinary == 0 and (getFileSize pFile) >= 16 do
++    (
++        fseek binMdlStream 12 #seek_set
++        geometrySignature = readLong binMdlStream #unsigned
++    )
+     fclose binMdlStream
++    if geometrySignature == 4273776 or geometrySignature == 4285200 do
++        throw "KotOR binary MDL detected. Decompile the matching MDL/MDX pair to ASCII with MDLOps or MDLEdit first. NWNmdlcomp cannot import KotOR binaries."
+ 
+     if (isNotBinary == 0) then
+     (
+@@ -916,6 +924,8 @@
+     local lineNum = 0
+     local mdl_pos = MDL_DEF
+     local objProps = ""
++    local extraTVerts = #(#(),#(),#())
++    local extraTVFaces = #(#(),#(),#())
+     local quitEarly = false
+     local in_aabb = false
+     local in_emitter = false
+@@ -990,6 +1000,7 @@
+             -- typo clean ups
+             case idToken of (
+                 "setfillumcolorkey": idToken = "selfillumcolorkey"
++                "lightmaptverts": idToken = "tverts1"
+             )
+             
+             case mdl_pos of (
+@@ -1016,7 +1027,7 @@
+                             if DEBUG then format "classification processing START\r\n"
+                             -- make the list all lower case to cope with differences in export scripts
+                             --#("Character","Tile", "Door","Effect","WalkMesh","Other", "BodyPart", "Item", "GUI")
+-                            local class_types = #("character","tile", "door","effect","walkmesh","other","bodypart","item","gui")
++                            local class_types = #("character","tile", "door","effect","walkmesh","other","bodypart","item","gui","lightsaber","placeable","flyer")
+                             local tempStr = nx_lowercase (tok.ReadString())
+                             -- deal with case where effect comes through as effects
+                             if tempStr == "effects" then tempStr = "effect"
+@@ -1067,7 +1078,9 @@
+                         "node": -- Node Struct
+                         (
+                             -- Define initial node data
+-                            objType = tok.ReadToken()
++                            objType = toLower (tok.ReadToken())
++                            if (findItem #("dummy","trimesh","skin","animmesh","danglymesh","aabb","light","emitter","reference") objType) == 0 do
++                                throw ("Unsupported MDL node type: " + objType + ". For native lightsaber nodes, use MDLOps ASCII conversion to trimesh before importing.")
+                             objName = tok.ReadToken()
+                             objWireColor = color 255 255 255
+                             objAmbient = color 255 255 255
+@@ -1108,6 +1121,8 @@
+                             numTVerts = 0
+                             TVerts = #()
+                             TVfaces = #()
++                            extraTVerts = #(#(),#(),#())
++                            extraTVFaces = #(#(),#(),#())
+                             smoothGroups = #()
+                             surfacemats = #()
+                             numConstraints = 0
+@@ -1331,11 +1346,66 @@
+                             (
+                                 tok.SetString (getNextNonBlankLine mdlStream)
+                                 lineNum += 1
+-                                local p3 = tok.ReadPoint3()
++                                local p3 = tok.ReadUVPoint3()
+                                 append TVerts p3
+                             )
+                         )
+                         
++                        "tverts1":
++                        (
++                            local count = tok.ReadInteger()
++                            for i = 1 to count do
++                            (
++                                tok.SetString (getNextNonBlankLine mdlStream)
++                                append extraTVerts[1] (tok.ReadUVPoint3())
++                            )
++                        )
++                        "texindices1":
++                        (
++                            local count = tok.ReadInteger()
++                            for i = 1 to count do
++                            (
++                                tok.SetString (getNextNonBlankLine mdlStream)
++                                append extraTVFaces[1] (tok.ReadPoint3() + [1,1,1])
++                            )
++                        )
++                        "tverts2":
++                        (
++                            local count = tok.ReadInteger()
++                            for i = 1 to count do
++                            (
++                                tok.SetString (getNextNonBlankLine mdlStream)
++                                append extraTVerts[2] (tok.ReadUVPoint3())
++                            )
++                        )
++                        "texindices2":
++                        (
++                            local count = tok.ReadInteger()
++                            for i = 1 to count do
++                            (
++                                tok.SetString (getNextNonBlankLine mdlStream)
++                                append extraTVFaces[2] (tok.ReadPoint3() + [1,1,1])
++                            )
++                        )
++                        "tverts3":
++                        (
++                            local count = tok.ReadInteger()
++                            for i = 1 to count do
++                            (
++                                tok.SetString (getNextNonBlankLine mdlStream)
++                                append extraTVerts[3] (tok.ReadUVPoint3())
++                            )
++                        )
++                        "texindices3":
++                        (
++                            local count = tok.ReadInteger()
++                            for i = 1 to count do
++                            (
++                                tok.SetString (getNextNonBlankLine mdlStream)
++                                append extraTVFaces[3] (tok.ReadPoint3() + [1,1,1])
++                            )
++                        )
++
+                         --
+                         -- Emitter key words
+                         --
+@@ -1501,7 +1571,7 @@
+                                         (
+                                             if DEBUG then format "%BUILD MESH OBJECT: make aabb material\r\n" strIndent1
+                                             objMaterial = nx_createNWNWalkMaterial()
+-                                            objProps = ""
++                                            -- Retain Odyssey metadata on walkmesh nodes too.
+                                         )
+                                         if (objMaterial == undefined) and (textureName != "") then
+                                         (
+@@ -1603,6 +1673,26 @@
+                                             for i = 1 to numTVerts do setTVert newObj i TVerts[i]
+                                             buildTVFaces newObj
+                                             for i = 1 to numFaces do setTVFace newObj i TVfaces[i]
++                                        )
++
++                                        -- Odyssey texture sets 1..3 map to Max channels 2..4.
++                                        for uvSet = 1 to 3 where extraTVerts[uvSet].count > 0 do
++                                        (
++                                            local channel = uvSet + 1
++                                            local uvFaces = extraTVFaces[uvSet]
++                                            if uvFaces.count != numFaces do throw ("Missing or invalid texindices" + (uvSet as string) + " on " + objName)
++                                            if meshop.getNumMaps newObj <= channel do meshop.setNumMaps newObj (channel + 1) keep:true
++                                            meshop.setMapSupport newObj channel true
++                                            meshop.setNumMapVerts newObj channel extraTVerts[uvSet].count
++                                            meshop.setNumMapFaces newObj channel numFaces
++                                            for uv = 1 to extraTVerts[uvSet].count do meshop.setMapVert newObj channel uv extraTVerts[uvSet][uv]
++                                            for face = 1 to numFaces do
++                                            (
++                                                local indices = uvFaces[face]
++                                                for component = 1 to 3 do
++                                                    if indices[component] < 1 or indices[component] > extraTVerts[uvSet].count do throw ("UV index out of range on " + objName)
++                                                meshop.setMapFace newObj channel face indices
++                                            )
+                                         )
+ 
+                                         if DEBUG then format "%BUILD MESH OBJECT: apply constraints if have them\r\n" strIndent1
+--- a/nw_ie_inc/aurora_helper_base.ms
++++ b/nw_ie_inc/aurora_helper_base.ms
+@@ -43,7 +43,7 @@
+     local master_anim_range
+     --#("Character", "BodyPart", "Item", "Tile","GUI", "Effects", "Door","WalkMesh")
+     --#("BodyPart", "Item", "GUI")
+-	local class_types = #("Character","Tile", "Door","Effect","WalkMesh","Other", "BodyPart", "Item", "GUI")
++	local class_types = #("Character","Tile", "Door","Effect","WalkMesh","Other", "BodyPart", "Item", "GUI", "Lightsaber", "Placeable", "Flyer")
+ 	
+ 	-- parameters
+ 	parameters main rollout:params 
+@@ -914,7 +914,7 @@
+ -- ModelBase Wizard - beta, by Joco
+ rollout basewiz "Model Base Wizard"
+ (
+-	local class_types = #("Character","Tile", "Door","Effect","WalkMesh","Other", "BodyPart", "Item", "GUI")
++	local class_types = #("Character","Tile", "Door","Effect","WalkMesh","Other", "BodyPart", "Item", "GUI", "Lightsaber", "Placeable", "Flyer")
+ 	local modelbase
+ 	
+ 	dropDownList ddl_type "Model Type" width:133 height:40 align:#center items:class_types selection:1
+--- a/nw_ie_inc/nwn_gui_import.ms
++++ b/nw_ie_inc/nwn_gui_import.ms
+@@ -161,12 +161,12 @@
+     )
+ )
+ 
+-rollout ImportRollout "MDL Loading" width:162 height:250
++rollout ImportRollout "MDL Import" width:162 height:250
+ (
+ 	Group "Filename" 
+ 	(
+ 		edittext import_filename_edit "" width:128 height:16
+-		button import_browse_button "Browse" width:70 height:24
++		button import_browse_button "Browse" width:70 height:24 tooltip:"KotOR: choose an ASCII MDL decompiled with MDLOps or MDLEdit."
+ 	)
+ 	Group "Options"
+ 	(
+@@ -220,7 +220,7 @@
+ 	
+ 	on import_browse_button pressed do
+ 	(
+-	    local filename = getOpenFileName caption:"Import mdl" types:"NWN mdl (*.mdl)|*.mdl|NWN ASCII Model (*.ascii)|*.ascii|All Files (*.*)|*.*|"
++	    local filename = getOpenFileName caption:"Import mdl" types:"MDL Models (*.mdl)|*.mdl|ASCII Models (*.ascii)|*.ascii|All Files (*.*)|*.*|"
+ 	    if filename != undefined do import_filename_edit.text = filename
+ 	)
+ 	on import_button pressed do
+--- a/nw_ie_inc/aurora_fn_general.ms
++++ b/nw_ie_inc/aurora_fn_general.ms
+@@ -494,8 +494,8 @@
+        for i in 1 to SurfaceMatName.count do
+        (
+          newMaterial.names[i] = SurfaceMatName[i]
+-         newMaterial.materialList[i].name = SurfaceMatName[i]
+-         newMaterial.materialList[i].diffuse = nx_SurfaceMat[i]
++         -- Max 2021 may create Physical Materials as the default submaterial.
++         newMaterial.materialList[i] = standardMaterial name:SurfaceMatName[i] diffuse:nx_SurfaceMat[i]
+        )
+     )
+     nx_SurfaceMat = undefined

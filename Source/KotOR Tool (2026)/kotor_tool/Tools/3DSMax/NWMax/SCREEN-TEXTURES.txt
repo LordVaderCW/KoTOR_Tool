@@ -1,0 +1,34 @@
+Screen texture correction - 19 November 2026
+
+Root cause: EBO_AScr2, EBO_AScr3 and EBO_AScrn are BC1 cycle textures.
+Their TPC payload is 43,904 bytes: 16 frames, each with a complete 2,744-byte
+mipmap chain starting at 64x64. The previous KotOR Tool conversion treated this
+as a flat 256x256 image, mixing frame and mipmap blocks into scrambled strips.
+TXI specifies proceduretype cycle, numx 4, numy 4, and fps 15/15/35.
+This was an extraction error plus missing cycle material handling, not a reason
+to rewrite mesh UV coordinates.
+
+Corrected the three generated TGA assets from the original TPC data, validating
+all frame/mipmap byte boundaries. Rebuilt 4x4 atlases and exported TXI sidecars.
+Original TPC files remain beside the model. Previous TGA files and scripts are
+backed up under backups/screen-textures-20261119.
+Updated the extraction helper to route cycle textures through the frame-aware
+BC1 decoder. Unsupported layouts fail rather than silently produce wrong pixels.
+The decoder requires Python and Pillow, available in this environment.
+
+NWmax now reads companion TXI cycle grid dimensions and uses a bitmap crop for
+a static first-frame preview. Mesh UVs and source bitmap names are preserved.
+Non-cycle textures are not cropped. TXI is parsed as data, never executed.
+The current scene's three screen materials were refreshed through the bridge,
+without reimporting, deleting, or moving geometry. A bridge viewport capture
+confirmed correct screen graphics: tests/screens-fixed.png.
+
+Limitations: this is a STATIC preview. It does not implement 15/35fps screen
+animation, additive blending, or every TXI shader instruction. Importing an old
+incorrectly decoded TGA alone cannot reconstruct lost frame layout; re-extract
+from the TPC. Correct TGA atlas exports need their matching TXI beside them.
+Fresh import/UV regression results: tests/screen-validation-results.txt.
+
+Reference documentation consulted:
+https://raw.githubusercontent.com/OldRepublicDevs/PyKotor/master/Libraries/PyKotor/src/pykotor/resource/formats/tpc/io_tpc.py
+https://help.autodesk.com/cloudhelp/2018/ENU/MAXScript-Help/files/GUID-A3231AD9-2FCB-483B-9F43-3914BD1CE3D6.htm

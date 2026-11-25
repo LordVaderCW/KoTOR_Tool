@@ -1,0 +1,29 @@
+# Minimal ASCII geometry fixture for the Max 2021 foundation tests.
+newmodel nx_foundation
+setsupermodel nx_foundation NULL
+classification Other
+setanimationscale 1.0
+beginmodelgeom nx_foundation
+node dummy nx_foundation
+  parent NULL
+endnode
+node trimesh nx_foundation_mesh
+  parent nx_foundation
+  position 0 0 0
+  orientation 0 0 1 0
+  diffuse 1 1 1
+  ambient 1 1 1
+  bitmap nx_foundation_test_texture
+  verts 3
+    0 0 0
+    1 0 0
+    0 1 0
+  tverts 3
+    0 0 0
+    1 0 0
+    0 1 0
+  faces 1
+    0 1 2 1 0 1 2 0
+endnode
+endmodelgeom nx_foundation
+donemodel nx_foundation

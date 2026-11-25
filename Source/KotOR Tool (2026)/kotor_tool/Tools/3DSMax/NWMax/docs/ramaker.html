@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>NWmax - Dragonlance Adventures</title>
+  <meta content="Joco" name="author">
+  <link href="nwmax.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div style="text-align: center;"><img
+ style="width: 630px; height: 100px;" alt="" title=""
+ src="image/bbanner.jpg"><br>
+</div>
+<div style="text-align: center;"><a href="/">News</a> - <a
+ href="index.html">&gt;&gt;Documentation&lt;&lt;</a> - <a
+ href="/download/">Download</a>
+- Contact </div>
+<div style="text-align: center;">
+<table border="0" cellspacing="0" cellpadding="0"
+ style="text-align: left; margin-left: auto; margin-right: auto; width: 640px;"
+ class="text">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; height: 25px; width: 25px;"><img
+ style="width: 25px; height: 25px;" alt="" title=""
+ src="image/bbody_r2_c2.png"><br>
+      </td>
+      <td
+ style="vertical-align: top; background-color: rgb(242, 242, 242);"><br>
+      </td>
+      <td style="vertical-align: top; height: 25px; width: 25px;"><img
+ style="width: 25px; height: 25px;" alt="" title=""
+ src="image/bbody_r2_c4.png"><br>
+      </td>
+    </tr>
+    <tr>
+      <td
+ style="vertical-align: top; width: 25px; background-color: rgb(242, 242, 242);"><br>
+      </td>
+      <td colspan="1" rowspan="1"
+ style="vertical-align: top; background-color: rgb(242, 242, 242); width: 590px;">
+      <h1>&nbsp;Armour and Robe Maker</h1>
+      <img style="width: 206px; height: 773px;"
+ alt="Armour Robe Maker Interface" src="screenshots/gmax-005.jpg"><br>
+(example screen shot of parameters used to scale two base pheno-0 elf
+models into pheno-2 models)<br>
+      <br>
+The process of building armour or robes under this utility will take
+you down through each group in the dialog box.<br>
+      <ol>
+        <li>Base Models - thse are the base models that the utility
+will use to build the new models from. They will either be robe or
+armour pieces. DO NOT MIX THE TYPES UP. If you do it will all go
+horribly wrong. Code will break, the sun wont rise and the sky will
+fall on our heads etc.&nbsp; i.e. it will be FUBAR</li>
+        <li>Export Path - define where you want to the generated models
+to be export to. Important point to note here. The resulting files from
+this process are gmax files. This is a deliberate design
+decision.&nbsp; You will almost certainly need to perform some level of
+tweaking on your scaled models before exporting them to MDL.&nbsp; The
+second point is that due to limits within the gmax scripting language I
+haven't figured out how to make the file open dialog work with just a
+directory selection. So if you use the browse button you will need some
+file (say a readme.txt) in the target export dir that you select. Only
+the directory part will be used</li>
+        <li>Scaling ini file - this is the data file that provides our
+scale data. A number are delivered and no doubt some more will be
+provided in time. Was you select the ini file the text description
+under the drop-down list will change. This tells you what this ini
+scale file has been designed to do.&nbsp; If you use it for something
+other than it's intended purpose then on your head be it (again think
+FUBAR for your results). You will also notice that the Race options
+will often change. This indicates what races this scale file by default
+is configured to process for. You can deselect races you don't want to
+generate output files for</li>
+        <li>Race processing and Over-rides - This section allows you to
+select which races you want to process for,&nbsp; what sex and what
+phenotype overrides you want to activate. The race processing options
+are obvious. Select a race to generate models for that race.<br>
+Sex Override: Default = use the sex value from the base models; Male =
+force all outputs to be male models; Female = force all outputs to be
+female models<br>
+Pheno Override: Default = use the pheno value from the base models; 0 =
+force phenotype 0 (normal); 2 = force phenotype 2 (large)<br>
+Global scale adjustment allows x,y,z values from 0 to 1 to be added to
+the scale factors used.&nbsp; Adding a value of one is like changing a
+scale matrix of [1,1,1] to [2,2,2]. This would make the resulting piece
+200% normal size</li>
+        <li>Status - this just provides some status information of what
+was processed</li>
+      </ol>
+      <span style="font-weight: bold;">Warning:</span> Selecting the
+correct scale file is <span style="font-weight: bold;">crucial</span>
+to getting expected results.<br>
+      <h2>General Comments</h2>
+NWmax Armour &amp; Robe Maker is not a silver bullet. To get best
+results you will need to bear certain things in mind. The key ones
+being:<br>
+      <ul>
+        <li>The scale data has been developed using two sources. [1]
+the Bioware robe model robe003 and a series of "manakin" models built
+from the 001 armour parts.&nbsp; You <span style="font-weight: bold;">should</span>
+use one of these as the underlying skeleton for your robe. The scale
+data works best if the starting dimensions of the underlying skeleton
+is exactly the same as what the original scale data was developed from<br>
+        </li>
+        <li>The scale data is designed to scale from a human model to
+the other races, it will not work from say Elf to other races</li>
+        <li>The modeler should develop four base human models pmh0,
+pmh2, pfh0, pfh0, pfh2</li>
+        <li>A scaler will NOT give as good results as a hand crafted
+model, but it WILL save you massive amounts of time<br>
+        </li>
+        <li>After any scaling exercise you should check your models and
+perform hand corrections you feel are necessary</li>
+        <li>A key element to robe development is the placement of the
+pivot points. Due to the way the robe system works these pivots need to
+be in the same place for both phenotypes for a race.&nbsp; Load in the
+super models pmh0, pme0 etc to see what I mean. These models contain
+dummy nodes that show where each the of the body parts pivots should
+be centered to<br>
+        </li>
+      </ul>
+      </td>
+      <td
+ style="vertical-align: top; width: 25px; background-color: rgb(242, 242, 242);"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; height: 25px; width: 25px;"><img
+ style="width: 25px; height: 25px;" alt="" title=""
+ src="image/bbody_r4_c2.png"><br>
+      </td>
+      <td
+ style="vertical-align: top; background-color: rgb(242, 242, 242);"><br>
+      </td>
+      <td style="vertical-align: top; height: 25px; width: 25px;"><img
+ style="width: 25px; height: 25px;" alt="" title=""
+ src="image/bbody_r4_c4.png"><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p><br>
+</p>
+</div>
+</body>
+</html>

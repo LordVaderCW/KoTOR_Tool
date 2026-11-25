@@ -36,7 +36,6 @@ Namespace kotor_tool
         Friend WithEvents nudNumberToExtract As Global.System.Windows.Forms.NumericUpDown
         Friend WithEvents Label2 As Global.System.Windows.Forms.Label
         Friend WithEvents chkbEachModelInOwnDir As Global.System.Windows.Forms.CheckBox
-        Friend WithEvents chkbCleanWorkingDir As Global.System.Windows.Forms.CheckBox
         Friend WithEvents tbModelExtractionPath As Global.System.Windows.Forms.TextBox
         Friend WithEvents btnModuleExportPath As Global.System.Windows.Forms.Button
         Friend WithEvents Label15 As Global.System.Windows.Forms.Label
@@ -84,7 +83,6 @@ Namespace kotor_tool
             Me.pnlOptions = New System.Windows.Forms.Panel()
             Me.Label1 = New System.Windows.Forms.Label()
             Me.chkbExtractAnimations = New System.Windows.Forms.CheckBox()
-            Me.chkbCleanWorkingDir = New System.Windows.Forms.CheckBox()
             Me.chkbConvertSkin = New System.Windows.Forms.CheckBox()
             Me.chkbEachModelInOwnDir = New System.Windows.Forms.CheckBox()
             Me.chkbExportTextures = New System.Windows.Forms.CheckBox()
@@ -247,7 +245,6 @@ Namespace kotor_tool
             Me.pnlOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
             Me.pnlOptions.Controls.Add(Me.Label1)
             Me.pnlOptions.Controls.Add(Me.chkbExtractAnimations)
-            Me.pnlOptions.Controls.Add(Me.chkbCleanWorkingDir)
             Me.pnlOptions.Controls.Add(Me.chkbConvertSkin)
             Me.pnlOptions.Controls.Add(Me.chkbEachModelInOwnDir)
             Me.pnlOptions.Controls.Add(Me.chkbExportTextures)
@@ -287,19 +284,6 @@ Namespace kotor_tool
             Me.chkbExtractAnimations.Text = "Extract Animation:"
             Me.chkbExtractAnimations.UseVisualStyleBackColor = False
             '
-            'chkbCleanWorkingDir
-            '
-            Me.chkbCleanWorkingDir.BackColor = System.Drawing.Color.Transparent
-            Me.chkbCleanWorkingDir.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-            Me.chkbCleanWorkingDir.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.chkbCleanWorkingDir.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.chkbCleanWorkingDir.Location = New System.Drawing.Point(22, 124)
-            Me.chkbCleanWorkingDir.Name = "chkbCleanWorkingDir"
-            Me.chkbCleanWorkingDir.Size = New System.Drawing.Size(215, 20)
-            Me.chkbCleanWorkingDir.TabIndex = 1
-            Me.chkbCleanWorkingDir.Text = "Clean Export Directory:"
-            Me.chkbCleanWorkingDir.UseVisualStyleBackColor = False
-            '
             'chkbConvertSkin
             '
             Me.chkbConvertSkin.BackColor = System.Drawing.Color.Transparent
@@ -311,7 +295,7 @@ Namespace kotor_tool
             Me.chkbConvertSkin.Location = New System.Drawing.Point(22, 70)
             Me.chkbConvertSkin.Name = "chkbConvertSkin"
             Me.chkbConvertSkin.Size = New System.Drawing.Size(215, 20)
-            Me.chkbConvertSkin.TabIndex = 2
+            Me.chkbConvertSkin.TabIndex = 1
             Me.chkbConvertSkin.Text = "Convert Skin to Trimesh:"
             Me.chkbConvertSkin.UseVisualStyleBackColor = False
             '
@@ -326,7 +310,7 @@ Namespace kotor_tool
             Me.chkbEachModelInOwnDir.Location = New System.Drawing.Point(22, 98)
             Me.chkbEachModelInOwnDir.Name = "chkbEachModelInOwnDir"
             Me.chkbEachModelInOwnDir.Size = New System.Drawing.Size(215, 20)
-            Me.chkbEachModelInOwnDir.TabIndex = 3
+            Me.chkbEachModelInOwnDir.TabIndex = 2
             Me.chkbEachModelInOwnDir.Text = "Directory Per .MDL Model:"
             Me.chkbEachModelInOwnDir.UseVisualStyleBackColor = False
             '
@@ -337,10 +321,10 @@ Namespace kotor_tool
             Me.chkbExportTextures.CheckState = System.Windows.Forms.CheckState.Checked
             Me.chkbExportTextures.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbExportTextures.ForeColor = System.Drawing.SystemColors.Control
-            Me.chkbExportTextures.Location = New System.Drawing.Point(22, 152)
+            Me.chkbExportTextures.Location = New System.Drawing.Point(22, 124)
             Me.chkbExportTextures.Name = "chkbExportTextures"
             Me.chkbExportTextures.Size = New System.Drawing.Size(215, 20)
-            Me.chkbExportTextures.TabIndex = 4
+            Me.chkbExportTextures.TabIndex = 3
             Me.chkbExportTextures.Text = "Export Related Textures:"
             Me.chkbExportTextures.UseVisualStyleBackColor = True
             '
@@ -349,10 +333,10 @@ Namespace kotor_tool
             Me.chkbKeepIntermediateFiles.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
             Me.chkbKeepIntermediateFiles.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbKeepIntermediateFiles.ForeColor = System.Drawing.SystemColors.Control
-            Me.chkbKeepIntermediateFiles.Location = New System.Drawing.Point(22, 180)
+            Me.chkbKeepIntermediateFiles.Location = New System.Drawing.Point(22, 152)
             Me.chkbKeepIntermediateFiles.Name = "chkbKeepIntermediateFiles"
             Me.chkbKeepIntermediateFiles.Size = New System.Drawing.Size(215, 20)
-            Me.chkbKeepIntermediateFiles.TabIndex = 7
+            Me.chkbKeepIntermediateFiles.TabIndex = 4
             Me.chkbKeepIntermediateFiles.Text = "Keep Intermediate Files:"
             Me.chkbKeepIntermediateFiles.UseVisualStyleBackColor = True
             '
@@ -362,10 +346,10 @@ Namespace kotor_tool
             Me.chkbExportMdlAlignData.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
             Me.chkbExportMdlAlignData.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbExportMdlAlignData.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.chkbExportMdlAlignData.Location = New System.Drawing.Point(22, 224)
+            Me.chkbExportMdlAlignData.Location = New System.Drawing.Point(22, 196)
             Me.chkbExportMdlAlignData.Name = "chkbExportMdlAlignData"
             Me.chkbExportMdlAlignData.Size = New System.Drawing.Size(215, 20)
-            Me.chkbExportMdlAlignData.TabIndex = 8
+            Me.chkbExportMdlAlignData.TabIndex = 5
             Me.chkbExportMdlAlignData.Text = "Extract Model Alignment Data:"
             Me.chkbExportMdlAlignData.UseVisualStyleBackColor = False
             Me.chkbExportMdlAlignData.Visible = False
@@ -376,10 +360,10 @@ Namespace kotor_tool
             Me.chkbMdlAlignDataOnly.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
             Me.chkbMdlAlignDataOnly.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.chkbMdlAlignDataOnly.ForeColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(238, Byte), Integer), CType(CType(230, Byte), Integer))
-            Me.chkbMdlAlignDataOnly.Location = New System.Drawing.Point(22, 248)
+            Me.chkbMdlAlignDataOnly.Location = New System.Drawing.Point(22, 220)
             Me.chkbMdlAlignDataOnly.Name = "chkbMdlAlignDataOnly"
             Me.chkbMdlAlignDataOnly.Size = New System.Drawing.Size(215, 20)
-            Me.chkbMdlAlignDataOnly.TabIndex = 9
+            Me.chkbMdlAlignDataOnly.TabIndex = 6
             Me.chkbMdlAlignDataOnly.Text = "Alignment Data Only:"
             Me.chkbMdlAlignDataOnly.UseVisualStyleBackColor = False
             Me.chkbMdlAlignDataOnly.Visible = False

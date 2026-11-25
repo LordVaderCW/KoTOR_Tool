@@ -37,3 +37,17 @@ Fifty-eight forms implement the main resource browser, generic/archive/text/imag
 
 Keep behavior in code-behind and layout/resources in designer triplets. All constructors must initialize controls before use; avoid duplicate event subscriptions; dispose streams/images/FMOD/processes on success/cancel/failure/close. Test standalone and archive entry paths, both games, save/cancel, theme/DPI and reopen saved data.
 >>>>>>> treya/v.1.0.3.4:Source/VisualBasic/kotor_tool/WinForms/README.md
+
+## Model preview context action
+
+The frmMain.ModelPreviewIntegration.vb partial class adds Preview 3D model to right-click menus for MDL resources in tree/list/details views. Existing double-click extraction remains unchanged. The separate ModelPreview library owns glTF geometry/transform-animation conversion and the designer-backed WebView2 window; see ../../ModelPreview/README.md for dependency and validation details.
+
+The main form retains a single preview window and follows focused resource selection while it is open. A component-owned debounce timer queues only the newest model; request versions discard stale conversion results and closing the preview cancels pending work. Automatic replacement preserves browser-list focus and reports conversion errors inside the viewer.
+
+The standalone frmModelPreview form is defined in frmMain.ModelPreview.vb, with the standard frmMain.ModelPreview.Designer.vb and frmMain.ModelPreview.resx files nested beneath it. Use View Designer on that VB file to edit the native viewport panel and animation sidebar. Designer controls use framework types only; PreviewController creates WebView2 and the animated loading bar at runtime. The resource-browser context menu and selection timer remain in frmMain.ModelPreviewIntegration.vb, nested beneath frmMain.vb.
+
+## Send to 3DS Max (2021)
+
+Working-directory cleanup has been removed from the Tools menu and model-export options, including its deletion routine. Open Working Directory remains available. Model extraction no longer clears the export directory before writing its output.
+
+The MDL context menu also calls frmMain.NWlisten.vb. It shares archive-aware resource reads with preview, stages ASCII MDL and textures under `Application.StartupPath\working\NWlisten\jobs`, and waits asynchronously for NWlisten import acknowledgement in frmProgressMeter. The sender registers its application directory in the 64-bit HKCU registry view so Max can discover it. Success closes automatically; failure stays readable with a close button, including an unwritable application folder (no user-profile fallback). Export assets persist for Max texture references. See ../Tools/3DSMax/NWListen/README.md for installation, queue lifecycle and validation.

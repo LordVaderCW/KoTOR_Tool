@@ -1,0 +1,55 @@
+# Minimal ASCII geometry fixture for the Max 2021 foundation tests.
+newmodel nx_tsl_test
+setsupermodel nx_tsl_test NULL
+classification Placeable
+classification_unk1 0
+ignorefog 1
+setanimationscale 1.0
+beginmodelgeom nx_tsl_test
+node dummy nx_tsl_test
+  parent NULL
+endnode
+node trimesh nx_tsl_test_mesh
+  parent nx_tsl_test
+  position 0 0 0
+  orientation 0 0 1 0
+  diffuse 1 1 1
+  ambient 1 1 1
+  bitmap NULL
+  bitmap2 test_lightmap
+  lightmapped 1
+  dirt_enabled 1
+  dirt_texture 2
+  dirt_worldspace 1
+  hologram_donotdraw 1
+  verts 3
+    0 0 0
+    1 0 0
+    0 1 0
+  tverts 3
+    0 0
+    1 0
+    0 1
+  faces 1
+    0 1 2 1 0 1 2 0
+  tverts1 3
+    0.25 0.25
+    0.75 0.25
+    0.25 0.75
+  texindices1 1
+    0 1 2
+  tverts2 3
+    0.25 0.25
+    0.75 0.25
+    0.25 0.75
+  texindices2 1
+    0 1 2
+  tverts3 3
+    0.25 0.25
+    0.75 0.25
+    0.25 0.75
+  texindices3 1
+    0 1 2
+endnode
+endmodelgeom nx_tsl_test
+donemodel nx_tsl_test

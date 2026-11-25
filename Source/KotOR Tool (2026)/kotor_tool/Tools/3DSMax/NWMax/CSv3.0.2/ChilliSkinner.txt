@@ -1,0 +1,33 @@
+
+================================================================
+Accessory's Name	: ChilliSkinner
+Installation directory  : 3dsmax/Scripts/CSv3-0-x
+Version			: v3.0.2
+Released:		: 07/01
+Author                  : Colin 'Chilli' Semple 
+Email Address           : Chilli@chilliweb.co.uk
+
+Accessory's description	: ChilliSkinner is THE tool to help you prepare your low poly models for skinning simply, quickly and without texture distortion
+
+Other info              : support and tutorials at www.chilliweb.co.uk/chilliskinner
+
+Additional Credits to   : Azm0, Pete The Cheat, dines , Henry Wrightson, Oyster, Kam
+
+Thanks to               : casManG for his skinning tutorial
+================================================================
+* Construction *
+Base                    : n/a
+Editor used             : 3DStudio MAX  3.x 4.x MAXScript
+Known Bugs              : er.. none ;)
+Build/Animation time    : yes
+
+
+* How to use this accessory *
+
+Install:  Unzip to 3DStudio/Scripts/ folder
+
+Run:  From MAX, Utilities Panel, click the 'MAXScript' button and run CS3-0-x.ms from the Scripts/ folder
+
+* Copyright / Permissions *
+
+Open Source released under the GNU General Public License.  Credit me if you use ANY of this code.  Please mail me and let me know what you think of it.

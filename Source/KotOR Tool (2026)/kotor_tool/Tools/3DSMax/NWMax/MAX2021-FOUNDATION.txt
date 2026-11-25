@@ -1,0 +1,74 @@
+NWmax 0.8 b61 - Max 2021 foundation 1
+2026-11-19
+
+Target: Autodesk 3ds Max 2021. This patch does not claim KotOR format
+compatibility or support for other Max releases. Original credits remain intact.
+
+CHANGES
+- Absolute installation paths derived from nwmax.ms. Includes and bundled
+  resources no longer depend on the current working directory or autostart flag.
+- Max mode is selected explicitly. A legacy usemax=0 setting cannot send this
+  build into the GMax output path.
+- Preferences live under (getDir #plugcfg)/NWmax/nxlocalprefs.ini.
+  The legacy scripts/nxlocalprefs.ini is copied once if present; an existing
+  user-profile file is never overwritten. Missing keys use shipped nwmax.ini.
+- Integer settings are range checked. Window position is parsed as data rather
+  than executed. Invalid position/sanity flags fall back to defaults.
+- Autodock, animation-list length, window position and global sanity defaults
+  persist in the user profile. Autodock applies at the next NWmax startup.
+- Bitmap search directories come from Max's mapPaths API and refresh on import.
+- Compiler scratch files live under (getDir #temp)/NWmax/<process-id>/.
+  Sanity reports and texture libraries live under (getDir #plugcfg)/NWmax/.
+  Existing bundled texture libraries are copied only when the user copy is absent.
+- Script-loading failures report a filename and error. Errors are appended to
+  (getDir #plugcfg)/NWmax/nwmax-errors.log. Required startup failures propagate.
+- The old floater closes before rollout definitions are replaced during reload.
+  Startup preserves the Max application title, Listener history, and any redraw
+  suspension owned by the caller. No new callbacks are installed.
+- Cancelling either lens-flare texture picker does nothing; cancelling the
+  model browser retains the previous filename.
+- Animation-only import requires exactly one selected model base.
+- Import redraw suspension is scoped and restored after exceptions. Errors end
+  the progress display and reset the NWmax progress controls. Failed imports
+  can leave partial geometry; this patch does not implement scene rollback.
+- Controller replacement is OFF by default. When explicitly selected, it only
+  affects nodes created by that import, and is skipped for animation-only imports.
+  Existing scene controllers are never reset by this import option.
+- Earlier bare-return syntax fixes are retained.
+- About and Credits acknowledge lordvadercw for Max 2021 modifications;
+  original author credits are preserved.
+
+VALIDATION
+Run tests/max2021_foundation.ms using 3dsmaxbatch.exe in a separate process.
+Do not run the test in a working scene: it intentionally creates test objects.
+Verified in Max 2021 on 2026-11-19: 33 checks passed.
+Results are written to tests/foundation-results.txt. The test checks startup,
+reload, settings, paths, error propagation, controller isolation, redraw cleanup,
+and a minimal real ASCII triangle import. Injected failures are intentional.
+
+Interactive checks after reloading NWmax:
+1. Cancel the model browser and each light's texture browser.
+2. Move the floater, change Preferences, reload, and verify saved settings.
+3. Import a COPY of a representative model into a scratch scene.
+4. Confirm textures, skin deformation and animation before exporting production
+   assets. Skin and full model round-trip coverage remain separate follow-up work.
+
+BOUNDARIES
+The material importer already explicitly creates Standard materials; it has not
+been converted to Physical materials. Skin weighting and model serialization
+algorithms are unchanged. Optional utilities have not all been exercised.
+Binary compiler success and in-game model behavior are not certified by these
+foundation tests. GMax is no longer a supported host for this patched build.
+
+BACKUP / ROLLBACK
+Original modified files (including the earlier return fixes) are under:
+backups/max2021-foundation-20261119-222939/
+To roll back, close Max and copy that directory's contents over NWmax, preserving
+relative paths. The new nx_max2021.ms helper can remain unused. User-profile
+settings and reports are kept separately; the original installation INIs remain.
+
+API REFERENCES
+Autodesk mapPaths and system directory documentation:
+https://help.autodesk.com/cloudhelp/2019/ENU/3DSMax-MAXScript/files/GUID-F7577416-051E-478C-BB5D-81243BAAC8EC.htm
+Autodesk source filename access (available since Max 9):
+https://help.autodesk.com/cloudhelp/2024/ENU/MAXScript-Help/files/MAXScript-Tools-and-Interaction/File-Access/GUID-9588A886-A811-4C05-9A07-B6A68C969050.html

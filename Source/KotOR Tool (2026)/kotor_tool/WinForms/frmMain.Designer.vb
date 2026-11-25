@@ -53,12 +53,10 @@ Namespace kotor_tool
         Friend WithEvents cmiExtractForModuleEditing As Global.System.Windows.Forms.MenuItem
         Friend WithEvents miConversationEditor As Global.System.Windows.Forms.MenuItem
         Friend WithEvents MenuItem4 As Global.System.Windows.Forms.MenuItem
-        Friend WithEvents miCleanWorkingDir As Global.System.Windows.Forms.MenuItem
         Friend WithEvents miRefSearch As Global.System.Windows.Forms.MenuItem
         Friend WithEvents miFile As Global.System.Windows.Forms.MenuItem
         Friend WithEvents miRecentFiles As Global.System.Windows.Forms.MenuItem
         Friend WithEvents MenuItem6 As Global.System.Windows.Forms.MenuItem
-        Friend WithEvents MenuItem1 As Global.System.Windows.Forms.MenuItem
         Friend WithEvents miOpenProjectManager As Global.System.Windows.Forms.MenuItem
         Friend WithEvents miCheckForUpdates As Global.System.Windows.Forms.MenuItem
         Friend WithEvents miGlobalVariableEditor As Global.System.Windows.Forms.MenuItem
@@ -176,8 +174,6 @@ Namespace kotor_tool
             Me.miOpenHexViewer = New System.Windows.Forms.MenuItem()
             Me.miRefSearch = New System.Windows.Forms.MenuItem()
             Me.MenuItem4 = New System.Windows.Forms.MenuItem()
-            Me.miCleanWorkingDir = New System.Windows.Forms.MenuItem()
-            Me.MenuItem1 = New System.Windows.Forms.MenuItem()
             Me.miOpenWorkingDir = New System.Windows.Forms.MenuItem()
             Me.MenuItem8 = New System.Windows.Forms.MenuItem()
             Me.miShowSupportedModEditorMaps = New System.Windows.Forms.MenuItem()
@@ -696,7 +692,7 @@ Namespace kotor_tool
             'miTools
             '
             Me.miTools.Index = 1
-            Me.miTools.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miExtract, Me.miOpenProjectManager, Me.miOpen2DAEditor, Me.miConversationEditor, Me.miOpenModuleEditor, Me.miOpenDialogTlkViewer, Me.miGlobalVariableEditor, Me.miOpenTextEditor, Me.miOpenPWKEditor, Me.miOpenSSFEditor, Me.miOpenERFBuilder, Me.miOpenByteView, Me.miOpenHexViewer, Me.miRefSearch, Me.MenuItem4, Me.miCleanWorkingDir, Me.MenuItem1, Me.miOpenWorkingDir, Me.MenuItem8, Me.miShowSupportedModEditorMaps, Me.miOpenMapsFolder, Me.MenuItem7, Me.miOptions})
+            Me.miTools.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.miExtract, Me.miOpenProjectManager, Me.miOpen2DAEditor, Me.miConversationEditor, Me.miOpenModuleEditor, Me.miOpenDialogTlkViewer, Me.miGlobalVariableEditor, Me.miOpenTextEditor, Me.miOpenPWKEditor, Me.miOpenSSFEditor, Me.miOpenERFBuilder, Me.miOpenByteView, Me.miOpenHexViewer, Me.miRefSearch, Me.MenuItem4, Me.miOpenWorkingDir, Me.MenuItem8, Me.miShowSupportedModEditorMaps, Me.miOpenMapsFolder, Me.MenuItem7, Me.miOptions})
             Me.miTools.Text = "&Tools"
             '
             'miExtract
@@ -781,44 +777,34 @@ Namespace kotor_tool
             Me.MenuItem4.Index = 14
             Me.MenuItem4.Text = "-"
             '
-            'miCleanWorkingDir
-            '
-            Me.miCleanWorkingDir.Index = 15
-            Me.miCleanWorkingDir.Text = "Clean Working Directory"
-            '
-            'MenuItem1
-            '
-            Me.MenuItem1.Index = 16
-            Me.MenuItem1.Text = "-"
-            '
             'miOpenWorkingDir
             '
-            Me.miOpenWorkingDir.Index = 17
+            Me.miOpenWorkingDir.Index = 15
             Me.miOpenWorkingDir.Text = "Open Working Directory"
             '
             'MenuItem8
             '
-            Me.MenuItem8.Index = 18
+            Me.MenuItem8.Index = 16
             Me.MenuItem8.Text = "-"
             '
             'miShowSupportedModEditorMaps
             '
-            Me.miShowSupportedModEditorMaps.Index = 19
+            Me.miShowSupportedModEditorMaps.Index = 17
             Me.miShowSupportedModEditorMaps.Text = "Show Maps supported by Module editor"
             '
             'miOpenMapsFolder
             '
-            Me.miOpenMapsFolder.Index = 20
+            Me.miOpenMapsFolder.Index = 18
             Me.miOpenMapsFolder.Text = "Explore Maps folder"
             '
             'MenuItem7
             '
-            Me.MenuItem7.Index = 21
+            Me.MenuItem7.Index = 19
             Me.MenuItem7.Text = "-"
             '
             'miOptions
             '
-            Me.miOptions.Index = 22
+            Me.miOptions.Index = 20
             Me.miOptions.Text = "&Options..."
             '
             'miPlugins

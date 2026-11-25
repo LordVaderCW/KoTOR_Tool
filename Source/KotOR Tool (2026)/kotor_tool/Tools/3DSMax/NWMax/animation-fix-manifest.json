@@ -1,0 +1,7 @@
+{
+  "file": "C:\\Program Files\\Autodesk\\3ds Max 2021\\scripts\\NWmax\\nw_ie_inc\\aurora_fn_import.ms",
+  "backup": "C:\\Program Files\\Autodesk\\3ds Max 2021\\scripts\\NWmax\\backups\\animation-guards-20261120-002819\\aurora_fn_import.ms",
+  "sha256": "606CD668A768E768B885FC0B192E77B152C4402D192EECDECEA18FD21954660A",
+  "purpose": "Preserve clip guards and write local animation controllers to prevent cross-clip pose leakage.",
+  "status": "reverted"
+}

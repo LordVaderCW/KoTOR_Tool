@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>NWmax v0.5beta Release Notes</title>
+</head>
+<body style="font-family: helvetica,arial,sans-serif;">
+<h1>NWmax v0.5beta</h1>
+<ol style="list-style-type: decimal;">
+  <li>Activate/Deactivate all animations buttons added to the model
+base properties.</li>
+  <li>Moved the export directory edit box and buttons to the top of the
+MDL Base Parameters rollout to make them more visable for the majority
+of people<br>
+  </li>
+  <li>Up/Down sequencing buttons for animation list</li>
+  <li>Correction for alphakey importing on emitters and trimesh modifier</li>
+  <li>Better identification of problem WOK faces using a precalc
+feature on the
+Walkmesh modifier<span style="font-weight: bold;"></span><br>
+  </li>
+  <li>Support for lens flares in AuroraLight helper</li>
+  <li>Changed way AuroraLight stores the light colour details to better
+support animation<br>
+  </li>
+  <li>Import routine updated to correctly support:</li>
+  <ul>
+    <li>Lens flares</li>
+    <li>transparencyhint</li>
+    <li>tilefade<br>
+    </li>
+  </ul>
+  <li>Added further dummy node creation support in model base wizard
+for
+Creatures and Placeables (Other type)<br>
+  </li>
+  <li>Added some help text on what effect "transparency hint" has in
+the Trimesh Modifier</li>
+  <li>Continued refinements to the WOK aabb code</li>
+  <li>Monster Node creation tool (A HotU specific feature)<br>
+  </li>
+  <li>Look for model textures in gmax/maps if not in directory with
+model during import<br>
+  </li>
+  <li>Auroralights supports animated negative light values correctly</li>
+  <li>Corrected export of "use" nodes on placeables to the pwk and dwk
+file<br>
+  </li>
+  <li>Corrected a number of minor import and export bugs (that covers a
+multitude of sins doesn't it)</li>
+  <li>Scale Wizard now correctly supports Skins and calcs the new
+animscale value based on the original animscale value not 1.0. <span
+ style="font-weight: bold;">Note</span>: issues can arise on scaled
+skins which are due to the way vertexes are linked to bones, not to do
+with the way the scale util works<br>
+  </li>
+  <li>New compact export format allowing MASSIVE export speed
+improvements on large models. Speed tests on large tile groups indicate
+improvements with a magnitude of 6x faster<br>
+  </li>
+  <li>Support for script plugins to NWmax. The flame emiiter prefab has
+been
+converted to a NWmax plugin as an example</li>
+  <li>Armour &amp; Robe Maker - a system that allows the scaling of
+base models (armour pieces or HotU robes) to new race variations. The
+armour side of this utility is a "simpler" gmax native version of the
+NWNArmoury.&nbsp; NB: loading of model pieces based on a file pattern
+into Nwmax (gmax) on to an armour "manakin" will be added shortly post
+v0.5 as a patch</li>
+  <li>Added a sanity check to prevent use of "Export-All" on scenes
+which contain Skins.&nbsp; This prevent a NWmax script crash<br>
+  </li>
+</ol>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>NWmax - Dragonlance Adventures</title>
+  <meta content="Joco" name="author">
+  <link href="nwmax.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div style="text-align: center;"><img
+ style="width: 630px; height: 100px;" alt="" title=""
+ src="image/bbanner.jpg"><br>
+</div>
+<div style="text-align: center;"><a href="/">News</a> - <a
+ href="index.html">&gt;&gt;Documentation&lt;&lt;</a> - <a
+ href="/download/">Download</a>
+- Contact </div>
+<div style="text-align: center;">
+<table border="0" cellspacing="0" cellpadding="0"
+ style="text-align: left; margin-left: auto; margin-right: auto; width: 640px;"
+ class="text">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; height: 25px; width: 25px;"><img
+ style="width: 25px; height: 25px;" alt="" title=""
+ src="image/bbody_r2_c2.png"><br>
+      </td>
+      <td
+ style="vertical-align: top; background-color: rgb(242, 242, 242);"><br>
+      </td>
+      <td style="vertical-align: top; height: 25px; width: 25px;"><img
+ style="width: 25px; height: 25px;" alt="" title=""
+ src="image/bbody_r2_c4.png"><br>
+      </td>
+    </tr>
+    <tr>
+      <td
+ style="vertical-align: top; width: 25px; background-color: rgb(242, 242, 242);"><br>
+      </td>
+      <td colspan="1" rowspan="1"
+ style="vertical-align: top; background-color: rgb(242, 242, 242); width: 590px;">
+      <h1>&nbsp;Tools</h1>
+The core tools within NWmax are held within the "Utilities" rollout:<br>
+      <img style="width: 173px; height: 419px;" alt="Utilities Rollout"
+ src="screenshots/gmax-004.jpg"><br>
+      <br>
+This section aims to provide a general description of the tools
+available and where appropriate lead into more detailed information.<br>
+      <ol>
+        <li>Chilli Skinner - a third party utility for unwraping and
+"skinning" models. It is probably best for inorganic objects</li>
+        <li>Tile Slicer (by roboius) - this tool is a NWN CC main stay
+for tile building. It will take single scene and "slice" it into
+multiple NWN tile sized chunks. Including adding all the necessary
+model bases and lights</li>
+        <li>Scale Wizard - this tool support the unform scaling of the
+scene. Of particular not is that it handles the scaling of skin meshes
+correctly</li>
+        <li><a href="ramaker.html">Armour/Robe Maker</a> - is a tool
+which combines the facilities to build new race/sex/pheno2 models off
+of a base set of human models.&nbsp; The recommended approach is to use
+the supplied "manakin" models to build your core pm?0, pf?0, pm?2 and
+pf?2 models. Then scale these base four models to the other target
+races you require</li>
+        <li>Order Children - the allows you to set the order of
+children off a node. This can be important when the skin is not ordered
+after the "bones" it requires when exporting</li>
+        <li>Desparkle Model - perform a rounding of the vertexes of the
+selected geom to the nearest whole cm</li>
+        <li>Check Shadows - performs a sanity check on the selected
+geom for possible shadow issues. Any geom that fails the check will
+have it's wire colour turned red. For this reason do not use red as a
+colour if you plan to use this function</li>
+        <li>Reset Controllers - even though the import code is setting
+the position, rotation and scale controllers as type linear gmax can
+still get confused.&nbsp; Selecting all geom and running this process
+will force these settings again. And will often correct "odd" animation
+behaviour within gmax</li>
+        <li>Rationalise Materials - all materials that contain a bitmap
+are scanned for duplication and consolidated then all orphans are
+deleted</li>
+        <li>Remove Anim Keys - remove animation keys of the possible
+position, rotation or scale types from the selected objects<br>
+        </li>
+        <li><a href="animkeycopy.html">Copy animation keys</a> - this
+copies animation kets from a source to a target object <br>
+        </li>
+        <li>ResetXForm - this is a "smart" reset xform that will
+automatically unlink your selection, apply a reset xform, collapse just
+the reset xform modifier from the stack and then relink the selection.
+It also has the option to preserve the pivot orientation or to realign
+that with the world axis</li>
+        <li>Copy/Paste Links - this will store all the parent
+information of your selection. Then at a later point by pushing the
+button again allow you to restore those links</li>
+        <li>Export all or selected - does what is says. Exports all the
+model bases in the scene or only those that are selected</li>
+        <li>Restet Export Directory - resets the export directory of
+all the selected Aurorabases to the path specified</li>
+      </ol>
+      <br>
+      <h1>Speedbar</h1>
+      <img style="width: 173px; height: 183px;" alt="Speedbar Rollout"
+ src="screenshots/gmax-006.jpg"><br>
+      <br>
+The speed bar is an area where some of the simple more often used
+little utilities sit. The exact shape of it will probably change over
+time as a better feel is achieved on what is really needed to be
+available all the time.<br>
+      <ol>
+        <li>Float Speedbar - this undocks the whole NWmax docked
+section and makes it a classic floating rollout window</li>
+        <li>Parent - select the parent of the currently select object.
+Uses selection[1] in the case of multiple selectons</li>
+        <li>Child - select the children of the currently selected child</li>
+        <li>Emitter - creates an emitter all presized at position
+[0,0,0]</li>
+        <li>All Emitters - selects all emitters</li>
+        <li>Dummy - creates a dummy in the standard NWN size</li>
+        <li>Set Environ - sets the unit of measures for the scene to cm</li>
+        <li>Trimesh - converts the selected object into a proper trimesh</li>
+        <li>Fast Linker - links all objects in the selection to the
+only Aurorabase in the selection</li>
+        <li>Prefabs - supports community pulgins.&nbsp; Through this
+system people can write plugins to NWmax that make use of it's built in
+functions. Selecting the prefab from the drop-down list and pushing
+"Go" starts the prefb<br>
+        </li>
+      </ol>
+      <br>
+      </td>
+      <td
+ style="vertical-align: top; width: 25px; background-color: rgb(242, 242, 242);">
+      <br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; height: 25px; width: 25px;"><img
+ style="width: 25px; height: 25px;" alt="" title=""
+ src="image/bbody_r4_c2.png"><br>
+      </td>
+      <td
+ style="vertical-align: top; background-color: rgb(242, 242, 242);"><br>
+      </td>
+      <td style="vertical-align: top; height: 25px; width: 25px;"><img
+ style="width: 25px; height: 25px;" alt="" title=""
+ src="image/bbody_r4_c4.png"><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p><br>
+</p>
+</div>
+</body>
+</html>

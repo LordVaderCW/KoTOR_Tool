@@ -1,0 +1,1817 @@
+--- a/CSv3.0.2/CSv3-0-2.ms
++++ b/CSv3.0.2/CSv3-0-2.ms
+@@ -64,7 +64,7 @@
+ 
+ rollout EgoStroke "Ego Stroker..."
+ (
+-	Bitmap ChilliLogo Filename:(scriptsPath+"NWmax/CSv3.0.2/Chillilogo.bmp")
++	Bitmap ChilliLogo Filename:(g_startpath+"CSv3.0.2/Chillilogo.bmp")
+ 	Label ccLab1 "ChilliSkinner v3.0.2"
+ 	Label ccLab2 "Released: 9th July 2001"
+ 	Label ccLab3 "GNU General Public License"
+@@ -82,7 +82,7 @@
+ 		label ccProgress "Ready" 
+ 	)
+ 	
+-	button ccSelectAll images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,1,1,1,1) width:40 height:25 pos:[6,50] tooltip:"Select All"
++	button ccSelectAll images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,1,1,1,1) width:40 height:25 pos:[6,50] tooltip:"Select All"
+ 	on ccSelectAll pressed do
+ 	(
+ 		set undo off
+@@ -90,7 +90,7 @@
+ 		set undo on
+ 	)
+ 	
+-	button ccZoomSel images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,2,2,2,2) width:40 height:25 pos:[47,50] tooltip:"Zoom Selected"
++	button ccZoomSel images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,2,2,2,2) width:40 height:25 pos:[47,50] tooltip:"Zoom Selected"
+ 	on ccZoomSel pressed do
+ 	(
+ 		set undo off
+@@ -98,7 +98,7 @@
+ 		set undo on
+ 	)
+ 	
+-	button ccZoomExtents images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,3,3,3,3) width:40 height:25 pos:[88,50] tooltip:"Zoom All"
++	button ccZoomExtents images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,3,3,3,3) width:40 height:25 pos:[88,50] tooltip:"Zoom All"
+ 	on ccZoomExtents pressed do
+ 	(
+ 		set undo off
+@@ -106,7 +106,7 @@
+ 		set undo on
+ 	)	
+ 	
+-	button ccClearSGroups images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,12,12,12,12) width:40 height:25 pos:[129,50] tooltip:"Clear Smoothing Groups"
++	button ccClearSGroups images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,12,12,12,12) width:40 height:25 pos:[129,50] tooltip:"Clear Smoothing Groups"
+ 	on ccClearSGroups pressed do
+ 	(
+ 		undo on
+@@ -124,7 +124,7 @@
+ 		)
+ 	)
+ 
+-	button ccToggle images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,4,4,4,4) width:40 height:25 pos:[6,76] tooltip:"Toggle Visible"
++	button ccToggle images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,4,4,4,4) width:40 height:25 pos:[6,76] tooltip:"Toggle Visible"
+ 	on ccToggle pressed do
+ 	(
+ 		set undo off
+@@ -133,7 +133,7 @@
+ 		set undo on
+ 	)
+ 
+-	button ccHideSel images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,5,5,5,5) width:40 height:25 pos:[47,76] tooltip:"Hide Selected"
++	button ccHideSel images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,5,5,5,5) width:40 height:25 pos:[47,76] tooltip:"Hide Selected"
+ 	on ccHideSel pressed do
+ 	(
+ 		set undo off
+@@ -141,7 +141,7 @@
+ 		set undo on
+ 	)
+ 
+-	button ccHideUnSel images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,6,6,6,6) width:40 height:25 pos:[88,76] tooltip:"Hide UnSelected"
++	button ccHideUnSel images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,6,6,6,6) width:40 height:25 pos:[88,76] tooltip:"Hide UnSelected"
+ 	on ccHideUnSel pressed do
+ 	(
+ 		set undo off
+@@ -149,7 +149,7 @@
+ 		set undo on
+ 	)
+ 
+-	button ccUnhideAll images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,7,7,7,7) width:40 height:25 pos:[129,76]  tooltip:"Unhide All"
++	button ccUnhideAll images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,7,7,7,7) width:40 height:25 pos:[129,76]  tooltip:"Unhide All"
+ 	on ccUnhideAll pressed do
+ 	(
+ 		set undo off
+@@ -157,7 +157,7 @@
+ 		set undo on
+ 	)	
+ 	
+-	button ccUndo images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,10,10,10,10) width:40 height:25 pos:[6,102] tooltip:"Undo"
++	button ccUndo images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,10,10,10,10) width:40 height:25 pos:[6,102] tooltip:"Undo"
+ 	on ccUndo pressed do
+ 	(
+ 		set undo off
+@@ -165,7 +165,7 @@
+ 		set undo on
+ 	)
+ 	
+-	button ccRedo images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,11,11,11,11) width:40 height:25 pos:[47,102] tooltip:"Redo"
++	button ccRedo images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,11,11,11,11) width:40 height:25 pos:[47,102] tooltip:"Redo"
+ 	on ccRedo pressed do
+ 	(
+ 		set undo off
+@@ -173,13 +173,13 @@
+ 		set undo on
+ 	)
+ 	
+-	button ccFreeze images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,8,8,8,8) width:40 height:25 pos:[88,102] tooltip:"Freeze Selected"
++	button ccFreeze images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,8,8,8,8) width:40 height:25 pos:[88,102] tooltip:"Freeze Selected"
+ 	on ccFreeze pressed do
+ 	(
+ 		max freeze selection
+ 	)
+ 
+-	button ccUnfreezeAll images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,9,9,9,9) width:40 height:25 pos:[129,102] tooltip:"Un-Freeze All"
++	button ccUnfreezeAll images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,9,9,9,9) width:40 height:25 pos:[129,102] tooltip:"Un-Freeze All"
+ 	on ccUnfreezeAll pressed do
+ 	(
+ 		set undo off
+@@ -190,7 +190,7 @@
+ 	Spinner  spTolerence "Detach Angle:" range:[0,360,30] align:#center enabled:True type:#integer scale:1  
+ 	on spTolerence changed tmp do nTolerence=tmp
+ 	
+-	button ccDetach images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,13,13,13,13) width:40 height:25 pos:[6,155] tooltip:"Auto Detach"
++	button ccDetach images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,13,13,13,13) width:40 height:25 pos:[6,155] tooltip:"Auto Detach"
+ 	on ccDetach pressed do
+ 	(
+ 		disablesceneredraw()
+@@ -214,7 +214,7 @@
+ 		enablesceneredraw()
+ 	)
+ 
+-	button ccClone images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,14,14,14,14) width:40 height:25 pos:[47,155] tooltip:"Clone"
++	button ccClone images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,14,14,14,14) width:40 height:25 pos:[47,155] tooltip:"Clone"
+ 	on ccClone pressed do
+ 	(
+ 		disablesceneredraw()
+@@ -233,7 +233,7 @@
+ 		enablesceneredraw()
+ 	)	
+ 	
+-	button ccUnfoldAll images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,15,15,15,15) width:40 height:25 pos:[88,155] tooltip:"Unfold Poly(s)"
++	button ccUnfoldAll images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,15,15,15,15) width:40 height:25 pos:[88,155] tooltip:"Unfold Poly(s)"
+ 	on ccUnfoldAll pressed do
+ 	(
+ 		undo on
+@@ -250,7 +250,7 @@
+ 		)	
+ 	)
+ 
+-	button ccFlatten images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,16,16,16,16) width:40 height:25 pos:[129,155] tooltip:"Flatten Poly(s)"
++	button ccFlatten images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,16,16,16,16) width:40 height:25 pos:[129,155] tooltip:"Flatten Poly(s)"
+ 	on ccFlatten pressed do
+ 	(	
+ 		disablesceneredraw()
+@@ -272,7 +272,7 @@
+ 	dropdownlist spGridType "" items:#("Square 1:1","Wide Rectangle 2:1","Tall Rectangle 1:2") align:#left
+ 	on spGridtype selected TmpVal do gridtype=TmpVal
+ 
+-	button ccOptimiseAll images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,17,17,17,17) width:40 height:25 pos:[6,210] tooltip:"Optimise Poly(s)"
++	button ccOptimiseAll images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,17,17,17,17) width:40 height:25 pos:[6,210] tooltip:"Optimise Poly(s)"
+ 	on ccOptimiseAll pressed do
+ 	(
+ 		disablesceneredraw()
+@@ -291,7 +291,7 @@
+ 		enablesceneredraw()
+ 	)
+ 	
+-	button ccArrange images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,18,18,18,18) width:40 height:25 pos:[47,210] tooltip:"Arrange Polys"
++	button ccArrange images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,18,18,18,18) width:40 height:25 pos:[47,210] tooltip:"Arrange Polys"
+ 	on ccArrange pressed do
+ 	(
+ 		disablesceneredraw()
+@@ -315,7 +315,7 @@
+ 		enablesceneredraw()
+ 	)
+ 
+-	button ccAttach images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,19,19,19,19) width:40 height:25 pos:[88,210] tooltip:"Attach Polys"
++	button ccAttach images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,19,19,19,19) width:40 height:25 pos:[88,210] tooltip:"Attach Polys"
+ 	on ccAttach pressed do
+ 	(
+ 		disablesceneredraw()
+@@ -331,7 +331,7 @@
+ 		enablesceneredraw()
+ 	)
+ 	
+-	button ccMapping images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,20,20,20,20) width:40 height:25 pos:[129,210] tooltip:"Apply Planar Map"
++	button ccMapping images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,20,20,20,20) width:40 height:25 pos:[129,210] tooltip:"Apply Planar Map"
+ 	on ccMapping pressed do
+ 	(
+ 		disablesceneredraw()
+@@ -364,7 +364,7 @@
+ 		ccMorphTgt.text = Obj.name	
+ 	)
+ 	
+-	button ccMorph images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,23,23,23,23) width:40 height:25 pos:[6,263] tooltip:"Morph Source to Target"
++	button ccMorph images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,23,23,23,23) width:40 height:25 pos:[6,263] tooltip:"Morph Source to Target"
+ 	on ccMorph pressed do
+ 	(
+ 		undo on
+@@ -401,7 +401,7 @@
+ 		)
+ 	)
+ 
+-	button ccWeld images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,24,24,24,24) width:40 height:25 pos:[47,263] tooltip:"Select and weld ALL Verts"
++	button ccWeld images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,24,24,24,24) width:40 height:25 pos:[47,263] tooltip:"Select and weld ALL Verts"
+ 	on ccWeld pressed do
+ 	(
+ 		undo on
+@@ -416,7 +416,7 @@
+ 		)
+ 	)	
+ 
+-	button ccWeldSel images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,25,25,25,25) width:40 height:25 pos:[88,263] tooltip:"Weld SELECTED Verts"
++	button ccWeldSel images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,25,25,25,25) width:40 height:25 pos:[88,263] tooltip:"Weld SELECTED Verts"
+ 	on ccWeldSel pressed do
+ 	(
+ 		undo on
+@@ -431,7 +431,7 @@
+ 		)
+ 	)
+ 
+-	button ccdebug images:#(scriptsPath+"NWmax/CSv3.0.2/CS_Buttons.bmp",scriptsPath+"NWmax/CSv3.0.2/CS_Buttons_Mask.bmp",27,27,27,27,27) width:40 height:25 pos:[129,263] tooltip:"Weld Selected Edge(s)" 
++	button ccdebug images:#(g_startpath+"CSv3.0.2/CS_Buttons.bmp",g_startpath+"CSv3.0.2/CS_Buttons_Mask.bmp",27,27,27,27,27) width:40 height:25 pos:[129,263] tooltip:"Weld Selected Edge(s)" 
+ 	on ccdebug pressed do
+ 	(
+ 		undo on
+--- a/nw_ie_inc/aurora_fn_export.ms
++++ b/nw_ie_inc/aurora_fn_export.ms
+@@ -2687,13 +2687,13 @@
+         		if not g_ismax then format "<snoopstart file=%%.%>%" obj.export_path obj.name mdlextn g_delim to:g_strBuffer
+         		-- we can now do some sanity checks and record the results for review
+         		if g_ismax then (
+-	           		g_strBuffer = createFile (nx_lowercase( scriptsPath+"nwmax/sanity/" + obj.name + "_sanitycheck.txt") )
++	           		g_strBuffer = createFile (nx_lowercase( gNX_sanityPath + obj.name + "_sanitycheck.txt") )
+ 					if g_strBuffer == undefined then
+ 					(
+ 					   format "ERROR: File creatin failure for: %\r\n" (obj.export_path + obj.name + "_sanitycheck.txt")
+ 					)
+         		) else (
+-	           		format "<snoopstart file=%%_sanitycheck.txt>%" (scriptsPath+"nwmax/sanity/") (nx_lowercase(obj.name)) g_delim to:g_strBuffer
++	           		format "<snoopstart file=%%_sanitycheck.txt>%" (gNX_sanityPath) (nx_lowercase(obj.name)) g_delim to:g_strBuffer
+         		)
+         		bSanityCheck = SanityCheck obj
+         		if g_ismax then
+@@ -2735,23 +2735,23 @@
+ 				(
+               		-- compile code
+ 	           		format "Compile model.\r\n"
+-					strCmd = createFile (scriptsPath+"nwmax\\scratch\\export.bat")
++					strCmd = createFile (gNX_scratchPath+"export.bat")
+ 					if strCmd == undefined then
+ 					(
+-					   format "ERROR: File creatin failure for: %\r\n" (scriptsPath+"nwmax\\scratch\\export.bat")
++					   format "ERROR: File creatin failure for: %\r\n" (gNX_scratchPath+"export.bat")
+ 					)
+-					format "\"%\" -c \"%%%\" \"%\\\" > %%" g_compiler obj.export_path obj.name ".mdl.ascii" obj.export_path (scriptsPath+"nwmax\\scratch\\compile_"+obj.name+".txt") g_delim to:strCmd
++					format "\"%\" -c \"%%%\" \"%\\\" > \"%\"%" g_compiler obj.export_path obj.name ".mdl.ascii" obj.export_path (gNX_scratchPath+"compile_"+obj.name+".txt") g_delim to:strCmd
+ 					flush strCmd
+ 					close strCmd
+-					DOSCommand (scriptsPath+"nwmax\\scratch\\export.bat")
++					DOSCommand ("\"" + gNX_scratchPath + "export.bat\"")
+            		) else
+            		(
+-                  format "<snoopstart file=%>%" (scriptsPath+"nwmax\\scratch\\export.bat") g_delim to:g_strBuffer    
+-                  format "\"%\" -c \"%%%\" \"%\\\" > %%" g_compiler obj.export_path obj.name ".mdl.ascii" obj.export_path (scriptsPath+"nwmax\\scratch\\compile_"+obj.name+".txt") g_delim to:g_strBuffer
++                  format "<snoopstart file=%>%" (gNX_scratchPath+"export.bat") g_delim to:g_strBuffer    
++                  format "\"%\" -c \"%%%\" \"%\\\" > \"%\"%" g_compiler obj.export_path obj.name ".mdl.ascii" obj.export_path (gNX_scratchPath+"compile_"+obj.name+".txt") g_delim to:g_strBuffer
+                   format "</snoopstart>%" g_delim to:g_strBuffer
+                   
+                   format "<commandstart>%" g_delim to:g_strBuffer
+-                  format "\"%export.bat\"%" (scriptsPath+"nwmax\\scratch\\") g_delim to:g_strBuffer
++                  format "\"%export.bat\"%" (gNX_scratchPath+"") g_delim to:g_strBuffer
+                   format "</commandstart>%" g_delim to:g_strBuffer
+                )
+         		)
+@@ -2820,7 +2820,7 @@
+     clearListener()
+ 	local doneCount = 0
+     -- set the external control snoop bracket.
+-    if not g_ismax then format "<snoopstart file=%%>%" scriptsPath "NWmax\\scratch\\exportcontrol.txt" g_delim to:g_strBuffer
++    if not g_ismax then format "<snoopstart file=%%>%" gNX_scratchPath "exportcontrol.txt" g_delim to:g_strBuffer
+     for file in filesToLoad do
+     (
+       -- load the file
+@@ -2842,13 +2842,13 @@
+          if not g_ismax then format "<snoopstart file=%%.%>%" target (nx_lowercase( modelBase.name )) "mdl" g_delim to:g_strBuffer
+          -- we can now do some sanity checks and record the results for review
+          if g_ismax then (
+-	         g_strBuffer = createFile ((scriptsPath+"nwmax/sanity/") + (nx_lowercase( modelBase.name )) + "_sanitycheck.txt")
++	         g_strBuffer = createFile ((gNX_sanityPath) + (nx_lowercase( modelBase.name )) + "_sanitycheck.txt")
+ 			if g_strBuffer == undefined then
+ 			(
+ 				format "ERROR: File creatin failure for: %\r\n" (target + (nx_lowercase( modelBase.name )) + "_sanitycheck.txt")
+ 			)
+          )
+-         format "<snoopstart file=%%_sanitycheck.txt>%" (scriptsPath+"nwmax/sanity/") (nx_lowercase( modelBase.name )) g_delim to:g_strBuffer
++         format "<snoopstart file=%%_sanitycheck.txt>%" (gNX_sanityPath) (nx_lowercase( modelBase.name )) g_delim to:g_strBuffer
+          bSanityCheck = SanityCheck modelBase
+          if g_ismax then
+          (
+--- a/nw_ie_inc/aurora_fn_general.ms
++++ b/nw_ie_inc/aurora_fn_general.ms
+@@ -478,14 +478,14 @@
+         --
+         
+         -- get the material count
+-        local num_mats = (getINISetting (scriptsPath+"nwmax/wokmat.ini") "init" "count") as integer
++        local num_mats = (getINISetting (g_startpath+"wokmat.ini") "init" "count") as integer
+         local mat_name
+         
+         for m = 1 to num_mats do
+         (
+-            mat_name = getINISetting (scriptsPath+"nwmax/wokmat.ini") ("m"+(m as string)) "name"
++            mat_name = getINISetting (g_startpath+"wokmat.ini") ("m"+(m as string)) "name"
+             append SurfaceMatName mat_name
+-            nx_exec_str = "append nx_SurfaceMat "+(getINISetting (scriptsPath+"nwmax/wokmat.ini") ("m"+(m as string)) mat_name)
++            nx_exec_str = "append nx_SurfaceMat "+(getINISetting (g_startpath+"wokmat.ini") ("m"+(m as string)) mat_name)
+             execute nx_exec_str
+         )
+ 
+@@ -525,7 +525,7 @@
+     (
+         -- gmax processing. Verbose data dumping
+         clearListener()
+-        format "<snoopstart file=%>~\n\n" (scriptsPath + "nwmax/scratch/setini.txt")
++        format "<snoopstart file=%>~\n\n" (gNX_scratchPath+"setini.txt")
+         for sublist in datalist do
+         (
+             format "<snoopset %,%,%,%,\>~\n" sublist[1] sublist[2] sublist[3] sublist[4]
+@@ -700,7 +700,7 @@
+         return 0
+     )
+     
+-    pivotINI = scriptsPath + "NWmax\\pv_" + snapfile + ".ini"
++    pivotINI = g_startpath+"pv_" + snapfile + ".ini"
+     if not (nx_existFile pivotINI) then
+     (
+         strMsg = "Pivot ini file does not exist"
+--- a/nw_ie_inc/aurora_fn_import.ms
++++ b/nw_ie_inc/aurora_fn_import.ms
+@@ -246,7 +246,7 @@
+     (
+         -- we need to decompile this model. We assume it is a real model and not junk
+         local tstamp = (timestamp() as string)
+-        fControl = scriptsPath+"nwmax\\scratch\\"+tstamp+".txt"
++        fControl = gNX_scratchPath+""+tstamp+".txt"
+         local pFilePath = getFilenamePath pFile
+         local chkLoop
+         local bDecompiled = false
+@@ -254,10 +254,10 @@
+         -- In theory we don't need this but will keep it here for sake
+         -- of completeness
+         /*
+-        format "<snoopstart file=%>\r\n" (scriptsPath+"nwmax\\scratch\\scratch.txt")
++        format "<snoopstart file=%>\r\n" (gNX_scratchPath+"scratch.txt")
+         format "Processing ...\r\n"
+         format "<commandstart>\r\n"
+-        format "\"%\" -d \"%\" \"%\\\" > \"%\"\r\n" g_compiler pFile pFilePath (scriptsPath+"nwmax\\scratch\\decomp.txt")
++        format "\"%\" -d \"%\" \"%\\\" > \"%\"\r\n" g_compiler pFile pFilePath (gNX_scratchPath+"decomp.txt")
+         format "echo \"done\" > \"%\"\r\n" fControl
+         format "</commandstart>\r\n"
+         format "</snoopstart>\r\n"
+@@ -549,7 +549,7 @@
+     (
+         -- we need to decompile this model. We assume it is a real model and not junk
+         local tstamp = (timestamp() as string)
+-        fControl = scriptsPath+"nwmax\\scratch\\"+tstamp+".txt"
++        fControl = gNX_scratchPath+""+tstamp+".txt"
+         local pFilePath = getFilenamePath pFile
+         local chkLoop
+         local bDecompiled = false
+@@ -557,10 +557,10 @@
+         -- In theory we don't need this but will keep it here for sake
+         -- of completeness
+         /*
+-        format "<snoopstart file=%>\r\n" (scriptsPath+"nwmax\\scratch\\scratch.txt")
++        format "<snoopstart file=%>\r\n" (gNX_scratchPath+"scratch.txt")
+         format "Processing ...\r\n"
+         format "<commandstart>\r\n"
+-        format "\"%\" -d \"%\" \"%\\\" > \"%\"\r\n" g_compiler pFile pFilePath (scriptsPath+"nwmax\\scratch\\decomp.txt")
++        format "\"%\" -d \"%\" \"%\\\" > \"%\"\r\n" g_compiler pFile pFilePath (gNX_scratchPath+"decomp.txt")
+         format "echo \"done\" > \"%\"\r\n" fControl
+         format "</commandstart>\r\n"
+         format "</snoopstart>\r\n"
+@@ -850,7 +850,7 @@
+     (
+         -- we need to decompile this model. We assume it is a real model and not junk
+         local tstamp = (timestamp() as string)
+-        fControl = scriptsPath+"nwmax\\scratch\\"+tstamp+".txt"
++        fControl = gNX_scratchPath+""+tstamp+".txt"
+         local pFilePath = getFilenamePath pFile
+         local chkLoop
+         local bDecompiled = false
+@@ -859,30 +859,30 @@
+         (
+             local cmdFile
+             local strCmd
+-            cmdFile = createFile (scriptsPath+"nwmax\\scratch\\import.bat")
++            cmdFile = createFile (gNX_scratchPath+"import.bat")
+             format "\"%\" -d \"%\" \"%\\\"\r\n" g_compiler pFile pFilePath
+             format "\"%\" -d \"%\" \"%\\\"\r\n" g_compiler pFile pFilePath to:cmdFile
+             flush cmdFile
+             close cmdFile
+-            strCmd = "\"" + scriptsPath + "nwmax\\scratch\\import.bat\""
++            strCmd = "\"" + gNX_scratchPath+"import.bat\""
+             DOSCommand (strCmd)
+         ) else
+         (
+             clearListener()
+             nx_FlushBuffer reset:true
+             -- Have to hard code the delim here into verbose mode
+-            format "<snoopstart file=%>%" (scriptsPath+"nwmax\\scratch\\scratch.txt") "~\n" to:g_strBuffer
++            format "<snoopstart file=%>%" (gNX_scratchPath+"scratch.txt") "~\n" to:g_strBuffer
+             format "Processing ...%" g_delim to:g_strBuffer
+-            format "\"%\" -d \"%\" \"%\\\" > \"%\"%" g_compiler pFile pFilePath (scriptsPath+"nwmax\\scratch\\decomp.txt") "~\n" to:g_strBuffer
++            format "\"%\" -d \"%\" \"%\\\" > \"%\"%" g_compiler pFile pFilePath (gNX_scratchPath+"decomp.txt") "~\n" to:g_strBuffer
+             format "echo \"done\" > \"%\"%" fControl "~\n" to:g_strBuffer
+     
+-            format "<snoopstart file=%>%" (scriptsPath+"nwmax\\scratch\\import.bat") "~\n" to:g_strBuffer
+-            format "\"%\" -d \"%\" \"%\\\" > \"%\"%" g_compiler pFile pFilePath (scriptsPath+"nwmax\\scratch\\decomp.txt") "~\n" to:g_strBuffer
++            format "<snoopstart file=%>%" (gNX_scratchPath+"import.bat") "~\n" to:g_strBuffer
++            format "\"%\" -d \"%\" \"%\\\" > \"%\"%" g_compiler pFile pFilePath (gNX_scratchPath+"decomp.txt") "~\n" to:g_strBuffer
+             format "echo \"done\" > \"%\"%" fControl "~\n" to:g_strBuffer
+             format "</snoopstart>%" "~\n" to:g_strBuffer
+             
+             format "<commandstart>%" "~\n" to:g_strBuffer
+-            format "\"%import.bat\"%" (scriptsPath+"nwmax\\scratch\\") "~\n" to:g_strBuffer
++            format "\"%import.bat\"%" (gNX_scratchPath+"") "~\n" to:g_strBuffer
+             format "</commandstart>%" "~\n" to:g_strBuffer
+             
+             format "</snoopstart>%" "~\n" to:g_strBuffer
+--- a/nw_ie_inc/aurora_gui_speedbtns.ms
++++ b/nw_ie_inc/aurora_gui_speedbtns.ms
+@@ -42,7 +42,7 @@
+     -- load plugins into g_plugins
+     -- Pass through the plugins dir and process all the .ini files
+     g_plugins = #()
+-    local filepattern = scriptsPath+"nwmax\\plugins\\*.ini"
++    local filepattern = g_startpath+"plugins\\*.ini"
+     local files = getFiles filepattern
+     for f in files do
+     (
+@@ -70,10 +70,10 @@
+     checkbox chk_pivotonly "Pivot Only" checked:false align:#left across:2
+     dropdownlist drp_snappheno items:#("0","2") align:#right
+     
+-    on btn_armourer pressed do ( try (filein (scriptsPath+"NWmax/ramaker/nwmax_ramaker.ms")) catch() )
+-    on btn_cutter pressed do ( try (filein (scriptsPath+"NWmax/ramaker/nwmax_armourcutter.ms")) catch() )
+-    on btn_skindumper pressed do ( try (filein (scriptsPath+"NWmax/ramaker/nwmax_skindumper.ms")) catch() )
+-    on btn_weightmaster pressed do ( try (filein (scriptsPath+"NWmax/nw_ie_inc/nx_weightmaster.ms")) catch() )
++    on btn_armourer pressed do ( nx_loadTool (g_startpath+"ramaker/nwmax_ramaker.ms") )
++    on btn_cutter pressed do ( nx_loadTool (g_startpath+"ramaker/nwmax_armourcutter.ms") )
++    on btn_skindumper pressed do ( nx_loadTool (g_startpath+"ramaker/nwmax_skindumper.ms") )
++    on btn_weightmaster pressed do ( nx_loadTool (g_startpath+"nw_ie_inc/nx_weightmaster.ms") )
+     
+     on btn_pivotsnap pressed do (
+         nx_snaptonormalpivots (drp_snaptypes.selected + drp_snappheno.selected) pivotonly:(chk_pivotonly.checked)
+@@ -82,11 +82,11 @@
+     on nx_util2 open do
+     (
+             -- make sure some utils are available
+-        if not nx_existFile(scriptsPath+"NWmax\\ramaker\\nwmax_armourcutter.ms") then
++        if not nx_existFile(g_startpath+"ramaker\\nwmax_armourcutter.ms") then
+         (
+             btn_cutter.enabled = false
+         )
+-        if not nx_existFile(scriptsPath+"NWmax\\ramaker\\nwmax_skindumper.ms") then
++        if not nx_existFile(g_startpath+"ramaker\\nwmax_skindumper.ms") then
+         (
+             btn_skindumper.enabled = false
+         )
+@@ -130,12 +130,12 @@
+     
+     on btn_cryomesh pressed do
+     (
+-        try (filein (scriptsPath+"NWmax/nw_ie_inc/nx_cryomesh.ms")) catch()
++        nx_loadTool (g_startpath+"nw_ie_inc/nx_cryomesh.ms")
+     )
+     
+     on btn_tvertdisplace pressed do
+     (
+-        try (filein (scriptsPath+"NWmax/nw_ie_inc/nx_tvertdisplacer.ms")) catch()
++        nx_loadTool (g_startpath+"nw_ie_inc/nx_tvertdisplacer.ms")
+     )
+     
+     on btn_copyreset pressed do
+@@ -144,7 +144,7 @@
+         btn_linkcopy.checked = false
+     )
+     
+-    on btn_orderchildren pressed do ( try (filein (scriptsPath+"NWmax/nw_ie_inc/nx_orderchildren.ms")) catch() )
++    on btn_orderchildren pressed do ( nx_loadTool (g_startpath+"nw_ie_inc/nx_orderchildren.ms") )
+     
+     -- Perform a model desparkle
+     on btn_desparkle pressed do
+@@ -161,7 +161,7 @@
+     
+     on btn_woktool pressed do
+     (
+-        try (filein (scriptsPath+"NWmax/nw_ie_inc/nx_woktool.ms")) catch()
++        nx_loadTool (g_startpath+"nw_ie_inc/nx_woktool.ms")
+     )
+     
+     on btn_linkcopy changed down do
+@@ -433,7 +433,7 @@
+     button btn_eventbrowse "Event Broswer" width:144 height:18
+     --button btn_mayakeyrests "Reset Maya Rot Keys" width:144 height:18
+     
+-    on btn_keymaster pressed do ( try (filein (scriptsPath+"NWmax/nw_ie_inc/nx_animkeymaster.ms")) catch() )
++    on btn_keymaster pressed do ( nx_loadTool (g_startpath+"nw_ie_inc/nx_animkeymaster.ms") )
+     
+     on btn_reset_controllers pressed do
+     (
+@@ -464,37 +464,37 @@
+ 
+     on btn_animcopy pressed do
+     (
+-        try (filein (scriptsPath+"NWmax/nw_ie_inc/nx_animkeycopy.ms")) catch()
++        nx_loadTool (g_startpath+"nw_ie_inc/nx_animkeycopy.ms")
+     )
+     
+     on btn_animapper pressed do
+     (
+-        try (filein (scriptsPath+"NWmax/nw_ie_inc/nx_mapper.ms")) catch()
++        nx_loadTool (g_startpath+"nw_ie_inc/nx_mapper.ms")
+     )
+ 
+     on btn_keytweak pressed do
+     (
+-        try (filein (scriptsPath+"NWmax/nw_ie_inc/nx_masskeytweak.ms")) catch()
++        nx_loadTool (g_startpath+"nw_ie_inc/nx_masskeytweak.ms")
+     )
+     
+     on btn_bakeanim pressed do
+     (
+-        try (filein (scriptsPath+"NWmax/nw_ie_inc/nx_animbaker.ms")) catch()
++        nx_loadTool (g_startpath+"nw_ie_inc/nx_animbaker.ms")
+     )
+ 
+     on btn_keyreduct pressed do
+     (
+-        try (filein (scriptsPath+"NWmax/nw_ie_inc/nx_keyreduct.ms")) catch()
++        nx_loadTool (g_startpath+"nw_ie_inc/nx_keyreduct.ms")
+     )
+     
+     on btn_animbrowse pressed do
+     (
+-        try (filein (scriptsPath+"NWmax/nw_ie_inc/nx_animbrowse.ms")) catch()
++        nx_loadTool (g_startpath+"nw_ie_inc/nx_animbrowse.ms")
+     )
+     
+     on btn_eventbrowse pressed do
+     (
+-        try (filein (scriptsPath+"NWmax/nw_ie_inc/nx_eventbrowse.ms")) catch()
++        nx_loadTool (g_startpath+"nw_ie_inc/nx_eventbrowse.ms")
+     )
+     
+     on btn_mayakeyrests pressed do
+@@ -527,14 +527,14 @@
+     )
+     
+     -- actions
+-    on btn_texlib pressed do ( try (filein (scriptsPath+"NWmax/nw_ie_inc/nx_texturelib.ms")) catch() )
+-    on btn_texlibmaker pressed do ( try (filein (scriptsPath+"NWmax/nw_ie_inc/nx_texturelibmaker.ms")) catch() )
+-    on btn_minimap pressed do ( try (filein (scriptsPath+"NWmax/nw_ie_inc/nx_minimap_maker.ms")) catch() )
++    on btn_texlib pressed do ( nx_loadTool (g_startpath+"nw_ie_inc/nx_texturelib.ms") )
++    on btn_texlibmaker pressed do ( nx_loadTool (g_startpath+"nw_ie_inc/nx_texturelibmaker.ms") )
++    on btn_minimap pressed do ( nx_loadTool (g_startpath+"nw_ie_inc/nx_minimap_maker.ms") )
+ )
+ 
+ rollout nx_prefs "Preferences" width:162 height:68
+ (
+-    label lbl_wip "This is WIP"
++    label lbl_wip "Max 2021 preferences"
+     
+     checkbox chk_autodock "Autodock" checked:(nx_itob(gNX_dock))
+     
+@@ -548,6 +548,17 @@
+     label lbl_xpathcryp ""
+     
+     spinner spn_animheight "Anim List Length:" type:#integer range:[5,30,g_guiAnimListSize]
++
++    on chk_autodock changed value do
++    (
++        gNX_dock = if value then 1 else 0
++        nx_savePreference "init" "dock" gNX_dock
++    )
++    on spn_animheight changed value do
++    (
++        g_guiAnimListSize = value
++        nx_savePreference "init" "animlistsize" value
++    )
+ )
+ 
+ rollout nx_util1 "General Utils" width:162 height:68
+@@ -618,6 +629,7 @@
+ 		
+ 		t[i] = val
+ 		gnx_sanity = t
++        nx_savePreference "init" "sanity" t
+ 	)
+ 
+ 	
+@@ -788,7 +800,7 @@
+     (
+         -- store the current location of the NWMax Speedbar
+         if g_ismax then (
+-            setINISetting (scriptsPath+"nxlocalprefs.ini") "position" "nwmax" (val as string)
++            nx_savePreference "position" "nwmax" (val as string)
+         )
+     )
+     
+@@ -938,20 +950,20 @@
+     on btn_prefab_do pressed do
+     (
+         local index = dpl_prefabs.selection
+-        try (fileIn (scriptsPath+"nwmax\\plugins\\"+plugin_scripts[index])) catch()
++        nx_loadTool (g_startpath+"plugins\\"+plugin_scripts[index])
+     )
+     -- speed bar code stops
+     
+        
+-    on btn_veltools pressed do ( try (filein (scriptsPath+"VelTools\\VT_start.ms")) catch() )
+-    
+-    on btn_chilliskinner pressed do ( try (filein (scriptsPath+"NWmax/CSv3.0.2/CSv3-0-2.ms")) catch() )
+-    
+-    on btn_tileslicer pressed do ( try (filein (scriptsPath+"NWmax/TileSlicer/tile-slicer.ms")) catch() )
+-    
+-    on btn_modelscaler pressed do ( try (filein (scriptsPath+"NWmax/nw_ie_inc/nwmax_scalewiz.ms")) catch() )
+-    
+-    on btn_massops pressed do ( try (filein (scriptsPath+"NWmax/nw_ie_inc/nx_massutils.ms")) catch() )
++    on btn_veltools pressed do ( nx_loadTool (scriptsPath+"VelTools\\VT_start.ms") )
++    
++    on btn_chilliskinner pressed do ( nx_loadTool (g_startpath+"CSv3.0.2/CSv3-0-2.ms") )
++    
++    on btn_tileslicer pressed do ( nx_loadTool (g_startpath+"TileSlicer/tile-slicer.ms") )
++    
++    on btn_modelscaler pressed do ( nx_loadTool (g_startpath+"nw_ie_inc/nwmax_scalewiz.ms") )
++    
++    on btn_massops pressed do ( nx_loadTool (g_startpath+"nw_ie_inc/nx_massutils.ms") )
+     
+     on btn_export_all pressed do
+     (
+--- a/nw_ie_inc/aurora_helper_base.ms
++++ b/nw_ie_inc/aurora_helper_base.ms
+@@ -213,7 +213,7 @@
+         		if (export_path[export_path.count] != "\\") then export_path = export_path + "\\"
+         		
+         		-- set the external control snoop bracket.
+-        		if not g_ismax then format "<snoopstart file=%%>%" scriptsPath "NWmax\\scratch\\exportcontrol.txt" g_delim to:g_strBuffer
++        		if not g_ismax then format "<snoopstart file=%%>%" gNX_scratchPath "exportcontrol.txt" g_delim to:g_strBuffer
+         		-- Tell GMAX Snoop what fully qualified file name to use and keep a global copy
+         		g_exportPath = export_path
+         		if chk_binary.checked then
+@@ -234,9 +234,9 @@
+ 	    		-- we can now do some sanity checks and record the results for review
+     		
+ 	    		if not g_ismax then (
+-	    		   format "<snoopstart file=%%_sanitycheck.txt>%" (scriptsPath+"nwmax/sanity/") model_name g_delim to:g_strBuffer
++	    		   format "<snoopstart file=%%_sanitycheck.txt>%" (gNX_sanityPath) model_name g_delim to:g_strBuffer
+ 				) else (
+-					g_strBuffer = createFile (scriptsPath+"nwmax/sanity/" + model_name + "_sanitycheck.txt")
++					g_strBuffer = createFile (gNX_sanityPath + model_name + "_sanitycheck.txt")
+ 				) -- end ismax
+ 				
+ 				if chk_check.checked then
+@@ -278,21 +278,21 @@
+ 	      		-- if we need to compile model we do it here
+ 	      		if chk_binary.checked and (not g_ismax) then
+ 	      		(
+-					format "<snoopstart file=%>%" (scriptsPath+"nwmax\\scratch\\export.bat") g_delim to:g_strBuffer
+-					format "\"%\" -c \"%%%\" \"%\\\" > \"%\"%" g_compiler export_path model_name ".mdl.ascii" export_path (scriptsPath+"nwmax\\scratch\\compile.txt") g_delim to:g_strBuffer
++					format "<snoopstart file=%>%" (gNX_scratchPath+"export.bat") g_delim to:g_strBuffer
++					format "\"%\" -c \"%%%\" \"%\\\" > \"%\"%" g_compiler export_path model_name ".mdl.ascii" export_path (gNX_scratchPath+"compile.txt") g_delim to:g_strBuffer
+ 					format "</snoopstart>%" g_delim to:g_strBuffer
+ 					
+ 					format "<commandstart>%" g_delim to:g_strBuffer
+-					format "\"%export.bat\"%" (scriptsPath+"nwmax\\scratch\\") g_delim to:g_strBuffer
++					format "\"%export.bat\"%" (gNX_scratchPath+"") g_delim to:g_strBuffer
+ 					format "</commandstart>%" g_delim to:g_strBuffer
+ 	      		) else if chk_binary.checked and g_ismax then
+ 	      		(
+ 					format "Compile model.\r\n"
+-					strCmd = createFile (scriptsPath+"nwmax\\scratch\\export.bat")
+-					format "\"%\" -c \"%%%\" \"%\\\" > \"%\"%" g_compiler export_path model_name ".mdl.ascii" export_path (scriptsPath+"nwmax\\scratch\\compile.txt") g_delim to:strCmd
++					strCmd = createFile (gNX_scratchPath+"export.bat")
++					format "\"%\" -c \"%%%\" \"%\\\" > \"%\"%" g_compiler export_path model_name ".mdl.ascii" export_path (gNX_scratchPath+"compile.txt") g_delim to:strCmd
+ 					flush strCmd
+ 					close strCmd
+-					DOSCommand (scriptsPath+"nwmax\\scratch\\export.bat")
++					DOSCommand ("\"" + gNX_scratchPath + "export.bat\"")
+ 	      		)
+ 	      		
+ 	      		-- copy the tga files to export dir. If converting to dds then put in a tga dir inside export dir
+@@ -305,7 +305,7 @@
+ 	      		if node.tga2dds == 1 then
+ 	      		(
+ 		      		-- process dds
+-		      		local cmd = scriptsPath + "nwmax\\tga2dds\\processtextures.exe "
++		      		local cmd = g_startpath+"tga2dds\\processtextures.exe "
+ 		      		cmd += export_path + "\\tga "
+ 		      		cmd += export_path
+ 		      		DOSCommand cmd
+@@ -372,7 +372,7 @@
+ 		on btn_viewsanity pressed do
+ 		(
+ 			local model_name = selection[1].name
+-			local target_file = scriptsPath+"nwmax\\sanity\\"+model_name+"_sanitycheck.txt"
++			local target_file = gNX_sanityPath+model_name+"_sanitycheck.txt"
+ 			-- test to make sure sanity file exists
+ 			if not nx_existFile(target_file) then
+ 			(
+@@ -382,7 +382,7 @@
+       		if (not g_ismax) then
+       		(
+ 	      		clearListener()
+-				format "<snoopstart file=%>\r\n%" (scriptsPath+"nwmax\\scratch\\sanityviewcontrol.txt") g_delim to:g_strBuffer
++				format "<snoopstart file=%>\r\n%" (gNX_scratchPath+"sanityviewcontrol.txt") g_delim to:g_strBuffer
+ 				format "<commandstart>%" g_delim to:g_strBuffer
+ 				format "\"notepad %\"%" target_file g_delim to:g_strBuffer
+ 				format "</commandstart>%" g_delim to:g_strBuffer
+--- a/nw_ie_inc/aurora_helper_light.ms
++++ b/nw_ie_inc/aurora_helper_light.ms
+@@ -211,8 +211,8 @@
+ 		)
+ 		
+ 		on bt_gettexfile pressed do (
+-			f = getFilenameFile (getOpenFileName "Lens Flare Texture")
+-			et_texname.text = f
++			local filename = getOpenFileName caption:"Lens Flare Texture"
++            if filename != undefined do et_texname.text = getFilenameFile filename
+ 		)
+ 		on spn_pos changed arg do (
+ 			-- By pushing the little arrows on the spinner enough times, 0.0 no longer equals 0.0 even though
+@@ -463,9 +463,8 @@
+ 		)
+ 		
+ 		on bt_gettexfile pressed do (
+-			f = getFilenameFile (getOpenFileName "Lens Flare Texture")
+-			if f == undefined then return undefined
+-			et_texname.text = f
++			local filename = getOpenFileName caption:"Lens Flare Texture"
++            if filename != undefined do et_texname.text = getFilenameFile filename
+ 		)
+ 		on spn_pos changed arg do (
+ 			-- By pushing the little arrows on the spinner enough times, 0.0 no longer equals 0.0 even though
+--- a/nw_ie_inc/nwn_gui_about.ms
++++ b/nw_ie_inc/nwn_gui_about.ms
+@@ -31,7 +31,7 @@
+ 
+ \-----------------------------------------------------------------------------*/
+ 
+-rollout CreditDialog "Credits" width:326 height:291
++rollout CreditDialog "Credits" width:326 height:351
+ (
+ 	label lbl5 "This is based on, adapted from and an extension of code originally developed by:
+ Bioware
+@@ -47,7 +47,8 @@
+ * Zaddix (original WOK file importer)
+ * Revinor (decoding the MDL format)
+ " pos:[21,10] width:284 height:235
+-	button btn_close "Close" pos:[111,250] width:104 height:32
++	label lbl_modcredits "Max 2021 compatibility and modernization\nModifications by lordvadercw" pos:[21,252] width:284 height:44
++	button btn_close "Close" pos:[111,310] width:104 height:32
+ 	on btn_close pressed do
+ 		destroyDialog CreditDialog
+ )
+@@ -63,11 +64,12 @@
+ 	--activeXControl actx "{D27CDB6E-AE6D-11CF-96B8-444553540000}" \
+ 	--    width:144 height:90 align:#center
+ 	label lbl_ver ""
++	label lbl_modauthor "Max 2021 modifications\nby lordvadercw" width:144 height:32 align:#center
+ 	
+ 	HyperLink hlink_nwmax "nwmax.dladventures.com" address:"http://nwmax.dladventures.com/" align:#center
+ 	HyperLink hlink_dla   "www.dladventures.com" address:"http://www.dladventures.com/" align:#center
+ 	HyperLink hlink_vote  "Vote NWmax at NWVault" address:"http://nwvault.ign.com/Files/other/data/1072761698656.shtml" align:#center
+-	HyperLink hlink_docs  "NWmax Help" address:("file:///"+scriptsPath+"nwmax/docs/index.html") align:#center
++	HyperLink hlink_docs  "NWmax Help" address:("file:///"+g_startpath+"docs/index.html") align:#center
+ 	HyperLink hlink_ccg   "CCG Wiki by DLA" address:"http://ccg.dladventures.com/" align:#center
+ 
+ 	--button btn_code_reload "Reload Code"
+--- a/nw_ie_inc/nwn_gui_import.ms
++++ b/nw_ie_inc/nwn_gui_import.ms
+@@ -53,7 +53,12 @@
+     	        )
+     	        
+ 	            -- check to make sure we have only a model base selected
+-	            if (nx_strclassof selection[1]) != "aurorabase" then
++	            if selection.count != 1 then
++            (
++                messageBox "Select one model base for animation import." title:"NWmax"
++                return false
++            )
++            if (nx_strclassof selection[1]) != "aurorabase" then
+ 	            (
+     	            MessageBox "No target model base selected for Animation Import" title:"No Selelction Found"
+     	            return 0
+@@ -79,9 +84,13 @@
+ 			insertpoint:0 \
+ 			mappingtbl:undefined \
+     */
+-        clearListener()
+-        disableSceneRedraw()
+-        ImportNWNmdl \
++        local existingNodes = objects as array
++        nx_refreshMapPaths()
++        try
++        (
++        with redraw off
++        (
++        local importResult = ImportNWNmdl \
+             mdlFileName \
+             bDoAnims \
+             ImportRollout.warn_checkbox.checked \
+@@ -92,41 +101,53 @@
+             showprogress:true \
+             location:[ImportRollout.spn_loc_x.value, ImportRollout.spn_loc_y.value, 0]
+             
++        if importResult == false do throw "The model importer reported failure."
++
+         -- import pwk file if available
+         local pwk_file = (getFilenamePath mdlFileName)+(getFilenameFile  mdlFileName)+".pwk"
+         if ( nx_existFile pwk_file ) then ImportNWNwk pwk_file "pwk"
+         -- import dwk file if available
+         local dwk_file = (getFilenamePath mdlFileName)+(getFilenameFile  mdlFileName)+".dwk"
+         if ( nx_existFile dwk_file ) then ImportNWNwk dwk_file "dwk"
+-        enableSceneRedraw()
+-
+-        if ImportRollout.chk_resetctrl.checked then
+-        (
+-					local objSum = $objects.count * 2.0
++        ) -- with redraw off
++        local importedNodes = for obj in objects where (findItem existingNodes obj) == 0 collect obj
++
++        if ImportRollout.chk_resetctrl.checked and bDoGeom and importedNodes.count > 0 then
++        (
++					local objSum = importedNodes.count * 2.0
+ 					local cnt = 0.0
+ 					progressStart "Reset Controllers"
+ 					format "Setting to tcb rotation\r\n"
+-					for o in $objects do
++					for o in importedNodes do
+ 					(
+ 			    		o.rotation.controller = tcb_rotation()
+ 			    		o.pos.controller = tcb_position()
+ 			    		o.scale.controller = tcb_scale()
+ 			    		cnt += 1
+-			    		if (progressUpdate (((cnt*100)/objSum) as integer)) == false then return 0
++			    		if (progressUpdate (((cnt*100)/objSum) as integer)) == false then throw "Controller reset cancelled. The import may be partial."
+ 					)
+ 					format "Setting back to linear rotation\r\n"
+-					for o in $objects do
++					for o in importedNodes do
+ 					(
+ 			    		o.rotation.controller = linear_rotation()
+ 			    		o.pos.controller = linear_position()
+ 			    		o.scale.controller = linear_scale()
+ 			    		cnt += 1
+-			    		if (progressUpdate (((cnt*100)/objSum) as integer)) == false then return 0
++			    		if (progressUpdate (((cnt*100)/objSum) as integer)) == false then throw "Controller reset cancelled. The import may be partial."
+ 					)
+ 					progressEnd()
+         )
+         
+-        -- Redraw gmax viewports
++        ) catch
++        (
++            local detail = getCurrentException()
++            progressEnd()
++            ImportRollout.progress.value = 0
++            percent = 0
++            nx_reportError ("Import failed: " + mdlFileName) detail
++            return false
++        )
++        -- Redraw viewports
+         clearSelection()
+         max tool zoomextents all
+         max views redraw
+@@ -136,6 +157,7 @@
+ 
+         --format "Finished.\n\r\n"
+         gc()
++        true
+     )
+ )
+ 
+@@ -152,7 +174,7 @@
+ 		label lbl_animname "Anim name to load:" enabled:false
+ 		edittext edt_animname enabled:false
+ 		spinner spn_startframe "Insert Frame:" type:#integer range:[0,100000,0] enabled:false
+-		checkbox chk_resetctrl "Reset Controllers" checked:true
++		checkbox chk_resetctrl "Reset New Controllers" checked:false toolTip:"Only resets newly imported objects. Can replace animation controllers."
+ 		checkbox warn_checkbox "Show warnings" width:128 height:16
+ 		spinner spn_loc_x "Import Loc X:" range:[0,1000000,0]
+ 		spinner spn_loc_y "Import Loc Y:" range:[0,1000000,0]
+@@ -168,9 +190,9 @@
+ 
+ 	progressBar progress "" width:136 height:14 
+ 	
+- 	on btn_loadgrp pressed do ( try (filein (scriptsPath+"NWmax/nw_ie_inc/nx_loadgrp.ms")) catch() )
++ 	on btn_loadgrp pressed do ( nx_loadTool (g_startpath+"nw_ie_inc/nx_loadgrp.ms") )
+  	
+- 	on btn_masstileload pressed do ( try (filein (scriptsPath+"NWmax/nw_ie_inc/nx_masstileload.ms")) catch() )
++ 	on btn_masstileload pressed do ( nx_loadTool (g_startpath+"nw_ie_inc/nx_masstileload.ms") )
+  	
+ 	on rdo_options changed val do
+ 	(
+@@ -199,8 +221,7 @@
+ 	on import_browse_button pressed do
+ 	(
+ 	    local filename = getOpenFileName caption:"Import mdl" types:"NWN mdl (*.mdl)|*.mdl|NWN ASCII Model (*.ascii)|*.ascii|All Files (*.*)|*.*|"
+-	    if (filename == undefined) then filename = ""
+-	    import_filename_edit.text = filename
++	    if filename != undefined do import_filename_edit.text = filename
+ 	)
+ 	on import_button pressed do
+ 	(
+--- a/nw_ie_inc/nx_mapper.ms
++++ b/nw_ie_inc/nx_mapper.ms
+@@ -191,7 +191,7 @@
+ 	    (
+ 	        -- we need to decompile this model. We assume it is a real model and not junk
+ 	        local tstamp = (timestamp() as string)
+-	        fControl = scriptsPath+"nwmax\\scratch\\"+tstamp+".txt"
++	        fControl = gNX_scratchPath+""+tstamp+".txt"
+ 	        local pFilePath = getFilenamePath pFile
+ 	        local chkLoop
+ 	        local bDecompiled = false
+@@ -200,29 +200,29 @@
+ 	        (
+ 		        local cmdFile
+ 		        local strCmd
+-		        cmdFile = createFile (scriptsPath+"nwmax\\scratch\\import.bat")
++		        cmdFile = createFile (gNX_scratchPath+"import.bat")
+ 		        format "\"%\" -d \"%\" \"%\\\"\r\n" g_compiler pFile pFilePath to:cmdFile
+ 		        flush cmdFile
+ 		        close cmdFile
+-		        strCmd = "\"" + scriptsPath + "nwmax\\scratch\\import.bat\""
++		        strCmd = "\"" + gNX_scratchPath+"import.bat\""
+ 		        DOSCommand (strCmd)
+ 	        ) else
+ 	        (
+ 		        clearListener()
+ 		        nx_FlushBuffer reset:true
+ 		        -- Have to hard code the delim here into verbose mode
+-		        format "<snoopstart file=%>%" (scriptsPath+"nwmax\\scratch\\scratch.txt") "~\n" to:g_strBuffer
++		        format "<snoopstart file=%>%" (gNX_scratchPath+"scratch.txt") "~\n" to:g_strBuffer
+ 		        format "Processing ...%" g_delim to:g_strBuffer
+-		        format "\"%\" -d \"%\" \"%\\\" > \"%\"%" g_compiler pFile pFilePath (scriptsPath+"nwmax\\scratch\\decomp.txt") "~\n" to:g_strBuffer
++		        format "\"%\" -d \"%\" \"%\\\" > \"%\"%" g_compiler pFile pFilePath (gNX_scratchPath+"decomp.txt") "~\n" to:g_strBuffer
+ 		        format "echo \"done\" > \"%\"%" fControl "~\n" to:g_strBuffer
+ 		
+-		        format "<snoopstart file=%>%" (scriptsPath+"nwmax\\scratch\\import.bat") "~\n" to:g_strBuffer
+-		        format "\"%\" -d \"%\" \"%\\\" > \"%\"%" g_compiler pFile pFilePath (scriptsPath+"nwmax\\scratch\\decomp.txt") "~\n" to:g_strBuffer
++		        format "<snoopstart file=%>%" (gNX_scratchPath+"import.bat") "~\n" to:g_strBuffer
++		        format "\"%\" -d \"%\" \"%\\\" > \"%\"%" g_compiler pFile pFilePath (gNX_scratchPath+"decomp.txt") "~\n" to:g_strBuffer
+ 		        format "echo \"done\" > \"%\"%" fControl "~\n" to:g_strBuffer
+ 		        format "</snoopstart>%" "~\n" to:g_strBuffer
+ 		        
+ 		        format "<commandstart>%" "~\n" to:g_strBuffer
+-		        format "\"%import.bat\"%" (scriptsPath+"nwmax\\scratch\\") "~\n" to:g_strBuffer
++		        format "\"%import.bat\"%" (gNX_scratchPath+"") "~\n" to:g_strBuffer
+ 		        format "</commandstart>%" "~\n" to:g_strBuffer
+ 		        
+ 		        format "</snoopstart>%" "~\n" to:g_strBuffer
+--- a/nw_ie_inc/nx_massutils.ms
++++ b/nw_ie_inc/nx_massutils.ms
+@@ -56,9 +56,9 @@
+ 	on nx_massutils open do
+ 	(
+ 		-- load up any saved path values
+-		local sanity = getINISetting (scriptsPath + "nxlocalprefs.ini") "massutils" "mass_sanity_pattern"
+-		local src = getINISetting (scriptsPath + "nxlocalprefs.ini") "massutils" "mass_source_pattern"
+-		local trgt = getINISetting (scriptsPath + "nxlocalprefs.ini") "massutils" "mass_target_path"
++		local sanity = getINISetting (gNX_prefsFile) "massutils" "mass_sanity_pattern"
++		local src = getINISetting (gNX_prefsFile) "massutils" "mass_source_pattern"
++		local trgt = getINISetting (gNX_prefsFile) "massutils" "mass_target_path"
+ 		
+ 		if sanity != undefined then edt_sanitypattern.text = sanity
+ 		if src != undefined then edt_source.text = src
+@@ -70,26 +70,26 @@
+ 		local datalist = #()
+ 		
+ 		-- Each sub array contains the section, atrrib, vlaue, file
+-		append datalist #("massutils", "mass_sanity_pattern", "\""+edt_sanitypattern.text+"\"", (scriptsPath + "nxlocalprefs.ini"))
+-		append datalist #("massutils", "mass_source_pattern", "\""+edt_source.text+"\"", (scriptsPath + "nxlocalprefs.ini"))
+-		append datalist #("massutils", "mass_target_path", "\""+edt_target.text+"\"", (scriptsPath + "nxlocalprefs.ini"))
++		append datalist #("massutils", "mass_sanity_pattern", "\""+edt_sanitypattern.text+"\"", (gNX_prefsFile))
++		append datalist #("massutils", "mass_source_pattern", "\""+edt_source.text+"\"", (gNX_prefsFile))
++		append datalist #("massutils", "mass_target_path", "\""+edt_target.text+"\"", (gNX_prefsFile))
+ 		
+ 		-- save field values for later re use
+ 		nx_setinivalue datalist
+ /*		
+ 		if g_ismax then
+ 		(
+-			setINISetting (scriptsPath + "nxlocalprefs.ini") "massutils" "mass_sanity_pattern" edt_sanitypattern.text
+-			setINISetting (scriptsPath + "nxlocalprefs.ini") "massutils" "mass_source_pattern" edt_source.text
+-			setINISetting (scriptsPath + "nxlocalprefs.ini") "massutils" "mass_target_path" edt_target.text
++			setINISetting (gNX_prefsFile) "massutils" "mass_sanity_pattern" edt_sanitypattern.text
++			setINISetting (gNX_prefsFile) "massutils" "mass_source_pattern" edt_source.text
++			setINISetting (gNX_prefsFile) "massutils" "mass_target_path" edt_target.text
+ 		) else
+ 		(
+ 			-- gmax processing. Verbose data dumping
+ 			clearListener()
+-			format "<snoopstart file=%>~\n\n" (scriptsPath + "nwmax/scratch/setini.txt")
+-			format "<snoopset %,%,\"%\",%,\>~\n" "massutils" "mass_sanity_pattern" edt_sanitypattern.text (scriptsPath + "nxlocalprefs.ini")
+-			format "<snoopset %,%,\"%\",%,\>~\n" "massutils" "mass_source_pattern" edt_source.text (scriptsPath + "nxlocalprefs.ini")
+-			format "<snoopset %,%,\"%\",%,\>~\n" "massutils" "mass_target_path" edt_target.text (scriptsPath + "nxlocalprefs.ini")
++			format "<snoopstart file=%>~\n\n" (gNX_scratchPath+"setini.txt")
++			format "<snoopset %,%,\"%\",%,\>~\n" "massutils" "mass_sanity_pattern" edt_sanitypattern.text (gNX_prefsFile)
++			format "<snoopset %,%,\"%\",%,\>~\n" "massutils" "mass_source_pattern" edt_source.text (gNX_prefsFile)
++			format "<snoopset %,%,\"%\",%,\>~\n" "massutils" "mass_target_path" edt_target.text (gNX_prefsFile)
+ 			format "</snoopstart>~\n"
+ 			format "</snoopend>~\n"
+ 		)
+--- a/nw_ie_inc/nx_texturelib.ms
++++ b/nw_ie_inc/nx_texturelib.ms
+@@ -29,7 +29,7 @@
+ 	listbox lst_libs "Texture Libs" pos:[13,7] width:200 height:10
+ 	multiListBox lst_textures "TGA Textures" pos:[13,165] width:200 height:20
+ 	multiListBox lst_meditmats "Mat Edit Slots" pos:[12,455] width:200 height:15
+-	bitmap bmp_backgrnd  pos:[225-4,28-5] filename:(scriptsPath + "nwmax/nw_ie_inc/520sq.jpg")
++	bitmap bmp_backgrnd  pos:[225-4,28-5] filename:(g_startpath+"nw_ie_inc/520sq.jpg")
+ 	ImgTag imgt_preview "Preview" pos:[225,28] width:512 height:512 style:#bmp_center
+ 	label lbl_info "" pos:[227,547] width:550 height:100
+ 	button btn_addsel "Add selected to Scene" pos:[227,650] width:124 height:21
+@@ -42,7 +42,7 @@
+ 		-- get the available texture libs
+ 		tlibTGAs = #()
+ 		local tlibs = #()
+-		local files = getFiles (scriptsPath + "nwmax/tlibs/*.tlib")
++		local files = getFiles (gNX_tlibsPath+"*.tlib")
+ 		for f in files do
+ 		(
+ 			append tlibs (getFilenameFile f)
+@@ -63,7 +63,7 @@
+ 	(
+ 		-- load into the tga list all the tga names from the selected texture lib
+ 		local instr
+-		local fname = scriptsPath + "nwmax/tlibs/" + lst_libs.items[val] + ".tlib"
++		local fname = gNX_tlibsPath+"" + lst_libs.items[val] + ".tlib"
+ 		local fs = openFile fname mode:"r"
+ 		local templist = #()
+ 		if fs == undefined then
+--- a/nw_ie_inc/nx_texturelibmaker.ms
++++ b/nw_ie_inc/nx_texturelibmaker.ms
+@@ -81,7 +81,7 @@
+ 			messagebox "Invalid library name"
+ 			return false
+ 		)
+-		local fs = createFile (scriptsPath + "nwmax/tlibs/" + edt_libname.text + ".tlib")
++		local fs = createFile (gNX_tlibsPath+"" + edt_libname.text + ".tlib")
+ 		if fs == undefined then
+ 		(
+ 			-- some file error
+--- a/nwmax.ms
++++ b/nwmax.ms
+@@ -48,8 +48,8 @@
+ 
+ global gNX_maxver = (maxversion())[1]
+ 
+-ClearListener()
+-global gblVersion = "0.8 b61"
++-- Keep earlier Listener output available for diagnosis.
++global gblVersion = "0.8 b61 - Max 2021 foundation 1"
+ format "--------------------------------------------------------------\r\n"
+ format "\r\n"
+ format "                        NWmax v%\r\n" gblVersion
+@@ -69,121 +69,25 @@
+ global strIndent4 = "        "
+ global strIndent5 = "          "
+ --
+--- Load nwmax ini global vars
+-format "NWmax ini load\r\n"
+-global g_3dsmax = getINISetting (scriptsPath+"nwmax/nwmax.ini") "init" "usemax"
+-global g_guiAnimListSize = getINISetting (scriptsPath+"nwmax/nwmax.ini") "init" "animlistsize"
+-global g_verbose = getINISetting (scriptsPath+"nwmax/nwmax.ini") "init" "verbose"
+-global gNX_dock = getINISetting (scriptsPath+"nwmax/nwmax.ini") "init" "dock"
+-global gNX_visible = getINISetting (scriptsPath+"nwmax/nwmax.ini") "init" "visible"
+-global gnx_sanity = getINISetting (scriptsPath+"nwmax/nwmax.ini") "init" "sanity"
+-global g_basepointer = getINISetting (scriptsPath+"nwmax/nwmax.ini") "init" "basepointer"
+-
+--- check to see if over-ride in nxlocalprefs
+-if (getINISetting (scriptsPath+"nxlocalprefs.ini") "init" "animlistsize") != undefined and \
+-   (getINISetting (scriptsPath+"nxlocalprefs.ini") "init" "animlistsize") != ""
+-then (
+-	g_guiAnimListSize = getINISetting (scriptsPath+"nxlocalprefs.ini") "init" "animlistsize"
+-)
+-
+-if (getINISetting (scriptsPath+"nxlocalprefs.ini") "init" "verbose") != undefined and \
+-   (getINISetting (scriptsPath+"nxlocalprefs.ini") "init" "verbose") != ""
+-then (
+-	g_verbose = getINISetting (scriptsPath+"nxlocalprefs.ini") "init" "verbose"
+-)
+-
+-if (getINISetting (scriptsPath+"nxlocalprefs.ini") "init" "dock") != undefined and \
+-   (getINISetting (scriptsPath+"nxlocalprefs.ini") "init" "dock") != ""
+-then (
+-	gNX_dock = getINISetting (scriptsPath+"nxlocalprefs.ini") "init" "dock"
+-)
+-
+-if (getINISetting (scriptsPath+"nxlocalprefs.ini") "init" "visible") != undefined and \
+-   (getINISetting (scriptsPath+"nxlocalprefs.ini") "init" "visible") != ""
+-then (
+-	gNX_visible = getINISetting (scriptsPath+"nxlocalprefs.ini") "init" "visible"
+-)
+-
+-if (getINISetting (scriptsPath+"nxlocalprefs.ini") "init" "sanity") != undefined and \
+-   (getINISetting (scriptsPath+"nxlocalprefs.ini") "init" "sanity") != ""
+-then (
+-    gnx_sanity = getINISetting (scriptsPath+"nxlocalprefs.ini") "init" "sanity"
+-)
+-
+-if (getINISetting (scriptsPath+"nxlocalprefs.ini") "init" "basepointer") != undefined and \
+-   (getINISetting (scriptsPath+"nxlocalprefs.ini") "init" "basepointer") != ""
+-then (
+-	g_basepointer = getINISetting (scriptsPath+"nxlocalprefs.ini") "init" "basepointer"
+-)
+-
+--- get nxlocalprefs specific data and convert types
+-gnx_pos_nwmax = getINISetting (scriptsPath+"nxlocalprefs.ini") "position" "nwmax"
+-if (gnx_pos_nwmax == undefined) or (gnx_pos_nwmax == "") then
+-(
+-	gnx_pos_nwmax = [0,100]
+-) else
+-(
+-	gnx_pos_nwmax = execute(gnx_pos_nwmax)
+-)
+-
+-
+---
+--- Correct ini vars for undefined and set required defaults and type conversion
+-format "Correct ini vars\r\n"
+-if g_guiAnimListSize == undefined then (
+-   g_guiAnimListSize = 10
+-) else (
+-   g_guiAnimListSize = (g_guiAnimListSize as integer)
+-)
+-if g_verbose == undefined then (
+-   g_verbose = 0
+-) else (
+-   g_verbose = (g_verbose as integer)
+-)
+-if gNX_dock == undefined then (
+-	gNX_dock = 0
+-) else (
+-	gNX_dock = (gNX_dock as integer)
+-)
+-if gNX_visible == undefined then (
+-	gNX_visible = 0
+-) else (
+-	gNX_visible = (gNX_visible as integer)
+-)
+-if gnx_sanity == undefined or gnx_sanity == "" then (
+-    gnx_sanity = "11000111110111111111"
+-)
+-if g_basepointer == undefined then (
+-   g_basepointer = 1
+-) else (
+-   g_basepointer = (g_basepointer as integer)
+-)
+---
+--- set globals for 3dsmax v's gmax
+-format "Set globals for 3dsmax v's gmax\r\n"
+-global g_fextn = ""
+-global g_gmaxini = ""
+-global g_ismax = false
+-if g_3dsmax == "1" then (
+-   g_fextn = ".max"
+-   g_gmaxini = "3dsmax.ini"
+-   g_ismax = true
+-) else (
+-   g_fextn = ".gmax"
+-   g_gmaxini = "gmax.ini"
+-   g_ismax = false
+-)
+---
+--- load in all paths from gmax.ini or max file
+-format "Load in all paths from gmax.ini or max file\r\n"
+-global g_maps_path = #()
+-for i = 1 to 100 do
+-(
+-	if (getINISetting (scriptsPath+"..\\"+g_gmaxini) "BitmapDirs" ("Dir"+(i as string))) == "" then exit
+-	append g_maps_path (getINISetting (scriptsPath+"..\\"+g_gmaxini) "BitmapDirs" ("Dir"+(i as string)))
+-)
+-format "Maps search dirs:\r\n"
+-print g_maps_path
++-- Resolve includes independently of autostart/current working directory.
++global g_startpath = getFilenamePath (getSourceFileName())
++fileIn (g_startpath + "nw_ie_inc/nx_max2021.ms")
++-- Close old rollouts before their definitions are replaced during a reload.
++if nx_destroy_floater != undefined do nx_destroy_floater()
++format "NWmax user preferences: %\n" gNX_prefsFile
++global g_3dsmax = "1"
++global g_ismax = true
++global g_fextn = ".max"
++global g_gmaxini = "3dsmax.ini"
++global g_guiAnimListSize = nx_prefInt "animlistsize" 10 5 30
++global g_verbose = nx_prefInt "verbose" 0 0 1
++global gNX_dock = nx_prefInt "dock" 0 0 1
++global gNX_visible = nx_prefInt "visible" 1 0 1
++global g_basepointer = nx_prefInt "basepointer" 1 0 1
++global gnx_sanity = nx_sanityFlags (nx_prefString "init" "sanity" "11000111110111111111")
++global gnx_pos_nwmax = nx_parsePosition (getINISetting gNX_prefsFile "position" "nwmax")
++nx_refreshMapPaths()
++format "Maps search dirs: %\n" g_maps_path
+ --
+ -- Exporting stream buffer
+ format "Setup exporting stream\r\n"
+@@ -203,9 +107,7 @@
+ -- end 3dsmax v's gmax
+ 
+ 
+-global g_startpath = ""
+-if autostart == undefined then autostart = false
+-if autostart == true then g_startpath = "nwmax/"
++-- g_startpath was resolved from this script before loading preferences.
+ --
+ -- Material surfaces used in WOK walkmeshes
+ global matsurfs = #("Dirt","Obscuring","Grass","Stone","Wood","Water", \
+@@ -213,7 +115,7 @@
+                       "Swamp","Mud","Leaves","Lava","BottomlessPit", \
+                       "DeepWater","Door", "Snow", "Sand")
+ global g_plugins = #()  -- list of plugins
+-global g_compiler = scriptsPath+"nwmax\\mdlcomp\\nwnmdlcomp.exe"
++global g_compiler = g_startpath+"mdlcomp\\nwnmdlcomp.exe"
+ global g_exportPath = ""
+ global nwmax_handle		-- handle to the master floater window
+ --
+@@ -272,7 +174,7 @@
+ --
+ -- Include in all the global function prototypes
+ format "Load Function Prototypes\r\n"
+-filein (g_startpath+"nw_ie_inc/aurora_fn_proto.ms")
++nx_requireScript (g_startpath+"nw_ie_inc/aurora_fn_proto.ms")
+ 
+ --------------------------------------------------------------------------------
+ ---
+@@ -423,13 +325,13 @@
+ 
+ fn nx_coderefresh =
+ (
+-	filein (g_startpath+"nw_ie_inc/aurora_fn_general.ms")
+-	filein (g_startpath+"nw_ie_inc/aurora_fn_sanity.ms")
+-	filein (g_startpath+"nw_ie_inc/aurora_fn_export.ms")
+-	filein (g_startpath+"nw_ie_inc/aurora_gui_speedbtns.ms")
+-	filein (g_startpath+"nw_ie_inc/nwn_gui_import.ms")
+-	filein (g_startpath+"nw_ie_inc/nwn_gui_about.ms")
+-	filein (g_startpath+"nw_ie_inc/nwn_gui_updaters.ms")
++	nx_requireScript (g_startpath+"nw_ie_inc/aurora_fn_general.ms")
++	nx_requireScript (g_startpath+"nw_ie_inc/aurora_fn_sanity.ms")
++	nx_requireScript (g_startpath+"nw_ie_inc/aurora_fn_export.ms")
++	nx_requireScript (g_startpath+"nw_ie_inc/aurora_gui_speedbtns.ms")
++	nx_requireScript (g_startpath+"nw_ie_inc/nwn_gui_import.ms")
++	nx_requireScript (g_startpath+"nw_ie_inc/nwn_gui_about.ms")
++	nx_requireScript (g_startpath+"nw_ie_inc/nwn_gui_updaters.ms")
+ 	max views redraw
+ )
+ 
+@@ -438,7 +340,7 @@
+ -- General functions
+ --
+ --------------------------------------------------------------------------------
+-filein (g_startpath+"nw_ie_inc/aurora_fn_general.ms")
++nx_requireScript (g_startpath+"nw_ie_inc/aurora_fn_general.ms")
+ 
+ --
+ -- Start progress for loading
+@@ -450,33 +352,33 @@
+ --- Export functions
+ ---
+ --------------------------------------------------------------------------------
+-filein (g_startpath+"nw_ie_inc/aurora_fn_sanity.ms")
+-filein (g_startpath+"nw_ie_inc/aurora_fn_export.ms")
++nx_requireScript (g_startpath+"nw_ie_inc/aurora_fn_sanity.ms")
++nx_requireScript (g_startpath+"nw_ie_inc/aurora_fn_export.ms")
+ 
+ --------------------------------------------------------------------------------
+ ---
+ --- Scripted Plug-Ins
+ ---
+ --------------------------------------------------------------------------------
+-filein (g_startpath+"nw_ie_inc/aurora_mod_trimesh.ms")
+-filein (g_startpath+"nw_ie_inc/aurora_mod_flex.ms")
+-filein (g_startpath+"nw_ie_inc/aurora_mod_walkmesh.ms")
+-filein (g_startpath+"nw_ie_inc/aurora_mod_placeable.ms")
+-filein (g_startpath+"nw_ie_inc/aurora_mod_animesh.ms")
+-filein (g_startpath+"nw_ie_inc/aurora_helper_reference.ms")
+-filein (g_startpath+"nw_ie_inc/aurora_helper_base.ms")
+-filein (g_startpath+"nw_ie_inc/aurora_helper_light.ms")
+-filein (g_startpath+"nw_ie_inc/aurora_helper_emitter.ms")
+-
+-filein (g_startpath+"nw_ie_inc/aurora_helper_tools.ms")
++nx_requireScript (g_startpath+"nw_ie_inc/aurora_mod_trimesh.ms")
++nx_requireScript (g_startpath+"nw_ie_inc/aurora_mod_flex.ms")
++nx_requireScript (g_startpath+"nw_ie_inc/aurora_mod_walkmesh.ms")
++nx_requireScript (g_startpath+"nw_ie_inc/aurora_mod_placeable.ms")
++nx_requireScript (g_startpath+"nw_ie_inc/aurora_mod_animesh.ms")
++nx_requireScript (g_startpath+"nw_ie_inc/aurora_helper_reference.ms")
++nx_requireScript (g_startpath+"nw_ie_inc/aurora_helper_base.ms")
++nx_requireScript (g_startpath+"nw_ie_inc/aurora_helper_light.ms")
++nx_requireScript (g_startpath+"nw_ie_inc/aurora_helper_emitter.ms")
++
++nx_requireScript (g_startpath+"nw_ie_inc/aurora_helper_tools.ms")
+ --------------------------------------------------------------------------------
+ ---
+ ---   Rollout definitions
+ ---
+ --------------------------------------------------------------------------------
+-filein (g_startpath+"nw_ie_inc/aurora_gui_speedbtns.ms")
+-filein (g_startpath+"nw_ie_inc/nwn_gui_import.ms")
+-filein (g_startpath+"nw_ie_inc/nwn_gui_about.ms")
++nx_requireScript (g_startpath+"nw_ie_inc/aurora_gui_speedbtns.ms")
++nx_requireScript (g_startpath+"nw_ie_inc/nwn_gui_import.ms")
++nx_requireScript (g_startpath+"nw_ie_inc/nwn_gui_about.ms")
+ 
+ 
+ 
+@@ -540,7 +442,8 @@
+ 	        cui.UnRegisterDialogBar nwmax_handle
+ 	    ) catch ()
+ 	    -- close it.
+-	    closerolloutfloater nwmax_handle
++	    try (closerolloutfloater nwmax_handle) catch ()
++        nwmax_handle = undefined
+ 	)
+ )
+ 
+@@ -563,17 +466,17 @@
+ )
+ 
+ -- Set app title
+-cui.setAppTitle ("NWmax v" + gblVersion)
+-    
+-    
+-if IsSceneRedrawDisabled()==true do enablesceneredraw()
++-- Preserve the host application and scene title.
++    
++    
++-- Startup does not own any existing redraw suspension.
+ 
+ --------------------------------------------------------------------------------
+ ---
+ ---   GUI updaters
+ ---
+ --------------------------------------------------------------------------------
+-filein (g_startpath+"nw_ie_inc/nwn_gui_updaters.ms")
++nx_requireScript (g_startpath+"nw_ie_inc/nwn_gui_updaters.ms")
+ 
+ ------------------
+ --- selChanged ---
+--- a/ramaker/nwmax_ramaker.ms
++++ b/ramaker/nwmax_ramaker.ms
+@@ -118,7 +118,7 @@
+ 	on nx_ramaker open do
+ 	(
+     	local inis = #()
+-    	local tmp = getFiles (scriptsPath + "nwmax\\sc_*.ini")
++    	local tmp = getFiles (g_startpath+"sc_*.ini")
+     	nx_ramaker_flag = true
+     	-- sort the file list
+     	sort tmp
+@@ -163,10 +163,10 @@
+     	)
+     	
+     	-- load in last used paths
+-		local loadptrn = getINISetting (scriptsPath + "nxlocalprefs.ini") "ramaker" "ra_load_pattern"
+-		local exportpath = getINISetting (scriptsPath + "nxlocalprefs.ini") "ramaker" "ra_export_path"
+-		local ardummyloadptrn = getINISetting (scriptsPath + "nxlocalprefs.ini") "ramaker" "ra_dummyload_pattern"
+-		local trgt = getINISetting (scriptsPath + "nxlocalprefs.ini") "ramaker" "ra_mass_target_path"
++		local loadptrn = getINISetting (gNX_prefsFile) "ramaker" "ra_load_pattern"
++		local exportpath = getINISetting (gNX_prefsFile) "ramaker" "ra_export_path"
++		local ardummyloadptrn = getINISetting (gNX_prefsFile) "ramaker" "ra_dummyload_pattern"
++		local trgt = getINISetting (gNX_prefsFile) "ramaker" "ra_mass_target_path"
+ 		
+ 		if loadptrn != undefined then edt_loadpattern.text = loadptrn
+ 		if exportpath != undefined then edt_path.text = exportpath
+@@ -179,19 +179,19 @@
+ 		nx_ramaker_flag = false
+ 		if g_ismax then
+ 		(
+-			setINISetting (scriptsPath + "nxlocalprefs.ini") "ramaker" "ra_load_pattern" edt_loadpattern.text
+-			setINISetting (scriptsPath + "nxlocalprefs.ini") "ramaker" "ra_export_path" edt_path.text
+-			setINISetting (scriptsPath + "nxlocalprefs.ini") "ramaker" "ra_dummyload_pattern" edt_arloadptrn.text
+-			setINISetting (scriptsPath + "nxlocalprefs.ini") "ramaker" "ra_mass_target_path" edt_masstarget.text
++			setINISetting (gNX_prefsFile) "ramaker" "ra_load_pattern" edt_loadpattern.text
++			setINISetting (gNX_prefsFile) "ramaker" "ra_export_path" edt_path.text
++			setINISetting (gNX_prefsFile) "ramaker" "ra_dummyload_pattern" edt_arloadptrn.text
++			setINISetting (gNX_prefsFile) "ramaker" "ra_mass_target_path" edt_masstarget.text
+ 		) else
+ 		(
+ 			-- gmax processing. Verbose data dumping
+ 			clearListener()
+-			format "<snoopstart file=%>~\n\n" (scriptsPath + "nwmax/scratch/setini.txt")
+-			format "<snoopset %,%,\"%\",%,\>~\n" "ramaker" "ra_load_pattern" edt_loadpattern.text (scriptsPath + "nxlocalprefs.ini")
+-			format "<snoopset %,%,\"%\",%,\>~\n" "ramaker" "ra_export_path" edt_path.text (scriptsPath + "nxlocalprefs.ini")
+-			format "<snoopset %,%,\"%\",%,\>~\n" "ramaker" "ra_dummyload_pattern" edt_arloadptrn.text (scriptsPath + "nxlocalprefs.ini")
+-			format "<snoopset %,%,\"%\",%,\>~\n" "ramaker" "ra_mass_target_path" edt_masstarget.text (scriptsPath + "nxlocalprefs.ini")
++			format "<snoopstart file=%>~\n\n" (gNX_scratchPath+"setini.txt")
++			format "<snoopset %,%,\"%\",%,\>~\n" "ramaker" "ra_load_pattern" edt_loadpattern.text (gNX_prefsFile)
++			format "<snoopset %,%,\"%\",%,\>~\n" "ramaker" "ra_export_path" edt_path.text (gNX_prefsFile)
++			format "<snoopset %,%,\"%\",%,\>~\n" "ramaker" "ra_dummyload_pattern" edt_arloadptrn.text (gNX_prefsFile)
++			format "<snoopset %,%,\"%\",%,\>~\n" "ramaker" "ra_mass_target_path" edt_masstarget.text (gNX_prefsFile)
+ 			format "</snoopstart>~\n"
+ 			format "</snoopend>~\n"
+ 		)
+@@ -242,7 +242,7 @@
+ 	(
+     	lbl_inidescr.text = ""
+     	lbl_inidescr.text = getINISetting \
+-    	    (scriptsPath + "nwmax\\" + (drp_scaleini.items[val])) \
++    	    (g_startpath+"" + (drp_scaleini.items[val])) \
+     	    "init" "descr"
+     	    
+     	-- get the default races this file will generate
+@@ -253,7 +253,7 @@
+     	chk_gnome.checked = false
+     	chk_orc.checked = false
+     	local defaultRaces = getINISetting \
+-    		(scriptsPath + "nwmax\\" + (drp_scaleini.items[val])) \
++    		(g_startpath+"" + (drp_scaleini.items[val])) \
+     		"roberaces" "races"
+     	local i
+     	for i = 1 to (defaultRaces.count) do
+@@ -270,7 +270,7 @@
+     	)
+     	
+     	local validProcess = getINISetting \
+-				(scriptsPath + "nwmax\\" + (drp_scaleini.items[val])) \
++				(g_startpath+"" + (drp_scaleini.items[val])) \
+ 				"init" "type"
+     	btn_build_armour.enabled = false
+     	btn_build_robes.enabled = false
+@@ -309,7 +309,7 @@
+ 		local super = edt_arsrp.text
+ 		-- reset the scene and load model base dummy in from supermodels
+ 		resetMaxFile #noPrompt
+-		loadMaxFile (scriptsPath + "NWmax/supermodels/" + super + g_fextn)
++		loadMaxFile (g_startpath+"supermodels/" + super + g_fextn)
+ 		
+ 		local templateBase = undefined
+ 		for h in $helpers do
+@@ -477,7 +477,7 @@
+     	
+     	
+     	-- sanity checks
+-    	scaleINI = scriptsPath + "NWmax\\" + drp_scaleini.selected
++    	scaleINI = g_startpath+"" + drp_scaleini.selected
+         if not (nx_existFile scaleINI) then
+         (
+             strMsg = "Scale ini file does not exist"
+@@ -875,7 +875,7 @@
+     	local animSuper
+         
+     	-- sanity checks
+-    	scaleINI = scriptsPath + "NWmax\\" + drp_scaleini.selected
++    	scaleINI = g_startpath+"" + drp_scaleini.selected
+         if not (nx_existFile scaleINI) then
+         (
+             strMsg = "Scale ini file does not exist"
+--- a/ramaker/nwmax_skindumper.ms
++++ b/ramaker/nwmax_skindumper.ms
+@@ -215,10 +215,10 @@
+ 	on nx_skindumper open do
+ 	(
+ 		nx_skindumper_flag = true
+-		lbl_path.text = getINISetting (scriptsPath + "nxlocalprefs.ini") "skindumper" "filepath"
++		lbl_path.text = getINISetting (gNX_prefsFile) "skindumper" "filepath"
+ 		if lbl_path.text ==  undefined or lbl_path.text == "" then
+ 		(
+-			lbl_path.text = scriptsPath + "NWmax\\scratch\\"
++			lbl_path.text = gNX_scratchPath+""
+ 		)
+ 		-- refresh the available .skn list
+ 		nx_refresh_files (lbl_path.text + "*.skn")
+@@ -229,13 +229,13 @@
+ 		nx_skindumper_flag = false
+ 		if g_ismax then
+ 		(
+-			setINISetting (scriptsPath + "nxlocalprefs.ini") "skindumper" "filepath" lbl_path.text
++			setINISetting (gNX_prefsFile) "skindumper" "filepath" lbl_path.text
+ 		) else
+ 		(
+ 			-- gmax processing. Verbose data dumping
+ 			clearListener()
+-			format "<snoopstart file=%>~\n\n" (scriptsPath + "nwmax/scratch/setini.txt")
+-			format "<snoopset %,%,\"%\",%,\>~\n" "skindumper" "filepath" lbl_path.text (scriptsPath + "nxlocalprefs.ini")
++			format "<snoopstart file=%>~\n\n" (gNX_scratchPath+"setini.txt")
++			format "<snoopset %,%,\"%\",%,\>~\n" "skindumper" "filepath" lbl_path.text (gNX_prefsFile)
+ 			format "</snoopstart>~\n"
+ 			format "</snoopend>~\n"
+ 		)
+--- /dev/null
++++ b/nw_ie_inc/nx_max2021.ms
+@@ -0,0 +1,116 @@
++-- Max 2021 runtime services. Loaded before NWmax preferences and rollouts.
++global gNX_userPath = (getDir #plugcfg) + "\\NWmax\\"
++global gNX_prefsFile = gNX_userPath + "nxlocalprefs.ini"
++global gNX_scratchPath = (getDir #temp) + "\\NWmax\\" + (((dotNetClass "System.Diagnostics.Process").GetCurrentProcess()).Id as string) + "\\"
++makeDir gNX_userPath all:true
++makeDir gNX_scratchPath all:true
++global gNX_sanityPath = gNX_userPath + "sanity\\"
++global gNX_tlibsPath = gNX_userPath + "tlibs\\"
++makeDir gNX_sanityPath all:true
++makeDir gNX_tlibsPath all:true
++for libraryFile in getFiles (g_startpath + "tlibs/*.tlib") do
++(
++    local destination = gNX_tlibsPath + filenameFromPath libraryFile
++    if not doesFileExist destination do
++        if not copyFile libraryFile destination do throw ("Cannot migrate texture library to " + destination)
++)
++
++-- Migrate once; never overwrite preferences already saved in the user profile.
++if not doesFileExist gNX_prefsFile do
++(
++    local legacyPrefs = scriptsPath + "nxlocalprefs.ini"
++    if doesFileExist legacyPrefs do
++        if not copyFile legacyPrefs gNX_prefsFile do throw ("Cannot migrate NWmax preferences to " + gNX_prefsFile)
++)
++
++fn nx_reportError context detail notify:true =
++(
++    local message = context + "\n" + (detail as string)
++    format "NWmax: %\n" message
++    local logFile = undefined
++    try
++    (
++        logFile = openFile (gNX_userPath + "nwmax-errors.log") mode:"a"
++        if logFile != undefined do
++        (
++            format "[%] %\n" localTime message to:logFile
++            close logFile
++        )
++    ) catch (if logFile != undefined do try (close logFile) catch ())
++    if notify do messageBox message title:"NWmax"
++    false
++)
++
++fn nx_loadTool filename =
++(
++    try
++    (
++        if not doesFileExist filename do throw ("Script not found: " + filename)
++        fileIn filename
++        true
++    ) catch (nx_reportError ("Could not load " + filename) (getCurrentException()))
++)
++
++fn nx_requireScript filename =
++(
++    try
++    (
++        if not doesFileExist filename do throw ("Script not found: " + filename)
++        fileIn filename
++    ) catch
++    (
++        local detail = getCurrentException()
++        progressEnd()
++        nx_reportError ("Startup failed in " + filename) detail notify:false
++        throw
++    )
++)
++
++fn nx_prefString section key fallback =
++(
++    local value = getINISetting gNX_prefsFile section key
++    if value == "" do value = getINISetting (g_startpath + "nwmax.ini") section key
++    if value == "" then fallback else value
++)
++
++fn nx_savePreference section key value =
++(
++    if setINISetting gNX_prefsFile section key (value as string) then true
++    else nx_reportError "Could not save preferences" gNX_prefsFile
++)
++
++fn nx_parseInt value fallback minimum maximum =
++(
++    local result = try (value as integer) catch (undefined)
++    if result == undefined then fallback
++    else if result < minimum or result > maximum then fallback
++    else result
++)
++
++fn nx_prefInt key fallback minimum maximum =
++    nx_parseInt (nx_prefString "init" key (fallback as string)) fallback minimum maximum
++
++fn nx_parsePosition value =
++(
++    -- Parse data only; never execute text from a preferences file.
++    local parts = filterString value "[], \t\r\n"
++    if parts.count != 2 then return [0,100]
++    local x = try (parts[1] as integer) catch (undefined)
++    local y = try (parts[2] as integer) catch (undefined)
++    if x == undefined or y == undefined then [0,100] else [x,y]
++)
++
++fn nx_sanityFlags value =
++(
++    local defaults = "11000111110111111111"
++    if value.count != 20 then return defaults
++    for i = 1 to value.count where value[i] != "0" and value[i] != "1" do return defaults
++    value
++)
++
++fn nx_refreshMapPaths =
++(
++    global g_maps_path = #()
++    for i = 1 to mapPaths.count() do appendIfUnique g_maps_path (mapPaths.get i)
++    g_maps_path
++)
+--- /dev/null
++++ b/tests/max2021_foundation.ms
+@@ -0,0 +1,93 @@
++-- Run using 3dsmaxbatch.exe, never in a working scene.
++global nx_testRoot = getFilenamePath (getSourceFileName())
++global nx_testLog = createFile (nx_testRoot + "foundation-results.txt")
++global g_ismax, g_fextn, g_startpath, gNX_scratchPath, g_maps_path
++global nx_parseInt, nx_parsePosition, nx_sanityFlags, ImportRollout
++global auroralight, ExAuroraAnimations, nwmax_handle, nx_importer
++global ImportNWNmdl, nx_reportError
++global gNX_prefsFile, nx_savePreference, nx_prefInt, nx_requireScript
++fn nx_check condition label =
++(
++    if condition != true do throw ("FAILED: " + label)
++    format "PASS: %\n" label to:nx_testLog
++    flush nx_testLog
++)
++try
++(
++    fileIn (nx_testRoot + "../nwmax.ms")
++    nx_check g_ismax "Max mode selected"
++    nx_check (g_fextn == ".max") "Max scene extension"
++    nx_check (doesFileExist (g_startpath + "nw_ie_inc/aurora_fn_export.ms")) "Absolute installation path"
++    nx_check ((nx_parseInt "nonsense" 10 5 30) == 10) "Malformed integer fallback"
++    nx_check ((nx_parseInt "" 10 5 30) == 10) "Empty integer fallback"
++    nx_check ((nx_parseInt "999" 10 5 30) == 10) "Out of range fallback"
++    nx_check ((nx_parsePosition "[2146,225]") == [2146,225]) "Legacy window position"
++    nx_check ((nx_parsePosition "garbage") == [0,100]) "Malformed position fallback"
++    nx_check ((nx_sanityFlags "1") == "11000111110111111111") "Short sanity flags fallback"
++    nx_check ((nx_sanityFlags "xxxxxxxxxxxxxxxxxxxx") == "11000111110111111111") "Invalid sanity flags fallback"
++    nx_check (g_maps_path.count == mapPaths.count()) "Host bitmap paths discovered"
++    local realPrefs = gNX_prefsFile
++    gNX_prefsFile = gNX_scratchPath + "test-prefs.ini"
++    nx_check (nx_savePreference "init" "animlistsize" 17) "Preferences writable"
++    nx_check ((nx_prefInt "animlistsize" 10 5 30) == 17) "Saved preference readback"
++    nx_savePreference "init" "animlistsize" "invalid"
++    nx_check ((nx_prefInt "animlistsize" 10 5 30) == 10) "Invalid saved preference falls back"
++    deleteFile gNX_prefsFile
++    gNX_prefsFile = realPrefs
++    local probe = createFile (gNX_scratchPath + "write-test.txt")
++    nx_check (probe != undefined) "Writable scratch directory"
++    close probe
++    deleteFile (gNX_scratchPath + "write-test.txt")
++    nx_check (ImportRollout.chk_resetctrl.checked == false) "Controller replacement is opt in"
++    nx_check (auroralight != undefined) "Light helper registered"
++    nx_check (ExAuroraAnimations undefined == undefined) "Export early return"
++    fileIn (nx_testRoot + "../nwmax.ms")
++    nx_check (nwmax_handle != undefined) "Second startup recreates floater"
++    nx_check (not IsSceneRedrawDisabled()) "Startup leaves redraw enabled"
++    local missingCaught = false
++    try (nx_requireScript (gNX_scratchPath + "missing-script.ms")) catch (missingCaught = true)
++    nx_check missingCaught "Required script failure propagates"
++    -- Exercise the UI import wrapper independently of the model parser.
++    -- Existing scene controllers must survive the optional legacy reset.
++    local originalImporter = ImportNWNmdl
++    local originalReporter = nx_reportError
++    global nx_testShouldFail = false
++    global nx_testReported = false
++    fn nx_reportError context detail notify:true = (nx_testReported = true; false)
++    fn ImportNWNmdl filename anims warnings loadGeom:true animLoadBase:undefined loadanimlist:undefined insertpoint:0 showprogress:false location:[0,0,0] =
++    (
++        if nx_testShouldFail do throw "Injected import failure"
++        dummy name:"NWmax_test_imported"
++        true
++    )
++    local existing = dummy name:"NWmax_test_existing"
++    existing.position.controller = bezier_position()
++    local originalController = existing.position.controller
++    ImportRollout.import_filename_edit.text = nx_testRoot + "max2021_foundation.ms"
++    ImportRollout.chk_resetctrl.checked = true
++    nx_check (nx_importer() == true) "Import wrapper succeeds"
++    nx_check (existing.position.controller == originalController) "Existing scene controllers preserved"
++    nx_check (classOf $NWmax_test_imported.position.controller == Linear_Position) "Opt in reset affects new nodes"
++    nx_testShouldFail = true
++    nx_check (nx_importer() == false) "Import failure reported"
++    nx_check nx_testReported "Import error reaches reporter"
++    nx_check (not IsSceneRedrawDisabled()) "Failure restores redraw"
++    disableSceneRedraw()
++    nx_importer()
++    nx_check (IsSceneRedrawDisabled()) "Failure preserves caller redraw suspension"
++    enableSceneRedraw()
++    ImportNWNmdl = originalImporter
++    nx_reportError = originalReporter
++    ImportRollout.chk_resetctrl.checked = false
++    ImportRollout.import_filename_edit.text = nx_testRoot + "foundation_triangle.mdl.ascii"
++    nx_check (nx_importer() == true) "Real ASCII model imports"
++    nx_check ($nx_foundation_mesh != undefined) "Imported mesh exists"
++    nx_check ($nx_foundation_mesh.numVerts == 3 and $nx_foundation_mesh.numFaces == 1) "Triangle topology preserved"
++    nx_check (classOf $nx_foundation_mesh.material == Standardmaterial) "Legacy Standard material created explicitly"
++    nx_check (existing.position.controller == originalController) "Real import preserves existing controllers"
++    format "ALL FOUNDATION CHECKS PASSED\n" to:nx_testLog
++) catch
++(
++    format "FAIL: %\n" (getCurrentException()) to:nx_testLog
++)
++close nx_testLog
+--- /dev/null
++++ b/tests/foundation_triangle.mdl.ascii
+@@ -0,0 +1,29 @@
++# Minimal ASCII geometry fixture for the Max 2021 foundation tests.
++newmodel nx_foundation
++setsupermodel nx_foundation NULL
++classification Other
++setanimationscale 1.0
++beginmodelgeom nx_foundation
++node dummy nx_foundation
++  parent NULL
++endnode
++node trimesh nx_foundation_mesh
++  parent nx_foundation
++  position 0 0 0
++  orientation 0 0 1 0
++  diffuse 1 1 1
++  ambient 1 1 1
++  bitmap nx_foundation_test_texture
++  verts 3
++    0 0 0
++    1 0 0
++    0 1 0
++  tverts 3
++    0 0 0
++    1 0 0
++    0 1 0
++  faces 1
++    0 1 2 1 0 1 2 0
++endnode
++endmodelgeom nx_foundation
++donemodel nx_foundation
+--- /dev/null
++++ b/MAX2021-FOUNDATION.txt
+@@ -0,0 +1,74 @@
++NWmax 0.8 b61 - Max 2021 foundation 1
++2026-11-19
++
++Target: Autodesk 3ds Max 2021. This patch does not claim KotOR format
++compatibility or support for other Max releases. Original credits remain intact.
++
++CHANGES
++- Absolute installation paths derived from nwmax.ms. Includes and bundled
++  resources no longer depend on the current working directory or autostart flag.
++- Max mode is selected explicitly. A legacy usemax=0 setting cannot send this
++  build into the GMax output path.
++- Preferences live under (getDir #plugcfg)/NWmax/nxlocalprefs.ini.
++  The legacy scripts/nxlocalprefs.ini is copied once if present; an existing
++  user-profile file is never overwritten. Missing keys use shipped nwmax.ini.
++- Integer settings are range checked. Window position is parsed as data rather
++  than executed. Invalid position/sanity flags fall back to defaults.
++- Autodock, animation-list length, window position and global sanity defaults
++  persist in the user profile. Autodock applies at the next NWmax startup.
++- Bitmap search directories come from Max's mapPaths API and refresh on import.
++- Compiler scratch files live under (getDir #temp)/NWmax/<process-id>/.
++  Sanity reports and texture libraries live under (getDir #plugcfg)/NWmax/.
++  Existing bundled texture libraries are copied only when the user copy is absent.
++- Script-loading failures report a filename and error. Errors are appended to
++  (getDir #plugcfg)/NWmax/nwmax-errors.log. Required startup failures propagate.
++- The old floater closes before rollout definitions are replaced during reload.
++  Startup preserves the Max application title, Listener history, and any redraw
++  suspension owned by the caller. No new callbacks are installed.
++- Cancelling either lens-flare texture picker does nothing; cancelling the
++  model browser retains the previous filename.
++- Animation-only import requires exactly one selected model base.
++- Import redraw suspension is scoped and restored after exceptions. Errors end
++  the progress display and reset the NWmax progress controls. Failed imports
++  can leave partial geometry; this patch does not implement scene rollback.
++- Controller replacement is OFF by default. When explicitly selected, it only
++  affects nodes created by that import, and is skipped for animation-only imports.
++  Existing scene controllers are never reset by this import option.
++- Earlier bare-return syntax fixes are retained.
++- About and Credits acknowledge lordvadercw for Max 2021 modifications;
++  original author credits are preserved.
++
++VALIDATION
++Run tests/max2021_foundation.ms using 3dsmaxbatch.exe in a separate process.
++Do not run the test in a working scene: it intentionally creates test objects.
++Verified in Max 2021 on 2026-11-19: 33 checks passed.
++Results are written to tests/foundation-results.txt. The test checks startup,
++reload, settings, paths, error propagation, controller isolation, redraw cleanup,
++and a minimal real ASCII triangle import. Injected failures are intentional.
++
++Interactive checks after reloading NWmax:
++1. Cancel the model browser and each light's texture browser.
++2. Move the floater, change Preferences, reload, and verify saved settings.
++3. Import a COPY of a representative model into a scratch scene.
++4. Confirm textures, skin deformation and animation before exporting production
++   assets. Skin and full model round-trip coverage remain separate follow-up work.
++
++BOUNDARIES
++The material importer already explicitly creates Standard materials; it has not
++been converted to Physical materials. Skin weighting and model serialization
++algorithms are unchanged. Optional utilities have not all been exercised.
++Binary compiler success and in-game model behavior are not certified by these
++foundation tests. GMax is no longer a supported host for this patched build.
++
++BACKUP / ROLLBACK
++Original modified files (including the earlier return fixes) are under:
++backups/max2021-foundation-20261119-222939/
++To roll back, close Max and copy that directory's contents over NWmax, preserving
++relative paths. The new nx_max2021.ms helper can remain unused. User-profile
++settings and reports are kept separately; the original installation INIs remain.
++
++API REFERENCES
++Autodesk mapPaths and system directory documentation:
++https://help.autodesk.com/cloudhelp/2019/ENU/3DSMax-MAXScript/files/GUID-F7577416-051E-478C-BB5D-81243BAAC8EC.htm
++Autodesk source filename access (available since Max 9):
++https://help.autodesk.com/cloudhelp/2024/ENU/MAXScript-Help/files/MAXScript-Tools-and-Interaction/File-Access/GUID-9588A886-A811-4C05-9A07-B6A68C969050.html

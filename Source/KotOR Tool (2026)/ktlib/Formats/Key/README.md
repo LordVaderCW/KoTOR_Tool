@@ -1,0 +1,21 @@
+# KEY indexing and BIFF resolution — combined iteration 3.2
+
+The user expanded this iteration to include BIFF and KEY together. Reference implementations are `clsChitinKey`, `KeyEntry` and `BIFFEntry`. Main-application files remain read-only. This library parses data and returns metadata; it never discovers a game, displays a prompt, or opens a path taken from KEY metadata automatically.
+
+`KeyIndex(byte[])` owns a byte snapshot and reads signed counts/table offsets at 8/12/16/20, 12-byte BIFF file records and 22-byte resource records. It validates table/string ranges before allocation/read, preserves entry order and exposes immutable records. `Read(path)` closes its input on success/failure. `CopyArchiveBytes()` preserves all unknown/header/trailing bytes. `ByteSum` and `Length` reproduce the legacy diagnostic values without writing to the console.
+
+File records retain signed length/location/string metadata. Filename decoding follows `BIFFEntry`'s UTF-8 `ReadChars(stringLength - 1)` behavior, including omission of the final terminator without validation. The legacy double-backslash/colon normalization and case-sensitive `data\`/`.bif` removal are retained. Normalized filenames are metadata, not validated safe paths; the caller must constrain any eventual filesystem use. Duplicate derived BIFF names throw, as in the legacy constructor before its UI warning path.
+
+Resource names use ASCII and trim **trailing** zero characters only, matching `clsChitinKey` lookups. This differs from standalone `KeyEntry` constructors that stop at the first NUL. Types are retained as unsigned 16-bit values exposed through `int`; `GetEntriesForResourceType(short)` follows the legacy signed filtering contract. Packed IDs retain signed Int32 bits. `FindResourceId` returns the first case-insensitive name/type match or -1, retaining the legacy sentinel ambiguity; `TryFindResource` distinguishes a stored -1 from a miss. Name matching lowercases using the current culture then compares ordinally, matching the original lookup. Null query text is treated as empty, as in VB LCase.
+
+`KeyResource.BiffIndex` uses arithmetic `PackedResourceId >> 20`, as the existing callers do; `LocalResourceIndex` masks the low 20 bits. `ResolveBiffFile(packedId)` checks that derived index before returning a file record. High-bit IDs remain visible but can fail resolution because of the inherited signed-shift interpretation; no unsigned reinterpretation is hidden in this port.
+
+`GetBiffResourceMap(name, extensionResolver)` returns a fresh case-sensitive map from `resref.extension` to local resource index, or null when the BIFF name is missing. Display extensions are supplied by the caller. Duplicate map keys throw. Unlike VB's cache, a missing lookup cannot poison the next lookup; this is an explicit state-management fix. `BiffFilesByName` supports exact legacy derived-name lookup.
+
+`LegacyKeyLayout.Matches(index, gameIndex)` transposes the original K1/K2 filename-and-declared-size heuristics, including both K2 dialog/script alternatives. It does not read BIFF files and is not file integrity, security validation, or proof that an install is usable. Unknown game indices return false.
+
+Deliberate safety differences: eager bounds validation, immutable metadata/snapshot ownership, explicit invalid packed-index errors, no console/UI side effects, and stateless maps. KEY signatures/versions are not validated. Invalid lengths/ranges throw InvalidDataException; prematurely exhausted filename characters throw EndOfStreamException. No application integration, KEY writer or path-based resource extraction is introduced.
+
+Tests compile the original three VB sources with a display-extension stub. Compare parsing, names, type-filtering, lookups, maps, layout heuristics and unknown-byte retention; test malformed ranges, duplicate entries and signed limits separately. Combined synthetic KEY/BIFF tests resolve an archive and local index then extract the expected bytes from a caller-supplied stream. This tests both game layout rules, not live installations or editor behavior.
+
+Validation: `../../tests/Run-KeyTests.ps1` passes 488 KEY/combined assertions. Both layout rules and all K2 alternate-size combinations are tested; the original VB reference host retains its existing BC42025 warning. No application files changed.

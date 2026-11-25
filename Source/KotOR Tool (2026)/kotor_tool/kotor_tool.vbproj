@@ -1,4 +1,3 @@
-<<<<<<< HEAD:Source/KotOR Tool (2026)/kotor_tool/kotor_tool.vbproj
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0" DefaultTargets="Build">
   <PropertyGroup>
@@ -119,919 +118,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <AppDesigner Include="My Project\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Classes\AnimSystem\AnimListEntry.vb" />
-    <Compile Include="Classes\BIFFSystem\BIFFArchive.vb" />
-    <Compile Include="Classes\BIFFSystem\BIFFEntry.vb" />
-    <Compile Include="Classes\BIFFSystem\BIFFVarRsrcEntry.vb" />
-    <Compile Include="Classes\BIFFSystem\BIFFVarRsrcEntryInfo.vb" />
-    <Compile Include="Classes\ThemeSystem\KotorTheme.vb" />
-    <Compile Include="Classes\ThemeSystem\KotorThemeApplier.vb" />
-    <Compile Include="Classes\NCSSystem\clsNCS.vb" />
-    <Compile Include="Classes\PluginSystem\clsDownloadPlugin.vb" />
-    <Compile Include="Classes\PluginSystem\clsInstallPlugin.vb" />
-    <Compile Include="Classes\PluginSystem\clsPluginCommand.vb" />
-    <Compile Include="Classes\PluginSystem\clsPluginDefiniton.vb" />
-    <Compile Include="Classes\PluginSystem\clsPluginExecutionResult.vb" />
-    <Compile Include="Classes\PluginSystem\clsPluginHandle.vb" />
-    <Compile Include="Classes\PluginSystem\clsPluginManager.vb" />
-    <Compile Include="Classes\Shared\clsPluginProgressEventArgs.vb" />
-    <Compile Include="Classes\ThemeSystem\ThemeManager.vb" />
-    <Compile Include="Classes\2DASystem\cls2DA.vb" />
-    <Compile Include="Classes\2DASystem\clsBaseItems2DA.vb" />
-    <Compile Include="Classes\BWMSystem\clsBWM.vb" />
-    <Compile Include="Classes\Security\clsChitinKey.vb" />
-    <Compile Include="Classes\DLGSystem\clsDialogTlk.vb" />
-    <Compile Include="Classes\DLGSystem\clsDLG.vb" />
-    <Compile Include="Classes\ERFSystem\clsERF.vb" />
-    <Compile Include="Classes\GFFSystem\clsGFF.vb" />
-    <Compile Include="Classes\GlobalSystem\clsGlobalVars.vb" />
-    <Compile Include="Classes\StandardUI\clsGridDisplay.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Classes\MAPSystem\clsMapInfoCreator.vb" />
-    <Compile Include="Classes\ProjectSystem\clsProject.vb" />
-    <Compile Include="Classes\ProjectSystem\clsProjectManager.vb" />
-    <Compile Include="Classes\RIMSystem\clsRIM.vb" />
-    <Compile Include="Classes\SoundSystem\clsSSF.vb" />
-    <Compile Include="Classes\UTCSystem\clsUTC.vb" />
-    <Compile Include="Classes\UTDSystem\clsUTD.vb" />
-    <Compile Include="Classes\UTISystem\clsUTI.vb" />
-    <Compile Include="Classes\UTMSystem\clsUTM.vb" />
-    <Compile Include="Classes\UTPSystem\clsUTP.vb" />
-    <Compile Include="Classes\UTSSytem\clsUTS.vb" />
-    <Compile Include="Classes\UTTSystem\clsUTT.vb" />
-    <Compile Include="Classes\UTWSystem\clsUTW.vb" />
-    <Compile Include="Classes\StandardUI\ColumnEntry.vb" />
-    <Compile Include="Classes\StandardUI\ColumnEntryList.vb" />
-    <Compile Include="Classes\StandardUI\ColumnSortEntry.vb" />
-    <Compile Include="Classes\StandardUI\ColumnSortEntryList.vb" />
-    <Compile Include="Classes\StandardUI\ColumnVOEntry.vb" />
-    <Compile Include="Classes\StandardUI\ColumnVOEntryList.vb" />
-    <Compile Include="Classes\StandardUI\ComboBoxListItem.vb" />
-    <Compile Include="Classes\Security\Crypt.vb" />
-    <Compile Include="Classes\StandardUI\DataGridEnableTextBoxColumn.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Classes\DLGSystem\DialogTlkStrDataElement.vb" />
-    <Compile Include="Classes\DLGSystem\DLGConvListNode.vb" />
-    <Compile Include="Classes\ERFSystem\ERFKeyEntry.vb" />
-    <Compile Include="Classes\ERFSystem\ERFLocalizedString.vb" />
-    <Compile Include="CustomControls\CustomPictureBoxControl.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControls\CustomProgressBar.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControls\CustomTabControl.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControls\DarkByteViewerControl.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="My Project\Resources.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frm2DAEditor.Designer.vb">
-      <DependentUpon>frm2DAEditor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frm2DAEditor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmAbout.Designer.vb">
-      <DependentUpon>frmAbout.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmAbout.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmAppearanceWizard.Designer.vb">
-      <DependentUpon>frmAppearanceWizard.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmAppearanceWizard.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmAutoDialog.Designer.vb">
-      <DependentUpon>frmAutoDialog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmAutoDialog.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmBasicHelp.Designer.vb">
-      <DependentUpon>frmBasicHelp.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmBasicHelp.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmBWMEditor.Designer.vb">
-      <DependentUpon>frmBWMEditor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmBWMEditor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmByteViewer.Designer.vb">
-      <DependentUpon>frmByteViewer.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmByteViewer.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmCExoLocStringLanguagePicker.Designer.vb">
-      <DependentUpon>frmCExoLocStringLanguagePicker.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmCExoLocStringLanguagePicker.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmCreateAnimListEntry.Designer.vb">
-      <DependentUpon>frmCreateAnimListEntry.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmCreateAnimListEntry.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmDialogEditor.Designer.vb">
-      <DependentUpon>frmDialogEditor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmDialogEditor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmDialogTlk.Designer.vb">
-      <DependentUpon>frmDialogTlk.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmDialogTlk.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmERFManager.Designer.vb">
-      <DependentUpon>frmERFManager.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmERFManager.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmErrorMessage.Designer.vb">
-      <DependentUpon>frmErrorMessage.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmErrorMessage.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmFilterDesigner.Designer.vb">
-      <DependentUpon>frmFilterDesigner.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmFilterDesigner.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmGlobalVar_Editor.Designer.vb">
-      <DependentUpon>frmGlobalVar_Editor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmGlobalVar_Editor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmImageViewer.Designer.vb">
-      <DependentUpon>frmImageViewer.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmImageViewer.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmInstanceOrRefPrompt.Designer.vb">
-      <DependentUpon>frmInstanceOrRefPrompt.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmInstanceOrRefPrompt.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmInventoryEditor.Designer.vb">
-      <DependentUpon>frmInventoryEditor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmInventoryEditor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmItemPropertyEditor.Designer.vb">
-      <DependentUpon>frmItemPropertyEditor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmItemPropertyEditor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmMain.Designer.vb">
+    <ProjectReference Include="..\ModelPreview\ModelPreview.csproj">
+      <Project>{D89A1126-347E-4AC7-B933-2B7C773ED821}</Project>
+      <Name>ModelPreview</Name>
+    </ProjectReference>
+    <Compile Include="WinForms\frmMain.NWlisten.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WinForms\frmMapInfoStatus.Designer.vb">
-      <DependentUpon>frmMapInfoStatus.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmMapInfoStatus.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmMdlOpsSwitches.Designer.vb">
-      <DependentUpon>frmMdlOpsSwitches.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmMdlOpsSwitches.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmModuleEditorOptions.Designer.vb">
-      <DependentUpon>frmModuleEditorOptions.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmModuleEditorOptions.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmModuleEditor_MissingItemSelector.Designer.vb">
-      <DependentUpon>frmModuleEditor_MissingItemSelector.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmModuleEditor_MissingItemSelector.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmModuleIfo_AreaEditor.Designer.vb">
-      <DependentUpon>frmModuleIfo_AreaEditor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmModuleIfo_AreaEditor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmModuleItem_Base_Editor.Designer.vb">
-      <DependentUpon>frmModuleItem_Base_Editor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmModuleItem_Base_Editor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmModule_Editor.Designer.vb">
-      <DependentUpon>frmModule_Editor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmModule_Editor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmOptions.Designer.vb">
-      <DependentUpon>frmOptions.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmOptions.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmOverrideFilesUsed.Designer.vb">
-      <DependentUpon>frmOverrideFilesUsed.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmOverrideFilesUsed.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmPackageTypeSelector.Designer.vb">
-      <DependentUpon>frmPackageTypeSelector.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmPackageTypeSelector.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmParent.Designer.vb">
-      <DependentUpon>frmParent.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmParent.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmPathManager.Designer.vb">
-      <DependentUpon>frmPathManager.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmPathManager.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmPluginSystem.Designer.vb">
-      <DependentUpon>frmPluginSystem.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmPluginSystem.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmProgressMeter.Designer.vb">
-      <DependentUpon>frmProgressMeter.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmProgressMeter.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmProjectManager.Designer.vb">
-      <DependentUpon>frmProjectManager.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmProjectManager.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmProjectManagerProperties.Designer.vb">
-      <DependentUpon>frmProjectManagerProperties.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmProjectManagerProperties.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmPromptForString.Designer.vb">
-      <DependentUpon>frmPromptForString.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmPromptForString.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmQueryUserInfo.Designer.vb">
-      <DependentUpon>frmQueryUserInfo.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmQueryUserInfo.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmRefSearchCriteria.Designer.vb">
-      <DependentUpon>frmRefSearchCriteria.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmRefSearchCriteria.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmRefSearchResults.Designer.vb">
-      <DependentUpon>frmRefSearchResults.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmRefSearchResults.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmResourceTypeSelector.Designer.vb">
-      <DependentUpon>frmResourceTypeSelector.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmResourceTypeSelector.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmSoundChooser.Designer.vb">
-      <DependentUpon>frmSoundChooser.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmSoundChooser.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmSpecifyKotorVersion.Designer.vb">
-      <DependentUpon>frmSpecifyKotorVersion.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmSpecifyKotorVersion.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmSSFEditor.Designer.vb">
-      <DependentUpon>frmSSFEditor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmSSFEditor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmTextEditor.Designer.vb">
-      <DependentUpon>frmTextEditor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmTextEditor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmTextEditorFind.Designer.vb">
-      <DependentUpon>frmTextEditorFind.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmTextEditorFind.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmThemeEditor.Designer.vb">
-      <DependentUpon>frmThemeEditor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmThemeEditor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmTPCFileSaveType.Designer.vb">
-      <DependentUpon>frmTPCFileSaveType.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmTPCFileSaveType.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmUserRegistration.Designer.vb">
-      <DependentUpon>frmUserRegistration.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmUserRegistration.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmUTC_Editor.Designer.vb">
-      <DependentUpon>frmUTC_Editor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmUTC_Editor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmUTD_Editor.Designer.vb">
-      <DependentUpon>frmUTD_Editor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmUTD_Editor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmUTI_Editor.Designer.vb">
-      <DependentUpon>frmUTI_Editor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmUTI_Editor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmUTM_Editor.Designer.vb">
-      <DependentUpon>frmUTM_Editor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmUTM_Editor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmUTP_Editor.Designer.vb">
-      <DependentUpon>frmUTP_Editor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmUTP_Editor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmUTS_Editor.Designer.vb">
-      <DependentUpon>frmUTS_Editor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmUTS_Editor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmUTT_Editor.Designer.vb">
-      <DependentUpon>frmUTT_Editor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmUTT_Editor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WinForms\frmUTW_Editor.Designer.vb">
-      <DependentUpon>frmUTW_Editor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\frmUTW_Editor.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Classes\GFFSystem\GFFExoLocString.vb" />
-    <Compile Include="Classes\GFFSystem\GFFExoLocSubString.vb" />
-    <Compile Include="Classes\GFFSystem\GFFField.vb" />
-    <Compile Include="Classes\GFFSystem\GFFFieldEntry.vb" />
-    <Compile Include="Classes\GFFSystem\GFFList.vb" />
-    <Compile Include="Classes\GFFSystem\GFFStructEntry.vb" />
-    <Compile Include="Classes\GFFSystem\GFFType16.vb" />
-    <Compile Include="Classes\GFFSystem\GFFType17.vb" />
-    <Compile Include="Classes\GFFSystem\GFFVoid.vb" />
-    <Compile Include="Classes\GFFSystem\GFF_Field.vb" />
-    <Compile Include="Classes\GFFSystem\GFF_Struct.vb" />
-    <Compile Include="Classes\ItemSystem\InventoryItem.vb" />
-    <Compile Include="Classes\StandardUI\InventoryPanel.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Classes\Security\KeyEntry.vb" />
-    <Compile Include="Classes\StandardUI\KotorTreeNode.vb" />
-    <Compile Include="Classes\SoundSystem\KTSoundInfo.vb" />
-    <Compile Include="Classes\GlobalSystem\KT_Launch.vb" />
-    <Compile Include="Classes\MAPSystem\MapInfo.vb" />
-    <Compile Include="Classes\ItemSystem\ModItem.vb" />
-    <Compile Include="Classes\ItemSystem\ModItemTvNode.vb" />
-    <Compile Include="Classes\UtilitySystem\ModuleEditorProjectOptions.vb" />
-    <Compile Include="Classes\UtilitySystem\ModuleEditorProjectSettings.vb" />
-    <Compile Include="Classes\UtilitySystem\ModuleFileEntry.vb" />
-    <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="Classes\MAPSystem\MyMapInfoSurrogate.vb" />
-    <Compile Include="Classes\GlobalSystem\Options.vb" />
-    <Compile Include="Classes\ItemSystem\ProjectFileItemTreeNode.vb" />
-    <Compile Include="WinForms\RegReminder.Designer.vb">
-      <DependentUpon>RegReminder.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WinForms\RegReminder.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Classes\StandardUI\RepeatButton.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Classes\RIMSystem\RIMKeyEntry.vb" />
-    <Compile Include="Classes\FilterSystem\RowFilter.vb" />
-    <Compile Include="Classes\FilterSystem\RowFilterPart.vb" />
-    <Compile Include="Classes\ItemSystem\TreeBaseItem.vb" />
-    <Compile Include="Classes\GlobalSystem\UserSettings.vb" />
-    <Compile Include="Classes\UtilitySystem\utilFileValidator.vb" />
-    <Compile Include="Classes\GlobalSystem\Utils.vb" />
-    <Compile Include="Classes\UtilitySystem\utilWindowRelativePositioner.vb" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="My Project\Resources.resx">
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frm2DAEditor.resx">
-      <DependentUpon>frm2DAEditor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmAbout.resx">
-      <DependentUpon>frmAbout.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmAppearanceWizard.resx">
-      <DependentUpon>frmAppearanceWizard.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmAutoDialog.resx">
-      <DependentUpon>frmAutoDialog.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmBasicHelp.resx">
-      <DependentUpon>frmBasicHelp.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmBWMEditor.resx">
-      <DependentUpon>frmBWMEditor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmByteViewer.resx">
-      <DependentUpon>frmByteViewer.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmCExoLocStringLanguagePicker.resx">
-      <DependentUpon>frmCExoLocStringLanguagePicker.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmCreateAnimListEntry.resx">
-      <DependentUpon>frmCreateAnimListEntry.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmDialogEditor.resx">
-      <DependentUpon>frmDialogEditor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmDialogTlk.resx">
-      <DependentUpon>frmDialogTlk.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmERFManager.resx">
-      <DependentUpon>frmERFManager.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmErrorMessage.resx">
-      <DependentUpon>frmErrorMessage.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmFilterDesigner.resx">
-      <DependentUpon>frmFilterDesigner.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmGlobalVar_Editor.resx">
-      <DependentUpon>frmGlobalVar_Editor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmImageViewer.resx">
-      <DependentUpon>frmImageViewer.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmInstanceOrRefPrompt.resx">
-      <DependentUpon>frmInstanceOrRefPrompt.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmInventoryEditor.resx">
-      <DependentUpon>frmInventoryEditor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmItemPropertyEditor.resx">
-      <DependentUpon>frmItemPropertyEditor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmMain.resx">
+    <Compile Include="WinForms\frmMain.ModelPreviewIntegration.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
-      <SubType>Designer</SubType>
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="WinForms\frmMain.ModelPreview.resx">
+      <DependentUpon>frmMain.ModelPreview.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmMapInfoStatus.resx">
-      <DependentUpon>frmMapInfoStatus.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmMdlOpsSwitches.resx">
-      <DependentUpon>frmMdlOpsSwitches.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmModuleEditorOptions.resx">
-      <DependentUpon>frmModuleEditorOptions.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmModuleEditor_MissingItemSelector.resx">
-      <DependentUpon>frmModuleEditor_MissingItemSelector.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmModuleIfo_AreaEditor.resx">
-      <DependentUpon>frmModuleIfo_AreaEditor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmModuleItem_Base_Editor.resx">
-      <DependentUpon>frmModuleItem_Base_Editor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmModule_Editor.resx">
-      <DependentUpon>frmModule_Editor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmOptions.resx">
-      <DependentUpon>frmOptions.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmOverrideFilesUsed.resx">
-      <DependentUpon>frmOverrideFilesUsed.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmPackageTypeSelector.resx">
-      <DependentUpon>frmPackageTypeSelector.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmParent.resx">
-      <DependentUpon>frmParent.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmPathManager.resx">
-      <DependentUpon>frmPathManager.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmPluginSystem.resx">
-      <DependentUpon>frmPluginSystem.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmProgressMeter.resx">
-      <DependentUpon>frmProgressMeter.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmProjectManager.resx">
-      <DependentUpon>frmProjectManager.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmProjectManagerProperties.resx">
-      <DependentUpon>frmProjectManagerProperties.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmPromptForString.resx">
-      <DependentUpon>frmPromptForString.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmQueryUserInfo.resx">
-      <DependentUpon>frmQueryUserInfo.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmRefSearchCriteria.resx">
-      <DependentUpon>frmRefSearchCriteria.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmRefSearchResults.resx">
-      <DependentUpon>frmRefSearchResults.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmResourceTypeSelector.resx">
-      <DependentUpon>frmResourceTypeSelector.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmSoundChooser.resx">
-      <DependentUpon>frmSoundChooser.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmSpecifyKotorVersion.resx">
-      <DependentUpon>frmSpecifyKotorVersion.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmSSFEditor.resx">
-      <DependentUpon>frmSSFEditor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmTextEditor.resx">
-      <DependentUpon>frmTextEditor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmTextEditorFind.resx">
-      <DependentUpon>frmTextEditorFind.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmThemeEditor.resx">
-      <DependentUpon>frmThemeEditor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmTPCFileSaveType.resx">
-      <DependentUpon>frmTPCFileSaveType.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmUserRegistration.resx">
-      <DependentUpon>frmUserRegistration.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmUTC_Editor.resx">
-      <DependentUpon>frmUTC_Editor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmUTD_Editor.resx">
-      <DependentUpon>frmUTD_Editor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmUTI_Editor.resx">
-      <DependentUpon>frmUTI_Editor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmUTM_Editor.resx">
-      <DependentUpon>frmUTM_Editor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmUTP_Editor.resx">
-      <DependentUpon>frmUTP_Editor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmUTS_Editor.resx">
-      <DependentUpon>frmUTS_Editor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmUTT_Editor.resx">
-      <DependentUpon>frmUTT_Editor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\frmUTW_Editor.resx">
-      <DependentUpon>frmUTW_Editor.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WinForms\RegReminder.resx">
-      <DependentUpon>RegReminder.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="ConfigurationFiles\app.config" />
-    <None Include="GFFEditor.ini">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="K1TemplateTags.bfd">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="MapInfo.bfd">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="My Project\app.manifest" />
-    <Content Include="fmodex.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Plugins\DeNCS\command.ini" />
-    <None Include="Themes\DarkSaber.ini">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Themes\JediConsular.ini">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Themes\JediKnight.ini">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Themes\JediSentinal.ini">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Themes\SithAssasain.ini">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Themes\SithLord.ini">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Themes\SithMarauder.ini">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Changelog.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Include="kotor_tool.ico" />
-    <None Include="koTOR_icn.ico" />
-    <None Include="koTOR_icon.png" />
-    <None Include="GFFEditor.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="nwnnsscomp.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <Content Include="Plugins\AvailablePlugins.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Plugins\DeNCS\plugin.xml" />
-    <Content Include="Plugins\InstalledPlugins.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ProjectManager.Readme.txt" />
-    <Content Include="Licence.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ProjectManager.py" />
-    <EmbeddedResource Include="Resources\LordVaderCW_Circle.png" />
-    <EmbeddedResource Include="Resources\miles_ss_logo.png" />
-    <EmbeddedResource Include="Resources\LordVaderCW70.png" />
-    <Content Include="settings.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
-=======
-<?xml version="1.0" encoding="utf-8"?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0" DefaultTargets="Build">
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{9B8AEB3F-E820-4834-A781-7A656A1FF2BA}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>
-    </RootNamespace>
-    <AssemblyName>kotor_tool</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    <FileAlignment>4096</FileAlignment>
-    <ApplicationIcon>koTOR_icn.ico</ApplicationIcon>
-    <StartupObject>kotor_tool.KT_Launch</StartupObject>
-    <OptionExplicit>On</OptionExplicit>
-    <OptionCompare>Binary</OptionCompare>
-    <OptionStrict>Off</OptionStrict>
-    <OptionInfer>Off</OptionInfer>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG=-1,TRACE=-1</DefineConstants>
-    <FileAlignment>4096</FileAlignment>
-    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314,42353,42354,42355</NoWarn>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <Optimize>false</Optimize>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE=-1</DefineConstants>
-    <Optimize>true</Optimize>
-    <FileAlignment>4096</FileAlignment>
-    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314,42353,42354,42355</NoWarn>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG=-1,TRACE=-1</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314,42353,42354,42355</NoWarn>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE=-1</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314,42353,42354,42355</NoWarn>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="FMODCL">
-      <HintPath>Lib\FMODCL.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ImageTools">
-      <HintPath>Lib\ImageTools.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="RTFLinenumberTextBox">
-      <HintPath>Lib\RTFLinenumberTextBox.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Design" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Management" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
+    <Compile Include="WinForms\frmMain.ModelPreview.Designer.vb">
+      <DependentUpon>frmMain.ModelPreview.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WinForms\frmMain.ModelPreview.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppDesigner Include="My Project\" />
@@ -1843,7 +950,595 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Tools\3DSMax\NWListen\.gitignore" />
+    <None Include="Tools\3DSMax\NWListen\Install.ps1" />
+    <None Include="Tools\3DSMax\NWListen\NWlisten.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWListen\NWlistenStartup.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWListen\README.md" />
+    <None Include="Tools\3DSMax\NWMax\animation-fix-manifest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\BodyPart.nam">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\Character.nam">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\CSv3.0.2\Chillilogo.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\CSv3.0.2\ChilliSkinner.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\CSv3.0.2\CS_Buttons_Mask.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\CSv3.0.2\CS_Buttons.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\CSv3.0.2\CSv3-0-2.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\CSv3.0.2\GPL.TXT">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\animkeycopy.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\endtoend.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\helpers.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\image\bbanner.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\image\bbody_r1_c2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\image\bbody_r2_c2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\image\bbody_r2_c4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\image\bbody_r3_c2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\image\bbody_r4_c2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\image\bbody_r4_c4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\index.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\modifiers.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\nwmax.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\overview.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\ramaker.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\screenshots\flex.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\screenshots\gmax-001.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\screenshots\gmax-002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\screenshots\gmax-003.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\screenshots\gmax-004.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\screenshots\gmax-005.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\screenshots\gmax-006.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\screenshots\gmax-007.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\screenshots\gmax-008.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\screenshots\gmax-009.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\screenshots\placeable.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\screenshots\pwkdiag.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\screenshots\triemesh.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\screenshots\walkmesh.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\template.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\docs\tools.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\Door.nam">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\Effect.nam">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\GUI.nam">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\Item.nam">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\KOTOR-IMPORT.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pfa0_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pfa2_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pfd0_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pfd2_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pfe0_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pfe2_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pfg0_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pfg2_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pfh0_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pfh2_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pfo0_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pfo2_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pma0_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pma2_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pmd0_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pmd2_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pme0_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pme2_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pmg0_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pmg2_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pmh0_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pmh2_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pmo0_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\manakins\pmo2_manakin.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\max2021-foundation.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\MAX2021-FOUNDATION.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\mdl-import-manifest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\mdl-import.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\mdlcomp\nwnmdlcomp.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\mdlcomp\readme.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\520sq.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\aurora_fn_desparkle.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\aurora_fn_export.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\aurora_fn_general.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\aurora_fn_import.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\aurora_fn_proto.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\aurora_fn_sanity.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\aurora_gui_speedbtns.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\aurora_helper_base.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\aurora_helper_emitter.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\aurora_helper_light.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\aurora_helper_reference.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\aurora_helper_tools.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\aurora_mod_animesh.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\aurora_mod_flex.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\aurora_mod_placeable.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\aurora_mod_trimesh.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\aurora_mod_walkmesh.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nwmax_scalewiz.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nwmax_v1_mask.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nwmax_v1.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nwn_gui_about.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nwn_gui_import.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nwn_gui_updaters.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_animbaker.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_animbrowse.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_animkeycopy.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_animkeymaster.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_cryomesh.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_eventbrowse.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_keyreduct.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_loadgrp.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_mapper.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_masskeytweak.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_masstileload.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_massutils.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_max2021.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_minimap_maker.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_mod_roberscale.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_orderchildren.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_texturelib.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_texturelibmaker.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_tvertdisplacer.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_weightmaster.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nw_ie_inc\nx_woktool.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nwmax.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\nwmax.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\plugins\flame_emitter.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\plugins\flame_emitter.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\plugins\head_fixer.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\plugins\head_fixer.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pfa0.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pfa2.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pfd0.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pfd2.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pfe0.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pfe2.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pfg0.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pfg2.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pfh0.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pfh2.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pfo0.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pfo2.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pivotdata.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pma0.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pma2.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pmd0.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pmd2.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pme0.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pme2.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pmg0.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pmg2.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pmh0.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pmh2.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pmo0.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\pv_pmo2.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\ramaker\nwmax_armourcutter.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\ramaker\nwmax_ramaker.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\ramaker\nwmax_skindumper.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\releasenotes-v0_5beta.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\sc_bioware_armour.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\sc_bioware_robes.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\sc_dla_cloaks.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\sc_dla_coats.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\sc_dla_tabards.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\sc_dlacloathing_old.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\sc_dlacloathing.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\sc_femalearmour.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\sc_male2female_manakins.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\sc_malerobes.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\sc_manakin_robes.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\screen-textures.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\SCREEN-TEXTURES.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\source-files.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\supermodels\pfa0.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\supermodels\pfd0.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\supermodels\pfe0.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\supermodels\pfg0.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\supermodels\pfh0.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\supermodels\pfo0.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\supermodels\pma0.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\supermodels\pmd0.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\supermodels\pme0.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\supermodels\pmg0.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\supermodels\pmh0.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\supermodels\pmh2.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\supermodels\pmo0.max">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\texture-import-manifest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\texture-import.patch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\TEXTURE-IMPORT.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\tga2dds\processtextures.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\Tile.nam">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\TileSlicer\tile-slicer.ms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\WalkMesh.nam">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\NWMax\wokmat.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\3DSMax\README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
->>>>>>> treya/v.1.0.3.4:Source/VisualBasic/kotor_tool/kotor_tool.vbproj
 </Project>

@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>NWmax - Dragonlance Adventures</title>
+  <meta content="Joco" name="author">
+  <link href="nwmax.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div style="text-align: center;"><img
+ style="width: 630px; height: 100px;" alt="" title=""
+ src="image/bbanner.jpg"><br>
+</div>
+<div style="text-align: center;"><a href="/">News</a> - <a
+ href="index.html">&gt;&gt;Documentation&lt;&lt;</a> - <a
+ href="/download/">Download</a> - Contact </div>
+<div style="text-align: center;">
+<table border="0" cellspacing="0" cellpadding="0"
+ style="text-align: left; margin-left: auto; margin-right: auto; width: 640px;"
+ class="text">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; height: 25px; width: 25px;"><img
+ style="width: 25px; height: 25px;" alt="" title=""
+ src="image/bbody_r2_c2.png"><br>
+      </td>
+      <td
+ style="vertical-align: top; background-color: rgb(242, 242, 242);"><br>
+      </td>
+      <td style="vertical-align: top; height: 25px; width: 25px;"><img
+ style="width: 25px; height: 25px;" alt="" title=""
+ src="image/bbody_r2_c4.png"><br>
+      </td>
+    </tr>
+    <tr>
+      <td
+ style="vertical-align: top; width: 25px; background-color: rgb(242, 242, 242);"><br>
+      </td>
+      <td colspan="1" rowspan="1"
+ style="vertical-align: top; background-color: rgb(242, 242, 242); width: 590px;">
+      <h1>&nbsp;NWmax Overview</h1>
+NWmax is designed along the same lines as the Aura scripts from Bioware
+and the MDL Suite. In fact those original works provided some of the
+original code that started NWmax off many months ago.&nbsp; Anyway, the
+point is NWmax uses Helper Objects and Modifiers to hold all the Aurora
+Game Engine data the NWN needs for a model.<br>
+      <br>
+It is worth while reading about the concepts of modifiers in the gmax
+user guide and the gmax tutorial files. The key concept is that each
+modifier performs something on the meshes data and passes the resulting
+mesh up to the next modifier in the stack.&nbsp; Some modifiers
+actually
+do nothing to the mesh other than provide a means of holding extra data
+against that mesh. This is what the Aurora modifiers do. The do not
+change the mesh in any way. All they do is hold Aurora Engine specific
+data against the mesh for use by the NWmax export functions.<br>
+      <h2>Some Basicis</h2>
+So start things off fig 1 is a shot of the standard NWmax interface
+within gmax. Key elements are:<br>
+A] Speedbar buttons - which are expected to be used frequently<br>
+B] Utility Buttons<br>
+C] The lights button under the Comamnd Panels Create tab<br>
+D] The Helpers button under the Comamnd Panels Create tab<br>
+E] The list of Helper types available. Note the Aurora helpers available<br>
+      <br>
+      <img style="width: 1023px; height: 766px;" alt="" title=""
+ src="screenshots/gmax-001.png"><br>
+      <br>
+Next after a loading in a model which has some modifiers applied to it.
+This is a simple flag pole model with a vertically dangling flag which
+has been turned into a Dangley mesh using the AuroraFlex modifier.<br>
+F] Modifier list box. This is where the new Aurora modifiers can be
+found<br>
+G] The "Modifier Stack".&nbsp; More details on this can be found in
+gmax's own help files. In this sample we have two Aurora specfic
+modifiers applied. The normal Trimesh modifier that controls if a mesh
+will render, cast shadows among other things and the AuroraFlex
+modifier
+which drives the NWN Dangley mesh. You can also see in the screenshot
+the green boxes which represent the relative amount of movement each
+vertex will produce based on the vertex's weight. Remember, a vertexes
+weight is held in it's volour value (on the Editable Mesh).&nbsp; The
+AuroraFlex modifier idientifies to the export code that this mesh is a
+dangly mesh as well as holding the Danglymesh specific details around
+sway, stength and flex.<br>
+H] Each modifier has a number of properties that go with it. These are
+displayed here when that modifier is selected in the modifier stack. In
+this example we see the Flax parameters being displayed<br>
+      <img style="width: 1023px; height: 766px;" alt="" title=""
+ src="screenshots/gmax-002.jpg"><br>
+      <br>
+If you&nbsp; click on the Modifier List dropdown this is what you will
+see:<br>
+      <img style="width: 166px; height: 933px;" alt="" title=""
+ src="screenshots/gmax-003.png"><br>
+Notice that all the Aurora modifiers are listed at the bottom as
+Unassigned Modiifers.<br>
+      <h2>The Model Base</h2>
+The UI for the model base is very similar to that used in Waylands
+scripts.&nbsp; The key difference is that data held on the model base
+will determine WHERE the model will be exported to. The key to this is
+the edit box just above the Export buttons.&nbsp; This edit is used to
+hold the directory path to where you want to export your model. It can
+be to a specific export directory like that listed in the example or it
+could be to the NWN override directory.&nbsp; Now that a user can
+export
+models from NWmax quickly (thanks to gmax Snoop) you can save
+variations of you work as gmax native files and export out to your test
+areas quickly. So long as you have saved "safe" gmax versions of your
+work you can always roll-back if you do something you don't like.<br>
+      <img style="width: 170px; height: 594px;" alt=""
+ src="screenshots/gmax-009.png"><br>
+      </td>
+      <td
+ style="vertical-align: top; width: 25px; background-color: rgb(242, 242, 242);"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; height: 25px; width: 25px;"><img
+ style="width: 25px; height: 25px;" alt="" title=""
+ src="image/bbody_r4_c2.png"><br>
+      </td>
+      <td
+ style="vertical-align: top; background-color: rgb(242, 242, 242);"><br>
+      </td>
+      <td style="vertical-align: top; height: 25px; width: 25px;"><img
+ style="width: 25px; height: 25px;" alt="" title=""
+ src="image/bbody_r4_c4.png"><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p><br>
+</p>
+</div>
+</body>
+</html>

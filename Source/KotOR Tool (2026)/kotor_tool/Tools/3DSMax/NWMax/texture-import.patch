@@ -1,0 +1,121 @@
+--- a/nw_ie_inc/aurora_fn_import.ms
++++ b/nw_ie_inc/aurora_fn_import.ms
+@@ -837,6 +837,8 @@
+     local aurora_helper
+ 
+     local currentPath = getFilenamePath pFile
++    local importedMaterialNames = #()
++    local importedMaterials = #()
+     
+     -- only progress further if there IS a file available to process
+     if not (nx_existFile pFile) then return false
+@@ -1566,7 +1568,9 @@
+                                         if ((textureName != "") and
+                                             (textureName != "NULL") and
+                                             (textureName != undefined)) then matName = textureName
+-                                        objMaterial = sceneMaterials[matName]
++                                        -- Cache within this import, avoiding unrelated or stale scene materials.
++                                        local materialIndex = findItem importedMaterialNames (toLower matName)
++                                        objMaterial = if materialIndex > 0 then importedMaterials[materialIndex] else undefined
+                                         if (objType == "aabb") then
+                                         (
+                                             if DEBUG then format "%BUILD MESH OBJECT: make aabb material\r\n" strIndent1
+@@ -1587,46 +1591,28 @@
+                                             --objMaterial.opacity = objAlpha
+                                             if (textureName != "") then
+                                             (
+-                                                -- We want to see where the texture file is.
+-                                                -- Look in local dir first then check in g_maps_path
+-                                                if DEBUG then format "Look in local dir for texture\r\n"
+-                                                tgaFilename = currentPath + textureName + ".tga"
+-                                                bmpFilename = currentPath + textureName + ".bmp"
+-                                                if not ((nx_existFile tgaFilename) or (nx_existFile bmpFilename)) then
++                                                local textureFile = nx_findImportTexture textureName currentPath
++                                                if textureFile != undefined then
+                                                 (
+-                                                    -- search through the global bitmap paths taken from gmax
+-                                                    if DEBUG then format "Searching gmax global paths: %\r\n" g_maps_path
+-                                                    for i = 1 to (g_maps_path.count) do
+-                                                    (
+-                                                        tgaFilename = g_maps_path[i] + "\\" + textureName + ".tga"
+-                                                        bmpFilename = g_maps_path[i] + "\\" + textureName + ".bmp"
+-                                                        if ((nx_existFile tgaFilename) or (nx_existFile bmpFilename)) then exit
+-                                                    )
+-                                                )
+-                                                if ((nx_existFile tgaFilename) or (nx_existFile bmpFilename)) then
+-                                                (
+-                                                    if (nx_existFile tgaFilename) then
+-                                                        bmp = openBitMap(tgaFilename)
+-                                                    else
+-                                                        bmp = openBitMap(bmpFilename)
+-                                                    
+                                                     if loadtiff then
+                                                     (
++                                                        bmp = openBitmap textureFile
+                                                         texMap = BitmapTexture bitmap:(nx_tiff_from_tex bmp) name:textureName
+-                                                    ) else
+-                                                    (
+-                                                        texMap = BitmapTexture bitmap:bmp name:textureName
++                                                    ) else (
++                                                        texMap = BitmapTexture filename:textureFile name:textureName
+                                                     )
+-                                                    objMaterial.mapAmounts[2] = 100
+-                                                    objMaterial.maps[2] = texMap
+-                                                    objMaterial.mapEnables[2] = true;
+-                                                    showTextureMap objMaterial texMap true
++                                                ) else (
++                                                    -- Retain the missing reference for Max's asset tracking.
++                                                    texMap = BitmapTexture filename:(currentPath + textureName + ".tga") name:textureName
++                                                    format "#Missing texture file: % (model folder: %)\n" textureName currentPath
++                                                    if showWarnings do messageBox ("Texture not found: " + textureName + "\nExtract its TGA beside the ASCII MDL or add its folder to Max's external file paths.") title:"NWmax texture missing"
+                                                 )
+-                                                else
+-                                                (
+-                                                    format "#Missing texture file: %\r\n" textureName
+-                                                    if (showWarnings) then messagebox ("Missing texture file: " + textureName)
+-                                                )
++                                                texMap.coords.mapChannel = 1
++                                                objMaterial.diffuseMap = texMap
++                                                objMaterial.diffuseMapAmount = 100
++                                                objMaterial.diffuseMapEnable = true
++                                                append importedMaterialNames (toLower matName)
++                                                append importedMaterials objMaterial
+                                             )
+                                         )
+     
+@@ -1788,6 +1774,13 @@
+                                             )
+                                         )
+     
++                                        -- Enable mapped display after assigning the mesh UV channels.
++                                        if objType != "aabb" and objMaterial != undefined do
++                                        (
++                                            showTextureMap objMaterial true
++                                            enableHardwareMaterial objMaterial true
++                                            showHWTextureMap objMaterial true
++                                        )
+                                         -- Update the mesh
+                                         update newObj
+                                         
+--- a/nw_ie_inc/nx_max2021.ms
++++ b/nw_ie_inc/nx_max2021.ms
+@@ -114,3 +114,19 @@
+     for i = 1 to mapPaths.count() do appendIfUnique g_maps_path (mapPaths.get i)
+     g_maps_path
+ )
++
++-- Resolve textures beside the model, in its textures folder, or in Max paths.
++fn nx_findImportTexture textureName modelFolder =
++(
++    if textureName == undefined or textureName == "" or toLower textureName == "null" do return undefined
++    local folders = #(modelFolder, modelFolder + "textures/")
++    for folder in g_maps_path where findItem folders folder == 0 do append folders folder
++    local extensions = if getFilenameType textureName != "" then #("") else #(".tga", ".png", ".dds", ".bmp", ".jpg", ".tif")
++    for folder in folders do
++        for extension in extensions do
++        (
++            local candidate = pathConfig.appendPath folder (textureName + extension)
++            if doesFileExist candidate do return candidate
++        )
++    undefined
++)

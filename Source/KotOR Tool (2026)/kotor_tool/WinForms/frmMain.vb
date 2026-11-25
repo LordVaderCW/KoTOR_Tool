@@ -2618,72 +2618,6 @@ Namespace kotor_tool
             End Try
         End Sub
 
-        ' Token: 0x06000721 RID: 1825 RVA: 0x002539CC File Offset: 0x002529CC
-        Public Shared Sub CleanDirectory(ByVal dirname As String)
-            Dim directoryInfo As DirectoryInfo = New DirectoryInfo(dirname)
-            Dim num As Integer
-            Try
-                Dim directories As FileSystemInfo() = directoryInfo.GetDirectories()
-                Console.WriteLine("Number of directories: {0}", directories.Length)
-                For Each directoryInfo2 As DirectoryInfo In directories
-                    For Each fileSystemInfo As FileSystemInfo In directoryInfo2.GetFileSystemInfos()
-                        Select Case num
-                            Case 0
-                                Cursor.Current = Cursors.PanNorth
-                            Case 1
-                                Cursor.Current = Cursors.PanNE
-                            Case 2
-                                Cursor.Current = Cursors.PanEast
-                            Case 3
-                                Cursor.Current = Cursors.PanSE
-                            Case 4
-                                Cursor.Current = Cursors.PanSouth
-                            Case 5
-                                Cursor.Current = Cursors.PanSW
-                            Case 6
-                                Cursor.Current = Cursors.PanWest
-                            Case 7
-                                Cursor.Current = Cursors.PanNW
-                                num = -1
-                        End Select
-                        num += 1
-                        File.Delete(fileSystemInfo.FullName)
-                    Next
-                    Directory.Delete(directoryInfo2.FullName)
-                Next
-            Catch ex As System.Exception
-                Console.WriteLine("The process failed: {0}", ex.ToString())
-            End Try
-            Try
-                Dim files As FileInfo() = directoryInfo.GetFiles()
-                For Each fileInfo As FileInfo In files
-                    Select Case num
-                        Case 0
-                            Cursor.Current = Cursors.PanNorth
-                        Case 1
-                            Cursor.Current = Cursors.PanNE
-                        Case 2
-                            Cursor.Current = Cursors.PanEast
-                        Case 3
-                            Cursor.Current = Cursors.PanSE
-                        Case 4
-                            Cursor.Current = Cursors.PanSouth
-                        Case 5
-                            Cursor.Current = Cursors.PanSW
-                        Case 6
-                            Cursor.Current = Cursors.PanWest
-                        Case 7
-                            Cursor.Current = Cursors.PanNW
-                            num = -1
-                    End Select
-                    num += 1
-                    File.Delete(fileInfo.FullName)
-                Next
-            Catch ex2 As System.Exception
-                Console.WriteLine("The process failed: {0}", ex2.ToString())
-            End Try
-        End Sub
-
         ' Token: 0x06000722 RID: 1826 RVA: 0x00253C30 File Offset: 0x00252C30
         Public Shared Sub OpenTreeViewToPath(ByVal treepath As String, ByVal currNode As TreeNode, ByVal currLevel As Integer, Optional ByVal SelectAfterExpand As Boolean = True)
             Dim array As String() = treepath.Split(New Char() {"\"c})
@@ -2850,6 +2784,7 @@ Namespace kotor_tool
         End Function
 
         Private Sub InitialiseResourceBrowser()
+            InitialiseModelPreviewMenu()
             If Me.cmbViewMode Is Nothing OrElse Me.lvResourceBrowser Is Nothing Then
                 Return
             End If
@@ -5220,7 +5155,6 @@ Namespace kotor_tool
                 frmMdlOpsSwitches.chkbExtractAnimations.Checked = frmMain.CurrentSettings.bModelExtraction_ExtractAnimations
                 frmMdlOpsSwitches.chkbConvertSkin.Checked = frmMain.CurrentSettings.bModelExtraction_ConvertSkinToTrimesh
                 frmMdlOpsSwitches.chkbEachModelInOwnDir.Checked = frmMain.CurrentSettings.bModelExtraction_EachModelInOwnDirectory
-                frmMdlOpsSwitches.chkbCleanWorkingDir.Checked = frmMain.CurrentSettings.bModelExtraction_CleanWorkingDirectoryBeforeExport
                 frmMdlOpsSwitches.tbModelExtractionPath.Text = frmMain.CurrentSettings.ModelExportLocation
                 frmMdlOpsSwitches.ConfigureModelContext(node.ResRef, mdlroomCount)
                 If frmMdlOpsSwitches.ShowDialog(Me) <> DialogResult.OK Then
@@ -5237,7 +5171,6 @@ Namespace kotor_tool
                     Directory.CreateDirectory(frmMdlOpsSwitches.tbModelExtractionPath.Text)
                 End If
                 Dim checked As Boolean = frmMdlOpsSwitches.chkbEachModelInOwnDir.Checked
-                Dim checked2 As Boolean = frmMdlOpsSwitches.chkbCleanWorkingDir.Checked
                 Dim modelResRefs As ArrayList = Me.BuildModelExtractionResRefList(node, Convert.ToInt32(frmMdlOpsSwitches.nudNumberToExtract.Value))
                 Dim frmProgressMeter As frmProgressMeter = New frmProgressMeter()
                 frmProgressMeter.stepAmount = 1
@@ -5249,11 +5182,7 @@ Namespace kotor_tool
                 frmMain.CurrentSettings.bModelExtraction_ExtractAnimations = frmMdlOpsSwitches.ExtractAnimations
                 frmMain.CurrentSettings.bModelExtraction_ConvertSkinToTrimesh = frmMdlOpsSwitches.ConvertSkin
                 frmMain.CurrentSettings.bModelExtraction_EachModelInOwnDirectory = frmMdlOpsSwitches.chkbEachModelInOwnDir.Checked
-                frmMain.CurrentSettings.bModelExtraction_CleanWorkingDirectoryBeforeExport = frmMdlOpsSwitches.chkbCleanWorkingDir.Checked
                 UserSettings.SaveSettings(frmMain.CurrentSettings)
-                If checked2 Then
-                    frmMain.CleanDirectory(frmMdlOpsSwitches.tbModelExtractionPath.Text)
-                End If
                 If frmMdlOpsSwitches.chkbExportMdlAlignData.Checked Or frmMdlOpsSwitches.chkbMdlAlignDataOnly.Checked Then
                     Dim text As String = Me.GetMDLRoomBaseName(node)
                     ' TODO: Move the alignment-data export destination into settings/path manager.
@@ -5421,7 +5350,6 @@ Namespace kotor_tool
                     Next
                 End If
                 frmProgressMeter.Close()
-                Interaction.MsgBox("Extraction Complete", MsgBoxStyle.Information, "Model Extraction")
             ElseIf StringType.StrCmp(resTypeStr, "2da", False) = 0 Then
                 Cursor.Current = Cursors.WaitCursor
                 Dim frm2DAEditor As frm2DAEditor = New frm2DAEditor(node.Filename, array, Me.NodeTreeRootIndex(node))
@@ -6126,13 +6054,6 @@ IL_12BE:
         ' Token: 0x0600074F RID: 1871 RVA: 0x002577F0 File Offset: 0x002567F0
         Private Sub miRefSearch_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miRefSearch.Click
             Me.PerformStringSearch()
-        End Sub
-
-        ' Token: 0x06000750 RID: 1872 RVA: 0x002577F8 File Offset: 0x002567F8
-        Private Sub miCleanWorkingDir_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miCleanWorkingDir.Click
-            If Interaction.MsgBox("Are you sure you want to delete all of the files in your working directory?", MsgBoxStyle.OkCancel Or MsgBoxStyle.Question Or MsgBoxStyle.DefaultButton2, "Clean working directory") = MsgBoxResult.Ok Then
-                frmMain.CleanDirectory(frmMain.gRootPath + "working")
-            End If
         End Sub
 
         ' Token: 0x06000751 RID: 1873 RVA: 0x00257828 File Offset: 0x00256828

@@ -1,0 +1,52 @@
+/* Cascading Style Sheet */
+
+
+/* -------------------------------------------------------------------------- */
+/* Main Body                                                                  */
+/* -------------------------------------------------------------------------- */
+
+a:active  { color: #00FF00; background-color: transparent; }
+a:visited { color: #6464FF; background-color: transparent; }
+a:link    { color: #6464FF; background-color: transparent; }
+a:hover   { color: #000000; background-color: transparent; }
+
+a:link.email { color: #6464FF; background-color: transparent; text-decoration:none; }
+
+a.menu:link    { color: white; background-color: transparent; padding: 1px 3px 1px 3px; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; font-weight: bold; text-decoration: none; }
+a.menu:visited { color: white; background-color: transparent; padding: 1px 3px 1px 3px; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; font-weight: bold; text-decoration: none; }
+a.menu:hover   { color: black; background-color: white;       padding: 1px 3px 1px 3px; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; font-weight: bold; text-decoration: none; }
+a.menu:active  { color: black; background-color: white;       padding: 1px 3px 1px 3px; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; font-weight: bold; text-decoration: none; }
+
+/* a.class:link|visited|hover|active { properties : values; } */
+
+body 
+{ 
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9pt;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Paragraphs and Fonts                                                       */
+/* -------------------------------------------------------------------------- */
+p
+{ 
+    font-size: 9pt;
+}
+
+table.text
+{
+    font: 9pt Arial, Helvetica, sans-serif;
+}
+
+table.announce
+{
+    font: 11pt Arial, Helvetica, sans-serif;
+}
+
+
+font.warn { color: red; }
+
+
+/* EOF */

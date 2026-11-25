@@ -1,0 +1,51 @@
+--- a/nw_ie_inc/nx_max2021.ms
++++ b/nw_ie_inc/nx_max2021.ms
+@@ -130,3 +130,38 @@
+         )
+     undefined
+ )
++
++-- Static first-frame preview for Odyssey cycle texture atlases; mesh UVs stay intact.
++fn nx_applyTextureTXI texMap textureFile =
++(
++    local txiPath = (getFilenamePath textureFile) + (getFilenameFile textureFile) + ".txi"
++    if not doesFileExist txiPath do return false
++    local stream = openFile txiPath
++    if stream == undefined do return false
++    local procedure = "", columns = 1, rows = 1
++    try
++    (
++        while not eof stream do
++        (
++            local tokens = filterString (readLine stream) " \t"
++            if tokens.count >= 2 do case (toLower tokens[1]) of
++            (
++                "proceduretype": procedure = toLower tokens[2]
++                "numx": columns = tokens[2] as integer
++                "numy": rows = tokens[2] as integer
++            )
++        )
++        close stream
++    ) catch (close stream; format "NWmax: Invalid TXI: %\n" txiPath; return false)
++    if procedure != "cycle" do return false
++    if columns == undefined or rows == undefined do return false
++    if columns < 1 or rows < 1 or columns > 256 or rows > 256 do return false
++    texMap.cropPlace = 0
++    texMap.clipu = 0.0
++    texMap.clipv = 0.0
++    texMap.clipw = 1.0 / columns
++    texMap.cliph = 1.0 / rows
++    texMap.apply = true
++    format "NWmax: Cycle texture %: first-frame preview (% x % frames).\n" (filenameFromPath textureFile) columns rows
++    true
++)
+--- a/nw_ie_inc/aurora_fn_import.ms
++++ b/nw_ie_inc/aurora_fn_import.ms
+@@ -1608,6 +1608,7 @@
+                                                     if showWarnings do messageBox ("Texture not found: " + textureName + "\nExtract its TGA beside the ASCII MDL or add its folder to Max's external file paths.") title:"NWmax texture missing"
+                                                 )
+                                                 texMap.coords.mapChannel = 1
++                                                if textureFile != undefined do nx_applyTextureTXI texMap textureFile
+                                                 objMaterial.diffuseMap = texMap
+                                                 objMaterial.diffuseMapAmount = 100
+                                                 objMaterial.diffuseMapEnable = true

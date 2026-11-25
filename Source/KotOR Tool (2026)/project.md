@@ -166,3 +166,17 @@ This map was derived from `kotor_tool.sln`, `kotor_tool/kotor_tool.vbproj`, asse
 
 Derived from source/configuration/manifests, binary metadata and a successful full-framework Debug/x86 rebuild on 2026-08-08.
 >>>>>>> treya/v.1.0.3.4:Source/VisualBasic/project.md
+
+## Model preview addition (2026-11-16)
+
+The separate [ModelPreview library](ModelPreview/README.md) converts MDLOps ASCII output to embedded glTF and hosts a local HTML/WebView2 viewport. The resource-browser right-click menu invokes it; double-click extraction is unchanged. See its guide for dependencies, lifecycle, tests and rendering limits.
+
+## NWlisten bridge (2026-11-19)
+
+[ NWlisten ](kotor_tool/Tools/3DSMax/NWListen/README.md) adds an MDL context action for 3DS Max 2021. The frmMain.NWlisten.vb partial stages MDLOps output and textures into persistent jobs under `working\NWlisten` beside the application executable; a separately installed MAXScript listener discovers that directory through an HKCU registry pointer, imports with NWmax and acknowledges completion to the existing progress window. No changes to NWmax importer internals or game data are required.
+
+NWlisten now resets controllers only on the newly imported nodes and removes generated rest-pose jumps between animation clips before acknowledging completion. Clip endpoints are preserved using Max's own key insertion; see its guide for validation and the separate war-droid death-track limitation.
+
+Send to Max stores generated assets in the application's existing `working\NWlisten\jobs` directory. The working-directory cleanup command and pre-export cleanup option have been removed, along with their deletion routine and saved setting.
+
+The maintained [3ds Max tools](kotor_tool/Tools/3DSMax/README.md) live under `kotor_tool/Tools/3DSMax/NWListen` and `NWMax` and appear in the application's Visual Studio project as non-compiled items. NWListen's installer and tests moved with its source; NWMax is a hash-recorded snapshot of the installed runtime. Builds copy distributable tool files into `Tools\3DSMax` beside the application executable using PreserveNewest; tests and generated artifacts are excluded. Builds do not automatically deploy either tool to Max.

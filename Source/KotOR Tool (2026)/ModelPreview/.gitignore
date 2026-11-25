@@ -1,0 +1,9 @@
+bin/
+obj/
+runtime/
+*.log
+vendor/package/
+vendor/webview2.zip
+tests/*.exe
+tests/*.reference.txt
+tests/output/

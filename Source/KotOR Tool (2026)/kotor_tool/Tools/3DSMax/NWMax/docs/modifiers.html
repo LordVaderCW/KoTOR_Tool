@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+  <title>NWmax - Dragonlance Adventures</title>
+  <meta name="author" content="Joco">
+  <link rel="stylesheet" type="text/css" href="nwmax.css">
+</head>
+<body>
+<div style="text-align: center;"><img src="image/bbanner.jpg" title=""
+ alt="" style="width: 630px; height: 100px;"><br>
+</div>
+<div style="text-align: center;"><a href="/">News</a> - <a
+ href="index.html">&gt;&gt;Documentation&lt;&lt;</a> - <a
+ href="/download/">Download</a> - Contact </div>
+<div style="text-align: center;">
+<table class="text"
+ style="text-align: left; margin-left: auto; margin-right: auto; width: 640px;"
+ cellpadding="0" cellspacing="0" border="0">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; height: 25px; width: 25px;"><img
+ src="image/bbody_r2_c2.png" title="" alt=""
+ style="width: 25px; height: 25px;"><br>
+      </td>
+      <td
+ style="vertical-align: top; background-color: rgb(242, 242, 242);"><br>
+      </td>
+      <td style="vertical-align: top; height: 25px; width: 25px;"><img
+ src="image/bbody_r2_c4.png" title="" alt=""
+ style="width: 25px; height: 25px;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td
+ style="vertical-align: top; width: 25px; background-color: rgb(242, 242, 242);"><br>
+      </td>
+      <td
+ style="vertical-align: top; background-color: rgb(242, 242, 242); width: 590px;"
+ rowspan="1" colspan="1">
+      <h1>Modifiers</h1>
+      <h3>AuroraFlex</h3>
+      <p>The flex modifier models the same system used in the MDL
+Plugin Suite. In this system there is a slight alteration
+in terms used and in one case the values. The Flex
+modifier is applied to an editable mesh. There is
+currently no tool for painting the vertex colours. At the moment you
+select the vertexs and then set their colour values. A colour painter
+tool will be available in the next release.</p>
+      <table width="75%" border="1">
+        <tbody>
+          <tr>
+            <th>Flex Modifier</th>
+            <th>MDL Danglymesh</th>
+          </tr>
+          <tr>
+            <td>Flex</td>
+            <td>Displacement<br>
+(Flex = Displacement x 10)</td>
+          </tr>
+          <tr>
+            <td>Strength</td>
+            <td>Tightness</td>
+          </tr>
+          <tr>
+            <td>Sway</td>
+            <td>Period</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>&nbsp;</p>
+      <p><img alt="" src="screenshots/flex.png"
+ style="height: 212px; width: 168px;"></p>
+      <h3>AuroraTrimesh</h3>
+      <p>The trimesh modifier allows the modeller to control a number
+of in game features for an editable mesh. Not the least of
+these is if the mesh will even render in the game. An
+interesting ability is to have a mesh that does not render
+but will cast a shadow. This modifer is used in tiles to
+determine fading properties.</p>
+      <p><img alt="" src="screenshots/triemesh.png"
+ style="height: 317px; width: 175px;"></p>
+      <h3>AuroraPlaceable</h3>
+      <p>Used to identify a mesh as being a walkmesh for Placeables and
+Doors by applying it to an editable mesh. The structure for this is to
+have a Dummy helper with the
+correct name for the pwk or dwk file. The naming format
+for the dummy node is &lt;model name&gt;_&lt;pwk|dwk&gt; (e.g.
+somemodel_pwk). The actual pwk/dwk planes can be any name you like so
+long as they have a Walkmesh modifier and are linked to the dummy node.
+The following structure diagram shows the relationship. While this
+modifier can be used at the trimesh level it is really most likely to
+be used to flag the dummy object as a pwk/dwk dummy.&nbsp; Why is this
+important? Because <span style="font-weight: bold;">everything</span>
+linked to the dummy node tagged with this modifier will be exported to
+the pwk/dwk file.<br>
+      </p>
+      <p><img alt="" src="screenshots/placeable.png"
+ style="height: 58px; width: 168px;"></p>
+      <p><img src="screenshots/pwkdiag.gif"
+ style="width: 211px; height: 192px;" alt=""></p>
+      <h3>AuororaWalkmesh</h3>
+      <p>This is used to identify a mesh as a walkmesh for either a
+placeable, door or a tile wok.</p>
+      <p><img alt="" src="screenshots/walkmesh.png"
+ style="height: 132px; width: 168px;"></p>
+      </td>
+      <td
+ style="vertical-align: top; width: 25px; background-color: rgb(242, 242, 242);"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; height: 25px; width: 25px;"><img
+ src="image/bbody_r4_c2.png" title="" alt=""
+ style="width: 25px; height: 25px;"><br>
+      </td>
+      <td
+ style="vertical-align: top; background-color: rgb(242, 242, 242);"><br>
+      </td>
+      <td style="vertical-align: top; height: 25px; width: 25px;"><img
+ src="image/bbody_r4_c4.png" title="" alt=""
+ style="width: 25px; height: 25px;"><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p><br>
+</p>
+</div>
+</body>
+</html>

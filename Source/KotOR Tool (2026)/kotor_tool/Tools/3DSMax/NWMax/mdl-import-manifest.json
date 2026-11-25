@@ -1,0 +1,27 @@
+[
+  {
+    "file": "nwmax.ms",
+    "backup": "C:\\Program Files\\Autodesk\\3ds Max 2021\\scripts\\NWmax\\backups\\mdl-import-20261119-224451\\nwmax.ms",
+    "sha256": "2f630c10fbe047989cff234b38031ac8107128c6a43a748dd0a372369bc3e688"
+  },
+  {
+    "file": "nw_ie_inc/aurora_fn_import.ms",
+    "backup": "C:\\Program Files\\Autodesk\\3ds Max 2021\\scripts\\NWmax\\backups\\mdl-import-20261119-224451\\nw_ie_inc\\aurora_fn_import.ms",
+    "sha256": "9cf69d0b6066cbcbff70c3bace7d43514e15e0742d5a03b57ada18c2e9e84cb6"
+  },
+  {
+    "file": "nw_ie_inc/aurora_helper_base.ms",
+    "backup": "C:\\Program Files\\Autodesk\\3ds Max 2021\\scripts\\NWmax\\backups\\mdl-import-20261119-224451\\nw_ie_inc\\aurora_helper_base.ms",
+    "sha256": "763f5aa47d5e8ad4cfa186604b1c08144bb3bafcb55ccf64639c6646c3e0cfe1"
+  },
+  {
+    "file": "nw_ie_inc/nwn_gui_import.ms",
+    "backup": "C:\\Program Files\\Autodesk\\3ds Max 2021\\scripts\\NWmax\\backups\\mdl-import-20261119-224451\\nw_ie_inc\\nwn_gui_import.ms",
+    "sha256": "1354fbf0a73c5d2e7b7c9ff0c321817d897603d8867c28379c52664436c15cde"
+  },
+  {
+    "file": "nw_ie_inc/aurora_fn_general.ms",
+    "backup": "C:\\Program Files\\Autodesk\\3ds Max 2021\\scripts\\NWmax\\backups\\mdl-import-20261119-224451\\aurora_fn_general.ms",
+    "sha256": "8c306f36eb8c96d46f47e706e2a5da7c5e355589b034865c378e8fcf98e1ee6f"
+  }
+]

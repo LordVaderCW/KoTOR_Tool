@@ -1,0 +1,58 @@
+NWmax 0.8 b61 - Max 2021 / KotOR import 1
+Modifications credited to lordvadercw; original author credits retained.
+
+Changes
+- MDL Loading renamed MDL Import; browse tooltip explains KotOR ASCII input.
+- Accept two-component MDLOps UV coordinates, preserving three-component input.
+- Import tverts1..3 and texindices1..3 into Max map channels 2..4.
+- Preserve Lightsaber, Placeable and Flyer classifications.
+- Preserve extra node metadata on walkmesh nodes as well as other nodes.
+- Explicit Standard submaterials fix walkmesh imports under Max 2021 defaults.
+- Recognize known K1/TSL binary geometry signatures and require external ASCII
+  conversion instead of sending KotOR binaries to NWNmdlcomp.
+- Reject unsupported node types with an actionable error, including native
+  lightsaber nodes (MDLOps default conversion to trimesh is supported).
+
+Use
+Extract matching MDL and MDX into C:\Users\KingJamesIX\Documents\3dsmax\mdl.
+Decompile with MDLOps or MDLEdit using the correct game, then import the ASCII
+MDL. Keep textures beside the ASCII MDL or in configured Max texture paths.
+The original six K1 samples were left untouched.
+TSL samples extracted using the user's KotOR Tool build and its MDLOps plugin:
+  p_attonbb, p_kreiabb, 001ebo1
+Each has its own folder under the requested mdl directory. Binary MDL/MDX and
+ASCII outputs are there. Textures were subsequently extracted; see TEXTURE-IMPORT.txt.
+
+Validation on 3ds Max 2021
+- Six supplied K1 models: 453 checks passed (node presence, vertex/face counts,
+  all UV coordinates, skin influence bone names/counts/weights, classifications).
+- Synthetic TSL field/extra-UV fixture: 23 further checks passed.
+  See tests/kotor-validation-results.txt: total 476, zero failures.
+- Genuine TSL Atton/Kreia: 1,136 checks passed. The combined TSL run originally
+  reported four room walkmesh metadata failures; those were fixed and the room
+  alone was rerun, passing all 259 checks. See tests/tsl-validation-results.txt
+  and tests/tsl-room-results.txt. The latter supersedes those four failures.
+- Real TSL tests include every UV coordinate and UV face index, including the
+  room lightmap channel, and every skin influence and weight on the characters.
+- Real binary TSL model tested through the live bridge: correctly rejected
+  with the ASCII conversion message, before scene changes.
+- Live bridge confirmed version, MDL Import title, and zero scene nodes after
+  reload. The initial reload response timed out but subsequent verification
+  succeeded. No model imports or resets were performed in the user's UI scene.
+
+Scope and remaining limitations
+This is a tested ASCII geometry import patch, not complete KotOR I/II support.
+Animations were excluded when extracting the TSL samples and are not certified.
+TSL dirt/hologram and other extra scalar fields are retained as user properties;
+they are not implemented as KotOR shaders or guaranteed to round-trip on export.
+Lightmap UVs are imported, but lightmap texture blending is not configured.
+NWN walkmesh material names/semantics and KotOR-specific export require further
+work. Native saber semantics are lost with conversion to ordinary trimeshes.
+Unknown node types fail explicitly; other unsupported tokens may remain generic
+properties. Nine sample models do not establish support for every model variant.
+
+Backups: backups/mdl-import-20261119-224451
+Patch: mdl-import.patch
+Hashes: mdl-import-manifest.json
+Batch tests reset scenes: run tests only in 3dsmaxbatch, not the interactive scene.
+Format reference inspected: https://github.com/ndixUR/mdlops
