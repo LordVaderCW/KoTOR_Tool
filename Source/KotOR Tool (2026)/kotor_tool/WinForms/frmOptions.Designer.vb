@@ -511,6 +511,7 @@ Namespace kotor_tool
             Me.chkbCheckForUpdatesAtStartup.TabIndex = 2
             Me.chkbCheckForUpdatesAtStartup.Text = "Check for program updates at startup"
             Me.chkbCheckForUpdatesAtStartup.UseVisualStyleBackColor = False
+            Me.chkbCheckForUpdatesAtStartup.Enabled = False
             '
             'chkbDownloadUpdatesAutomatically
             '
@@ -523,6 +524,7 @@ Namespace kotor_tool
             Me.chkbDownloadUpdatesAutomatically.TabIndex = 3
             Me.chkbDownloadUpdatesAutomatically.Text = "Download updates automatically"
             Me.chkbDownloadUpdatesAutomatically.UseVisualStyleBackColor = False
+            Me.chkbDownloadUpdatesAutomatically.Enabled = False
             '
             'chkbUseOverrideFiles
             '

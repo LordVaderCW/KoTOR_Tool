@@ -1,5 +1,9 @@
 # Versioning
 
+## Current release: 1.0.3.5a
+
+`AssemblyInformationalVersion` supplies the displayed product version `1.0.3.5a`. Assembly and file versions remain numeric at `1.0.3.5`. README and changelog use the product version. These values supersede the historical version snapshots below; alphabetic patch suffixes must not be placed in `AssemblyVersion` or `AssemblyFileVersion`.
+
 <<<<<<< HEAD:Source/KotOR Tool (2026)/versioning.md
 ## Current application version
 

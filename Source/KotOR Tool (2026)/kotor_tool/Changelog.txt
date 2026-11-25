@@ -1,4 +1,4 @@
-﻿# KoTOR Tool
+# KoTOR Tool
 
 Rebuild and rebirth of the original **KoTOR Tool**, originally developed by Fred Tetra in 2005.
 
@@ -6,8 +6,8 @@ Rebuild and rebirth of the original **KoTOR Tool**, originally developed by Fred
 
 # KoTOR Tool Restoration Project
 
-**Version:** v1.0.3.5
-**Patch Date:** 10.05.26
+**Version:** v1.0.3.5a
+**Patch Date:** 25.11.26
 **Project Status:** Restored source build confirmed
 **Target IDE:** Visual Studio 2010
 **Target Framework:** .NET Framework 4.6.2
@@ -25,6 +25,49 @@ This release represents a major turning point in the project — transitioning f
 ---
 
 # Current Release
+
+## v1.0.3.5a - MDL Viewer, Model Metadata and Portable WebView2
+
+### Models and development tools
+
+* Added the MDL Viewer with textured geometry, smoothing groups, local and inherited animation clips, timeline keys, VFX preview and soundset browsing.
+* Added Send to 3DS Max from the viewer, with an Include animations option, and placed glTF export below it.
+* Moved viewport and VFX controls to the bottom toolbar; model rotation starts paused.
+* Integrated NWListen/NWMax tools into the solution and application Tools folder, using application-local working files for Send to Max.
+* Grouped K1/K2 models by metadata categories and Maps by location and level, with module-name labels and qualified research identifications for previously unidentified areas.
+
+### Preview and maintenance fixes
+
+* Resolve stale saved game folders before loading chitin.key. Availability checks now validate the same configured path used by the reader; valid custom installs are preserved and unavailable paths remain recoverable through Path Manager.
+
+* Assigned unique preview identities to duplicate model-node names while preserving unambiguous hierarchy references.
+* Added a fallback for extreme UV coordinates found in Korriban and other area meshes, avoiding invalid-coordinate preview failures while preserving ordinary tiled UVs.
+* Removed raw conversion diagnostics from the main preview display.
+* Fixed all 187 compiler warnings in the supplied log: explicit defaults, redundant enumerator cleanup, Copy overload declarations, shared-member qualification and individual CLS-compliance annotations for legacy public APIs.
+* Guarded missing or unsupported clipboard data in the 2DA editor.
+
+### WebView2 distribution
+
+* Package the English-only fixed WebView2 runtime as webview2.cab (approximately 204 MiB).
+* Extract on first use to application-local AppData/WebView2Runtime, retaining the extracted engine for reuse; changed CAB contents receive a separate cache directory.
+* Keep the browser profile in application-local AppData/WebView2Profile instead of the user's LocalAppData folder.
+* Serialize extraction across application instances, clean failed staging directories and report missing or invalid packages in the viewer.
+* Retain British/US English resources and omit standalone Copilot assets, Widevine DRM and the PDF shell preview handler. Core binaries and license files are retained unmodified.
+* Remove known loose runtime files from earlier build outputs. WebView2 still requires extracted files on disk; it cannot execute inside the CAB.
+
+* Disable debug symbol generation for Release configurations across the solution and remove stale/copied PDB/MDB files from Release output. Debug configurations retain symbols.
+
+### Validation
+
+* Full-framework Release/x86 rebuild: zero errors and warnings; warnings-as-errors build also passes.
+* Copied K1/K2 viewer, animation and lifecycle checks; 60 model-conversion checks.
+* CAB missing/corrupt package handling, concurrent extraction, cache reuse and English-only locale checks.
+* Column-copy overloads, filter composition, copied K1/K2 KEY/2DA resources and GFF unknown-field round-trips.
+* Reduced runtime packaging is application-tested, not a Microsoft-supported minimal-runtime configuration. Windows 10 deployment permissions and complete game-model visual fidelity remain separate acceptance work.
+
+---
+
+# Previous Release
 
 ## v1.0.3.5 - Sound Editor Playback Stabilisation
 

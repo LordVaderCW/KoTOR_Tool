@@ -2,7 +2,9 @@
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 
-<Assembly: AssemblyVersion("1.0.3.05")>
+<Assembly: AssemblyVersion("1.0.3.5")>
+<Assembly: AssemblyFileVersion("1.0.3.5")>
+<Assembly: AssemblyInformationalVersion("1.0.3.5a")>
 <Assembly: Guid("731DB0D4-C2ED-4DB3-82C0-5C60C75A0990")>
 <Assembly: CLSCompliant(True)>
 <Assembly: AssemblyDescription("Editor for SW: KotOR")>

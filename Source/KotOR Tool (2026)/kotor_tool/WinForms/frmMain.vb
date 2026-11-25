@@ -2289,61 +2289,33 @@ Namespace kotor_tool
         'End Function
 
         ' Token: 0x06000714 RID: 1812 RVA: 0x002531E8 File Offset: 0x002521E8
-        Public Shared Function hasKotor1() As Boolean
+        Friend Shared Function IsValidGamePath(ByVal gamePath As String) As Boolean
+            If String.IsNullOrWhiteSpace(gamePath) Then Return False
             Try
-                Dim settings As Options = UserSettings.GetSettings()
-
-                If settings IsNot Nothing Then
-                    Dim configuredPath As String = settings.KotorLocation(0)
-
-                    If configuredPath IsNot Nothing AndAlso configuredPath.Trim().Length > 0 Then
-                        If File.Exists(Path.Combine(configuredPath, "chitin.key")) Then
-                            Return True
-                        End If
-                    End If
-                End If
-            Catch ex As System.Exception
+                Return File.Exists(Path.Combine(gamePath, "chitin.key"))
+            Catch ex As ArgumentException
+                Return False
+            Catch ex As NotSupportedException
+                Return False
             End Try
-
-            Try
-                Dim detectedPath As String = frmPathManager.DetectKotor1Path()
-
-                If detectedPath IsNot Nothing AndAlso detectedPath.Trim().Length > 0 Then
-                    Return File.Exists(Path.Combine(detectedPath, "chitin.key"))
-                End If
-            Catch ex As System.Exception
-            End Try
-
-            Return False
         End Function
 
-        ' Token: 0x06000715 RID: 1813 RVA: 0x00253220 File Offset: 0x00252220
+        Friend Shared Function ResolveGamePath(ByVal configuredPath As String, ByVal detect As Func(Of String)) As String
+            If IsValidGamePath(configuredPath) Then Return configuredPath
+            Dim detectedPath As String = detect()
+            If IsValidGamePath(detectedPath) Then Return detectedPath
+            ' Keep unavailable paths so temporarily disconnected installs are not forgotten.
+            Return configuredPath
+        End Function
+
+        Public Shared Function hasKotor1() As Boolean
+            Dim settings As Options = UserSettings.GetSettings()
+            Return settings IsNot Nothing AndAlso IsValidGamePath(settings.KotorLocation(0))
+        End Function
+
         Public Shared Function hasKotor2() As Boolean
-            Try
-                Dim settings As Options = UserSettings.GetSettings()
-
-                If settings IsNot Nothing Then
-                    Dim configuredPath As String = settings.KotorLocation(1)
-
-                    If configuredPath IsNot Nothing AndAlso configuredPath.Trim().Length > 0 Then
-                        If File.Exists(Path.Combine(configuredPath, "chitin.key")) Then
-                            Return True
-                        End If
-                    End If
-                End If
-            Catch ex As System.Exception
-            End Try
-
-            Try
-                Dim detectedPath As String = frmPathManager.DetectKotor2Path()
-
-                If detectedPath IsNot Nothing AndAlso detectedPath.Trim().Length > 0 Then
-                    Return File.Exists(Path.Combine(detectedPath, "chitin.key"))
-                End If
-            Catch ex As System.Exception
-            End Try
-
-            Return False
+            Dim settings As Options = UserSettings.GetSettings()
+            Return settings IsNot Nothing AndAlso IsValidGamePath(settings.KotorLocation(1))
         End Function
 
         ' Token: 0x06000716 RID: 1814 RVA: 0x00253258 File Offset: 0x00252258
@@ -3875,49 +3847,39 @@ Namespace kotor_tool
             End If
 
             ' -----------------------------------------------------------------
-            ' First-run / missing-path auto-detection.
+            ' First-run / unavailable-path auto-detection.
             '
             ' Original behaviour depended on Me.hasK1 / Me.hasK2, which were
             ' registry-only checks. That meant Steam, GOG, or moved installs
             ' could be missed before the Path Manager even opened.
             '
-            ' New behaviour uses the upgraded frmPathManager detector directly.
+            ' Resolve missing or stale settings before testing availability, so
+            ' detection and KEY loading always use the same installation.
             ' -----------------------------------------------------------------
 
-            Dim detectedKotor1Path As String = ""
-            Dim detectedKotor2Path As String = ""
+            Dim originalKotor1Path As String = frmMain.CurrentSettings.defaultKotORLocation
+            Dim originalKotor2Path As String = frmMain.CurrentSettings.defaultKotORLocation2
+            Dim detectedKotor1Path As String = ResolveGamePath(originalKotor1Path, AddressOf frmPathManager.DetectKotor1Path)
+            Dim detectedKotor2Path As String = ResolveGamePath(originalKotor2Path, AddressOf frmPathManager.DetectKotor2Path)
 
-            If StringType.StrCmp(frmMain.CurrentSettings.defaultKotORLocation, "", False) = 0 Then
-                detectedKotor1Path = frmPathManager.DetectKotor1Path()
-            End If
-
-            If StringType.StrCmp(frmMain.CurrentSettings.defaultKotORLocation2, "", False) = 0 Then
-                detectedKotor2Path = frmPathManager.DetectKotor2Path()
-            End If
-
-            If detectedKotor1Path.Length > 0 Then
-                frmMain.CurrentSettings.defaultKotORLocation = detectedKotor1Path
-            End If
-
-            If detectedKotor2Path.Length > 0 Then
-                frmMain.CurrentSettings.defaultKotORLocation2 = detectedKotor2Path
-            End If
-
-            If detectedKotor1Path.Length > 0 OrElse detectedKotor2Path.Length > 0 Then
+            frmMain.CurrentSettings.defaultKotORLocation = detectedKotor1Path
+            frmMain.CurrentSettings.defaultKotORLocation2 = detectedKotor2Path
+            If Not String.Equals(originalKotor1Path, detectedKotor1Path, StringComparison.OrdinalIgnoreCase) OrElse
+               Not String.Equals(originalKotor2Path, detectedKotor2Path, StringComparison.OrdinalIgnoreCase) Then
                 UserSettings.SaveSettings(frmMain.CurrentSettings)
             End If
 
-            Me.hasK1 = frmMain.hasKotor1()
-            Me.hasK2 = frmMain.hasKotor2()
+            Me.hasK1 = IsValidGamePath(frmMain.CurrentSettings.KotorLocation(0))
+            Me.hasK2 = IsValidGamePath(frmMain.CurrentSettings.KotorLocation(1))
 
-            If ((StringType.StrCmp(frmMain.CurrentSettings.defaultKotORLocation, "", False) = 0) AndAlso Not Me.hasK1) OrElse ((StringType.StrCmp(frmMain.CurrentSettings.defaultKotORLocation2, "", False) = 0) AndAlso Not Me.hasK2) Then
+            If Not Me.hasK1 OrElse Not Me.hasK2 Then
                 Dim frmPathManager As frmPathManager = New frmPathManager()
 
-                If detectedKotor1Path.Length > 0 Then
+                If IsValidGamePath(detectedKotor1Path) Then
                     frmPathManager.tbKotorPath.Text = detectedKotor1Path
                 End If
 
-                If detectedKotor2Path.Length > 0 Then
+                If IsValidGamePath(detectedKotor2Path) Then
                     frmPathManager.tbKotorPath2.Text = detectedKotor2Path
                 End If
 
@@ -3930,8 +3892,8 @@ Namespace kotor_tool
                 frmMain.CurrentSettings = UserSettings.GetSettings()
                 frmMain.CurrentSettings.bBuildModelsBifNode = True
 
-                Me.hasK1 = frmMain.hasKotor1()
-                Me.hasK2 = frmMain.hasKotor2()
+                Me.hasK1 = IsValidGamePath(frmMain.CurrentSettings.KotorLocation(0))
+                Me.hasK2 = IsValidGamePath(frmMain.CurrentSettings.KotorLocation(1))
             End If
 
             ' -----------------------------------------------------------------
@@ -4042,14 +4004,7 @@ Namespace kotor_tool
                     Next
             End If
 
-            If frmMain.CurrentSettings.bCheckForUpdatesAtStartup Then
-                Me.g_CheckForUpdatesSilently = False
-
-                Dim checkForUpdate As frmMain.CheckForUpdate = AddressOf Me.CheckForUpdateA
-
-                Console.WriteLine("Starting CheckForUpdate thread")
-                checkForUpdate.BeginInvoke(Nothing, Nothing)
-            End If
+            ' The retired program updater must not run, including for legacy settings.
 
             UserSettings.SaveSettings(frmMain.CurrentSettings)
         End Sub
@@ -6003,10 +5958,7 @@ IL_12BE:
 
         ' Token: 0x06000754 RID: 1876 RVA: 0x00257B0C File Offset: 0x00256B0C
         Private Sub miCheckForUpdates_Click(ByVal sender As Object, ByVal e As EventArgs) Handles miCheckForUpdates.Click
-            Me.g_CheckForUpdatesSilently = False
-            Dim checkForUpdate As frmMain.CheckForUpdate = AddressOf Me.CheckForUpdateA
-            Console.WriteLine("Starting CheckForUpdate thread")
-            checkForUpdate.BeginInvoke(Nothing, Nothing)
+            ' Retired updater: intentionally disabled.
         End Sub
 
         ' Token: 0x06000755 RID: 1877 RVA: 0x00257B44 File Offset: 0x00256B44

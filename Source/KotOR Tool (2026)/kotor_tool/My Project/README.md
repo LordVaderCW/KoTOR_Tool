@@ -3,7 +3,7 @@
 <<<<<<< HEAD:Source/KotOR Tool (2026)/kotor_tool/My Project/README.md
 This directory contains VB/Visual Studio generated metadata:
 
-- `AssemblyInfo.vb` defines application identity, attribution, COM GUID and assembly version `1.0.3.04`.
+- `AssemblyInfo.vb` defines application identity, attribution, COM GUID and numeric assembly/file version `1.0.3.5`, and informational product version `1.0.3.5a`.
 - `Resources.resx` and `Resources.Designer.vb` define strongly typed embedded resources.
 - `app.manifest` controls Windows application manifest behavior.
 

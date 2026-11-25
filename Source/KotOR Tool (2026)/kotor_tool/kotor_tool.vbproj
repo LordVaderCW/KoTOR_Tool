@@ -58,7 +58,7 @@
     <Optimize>true</Optimize>
     <FileAlignment>4096</FileAlignment>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314,42353,42354,42355</NoWarn>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType><DebugSymbols>false</DebugSymbols>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -80,7 +80,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType><DebugSymbols>false</DebugSymbols>
     <Optimize>true</Optimize>
     <OutputPath>bin\x86\Release\</OutputPath>
     <DefineConstants>TRACE=-1</DefineConstants>
@@ -1545,4 +1545,11 @@
   </ItemGroup>
   <Import Project="..\ModelPreview\WebView2Packaging.targets" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- Remove stale/copied symbols as well as disabling their generation. -->
+  <Target Name="RemoveReleaseDebugSymbols" AfterTargets="CopyFilesToOutputDirectory" Condition="'$(Configuration)' == 'Release' And '$(TargetDir)' != ''">
+    <ItemGroup>
+      <ReleaseDebugSymbol Include="$(TargetDir)*.pdb;$(TargetDir)*.mdb" />
+    </ItemGroup>
+    <Delete Files="@(ReleaseDebugSymbol)" />
+  </Target>
 </Project>

@@ -23,7 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType><DebugSymbols>false</DebugSymbols>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -63,4 +63,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- Remove stale/copied symbols as well as disabling their generation. -->
+  <Target Name="RemoveReleaseDebugSymbols" AfterTargets="CopyFilesToOutputDirectory" Condition="'$(Configuration)' == 'Release' And '$(TargetDir)' != ''">
+    <ItemGroup>
+      <ReleaseDebugSymbol Include="$(TargetDir)*.pdb;$(TargetDir)*.mdb" />
+    </ItemGroup>
+    <Delete Files="@(ReleaseDebugSymbol)" />
+  </Target>
 </Project>

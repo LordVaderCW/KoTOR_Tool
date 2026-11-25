@@ -95,8 +95,8 @@ Namespace kotor_tool
 
         ' Token: 0x06000CAE RID: 3246 RVA: 0x002830A0 File Offset: 0x002820A0
         Private Sub chkbCheckForUpdatesAtStartup_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles chkbCheckForUpdatesAtStartup.CheckedChanged
-            Me.chkbDownloadUpdatesAutomatically.Enabled = Me.chkbCheckForUpdatesAtStartup.Checked
-            Me.chkbDownloadUpdatesAutomatically.Checked = Me.chkbCheckForUpdatesAtStartup.Checked
+            Me.chkbDownloadUpdatesAutomatically.Enabled = False
+            Me.chkbDownloadUpdatesAutomatically.Checked = False
         End Sub
 
         ' Token: 0x06000CAF RID: 3247 RVA: 0x002830D0 File Offset: 0x002820D0

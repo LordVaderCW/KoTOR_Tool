@@ -843,6 +843,8 @@ Namespace kotor_tool
             'miCheckForUpdates
             '
             Me.miCheckForUpdates.Index = 1
+            Me.miCheckForUpdates.Enabled = False
+            Me.miCheckForUpdates.Visible = False
             Me.miCheckForUpdates.Text = "Check for program updates"
             '
             'miRegisterSoftware

@@ -22,8 +22,8 @@ Namespace kotor_tool
             Me.m_bModuleEditorConfirmDeletes = True
             Me.m_MRUMainFiles = New ArrayList()
             Me.m_TreeOpenPaths = New ArrayList()
-            Me.m_bCheckForUpdatesAtStartup = True
-            Me.m_bDownloadUpdatesAutomatically = True
+            Me.m_bCheckForUpdatesAtStartup = False
+            Me.m_bDownloadUpdatesAutomatically = False
             Me.m_bRememberLastTreeNode = True
             Me.m_bRememberTreeViewState = True
             Me.m_bModelExtraction_ExtractAnimations = False
@@ -124,7 +124,8 @@ Namespace kotor_tool
                 Return Me.m_bCheckForUpdatesAtStartup
             End Get
             Set(ByVal value As Boolean)
-                Me.m_bCheckForUpdatesAtStartup = value
+                ' Ignore enabled values from legacy settings; this updater is retired.
+                Me.m_bCheckForUpdatesAtStartup = False
             End Set
         End Property
 
@@ -136,7 +137,8 @@ Namespace kotor_tool
                 Return Me.m_bDownloadUpdatesAutomatically
             End Get
             Set(ByVal value As Boolean)
-                Me.m_bDownloadUpdatesAutomatically = value
+                ' Ignore enabled values from legacy settings; this updater is retired.
+                Me.m_bDownloadUpdatesAutomatically = False
             End Set
         End Property
 

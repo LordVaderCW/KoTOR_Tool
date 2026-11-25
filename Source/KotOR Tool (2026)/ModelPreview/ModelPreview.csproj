@@ -14,7 +14,7 @@
     <Optimize>false</Optimize><DefineConstants>DEBUG;TRACE</DefineConstants><WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\Release\</OutputPath><DebugType>pdbonly</DebugType>
+    <OutputPath>bin\Release\</OutputPath><DebugType>none</DebugType><DebugSymbols>false</DebugSymbols>
     <Optimize>true</Optimize><DefineConstants>TRACE</DefineConstants><WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <Import Project="WebView2Packaging.targets" />
@@ -46,5 +46,12 @@
   </Target>
   <Target Name="CheckFixedWebView2Runtime" BeforeTargets="PrepareForBuild">
     <Error Condition="!Exists('$(FixedWebView2Root)msedgewebview2.exe')" Text="Fixed WebView2 x86 runtime is missing. Expand Microsoft.WebView2.FixedVersionRuntime.157.0.4341.60.x86.cab into ModelPreview\runtime (see ModelPreview\README.md)." />
+  </Target>
+  <!-- Remove stale/copied symbols as well as disabling their generation. -->
+  <Target Name="RemoveReleaseDebugSymbols" AfterTargets="CopyFilesToOutputDirectory" Condition="'$(Configuration)' == 'Release' And '$(TargetDir)' != ''">
+    <ItemGroup>
+      <ReleaseDebugSymbol Include="$(TargetDir)*.pdb;$(TargetDir)*.mdb" />
+    </ItemGroup>
+    <Delete Files="@(ReleaseDebugSymbol)" />
   </Target>
 </Project>
