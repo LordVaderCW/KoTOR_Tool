@@ -1,9 +1,9 @@
-﻿Option Strict On
+Option Strict On
 Option Explicit On
 
 Namespace kotor_tool
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-    Partial Public Class frmModelPreview
+    Partial Public Class frmMDLPreview
         Inherits Global.System.Windows.Forms.Form
 
         Private components As Global.System.ComponentModel.IContainer
@@ -227,7 +227,7 @@ Namespace kotor_tool
             Me.Controls.Add(Me.status)
             Me.Controls.Add(Me.loading)
             Me.Controls.Add(Me.bottomControls)
-            Me.Name = "frmModelPreview"
+            Me.Name = "frmMDLPreview"
             Me.Text = "MDL Viewer"
             Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
             Me.previewSplit.Panel1.ResumeLayout(False)

@@ -171,6 +171,8 @@ Derived from source/configuration/manifests, binary metadata and a successful fu
 
 The separate [ModelPreview library](ModelPreview/README.md) converts MDLOps ASCII output to embedded glTF and hosts a local HTML/WebView2 viewport. The resource-browser right-click menu invokes it; double-click extraction is unchanged. See its guide for dependencies, lifecycle, tests and rendering limits.
 
+The native viewer is `kotor_tool/WinForms/frmMDLPreview.vb`, a separate top-level form/project item with its own designer and resources. The menu opens it with `Show()` without assigning an owner; `frmMain` retains a reference for selection following and explicit cleanup on application exit.
+
 ## NWlisten bridge (2026-11-19)
 
 [ NWlisten ](kotor_tool/Tools/3DSMax/NWListen/README.md) adds an MDL context action for 3DS Max 2021. The frmMain.NWlisten.vb partial stages MDLOps output and textures into persistent jobs under `working\NWlisten` beside the application executable; a separately installed MAXScript listener discovers that directory through an HKCU registry pointer, imports with NWmax and acknowledges completion to the existing progress window. No changes to NWmax importer internals or game data are required.
@@ -180,3 +182,17 @@ NWlisten now resets controllers only on the newly imported nodes and removes gen
 Send to Max stores generated assets in the application's existing `working\NWlisten\jobs` directory. The working-directory cleanup command and pre-export cleanup option have been removed, along with their deletion routine and saved setting.
 
 The maintained [3ds Max tools](kotor_tool/Tools/3DSMax/README.md) live under `kotor_tool/Tools/3DSMax/NWListen` and `NWMax` and appear in the application's Visual Studio project as non-compiled items. NWListen's installer and tests moved with its source; NWMax is a hash-recorded snapshot of the installed runtime. Builds copy distributable tool files into `Tools\3DSMax` beside the application executable using PreserveNewest; tests and generated artifacts are excluded. Builds do not automatically deploy either tool to Max.
+
+## Dialogue navigation (2026-11-27)
+
+The [WinForms dialogue index](kotor_tool/WinForms/README.md#dialogue-index-2026-11-27) adds Dialogue > location > area/module links for both games. It combines KEY/BIF, Modules/Rims archive and top-level Override dialogues, preserves source identity and duplicate versions, and reuses existing editor dispatch. Group names come from MapModuleMetadata; unknown modules and unreadable sources stay visible. See the directory guide for coverage and copied-fixture validation.
+
+Dialogue groups now load read-only descriptions on demand: template-assigned character/object names, speaker tags and a possible opening/text sample appear alongside filenames; tooltips expose the supporting metadata. The selected installation's TLK resolves localized references without changing global settings or conversation bytes. See the WinForms guide for evidence limits, refresh behavior and missing-text tests.
+
+## MDL Viewer ownership (2026-11-28)
+
+The MDL Viewer is an owned window in the editor process. ModelPreview remains a DLL; the experimental separate executable host and IPC/job machinery have been removed. WebView2 retains its required rendering helper processes. The window ownership and shutdown checks are documented in ModelPreview/README.md. FPS remains uncapped; Task Manager visual grouping remains unverified.
+
+## BIF tree lifetime (2026-11-28)
+
+Normal-close profiling without the viewer isolated expensive native TreeView teardown. BIF archives now retain a complete logical resource hierarchy while creating native descendants only as folders are expanded or listed. Recursive extraction uses the logical hierarchy, preserving unopened resources and archive/game identity. The same restored navigation reduced local disposal from 11.3 seconds to 155 milliseconds. See the WinForms and StandardUI guides for lifecycle details, copied-fixture tests and the limitation that opened folders retain their native items.

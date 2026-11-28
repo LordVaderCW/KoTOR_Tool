@@ -14,6 +14,7 @@ namespace ModelPreview
         sealed class Node
         {
             public string Name, Parent, Kind, Texture;
+            public int ParentIndex = -1;
             public double[] Position = { 0, 0, 0 }, Rotation = { 0, 0, 0, 1 };
             public double Scale = 1;
             public bool Render = true;
@@ -147,12 +148,23 @@ namespace ModelPreview
             var duplicateNames = new HashSet<string>(source.GroupBy(n => n.Name, StringComparer.OrdinalIgnoreCase)
                 .Where(g => g.Count() > 1).Select(g => g.Key), StringComparer.OrdinalIgnoreCase);
             var outputNames = new HashSet<string>(source.Select(n => n.Name), StringComparer.OrdinalIgnoreCase);
-            // ASCII references carry only names. Keep repeated meshes, but never guess which
-            // duplicate a parent, skin joint or animation track was intended to target.
-            foreach (var n in source)
+            var parentCandidates = Enumerable.Range(0, source.Count)
+                .GroupBy(i => source[i].Name, StringComparer.OrdinalIgnoreCase)
+                .ToDictionary(g => g.Key, g => g.ToArray(), StringComparer.OrdinalIgnoreCase);
+            // A node cannot parent itself. This disambiguates fx_Rain's root/emitter
+            // name collision without guessing between two other possible parents.
+            for (int i = 0; i < source.Count; i++)
             {
-                if (n.Parent != null && !n.Parent.Equals("null", StringComparison.OrdinalIgnoreCase) && duplicateNames.Contains(n.Parent))
-                    throw new InvalidDataException("Ambiguous model parent: " + n.Parent);
+                var n = source[i];
+                if (!string.IsNullOrEmpty(n.Parent) && !n.Parent.Equals("null", StringComparison.OrdinalIgnoreCase))
+                {
+                    int[] candidates;
+                    if (!parentCandidates.TryGetValue(n.Parent, out candidates))
+                        throw new InvalidDataException("Missing parent: " + n.Parent);
+                    if (candidates.Length > 1) candidates = candidates.Where(candidate => candidate != i).ToArray();
+                    if (candidates.Length != 1) throw new InvalidDataException("Ambiguous model parent: " + n.Parent);
+                    n.ParentIndex = candidates[0];
+                }
                 foreach (var row in n.Weights)
                     foreach (var weight in row)
                         if (duplicateNames.Contains(weight.Key)) throw new InvalidDataException("Ambiguous skin bone: " + weight.Key);
@@ -179,16 +191,15 @@ namespace ModelPreview
                 }
                 for (int i = 0; i < source.Count; i++)
                 {
-                    Node n = source[i]; int parent;
-                    if (string.IsNullOrEmpty(n.Parent) || n.Parent.Equals("null", StringComparison.OrdinalIgnoreCase)) roots.Add(i);
-                    else if (names.TryGetValue(n.Parent, out parent)) ((List<int>)nodes[parent]["children"]).Add(i);
-                    else throw new InvalidDataException("Missing parent: " + n.Parent);
+                    Node n = source[i];
+                    if (n.ParentIndex < 0) roots.Add(i);
+                    else ((List<int>)nodes[n.ParentIndex]["children"]).Add(i);
                     var seen = new HashSet<int>(); int current = i;
                     while (true)
                     {
                         if (!seen.Add(current)) throw new InvalidDataException("Cyclic model hierarchy.");
-                        var p = source[current].Parent;
-                        if (string.IsNullOrEmpty(p) || p.Equals("null", StringComparison.OrdinalIgnoreCase) || !names.TryGetValue(p, out current)) break;
+                        current = source[current].ParentIndex;
+                        if (current < 0) break;
                     }
                     if(n.Kind == "emitter")
                     {
@@ -272,7 +283,7 @@ namespace ModelPreview
             for(int column=0;column<4;column++)for(int row=0;row<4;row++)for(int k=0;k<4;k++)result[column*4+row]+=a[k*4+row]*b[column*4+k];
             return result;
         }
-        static double[] WorldMatrix(int index, List<Node> nodes, Dictionary<string,int> names)
+        static double[] WorldMatrix(int index, List<Node> nodes)
         {
             var chain=new HashSet<int>(); var result=new double[]{1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1};
             while(true)
@@ -284,8 +295,8 @@ namespace ModelPreview
                     (2*x*z+2*y*w)*s,(2*y*z-2*x*w)*s,(1-2*x*x-2*y*y)*s,0,
                     n.Position[0],n.Position[1],n.Position[2],1};
                 result=Multiply(local,result);
-                if(string.IsNullOrEmpty(n.Parent)||n.Parent.Equals("null",StringComparison.OrdinalIgnoreCase))break;
-                if(!names.TryGetValue(n.Parent,out index))throw new InvalidDataException("Missing skin parent: "+n.Parent);
+                index = n.ParentIndex;
+                if(index < 0)break;
             }
             return result;
         }
@@ -325,8 +336,8 @@ namespace ModelPreview
             views.Add(new {buffer=0,byteOffset=offset,byteLength=indices.Count*2,target=34962});
             attributes.Add("JOINTS_0",accessors.Count);accessors.Add(new {bufferView=view,componentType=5123,count=indices.Count/4,type="VEC4"});
             attributes.Add("WEIGHTS_0",AddAccessor(weights,4,writer,views,accessors));
-            var meshWorld=WorldMatrix(nodeIndex,source,names);view=views.Count;offset=writer.BaseStream.Position;
-            foreach(int joint in joints)foreach(double value in Multiply(Inverse(WorldMatrix(joint,source,names)),meshWorld))writer.Write((float)value);
+            var meshWorld=WorldMatrix(nodeIndex,source);view=views.Count;offset=writer.BaseStream.Position;
+            foreach(int joint in joints)foreach(double value in Multiply(Inverse(WorldMatrix(joint,source)),meshWorld))writer.Write((float)value);
             views.Add(new {buffer=0,byteOffset=offset,byteLength=joints.Count*64});
             int inverseBindMatrices=accessors.Count;accessors.Add(new {bufferView=view,componentType=5126,count=joints.Count,type="MAT4"});
             skins.Add(new {joints,inverseBindMatrices});

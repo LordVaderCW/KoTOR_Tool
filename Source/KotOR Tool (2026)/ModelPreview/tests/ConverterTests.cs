@@ -176,6 +176,33 @@ donemodel preview
             foreach(string invalid in new[]{emitter.Replace("fx_ring","../escape"),emitter.Replace("0.5", "NaN"),emitter.Replace("colorStart 1 0.5 0","colorStart 1")}){
                 File.WriteAllText(path,invalid);bool rejected=false;try{AsciiModel.Convert(path,n=>png);}catch(InvalidDataException){rejected=true;}Assert(rejected,"invalid emitter data rejected");
             }
+            string rainRoot="node dummy fx_Rain\nparent NULL\nposition 1 2 3\nendnode\n";
+            string rainEmitter="node emitter Fx_Rain\nparent fx_Rain\nposition 0 0 -4\ntexture fx_ring\nupdate Fountain\nfuture_unknown_property preserve_me\nendnode\n";
+            foreach(bool reverse in new[]{false,true})
+            {
+                string rain="newmodel fx_Rain\n"+(reverse?rainEmitter+rainRoot:rainRoot+rainEmitter)+"donemodel fx_Rain\n";
+                File.WriteAllText(path,rain);
+                var rainDoc=new JavaScriptSerializer().Deserialize<Dictionary<string,object>>(AsciiModel.Convert(path,n=>png));
+                var rainNodes=Arr(rainDoc["nodes"]);int rootIndex=reverse?1:0, emitterIndex=reverse?0:1;
+                Assert(Arr(Obj(rainNodes[rootIndex])["children"]).Select(Convert.ToInt32).SequenceEqual(new[]{emitterIndex}),"same-name emitter attaches to root regardless of declaration order");
+                Assert(Convert.ToDouble(Arr(Obj(rainNodes[emitterIndex])["translation"])[2])==-4,"rain emitter local transform preserved");
+                Assert(Obj(Obj(Obj(rainNodes[emitterIndex])["extras"])["auroraEmitter"]).ContainsKey("textureData"),"same-name emitter keeps texture");
+                Assert(File.ReadAllText(path)==rain,"rain source and unknown fields preserved");
+            }
+            foreach(string invalid in new[]{
+                rainRoot+rainEmitter+"node dummy child\nparent fx_Rain\nendnode\n",
+                rainRoot+rainEmitter+"node dummy FX_RAIN\nparent null\nendnode\n",
+                rainEmitter,
+                rainRoot.Replace("parent NULL","parent Fx_Rain")+rainEmitter,
+                skinFixture.Replace("node dummy root", "node dummy ROOT\nparent null\nendnode\nnode dummy root")})
+            {
+                File.WriteAllText(path,"newmodel fx_Rain\n"+invalid);
+                bool rejected=false;try{AsciiModel.Convert(path,n=>png);}catch(InvalidDataException){rejected=true;}
+                Assert(rejected,"ambiguous parents/bones and self/two-node cycles still rejected");
+            }
+            File.WriteAllText(path,"newmodel fx_Rain\n"+rainRoot+rainEmitter+Clip("move","fx_Rain","fx_Rain",2));
+            var rainAnimated=new JavaScriptSerializer().Deserialize<Dictionary<string,object>>(AsciiModel.Convert(path,n=>png));
+            Assert(Arr(rainAnimated["animations"]).Length==0,"duplicate-name animation remains omitted");
             Console.WriteLine("PASS: "+checks+" conversion checks; fixture glTF at "+args[0]);
         }
         finally {Directory.Delete(dir,true);}

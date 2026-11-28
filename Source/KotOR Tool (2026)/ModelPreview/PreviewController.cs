@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
+using System.Threading.Tasks;
 using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
 
@@ -19,7 +20,7 @@ namespace ModelPreview
         readonly List<string> retiredDirectories = new List<string>();
         readonly JavaScriptSerializer json = new JavaScriptSerializer();
         int revision;
-        bool ready, pageReady;
+        bool ready, pageReady, disposed, closing;
         sealed class ClipItem
         {
             public int Index; public string Name, SourceModel; public double Duration; public bool Inherited;
@@ -36,7 +37,7 @@ namespace ModelPreview
             Label status, Panel loading, ListBox animationList, Label clipSummary,
             Button playButton, Button stopButton, CheckBox loopCheck, Button exportButton)
         {
-            this.owner=owner; this.directory=directory; owner.Text="MDL Viewer — "+name;
+            this.owner=owner; this.directory=directory; owner.Text="KoTOR Tool — MDL Viewer — "+name;
             this.viewportPanel=viewportPanel; this.status=status; this.loading=loading;
             loading.Controls.Add(new LoadingBar { Dock=DockStyle.Fill });
             this.animationList=animationList; this.clipSummary=clipSummary;
@@ -62,7 +63,7 @@ namespace ModelPreview
         {
             if (owner.IsDisposed) throw new ObjectDisposedException(nameof(PreviewController));
             if (directory != newDirectory) retiredDirectories.Add(directory);
-            directory = newDirectory; owner.Text = "MDL Viewer — " + name;
+            directory = newDirectory; owner.Text = "KoTOR Tool — MDL Viewer — " + name;
             if (ready) NavigateModel();
         }
         void NavigateModel()
@@ -86,13 +87,13 @@ namespace ModelPreview
                 browser = new WebView2 { Dock = DockStyle.Fill }; viewportPanel.Controls.Add(browser); browser.BringToFront();
                 loading.AccessibleName = "Preparing the model viewer";
                 string runtime = await WebView2Runtime.PrepareAsync();
-                if (owner.IsDisposed) return;
+                if (disposed || closing || owner.IsDisposed) return;
                 string profile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"AppData","WebView2Profile");
                 var options = new CoreWebView2EnvironmentOptions { Language = "en-GB" };
                 var environment = await CoreWebView2Environment.CreateAsync(runtime,profile,options);
-                if (owner.IsDisposed) return;
+                if (disposed || closing || owner.IsDisposed) return;
                 await browser.EnsureCoreWebView2Async(environment);
-                if (owner.IsDisposed) return;
+                if (disposed || closing || owner.IsDisposed) return;
                 var core = browser.CoreWebView2;
                 core.Settings.AreHostObjectsAllowed = false; core.Settings.AreDefaultContextMenusEnabled = false;
                 core.Settings.AreDevToolsEnabled = false; core.Settings.IsWebMessageEnabled = true;
@@ -107,10 +108,11 @@ namespace ModelPreview
                 };
                 ready = true; NavigateModel();
             }
-            catch (Exception ex) { if (!owner.IsDisposed) ShowLoadError(ex.Message); }
+            catch (Exception ex) { if (!disposed && !closing && !owner.IsDisposed) ShowLoadError(ex.Message); }
         }
         void ReceivePlaybackState(object sender, CoreWebView2WebMessageReceivedEventArgs e)
         {
+            if (disposed || closing) return;
             if (e.Source != "https://preview.invalid/index.html?native=1&v=" + revision) return;
             try
             {
@@ -168,13 +170,36 @@ namespace ModelPreview
                     try { File.Copy(Path.Combine(directory,"model.gltf"),dialog.FileName,true); }
                     catch (Exception ex) { MessageBox.Show(owner,ex.Message,"Export failed"); }
         }
+        Task closeTask;
+        public Task PrepareCloseAsync() { return closeTask ?? (closeTask = CloseCoreAsync()); }
+        async Task CloseCoreAsync()
+        {
+            if (closing || disposed) return;
+            closing = true; ready = pageReady = false;
+            if (browser == null || browser.IsDisposed || browser.CoreWebView2 == null) return;
+            try
+            {
+                var cleanup = browser.ExecuteScriptAsync("window.kotorDisposeViewer && window.kotorDisposeViewer()");
+                // Give the GPU resources a bounded chance to release before tearing down WebView2.
+                if (await Task.WhenAny(cleanup, Task.Delay(500)) == cleanup) await cleanup;
+                if (!browser.IsDisposed && browser.CoreWebView2 != null) browser.CoreWebView2.Stop();
+            }
+            catch (InvalidOperationException) { }
+            catch (System.Runtime.InteropServices.COMException) { }
+        }
         public void Dispose()
         {
+            if (disposed) return;
+            disposed = true; ready = pageReady = false;
             owner.Shown-=Initialize; animationList.SelectedIndexChanged-=AnimationSelected;
             playButton.Click-=PlayClicked; stopButton.Click-=StopClicked;
             loopCheck.CheckedChanged-=LoopChanged; exportButton.Click-=ExportClicked;
             if(bottomBar!=null)bottomBar.Dispose();
-            if (browser != null) browser.Dispose(); DeletePreviewDirectory(directory);
+            if (browser != null) {
+                if (browser.CoreWebView2 != null) browser.CoreWebView2.WebMessageReceived -= ReceivePlaybackState;
+                browser.Dispose();
+            }
+            DeletePreviewDirectory(directory);
             foreach (string path in retiredDirectories) DeletePreviewDirectory(path);
             retiredDirectories.Clear();
         }

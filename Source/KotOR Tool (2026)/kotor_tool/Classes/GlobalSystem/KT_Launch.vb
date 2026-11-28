@@ -1,5 +1,6 @@
 Imports System
 Imports System.Diagnostics
+Imports System.Runtime.InteropServices
 Imports System.Threading
 Imports System.Windows.Forms
 Imports Microsoft.VisualBasic.CompilerServices
@@ -10,10 +11,26 @@ Namespace kotor_tool
 
         Private _showingExceptionDialog As Integer
 
+        <DllImport("shell32.dll", CharSet:=CharSet.Unicode)>
+        Private Function SetCurrentProcessExplicitAppUserModelID(ByVal appId As String) As Integer
+        End Function
+
+        Private Sub SetApplicationIdentity()
+            Try
+                ' Give the portable Treya process its own identity before any window or WebView2 starts.
+                Dim result As Integer = SetCurrentProcessExplicitAppUserModelID("LordVaderCW.KotorTool.Treya")
+                If result < 0 Then Debug.WriteLine("Unable to set KoTOR Tool application identity: " & result.ToString("X8"))
+            Catch ex As EntryPointNotFoundException
+                ' Older Windows/Wine shells may not implement application identities.
+            Catch ex As DllNotFoundException
+            End Try
+        End Sub
+
         ' Token: 0x06001722 RID: 5922 RVA: 0x002CB4A0 File Offset: 0x002CA4A0
         <STAThread()> _
         Public Sub Main(ByVal CmdArgs As String())
             Try
+                SetApplicationIdentity()
                 Application.EnableVisualStyles()
                 Application.SetCompatibleTextRenderingDefault(False)
                 Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException)

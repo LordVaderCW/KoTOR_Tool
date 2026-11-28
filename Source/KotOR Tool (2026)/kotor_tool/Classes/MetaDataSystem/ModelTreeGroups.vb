@@ -88,16 +88,16 @@ Namespace kotor_tool
                 result.Add(node)
                 Return
             End If
-            For Each child As KotorTreeNode In node.Nodes
+            For Each child As KotorTreeNode In node.ResourceChildren()
                 CollectLeaves(child, result)
             Next
         End Sub
         Public Shared Function FindArchive(ByVal node As KotorTreeNode) As KotorTreeNode
-            Dim current As KotorTreeNode = TryCast(node.Parent, KotorTreeNode)
+            Dim current As KotorTreeNode = node.ResourceParent
             While current IsNot Nothing
                 Dim tag As String = TryCast(current.Tag, String)
                 If tag = "BIFF" OrElse tag = "RIM" OrElse tag = "ERF" Then Return current
-                current = TryCast(current.Parent, KotorTreeNode)
+                current = current.ResourceParent
             End While
             Return Nothing
         End Function

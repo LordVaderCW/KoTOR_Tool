@@ -58,7 +58,8 @@
     <Optimize>true</Optimize>
     <FileAlignment>4096</FileAlignment>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314,42353,42354,42355</NoWarn>
-    <DebugType>none</DebugType><DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -80,7 +81,8 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
-    <DebugType>none</DebugType><DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
     <Optimize>true</Optimize>
     <OutputPath>bin\x86\Release\</OutputPath>
     <DefineConstants>TRACE=-1</DefineConstants>
@@ -118,10 +120,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\StandardUI\KotorTreeNode.Lazy.vb" />
     <ProjectReference Include="..\ModelPreview\ModelPreview.csproj">
       <Project>{D89A1126-347E-4AC7-B933-2B7C773ED821}</Project>
       <Name>ModelPreview</Name>
     </ProjectReference>
+    <Compile Include="WinForms\frmMain.DialogueTree.vb">
+      <DependentUpon>frmMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WinForms\frmMain.DialogueMetadata.vb">
+      <DependentUpon>frmMain.vb</DependentUpon>
+    </Compile>
     <Compile Include="WinForms\frmMain.NWlisten.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
       <SubType>Form</SubType>
@@ -130,13 +139,13 @@
       <DependentUpon>frmMain.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <EmbeddedResource Include="WinForms\frmMain.ModelPreview.resx">
-      <DependentUpon>frmMain.ModelPreview.vb</DependentUpon>
+    <EmbeddedResource Include="WinForms\frmMDLPreview.resx">
+      <DependentUpon>frmMDLPreview.vb</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="WinForms\frmMain.ModelPreview.Designer.vb">
-      <DependentUpon>frmMain.ModelPreview.vb</DependentUpon>
+    <Compile Include="WinForms\frmMDLPreview.Designer.vb">
+      <DependentUpon>frmMDLPreview.vb</DependentUpon>
     </Compile>
-    <Compile Include="WinForms\frmMain.ModelPreview.vb">
+    <Compile Include="WinForms\frmMDLPreview.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

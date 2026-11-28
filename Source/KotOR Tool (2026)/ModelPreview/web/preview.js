@@ -1,8 +1,19 @@
 'use strict';
 (() => {
  const viewport=document.getElementById('viewport'), status=document.getElementById('status');
- let renderer, scene, camera, controls, pivot, model, frame, last=0;
- let rotating=false, axis='y';
+ let renderer, scene, camera, controls, pivot, model, frame, last=0, disposed=false;
+ window.kotorDisposeViewer=()=>{
+  if(disposed)return;disposed=true;cancelAnimationFrame(frame);
+  if(vfx)vfx.dispose();
+  if(mixer){mixer.stopAllAction();if(model)mixer.uncacheRoot(model);}
+  if(controls)controls.dispose();
+  const geometries=new Set(),materials=new Set(),textures=new Set();
+  if(scene)scene.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.material)for(const m of (Array.isArray(o.material)?o.material:[o.material]))materials.add(m);});
+  for(const m of materials){for(const value of Object.values(m))if(value&&value.isTexture)textures.add(value);}
+  for(const t of textures)t.dispose();for(const m of materials)m.dispose();for(const g of geometries)g.dispose();
+  if(renderer){renderer.dispose();renderer.forceContextLoss();}
+ };
+ let rotating=false, axis='y', dirty=true;
  let vfx;
  const nativeControls=new URLSearchParams(location.search).get('native')==='1';
  if(nativeControls){document.querySelector('header').hidden=true;document.getElementById('vfx-controls').hidden=true;}
@@ -32,6 +43,7 @@
  const isPose=()=>action&&action.getClip().duration<=0;
  const samplePose=()=>{action.reset().setLoop(THREE.LoopOnce,1).play();mixer.update(0);action.paused=true;};
  const command=data=>{
+  if(disposed)return;dirty=true;
   if(!mixer||data.revision!==revision)return;
   if(data.command==='viewRotate'){document.getElementById('rotate').click();viewerState();return;}
   if(data.command==='viewAxis'){if(['X','Y','Z'].includes(data.value)){const el=document.getElementById('axis');el.value=data.value;el.dispatchEvent(new Event('change'));}viewerState();return;}
@@ -59,18 +71,19 @@
   renderer=new THREE.WebGLRenderer({antialias:true}); renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.outputEncoding=THREE.sRGBEncoding;
   viewport.appendChild(renderer.domElement); scene=new THREE.Scene(); scene.background=new THREE.Color(0x10151c);
   camera=new THREE.PerspectiveCamera(40,1,0.01,10000);
-  controls=new THREE.OrbitControls(camera,renderer.domElement); controls.enableDamping=true;
+  controls=new THREE.OrbitControls(camera,renderer.domElement); controls.enableDamping=true;controls.addEventListener('change',()=>dirty=true);
   scene.add(new THREE.HemisphereLight(0xffffff,0x687080,1.2)); const light=new THREE.DirectionalLight(0xffffff,1.1); light.position.set(4,8,5); scene.add(light);
   pivot=new THREE.Group(); scene.add(pivot);
-  const resize=()=>{const w=viewport.clientWidth,h=viewport.clientHeight;if(!w||!h)return;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();};
+  const resize=()=>{if(disposed)return;const w=viewport.clientWidth,h=viewport.clientHeight;if(!w||!h)return;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();dirty=true;};
   new ResizeObserver(resize).observe(viewport); resize();
-  const reset=()=>{if(!model)return;pivot.rotation.set(0,0,0);controls.reset();};
+  const reset=()=>{if(!model)return;pivot.rotation.set(0,0,0);controls.reset();dirty=true;};
   document.getElementById('reset').onclick=reset;
   document.getElementById('rotate').onclick=e=>{rotating=!rotating;e.target.textContent=rotating?'Pause rotation':'Resume rotation';e.target.setAttribute('aria-pressed',String(rotating));};
-  document.getElementById('axis').onchange=e=>{axis=e.target.value.toLowerCase();pivot.rotation.set(0,0,0);};
-  document.getElementById('wire').onchange=e=>{if(model)model.traverse(o=>{if(o.isMesh)o.material.wireframe=e.target.checked;});};
-  renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();cancelAnimationFrame(frame);fail(new Error('Graphics context lost. Close and reopen the preview.'));});
+  document.getElementById('axis').onchange=e=>{axis=e.target.value.toLowerCase();pivot.rotation.set(0,0,0);dirty=true;};
+  document.getElementById('wire').onchange=e=>{if(model)model.traverse(o=>{if(o.isMesh)o.material.wireframe=e.target.checked;});dirty=true;};
+  renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();if(disposed)return;cancelAnimationFrame(frame);fail(new Error('Graphics context lost. Close and reopen the preview.'));});
   new THREE.GLTFLoader().load('model.gltf'+location.search,async gltf=>{
+   if(disposed)return;
    try {
    model=gltf.scene; model.traverse(o=>{if(o.isMesh&&!o.geometry.attributes.normal)o.geometry.computeVertexNormals();});
    vfx=await AuroraVfx.create(model);
@@ -98,8 +111,17 @@
    finishLoading();viewerState(true);
    } catch(e){fail(e);}
   },undefined,fail);
-  const animate=time=>{frame=requestAnimationFrame(animate);const dt=Math.min((time-last)/1000,0.05);last=time;if(document.hidden)return;if(mixer)mixer.update(dt);if(vfx)vfx.update(dt);if(nativeControls&&time-lastUi>=100){lastUi=time;viewerState();}if(rotating&&model)pivot.rotation[axis]+=dt*0.35;controls.update();renderer.render(scene,camera);};
+  const animate=time=>{
+   if(disposed)return;frame=requestAnimationFrame(animate);
+   if(document.hidden){last=time;return;}
+   const dt=Math.min((time-last)/1000,0.05);last=time;
+   const playing=action&&!action.paused&&action.isRunning(),effects=vfx&&vfx.playing&&vfx.emitters.length>0;
+   if(mixer)mixer.update(dt);if(vfx)vfx.update(dt);
+   if(nativeControls&&time-lastUi>=100){lastUi=time;viewerState();}
+   if(rotating&&model)pivot.rotation[axis]+=dt*0.35;controls.update();
+   if(dirty||rotating||playing||effects){renderer.render(scene,camera);dirty=false;}
+  };
   frame=requestAnimationFrame(animate);
-  addEventListener('pagehide',()=>{cancelAnimationFrame(frame);if(vfx)vfx.dispose();if(mixer){mixer.stopAllAction();mixer.uncacheRoot(model);}controls.dispose();scene.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material){if(o.material.map)o.material.map.dispose();o.material.dispose();}});renderer.dispose();});
+  addEventListener('pagehide',window.kotorDisposeViewer);
  } catch(e){fail(e);}
 })();

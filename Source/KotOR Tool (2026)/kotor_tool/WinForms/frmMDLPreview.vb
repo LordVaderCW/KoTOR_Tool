@@ -1,4 +1,4 @@
-﻿Option Strict On
+Option Strict On
 Option Explicit On
 
 Imports System
@@ -8,8 +8,31 @@ Imports System.Text
 Imports System.Text.RegularExpressions
 
 Namespace kotor_tool
-    Public Partial Class frmModelPreview
+    Public Partial Class frmMDLPreview
         Public Event SendToMax(ByVal includeAnimations As Boolean)
+        Private previewCloseReady As Boolean
+        Private previewClosePending As Boolean
+
+        Public Async Function PrepareForCloseAsync() As System.Threading.Tasks.Task
+            ' Let the original Closing event return before issuing the final Close.
+            Await System.Threading.Tasks.Task.Yield()
+            StopPreviewSound()
+            If previewController IsNot Nothing Then Await previewController.PrepareCloseAsync()
+            previewCloseReady = True
+        End Function
+
+        Private Async Sub PrepareViewerClose(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+            If previewCloseReady OrElse e.CloseReason <> System.Windows.Forms.CloseReason.UserClosing Then Return
+            e.Cancel = True
+            If previewClosePending Then Return
+            previewClosePending = True
+            Try
+                Await PrepareForCloseAsync()
+            Finally
+                previewCloseReady = True
+                If Not IsDisposed Then Close()
+            End Try
+        End Sub
 
         Private Sub SendMaxClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles sendMaxButton.Click
             RaiseEvent SendToMax(includeAnimationsCheck.Checked)
@@ -362,6 +385,7 @@ Namespace kotor_tool
 
         Public Sub New()
             InitializeComponent()
+            Me.ShowInTaskbar = True
         End Sub
 
         Public Sub New(ByVal directory As String, ByVal modelName As String)

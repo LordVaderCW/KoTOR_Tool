@@ -4,7 +4,7 @@ Imports Microsoft.VisualBasic.CompilerServices
 
 Namespace kotor_tool
 	' Token: 0x02000086 RID: 134
-	Public Class KotorTreeNode
+	Public Partial Class KotorTreeNode
 		Inherits TreeNode
 
 		' Token: 0x0600170A RID: 5898 RVA: 0x002CB1A0 File Offset: 0x002CA1A0

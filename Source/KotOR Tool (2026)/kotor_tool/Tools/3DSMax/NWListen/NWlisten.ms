@@ -5,6 +5,12 @@ global NWlistenRoot
 global NWlistenHome = getFilenamePath (getSourceFileName())
 global NWlistenStatus = "Ready for KoTOR Tool"
 
+fn NWlistenProgress job message =
+(
+    NWlistenStatus = message
+    try ((dotNetClass "System.IO.File").WriteAllText (job + "progress.txt") message) catch ()
+)
+
 fn NWlistenReadApplicationDirectory =
 (
     (dotNetClass "Microsoft.Win32.Registry").GetValue @"HKEY_CURRENT_USER\Software\KotOR Tool\NWlisten" "ApplicationDirectory" ""
@@ -226,21 +232,26 @@ fn NWlistenTick =
                         if not (io.Exists mdl) then throw "ASCII model is missing."
                         if ImportNWNmdl == undefined do fileIn ((getDir #scripts) + "\\NWmax\\nwmax.ms")
                         if ImportNWNmdl == undefined then throw "NWmax ImportNWNmdl is unavailable."
-                        NWlistenStatus = "Importing model..."
+                        NWlistenProgress job "Importing geometry in NWmax (Max may be busy until this completes)..."
                         mapPaths.add job
                         if nx_refreshMapPaths != undefined do nx_refreshMapPaths()
                         local existingNodes = objects as array
-                        local imported = ImportNWNmdl mdl includeAnimations false showprogress:false
+                        local imported
+                        -- Avoid repainting partially constructed room geometry on every importer update.
+                        with redraw off (imported = ImportNWNmdl mdl includeAnimations false showprogress:false)
                         local addedNodes = for n in objects where (findItem existingNodes n) == 0 collect n
                         if imported == false or addedNodes.count == 0 then throw "NWmax reported an import failure."
                         if includeAnimations do
                         (
-                            NWlistenStatus = "Resetting imported controllers..."
+                            NWlistenProgress job "Resetting imported controllers..."
                             NWlistenResetControllers addedNodes
                             NWlistenJoinClipGaps addedNodes
                         )
+                        NWlistenProgress job "Hiding non-rendering imported meshes..."
                         NWlistenHideSkeleton addedNodes
+                        NWlistenProgress job "Preparing imported materials..."
                         NWlistenPrepareHairMaterials addedNodes
+                        NWlistenProgress job "Refreshing Max viewports..."
                         redrawViews()
                         NWlistenResult job "OK" (if includeAnimations then "Imported with animations; controllers reset." else "Imported without animations.")
                         NWlistenStatus = "Model imported"

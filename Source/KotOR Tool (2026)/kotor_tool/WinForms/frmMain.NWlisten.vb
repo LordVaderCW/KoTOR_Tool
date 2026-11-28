@@ -11,7 +11,9 @@ Namespace kotor_tool
         Private nwSendBusy As Boolean
 
         Private Async Sub SendModelToMax(ByVal sender As Object, ByVal e As EventArgs)
-            Await SendModelToMaxAsync(modelPreviewNode, True)
+            ' Quick sends default to geometry only, including static module/area models.
+            ' Animated imports remain an explicit choice in the model viewer.
+            Await SendModelToMaxAsync(modelPreviewNode, False)
         End Sub
 
         Private Async Function SendModelToMaxAsync(ByVal node As KotorTreeNode, ByVal includeAnimations As Boolean) As Task
@@ -93,8 +95,21 @@ Namespace kotor_tool
                 File.WriteAllText(Path.Combine(job, "request.tmp"), "NWlisten/1" & vbLf & "animations=" & If(includeAnimations, "1", "0"), New UTF8Encoding(False))
                 File.Move(Path.Combine(job, "request.tmp"), Path.Combine(job, "request.ready"))
                 Dim deadline As DateTime = DateTime.UtcNow.AddMinutes(10)
+                Dim lastImportStage As String = String.Empty
                 Do
                     If meter.IsDisposed OrElse IsDisposed Then Return
+                    Dim stagePath As String = Path.Combine(job, "progress.txt")
+                    Try
+                        If File.Exists(stagePath) Then
+                            Dim stage As String = File.ReadAllText(stagePath)
+                            If stage.Length > 0 AndAlso stage <> lastImportStage Then
+                                lastImportStage = stage
+                                meter.status = stage
+                            End If
+                        End If
+                    Catch ex As IOException
+                        ' The listener may be replacing its stage text during this poll.
+                    End Try
                     Dim response As String = Path.Combine(job, "result.txt")
                     If File.Exists(response) Then
                         Dim answer As String = File.ReadAllText(response)

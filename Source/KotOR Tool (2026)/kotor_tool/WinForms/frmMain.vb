@@ -124,7 +124,7 @@ Namespace kotor_tool
 
         Public Sub New(ByVal CmdArgs As String())
             AddHandler MyBase.Load, AddressOf Me.Form1_Load
-            AddHandler MyBase.Closing, AddressOf Me.frmMain_Closing
+            AddHandler MyBase.FormClosing, AddressOf Me.frmMain_Closing
             AddHandler MyBase.Move, AddressOf Me.frmMain_Move
             AddHandler MyBase.Activated, AddressOf Me.frmMain_Activated
 
@@ -149,7 +149,7 @@ Namespace kotor_tool
 
         Public Sub New()
             AddHandler MyBase.Load, AddressOf Me.Form1_Load
-            AddHandler MyBase.Closing, AddressOf Me.frmMain_Closing
+            AddHandler MyBase.FormClosing, AddressOf Me.frmMain_Closing
             AddHandler MyBase.Move, AddressOf Me.frmMain_Move
             AddHandler MyBase.Activated, AddressOf Me.frmMain_Activated
 
@@ -246,6 +246,7 @@ Namespace kotor_tool
 
         ' Token: 0x060006EF RID: 1775 RVA: 0x0024EE28 File Offset: 0x0024DE28
         Private Sub SetupRootChildren(ByVal Root As KotorTreeNode)
+            Me.TreeView.ShowNodeToolTips = True
             Dim kotorTreeNode As KotorTreeNode = New KotorTreeNode("BIFs")
             kotorTreeNode.Tag = "BIFF_Root"
             kotorTreeNode.FilePath = frmMain.CurrentSettings.KotorLocation(Me.TreeView.Nodes.IndexOf(Root)) + "\data"
@@ -306,6 +307,7 @@ Namespace kotor_tool
             kotorTreeNode2.Tag = "dummy"
             kotorTreeNode.Nodes.Add(kotorTreeNode2)
             Root.Nodes.Add(kotorTreeNode)
+            Root.Nodes.Add(DialogueTree.CreateRoot(Root.FilePath))
         End Sub
 
         ' Token: 0x060006F0 RID: 1776 RVA: 0x0024F0D0 File Offset: 0x0024E0D0
@@ -332,6 +334,7 @@ Namespace kotor_tool
             Dim num6 As Integer = binaryReader.ReadInt32()
             Dim num7 As Integer = binaryReader.ReadInt32()
             Me.biffEntries(num) = New ArrayList(num2)
+            Dim archiveNodes As New System.Collections.Generic.List(Of KotorTreeNode)()
             Dim num8 As Integer = 0
             Dim num9 As Integer = num2 - 1
             For i As Integer = num8 To num9
@@ -345,7 +348,7 @@ Namespace kotor_tool
                     kotorTreeNode.Filename = Strings.Mid(biffentry.filename, biffentry.filename.LastIndexOf("\") + 2)
                     kotorTreeNode.FilePath = filePath + "\" + Strings.Mid(biffentry.filename, 1, biffentry.filename.LastIndexOf("\"))
                     kotorTreeNode.ContainingFileType = "BIF"
-                    Root.Nodes(0).Nodes.Add(kotorTreeNode)
+                    archiveNodes.Add(kotorTreeNode)
                     Console.WriteLine("Bif name: " + biffentry.filename + "  Length: " + StringType.FromInteger(biffentry.filelength))
                 Next
             fileStream.Seek(CLng(num5), SeekOrigin.Begin)
@@ -388,10 +391,12 @@ Namespace kotor_tool
                         End If
                         num13 += 1
                     Next
-                    Me.AttachNodeParentsSortedByDesc(CType(Root.Nodes(0).Nodes(i), KotorTreeNode), CType(treeNode, KotorTreeNode))
-                    ModelTreeGroups.Apply(CType(Root.Nodes(0).Nodes(i), KotorTreeNode), num)
+                    Me.AttachNodeParentsSortedByDesc(archiveNodes(i), CType(treeNode, KotorTreeNode))
+                    ModelTreeGroups.Apply(archiveNodes(i), num)
+                    archiveNodes(i).DeferDescendants(num)
                 End If
             Next
+            Root.Nodes(0).Nodes.AddRange(archiveNodes.ToArray())
             binaryReader.Close()
             Me.TreeView.EndUpdate()
             frmProgressMeter.Hide()
@@ -1464,9 +1469,10 @@ Namespace kotor_tool
 
         ' Token: 0x06000704 RID: 1796 RVA: 0x0025176C File Offset: 0x0025076C
         Friend Function GetERFResource(ByVal ERFFilePath As String, ByVal ktn As KotorTreeNode) As Byte()
-            Dim fileStream As FileStream = New FileStream(ERFFilePath, FileMode.Open, FileAccess.Read)
-            Dim clsERF As clsERF = New clsERF(fileStream)
-            Return clsERF.getERFResource(ktn.RIMorERFindex)
+            Using fileStream As New FileStream(ERFFilePath, FileMode.Open, FileAccess.Read)
+                Dim archive As New clsERF(fileStream)
+                Return archive.getERFResource(ktn.RIMorERFindex)
+            End Using
         End Function
 
         ' Token: 0x06000705 RID: 1797 RVA: 0x00251798 File Offset: 0x00250798
@@ -2889,6 +2895,8 @@ Namespace kotor_tool
         End Sub
 
         Private Sub PopulateResourceBrowserFromNode(ByVal sourceNode As KotorTreeNode)
+            If sourceNode IsNot Nothing Then sourceNode.MaterializeChildren()
+            Me.DescribeDialogueGroup(sourceNode)
             If Me.lvResourceBrowser Is Nothing Then
                 Return
             End If
@@ -2926,7 +2934,7 @@ Namespace kotor_tool
                             Dim item As ListViewItem = New ListViewItem(itemText)
                             item.Tag = childNode
                             item.ImageKey = iconKey
-                            item.ToolTipText = childNode.FullPath
+                            item.ToolTipText = If(String.IsNullOrEmpty(childNode.ToolTipText), childNode.FullPath, childNode.ToolTipText)
                             item.SubItems.Add(typeText)
                             item.SubItems.Add(sourceText)
                             Me.lvResourceBrowser.Items.Add(item)
@@ -2935,7 +2943,7 @@ Namespace kotor_tool
                                 Dim detailsItem As ListViewItem = New ListViewItem(itemText)
                                 detailsItem.Tag = childNode
                                 detailsItem.ImageKey = iconKey
-                                detailsItem.ToolTipText = childNode.FullPath
+                                detailsItem.ToolTipText = If(String.IsNullOrEmpty(childNode.ToolTipText), childNode.FullPath, childNode.ToolTipText)
                                 detailsItem.SubItems.Add(typeText)
                                 detailsItem.SubItems.Add(sourceText)
                                 Me.lvResourceDetails.Items.Add(detailsItem)
@@ -3227,6 +3235,7 @@ Namespace kotor_tool
 
             Dim tagText As String = node.Tag.ToString()
             Return ObjectType.ObjTst(tagText, "BIFF_Res", False) = 0 OrElse
+                   ObjectType.ObjTst(tagText, "Dialogue_File", False) = 0 OrElse
                    ObjectType.ObjTst(tagText, "RIM_Res", False) = 0 OrElse
                    ObjectType.ObjTst(tagText, "ERF_Res", False) = 0 OrElse
                    ObjectType.ObjTst(tagText, "StreamWaves_File", False) = 0 OrElse
@@ -3242,6 +3251,7 @@ Namespace kotor_tool
             If node.Tag IsNot Nothing Then
                 Dim tagText As String = node.Tag.ToString()
                 If ObjectType.ObjTst(tagText, "NodeCategory", False) = 0 OrElse
+                   tagText = "Dialogue_Group" OrElse
                    tagText.IndexOf("Root") >= 0 OrElse
                    tagText.IndexOf("Modules") >= 0 OrElse
                    tagText.IndexOf("TexturePacks") >= 0 OrElse
@@ -3531,6 +3541,7 @@ Namespace kotor_tool
         End Sub
 
         Private Sub EnsureResourceBrowserNodeChildren(ByVal node As KotorTreeNode)
+            If node IsNot Nothing Then node.MaterializeChildren()
             If node Is Nothing OrElse node.Nodes.Count = 0 Then
                 Return
             End If
@@ -4010,7 +4021,28 @@ Namespace kotor_tool
         End Sub
 
         ' Token: 0x06000728 RID: 1832 RVA: 0x0025499C File Offset: 0x0025399C
-        Private Sub frmMain_Closing(ByVal sender As Object, ByVal e As CancelEventArgs)
+        Private mainPreviewClosePending As Boolean
+        Private mainPreviewCloseReady As Boolean
+
+        Private Async Sub frmMain_Closing(ByVal sender As Object, ByVal e As FormClosingEventArgs)
+            If Not mainPreviewCloseReady AndAlso activeModelPreview IsNot Nothing AndAlso Not activeModelPreview.IsDisposed Then
+                e.Cancel = True
+                If mainPreviewClosePending Then Return
+                mainPreviewClosePending = True
+                previewSelectionVersion += 1
+                previewSelectionTimer.Stop()
+                pendingPreviewNode = Nothing
+                Dim previewToClose As frmMDLPreview = activeModelPreview
+                Try
+                    Await previewToClose.PrepareForCloseAsync()
+                Finally
+                    ' The preview is an independent top-level window, so close it explicitly.
+                    If Not previewToClose.IsDisposed Then previewToClose.Close()
+                    mainPreviewCloseReady = True
+                    If Not IsDisposed Then Close()
+                End Try
+                Return
+            End If
             frmMain.SaveSettings()
         End Sub
 
@@ -4101,6 +4133,8 @@ Namespace kotor_tool
                         Dim data As Byte() = Nothing
                         If ObjectType.ObjTst(node.Tag, "RIM_Res", False) = 0 Then
                             data = Me.GetRIMResource(node.FilePath, node)
+                        ElseIf ObjectType.ObjTst(node.Tag, "Dialogue_File", False) = 0 Then
+                            data = File.ReadAllBytes(node.FilePath)
                         ElseIf ObjectType.ObjTst(node.Tag, "BIFF_Res", False) = 0 Then
                             data = Me.GetBIFFResource(node.FilePath, node.LocalResID).data
                         ElseIf ObjectType.ObjTst(node.Tag, "ERF_Res", False) = 0 Then
@@ -4336,6 +4370,12 @@ Namespace kotor_tool
 
             ' Grab the underlying tag of the node to determine what kind of resource we are dealing with
             Dim tag As Object = node.Tag
+
+            If ObjectType.ObjTst(tag, "Dialogue_File", False) = 0 Then
+                outputpath = StringType.FromObject(frmMain.GetFilePath("save", frmMain.CurrentSettings.defaultSaveLocation, node.Filename, "Save " & node.Filename & " file...", "dlg", False, True))
+                If Not String.IsNullOrEmpty(outputpath) Then frmMain.WriteByteArray(outputpath, File.ReadAllBytes(node.FilePath))
+                Return outputpath
+            End If
 
             ' =================================================================================
             ' BLOCK 1: EXTRACTING AN ENTIRE RIM FILE
@@ -4624,6 +4664,8 @@ Namespace kotor_tool
                     frmByteViewer = New frmByteViewer(Me.GetRIMResource(kotorTreeNode.FilePath, kotorTreeNode))
                 ElseIf ObjectType.ObjTst(tag, "BIFF_Res", False) = 0 Then
                     frmByteViewer = New frmByteViewer(Me.GetBIFFResource(kotorTreeNode.FilePath, kotorTreeNode.LocalResID).data)
+                ElseIf ObjectType.ObjTst(tag, "Dialogue_File", False) = 0 Then
+                    frmByteViewer = New frmByteViewer(File.ReadAllBytes(kotorTreeNode.FilePath))
                 Else
                     If ObjectType.ObjTst(tag, "ERF_Res", False) <> 0 Then
                         Return
@@ -4971,6 +5013,8 @@ Namespace kotor_tool
             Dim array As Byte() = Nothing
             If ObjectType.ObjTst(tag, "RIM_Res", False) = 0 Then
                 array = Me.GetRIMResource(node.FilePath, node)
+            ElseIf ObjectType.ObjTst(tag, "Dialogue_File", False) = 0 Then
+                array = File.ReadAllBytes(node.FilePath)
             ElseIf ObjectType.ObjTst(tag, "BIFF_Res", False) = 0 Then
                 If StringType.StrCmp(node.ResTypeStr, "mdl", False) <> 0 Then
                     array = Me.GetBIFFResource(node.FilePath, node.LocalResID).data
@@ -5449,6 +5493,8 @@ IL_12BE:
                 Dim tag As Object = kotorTreeNode.Tag
 
                 If ObjectType.ObjTst(tag, "RIM_Modules", False) = 0 OrElse
+                   ObjectType.ObjTst(tag, "Dialogue_Root", False) = 0 OrElse
+                   ObjectType.ObjTst(tag, "Dialogue_Group", False) = 0 OrElse
                    ObjectType.ObjTst(tag, "RIM_Rims", False) = 0 OrElse
                    ObjectType.ObjTst(tag, "ERF_Root", False) = 0 OrElse
                    ObjectType.ObjTst(tag, "ERF_TexturePacks", False) = 0 OrElse
@@ -5493,6 +5539,7 @@ IL_12BE:
                     Me.btnExtract.Text = "Extract entire ERF file"
 
                 ElseIf ObjectType.ObjTst(tag2, "BIFF_Res", False) = 0 OrElse
+                       ObjectType.ObjTst(tag2, "Dialogue_File", False) = 0 OrElse
                        ObjectType.ObjTst(tag2, "RIM_Res", False) = 0 OrElse
                        ObjectType.ObjTst(tag2, "ERF_Res", False) = 0 Then
 
@@ -5526,6 +5573,7 @@ IL_12BE:
 
         ' Token: 0x06000735 RID: 1845 RVA: 0x00256CC0 File Offset: 0x00255CC0
         Private Sub TreeView_BeforeExpand(ByVal sender As Object, ByVal e As TreeViewCancelEventArgs) Handles TreeView.BeforeExpand
+            CType(e.Node, KotorTreeNode).MaterializeChildren()
             Dim kotorTreeNode As KotorTreeNode = CType(e.Node, KotorTreeNode)
             frmMain.CurrentSettings = UserSettings.GetSettings()
             If Not frmMain.CurrentSettings.TreeOpenPaths.Contains(kotorTreeNode.FullPath) Then
@@ -5538,6 +5586,10 @@ IL_12BE:
                 If ObjectType.ObjTst(kotorTreeNode.Nodes(0).Tag, "dummy", False) = 0 Then
                     Me.BuildTreeView(CType(kotorTreeNode.Parent, KotorTreeNode), False)
                 End If
+            ElseIf ObjectType.ObjTst(tag, "Dialogue_Root", False) = 0 Then
+                Me.PopulateDialogueTree(kotorTreeNode)
+            ElseIf ObjectType.ObjTst(tag, "Dialogue_Group", False) = 0 Then
+                Me.DescribeDialogueGroup(kotorTreeNode)
             ElseIf ObjectType.ObjTst(tag, "RIM_Modules", False) = 0 Then
                 If ObjectType.ObjTst(kotorTreeNode.Nodes(0).Tag, "dummy", False) = 0 Then
                     Me.ScanForRIMSandBuildTree(kotorTreeNode, "modules")

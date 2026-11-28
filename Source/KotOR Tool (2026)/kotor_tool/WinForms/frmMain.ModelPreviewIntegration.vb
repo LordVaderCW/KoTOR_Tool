@@ -1,4 +1,4 @@
-﻿Imports System
+Imports System
 Imports System.IO
 Imports System.Windows.Forms
 
@@ -27,7 +27,7 @@ Namespace kotor_tool
         Private modelPreviewBusy As Boolean
         Private modelPreviewNode As KotorTreeNode
         Private displayedPreviewNode As KotorTreeNode
-        Private activeModelPreview As frmModelPreview
+        Private activeModelPreview As frmMDLPreview
         Private pendingPreviewNode As KotorTreeNode
         Private previewSelectionVersion As Integer
 
@@ -69,10 +69,11 @@ Namespace kotor_tool
         End Sub
 
         Private Sub ModelPreviewClosed(ByVal sender As Object, ByVal e As FormClosedEventArgs)
+            If Not Object.ReferenceEquals(activeModelPreview, sender) Then Return
             previewSelectionVersion += 1
             previewSelectionTimer.Stop()
             pendingPreviewNode = Nothing
-            RemoveHandler CType(sender, frmModelPreview).SendToMax, AddressOf PreviewSendToMax
+            RemoveHandler CType(sender, frmMDLPreview).SendToMax, AddressOf PreviewSendToMax
             If Object.ReferenceEquals(activeModelPreview, sender) Then
                 activeModelPreview = Nothing
                 displayedPreviewNode = Nothing
@@ -108,7 +109,7 @@ Namespace kotor_tool
             Dim tag As String = TryCast(node.Tag, String)
             If tag <> "BIFF_Res" AndAlso tag <> "ERF_Res" AndAlso tag <> "RIM_Res" Then Return
             Dim directory As String = Path.Combine(Path.GetTempPath(), "KotorToolPreview", Guid.NewGuid().ToString("N"))
-            Dim window As frmModelPreview = Nothing
+            Dim window As frmMDLPreview = Nothing
             If Not followSelection Then
                 previewSelectionTimer.Stop()
                 pendingPreviewNode = Nothing
@@ -156,12 +157,13 @@ Namespace kotor_tool
                         window.Activate()
                     End If
                 ElseIf Not followSelection Then
-                    window = New frmModelPreview(directory, node.ResRef)
+                    window = New frmMDLPreview(directory, node.ResRef)
+                    window.Icon = Me.Icon
                     activeModelPreview = window
                     displayedPreviewNode = node
                     AddHandler window.SendToMax, AddressOf PreviewSendToMax
                     AddHandler window.FormClosed, AddressOf ModelPreviewClosed
-                    window.Show(Me)
+                    window.Show()
                 End If
                 If window IsNot Nothing Then
                     Try

@@ -161,6 +161,8 @@ Full-framework MSBuild x86 Release passed. The fixture harness checked both game
 
 ## Map model labels
 
+Deferred BIF browsing (2026-11-28): `ResourceLeaves` and `FindArchive` traverse `KotorTreeNode.ResourceChildren()` / `ResourceParent` so group and archive extraction includes unopened folders without creating native TreeView items. Grouping still runs on the complete detached hierarchy before deferral. The WinForms lazy-tree harness verifies original resource identity, both game indices and exact-byte extraction including unknown resource types.
+
 `MapModuleMetadata` stores stock English area names separately for K1 and K2. Map leaves display `filename.mdl | area name`, for example `m01aa_01a.mdl | Endar Spire - Command Module` and `001ebo1.mdl | Ebon Hawk - Interior`. Only `TreeNode.Text` changes. Filename, ResRef, archive path, resource ID and game identity remain untouched, and labels are reconstructed from Filename on each grouping pass so they never accumulate suffixes. Other model categories keep their current labels.
 
 The compiled register was derived read-only from the installed games' base module ARE `Name` localized strings and `dialog.tlk` on 2026-11-25. It contains 95 K1 and 73 K2 area identifiers. Exact LYT room membership takes precedence where it differs from the name prefix (nine K1 room exceptions). Multiple distinct area names for a shared identifier are retained, separated by ` / `. Empty and Untitled names are excluded. The ARE's own wording is retained even for cutscene scenes whose familiar community name differs.
